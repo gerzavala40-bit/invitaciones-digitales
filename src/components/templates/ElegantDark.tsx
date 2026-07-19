@@ -129,7 +129,7 @@ export default function ElegantDark({ event }: { event: EventData }) {
       {/* FOOTER */}
       <footer className="py-8 text-center text-gray-500 text-xs">
         <p>Hecho con amor para nuestro evento especial</p>
-        <p className="mt-1">Powered by <span className="text-[#d4af37]">MiPlataforma.com</span></p>
+        <p className="mt-1">Powered by <span className="text-[#d4af37]">TeInvitoApp</span></p>
       </footer>
     </div>
   );

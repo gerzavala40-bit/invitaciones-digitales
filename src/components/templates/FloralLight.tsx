@@ -116,7 +116,7 @@ export default function FloralLight({ event }: { event: EventData }) {
 
       <footer className="py-8 text-center text-[#b09a8f] text-xs bg-[#fef1ee]">
         <p>Con todo nuestro amor</p>
-        <p className="mt-2">Powered by <span className="text-[#c27a6e]">MiPlataforma.com</span></p>
+        <p className="mt-2">Powered by <span className="text-[#c27a6e]">TeInvitoApp</span></p>
       </footer>
     </div>
   );

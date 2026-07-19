@@ -105,7 +105,7 @@ export default function MinimalWhite({ event }: { event: EventData }) {
 
       <footer className="py-12 text-center border-t border-gray-100">
         <p className="text-gray-300 text-xs uppercase tracking-widest">{event.title}</p>
-        <p className="text-gray-300 text-[10px] mt-3">Powered by MiPlataforma.com</p>
+        <p className="text-gray-300 text-[10px] mt-3">Powered by TeInvitoApp</p>
       </footer>
     </div>
   );

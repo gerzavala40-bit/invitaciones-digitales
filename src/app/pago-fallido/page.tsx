@@ -17,7 +17,7 @@ export default function PagoFallido() {
           <Link href="/#planes" className="bg-black text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-gray-800 transition">
             Intentar nuevamente
           </Link>
-          <a href="https://wa.me/5493512912596?text=Hola!%20Tuve%20un%20problema%20con%20el%20pago" target="_blank"
+          <a href="https://wa.me/5493425299942?text=Hola!%20Tuve%20un%20problema%20con%20el%20pago" target="_blank"
             className="border border-gray-300 px-6 py-3 rounded-lg font-medium text-sm hover:bg-gray-50 transition">
             Contactar por WhatsApp
           </a>

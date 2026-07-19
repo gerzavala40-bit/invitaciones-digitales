@@ -18,7 +18,7 @@ export default function LandingPage() {
             <a href="#planes" className="bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-yellow-500/30 transition">
               Ver Planes y Precios
             </a>
-            <a href="https://wa.me/5493512912596?text=Hola!%20Quiero%20info%20sobre%20invitaciones%20digitales" target="_blank"
+            <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20info%20sobre%20invitaciones%20digitales" target="_blank"
               className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition">
               Consultanos por WhatsApp
             </a>
@@ -68,7 +68,7 @@ export default function LandingPage() {
                   <li key={f} className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{f}</li>
                 ))}
               </ul>
-              <a href="https://wa.me/5493512912596?text=Hola!%20Quiero%20el%20Plan%20Basico" target="_blank" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</a>
+              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20el%20Plan%20Basico" target="_blank" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</a>
             </div>
             {/* PREMIUM */}
             <div className="bg-white border-2 border-[#d4af37] rounded-3xl p-8 hover:shadow-xl hover:-translate-y-2 transition-all relative shadow-lg">
@@ -81,7 +81,7 @@ export default function LandingPage() {
                   <li key={f} className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{f}</li>
                 ))}
               </ul>
-              <a href="https://wa.me/5493512912596?text=Hola!%20Quiero%20el%20Plan%20Premium" target="_blank" className="block w-full text-center bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] py-3 rounded-full font-bold hover:shadow-lg transition">Elegir Plan</a>
+              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20el%20Plan%20Premium" target="_blank" className="block w-full text-center bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] py-3 rounded-full font-bold hover:shadow-lg transition">Elegir Plan</a>
             </div>
             {/* PREMIUM PLUS */}
             <div className="bg-white border-2 border-gray-200 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-2 transition-all">
@@ -93,7 +93,7 @@ export default function LandingPage() {
                   <li key={f} className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{f}</li>
                 ))}
               </ul>
-              <a href="https://wa.me/5493512912596?text=Hola!%20Quiero%20el%20Plan%20Premium%20Plus" target="_blank" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</a>
+              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20el%20Plan%20Premium%20Plus" target="_blank" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</a>
             </div>
           </div>
           <div className="mt-10 bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center max-w-2xl mx-auto">
@@ -188,7 +188,7 @@ export default function LandingPage() {
         <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">¿Listo para sorprender a tus invitados?</h2>
           <p className="text-gray-300 mb-8">Escribinos y te armamos tu invitación personalizada.</p>
-          <a href="https://wa.me/5493512912596?text=Hola!%20Quiero%20una%20invitacion%20digital" target="_blank"
+          <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitacion%20digital" target="_blank"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition">
             Escribinos por WhatsApp
           </a>
@@ -196,7 +196,8 @@ export default function LandingPage() {
       </section>
 
       <footer className="bg-gray-900 text-gray-400 py-6 text-center text-sm">
-        <p>© 2025 MiPlataforma.com | Invitaciones Digitales</p>
+        <p>© 2025 TeInvitoApp | Invitaciones Digitales Interactivas</p>
+        <p className="mt-2"><a href="https://instagram.com/teinvitoapp" target="_blank" className="text-[#d4af37] hover:underline">@teinvitoapp</a></p>
         <Link href="/admin" className="text-gray-600 hover:text-gray-400 text-xs mt-2 inline-block">Admin</Link>
       </footer>
     </div>
