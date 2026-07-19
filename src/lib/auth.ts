@@ -9,8 +9,11 @@ export function isAuthenticated(request: NextRequest): boolean {
 }
 
 export function getSessionToken(): string {
-  // Genera un token basado en las credenciales
   const secret = process.env.NEXTAUTH_SECRET || "dev-secret";
+  // Usar btoa compatible con Edge Runtime y Node
+  if (typeof btoa !== "undefined") {
+    return btoa(secret).slice(0, 32);
+  }
   return Buffer.from(secret).toString("base64").slice(0, 32);
 }
 
