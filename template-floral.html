@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina & Matias - Nos casamos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #fdf8f4; color: #4a3728; }
+        .font-display { font-family: 'Cormorant Garamond', serif; }
+        .text-rose { color: #c27a6e; }
+        .bg-soft-pink { background-color: #fef1ee; }
+        .btn-rose { background: linear-gradient(135deg, #c27a6e, #d4978d); color: white; transition: all 0.3s ease; }
+        .btn-rose:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(194,122,110,0.3); }
+        .countdown-box { background: white; border: 1px solid rgba(194,122,110,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .fade-in { animation: fadeIn 1.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .copy-feedback { animation: pulse 0.5s ease; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .floral-divider { position: relative; text-align: center; padding: 20px 0; }
+        .floral-divider::before { content: ''; position: absolute; top: 50%; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, #c27a6e40, transparent); }
+        .floral-divider span { background: #fdf8f4; padding: 0 16px; position: relative; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 fade-in relative">
+        <div class="absolute top-8 left-8 w-20 h-20 border-t-2 border-l-2 border-[#c27a6e] opacity-30 rounded-tl-3xl"></div>
+        <div class="absolute top-8 right-8 w-20 h-20 border-t-2 border-r-2 border-[#c27a6e] opacity-30 rounded-tr-3xl"></div>
+        <div class="absolute bottom-8 left-8 w-20 h-20 border-b-2 border-l-2 border-[#c27a6e] opacity-30 rounded-bl-3xl"></div>
+        <div class="absolute bottom-8 right-8 w-20 h-20 border-b-2 border-r-2 border-[#c27a6e] opacity-30 rounded-br-3xl"></div>
+        <p class="text-sm uppercase tracking-[0.4em] text-[#7a8f6d] mb-6">Nos casamos</p>
+        <h1 class="font-display text-6xl md:text-8xl font-light leading-tight">
+            <span class="block">Valentina</span>
+            <span class="block text-rose text-4xl my-2">&</span>
+            <span class="block">Matias</span>
+        </h1>
+        <div class="mt-8">
+            <p class="text-lg text-[#6b5344]">Sabado 15 de Noviembre, 2025</p>
+            <p class="text-sm text-[#8b7565]">21:00 hs | Estancia La Paz</p>
+        </div>
+        <div class="mt-14 animate-bounce">
+            <svg class="w-5 h-5 text-rose mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="py-16 px-4 bg-soft-pink">
+        <div class="max-w-lg mx-auto text-center">
+            <h2 class="font-display text-4xl mb-8 text-rose">Faltan</h2>
+            <div class="grid grid-cols-4 gap-3" id="countdown-container">
+                <div class="countdown-box rounded-2xl p-4"><span id="days" class="block text-3xl md:text-4xl font-display font-bold">00</span><span class="text-xs uppercase tracking-wider text-[#8b7565] mt-1 block">Dias</span></div>
+                <div class="countdown-box rounded-2xl p-4"><span id="hours" class="block text-3xl md:text-4xl font-display font-bold">00</span><span class="text-xs uppercase tracking-wider text-[#8b7565] mt-1 block">Horas</span></div>
+                <div class="countdown-box rounded-2xl p-4"><span id="minutes" class="block text-3xl md:text-4xl font-display font-bold">00</span><span class="text-xs uppercase tracking-wider text-[#8b7565] mt-1 block">Min</span></div>
+                <div class="countdown-box rounded-2xl p-4"><span id="seconds" class="block text-3xl md:text-4xl font-display font-bold">00</span><span class="text-xs uppercase tracking-wider text-[#8b7565] mt-1 block">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="floral-divider"><span>&#10045;</span></div>
+
+    <!-- CEREMONIA Y FIESTA -->
+    <section class="py-16 px-4">
+        <div class="max-w-lg mx-auto space-y-6">
+            <h2 class="font-display text-4xl text-center mb-8 text-rose">Ceremonia & Fiesta</h2>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm">
+                <p class="text-xs uppercase tracking-wider text-[#7a8f6d] mb-2">Ceremonia</p>
+                <h3 class="font-display text-2xl mb-1">Parroquia San Jose</h3>
+                <p class="text-sm text-[#8b7565] mb-4">Av. Colon 1234, Cordoba | 18:30 hs</p>
+                <a href="https://maps.google.com/?q=-31.4135,-64.1811" target="_blank" class="btn-rose inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                    Como llegar
+                </a>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm">
+                <p class="text-xs uppercase tracking-wider text-[#7a8f6d] mb-2">Fiesta</p>
+                <h3 class="font-display text-2xl mb-1">Estancia La Paz</h3>
+                <p class="text-sm text-[#8b7565] mb-4">Ruta 5 km 12, Cordoba | 21:00 hs</p>
+                <a href="https://maps.google.com/?q=-31.4201,-64.1888" target="_blank" class="btn-rose inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                    Como llegar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="floral-divider"><span>&#10045;</span></div>
+
+    <!-- RSVP -->
+    <section class="py-16 px-4 bg-soft-pink">
+        <div class="max-w-lg mx-auto text-center">
+            <h2 class="font-display text-4xl mb-4 text-rose">Confirma tu asistencia</h2>
+            <p class="text-[#8b7565] text-sm mb-8">Por favor confirma antes del 1 de Noviembre</p>
+            <form id="rsvp-form" class="bg-white rounded-3xl p-8 space-y-5 text-left shadow-sm">
+                <div><label class="block text-sm text-[#6b5344] mb-1.5 font-medium">Nombre completo</label><input type="text" name="nombre" required class="w-full border border-[#e8d5cf] rounded-xl px-4 py-3 focus:outline-none focus:border-[#c27a6e] transition bg-[#fdf8f4]"></div>
+                <div><label class="block text-sm text-[#6b5344] mb-1.5 font-medium">Cantidad de personas</label><select name="personas" required class="w-full border border-[#e8d5cf] rounded-xl px-4 py-3 focus:outline-none focus:border-[#c27a6e] transition bg-[#fdf8f4]"><option value="">Seleccionar</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select></div>
+                <div><label class="block text-sm text-[#6b5344] mb-1.5 font-medium">Restriccion alimentaria</label><input type="text" name="alimentacion" placeholder="Ej: vegano, celiaco, ninguna" class="w-full border border-[#e8d5cf] rounded-xl px-4 py-3 focus:outline-none focus:border-[#c27a6e] transition bg-[#fdf8f4] placeholder-[#b09a8f]"></div>
+                <button type="submit" class="btn-rose w-full py-3.5 rounded-full font-semibold text-sm">Confirmar Asistencia</button>
+                <p id="rsvp-success" class="text-[#7a8f6d] text-center text-sm hidden mt-2 font-medium">Confirmacion enviada correctamente</p>
+            </form>
+        </div>
+    </section>
+
+    <div class="floral-divider"><span>&#10045;</span></div>
+
+    <!-- REGALOS -->
+    <section class="py-16 px-4">
+        <div class="max-w-lg mx-auto text-center">
+            <h2 class="font-display text-4xl mb-4 text-rose">Regalos</h2>
+            <p class="text-[#8b7565] text-sm mb-8">Si queres hacernos un regalo, podes transferir al siguiente alias</p>
+            <div class="bg-white rounded-3xl p-6 space-y-4 shadow-sm">
+                <div class="flex items-center justify-between border border-[#e8d5cf] rounded-xl px-4 py-3">
+                    <div class="text-left"><p class="text-xs text-[#8b7565] uppercase tracking-wider">Alias</p><p id="alias-text" class="font-mono font-medium mt-0.5">vale.mati.boda</p></div>
+                    <button onclick="copyToClipboard('alias-text', this)" class="btn-rose px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg><span>Copiar</span></button>
+                </div>
+                <div class="flex items-center justify-between border border-[#e8d5cf] rounded-xl px-4 py-3">
+                    <div class="text-left"><p class="text-xs text-[#8b7565] uppercase tracking-wider">CBU</p><p id="cbu-text" class="font-mono font-medium text-sm mt-0.5">0000003100012345678901</p></div>
+                    <button onclick="copyToClipboard('cbu-text', this)" class="btn-rose px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg><span>Copiar</span></button>
+                </div>
+                <p class="text-[#8b7565] text-xs pt-2">Titular: Valentina Rodriguez</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-[#b09a8f] text-xs bg-soft-pink">
+        <p>Con todo nuestro amor, Valentina & Matias</p>
+        <p class="mt-2">Powered by <span class="text-rose">MiPlataforma.com</span></p>
+    </footer>
+
+    <script>
+        const EVENT_CONFIG = { date: '2025-11-15T21:00:00-03:00', googleSheetWebhook: 'https://script.google.com/macros/s/TU_SCRIPT_ID/exec' };
+
+        function updateCountdown() {
+            const diff = new Date(EVENT_CONFIG.date).getTime() - Date.now();
+            if (diff <= 0) { document.getElementById('countdown-container').innerHTML = '<div class="col-span-4 font-display text-2xl text-rose">El gran dia ha llegado</div>'; return; }
+            document.getElementById('days').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+            document.getElementById('hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+        }
+        updateCountdown(); setInterval(updateCountdown, 1000);
+
+        function copyToClipboard(elementId, button) {
+            const text = document.getElementById(elementId).textContent.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const orig = button.innerHTML;
+                button.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Copiado!</span>';
+                button.classList.add('copy-feedback');
+                setTimeout(() => { button.innerHTML = orig; button.classList.remove('copy-feedback'); }, 2000);
+            });
+        }
+
+        document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(this).entries());
+            data.timestamp = new Date().toISOString();
+            try {
+                await fetch(EVENT_CONFIG.googleSheetWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                document.getElementById('rsvp-success').classList.remove('hidden');
+                this.reset();
+                setTimeout(() => { document.getElementById('rsvp-success').classList.add('hidden'); }, 4000);
+            } catch (err) { alert('Error. Intenta nuevamente.'); }
+        });
+    </script>
+</body>
+</html>

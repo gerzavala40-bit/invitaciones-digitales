@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luciana & Gonzalo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background: #fff; color: #111; }
+        .font-display { font-family: 'Libre Baskerville', serif; }
+        .line-accent { width: 40px; height: 2px; background: #111; margin: 0 auto; }
+        .btn-dark { background: #111; color: #fff; transition: all 0.3s ease; }
+        .btn-dark:hover { background: #333; transform: translateY(-2px); }
+        .btn-outline { border: 1.5px solid #111; transition: all 0.3s ease; }
+        .btn-outline:hover { background: #111; color: #fff; }
+        .countdown-box { border: 1px solid #e5e5e5; }
+        .divider { width: 1px; height: 60px; background: #ddd; margin: 0 auto; }
+        .fade-in { animation: fadeIn 1s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .copy-feedback { animation: pulse 0.4s ease; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 fade-in">
+        <p class="text-xs uppercase tracking-[0.5em] text-gray-400 mb-10">Invitacion</p>
+        <h1 class="font-display text-5xl md:text-7xl font-bold leading-tight mb-6">Luciana<br>&<br>Gonzalo</h1>
+        <div class="line-accent mb-8"></div>
+        <p class="text-sm text-gray-500 uppercase tracking-widest">15 . 11 . 2025</p>
+        <p class="text-sm text-gray-400 mt-2">21:00 hs</p>
+    </section>
+    <div class="divider"></div>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="py-20 px-6">
+        <div class="max-w-md mx-auto text-center">
+            <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mb-8">Cuenta regresiva</p>
+            <div class="grid grid-cols-4 gap-4" id="countdown-container">
+                <div class="countdown-box rounded-lg p-4"><span id="days" class="block text-3xl font-bold">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400 mt-2 block">Dias</span></div>
+                <div class="countdown-box rounded-lg p-4"><span id="hours" class="block text-3xl font-bold">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400 mt-2 block">Horas</span></div>
+                <div class="countdown-box rounded-lg p-4"><span id="minutes" class="block text-3xl font-bold">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400 mt-2 block">Min</span></div>
+                <div class="countdown-box rounded-lg p-4"><span id="seconds" class="block text-3xl font-bold">00</span><span class="text-[10px] uppercase tracking-widest text-gray-400 mt-2 block">Seg</span></div>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- UBICACION -->
+    <section class="py-20 px-6">
+        <div class="max-w-md mx-auto text-center">
+            <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mb-6">Ubicacion</p>
+            <h2 class="font-display text-2xl mb-2">Salon Terramar</h2>
+            <p class="text-gray-500 text-sm mb-8">Camino a La Bolsa km 8, Villa Allende</p>
+            <a href="https://maps.google.com/?q=-31.2955,-64.2950" target="_blank" class="btn-dark inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                Ver en Google Maps
+            </a>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- RSVP -->
+    <section class="py-20 px-6">
+        <div class="max-w-md mx-auto">
+            <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mb-6 text-center">Confirmacion</p>
+            <form id="rsvp-form" class="space-y-5">
+                <div><label class="block text-xs uppercase tracking-wider text-gray-500 mb-2">Nombre</label><input type="text" name="nombre" required class="w-full border-b border-gray-300 py-3 text-lg focus:outline-none focus:border-black transition bg-transparent"></div>
+                <div><label class="block text-xs uppercase tracking-wider text-gray-500 mb-2">Personas</label><select name="personas" required class="w-full border-b border-gray-300 py-3 text-lg focus:outline-none focus:border-black transition bg-transparent"><option value="">Seleccionar</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select></div>
+                <div><label class="block text-xs uppercase tracking-wider text-gray-500 mb-2">Dieta</label><input type="text" name="alimentacion" placeholder="Ninguna" class="w-full border-b border-gray-300 py-3 text-lg focus:outline-none focus:border-black transition bg-transparent placeholder-gray-300"></div>
+                <button type="submit" class="btn-dark w-full py-4 rounded-lg font-medium text-sm uppercase tracking-wider mt-8">Confirmar</button>
+                <p id="rsvp-success" class="text-green-600 text-center text-sm hidden mt-4">Confirmacion enviada</p>
+            </form>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- REGALOS -->
+    <section class="py-20 px-6">
+        <div class="max-w-md mx-auto text-center">
+            <p class="text-xs uppercase tracking-[0.4em] text-gray-400 mb-8">Regalos</p>
+            <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4 flex items-center justify-between">
+                    <div class="text-left"><p class="text-[10px] uppercase tracking-widest text-gray-400">Alias</p><p id="alias-text" class="font-mono text-base font-medium mt-1">luci.gonza.mp</p></div>
+                    <button onclick="copyToClipboard('alias-text', this)" class="btn-outline px-4 py-2 rounded text-xs font-medium flex items-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>Copiar</button>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4 flex items-center justify-between">
+                    <div class="text-left"><p class="text-[10px] uppercase tracking-widest text-gray-400">CBU</p><p id="cbu-text" class="font-mono text-sm font-medium mt-1">0000003100012345678901</p></div>
+                    <button onclick="copyToClipboard('cbu-text', this)" class="btn-outline px-4 py-2 rounded text-xs font-medium flex items-center gap-1.5"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>Copiar</button>
+                </div>
+                <p class="text-gray-400 text-xs mt-4">Titular: Luciana Fernandez</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center border-t border-gray-100">
+        <p class="text-gray-300 text-xs uppercase tracking-widest">Luciana & Gonzalo</p>
+        <p class="text-gray-300 text-[10px] mt-3">Powered by MiPlataforma.com</p>
+    </footer>
+
+    <script>
+        const EVENT_CONFIG = { date: '2025-11-15T21:00:00-03:00', googleSheetWebhook: 'https://script.google.com/macros/s/TU_SCRIPT_ID/exec' };
+
+        function updateCountdown() {
+            const diff = new Date(EVENT_CONFIG.date).getTime() - Date.now();
+            if (diff <= 0) { document.getElementById('countdown-container').innerHTML = '<div class="col-span-4 font-display text-xl">El evento ha comenzado</div>'; return; }
+            document.getElementById('days').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+            document.getElementById('hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+        }
+        updateCountdown(); setInterval(updateCountdown, 1000);
+
+        function copyToClipboard(elementId, button) {
+            const text = document.getElementById(elementId).textContent.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const orig = button.innerHTML;
+                button.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Copiado!';
+                button.classList.add('copy-feedback');
+                setTimeout(() => { button.innerHTML = orig; button.classList.remove('copy-feedback'); }, 2000);
+            });
+        }
+
+        document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(this).entries());
+            data.timestamp = new Date().toISOString();
+            try {
+                await fetch(EVENT_CONFIG.googleSheetWebhook, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                document.getElementById('rsvp-success').classList.remove('hidden');
+                this.reset();
+                setTimeout(() => { document.getElementById('rsvp-success').classList.add('hidden'); }, 4000);
+            } catch (err) { alert('Error. Intenta nuevamente.'); }
+        });
+    </script>
+</body>
+</html>
