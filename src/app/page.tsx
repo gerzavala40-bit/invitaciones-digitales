@@ -103,6 +103,86 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* TESTIMONIOS */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-serif text-3xl md:text-4xl text-center font-bold text-gray-900 mb-4">Lo que dicen nuestros clientes</h2>
+          <p className="text-center text-gray-500 mb-12">Más de 200 eventos realizados con éxito</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: "Valentina R.", event: "Boda", text: "Nuestros invitados no podían creer que era una invitación web. La cuenta regresiva y la confirmación fueron geniales. ¡Todos comentaban lo hermosa que era!", stars: 5 },
+              { name: "Martín G.", event: "Cumpleaños 30", text: "La armé en 3 días y me ahorré fortunas en papel. Mis amigos la compartieron por WhatsApp al toque. El alias para regalos fue un golazo.", stars: 5 },
+              { name: "Carolina S.", event: "15 Años", text: "Mi hija quedó fascinada con el diseño floral. La música de fondo y las fotos del book quedaron impresionantes. Super recomendable.", stars: 5 },
+            ].map((review, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                <div className="flex gap-1 mb-3">
+                  {Array.from({ length: review.stars }).map((_, j) => (
+                    <svg key={j} className="w-5 h-5 text-[#d4af37]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-600 text-sm mb-4 italic">&ldquo;{review.text}&rdquo;</p>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#d4af37] to-[#f5d060] flex items-center justify-center text-xs font-bold text-[#1a1a2e]">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">{review.name}</p>
+                    <p className="text-xs text-gray-500">{review.event}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DEMOS INTERACTIVAS */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Mirá nuestros diseños en vivo</h2>
+          <p className="text-gray-500 mb-12">Clickeá en cada demo para ver la invitación completa</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: "Elegante Oscuro", desc: "Ideal para bodas de noche", slug: "boda-valentina-y-matias", gradient: "from-[#1a1a2e] to-[#0f3460]", textColor: "text-[#d4af37]" },
+              { name: "Floral Claro", desc: "Perfecto para bodas y 15 años", slug: "boda-luciana-y-gonzalo", gradient: "from-[#fef1ee] to-[#fdf8f4]", textColor: "text-[#c27a6e]" },
+              { name: "Minimalista", desc: "Moderno y unisex", slug: "cumple-30-martin", gradient: "from-white to-gray-50", textColor: "text-black" },
+            ].map((demo, i) => (
+              <a key={i} href={`/${demo.slug}`} target="_blank" className="group block">
+                <div className={`bg-gradient-to-br ${demo.gradient} rounded-2xl p-8 h-48 flex flex-col items-center justify-center border border-gray-200 group-hover:shadow-xl group-hover:-translate-y-2 transition-all`}>
+                  <p className={`font-serif text-2xl font-bold ${demo.textColor}`}>{demo.name}</p>
+                  <p className="text-gray-500 text-sm mt-2">{demo.desc}</p>
+                  <span className="mt-4 text-xs font-medium text-gray-400 group-hover:text-gray-600 transition">Click para ver demo →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-serif text-3xl font-bold text-gray-900 text-center mb-12">Preguntas frecuentes</h2>
+          <div className="space-y-4">
+            {[
+              { q: "¿Cuánto demora la entrega?", a: "La entrega estándar es en 3 días hábiles. Con Express se entrega en 24 horas." },
+              { q: "¿Puedo enviarla a todos mis invitados?", a: "Sí, los envíos son ilimitados. Compartí el link por WhatsApp a todos sin costo extra." },
+              { q: "¿Puedo hacer cambios después?", a: "Sí, al ser una página web cualquier cambio se actualiza al instante para todos." },
+              { q: "¿Cómo pago?", a: "Transferencia (30% OFF), MercadoPago o tarjeta en hasta 3 cuotas. Seña del 50% para arrancar." },
+              { q: "¿Mis invitados necesitan descargar algo?", a: "No. Es una página web que se abre directo desde WhatsApp en cualquier celular." },
+              { q: "¿Funciona en todos los celulares?", a: "Sí, es 100% responsive y funciona en cualquier dispositivo con navegador web." },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl p-6 cursor-pointer shadow-sm border border-gray-100">
+                <summary className="font-semibold text-gray-900">{faq.q}</summary>
+                <p className="text-gray-600 mt-3 text-sm">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-gradient-to-br from-[#1a1a2e] to-[#0f3460] py-20 px-4 text-white text-center">
         <div className="max-w-2xl mx-auto">

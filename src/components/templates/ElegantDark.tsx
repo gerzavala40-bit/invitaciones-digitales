@@ -4,10 +4,14 @@ import { EventData } from "./types";
 import Countdown from "./shared/Countdown";
 import CopyButton from "./shared/CopyButton";
 import RsvpForm from "./shared/RsvpForm";
+import MusicPlayer from "./shared/MusicPlayer";
+import PhotoGallery from "./shared/PhotoGallery";
 
 export default function ElegantDark({ event }: { event: EventData }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] text-white">
+      {/* MUSIC PLAYER */}
+      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#d4af37" />}
       {/* HERO */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 animate-[fadeIn_1s_ease]">
         <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Estamos felices de invitarte</p>
@@ -79,6 +83,14 @@ export default function ElegantDark({ event }: { event: EventData }) {
               </div>
             </div>
           </section>
+        </>
+      )}
+
+      {/* GALERÍA DE FOTOS */}
+      {event.photos && event.photos.length > 0 && (
+        <>
+          <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent" />
+          <PhotoGallery photos={event.photos} accentColor="#d4af37" title="Nuestra historia" />
         </>
       )}
 

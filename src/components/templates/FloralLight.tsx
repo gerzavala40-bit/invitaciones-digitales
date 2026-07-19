@@ -4,10 +4,14 @@ import { EventData } from "./types";
 import Countdown from "./shared/Countdown";
 import CopyButton from "./shared/CopyButton";
 import RsvpForm from "./shared/RsvpForm";
+import MusicPlayer from "./shared/MusicPlayer";
+import PhotoGallery from "./shared/PhotoGallery";
 
 export default function FloralLight({ event }: { event: EventData }) {
   return (
     <div className="min-h-screen bg-[#fdf8f4] text-[#4a3728]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+      {/* MUSIC PLAYER */}
+      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#c27a6e" />}
       {/* HERO */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 relative animate-[fadeIn_1.2s_ease]">
         <div className="absolute top-8 left-8 w-20 h-20 border-t-2 border-l-2 border-[#c27a6e] opacity-30 rounded-tl-3xl" />
@@ -64,6 +68,11 @@ export default function FloralLight({ event }: { event: EventData }) {
           </div>
         </div>
       </section>
+
+      {/* GALERÍA */}
+      {event.photos && event.photos.length > 0 && (
+        <PhotoGallery photos={event.photos} accentColor="#c27a6e" title="Nuestra historia" />
+      )}
 
       {/* RSVP */}
       {event.rsvpEnabled && (

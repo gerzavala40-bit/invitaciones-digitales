@@ -4,10 +4,14 @@ import { EventData } from "./types";
 import Countdown from "./shared/Countdown";
 import CopyButton from "./shared/CopyButton";
 import RsvpForm from "./shared/RsvpForm";
+import MusicPlayer from "./shared/MusicPlayer";
+import PhotoGallery from "./shared/PhotoGallery";
 
 export default function MinimalWhite({ event }: { event: EventData }) {
   return (
     <div className="min-h-screen bg-white text-[#111]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+      {/* MUSIC PLAYER */}
+      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#111111" />}
       {/* HERO */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 animate-[fadeIn_1s_ease]">
         <p className="text-xs uppercase tracking-[0.5em] text-gray-400 mb-10">Invitación</p>
@@ -51,6 +55,14 @@ export default function MinimalWhite({ event }: { event: EventData }) {
       </section>
 
       <div className="w-px h-16 bg-gray-200 mx-auto" />
+
+      {/* GALERÍA */}
+      {event.photos && event.photos.length > 0 && (
+        <>
+          <div className="w-px h-16 bg-gray-200 mx-auto" />
+          <PhotoGallery photos={event.photos} accentColor="#111111" title="Fotos" />
+        </>
+      )}
 
       {/* RSVP */}
       {event.rsvpEnabled && (
