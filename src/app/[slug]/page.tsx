@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import InvitationTemplate from "@/components/templates";
 import type { EventData } from "@/components/templates/types";
 
+export const dynamic = "force-dynamic";
+
 export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
