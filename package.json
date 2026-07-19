@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "vercel-build": "DATABASE_URL=file:./prisma/dev.db prisma generate && DATABASE_URL=file:./prisma/dev.db prisma db push && DATABASE_URL=file:./prisma/dev.db npx tsx prisma/seed.ts && next build",
-    "build": "prisma generate && prisma db push && next build",
+    "vercel-build": "npx prisma generate && next build",
+    "build": "npx prisma generate && next build",
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "eslint",
