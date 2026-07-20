@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createPaymentSchema } from "@/lib/validators";
 
 const PLANS = {
   BASICO: { title: "Plan Básico - Invitación Digital", price: 25000 },
@@ -10,11 +11,21 @@ const PLANS = {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { planId, buyerEmail, buyerName, buyerPhone } = body;
 
-    const plan = PLANS[planId as keyof typeof PLANS];
-    if (!plan) {
-      return NextResponse.json({ error: "Plan no válido" }, { status: 400 });
+    // Validar con Zod
+    const result = createPaymentSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Datos inválidos", details: result.error.flatten().fieldErrors },
+        { status: 400 }
+      );
+    }
+
+    const { planId, buyerEmail, buyerName, buyerPhone } = result.data;
+    const plan = PLANS[planId];
+
+    if (!process.env.MP_ACCESS_TOKEN) {
+      return NextResponse.json({ error: "Pagos no configurados" }, { status: 503 });
     }
 
     // Crear preferencia de pago en MercadoPago
@@ -33,8 +44,8 @@ export async function POST(request: Request) {
           currency_id: "ARS",
         }],
         payer: {
-          email: buyerEmail,
-          name: buyerName,
+          email: buyerEmail || undefined,
+          name: buyerName || undefined,
           phone: buyerPhone ? { number: buyerPhone } : undefined,
         },
         back_urls: {
@@ -45,13 +56,12 @@ export async function POST(request: Request) {
         auto_return: "approved",
         notification_url: `${process.env.NEXT_PUBLIC_URL}/api/payments/webhook`,
         external_reference: `${planId}_${Date.now()}`,
-        statement_descriptor: "INVITACIONES DIGITALES",
+        statement_descriptor: "TEINVITOAPP",
       }),
     });
 
     if (!mpResponse.ok) {
-      const error = await mpResponse.json();
-      console.error("MercadoPago error:", error);
+      console.error("MercadoPago error:", await mpResponse.text());
       return NextResponse.json({ error: "Error al crear pago" }, { status: 500 });
     }
 
@@ -60,7 +70,6 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       checkoutUrl: preference.init_point,
-      sandboxUrl: preference.sandbox_init_point,
       preferenceId: preference.id,
     });
   } catch (error) {

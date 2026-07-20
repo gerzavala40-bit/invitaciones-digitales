@@ -1,43 +1,57 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { slugify } from "@/lib/utils";
+import { createEventSchema } from "@/lib/validators";
+
+// POST y GET protegidos por middleware (solo admin puede crear/listar eventos)
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Generate unique slug
-    let slug = slugify(`${body.eventType || "evento"}-${body.title}`);
+    // Validar con Zod
+    const result = createEventSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Datos inválidos", details: result.error.flatten().fieldErrors },
+        { status: 400 }
+      );
+    }
+
+    const data = result.data;
+
+    // Generar slug único
+    let slug = slugify(`${data.eventType}-${data.title}`);
     const existing = await prisma.event.findUnique({ where: { slug } });
     if (existing) slug = `${slug}-${Date.now().toString(36)}`;
 
     const event = await prisma.event.create({
       data: {
         slug,
-        userId: body.userId || "admin",
-        title: body.title,
-        subtitle: body.subtitle || null,
-        eventType: body.eventType || "boda",
-        eventDate: new Date(body.eventDate),
-        eventTime: body.eventTime,
-        venueName: body.venueName,
-        venueAddress: body.venueAddress,
-        venueLatLng: body.venueLatLng || null,
-        ceremonyName: body.ceremonyName || null,
-        ceremonyAddress: body.ceremonyAddress || null,
-        ceremonyLatLng: body.ceremonyLatLng || null,
-        ceremonyTime: body.ceremonyTime || null,
-        templateId: body.templateId || "elegant-dark",
-        primaryColor: body.primaryColor || "#d4af37",
-        musicUrl: body.musicUrl || null,
-        phrase: body.phrase || null,
-        dressCode: body.dressCode || null,
-        hashtag: body.hashtag || null,
-        bankAlias: body.bankAlias || null,
-        bankCBU: body.bankCBU || null,
-        bankHolder: body.bankHolder || null,
-        rsvpEnabled: body.rsvpEnabled ?? true,
-        rsvpDeadline: body.rsvpDeadline || null,
+        userId: "admin", // El middleware ya verificó que es admin
+        title: data.title,
+        subtitle: data.subtitle || null,
+        eventType: data.eventType,
+        eventDate: new Date(data.eventDate),
+        eventTime: data.eventTime,
+        venueName: data.venueName,
+        venueAddress: data.venueAddress,
+        venueLatLng: data.venueLatLng || null,
+        ceremonyName: data.ceremonyName || null,
+        ceremonyAddress: data.ceremonyAddress || null,
+        ceremonyLatLng: data.ceremonyLatLng || null,
+        ceremonyTime: data.ceremonyTime || null,
+        templateId: data.templateId,
+        primaryColor: data.primaryColor,
+        musicUrl: data.musicUrl || null,
+        phrase: data.phrase || null,
+        dressCode: data.dressCode || null,
+        hashtag: data.hashtag || null,
+        bankAlias: data.bankAlias || null,
+        bankCBU: data.bankCBU || null,
+        bankHolder: data.bankHolder || null,
+        rsvpEnabled: data.rsvpEnabled,
+        rsvpDeadline: data.rsvpDeadline || null,
         isActive: true,
       },
     });
