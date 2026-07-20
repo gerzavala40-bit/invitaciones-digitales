@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CheckoutButton from "@/components/CheckoutButton";
 
 export default function LandingPage() {
   return (
@@ -68,7 +69,7 @@ export default function LandingPage() {
                   <li key={f} className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{f}</li>
                 ))}
               </ul>
-              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20el%20Plan%20Basico" target="_blank" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</a>
+              <CheckoutButton planId="BASICO" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</CheckoutButton>
             </div>
             {/* PREMIUM */}
             <div className="bg-white border-2 border-[#d4af37] rounded-3xl p-8 hover:shadow-xl hover:-translate-y-2 transition-all relative shadow-lg">
@@ -81,7 +82,7 @@ export default function LandingPage() {
                   <li key={f} className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{f}</li>
                 ))}
               </ul>
-              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20el%20Plan%20Premium" target="_blank" className="block w-full text-center bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] py-3 rounded-full font-bold hover:shadow-lg transition">Elegir Plan</a>
+              <CheckoutButton planId="PREMIUM" className="block w-full text-center bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] py-3 rounded-full font-bold hover:shadow-lg transition">Elegir Plan</CheckoutButton>
             </div>
             {/* PREMIUM PLUS */}
             <div className="bg-white border-2 border-gray-200 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-2 transition-all">
@@ -93,7 +94,7 @@ export default function LandingPage() {
                   <li key={f} className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{f}</li>
                 ))}
               </ul>
-              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20el%20Plan%20Premium%20Plus" target="_blank" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</a>
+              <CheckoutButton planId="PREMIUM_PLUS" className="block w-full text-center border-2 border-gray-900 py-3 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition">Elegir Plan</CheckoutButton>
             </div>
           </div>
           <div className="mt-10 bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center max-w-2xl mx-auto">
