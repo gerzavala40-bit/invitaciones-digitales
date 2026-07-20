@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-
 export const metadata: Metadata = {
-  title: "TeInvitoApp | Invitaciones Digitales Interactivas",
+  title: "Te Invito | Invitaciones Digitales a Medida",
   description: "Invitaciones web interactivas para bodas, 15 años, bautismos y más. Cuenta regresiva, mapa, RSVP y regalos en un solo link. @teinvitoapp",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+      </head>
+      <body>
         {children}
       </body>
     </html>
