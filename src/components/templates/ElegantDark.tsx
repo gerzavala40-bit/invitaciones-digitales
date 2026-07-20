@@ -9,127 +9,151 @@ import PhotoGallery from "./shared/PhotoGallery";
 
 export default function ElegantDark({ event }: { event: EventData }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] text-white">
-      {/* MUSIC PLAYER */}
-      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#d4af37" />}
+    <div className="min-h-screen text-white" style={{ fontFamily: "'Inter', sans-serif", background: "linear-gradient(180deg, #0a0a0f 0%, #111118 50%, #0d0d12 100%)" }}>
+      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#C9A84C" />}
+
       {/* HERO */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 animate-[fadeIn_1s_ease]">
-        <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Estamos felices de invitarte</p>
-        <h1 className="font-serif text-5xl md:text-7xl font-bold mb-2 leading-tight">
-          <span className="block">{event.title}</span>
-        </h1>
-        {event.subtitle && <p className="text-lg text-gray-300 mt-4">{event.subtitle}</p>}
-        <p className="text-xl font-medium text-white mt-4">{new Date(event.eventDate).toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
-        <p className="text-gray-400 mt-1">{event.eventTime} hs - {event.venueName}</p>
-        <div className="mt-12 animate-bounce">
-          <svg className="w-6 h-6 text-[#d4af37] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 relative">
+        {/* Monograma */}
+        <div className="w-16 h-16 rounded-full border border-[#C9A84C]/40 flex items-center justify-center mb-8">
+          <span className="font-serif italic text-[#C9A84C] text-lg">{event.title.split(" ")[0]?.[0]}&{event.title.split(" ").pop()?.[0]}</span>
         </div>
+
+        <p className="text-xs uppercase tracking-[0.4em] text-[#C9A84C]/70 mb-6">Nos casamos</p>
+
+        <h1 className="font-serif text-5xl md:text-7xl font-light leading-tight mb-4">
+          <span className="text-[#C9A84C]">{event.title.split("&")[0]?.trim() || event.title.split(" ")[0]}</span>
+          <span className="text-white/40 mx-2">&</span>
+          <span className="text-white">{event.title.split("&")[1]?.trim() || event.title.split(" ").pop()}</span>
+        </h1>
+
+        <p className="text-white/50 text-sm mt-4">
+          {new Date(event.eventDate).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })} — {event.venueAddress?.split(",").pop()?.trim() || ""}
+        </p>
+
+        <div className="mt-16 animate-bounce text-white/30 text-sm">↓ Desliza</div>
       </section>
 
       {/* COUNTDOWN */}
-      <section className="py-16 px-4">
-        <div className="max-w-lg mx-auto text-center">
-          <h2 className="font-serif text-3xl mb-8 text-[#d4af37]">Faltan</h2>
+      <section className="py-20 px-6">
+        <div className="max-w-md mx-auto text-center">
+          <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-10">Falta muy poco</h2>
           <Countdown
             targetDate={event.eventDate}
-            boxClassName="bg-white/[0.08] backdrop-blur-sm border border-white/[0.15] rounded-xl"
-            numberClassName="text-white"
-            labelClassName="text-gray-400"
+            boxClassName="bg-white/[0.03] border border-white/[0.08] rounded-xl"
+            numberClassName="text-[#C9A84C] font-serif text-3xl md:text-4xl"
+            labelClassName="text-white/40 text-[10px] uppercase tracking-widest"
           />
         </div>
       </section>
 
-      <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent" />
+      {/* FRASE / HISTORIA */}
+      {event.phrase && (
+        <section className="py-20 px-6 border-t border-white/[0.06]">
+          <div className="max-w-lg mx-auto text-center">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-6">Nuestra historia</h2>
+            <p className="text-white/60 text-base leading-relaxed italic font-serif">{event.phrase}</p>
+          </div>
+        </section>
+      )}
 
-      {/* UBICACION */}
-      <section className="py-16 px-4">
+      {/* UBICACIONES */}
+      <section className="py-20 px-6 border-t border-white/[0.06]">
         <div className="max-w-lg mx-auto text-center">
-          <h2 className="font-serif text-3xl mb-4 text-[#d4af37]">Ubicación</h2>
-          <p className="text-gray-300 mb-2">{event.venueName}</p>
-          <p className="text-gray-400 text-sm mb-6">{event.venueAddress}</p>
-          <a href={event.venueLatLng ? `https://maps.google.com/?q=${event.venueLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.venueAddress)}`} target="_blank" rel="noopener"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] hover:shadow-lg hover:shadow-yellow-500/30 transition-all">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-            Cómo llegar
-          </a>
+          <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Cuándo y dónde</h2>
+          <p className="text-white/40 text-sm mb-10">Los esperamos</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {event.ceremonyName && (
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-[#C9A84C] mb-3">Ceremonia</p>
+                <p className="text-white/80 font-semibold text-sm mb-1">{event.ceremonyTime} hs</p>
+                <p className="text-white/50 text-sm">{event.ceremonyName}</p>
+                <p className="text-white/30 text-xs mt-1">{event.ceremonyAddress}</p>
+                <a href={event.ceremonyLatLng ? `https://maps.google.com/?q=${event.ceremonyLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.ceremonyAddress || "")}`} target="_blank" className="inline-block mt-4 text-[#C9A84C] text-xs border border-[#C9A84C]/30 px-4 py-2 rounded-full hover:bg-[#C9A84C]/10 transition">
+                  Ver en el mapa
+                </a>
+              </div>
+            )}
+            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[#C9A84C] mb-3">Fiesta</p>
+              <p className="text-white/80 font-semibold text-sm mb-1">{event.eventTime} hs</p>
+              <p className="text-white/50 text-sm">{event.venueName}</p>
+              <p className="text-white/30 text-xs mt-1">{event.venueAddress}</p>
+              <a href={event.venueLatLng ? `https://maps.google.com/?q=${event.venueLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.venueAddress)}`} target="_blank" className="inline-block mt-4 text-[#C9A84C] text-xs border border-[#C9A84C]/30 px-4 py-2 rounded-full hover:bg-[#C9A84C]/10 transition">
+                Ver en el mapa
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* DRESS CODE */}
       {event.dressCode && (
-        <>
-          <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent" />
-          <section className="py-12 px-4 text-center">
-            <h2 className="font-serif text-2xl mb-2 text-[#d4af37]">Dress Code</h2>
-            <p className="text-gray-300 text-lg">{event.dressCode}</p>
-          </section>
-        </>
-      )}
-
-      {/* RSVP */}
-      {event.rsvpEnabled && (
-        <>
-          <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent" />
-          <section className="py-16 px-4">
-            <div className="max-w-lg mx-auto text-center">
-              <h2 className="font-serif text-3xl mb-4 text-[#d4af37]">Confirmá tu asistencia</h2>
-              {event.rsvpDeadline && <p className="text-gray-400 text-sm mb-8">Confirmá antes del {event.rsvpDeadline}</p>}
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
-                <RsvpForm
-                  eventSlug={event.slug}
-                  inputClassName="bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-[#d4af37]"
-                  buttonClassName="bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e] font-bold"
-                  labelClassName="text-gray-300"
-                />
-              </div>
+        <section className="py-16 px-6 border-t border-white/[0.06]">
+          <div className="max-w-md mx-auto text-center">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Dress code</h2>
+            <p className="text-white/80 text-lg font-serif italic">{event.dressCode}</p>
+            <div className="flex justify-center gap-2 mt-4">
+              <span className="w-6 h-6 rounded-full bg-[#1a1a2e] border border-white/10"></span>
+              <span className="w-6 h-6 rounded-full bg-[#2c2c3e] border border-white/10"></span>
+              <span className="w-6 h-6 rounded-full bg-[#C9A84C] border border-white/10"></span>
+              <span className="w-6 h-6 rounded-full bg-[#8B6914] border border-white/10"></span>
             </div>
-          </section>
-        </>
+            <p className="text-white/30 text-xs mt-3">Evitar blanco y colores muy claros</p>
+          </div>
+        </section>
       )}
 
-      {/* GALERÍA DE FOTOS */}
+      {/* GALERÍA */}
       {event.photos && event.photos.length > 0 && (
-        <>
-          <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent" />
-          <PhotoGallery photos={event.photos} accentColor="#d4af37" title="Nuestra historia" />
-        </>
+        <section className="py-20 px-6 border-t border-white/[0.06]">
+          <div className="max-w-lg mx-auto text-center">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Nosotros</h2>
+            <p className="text-white/40 text-sm mb-10">Un poco de nuestra historia</p>
+            <PhotoGallery photos={event.photos} accentColor="#C9A84C" title="" />
+          </div>
+        </section>
       )}
 
       {/* REGALOS */}
       {event.bankAlias && (
-        <>
-          <div className="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent" />
-          <section className="py-16 px-4">
-            <div className="max-w-lg mx-auto text-center">
-              <h2 className="font-serif text-3xl mb-4 text-[#d4af37]">Regalos</h2>
-              <p className="text-gray-400 text-sm mb-8">Si querés hacernos un regalo, podés transferir al siguiente alias</p>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 space-y-4">
-                <div className="flex items-center justify-between bg-white/10 rounded-lg px-4 py-3">
-                  <div className="text-left">
-                    <p className="text-xs text-gray-400 uppercase tracking-wider">Alias</p>
-                    <p className="text-white font-mono font-medium">{event.bankAlias}</p>
-                  </div>
-                  <CopyButton text={event.bankAlias} className="bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e]" />
-                </div>
-                {event.bankCBU && (
-                  <div className="flex items-center justify-between bg-white/10 rounded-lg px-4 py-3">
-                    <div className="text-left">
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">CBU</p>
-                      <p className="text-white font-mono font-medium text-sm">{event.bankCBU}</p>
-                    </div>
-                    <CopyButton text={event.bankCBU} className="bg-gradient-to-r from-[#d4af37] to-[#f5d060] text-[#1a1a2e]" />
-                  </div>
-                )}
-                {event.bankHolder && <p className="text-gray-400 text-xs pt-2">Titular: {event.bankHolder}</p>}
-              </div>
+        <section className="py-20 px-6 border-t border-white/[0.06]">
+          <div className="max-w-md mx-auto text-center">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Regalos</h2>
+            <p className="text-white/70 text-base font-serif italic mb-2">Tu presencia es nuestro regalo</p>
+            <p className="text-white/40 text-sm mb-8">Si además querés hacernos un regalo, esto nos ayuda a construir nuestro hogar.</p>
+            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
+              <p className="text-[#C9A84C] font-mono text-lg mb-1">{event.bankAlias}</p>
+              <p className="text-white/40 text-xs mb-4">Alias{event.bankHolder ? ` · ${event.bankHolder}` : ""}</p>
+              <CopyButton text={event.bankAlias} className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] hover:bg-[#C9A84C]/20" />
             </div>
-          </section>
-        </>
+          </div>
+        </section>
+      )}
+
+      {/* RSVP */}
+      {event.rsvpEnabled && (
+        <section className="py-20 px-6 border-t border-white/[0.06]">
+          <div className="max-w-md mx-auto text-center">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Confirmación</h2>
+            <p className="text-white/70 text-lg font-serif italic mb-8">¿Nos acompañás?</p>
+            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 text-left">
+              <RsvpForm
+                eventSlug={event.slug}
+                inputClassName="bg-white/[0.05] border border-white/[0.1] text-white placeholder-white/30 rounded-lg focus:outline-none focus:border-[#C9A84C]/50"
+                buttonClassName="bg-[#C9A84C] text-[#0a0a0f] font-medium hover:bg-[#d4b85c]"
+                labelClassName="text-white/50 text-xs uppercase tracking-wider"
+              />
+            </div>
+          </div>
+        </section>
       )}
 
       {/* FOOTER */}
-      <footer className="py-8 text-center text-gray-500 text-xs">
-        <p>Hecho con amor para nuestro evento especial</p>
-        <p className="mt-1">Powered by <span className="text-[#d4af37]">TeInvitoApp</span></p>
+      <footer className="py-10 text-center border-t border-white/[0.06]">
+        <p className="text-white/30 text-xs">{event.title} · {new Date(event.eventDate).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" })}</p>
+        <p className="text-white/15 text-[10px] mt-3">Powered by TeInvitoApp</p>
       </footer>
     </div>
   );
