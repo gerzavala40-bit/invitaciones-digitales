@@ -144,27 +144,27 @@ export default function LandingPage() {
               <div className="cta">Ver demo →</div>
             </div>
           </Link>
-          <Link className="demo-card" href="boda-valentina-y-matias" target="_blank" rel="noreferrer">
+          <Link className="demo-card" href="/15-anos-catalina" target="_blank" rel="noreferrer">
             <div className="demo-thumb d4">15 Años Glam</div>
             <div className="demo-info">
               <div className="t">15 Años Glam</div>
-              <div className="s">Fucsia y dorado, pensado para quince</div>
+              <div className="s">Elegante y dorado para quinceañeras</div>
               <div className="cta">Ver demo →</div>
             </div>
           </Link>
-          <Link className="demo-card" href="boda-luciana-y-gonzalo" target="_blank" rel="noreferrer">
+          <Link className="demo-card" href="/bautismo-emma" target="_blank" rel="noreferrer">
             <div className="demo-thumb d5">Bautismo Tierno</div>
             <div className="demo-info">
               <div className="t">Bautismo Tierno</div>
-              <div className="s">Celeste suave, delicado</div>
+              <div className="s">Delicado y cálido para bautismos</div>
               <div className="cta">Ver demo →</div>
             </div>
           </Link>
-          <Link className="demo-card" href="cumple-30-martin" target="_blank" rel="noreferrer">
+          <Link className="demo-card" href="/gala-anual-vertex" target="_blank" rel="noreferrer">
             <div className="demo-thumb d6">Corporativo</div>
             <div className="demo-info">
               <div className="t">Corporativo Institucional</div>
-              <div className="s">Para eventos de empresa</div>
+              <div className="s">Profesional para eventos de empresa</div>
               <div className="cta">Ver demo →</div>
             </div>
           </Link>
