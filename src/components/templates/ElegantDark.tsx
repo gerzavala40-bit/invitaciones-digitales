@@ -6,81 +6,82 @@ import CopyButton from "./shared/CopyButton";
 import RsvpForm from "./shared/RsvpForm";
 import MusicPlayer from "./shared/MusicPlayer";
 import PhotoGallery from "./shared/PhotoGallery";
+import "./elegant-dark.css";
 
 export default function ElegantDark({ event }: { event: EventData }) {
+  const firstName = event.title.split("&")[0]?.trim() || event.title.split(" ")[0] || "";
+  const secondName = event.title.split("&")[1]?.trim() || event.title.split(" ").pop() || "";
+  const initials = `${firstName[0] || ""}${secondName[0] ? "&" + secondName[0] : ""}`;
+
   return (
-    <div className="min-h-screen text-white" style={{ fontFamily: "'Inter', sans-serif", background: "linear-gradient(180deg, #0a0a0f 0%, #111118 50%, #0d0d12 100%)" }}>
+    <div className="elegant-dark">
       {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#C9A84C" />}
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 relative">
-        {/* Monograma */}
-        <div className="w-16 h-16 rounded-full border border-[#C9A84C]/40 flex items-center justify-center mb-8">
-          <span className="font-serif italic text-[#C9A84C] text-lg">{event.title.split(" ")[0]?.[0]}&{event.title.split(" ").pop()?.[0]}</span>
+      <section className="ed-hero">
+        <div className="ed-monogram">
+          <span>{initials}</span>
         </div>
-
-        <p className="text-xs uppercase tracking-[0.4em] text-[#C9A84C]/70 mb-6">Nos casamos</p>
-
-        <h1 className="font-serif text-5xl md:text-7xl font-light leading-tight mb-4">
-          <span className="text-[#C9A84C]">{event.title.split("&")[0]?.trim() || event.title.split(" ")[0]}</span>
-          <span className="text-white/40 mx-2">&</span>
-          <span className="text-white">{event.title.split("&")[1]?.trim() || event.title.split(" ").pop()}</span>
+        <p className="ed-hero-label">Nos casamos</p>
+        <h1>
+          <span className="name-gold">{firstName}</span>
+          <span className="ampersand">&</span>
+          <span>{secondName}</span>
         </h1>
-
-        <p className="text-white/50 text-sm mt-4">
-          {new Date(event.eventDate).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })} — {event.venueAddress?.split(",").pop()?.trim() || ""}
+        <p className="date-text">
+          {new Date(event.eventDate).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}
+          {event.venueAddress && ` — ${event.venueAddress.split(",").pop()?.trim()}`}
         </p>
-
-        <div className="mt-16 animate-bounce text-white/30 text-sm">↓ Desliza</div>
+        <div className="scroll-hint">↓ Desliza</div>
       </section>
 
       {/* COUNTDOWN */}
-      <section className="py-20 px-6">
-        <div className="max-w-md mx-auto text-center">
-          <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-10">Falta muy poco</h2>
+      <section className="ed-section">
+        <div className="ed-section-inner">
+          <p className="ed-label">Falta muy poco</p>
           <Countdown
             targetDate={event.eventDate}
-            boxClassName="bg-white/[0.03] border border-white/[0.08] rounded-xl"
-            numberClassName="text-[#C9A84C] font-serif text-3xl md:text-4xl"
-            labelClassName="text-white/40 text-[10px] uppercase tracking-widest"
+            className="ed-countdown"
+            boxClassName="ed-countdown-box"
+            numberClassName="value"
+            labelClassName="label"
           />
         </div>
       </section>
 
-      {/* FRASE / HISTORIA */}
+      {/* HISTORIA */}
       {event.phrase && (
-        <section className="py-20 px-6 border-t border-white/[0.06]">
-          <div className="max-w-lg mx-auto text-center">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-6">Nuestra historia</h2>
-            <p className="text-white/60 text-base leading-relaxed italic font-serif">{event.phrase}</p>
+        <section className="ed-section">
+          <div className="ed-section-inner">
+            <p className="ed-label">Nuestra historia</p>
+            <p className="ed-phrase">{event.phrase}</p>
           </div>
         </section>
       )}
 
       {/* UBICACIONES */}
-      <section className="py-20 px-6 border-t border-white/[0.06]">
-        <div className="max-w-lg mx-auto text-center">
-          <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Cuándo y dónde</h2>
-          <p className="text-white/40 text-sm mb-10">Los esperamos</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <section className="ed-section">
+        <div className="ed-section-inner">
+          <p className="ed-label">Cuándo y dónde</p>
+          <p className="ed-subtitle">Los esperamos</p>
+          <div className="ed-locations">
             {event.ceremonyName && (
-              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-[#C9A84C] mb-3">Ceremonia</p>
-                <p className="text-white/80 font-semibold text-sm mb-1">{event.ceremonyTime} hs</p>
-                <p className="text-white/50 text-sm">{event.ceremonyName}</p>
-                <p className="text-white/30 text-xs mt-1">{event.ceremonyAddress}</p>
-                <a href={event.ceremonyLatLng ? `https://maps.google.com/?q=${event.ceremonyLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.ceremonyAddress || "")}`} target="_blank" className="inline-block mt-4 text-[#C9A84C] text-xs border border-[#C9A84C]/30 px-4 py-2 rounded-full hover:bg-[#C9A84C]/10 transition">
+              <div className="ed-location-card">
+                <p className="loc-type">Ceremonia</p>
+                <p className="loc-time">{event.ceremonyTime} hs</p>
+                <p className="loc-name">{event.ceremonyName}</p>
+                <p className="loc-address">{event.ceremonyAddress}</p>
+                <a href={event.ceremonyLatLng ? `https://maps.google.com/?q=${event.ceremonyLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.ceremonyAddress || "")}`} target="_blank" rel="noopener" className="loc-btn">
                   Ver en el mapa
                 </a>
               </div>
             )}
-            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-[#C9A84C] mb-3">Fiesta</p>
-              <p className="text-white/80 font-semibold text-sm mb-1">{event.eventTime} hs</p>
-              <p className="text-white/50 text-sm">{event.venueName}</p>
-              <p className="text-white/30 text-xs mt-1">{event.venueAddress}</p>
-              <a href={event.venueLatLng ? `https://maps.google.com/?q=${event.venueLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.venueAddress)}`} target="_blank" className="inline-block mt-4 text-[#C9A84C] text-xs border border-[#C9A84C]/30 px-4 py-2 rounded-full hover:bg-[#C9A84C]/10 transition">
+            <div className="ed-location-card">
+              <p className="loc-type">Fiesta</p>
+              <p className="loc-time">{event.eventTime} hs</p>
+              <p className="loc-name">{event.venueName}</p>
+              <p className="loc-address">{event.venueAddress}</p>
+              <a href={event.venueLatLng ? `https://maps.google.com/?q=${event.venueLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.venueAddress)}`} target="_blank" rel="noopener" className="loc-btn">
                 Ver en el mapa
               </a>
             </div>
@@ -90,27 +91,27 @@ export default function ElegantDark({ event }: { event: EventData }) {
 
       {/* DRESS CODE */}
       {event.dressCode && (
-        <section className="py-16 px-6 border-t border-white/[0.06]">
-          <div className="max-w-md mx-auto text-center">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Dress code</h2>
-            <p className="text-white/80 text-lg font-serif italic">{event.dressCode}</p>
-            <div className="flex justify-center gap-2 mt-4">
-              <span className="w-6 h-6 rounded-full bg-[#1a1a2e] border border-white/10"></span>
-              <span className="w-6 h-6 rounded-full bg-[#2c2c3e] border border-white/10"></span>
-              <span className="w-6 h-6 rounded-full bg-[#C9A84C] border border-white/10"></span>
-              <span className="w-6 h-6 rounded-full bg-[#8B6914] border border-white/10"></span>
+        <section className="ed-section">
+          <div className="ed-section-inner">
+            <p className="ed-label">Dress code</p>
+            <p className="ed-dresscode-name">{event.dressCode}</p>
+            <div className="ed-color-palette">
+              <span style={{ background: "#1a1a2e" }}></span>
+              <span style={{ background: "#2c2c3e" }}></span>
+              <span style={{ background: "#C9A84C" }}></span>
+              <span style={{ background: "#8B6914" }}></span>
             </div>
-            <p className="text-white/30 text-xs mt-3">Evitar blanco y colores muy claros</p>
+            <p className="ed-dresscode-note">Evitar blanco y colores muy claros</p>
           </div>
         </section>
       )}
 
       {/* GALERÍA */}
       {event.photos && event.photos.length > 0 && (
-        <section className="py-20 px-6 border-t border-white/[0.06]">
-          <div className="max-w-lg mx-auto text-center">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Nosotros</h2>
-            <p className="text-white/40 text-sm mb-10">Un poco de nuestra historia</p>
+        <section className="ed-section">
+          <div className="ed-section-inner">
+            <p className="ed-label">Nosotros</p>
+            <p className="ed-subtitle">Un poco de nuestra historia</p>
             <PhotoGallery photos={event.photos} accentColor="#C9A84C" title="" />
           </div>
         </section>
@@ -118,15 +119,15 @@ export default function ElegantDark({ event }: { event: EventData }) {
 
       {/* REGALOS */}
       {event.bankAlias && (
-        <section className="py-20 px-6 border-t border-white/[0.06]">
-          <div className="max-w-md mx-auto text-center">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Regalos</h2>
-            <p className="text-white/70 text-base font-serif italic mb-2">Tu presencia es nuestro regalo</p>
-            <p className="text-white/40 text-sm mb-8">Si además querés hacernos un regalo, esto nos ayuda a construir nuestro hogar.</p>
-            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6">
-              <p className="text-[#C9A84C] font-mono text-lg mb-1">{event.bankAlias}</p>
-              <p className="text-white/40 text-xs mb-4">Alias{event.bankHolder ? ` · ${event.bankHolder}` : ""}</p>
-              <CopyButton text={event.bankAlias} className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] hover:bg-[#C9A84C]/20" />
+        <section className="ed-section">
+          <div className="ed-section-inner">
+            <p className="ed-label">Regalos</p>
+            <h3 className="ed-title">Tu presencia es nuestro regalo</h3>
+            <p className="ed-subtitle">Si además querés hacernos un regalo, esto nos ayuda a construir nuestro hogar.</p>
+            <div className="ed-gift-card">
+              <p className="alias">{event.bankAlias}</p>
+              <p className="alias-desc">Alias{event.bankHolder ? ` · ${event.bankHolder}` : ""}</p>
+              <CopyButton text={event.bankAlias} className="bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.3)] text-[#C9A84C] hover:bg-[rgba(201,168,76,0.2)] rounded-full px-4 py-2 text-xs font-medium" />
             </div>
           </div>
         </section>
@@ -134,16 +135,16 @@ export default function ElegantDark({ event }: { event: EventData }) {
 
       {/* RSVP */}
       {event.rsvpEnabled && (
-        <section className="py-20 px-6 border-t border-white/[0.06]">
-          <div className="max-w-md mx-auto text-center">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-[#C9A84C]/70 mb-3">Confirmación</h2>
-            <p className="text-white/70 text-lg font-serif italic mb-8">¿Nos acompañás?</p>
-            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 text-left">
+        <section className="ed-section">
+          <div className="ed-section-inner">
+            <p className="ed-label">Confirmación</p>
+            <h3 className="ed-title">¿Nos acompañás?</h3>
+            <div className="ed-form-card">
               <RsvpForm
                 eventSlug={event.slug}
-                inputClassName="bg-white/[0.05] border border-white/[0.1] text-white placeholder-white/30 rounded-lg focus:outline-none focus:border-[#C9A84C]/50"
-                buttonClassName="bg-[#C9A84C] text-[#0a0a0f] font-medium hover:bg-[#d4b85c]"
-                labelClassName="text-white/50 text-xs uppercase tracking-wider"
+                inputClassName="w-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-white placeholder-[rgba(255,255,255,0.3)] rounded-lg px-4 py-3 focus:outline-none focus:border-[rgba(201,168,76,0.5)]"
+                buttonClassName="w-full bg-[#C9A84C] text-[#0a0a0f] font-medium hover:bg-[#d4b85c] rounded-full py-3"
+                labelClassName="text-[rgba(255,255,255,0.5)] text-xs uppercase tracking-wider"
               />
             </div>
           </div>
@@ -151,9 +152,11 @@ export default function ElegantDark({ event }: { event: EventData }) {
       )}
 
       {/* FOOTER */}
-      <footer className="py-10 text-center border-t border-white/[0.06]">
-        <p className="text-white/30 text-xs">{event.title} · {new Date(event.eventDate).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" })}</p>
-        <p className="text-white/15 text-[10px] mt-3">Powered by TeInvitoApp</p>
+      <footer className="ed-footer">
+        <p className="footer-text">
+          {event.title} · {new Date(event.eventDate).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" })}
+        </p>
+        <p className="footer-powered">Powered by TeInvitoApp</p>
       </footer>
     </div>
   );
