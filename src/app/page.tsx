@@ -120,7 +120,7 @@ export default function LandingPage() {
           <h2>Mirá cómo quedan</h2>
         </div>
         <div className="demos-grid">
-          <Link className="demo-card" href="boda-valentina-y-matias" target="_blank" rel="noreferrer">
+          <Link className="demo-card" href="/demo-boda-elegante-oscuro.html" target="_blank" rel="noreferrer">
             <div className="demo-thumb d1">Elegante Oscuro</div>
             <div className="demo-info">
               <div className="t">Elegante Oscuro</div>
@@ -128,7 +128,7 @@ export default function LandingPage() {
               <div className="cta">Ver demo →</div>
             </div>
           </Link>
-          <Link className="demo-card" href="boda-luciana-y-gonzalo" target="_blank" rel="noreferrer">
+          <Link className="demo-card" href="/demo-boda-floral-claro.html" target="_blank" rel="noreferrer">
             <div className="demo-thumb d2">Floral Claro</div>
             <div className="demo-info">
               <div className="t">Floral Claro</div>
@@ -136,7 +136,7 @@ export default function LandingPage() {
               <div className="cta">Ver demo →</div>
             </div>
           </Link>
-          <Link className="demo-card" href="cumple-30-martin" target="_blank" rel="noreferrer">
+          <Link className="demo-card" href="/demo-cumple-minimalista.html" target="_blank" rel="noreferrer">
             <div className="demo-thumb d3">Minimalista</div>
             <div className="demo-info">
               <div className="t">Minimalista</div>

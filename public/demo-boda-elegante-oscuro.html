@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentina & Matías — Nos casamos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#100D0A; --ink-2:#1A1510;
+    --gold:#C9A66B; --gold-soft:#8C7550;
+    --cream:#EDE7DD; --muted:#8C8478;
+    --line:rgba(237,231,221,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--ink); color:var(--cream); font-family:'Jost',sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:500; }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 28px; }
+  .eyebrow{ font-size:11px; text-transform:uppercase; letter-spacing:0.3em; color:var(--gold); margin-bottom:16px; }
+  section{ padding:90px 0; text-align:center; }
+  .divider{ width:1px; height:56px; background:linear-gradient(var(--gold),transparent); margin:0 auto; }
+
+  /* HERO */
+  .hero{ min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; padding:40px 28px; }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 15%, rgba(201,166,107,0.08), transparent 55%);
+    pointer-events:none;
+  }
+  .monogram{
+    width:70px; height:70px; border:1px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin-bottom:32px;
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:24px; color:var(--gold);
+  }
+  .hero h1{ font-size:clamp(46px,11vw,84px); font-style:italic; line-height:1.05; margin-bottom:10px; }
+  .hero .amp{ display:block; color:var(--gold); font-size:0.5em; margin:8px 0; }
+  .hero .date{ font-size:14px; letter-spacing:0.15em; color:var(--muted); text-transform:uppercase; margin-top:20px; }
+  .scroll-hint{ position:absolute; bottom:36px; font-size:11px; letter-spacing:0.2em; color:var(--gold-soft); text-transform:uppercase; }
+
+  /* COUNTDOWN */
+  .countdown-row{ display:flex; justify-content:center; gap:20px; margin:36px 0; flex-wrap:wrap; }
+  .countdown-row div{ text-align:center; }
+  .countdown-row .n{
+    display:block; font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--gold);
+    width:64px; height:64px; line-height:64px; border:1px solid var(--line); border-radius:4px; margin-bottom:8px;
+  }
+  .countdown-row .l{ font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); }
+
+  /* STORY */
+  .story p{ font-size:17px; line-height:1.9; color:#C8C0B2; max-width:480px; margin:0 auto; }
+  .story p em{ color:var(--gold); font-style:italic; }
+
+  /* DETAILS — ceremony/party */
+  .details-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:20px; }
+  .detail-card{ background:var(--ink); padding:36px 24px; }
+  .detail-card h3{ font-size:22px; margin-bottom:8px; }
+  .detail-card p{ font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:18px; }
+  .map-link{ font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-soft); padding-bottom:3px; }
+
+  /* DRESS CODE */
+  .dress .swatches{ display:flex; justify-content:center; gap:10px; margin:24px 0 12px; }
+  .swatches span{ width:28px; height:28px; border-radius:50%; border:1px solid var(--line); }
+  .dress p{ font-size:14px; color:var(--muted); }
+
+  /* GALLERY */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:20px; }
+  .g-item{ aspect-ratio:3/4; background:linear-gradient(160deg, #241C15, #100D0A); border:1px solid var(--line); }
+
+  /* GIFTS */
+  .gift-box{
+    max-width:380px; margin:32px auto 0; border:1px solid var(--gold-soft); padding:30px 26px;
+  }
+  .gift-box .alias{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--gold); margin-bottom:6px; }
+  .gift-box .bank{ font-size:12px; color:var(--muted); margin-bottom:20px; }
+  .copy-btn{
+    background:var(--gold); color:var(--ink); border:none; padding:12px 26px; font-family:'Jost',sans-serif;
+    font-size:12px; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:opacity .2s ease;
+  }
+  .copy-btn:active{ opacity:0.7; }
+  .copy-msg{ font-size:11px; color:var(--gold); margin-top:10px; height:14px; }
+
+  /* RSVP */
+  .rsvp-form{ max-width:380px; margin:32px auto 0; text-align:left; }
+  .rsvp-form label{ display:block; font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:8px; }
+  .rsvp-form input, .rsvp-form select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line);
+    color:var(--cream); font-family:'Jost',sans-serif; font-size:15px; padding:10px 0; margin-bottom:24px; outline:none;
+  }
+  .rsvp-form input:focus, .rsvp-form select:focus{ border-color:var(--gold); }
+  .rsvp-submit{
+    width:100%; background:var(--gold); color:var(--ink); border:none; padding:16px; font-size:13px;
+    letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; margin-top:8px;
+  }
+
+  /* MUSIC */
+  .music-bar{
+    position:fixed; bottom:20px; right:20px; display:flex; align-items:center; gap:8px;
+    background:var(--ink-2); border:1px solid var(--line); padding:10px 16px; border-radius:100px; font-size:11px;
+  }
+  .music-dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 1.6s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  footer{ padding:50px 0; text-align:center; font-size:11px; color:var(--muted); letter-spacing:0.05em; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="monogram">V&M</div>
+  <div class="eyebrow">Nos casamos</div>
+  <h1>Valentina<span class="amp">&amp;</span>Matías</h1>
+  <div class="date">12 de Diciembre, 2026 — Córdoba</div>
+  <div class="scroll-hint">↓ Desliza</div>
+</section>
+
+<section id="countdown">
+  <div class="wrap">
+    <div class="eyebrow">Falta muy poco</div>
+    <div class="countdown-row" id="cd">
+      <div><span class="n">48</span><span class="l">Días</span></div>
+      <div><span class="n">14</span><span class="l">Horas</span></div>
+      <div><span class="n">22</span><span class="l">Min</span></div>
+      <div><span class="n">09</span><span class="l">Seg</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="story">
+  <div class="wrap">
+    <div class="eyebrow">Nuestra historia</div>
+    <p>Once años después de un primer café que se hizo eterno, queremos celebrar con las personas que más queremos. <em>Gracias por ser parte de este capítulo.</em></p>
+  </div>
+</section>
+
+<section id="details">
+  <div class="wrap">
+    <div class="eyebrow">Cuándo y dónde</div>
+    <h2 style="font-size:32px; margin-bottom:8px;">Los esperamos</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h3>Ceremonia</h3>
+        <p>19:00 hs<br>Capilla Nuestra Señora<br>Villa Allende, Córdoba</p>
+        <a class="map-link" href="#">Ver en el mapa</a>
+      </div>
+      <div class="detail-card">
+        <h3>Fiesta</h3>
+        <p>21:00 hs<br>Estancia La Candelaria<br>Camino a Salsipuedes</p>
+        <a class="map-link" href="#">Ver en el mapa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dress">
+  <div class="wrap">
+    <div class="eyebrow">Dress code</div>
+    <h2 style="font-size:28px;">Elegante noche</h2>
+    <div class="swatches">
+      <span style="background:#100D0A;"></span>
+      <span style="background:#C9A66B;"></span>
+      <span style="background:#3B1F2E;"></span>
+      <span style="background:#EDE7DD;"></span>
+    </div>
+    <p>Evitar blanco y colores muy claros</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="eyebrow">Nosotros</div>
+    <h2 style="font-size:28px;">Un poco de nuestra historia</h2>
+    <div class="gallery-grid">
+      <div class="g-item"></div><div class="g-item"></div><div class="g-item"></div>
+      <div class="g-item"></div><div class="g-item"></div><div class="g-item"></div>
+    </div>
+  </div>
+</section>
+
+<section id="gifts">
+  <div class="wrap">
+    <div class="eyebrow">Regalos</div>
+    <h2 style="font-size:28px;">Tu presencia es nuestro regalo</h2>
+    <p style="font-size:14px; color:var(--muted); max-width:400px; margin:12px auto 0;">Si además querés hacernos un regalo, esto nos ayuda a construir nuestro hogar.</p>
+    <div class="gift-box">
+      <div class="alias">valentina.matias.boda</div>
+      <div class="bank">Alias · Banco Galicia</div>
+      <button class="copy-btn" onclick="copyAlias()">Copiar alias</button>
+      <div class="copy-msg" id="copyMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="wrap">
+    <div class="eyebrow">Confirmación</div>
+    <h2 style="font-size:28px;">¿Nos acompañás?</h2>
+    <form class="rsvp-form" onsubmit="event.preventDefault(); document.getElementById('rsvpMsg').textContent='¡Gracias por confirmar! Nos vemos pronto ♥';">
+      <label>Nombre completo</label>
+      <input type="text" placeholder="Tu nombre" required>
+      <label>¿Asistirás?</label>
+      <select><option>Sí, con muchas ganas</option><option>No podré asistir</option></select>
+      <label>Acompañantes</label>
+      <input type="number" placeholder="0" min="0">
+      <button class="rsvp-submit" type="submit">Confirmar asistencia</button>
+      <div class="copy-msg" id="rsvpMsg" style="text-align:center; margin-top:14px;"></div>
+    </form>
+  </div>
+</section>
+
+<footer>Valentina &amp; Matías · 12.12.2026</footer>
+
+<div class="music-bar"><span class="music-dot"></span> Sonando ahora</div>
+
+<script>
+  function copyAlias(){
+    navigator.clipboard.writeText('valentina.matias.boda');
+    document.getElementById('copyMsg').textContent = 'Alias copiado ✓';
+    setTimeout(()=>{ document.getElementById('copyMsg').textContent=''; }, 2000);
+  }
+  // Countdown real hacia el 12 de diciembre 2026
+  const target = new Date('2026-12-12T19:00:00');
+  function tick(){
+    const diff = target - new Date();
+    const d = Math.max(0, Math.floor(diff/86400000));
+    const h = Math.max(0, Math.floor((diff/3600000)%24));
+    const m = Math.max(0, Math.floor((diff/60000)%60));
+    const s = Math.max(0, Math.floor((diff/1000)%60));
+    const nums = document.querySelectorAll('#cd .n');
+    nums[0].textContent = String(d).padStart(2,'0');
+    nums[1].textContent = String(h).padStart(2,'0');
+    nums[2].textContent = String(m).padStart(2,'0');
+    nums[3].textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
