@@ -45,3 +45,4 @@ Despues del seed tenes 3 eventos:
 - `/boda-valentina-y-matias` (template elegant-dark)
 - `/boda-luciana-y-gonzalo` (template floral-light)
 - `/cumple-30-martin` (template minimal-white)
+
