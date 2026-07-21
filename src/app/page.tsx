@@ -72,7 +72,7 @@ export default function LandingPage() {
 
 ¡Quedo a la espera para coordinar la seña!`;
 
-    const url = "https://wa.me/5493510000000?text=" + encodeURIComponent(msg);
+    const url = "https://wa.me/5493425299942?text=" + encodeURIComponent(msg);
     window.open(url, "_blank");
   };
 
@@ -100,7 +100,7 @@ export default function LandingPage() {
               <Link href="#pedido" className="hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-ink-800 border border-ink-200 hover:border-ink-400 hover:bg-white transition">
                 Hacer pedido
               </Link>
-              <a href="https://wa.me/5493510000000?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-soft transition">
+              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-soft transition">
                 WhatsApp
               </a>
             </div>
@@ -451,26 +451,29 @@ export default function LandingPage() {
               <div className="grid grid-cols-3 gap-3">
                 <label className="relative cursor-pointer">
                   <input type="radio" name="plan" value="Básico" required className="peer sr-only" />
-                  <div className="h-full p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
-                    <p className="font-display text-ink-900 text-sm">Básico</p>
-                    <p className="text-xs text-ink-400 mt-0.5">$25.000</p>
+                  <div className="h-full p-2 sm:p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
+                    <p className="font-display text-ink-900 text-[13px] sm:text-sm">Básico</p>
+                    <p className="text-[11px] sm:text-xs text-ink-400 mt-0.5">$25.000</p>
                   </div>
                 </label>
                 <label className="relative cursor-pointer">
                   <input type="radio" name="plan" value="Premium" defaultChecked className="peer sr-only" />
-                  <div className="h-full p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
-                    <p className="font-display text-ink-900 text-sm">Premium</p>
-                    <p className="text-xs text-ink-400 mt-0.5">$45.000</p>
+                  <div className="h-full p-2 sm:p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
+                    <p className="font-display text-ink-900 text-[13px] sm:text-sm">Premium</p>
+                    <p className="text-[11px] sm:text-xs text-ink-400 mt-0.5">$45.000</p>
                   </div>
                 </label>
                 <label className="relative cursor-pointer">
                   <input type="radio" name="plan" value="Premium Plus" className="peer sr-only" />
-                  <div className="h-full p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
-                    <p className="font-display text-ink-900 text-sm">Plus</p>
-                    <p className="text-xs text-ink-400 mt-0.5">$65.000</p>
+                  <div className="h-full p-2 sm:p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
+                    <p className="font-display text-ink-900 text-[13px] sm:text-sm">Plus</p>
+                    <p className="text-[11px] sm:text-xs text-ink-400 mt-0.5">$65.000</p>
                   </div>
                 </label>
               </div>
+              <p className="mt-2 text-center text-xs font-semibold text-terracotta-600 bg-terracotta-50 rounded-lg py-1.5 border border-terracotta-200">
+                🎁 30% OFF abonando por transferencia
+              </p>
             </div>
 
             {/* Express */}
@@ -712,7 +715,7 @@ export default function LandingPage() {
             <Link href="#estilos" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-900 bg-gold-400 hover:bg-gold-300 transition shadow-lg">
               Ver estilos y empezar
             </Link>
-            <a href="https://wa.me/5493510000000?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white border border-ink-600 hover:border-ink-400 hover:bg-ink-800 transition">
+            <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white border border-ink-600 hover:border-ink-400 hover:bg-ink-800 transition">
               Hablar por WhatsApp
             </a>
           </div>
@@ -743,7 +746,7 @@ export default function LandingPage() {
       </footer>
 
       {/* WhatsApp flotante */}
-      <a href="https://wa.me/5493510000000?text=Hola!%20Quiero%20una%20invitación%20digital" target="_blank" rel="noopener noreferrer"
+      <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación%20digital" target="_blank" rel="noopener noreferrer"
          className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg flex items-center justify-center hover:scale-110 transition duration-300"
          aria-label="WhatsApp">
         <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52--.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
