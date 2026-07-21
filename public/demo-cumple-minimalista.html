@@ -1,207 +1,1080 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Martín — Cumple 30</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#FAFAF8; --ink:#101820; --accent:#FF6B5B; --accent-2:#FFD166;
-    --muted:#6B7280; --line:#E5E3DD;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{ background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
-  h1,h2,h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.01em; }
-  .wrap{ max-width:640px; margin:0 auto; padding:0 28px; }
-  .eyebrow{ font-size:12px; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent); font-weight:700; margin-bottom:14px; }
-  section{ padding:80px 0; text-align:center; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- ========== EDITAR META SEO ========== -->
+  <title>Martín 30</title>
+  <meta name="description" content="Cumpleaños 30" />
+  <meta name="theme-color" content="#FAFAF8" />
+  <meta property="og:title" content="Mis XV Martín" />
+  <meta property="og:description" content="Sábado 5 de octubre de 2026 · Rooftop Bar Central. Abrí la invitación." />
+  <meta property="og:type" content="website" />
+  <!-- <meta property="og:image" content="[URL_IMAGEN_PORTADA]" /> -->
 
-  /* HERO */
-  .hero{ min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 28px; position:relative; overflow:hidden; }
-  .blob{ position:absolute; width:340px; height:340px; border-radius:50%; background:var(--accent); opacity:0.12; filter:blur(20px); top:-100px; right:-100px; }
-  .blob2{ position:absolute; width:280px; height:280px; border-radius:50%; background:var(--accent-2); opacity:0.18; filter:blur(20px); bottom:-80px; left:-80px; }
-  .hero h1{ font-size:clamp(48px,13vw,100px); line-height:0.95; position:relative; z-index:1; }
-  .hero .num{ color:var(--accent); }
-  .hero .sub{ font-size:16px; color:var(--muted); margin-top:20px; font-weight:500; position:relative; z-index:1; }
-  .hero .date{
-    display:inline-block; margin-top:24px; background:var(--ink); color:#fff; padding:10px 22px;
-    border-radius:100px; font-size:13px; font-weight:600; position:relative; z-index:1;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  /* COUNTDOWN */
-  .countdown-row{ display:flex; justify-content:center; gap:14px; margin:30px 0; flex-wrap:wrap; }
-  .countdown-row div{ text-align:center; }
-  .countdown-row .n{
-    display:block; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px;
-    width:64px; height:64px; line-height:64px; background:#fff; border:2px solid var(--ink); border-radius:14px; margin-bottom:8px;
-  }
-  .countdown-row .l{ font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:600; }
+  <style>
+    /* =========================================================
+       PALETA — editá estas variables para cambiar toda la look
+       ========================================================= */
+    :root {
+      --bg: #0E0A0C;
+      --bg-soft: #1A1218;
+      --bg-card: #211820;
+      --text: #F8F0F4;
+      --text-muted: rgba(248, 240, 244, 0.55);
+      --accent: #E8B4C8;          /* rosa glam */
+      --accent-deep: #C47A9A;
+      --gold: #D4AF37;
+      --gold-soft: #E8D5A3;
+      --line: rgba(248, 240, 244, 0.12);
+      --success: #25D366;
+      --font-display: "Playfair Display", Georgia, serif;
+      --font-script: "Great Vibes", cursive;
+      --font-body: "Montserrat", system-ui, sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
 
-  .story{ background:#fff; }
-  .story p{ font-size:17px; line-height:1.7; color:#3A4149; max-width:460px; margin:0 auto; }
-  .story strong{ color:var(--accent); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    body.locked { overflow: hidden; height: 100dvh; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
 
-  .details-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; }
-  .detail-card{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:28px 20px; }
-  .detail-card .tag{ display:inline-block; background:var(--accent-2); color:var(--ink); font-size:11px; font-weight:700; padding:5px 12px; border-radius:100px; margin-bottom:14px; }
-  .detail-card h3{ font-size:18px; margin-bottom:8px; }
-  .detail-card p{ font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:14px; }
-  .map-link{ font-size:12px; font-weight:600; color:var(--accent); text-decoration:none; }
+    /* ---------- SPLASH / BIENVENIDA ---------- */
+    #splash {
+      position: fixed; inset: 0; z-index: 200;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg);
+      transition: opacity 0.75s ease, visibility 0.75s ease;
+    }
+    #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    #splash::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(232, 180, 200, 0.18), transparent 55%),
+        radial-gradient(ellipse at 50% 85%, rgba(212, 175, 55, 0.08), transparent 45%);
+      pointer-events: none;
+    }
+    .splash-inner { position: relative; z-index: 1; max-width: 340px; }
+    .splash-ornament {
+      font-size: 1.75rem;
+      color: var(--gold);
+      letter-spacing: 0.5em;
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+      animation: pulse-soft 3s ease-in-out infinite;
+    }
+    .splash-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .splash-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .splash-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 14vw, 4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+    }
+    .splash-date {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .splash-btn {
+      margin-top: 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .splash-btn:hover, .splash-btn:active {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .splash-hint {
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
 
-  .gallery-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:20px; }
-  .g-item{ aspect-ratio:1/1; background:linear-gradient(160deg, #FFE0DB, #FFF3D6); border-radius:14px; }
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 0.55; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.06); }
+    }
 
-  .gift-box{ max-width:380px; margin:32px auto 0; background:#fff; border:2px dashed var(--line); padding:28px 24px; border-radius:18px; }
-  .gift-box .alias{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--ink); margin-bottom:6px; }
-  .gift-box .bank{ font-size:12px; color:var(--muted); margin-bottom:18px; }
-  .copy-btn{
-    background:var(--ink); color:#fff; border:none; padding:12px 26px; border-radius:100px;
-    font-family:'Inter',sans-serif; font-weight:600; font-size:13px; cursor:pointer;
-  }
-  .copy-msg{ font-size:12px; color:var(--accent); margin-top:10px; height:14px; font-weight:600; }
+    /* ---------- MAIN ---------- */
+    #main { opacity: 0; transition: opacity 0.55s ease 0.15s; }
+    #main.show { opacity: 1; }
 
-  .rsvp-form{ max-width:380px; margin:32px auto 0; text-align:left; }
-  .rsvp-form label{ display:block; font-size:12px; font-weight:600; color:var(--ink); margin-bottom:8px; }
-  .rsvp-form input, .rsvp-form select{
-    width:100%; background:#fff; border:1px solid var(--line); border-radius:12px;
-    color:var(--ink); font-family:'Inter',sans-serif; font-size:15px; padding:13px 16px; margin-bottom:18px; outline:none;
-  }
-  .rsvp-form input:focus, .rsvp-form select:focus{ border-color:var(--accent); }
-  .rsvp-submit{
-    width:100%; background:var(--accent); color:#fff; border:none; padding:16px; border-radius:100px; font-size:14px;
-    font-weight:700; cursor:pointer; margin-top:6px;
-  }
+    .section {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem 5.5rem;
+      position: relative;
+    }
+    .section + .section { border-top: 1px solid var(--line); }
+    .wrap { width: 100%; max-width: 420px; margin: 0 auto; position: relative; z-index: 1; }
 
-  .music-bar{
-    position:fixed; bottom:20px; right:20px; display:flex; align-items:center; gap:8px;
-    background:var(--ink); color:#fff; padding:10px 16px; border-radius:100px; font-size:11px; font-weight:600;
-  }
-  .music-dot{ width:6px; height:6px; border-radius:50%; background:var(--accent-2); animation:pulse 1.6s infinite; }
-  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.75rem, 13vw, 3.75rem);
+      line-height: 1.05;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.75rem, 7vw, 2.25rem);
+      margin-bottom: 0.75rem;
+    }
+    .lead {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0 auto 1.75rem;
+    }
+    .script {
+      font-family: var(--font-script);
 
-  footer{ padding:50px 0; text-align:center; font-size:12px; color:var(--muted); font-weight:500; }
+      font-size: clamp(1.75rem, 6vw, 2.25rem);
+      color: var(--accent);
+      line-height: 1.3;
+    }
+
+    /* HERO */
+    .hero {
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(232, 180, 200, 0.12), transparent 50%),
+        var(--bg);
+    }
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.12);
+      background: var(--bg-soft);
+    }
+    .hero-photo.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.75rem;
+      color: var(--gold);
+    }
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .hero-date {
+      margin: 1.25rem 0 1.75rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .countdown > div {
+      min-width: 4.1rem;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 0.4rem 0.7rem;
+    }
+    .countdown .n {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+    }
+    .countdown .l {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 1.75rem;
+      border: none;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
+      color: var(--bg);
+      box-shadow: 0 10px 30px rgba(196, 122, 154, 0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 14px 36px rgba(196, 122, 154, 0.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-wa {
+      background: var(--success);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.3);
+    }
+    .btn-full { width: 100%; }
+    .btn-row { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.35rem;
+      margin-bottom: 0.85rem;
+      text-align: center;
+    }
+    .card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--gold-soft);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .card p strong {
+      color: var(--text);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .card a.link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232, 180, 200, 0.35);
+      padding-bottom: 2px;
+    }
+
+    /* Mesa de regalos */
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
+    .price-row:first-of-type { border-top: none; }
+    .price-row .amount {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Alias / copy */
+    .alias-box {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+    }
+    .alias-box .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .alias-box .value {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--accent);
+      word-break: break-all;
+      margin-bottom: 0.35rem;
+    }
+    .alias-box .sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .copy-btn.ok { border-color: var(--gold); color: var(--gold); }
+
+    /* Dress pills */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 0.85rem;
+    }
+    .pills span {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .gallery .ph {
+      aspect-ratio: 1;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      overflow: hidden;
+    }
+    .gallery .ph.wide { grid-column: span 2; aspect-ratio: 2.1 / 1; }
+    .gallery .ph img { width: 100%; height: 100%; object-fit: cover; }
+    .hashtag {
+      margin-top: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    /* Closing */
+    .close-section {
+      background:
+        radial-gradient(ellipse at 50% 55%, rgba(232, 180, 200, 0.12), transparent 50%),
+        var(--bg);
+    }
+    .close-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+      line-height: 1.35;
+      max-width: 300px;
+      margin: 0 auto 1rem;
+    }
+    .close-name {
+      margin-top: 1.75rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem 6rem;
+      border-top: 1px solid var(--line);
+    }
+    footer .brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    footer .brand em { font-style: italic; color: var(--accent); }
+    footer p {
+      font-size: 0.65rem;
+      color: rgba(248, 240, 244, 0.3);
+      margin-top: 0.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Music button */
+    .music-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 80;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(14, 10, 12, 0.8);
+      backdrop-filter: blur(10px);
+      color: var(--gold);
+      font-size: 0.95rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .music-btn.visible { display: flex; }
+    .music-btn.on {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--bg);
+      animation: pulse-soft 1.4s ease-in-out infinite;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .scroll-cue span { display: block; margin-top: 0.35rem; font-size: 0.9rem; }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.45; }
+      50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* Toast */
+    #toast {
+      display: none;
+      position: fixed;
+      left: 50%;
+      bottom: 5.5rem;
+      transform: translateX(-50%);
+      z-index: 90;
+      background: rgba(14, 10, 12, 0.95);
+      border: 1px solid rgba(232, 180, 200, 0.35);
+      color: var(--text);
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    #toast.show { display: block; }
+
+    /* Modal regalos */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      width: 100%;
+      max-width: 400px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px 20px 12px 12px;
+      padding: 1.75rem 1.35rem 1.5rem;
+      animation: slideUp 0.35s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal .close-x {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none; border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-inner { position: relative; }
+
+    @media (min-width: 480px) {
+      .modal-backdrop { align-items: center; }
+      .modal { border-radius: 20px; }
+    }
+  
+:root {
+  --bg: #FAFAF8;
+  --bg-soft: #F0F0EC;
+  --bg-card: #FFFFFF;
+  --text: #1A1A1A;
+  --text-muted: rgba(26,26,26,.5);
+  --accent: #2C2C2C;
+  --accent-deep: #111111;
+  --gold: #6B6B6B;
+  --gold-soft: #444444;
+  --line: rgba(26,26,26,.1);
+}
+#splash::before {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(0,0,0,.04), transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(0,0,0,.02), transparent 45%) !important;
+}
+.hero {
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(0,0,0,.04), transparent 50%),
+    var(--bg) !important;
+}
+.hero-photo { box-shadow: 0 0 0 6px rgba(0,0,0,.08) !important; }
+.btn-primary {
+  color: #fff !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2) !important;
+}
+.card a.link { border-bottom-color: rgba(26,26,26,.25) !important; }
+footer p { color: rgba(26,26,26,.3) !important; }
+.music-btn { background: rgba(250,250,248,.9) !important; }
+.close-section {
+  background:
+  radial-gradient(ellipse at 50% 55%, rgba(0,0,0,.04), transparent 50%),
+  var(--bg) !important;
+}
+
 </style>
 </head>
-<body>
+<body class="locked">
 
-<section class="hero">
-  <div class="blob"></div><div class="blob2"></div>
-  <div class="eyebrow">Cumpleaños</div>
-  <h1>Martín<br>cumple <span class="num">30</span></h1>
-  <div class="sub">Y quiere festejarlo con vos</div>
-  <div class="date">📅 Sábado 8 de agosto, 21hs</div>
-</section>
+  <!-- ============================================================
+       CONFIGURACIÓN RÁPIDA (también buscá [PLACEHOLDERS] en el HTML)
+       ============================================================
+       NOMBRE        → Julia
+       FECHA         → 2027-02-12T21:00:00-03:00  (ISO para countdown)
+       FECHA_LARGA   → Viernes 12 de febrero de 2027
+       HORA_FIESTA   → 21:00
+       LUGAR_FIESTA  → Solares del Sur
+       DIRECCION     → Es 4 de Enero 899
+       URL_MAPS      → link de Google Maps
+       DRESS_CODE    → Formal
+       ALIAS / CBU   → datos de pago
+       WA_NUMBER     → 54911XXXXXXXX (código país + número)
+       MUSICA        → musica.mp3 en la misma carpeta
+       ============================================================ -->
 
-<section id="countdown">
-  <div class="wrap">
-    <div class="eyebrow">Faltan</div>
-    <div class="countdown-row" id="cd">
-      <div><span class="n">20</span><span class="l">Días</span></div>
-      <div><span class="n">05</span><span class="l">Horas</span></div>
-      <div><span class="n">33</span><span class="l">Min</span></div>
-      <div><span class="n">50</span><span class="l">Seg</span></div>
+  <!-- Audio de fondo: poné tu archivo como musica.mp3 al lado de este HTML -->
+  <audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
+    <source src="musica.mp3" type="audio/mpeg" />
+    <!-- Opcional: URL externa (Spotify no funciona como <audio>)
+    <source src="[URL_MP3]" type="audio/mpeg" />
+    -->
+  </audio>
+
+  <!-- ========== BIENVENIDA ========== -->
+  <div id="splash" role="dialog" aria-label="Bienvenida">
+    <div class="splash-inner">
+      <div class="splash-ornament" aria-hidden="true">—</div>
+      <p class="splash-label">Bienvenida</p>
+      <p class="splash-kicker">Cumpleaños</p>
+      <h1 class="splash-name">Martín</h1>
+      <p class="splash-date">05 · 10 · 2026</p>
+      <button type="button" class="splash-btn" id="enterBtn">
+        Abrir invitación
+      </button>
+      <p class="splash-hint">Tocá para entrar</p>
     </div>
   </div>
-</section>
 
-<section class="story">
-  <div class="wrap">
-    <div class="eyebrow">La previa</div>
-    <p>30 años, unas cuantas historias para contar y muchas más por vivir. <strong>Vení a brindar</strong> con música, buena comida y la gente que quiero cerca.</p>
-  </div>
-</section>
+  <!-- Botón música (aparece al entrar) -->
+  <button type="button" class="music-btn" id="musicBtn" aria-label="Música de fondo" title="Música">♪</button>
+  <div id="toast" role="status"></div>
 
-<section id="details">
-  <div class="wrap">
-    <div class="eyebrow">Info del evento</div>
-    <h2 style="font-size:26px; margin-bottom:6px;">Todo lo que necesitás saber</h2>
-    <div class="details-grid">
-      <div class="detail-card">
-        <span class="tag">Lugar</span>
-        <h3>Terraza Nomade</h3>
-        <p>Palermo, Buenos Aires<br>Entrada libre con invitación</p>
-        <a class="map-link" href="#">Ver en el mapa →</a>
+  <!-- ========== CONTENIDO ========== -->
+  <div id="main">
+
+    <!-- HERO + COUNTDOWN -->
+    <section class="section hero" id="inicio">
+      <div class="wrap">
+        <!-- Foto circular: reemplazá src o dejá el placeholder -->
+        <!-- <img class="hero-photo" src="[URL_FOTO_PRINCIPAL]" alt="Martín" /> -->
+        <div class="hero-photo placeholder" aria-hidden="true">30</div>
+
+        <p class="hero-kicker">Cumpleaños</p>
+        <h1>Martín</h1>
+        <p class="hero-date">Sábado 5 de octubre de 2026 · 22:00 hs</p>
+
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div><span class="n" id="cd-d">—</span><span class="l">Días</span></div>
+          <div><span class="n" id="cd-h">—</span><span class="l">Horas</span></div>
+          <div><span class="n" id="cd-m">—</span><span class="l">Min</span></div>
+          <div><span class="n" id="cd-s">—</span><span class="l">Seg</span></div>
+        </div>
+
+        <a class="btn btn-primary" href="#cuando">Ver detalles</a>
       </div>
-      <div class="detail-card">
-        <span class="tag">Dress code</span>
-        <h3>Casual chic</h3>
-        <p>Nada de formal, pero tampoco ojotas 😄</p>
-        <a class="map-link" href="#">Más info →</a>
+      <div class="scroll-cue">Deslizá<span>↓</span></div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="section" style="min-height: auto; padding-top: 4rem; padding-bottom: 3rem;">
+      <div class="wrap reveal">
+        <p class="script">Tres décadas…</p>
+        <p class="lead" style="margin-top: 1rem; margin-bottom: 0;">
+          Vamos a celebrarlo como se debe.
+        </p>
+      </div>
+    </section>
+
+    <!-- CUÁNDO / DÓNDE -->
+    <section class="section" id="cuando">
+      <div class="wrap">
+        <p class="eyebrow reveal">La celebración</p>
+        <h2 class="reveal">¿Cuándo & dónde?</h2>
+        <p class="lead reveal">Todo listo para una noche inolvidable.</p>
+
+        <div class="card reveal">
+          <div class="icon">◈</div>
+          <h3>¿Cuándo?</h3>
+          <p>
+            <strong>Sábado 5 de octubre de 2026</strong>
+            22:00 hs
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon">◎</div>
+          <h3>¿Dónde?</h3>
+          <p>
+            <strong>Rooftop Bar Central</strong>
+            Av. Yrigoyen 500, Córdoba
+          </p>
+          <!-- EDITAR URL_MAPS -->
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Rooftop+Cordoba" target="_blank" rel="noopener">
+            Cómo llegar →
+          </a>
+        </div>
+
+        <!-- Si hay ceremonia separada, descomentá:
+        <div class="card reveal">
+          <div class="icon">✝</div>
+          <h3>Ceremonia</h3>
+          <p>
+            <strong>[HORA_CEREMONIA] hs</strong>
+            [LUGAR_CEREMONIA]<br>
+            [DIRECCION_CEREMONIA]
+          </p>
+          <a class="link" href="[URL_MAPS_CEREMONIA]" target="_blank" rel="noopener">Cómo llegar →</a>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section" id="dress" style="min-height: auto; padding-top: 3rem; padding-bottom: 3rem;">
+      <div class="wrap reveal">
+        <p class="eyebrow">Código de vestimenta</p>
+        <h2>Dress code</h2>
+        <div class="card" style="margin-bottom: 0;">
+          <div class="icon">◇</div>
+          <h3>Smart casual</h3>
+          <p>Cómodo y con estilo</p>
+          <div class="pills">
+            <span>Negro</span>
+            <span>Blanco</span>
+            <span>Denim</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALOR TARJETA (típico XV Argentina) -->
+    <section class="section" id="valor">
+      <div class="wrap">
+        <p class="eyebrow reveal">Información</p>
+        <h2 class="reveal">Mesa de regalos</h2>
+        <p class="lead reveal">
+          Tu presencia es el mejor regalo. Si deseás sumar un detalle:
+        </p>
+
+        <div class="alias-box reveal">
+          <p class="label">Alias</p>
+          <p class="value" id="aliasValue">martin.cumple30</p>
+          <p class="sub">CVU / CBU: 0000003100055555555555</p>
+          <p class="sub" style="margin-top: -0.5rem;">Titular: Martín García</p>
+          <button type="button" class="copy-btn" id="copyAliasBtn" data-copy="martin.cumple30">
+            Copiar alias
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+      <div class="wrap">
+        <p class="eyebrow reveal">Tu respuesta</p>
+        <h2 class="reveal">Confirmá tu asistencia</h2>
+        <p class="lead reveal">
+          Por favor respondé antes del <strong style="color: var(--text);">20 de septiembre de 2026</strong>.
+        </p>
+
+        <div class="btn-row reveal">
+          <!--
+            LINK_WHATSAPP: wa.me/549XXXXXXXXX?text=...
+            El mensaje se arma abajo en CONFIG JS también.
+          -->
+          <a class="btn btn-wa btn-full" id="rsvpWa" href="https://wa.me/5493425299942?text=Hola%21%20Confirmo%20asistencia%20al%20cumple%20de%20Martin" target="_blank" rel="noopener">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Confirmar por WhatsApp
+          </a>
+          <button type="button" class="btn btn-outline btn-full" id="openGiftsBtn">
+            Ver datos de pago / regalos
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section" id="fotos">
+      <div class="wrap">
+        <p class="eyebrow reveal">Momentos</p>
+        <h2 class="reveal">Galería</h2>
+        <p class="lead reveal">Algunos instantes de esta historia.</p>
+
+        <div class="gallery reveal">
+          <!-- Reemplazá los .ph por <div class="ph"><img src="foto1.jpg" alt=""></div> -->
+          <div class="ph">Foto 1</div>
+          <div class="ph">Foto 2</div>
+          <div class="ph wide">Foto portada</div>
+          <div class="ph">Foto 3</div>
+          <div class="ph">Foto 4</div>
+        </div>
+
+        <p class="hashtag reveal">#Martin30</p>
+        <p class="lead reveal" style="margin-bottom: 0; margin-top: 0.5rem; font-size: 0.85rem;">
+          Usá el hashtag en tus stories y publicaciones.
+        </p>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="section close-section" id="cierre">
+      <div class="wrap reveal">
+        <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1.25rem;" aria-hidden="true">—</div>
+        <p class="close-quote">“Que no pare la fiesta…”</p>
+        <p class="lead" style="margin-bottom: 0;">Te espero.</p>
+        <p class="close-name">Martín · 30 años</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem; letter-spacing: 0.16em; color: var(--text-muted);">
+          05 · 10 · 2026
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="brand">Te <em>invito</em></div>
+      <p>Demo · Cumple Minimalista</p>
+    </footer>
+  </div>
+
+  <!-- MODAL REGALOS / PAGO -->
+  <div class="modal-backdrop" id="giftsModal" role="dialog" aria-modal="true" aria-labelledby="giftsTitle">
+    <div class="modal">
+      <div class="modal-inner">
+        <button type="button" class="close-x" id="closeGifts" aria-label="Cerrar">&times;</button>
+        <h3 id="giftsTitle">Datos de pago</h3>
+        <p class="lead" style="margin: 0.5rem 0 1.25rem;">Transferencia · Mercado Pago</p>
+
+        <div class="alias-box" style="margin-bottom: 0.75rem;">
+          <p class="label">Alias</p>
+          <p class="value">martin.cumple30</p>
+          <button type="button" class="copy-btn" data-copy="martin.cumple30">Copiar alias</button>
+        </div>
+        <div class="alias-box">
+          <p class="label">CBU / CVU</p>
+          <p class="value" style="font-size: 1.1rem;">0000003100055555555555</p>
+          <p class="sub">Titular: Martín García</p>
+          <button type="button" class="copy-btn" data-copy="0000003100055555555555">Copiar CBU</button>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="gallery">
-  <div class="wrap">
-    <div class="eyebrow">Fotos</div>
-    <h2 style="font-size:26px;">Un poco de mí</h2>
-    <div class="gallery-grid">
-      <div class="g-item"></div><div class="g-item"></div><div class="g-item"></div>
-      <div class="g-item"></div><div class="g-item"></div><div class="g-item"></div>
-    </div>
-  </div>
-</section>
+  <script>
+    /* ============================================================
+       CONFIG — editá solo este bloque para personalizar
+       ============================================================ */
+    const CONFIG = {
+      // Fecha del evento (countdown). Formato ISO con zona AR -03:00
+      eventDateISO: "2026-10-05T22:00:00-03:00",
 
-<section id="gifts">
-  <div class="wrap">
-    <div class="eyebrow">Regalos</div>
-    <h2 style="font-size:26px;">¿Querés hacerme un regalo?</h2>
-    <p style="font-size:14px; color:var(--muted); max-width:400px; margin:12px auto 0;">Con tu presencia alcanza y sobra, pero si querés sumar algo, este es mi alias.</p>
-    <div class="gift-box">
-      <div class="alias">martin.cumple30</div>
-      <div class="bank">Alias · Mercado Pago</div>
-      <button class="copy-btn" onclick="copyAlias()">Copiar alias</button>
-      <div class="copy-msg" id="copyMsg"></div>
-    </div>
-  </div>
-</section>
+      // WhatsApp del anfitrión (código país + número, sin + ni espacios)
+      waNumber: "5493425299942",
 
-<section id="rsvp">
-  <div class="wrap">
-    <div class="eyebrow">Confirmación</div>
-    <h2 style="font-size:26px;">¿Venís?</h2>
-    <form class="rsvp-form" onsubmit="event.preventDefault(); document.getElementById('rsvpMsg').textContent='¡Genial, nos vemos ahí! 🎉';">
-      <label>Nombre completo</label>
-      <input type="text" placeholder="Tu nombre" required>
-      <label>¿Asistirás?</label>
-      <select><option>Sí, ahí estaré</option><option>No voy a poder</option></select>
-      <label>¿Venís acompañado?</label>
-      <input type="number" placeholder="0" min="0">
-      <button class="rsvp-submit" type="submit">Confirmar asistencia</button>
-      <div class="copy-msg" id="rsvpMsg" style="text-align:center; margin-top:14px;"></div>
-    </form>
-  </div>
-</section>
+      // Mensaje RSVP (se codifica solo)
+      waMessage: "¡Hola! Confirmo mi asistencia a los XV de Martín 💖\n\nNombre:\nCantidad de personas:\nMenú / notas:",
 
-<footer>Martín cumple 30 · 08.08</footer>
+      // Nombre para textos dinámicos del mensaje
+      nombre: "Martín",
+    };
 
-<div class="music-bar"><span class="music-dot"></span> Sonando ahora</div>
+    /* ---------- SPLASH + AUDIO ---------- */
+    const splash = document.getElementById("splash");
+    const main = document.getElementById("main");
+    const enterBtn = document.getElementById("enterBtn");
+    const musicBtn = document.getElementById("musicBtn");
+    const audio = document.getElementById("bgMusic");
+    const toast = document.getElementById("toast");
+    const body = document.body;
+    let playing = false;
 
-<script>
-  function copyAlias(){
-    navigator.clipboard.writeText('martin.cumple30');
-    document.getElementById('copyMsg').textContent = 'Alias copiado ✓';
-    setTimeout(()=>{ document.getElementById('copyMsg').textContent=''; }, 2000);
-  }
-  const target = new Date(new Date().getTime() + (20*86400000) + (5*3600000) + (33*60000) + 50000);
-  function tick(){
-    const diff = target - new Date();
-    const d = Math.max(0, Math.floor(diff/86400000));
-    const h = Math.max(0, Math.floor((diff/3600000)%24));
-    const m = Math.max(0, Math.floor((diff/60000)%60));
-    const s = Math.max(0, Math.floor((diff/1000)%60));
-    const nums = document.querySelectorAll('#cd .n');
-    nums[0].textContent = String(d).padStart(2,'0');
-    nums[1].textContent = String(h).padStart(2,'0');
-    nums[2].textContent = String(m).padStart(2,'0');
-    nums[3].textContent = String(s).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 1000);
-</script>
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove("show"), 3500);
+    }
 
+    function setPlaying(on) {
+      playing = !!on;
+      musicBtn.classList.toggle("on", playing);
+      musicBtn.textContent = playing ? "❚❚" : "♪";
+    }
+
+    function playMusic() {
+      try {
+        audio.volume = 0.85;
+        audio.muted = false;
+        const p = audio.play();
+        if (p && typeof p.then === "function") {
+          p.then(() => setPlaying(true)).catch(() => {
+            setPlaying(false);
+            showToast("Tocá ♪ para activar la música");
+          });
+        }
+      } catch (_) {
+        setPlaying(false);
+      }
+    }
+
+    function enter() {
+      // play() dentro del gesto del usuario
+      playMusic();
+      splash.classList.add("hide");
+      body.classList.remove("locked");
+      main.classList.add("show");
+      musicBtn.classList.add("visible");
+      // revelar elementos visibles
+      requestAnimationFrame(() => observeReveals());
+    }
+
+    enterBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      enter();
+    });
+    splash.addEventListener("click", () => {
+      if (!splash.classList.contains("hide")) enter();
+    });
+
+    musicBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (playing || !audio.paused) {
+        audio.pause();
+        setPlaying(false);
+      } else {
+        playMusic();
+      }
+    });
+
+    try { audio.load(); } catch (_) {}
+
+    /* ---------- COUNTDOWN ---------- */
+    const target = new Date(CONFIG.eventDateISO).getTime();
+
+    function tick() {
+      const diff = Math.max(0, target - Date.now());
+      document.getElementById("cd-d").textContent = Math.floor(diff / 86400000);
+      document.getElementById("cd-h").textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, "0");
+      document.getElementById("cd-m").textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
+      document.getElementById("cd-s").textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ---------- WHATSAPP RSVP ---------- */
+    (function buildWa() {
+      const msg = CONFIG.waMessage.replace(/\[NOMBRE\]/g, CONFIG.nombre);
+      const href = "https://wa.me/" + CONFIG.waNumber + "?text=" + encodeURIComponent(msg);
+      const el = document.getElementById("rsvpWa");
+      // Si el href del HTML sigue con placeholder, lo pisamos con CONFIG
+      if (el && (el.getAttribute("href") || "").includes("[")) {
+        el.href = href;
+      }
+    })();
+
+    /* ---------- COPY ---------- */
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const prev = btn.textContent;
+        btn.textContent = "¡Copiado!";
+        btn.classList.add("ok");
+        setTimeout(() => {
+          btn.textContent = prev;
+          btn.classList.remove("ok");
+        }, 2000);
+      }).catch(() => showToast("No se pudo copiar"));
+    }
+
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const text = (btn.getAttribute("data-copy") || "").trim();
+        if (text && !text.startsWith("[")) copyText(text, btn);
+        else showToast("Reemplazá el placeholder del alias/CBU");
+      });
+    });
+
+    /* ---------- MODAL REGALOS ---------- */
+    const giftsModal = document.getElementById("giftsModal");
+    document.getElementById("openGiftsBtn").addEventListener("click", () => {
+      giftsModal.classList.add("open");
+    });
+    document.getElementById("closeGifts").addEventListener("click", () => {
+      giftsModal.classList.remove("open");
+    });
+    giftsModal.addEventListener("click", (e) => {
+      if (e.target === giftsModal) giftsModal.classList.remove("open");
+    });
+
+    /* ---------- REVEAL ON SCROLL ---------- */
+    function observeReveals() {
+      const els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("in"));
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add("in");
+              io.unobserve(en.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+      els.forEach((el) => io.observe(el));
+    }
+  </script>
 </body>
 </html>

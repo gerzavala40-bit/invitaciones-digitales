@@ -250,7 +250,7 @@ export default function LandingPage() {
             
             {/* Demo 1 */}
             <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Elegante Oscuro" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-boda-elegante-oscuro.html" target="_blank" rel="noopener noreferrer" className="block">
+              <a href="/demo-boda-noche-dorada.html" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="h-44 sm:h-48 bg-gradient-to-br from-ink-950 to-ink-800 flex items-center justify-center relative">
                   <span className="font-display italic text-2xl text-gold-400/90">Elegante Oscuro</span>
                   <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Elegante Oscuro" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
@@ -264,7 +264,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="mt-4 flex gap-2">
-                  <a href="/demo-boda-elegante-oscuro.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
+                  <a href="/demo-boda-noche-dorada.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
                   <button type="button" onClick={() => handleSelectStyle("Elegante Oscuro", "Boda")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">
                     Quiero este
                   </button>
@@ -310,7 +310,7 @@ export default function LandingPage() {
 
             {/* Demo 4 */}
             <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "15 Años Glam" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-boda-elegante-oscuro.html" target="_blank" rel="noopener noreferrer" className="block">
+              <a href="/demo-15-camila-glam.html" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="h-44 sm:h-48 bg-gradient-to-br from-pink-600 to-fuchsia-800 flex items-center justify-center relative">
                   <span className="font-display italic text-2xl text-white/90">15 Años Glam</span>
                   <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "15 Años Glam" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
@@ -320,7 +320,7 @@ export default function LandingPage() {
                 <h3 className="font-display text-lg text-ink-900">15 Años Glam</h3>
                 <p className="text-sm text-ink-400 mt-0.5">Quince · Fucsia y dorado</p>
                 <div className="mt-4 flex gap-2">
-                  <a href="/demo-boda-elegante-oscuro.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
+                  <a href="/demo-15-camila-glam.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
                   <button type="button" onClick={() => handleSelectStyle("15 Años Glam", "15 Años")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
                 </div>
               </div>
@@ -328,7 +328,7 @@ export default function LandingPage() {
 
             {/* Demo 5 */}
             <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Bautismo Tierno" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-boda-floral-claro.html" target="_blank" rel="noopener noreferrer" className="block">
+              <a href="/demo-bautismo-benicio.html" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="h-44 sm:h-48 bg-gradient-to-br from-sky-200 to-blue-300 flex items-center justify-center relative">
                   <span className="font-display italic text-2xl text-ink-700">Bautismo Tierno</span>
                   <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Bautismo Tierno" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
@@ -338,7 +338,7 @@ export default function LandingPage() {
                 <h3 className="font-display text-lg text-ink-900">Bautismo Tierno</h3>
                 <p className="text-sm text-ink-400 mt-0.5">Bautismos · Celeste suave</p>
                 <div className="mt-4 flex gap-2">
-                  <a href="/demo-boda-floral-claro.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
+                  <a href="/demo-bautismo-benicio.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
                   <button type="button" onClick={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
                 </div>
               </div>
@@ -346,7 +346,7 @@ export default function LandingPage() {
 
             {/* Demo 6 */}
             <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Corporativo" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-cumple-minimalista.html" target="_blank" rel="noopener noreferrer" className="block">
+              <a href="/demo-corporativo-gala.html" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="h-44 sm:h-48 bg-gradient-to-br from-slate-800 to-blue-900 flex items-center justify-center relative">
                   <span className="font-display italic text-2xl text-blue-200">Corporativo</span>
                   <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Corporativo" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
@@ -356,7 +356,7 @@ export default function LandingPage() {
                 <h3 className="font-display text-lg text-ink-900">Corporativo</h3>
                 <p className="text-sm text-ink-400 mt-0.5">Eventos de empresa</p>
                 <div className="mt-4 flex gap-2">
-                  <a href="/demo-cumple-minimalista.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
+                  <a href="/demo-corporativo-gala.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
                   <button type="button" onClick={() => handleSelectStyle("Corporativo", "Corporativo")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
                 </div>
               </div>
