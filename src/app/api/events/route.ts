@@ -25,6 +25,20 @@ export async function POST(request: Request) {
     const existing = await prisma.event.findUnique({ where: { slug } });
     if (existing) slug = `${slug}-${Date.now().toString(36)}`;
 
+    // El middleware ya verificó que es admin, pero la autenticación es por env vars,
+    // no por tabla User. Aseguramos que exista el usuario "admin" para poder
+    // satisfacer la relación userId -> User.id sin violar la foreign key.
+    await prisma.user.upsert({
+      where: { id: "admin" },
+      update: {},
+      create: {
+        id: "admin",
+        email: process.env.ADMIN_EMAIL || "admin@miplataforma.com",
+        name: "Admin",
+        password: "managed-via-env-vars",
+      },
+    });
+
     const event = await prisma.event.create({
       data: {
         slug,
