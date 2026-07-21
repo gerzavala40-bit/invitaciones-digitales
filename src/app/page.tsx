@@ -361,6 +361,25 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
+
+            {/* Demo 7 */}
+            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Boda Boho / Canva" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
+              <a href="/demo-canva-boho.html" target="_blank" rel="noopener noreferrer" className="block">
+                <div className="h-44 sm:h-48 bg-[#F4F2EE] flex items-center justify-center relative">
+                  <span className="font-display italic text-2xl text-[#2C2A28]">Boda Boho / Canva</span>
+                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Boda Boho / Canva" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
+                </div>
+              </a>
+              <div className="p-5">
+                <h3 className="font-display text-lg text-ink-900">Boda Boho / Canva</h3>
+                <p className="text-sm text-ink-400 mt-0.5">Estilo Canva · Tonos crema</p>
+                <div className="mt-4 flex gap-2">
+                  <a href="/demo-canva-boho.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
+                  <button type="button" onClick={() => handleSelectStyle("Boda Boho / Canva", "Boda")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <p className="text-center mt-10 text-ink-500 text-sm">
