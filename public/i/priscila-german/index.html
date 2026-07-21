@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Priscila & Germán — Nos casamos</title>
+<meta name="description" content="Priscila y Germán se casan el 27 de agosto de 2027 en Salón de los Silos, Santa Fe.">
+<meta name="theme-color" content="#1A1210">
+<meta property="og:title" content="Priscila & Germán — Nos casamos">
+<meta property="og:description" content="27 de agosto de 2027 · Salón de los Silos, Santa Fe. Te esperamos.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #1A1210;
+    --bg-soft: #241A16;
+    --paper: #F7F0E6;
+    --paper-dim: rgba(247,240,230,0.72);
+    --rose: #D4A0A8;
+    --rose-deep: #C4848E;
+    --gold: #D4B896;
+    --sage: #A8B89A;
+    --muted: rgba(247,240,230,0.55);
+    --line: rgba(247,240,230,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body.locked { overflow: hidden; height: 100dvh; }
+
+  /* ========== SPLASH / BIENVENIDA ========== */
+  #splash {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 32px;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+  }
+  #splash.hide {
+    opacity: 0; visibility: hidden; pointer-events: none;
+  }
+  #splash::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(212,160,168,0.12), transparent 55%),
+      radial-gradient(ellipse at 50% 80%, rgba(212,184,150,0.06), transparent 45%);
+    pointer-events: none;
+  }
+  .splash-inner { position: relative; z-index: 1; max-width: 320px; }
+  .splash-flower {
+    font-size: 28px; color: var(--rose);
+    opacity: 0.7; margin-bottom: 28px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  .splash-label {
+    font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; font-weight: 500;
+  }
+  .splash-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-size: clamp(42px, 12vw, 56px);
+    line-height: 1.05; margin-bottom: 8px;
+  }
+  .splash-title em {
+    font-style: italic; color: var(--rose); display: block;
+    font-size: 0.55em; margin: 6px 0;
+  }
+  .splash-sub {
+    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin: 24px 0 40px;
+  }
+  .splash-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border: 1px solid var(--rose);
+    background: transparent;
+    color: var(--paper);
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .splash-btn:hover, .splash-btn:active {
+    background: var(--rose); color: var(--bg);
+  }
+  .splash-hint {
+    margin-top: 28px; font-size: 11px; color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.08); }
+  }
+
+  /* ========== MAIN CONTENT ========== */
+  #main { opacity: 0; transition: opacity 0.5s ease 0.2s; }
+  #main.show { opacity: 1; }
+
+  .panel {
+    min-height: 100dvh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 60px 28px 80px;
+    position: relative;
+  }
+  .panel + .panel { border-top: 1px solid var(--line); }
+
+  .wrap { width: 100%; max-width: 400px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-size: clamp(44px, 13vw, 60px);
+    line-height: 1.05;
+  }
+  h1 .amp {
+    display: block;
+    font-style: italic; font-size: 0.5em;
+    color: var(--rose); margin: 4px 0;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-size: clamp(28px, 8vw, 36px);
+    margin-bottom: 12px;
+  }
+  .lead {
+    font-size: 15px; color: var(--muted); line-height: 1.65;
+    max-width: 300px; margin: 0 auto 28px;
+  }
+
+  /* HERO panel bg */
+  .panel-hero {
+    background:
+      radial-gradient(ellipse at 50% 20%, rgba(212,160,168,0.1), transparent 50%),
+      var(--bg);
+  }
+  .seal {
+    width: 64px; height: 64px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 22px; color: var(--gold);
+    margin: 0 auto 28px;
+  }
+  .date-line {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin: 24px 0 32px;
+  }
+
+  /* Countdown */
+  .countdown {
+    display: flex; gap: 10px; justify-content: center; margin-bottom: 36px;
+  }
+  .countdown > div {
+    min-width: 64px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 14px 8px 12px;
+  }
+  .countdown .n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; color: var(--rose); display: block; line-height: 1;
+  }
+  .countdown .l {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-top: 6px;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 16px 32px;
+    background: var(--rose-deep); color: var(--bg);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 600; text-decoration: none; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 28px rgba(196,132,142,0.25);
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: none;
+  }
+  .btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+  .btn-full { width: 100%; }
+
+  /* Info cards */
+  .info-block {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 28px 24px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .info-block .icon {
+    font-size: 20px; margin-bottom: 12px; opacity: 0.8;
+  }
+  .info-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; margin-bottom: 8px;
+    color: var(--gold);
+  }
+  .info-block p {
+    font-size: 14px; color: var(--muted); line-height: 1.6;
+  }
+  .info-block p strong {
+    color: var(--paper); font-weight: 500;
+  }
+  .info-block a {
+    display: inline-block; margin-top: 14px;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--rose); text-decoration: none;
+    border-bottom: 1px solid rgba(212,160,168,0.35); padding-bottom: 2px;
+  }
+
+  .pills {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px;
+  }
+  .pills span {
+    font-size: 11px; letter-spacing: 0.06em;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  /* RSVP form */
+  .form-box {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 28px 22px;
+    text-align: left;
+  }
+  .form-box label {
+    display: block;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  .form-box input,
+  .form-box select,
+  .form-box textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    color: var(--paper);
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    padding: 10px 0 12px;
+    margin-bottom: 20px;
+    outline: none;
+    border-radius: 0;
+    appearance: none;
+  }
+  .form-box select {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23D4A0A8'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right center;
+    padding-right: 24px;
+  }
+  .form-box select option { background: var(--bg-soft); color: var(--paper); }
+  .form-box input:focus,
+  .form-box select:focus,
+  .form-box textarea:focus { border-bottom-color: var(--rose); }
+  .form-box textarea { resize: none; min-height: 64px; }
+
+  .success-box {
+    display: none;
+    text-align: center;
+    padding: 40px 24px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+  }
+  .success-box.show { display: block; }
+  .success-box .heart { font-size: 36px; margin-bottom: 14px; }
+  .success-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; margin-bottom: 8px;
+  }
+  .success-box p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+  /* Gift */
+  .alias-box {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 28px 24px;
+  }
+  .alias-box .label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px;
+  }
+  .alias-box .alias {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; color: var(--rose); margin-bottom: 16px;
+    word-break: break-all;
+  }
+  .copy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 12px 24px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--paper);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .copy-btn:hover, .copy-btn.ok {
+    border-color: var(--sage); color: var(--sage);
+  }
+
+  /* Gallery placeholders */
+  .gallery {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .gallery .ph {
+    aspect-ratio: 1;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--muted);
+  }
+  .gallery .ph.wide { grid-column: span 2; aspect-ratio: 2.1 / 1; }
+
+  /* Closing */
+  .panel-close {
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(212,160,168,0.1), transparent 50%),
+      var(--bg);
+  }
+  .close-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.35;
+    color: var(--paper);
+    max-width: 300px;
+    margin: 0 auto 12px;
+  }
+  .close-names {
+    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-top: 28px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 28px 20px 100px;
+    border-top: 1px solid var(--line);
+  }
+  footer .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: var(--muted);
+  }
+  footer .brand em { font-style: italic; color: var(--rose); }
+  footer p { font-size: 10px; color: rgba(247,240,230,0.3); margin-top: 8px; letter-spacing: 0.06em; }
+
+  /* Music */
+  .music-wrap {
+    position: fixed; top: 18px; right: 18px; z-index: 50;
+    display: none; align-items: center; gap: 10px;
+  }
+  .music-wrap.visible { display: flex; }
+  .music-now {
+    max-width: 0; overflow: hidden; opacity: 0;
+    background: rgba(26,18,16,0.82);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--line);
+    padding: 8px 0;
+    font-size: 10px; letter-spacing: 0.04em;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: max-width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  .music-wrap.on .music-now {
+    max-width: 180px; opacity: 1; padding: 8px 12px;
+  }
+  .music-now strong {
+    display: block; color: var(--paper); font-weight: 500;
+    font-size: 11px; letter-spacing: 0.02em;
+    max-width: 150px; overflow: hidden; text-overflow: ellipsis;
+  }
+  .music-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(26,18,16,0.75);
+    backdrop-filter: blur(8px);
+    color: var(--gold); font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.25s;
+    flex-shrink: 0;
+  }
+  .music-wrap.on .music-btn {
+    border-color: var(--rose); color: var(--bg); background: var(--rose);
+  }
+  .music-btn.spin::before {
+    content: '';
+  }
+  @keyframes eq {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .music-wrap.on .music-btn { animation: eq 1.2s ease-in-out infinite; }
+
+  /* Bottom share bar */
+  .share-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+    background: rgba(26,18,16,0.92);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    display: none; gap: 10px; justify-content: center;
+  }
+  .share-bar.visible { display: flex; }
+  .share-bar a, .share-bar button {
+    flex: 1; max-width: 170px; height: 44px;
+    border-radius: 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    border: none; cursor: pointer; text-decoration: none;
+  }
+  .share-bar .wa { background: #25D366; color: #fff; }
+  .share-bar .copy { background: var(--paper); color: var(--bg); }
+
+  /* Scroll cue on hero */
+  .scroll-cue {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted);
+    animation: bob 2.2s ease-in-out infinite;
+  }
+  .scroll-cue span { display: block; margin-top: 6px; font-size: 14px; }
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+    50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- ========== BIENVENIDA ========== -->
+<div id="splash">
+  <div class="splash-inner">
+    <div class="splash-flower">❀</div>
+    <p class="splash-label">Bienvenida</p>
+    <h1 class="splash-title">
+      Priscila
+      <em>&amp;</em>
+      Germán
+    </h1>
+    <p class="splash-sub">27 · 08 · 2027</p>
+    <button type="button" class="splash-btn" id="enterBtn">
+      Abrir invitación
+    </button>
+    <p class="splash-hint">Tocá para entrar</p>
+  </div>
+</div>
+
+<!-- Music (appears after enter). Place your licensed MP3 as musica.mp3 in this folder. -->
+<audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
+  <source src="musica.mp3" type="audio/mpeg">
+  <source src="./musica.mp3" type="audio/mpeg">
+</audio>
+<div id="musicToast" style="display:none;position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:80;background:rgba(26,18,16,0.95);border:1px solid rgba(212,160,168,0.4);color:#F7F0E6;padding:12px 18px;font-size:12px;letter-spacing:0.04em;text-align:center;max-width:300px;line-height:1.45;"></div>
+<div class="music-wrap" id="musicWrap">
+  <div class="music-now" id="musicNow">
+    <strong>Debí tirar más fotos</strong>
+    Bad Bunny
+  </div>
+  <button type="button" class="music-btn" id="musicBtn" aria-label="Música">♪</button>
+</div>
+
+<!-- ========== CONTENIDO ========== -->
+<div id="main">
+
+  <!-- HERO -->
+  <section class="panel panel-hero" id="hero">
+    <div class="wrap">
+      <div class="seal">P&amp;G</div>
+      <p class="eyebrow">Con mucho amor</p>
+      <h1>
+        Priscila
+        <span class="amp">&amp;</span>
+        Germán
+      </h1>
+      <p class="date-line">Viernes 27 de agosto · 2027</p>
+
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div><span class="n" id="cd-d">—</span><span class="l">Días</span></div>
+        <div><span class="n" id="cd-h">—</span><span class="l">Horas</span></div>
+        <div><span class="n" id="cd-m">—</span><span class="l">Min</span></div>
+        <div><span class="n" id="cd-s">—</span><span class="l">Seg</span></div>
+      </div>
+
+      <a class="btn" href="#cuando">Ver detalles</a>
+    </div>
+    <div class="scroll-cue">Deslizá<span>↓</span></div>
+  </section>
+
+  <!-- CUÁNDO / DÓNDE -->
+  <section class="panel" id="cuando">
+    <div class="wrap">
+      <p class="eyebrow">El gran día</p>
+      <h2>¿Cuándo & dónde?</h2>
+      <p class="lead">Celebramos nuestro amor rodeados de las personas que más queremos.</p>
+
+      <div class="info-block">
+        <div class="icon">◈</div>
+        <h3>¿Cuándo?</h3>
+        <p>
+          <strong>Viernes 27 de agosto de 2027</strong><br>
+          19:00 hs
+        </p>
+      </div>
+
+      <div class="info-block">
+        <div class="icon">◎</div>
+        <h3>¿Dónde?</h3>
+        <p>
+          <strong>Salón de los Silos</strong><br>
+          Santa Fe
+        </p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+de+los+Silos+Santa+Fe" target="_blank" rel="noopener">
+          Cómo llegar →
+        </a>
+      </div>
+
+      <div class="info-block">
+        <div class="icon">◇</div>
+        <h3>Dress code</h3>
+        <p><strong>Elegante garden party</strong></p>
+        <div class="pills">
+          <span>Tonos pastel</span>
+          <span>Flores bienvenidas</span>
+          <span>Comfort chic</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="panel" id="rsvp">
+    <div class="wrap">
+      <p class="eyebrow">Tu respuesta</p>
+      <h2>Confirmá tu asistencia</h2>
+      <p class="lead">Por favor respondé antes del <strong style="color:var(--paper)">1 de agosto de 2027</strong>.</p>
+
+      <form class="form-box" id="rsvpForm">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre y apellido" required autocomplete="name">
+
+        <label for="asistencia">¿Nos acompañás?</label>
+        <select id="asistencia" name="asistencia" required>
+          <option value="">Seleccionar…</option>
+          <option value="si">¡Sí, allí estaré!</option>
+          <option value="no">Lamentablemente no puedo</option>
+        </select>
+
+        <label for="menu">Menú / Preferencia</label>
+        <select id="menu" name="menu">
+          <option value="clasico">Clásico</option>
+          <option value="vegetariano">Vegetariano</option>
+          <option value="vegano">Vegano</option>
+          <option value="celiaco">Sin TACC</option>
+        </select>
+
+        <label for="acomp">Acompañantes</label>
+        <select id="acomp" name="acomp">
+          <option value="0">Solo yo</option>
+          <option value="1">+1 acompañante</option>
+          <option value="2">+2 acompañantes</option>
+        </select>
+
+        <label for="mensaje">Mensaje para los novios</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Un deseo… (opcional)"></textarea>
+
+        <button type="submit" class="btn btn-full">Enviar confirmación</button>
+      </form>
+
+      <div class="success-box" id="successBox">
+        <div class="heart">💕</div>
+        <h3>¡Gracias!</h3>
+        <p>Recibimos tu confirmación.<br>Priscila y Germán están felices de saberlo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGALOS -->
+  <section class="panel" id="regalos">
+    <div class="wrap">
+      <p class="eyebrow">Con cariño</p>
+      <h2>Mesa de regalos</h2>
+      <p class="lead">Tu presencia es el mejor regalo. Si deseás obsequiarnos algo más:</p>
+
+      <div class="alias-box">
+        <p class="label">Alias</p>
+        <p class="alias" id="alias">priscila.german.2027</p>
+        <button type="button" class="copy-btn" id="copyAliasBtn">Copiar alias</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="panel" id="fotos">
+    <div class="wrap">
+      <p class="eyebrow">Momentos</p>
+      <h2>Nuestra historia</h2>
+      <p class="lead">Algunos instantes que nos trajeron hasta acá.</p>
+      <div class="gallery">
+        <div class="ph">❀</div>
+        <div class="ph">❀</div>
+        <div class="ph wide">Priscila &amp; Germán</div>
+        <div class="ph">❀</div>
+        <div class="ph">❀</div>
+      </div>
+      <p style="margin-top:16px;font-size:12px;color:var(--muted);">
+        (Acá van las fotos reales de la pareja)
+      </p>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="panel panel-close" id="cierre">
+    <div class="wrap">
+      <div class="splash-flower" style="font-size:24px;margin-bottom:20px;">❀</div>
+      <p class="close-quote">
+        “Que comience la magia…”
+      </p>
+      <p class="lead" style="margin-bottom:0;">
+        Con alegría y el corazón abierto,<br>los esperamos para celebrar juntos.
+      </p>
+      <p class="close-names">Priscila &amp; Germán</p>
+      <p style="margin-top:8px;font-size:12px;letter-spacing:0.16em;color:var(--muted);">27 · 08 · 2027</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">Te <em>invito</em></div>
+    <p>Invitación digital · Priscila &amp; Germán</p>
+  </footer>
+
+</div>
+
+<!-- Share bar -->
+<div class="share-bar" id="shareBar">
+  <a class="wa" id="shareWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <button type="button" class="copy" id="copyLinkBtn">Copiar link</button>
+</div>
+
+<script>
+(function () {
+  const splash = document.getElementById('splash');
+  const main = document.getElementById('main');
+  const enterBtn = document.getElementById('enterBtn');
+  const musicBtn = document.getElementById('musicBtn');
+  const musicWrap = document.getElementById('musicWrap');
+  const shareBar = document.getElementById('shareBar');
+  const body = document.body;
+  const audio = document.getElementById('bgMusic');
+  const toast = document.getElementById('musicToast');
+  let playing = false;
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () { toast.style.display = 'none'; }, 5000);
+  }
+
+  function setPlaying(on) {
+    playing = !!on;
+    musicWrap.classList.toggle('on', playing);
+    musicBtn.textContent = playing ? '❚❚' : '♪';
+  }
+
+  // IMPORTANT: play() must run directly from the user tap (not after await)
+  function playMusic() {
+    try {
+      audio.volume = 0.85;
+      audio.muted = false;
+      var p = audio.play();
+      if (p && typeof p.then === 'function') {
+        p.then(function () { setPlaying(true); }).catch(function (err) {
+          setPlaying(false);
+          console.warn('play failed', err);
+          if (audio.error) {
+            showToast('No se encontró musica.mp3. Abrí el index.html DENTRO de la carpeta del ZIP (tiene que estar al lado del mp3).');
+          } else {
+            showToast('Tocá el botón ♪ para activar la música');
+          }
+        });
+      } else {
+        setPlaying(!audio.paused);
+      }
+    } catch (err) {
+      setPlaying(false);
+      showToast('Tocá el botón ♪ para activar la música');
+    }
+  }
+
+  function enter() {
+    // Start music first — still inside the click gesture
+    playMusic();
+
+    splash.classList.add('hide');
+    body.classList.remove('locked');
+    main.classList.add('show');
+    musicWrap.classList.add('visible');
+    setTimeout(function () { shareBar.classList.add('visible'); }, 1000);
+  }
+  enterBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    enter();
+  });
+
+  // Tap anywhere on splash also enters + plays
+  splash.addEventListener('click', function () {
+    if (!splash.classList.contains('hide')) enter();
+  });
+
+  // ----- Countdown: 27 Aug 2027 19:00 ART -----
+  var target = new Date('2027-08-27T19:00:00-03:00').getTime();
+  function tick() {
+    var diff = Math.max(0, target - Date.now());
+    document.getElementById('cd-d').textContent = Math.floor(diff / 86400000);
+    document.getElementById('cd-h').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+    document.getElementById('cd-m').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    document.getElementById('cd-s').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ----- Music toggle -----
+  musicBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (playing || !audio.paused) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      playMusic();
+    }
+  });
+
+  audio.addEventListener('play', function () { setPlaying(true); });
+  audio.addEventListener('pause', function () { setPlaying(false); });
+  audio.addEventListener('error', function () {
+    showToast('No se pudo cargar musica.mp3 (tiene que estar en la misma carpeta que el HTML)');
+  });
+
+  try { audio.load(); } catch (e) {}
+
+  // ----- RSVP -----
+  document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('successBox').classList.add('show');
+    // Production: send to backend / Google Sheet / WhatsApp of the couple
+  });
+
+  // ----- Copy alias -----
+  document.getElementById('copyAliasBtn').addEventListener('click', function () {
+    const alias = document.getElementById('alias').textContent.trim();
+    navigator.clipboard.writeText(alias).then(() => {
+      this.textContent = '¡Copiado!';
+      this.classList.add('ok');
+      setTimeout(() => {
+        this.textContent = 'Copiar alias';
+        this.classList.remove('ok');
+      }, 2000);
+    });
+  });
+
+  // ----- Share -----
+  const pageUrl = window.location.href;
+  const shareText = encodeURIComponent(
+    'Priscila & Germán se casan 💍\n\n' +
+    'Viernes 27 de agosto de 2027\n' +
+    'Salón de los Silos · Santa Fe\n\n' +
+    'Abrí la invitación:\n' + pageUrl
+  );
+  document.getElementById('shareWa').href = 'https://wa.me/?text=' + shareText;
+
+  document.getElementById('copyLinkBtn').addEventListener('click', function () {
+    navigator.clipboard.writeText(pageUrl).then(() => {
+      const t = this.textContent;
+      this.textContent = '¡Copiado!';
+      setTimeout(() => { this.textContent = t; }, 2000);
+    });
+  });
+})();
+</script>
+</body>
+</html>
