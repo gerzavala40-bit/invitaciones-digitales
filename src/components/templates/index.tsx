@@ -8,6 +8,7 @@ import JuliaXV from "./JuliaXV";
 import NocheDorada from "./NocheDorada";
 import CamilaGlam from "./CamilaGlam";
 import BautismoTierno from "./BautismoTierno";
+import GalaCorporativa from "./GalaCorporativa";
 
 export const TEMPLATES = {
   "elegant-dark": { name: "Elegante Oscuro", component: ElegantDark, description: "Boda oscura con dorado, pantalla de bienvenida" },
