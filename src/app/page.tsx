@@ -602,7 +602,7 @@ export default function LandingPage() {
               <ul className="space-y-3 text-[15px] text-ink-300 mb-8 flex-1">
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Todo lo del Premium</li>
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Personalizada + trivia</li>
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Álbum QR compartido</li>
+                <li className="flex gap-2"><span className="text-sage-400">✓</span> Social Wall (Muro Instagram)</li>
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Fotos ilimitadas + soporte</li>
               </ul>
               <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full">Elegir Plus</button>
