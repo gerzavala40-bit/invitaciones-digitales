@@ -4,6 +4,7 @@ import FloralLight from "./FloralLight";
 import MinimalWhite from "./MinimalWhite";
 import RusticKraft from "./RusticKraft";
 import ModernGradient from "./ModernGradient";
+import JuliaXV from "./JuliaXV";
 
 export const TEMPLATES = {
   "elegant-dark": { name: "Elegante Oscuro", component: ElegantDark, description: "Fondo oscuro, dorado, glassmorphism" },
@@ -11,6 +12,7 @@ export const TEMPLATES = {
   "minimal-white": { name: "Minimalista", component: MinimalWhite, description: "Blanco y negro, ultra limpio" },
   "rustic-kraft": { name: "Rústico", component: RusticKraft, description: "Textura papel kraft, tonos madera" },
   "modern-gradient": { name: "Moderno Gradiente", component: ModernGradient, description: "Gradiente violeta/rosa, bold" },
+  "julia-xv": { name: "Julia XV", component: JuliaXV, description: "15 Años, fondo claro, tipografía Montserrat, limpio" },
 } as const;
 
 export type TemplateId = keyof typeof TEMPLATES;
