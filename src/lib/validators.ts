@@ -25,7 +25,7 @@ export const createEventSchema = z.object({
   ceremonyAddress: z.string().max(300).optional().nullable(),
   ceremonyLatLng: z.string().max(50).optional().nullable(),
   ceremonyTime: z.string().max(10).optional().nullable(),
-  templateId: z.enum(["elegant-dark", "floral-light", "minimal-white", "rustic-kraft", "modern-gradient"]).default("elegant-dark"),
+  templateId: z.enum(["elegant-dark", "floral-light", "minimal-white", "rustic-kraft", "modern-gradient", "julia-xv"]).default("elegant-dark"),
   primaryColor: z.string().max(20).default("#d4af37"),
   musicUrl: z.string().url().max(500).optional().nullable(),
   phrase: z.string().max(500).optional().nullable(),
