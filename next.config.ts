@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const securityHeaders = [
-  // Prevenir clickjacking
-  { key: "X-Frame-Options", value: "DENY" },
+  // Permitir iframes del mismo origen para las demos
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
   // Prevenir MIME type sniffing
   { key: "X-Content-Type-Options", value: "nosniff" },
   // Controlar referrer
@@ -28,7 +28,7 @@ const securityHeaders = [
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self'",
     ].join("; "),
   },
 ];
