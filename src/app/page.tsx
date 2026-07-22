@@ -3,6 +3,35 @@
 import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 
+
+function PhoneMockup({ title, url, desc, selected, onSelect, onPreview }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void }) {
+  return (
+    <div className={'relative flex flex-col items-center group cursor-pointer transition-transform duration-300 ' + (selected ? 'scale-100' : 'hover:scale-[1.02]')} onClick={onSelect}>
+      <div className={'relative w-[260px] h-[520px] bg-black rounded-[38px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] p-[6px] border-4 ' + (selected ? 'border-terracotta-500 ring-4 ring-terracotta-100' : 'border-ink-200')}>
+        {/* Dynamic Island */}
+        <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[85px] h-[22px] bg-black rounded-b-2xl z-20 flex justify-center pt-1">
+          <div className="w-12 h-1.5 rounded-full bg-white/10"></div>
+        </div>
+        {/* Screen */}
+        <div className="relative w-full h-full bg-ink-50 rounded-[30px] overflow-hidden isolate">
+          <iframe src={url + '?preview=1'} className="w-[375px] h-[812px] border-none pointer-events-none origin-top-left" style={{ transform: 'scale(0.661)' }} tabIndex={-1} loading="lazy" />
+          {/* Glass overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 pointer-events-none"></div>
+        </div>
+        <div className={'absolute -right-4 -top-4 w-9 h-9 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-xl font-bold shadow-lg transition-opacity ' + (selected ? 'opacity-100' : 'opacity-0')}>✓</div>
+      </div>
+      <div className="mt-6 text-center px-2 w-full max-w-[260px]">
+        <h3 className="font-display text-xl text-ink-900">{title}</h3>
+        <p className="text-sm text-ink-400 mt-1">{desc}</p>
+        <div className="mt-4 flex gap-2">
+          <button type="button" onClick={(e) => { e.stopPropagation(); onPreview(); }} className="flex-1 flex justify-center items-center h-10 rounded-full text-[11px] font-semibold tracking-widest uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</button>
+          <button type="button" className="flex-1 h-10 rounded-full text-[11px] font-semibold tracking-widest uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LandingPage() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [selectedStyle, setSelectedStyle] = useState("");
@@ -246,143 +275,17 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="styles-grid">
-            
-            {/* Demo 1 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Elegante Oscuro" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-boda-noche-dorada.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-ink-950 to-ink-800 flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-gold-400/90">Elegante Oscuro</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Elegante Oscuro" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="font-display text-lg text-ink-900">Elegante Oscuro</h3>
-                    <p className="text-sm text-ink-400 mt-0.5">Bodas de noche · Sofisticado</p>
-                  </div>
-                </div>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-boda-noche-dorada.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("Elegante Oscuro", "Boda")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">
-                    Quiero este
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Demo 2 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Floral Claro" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-boda-floral-claro.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-amber-100 to-stone-200 flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-ink-700">Floral Claro</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Floral Claro" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <h3 className="font-display text-lg text-ink-900">Floral Claro</h3>
-                <p className="text-sm text-ink-400 mt-0.5">Bodas jardín · Romántico</p>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-boda-floral-claro.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("Floral Claro", "Boda")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Demo 3 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Minimalista" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-cumple-minimalista.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-sage-500 to-sage-700 flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-white/90">Minimalista</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Minimalista" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <h3 className="font-display text-lg text-ink-900">Minimalista</h3>
-                <p className="text-sm text-ink-400 mt-0.5">Cumpleaños · Moderno</p>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-cumple-minimalista.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("Minimalista", "Cumpleaños")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Demo 4 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "15 Años Glam" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-15-camila-glam.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-pink-600 to-fuchsia-800 flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-white/90">15 Años Glam</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "15 Años Glam" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <h3 className="font-display text-lg text-ink-900">15 Años Glam</h3>
-                <p className="text-sm text-ink-400 mt-0.5">Quince · Fucsia y dorado</p>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-15-camila-glam.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("15 Años Glam", "15 Años")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Demo 5 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Bautismo Tierno" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-bautismo-benicio.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-sky-200 to-blue-300 flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-ink-700">Bautismo Tierno</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Bautismo Tierno" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <h3 className="font-display text-lg text-ink-900">Bautismo Tierno</h3>
-                <p className="text-sm text-ink-400 mt-0.5">Bautismos · Celeste suave</p>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-bautismo-benicio.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Demo 6 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Corporativo" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-corporativo-gala.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-gradient-to-br from-slate-800 to-blue-900 flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-blue-200">Corporativo</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Corporativo" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <h3 className="font-display text-lg text-ink-900">Corporativo</h3>
-                <p className="text-sm text-ink-400 mt-0.5">Eventos de empresa</p>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-corporativo-gala.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("Corporativo", "Corporativo")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Demo 7 */}
-            <div className={`style-card group bg-white rounded-2xl overflow-hidden border-2 shadow-soft hover:shadow-card transition duration-300 cursor-pointer ${selectedStyle === "Boda Boho / Canva" ? "selected border-terracotta-500 ring-2 shadow-[0_0_0_2px_#C45C4A]" : "border-ink-100"}`}>
-              <a href="/demo-canva-boho.html" target="_blank" rel="noopener noreferrer" className="block">
-                <div className="h-44 sm:h-48 bg-[#F4F2EE] flex items-center justify-center relative">
-                  <span className="font-display italic text-2xl text-[#2C2A28]">Boda Boho / Canva</span>
-                  <div className={`absolute top-3 right-3 check-badge transition duration-200 w-7 h-7 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-sm font-bold ${selectedStyle === "Boda Boho / Canva" ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>✓</div>
-                </div>
-              </a>
-              <div className="p-5">
-                <h3 className="font-display text-lg text-ink-900">Boda Boho / Canva</h3>
-                <p className="text-sm text-ink-400 mt-0.5">Estilo Canva · Tonos crema</p>
-                <div className="mt-4 flex gap-2">
-                  <a href="/demo-canva-boho.html" target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center h-10 rounded-full text-xs font-semibold tracking-wide uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</a>
-                  <button type="button" onClick={() => handleSelectStyle("Boda Boho / Canva", "Boda")} className="flex-1 h-10 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
-                </div>
-              </div>
-            </div>
-
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12 justify-items-center" id="styles-grid">
+            <PhoneMockup title="Elegante Oscuro" url="/demo-boda-noche-dorada.html" desc="Bodas de noche · Sofisticado" selected={selectedStyle === "Elegante Oscuro"} onSelect={() => handleSelectStyle("Elegante Oscuro", "Boda")} onPreview={() => window.open("/demo-boda-noche-dorada.html", "_blank")} />
+            <PhoneMockup title="Floral Claro" url="/demo-boda-floral-claro.html" desc="Bodas jardín · Romántico" selected={selectedStyle === "Floral Claro"} onSelect={() => handleSelectStyle("Floral Claro", "Boda")} onPreview={() => window.open("/demo-boda-floral-claro.html", "_blank")} />
+            <PhoneMockup title="Minimalista" url="/demo-cumple-minimalista.html" desc="Cumpleaños · Moderno" selected={selectedStyle === "Minimalista"} onSelect={() => handleSelectStyle("Minimalista", "Cumpleaños")} onPreview={() => window.open("/demo-cumple-minimalista.html", "_blank")} />
+            <PhoneMockup title="15 Años Glam" url="/demo-15-camila-glam.html" desc="Quince · Fucsia y dorado" selected={selectedStyle === "15 Años Glam"} onSelect={() => handleSelectStyle("15 Años Glam", "15 Años")} onPreview={() => window.open("/demo-15-camila-glam.html", "_blank")} />
+            <PhoneMockup title="Bautismo Tierno" url="/demo-bautismo-benicio.html" desc="Bautismos · Celeste suave" selected={selectedStyle === "Bautismo Tierno"} onSelect={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} onPreview={() => window.open("/demo-bautismo-benicio.html", "_blank")} />
+            <PhoneMockup title="Corporativo" url="/demo-corporativo-gala.html" desc="Eventos de empresa" selected={selectedStyle === "Corporativo"} onSelect={() => handleSelectStyle("Corporativo", "Corporativo")} onPreview={() => window.open("/demo-corporativo-gala.html", "_blank")} />
+            <PhoneMockup title="Boda Boho / Canva" url="/demo-canva-boho.html" desc="Estilo Canva · Tonos crema" selected={selectedStyle === "Boda Boho / Canva"} onSelect={() => handleSelectStyle("Boda Boho / Canva", "Boda")} onPreview={() => window.open("/demo-canva-boho.html", "_blank")} />
           </div>
 
-          <p className="text-center mt-10 text-ink-500 text-sm">
+          <p className="text-center mt-14 text-ink-500 text-sm">
             ¿No encontrás el estilo ideal? <button type="button" onClick={handleSelectCustom} className="text-terracotta-600 font-semibold hover:underline">Contanos qué buscás</button> y lo diseñamos a medida.
           </p>
         </div>
