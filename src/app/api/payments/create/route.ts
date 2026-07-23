@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import { createPaymentSchema } from "@/lib/validators";
 
-const PLANS = {
+const PLANS: Record<string, { title: string, price: number }> = {
   BASICO: { title: "Plan Básico - Invitación Digital", price: 25000 },
   PREMIUM: { title: "Plan Premium - Invitación Digital", price: 45000 },
   PREMIUM_PLUS: { title: "Plan Premium Plus - Invitación Digital", price: 65000 },
-  EXPRESS: { title: "Add-on Express 24hs", price: 8000 },
 };
 
 export async function POST(request: Request) {

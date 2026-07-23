@@ -2,6 +2,7 @@
 
 import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
+import OnboardingQuiz from "@/components/OnboardingQuiz";
 
 
 function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customName }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void, customName: string }) {
@@ -32,11 +33,84 @@ function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customNa
   );
 }
 
+// --- Urgency Timer Component ---
+function UrgencyTimer() {
+  const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 mins in seconds
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    const storedStart = localStorage.getItem("teinvito_timer_start");
+    
+    if (storedStart) {
+      const elapsed = Math.floor((Date.now() - parseInt(storedStart)) / 1000);
+      const remaining = (15 * 60) - elapsed;
+      if (remaining > 0) {
+        setTimeLeft(remaining);
+      } else {
+        setTimeLeft(0);
+      }
+    } else {
+      localStorage.setItem("teinvito_timer_start", Date.now().toString());
+    }
+
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!isClient || timeLeft === 0) return null;
+
+  const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+  const s = (timeLeft % 60).toString().padStart(2, '0');
+
+  return (
+    <div className="bg-terracotta-600 text-white p-4 rounded-2xl mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg border border-terracotta-500 animate-pulse-soft">
+      <div className="flex items-center gap-3 text-center sm:text-left">
+        <span className="text-3xl">🎁</span>
+        <div>
+          <p className="font-bold text-lg leading-tight">Oferta Relámpago</p>
+          <p className="text-terracotta-100 text-sm">Contratando hoy, te bonificamos la Party Cam en cualquier plan.</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 bg-ink-950/40 px-4 py-2 rounded-xl font-display text-2xl tracking-widest text-gold-400 shrink-0">
+        <svg className="w-5 h-5 text-gold-400/80 -ml-1 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        {m}:{s}
+      </div>
+    </div>
+  );
+}
+
 export default function LandingPage() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [selectedStyle, setSelectedStyle] = useState("");
   const [selectedEvent, setSelectedEvent] = useState("");
   const [customName, setCustomName] = useState("");
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState("");
+
+  const handleMercadoPagoCheckout = async (planId: string) => {
+    setIsProcessingPayment(planId);
+    try {
+      const response = await fetch("/api/payments/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ planId, buyerEmail: "cliente@teinvitoapp.com.ar", buyerName: customName || "Cliente Web" }),
+      });
+      const data = await response.json();
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        alert("En este momento los pagos automáticos están en mantenimiento. Por favor elegí la opción de Pagar por Transferencia (WhatsApp).");
+      }
+    } catch (e) {
+      alert("Error de conexión al iniciar pago.");
+    } finally {
+      setIsProcessingPayment("");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -168,11 +242,11 @@ export default function LandingPage() {
               </p>
 
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
-                <Link href="#estilos" className="w-full sm:w-auto inline-flex items-center justify-center h-13 px-8 rounded-full text-base font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-glow transition group">
-                  Ver estilos y elegir
+                <button type="button" onClick={() => setIsQuizOpen(true)} className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-glow transition group">
+                  Empezar mi diseño
                   <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                </Link>
-                <Link href="#como-funciona" className="w-full sm:w-auto inline-flex items-center justify-center h-13 px-8 rounded-full text-base font-semibold text-ink-800 bg-white border border-ink-200 hover:border-ink-400 hover:bg-ink-50 transition">
+                </button>
+                <Link href="#como-funciona" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-800 bg-white border border-ink-200 hover:border-ink-400 hover:bg-ink-50 transition">
                   Cómo funciona
                 </Link>
               </div>
@@ -580,6 +654,9 @@ export default function LandingPage() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-400 mb-3">Planes</p>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">Elegí el nivel</h2>
           </div>
+          
+          <UrgencyTimer />
+
           <div className="text-center mb-12 flex flex-col items-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sage-500/20 text-sage-300 text-sm font-semibold border border-sage-500/30 mb-4">
               30% OFF abonando por transferencia
@@ -600,7 +677,14 @@ export default function LandingPage() {
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Regalos + dress code</li>
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Envíos ilimitados</li>
               </ul>
-              <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Básico]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full">Elegir Básico</button>
+              <div className="flex flex-col gap-2 mt-auto">
+                <button type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full disabled:opacity-50">
+                  {isProcessingPayment === "BASICO" ? "Procesando..." : "Comprar con MercadoPago"}
+                </button>
+                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Básico]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-white transition py-2 text-center w-full underline">
+                  Pagar luego por transferencia (-30%)
+                </button>
+              </div>
             </div>
 
             <div className="bg-ink-800 rounded-3xl p-7 border-2 border-terracotta-500 shadow-glow flex flex-col relative">
@@ -617,7 +701,14 @@ export default function LandingPage() {
                 <li className="flex gap-2"><span className="text-gold-400">✓</span> Música + Galería (8 fotos)</li>
                 <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Party Cam (Gratis)</li>
               </ul>
-              <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Premium]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full bg-terracotta-600 text-white font-semibold text-sm hover:bg-terracotta-500 transition w-full">Elegir Premium</button>
+              <div className="flex flex-col gap-2 mt-auto">
+                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="block text-center h-12 rounded-full bg-terracotta-600 text-white font-semibold text-sm hover:bg-terracotta-500 transition w-full shadow-glow disabled:opacity-50">
+                  {isProcessingPayment === "PREMIUM" ? "Procesando..." : "Comprar con MercadoPago"}
+                </button>
+                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Premium]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-300 hover:text-white transition py-2 text-center w-full underline">
+                  Pagar luego por transferencia (-30%)
+                </button>
+              </div>
             </div>
 
             <div className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
@@ -630,7 +721,14 @@ export default function LandingPage() {
                 <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Tu propio dominio web (.com.ar)</li>
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Fotos ilimitadas + soporte</li>
               </ul>
-              <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full">Elegir Plus</button>
+              <div className="flex flex-col gap-2 mt-auto">
+                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full disabled:opacity-50">
+                  {isProcessingPayment === "PREMIUM_PLUS" ? "Procesando..." : "Comprar con MercadoPago"}
+                </button>
+                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-white transition py-2 text-center w-full underline">
+                  Pagar luego por transferencia (-30%)
+                </button>
+              </div>
             </div>
           </div>
           <p className="text-center mt-10 text-ink-400 text-sm">Seña 50% para iniciar</p>
@@ -772,6 +870,16 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      <OnboardingQuiz 
+        isOpen={isQuizOpen} 
+        onClose={() => setIsQuizOpen(false)} 
+        onComplete={(styleTitle) => {
+          setSelectedStyle(styleTitle);
+          setIsQuizOpen(false);
+          document.getElementById('estilos')?.scrollIntoView({ behavior: 'smooth' });
+        }} 
+      />
 
       {/* WhatsApp flotante */}
       <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación%20digital" target="_blank" rel="noopener noreferrer"

@@ -42,7 +42,7 @@ export type CreateEventInput = z.infer<typeof createEventSchema>;
 
 // ===== PAYMENT =====
 export const createPaymentSchema = z.object({
-  planId: z.enum(["BASICO", "PREMIUM", "PREMIUM_PLUS", "EXPRESS"]),
+  planId: z.enum(["BASICO", "PREMIUM", "PREMIUM_PLUS"]),
   buyerEmail: z.string().email().max(100).optional().default(""),
   buyerName: z.string().max(100).optional().default(""),
   buyerPhone: z.string().max(20).optional(),
