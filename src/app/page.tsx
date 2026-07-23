@@ -108,8 +108,13 @@ export default function LandingPage() {
   return (
     <div className="font-sans bg-ink-50 text-ink-900 antialiased min-h-screen">
       {/* ========== NAV ========== */}
+            {/* ========== TOP BANNER ========== */}
+      <div className="fixed top-0 inset-x-0 h-9 bg-terracotta-600 text-white z-[60] flex items-center justify-center text-[13px] font-medium tracking-wide shadow-sm">
+        🎁 30% OFF abonando por transferencia
+      </div>
+
       <nav
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed top-9 inset-x-0 z-50 transition-all duration-300 ${
           navScrolled ? "bg-ink-50/90 backdrop-blur-md shadow-soft border-b border-ink-100/50" : ""
         }`}
         id="navbar"
@@ -138,7 +143,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ========== HERO ========== */}
-      <header className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden">
+      <header className="relative pt-32 sm:pt-36 pb-16 sm:pb-24 overflow-hidden">
         <div className="absolute inset-0 grain pointer-events-none"></div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-terracotta-100/60 via-transparent to-transparent rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
 
