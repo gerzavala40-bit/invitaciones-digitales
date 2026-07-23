@@ -72,7 +72,7 @@ export default function UploadDemoPage() {
   return (
     <div className="min-h-screen bg-ink-50 p-6 flex flex-col items-center justify-center">
       <div className="w-full max-w-md bg-white rounded-[32px] p-6 sm:p-8 shadow-soft text-center border border-ink-100">
-        <h1 className="font-display text-2xl text-ink-900 tracking-tight mb-2">Muro Social</h1>
+        <h1 className="font-display text-2xl text-ink-900 tracking-tight mb-2">Party Cam</h1>
         <p className="text-sm text-ink-500 mb-8">Compartí tus fotos de la fiesta en la pantalla gigante.</p>
 
         {!preview ? (

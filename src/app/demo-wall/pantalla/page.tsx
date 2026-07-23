@@ -47,7 +47,7 @@ export default function DemoWallPantalla() {
           <h1 className="font-display text-4xl tracking-tight text-white mb-1">
             Boda de <span className="text-terracotta-500 italic">Juan & Ana</span>
           </h1>
-          <p className="text-ink-400 text-sm tracking-widest uppercase">Muro Social en Vivo</p>
+          <p className="text-ink-400 text-sm tracking-widest uppercase">Party Cam</p>
         </div>
         
         {/* Simulación del código QR para la demo */}

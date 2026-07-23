@@ -463,7 +463,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ========== MURO SOCIAL SPOTLIGHT ========== */}
+      {/* ========== Party Cam SPOTLIGHT ========== */}
       <section className="py-20 sm:py-28 bg-white border-y border-ink-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -476,7 +476,7 @@ export default function LandingPage() {
                 Nuevo Servicio Premium
               </span>
               <h2 className="font-display text-4xl sm:text-5xl text-ink-950 tracking-tight mb-6">
-                Muro Social en Vivo
+                Party Cam
               </h2>
               <p className="text-lg text-ink-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Llevá tu fiesta al siguiente nivel. Tus invitados escanean un QR en sus mesas, suben fotos desde sus celulares y aparecen <strong className="text-ink-900">al instante en la pantalla gigante</strong> del salón con animaciones increíbles.
@@ -605,7 +605,7 @@ export default function LandingPage() {
                 <li className="flex gap-2"><span className="text-gold-400">✓</span> RSVP propio + Excel</li>
                 <li className="flex gap-2"><span className="text-gold-400">✓</span> Música de fondo</li>
                 <li className="flex gap-2"><span className="text-gold-400">✓</span> Música + Galería (8 fotos)</li>
-                <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Muro Social en Vivo (Gratis)</li>
+                <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Party Cam (Gratis)</li>
               </ul>
               <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Premium]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full bg-terracotta-600 text-white font-semibold text-sm hover:bg-terracotta-500 transition w-full">Elegir Premium</button>
             </div>
@@ -617,7 +617,7 @@ export default function LandingPage() {
               <ul className="space-y-3 text-[15px] text-ink-300 mb-8 flex-1">
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Todo lo del Premium</li>
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Personalizada + trivia</li>
-                <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Muro Social en Vivo (Gratis)</li>
+                <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Party Cam (Gratis)</li>
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Fotos ilimitadas + soporte</li>
               </ul>
               <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full">Elegir Plus</button>
