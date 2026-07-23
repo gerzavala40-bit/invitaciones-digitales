@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 // Global cache for the demo to avoid needing a DB just for the prototype
 declare global {
@@ -14,6 +15,16 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
+    const ip = getClientIp(req as any);
+    const { success } = await rateLimit(`upload:${ip}`, { maxRequests: 10, windowMs: 60000 });
+    
+    if (!success) {
+      return NextResponse.json(
+        { error: "Demasiadas subidas. Esperá un minuto." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
     const { image, uploader } = body;
     

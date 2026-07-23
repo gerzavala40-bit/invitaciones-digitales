@@ -15,8 +15,14 @@ export function middleware(request: NextRequest) {
 
   // Verificar cookie de sesión
   const session = request.cookies.get("admin_session");
-  const secret = process.env.NEXTAUTH_SECRET || "dev-secret";
-  const expectedToken = btoa(secret).slice(0, 32);
+  const secret = process.env.NEXTAUTH_SECRET;
+  
+  if (!secret && process.env.NODE_ENV === "production") {
+    // Si no hay secreto en prod, bloquear TODO acceso a rutas seguras
+    return NextResponse.json({ error: "Falta configuración de seguridad" }, { status: 500 });
+  }
+
+  const expectedToken = secret ? btoa(secret).slice(0, 32) : btoa("dev-secret").slice(0, 32);
 
   if (!session || session.value !== expectedToken) {
     // Si es una API, devolver 401

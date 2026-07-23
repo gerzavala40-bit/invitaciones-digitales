@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   try {
     // Rate limit: máximo 5 RSVPs por IP cada 5 minutos
     const ip = getClientIp(request);
-    const { success } = rateLimit(`rsvp:${ip}`, { maxRequests: 5, windowMs: 300000 });
+    const { success } = await rateLimit(`rsvp:${ip}`, { maxRequests: 5, windowMs: 300000 });
     if (!success) {
       return NextResponse.json(
         { error: "Demasiadas solicitudes. Intentá en unos minutos." },

@@ -4,7 +4,15 @@ import bcrypt from "bcryptjs";
 const ADMIN_COOKIE = "admin_session";
 
 export function getSessionToken(): string {
-  const secret = process.env.NEXTAUTH_SECRET || "dev-secret";
+  const secret = process.env.NEXTAUTH_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("CRITICAL: NEXTAUTH_SECRET no está definido en producción");
+      // Generar un secreto aleatorio para que falle cualquier token forjado
+      return btoa(Math.random().toString()).slice(0, 32);
+    }
+    return btoa("dev-secret").slice(0, 32);
+  }
   return btoa(secret).slice(0, 32);
 }
 
@@ -44,10 +52,15 @@ export async function validateCredentials(
     return bcrypt.compare(password, adminPasswordHash);
   }
 
-  // Fallback temporal: comparación directa (MIGRAR A HASH ASAP)
-  const adminPassword = process.env.ADMIN_PASSWORD || "";
-  if (!adminPassword) return false;
-  return password === adminPassword;
+  // Fallback solo permitido en desarrollo
+  if (process.env.NODE_ENV !== "production") {
+    const adminPassword = process.env.ADMIN_PASSWORD || "";
+    if (!adminPassword) return false;
+    return password === adminPassword;
+  }
+
+  console.error("CRITICAL: ADMIN_PASSWORD_HASH requerido en producción");
+  return false;
 }
 
 // Utilidad para generar hash (correr una vez para obtener el hash)

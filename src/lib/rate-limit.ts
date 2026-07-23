@@ -1,52 +1,59 @@
-/**
- * Rate limiting simple en memoria.
- * Para producción a escala, migrar a @upstash/ratelimit con Redis.
- * Este approach funciona bien para serverless con bajo tráfico.
- */
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
-interface RateLimitRecord {
-  count: number;
-  firstRequest: number;
-}
-
-const store = new Map<string, RateLimitRecord>();
-
-// Limpiar registros viejos periódicamente (evitar memory leak)
+// In-memory fallback para desarrollo
+const memoryStore = new Map<string, { count: number; firstRequest: number }>();
 setInterval(() => {
   const now = Date.now();
-  for (const [key, record] of store.entries()) {
-    if (now - record.firstRequest > 60000) {
-      store.delete(key);
-    }
+  for (const [key, record] of memoryStore.entries()) {
+    if (now - record.firstRequest > 60000) memoryStore.delete(key);
   }
-}, 60000); // Limpiar cada minuto
+}, 60000);
 
 export interface RateLimitConfig {
-  maxRequests: number; // Máximo de requests
-  windowMs: number; // Ventana de tiempo en ms
+  maxRequests: number;
+  windowMs: number;
 }
 
-export function rateLimit(
+// Configurar Upstash si están las variables
+const redis = (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN)
+  ? new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    })
+  : null;
+
+export async function rateLimit(
   identifier: string,
   config: RateLimitConfig = { maxRequests: 10, windowMs: 60000 }
-): { success: boolean; remaining: number } {
-  const now = Date.now();
-  const record = store.get(identifier);
+): Promise<{ success: boolean; remaining: number }> {
+  // 1. Usar Redis si está configurado (PRODUCCIÓN)
+  if (redis) {
+    const windowSecs = Math.max(1, Math.floor(config.windowMs / 1000));
+    const rl = new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(config.maxRequests, `${windowSecs} s`),
+      ephemeralCache: memoryStore as any,
+    });
+    const result = await rl.limit(identifier);
+    return { success: result.success, remaining: result.remaining };
+  }
 
-  // Si no hay registro o la ventana expiró, crear nuevo
+  // 2. Fallback in-memory (DESARROLLO)
+  const now = Date.now();
+  const record = memoryStore.get(identifier);
+
   if (!record || now - record.firstRequest > config.windowMs) {
-    store.set(identifier, { count: 1, firstRequest: now });
+    memoryStore.set(identifier, { count: 1, firstRequest: now });
     return { success: true, remaining: config.maxRequests - 1 };
   }
 
-  // Si superó el límite
   if (record.count >= config.maxRequests) {
     return { success: false, remaining: 0 };
   }
 
-  // Incrementar contador
   record.count += 1;
-  store.set(identifier, record);
+  memoryStore.set(identifier, record);
   return { success: true, remaining: config.maxRequests - record.count };
 }
 

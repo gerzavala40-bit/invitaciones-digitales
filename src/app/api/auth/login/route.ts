@@ -1,44 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validateCredentials, createAuthCookieResponse } from "@/lib/auth";
-
-// Rate limiting simple en memoria (para producción usar Upstash)
-const loginAttempts = new Map<string, { count: number; lastAttempt: number }>();
-const MAX_ATTEMPTS = 5;
-const LOCKOUT_MS = 15 * 60 * 1000; // 15 minutos
-
-function isRateLimited(ip: string): boolean {
-  const record = loginAttempts.get(ip);
-  if (!record) return false;
-
-  // Reset si pasó el lockout
-  if (Date.now() - record.lastAttempt > LOCKOUT_MS) {
-    loginAttempts.delete(ip);
-    return false;
-  }
-
-  return record.count >= MAX_ATTEMPTS;
-}
-
-function recordAttempt(ip: string): void {
-  const record = loginAttempts.get(ip) || { count: 0, lastAttempt: 0 };
-  record.count += 1;
-  record.lastAttempt = Date.now();
-  loginAttempts.set(ip, record);
-}
-
-function clearAttempts(ip: string): void {
-  loginAttempts.delete(ip);
-}
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   // Obtener IP para rate limiting
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown";
+  const ip = getClientIp(request as any);
 
-  // Verificar rate limit
-  if (isRateLimited(ip)) {
+  // Verificar rate limit (max 5 intentos por IP cada 15 min)
+  const { success } = await rateLimit(`login:${ip}`, { maxRequests: 5, windowMs: 15 * 60 * 1000 });
+  
+  if (!success) {
     return NextResponse.json(
       { error: "Demasiados intentos. Esperá 15 minutos." },
       { status: 429 }
@@ -61,7 +32,6 @@ export async function POST(request: NextRequest) {
     const isValid = await validateCredentials(email, password);
 
     if (!isValid) {
-      recordAttempt(ip);
       // Respuesta genérica para no revelar si el email existe
       return NextResponse.json(
         { error: "Credenciales incorrectas" },
@@ -70,7 +40,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Login exitoso
-    clearAttempts(ip);
     return createAuthCookieResponse({ success: true });
   } catch {
     return NextResponse.json({ error: "Error interno" }, { status: 500 });
