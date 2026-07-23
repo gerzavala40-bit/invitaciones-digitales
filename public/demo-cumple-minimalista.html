@@ -1105,5 +1105,21 @@ footer p { color: rgba(26,26,26,.3) !important; }
       100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
     }
   </style>
-\n</body>
+\n
+<!-- Dynamic Name Injection -->
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var customName = params.get('customName');
+    if (customName) {
+      document.addEventListener('DOMContentLoaded', function() {
+        var h1 = document.querySelector('h1');
+        if (h1) h1.innerText = customName;
+        var splashName = document.querySelector('.splash-name');
+        if (splashName) splashName.innerText = customName;
+      });
+    }
+  })();
+</script>
+</body>
 </html>

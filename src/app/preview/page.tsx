@@ -6,14 +6,17 @@ import Link from "next/link";
 
 function PreviewContent() {
   const searchParams = useSearchParams();
-  const url = searchParams.get("url") || "/";
+  const urlParam = searchParams.get("url") || "/";
+  const customName = searchParams.get("customName");
+  
+  const url = customName ? `${urlParam}?customName=${encodeURIComponent(customName)}` : urlParam;
 
   // Redirigir directamente al HTML en celulares
   useEffect(() => {
-    if (window.innerWidth < 768 && url !== "/") {
+    if (window.innerWidth < 768 && urlParam !== "/") {
       window.location.replace(url);
     }
-  }, [url]);
+  }, [url, urlParam]);
 
   return (
     <div className="min-h-screen bg-ink-100 flex flex-col items-center justify-center py-10 px-4">

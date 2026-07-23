@@ -4,7 +4,7 @@ import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 
 
-function PhoneMockup({ title, url, desc, selected, onSelect, onPreview }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void }) {
+function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customName }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void, customName: string }) {
   return (
     <div className={'relative flex flex-col items-center group cursor-pointer transition-transform duration-300 ' + (selected ? 'scale-100' : 'hover:scale-[1.02]')} onClick={onSelect}>
       <div className={'relative w-[260px] h-[520px] bg-black rounded-[38px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] p-[6px] border-4 ' + (selected ? 'border-terracotta-500 ring-4 ring-terracotta-100' : 'border-ink-200')}>
@@ -14,7 +14,7 @@ function PhoneMockup({ title, url, desc, selected, onSelect, onPreview }: { titl
         </div>
         {/* Screen */}
         <div className="relative w-full h-full bg-ink-50 rounded-[30px] overflow-hidden isolate">
-          <iframe src={url + '?preview=1'} className="w-[375px] h-[812px] border-none pointer-events-none origin-top-left" style={{ transform: 'scale(0.661)' }} tabIndex={-1} loading="lazy" />
+          <iframe src={`${url}?preview=1${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`} className="w-[375px] h-[812px] border-none pointer-events-none origin-top-left" style={{ transform: 'scale(0.661)' }} tabIndex={-1} loading="lazy" />
           {/* Glass overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 pointer-events-none"></div>
         </div>
@@ -36,6 +36,7 @@ export default function LandingPage() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [selectedStyle, setSelectedStyle] = useState("");
   const [selectedEvent, setSelectedEvent] = useState("");
+  const [customName, setCustomName] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -273,14 +274,24 @@ export default function LandingPage() {
       {/* ========== ESTILOS / DEMOS ========== */}
       <section id="estilos" className="py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">Paso 1</p>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-ink-950 tracking-tight">
-              Elegí tu estilo
-            </h2>
-            <p className="mt-4 text-ink-500 text-lg">
-              Abrí cualquier demo, sentí la experiencia y hacé clic en <strong className="text-ink-800">“Quiero este estilo”</strong>.
-            </p>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="font-display text-3xl sm:text-4xl text-ink-900 tracking-tight mb-4">Catálogo de estilos</h2>
+            <p className="text-lg text-ink-600 mb-8">Elegí una base para arrancar. Los colores, fuentes y secciones se adaptan a lo que necesites.</p>
+            
+            {/* Input de personalización */}
+            <div className="max-w-md mx-auto mb-10 bg-white p-4 rounded-2xl shadow-soft border border-ink-100">
+              <label className="block text-sm font-semibold text-ink-700 mb-2 text-center">
+                Escribí tu nombre y el de tu pareja (o agasajado)
+              </label>
+              <input 
+                type="text" 
+                placeholder="Ej: Ana y Juan" 
+                value={customName}
+                onChange={(e) => setCustomName(e.target.value)}
+                className="w-full h-12 px-6 rounded-full bg-ink-50 border border-ink-200 outline-none focus:border-terracotta-500 focus:ring-1 focus:ring-terracotta-500 transition shadow-inner text-center text-lg text-ink-900 placeholder:text-ink-300"
+              />
+              <p className="text-xs text-ink-500 mt-2 text-center">Mirá cómo los diseños se actualizan mágicamente ✨</p>
+            </div>
           </div>
 
           <div className="max-w-3xl mx-auto mb-12 bg-gradient-to-r from-terracotta-50 to-sage-50 border border-terracotta-100/50 rounded-2xl p-6 sm:p-8 text-center shadow-sm">
@@ -290,15 +301,15 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12 justify-items-center" id="styles-grid">
-            <PhoneMockup title="Elegante Oscuro" url="/demo-boda-noche-dorada.html" desc="Bodas de noche · Sofisticado" selected={selectedStyle === "Elegante Oscuro"} onSelect={() => handleSelectStyle("Elegante Oscuro", "Boda")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-boda-noche-dorada.html"), "_blank")} />
-            <PhoneMockup title="Floral Claro" url="/demo-boda-floral-claro.html" desc="Bodas jardín · Romántico" selected={selectedStyle === "Floral Claro"} onSelect={() => handleSelectStyle("Floral Claro", "Boda")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-boda-floral-claro.html"), "_blank")} />
-            <PhoneMockup title="Minimalista" url="/demo-cumple-minimalista.html" desc="Cumpleaños · Moderno" selected={selectedStyle === "Minimalista"} onSelect={() => handleSelectStyle("Minimalista", "Cumpleaños")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-cumple-minimalista.html"), "_blank")} />
-            <PhoneMockup title="15 Años Glam" url="/demo-15-camila-glam.html" desc="Quince · Fucsia y dorado" selected={selectedStyle === "15 Años Glam"} onSelect={() => handleSelectStyle("15 Años Glam", "15 Años")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-15-camila-glam.html"), "_blank")} />
-            <PhoneMockup title="Bautismo Tierno" url="/demo-bautismo-benicio.html" desc="Bautismos · Celeste suave" selected={selectedStyle === "Bautismo Tierno"} onSelect={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-bautismo-benicio.html"), "_blank")} />
-            <PhoneMockup title="Corporativo" url="/demo-corporativo-gala.html" desc="Eventos de empresa" selected={selectedStyle === "Corporativo"} onSelect={() => handleSelectStyle("Corporativo", "Corporativo")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-corporativo-gala.html"), "_blank")} />
-            <PhoneMockup title="Boda Boho / Canva" url="/demo-canva-boho.html" desc="Estilo Canva · Tonos crema" selected={selectedStyle === "Boda Boho / Canva"} onSelect={() => handleSelectStyle("Boda Boho / Canva", "Boda")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-canva-boho.html"), "_blank")} />
-            <PhoneMockup title="Baby Shower" url="/demo-babyshower-malena.html" desc="Baby Showers · Tierno" selected={selectedStyle === "Baby Shower"} onSelect={() => handleSelectStyle("Baby Shower", "Baby Shower")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-babyshower-malena.html"), "_blank")} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <PhoneMockup customName={customName} title="Elegante Oscuro" url="/demo-boda-noche-dorada.html" desc="Bodas de noche · Sofisticado" selected={selectedStyle === "Elegante Oscuro"} onSelect={() => handleSelectStyle("Elegante Oscuro", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-boda-noche-dorada.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="Floral Claro" url="/demo-boda-floral-claro.html" desc="Bodas jardín · Romántico" selected={selectedStyle === "Floral Claro"} onSelect={() => handleSelectStyle("Floral Claro", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-boda-floral-claro.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="Minimalista" url="/demo-cumple-minimalista.html" desc="Cumpleaños · Moderno" selected={selectedStyle === "Minimalista"} onSelect={() => handleSelectStyle("Minimalista", "Cumpleaños")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-cumple-minimalista.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="15 Años Glam" url="/demo-15-camila-glam.html" desc="Quince · Fucsia y dorado" selected={selectedStyle === "15 Años Glam"} onSelect={() => handleSelectStyle("15 Años Glam", "15 Años")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-15-camila-glam.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="Bautismo Tierno" url="/demo-bautismo-benicio.html" desc="Bautismos · Celeste suave" selected={selectedStyle === "Bautismo Tierno"} onSelect={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-bautismo-benicio.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="Corporativo" url="/demo-corporativo-gala.html" desc="Eventos de empresa" selected={selectedStyle === "Corporativo"} onSelect={() => handleSelectStyle("Corporativo", "Corporativo")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-corporativo-gala.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="Boda Boho / Canva" url="/demo-canva-boho.html" desc="Estilo Canva · Tonos crema" selected={selectedStyle === "Boda Boho / Canva"} onSelect={() => handleSelectStyle("Boda Boho / Canva", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-canva-boho.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
+            <PhoneMockup customName={customName} title="Baby Shower" url="/demo-babyshower-malena.html" desc="Baby Showers · Tierno" selected={selectedStyle === "Baby Shower"} onSelect={() => handleSelectStyle("Baby Shower", "Baby Shower")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-babyshower-malena.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
           </div>
 
           <p className="text-center mt-14 text-ink-500 text-sm">
