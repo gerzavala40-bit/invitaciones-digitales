@@ -153,7 +153,7 @@ export default function LandingPage() {
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-ink-100 shadow-soft mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-terracotta-500 animate-pulse-soft"></span>
-                <span className="text-xs font-semibold tracking-wide text-ink-600 uppercase">Lista en 3 días · Express 24hs</span>
+                <span className="text-xs font-semibold tracking-wide text-ink-600 uppercase">Lista en 24 hs · Express 24hs</span>
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl leading-[1.08] tracking-tight text-ink-950 text-balance">
@@ -162,7 +162,7 @@ export default function LandingPage() {
               </h1>
 
               <p className="mt-5 sm:mt-6 text-lg sm:text-xl text-ink-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Mirás las demos, nos pasás los datos de tu evento y en 3 días tenés tu invitación web lista para WhatsApp. Sin apps. Sin vueltas.
+                Mirás las demos, nos pasás los datos de tu evento y en 24 hs tenés tu invitación web lista para WhatsApp. Sin apps. Sin vueltas.
               </p>
 
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
@@ -249,7 +249,7 @@ export default function LandingPage() {
             <div className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sage-100 text-sage-700 font-display text-2xl mb-5 step-num">3</div>
               <h3 className="font-display text-xl text-ink-900 mb-2">La diseñamos</h3>
-              <p className="text-ink-500 text-[15px] leading-relaxed">En 3 días hábiles (o 24hs Express) armamos tu invitación personalizada.</p>
+              <p className="text-ink-500 text-[15px] leading-relaxed">En 24 hs hábiles (o 24hs Express) armamos tu invitación personalizada.</p>
             </div>
             <div className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-ink-100 text-ink-700 font-display text-2xl mb-5 step-num">4</div>
@@ -531,7 +531,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
               <div className="flex gap-0.5 text-gold-400 mb-4">★★★★★</div>
-              <p className="text-ink-600 leading-relaxed mb-6">“Elegimos el estilo, mandamos los datos y en 3 días teníamos el link. Los invitados quedaron encantados.”</p>
+              <p className="text-ink-600 leading-relaxed mb-6">“Elegimos el estilo, mandamos los datos y en 24 hs teníamos el link. Los invitados quedaron encantados.”</p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-terracotta-100 flex items-center justify-center font-display italic text-terracotta-700">V</div>
                 <div><p className="font-semibold text-sm text-ink-900">Valentina R.</p><p className="text-xs text-ink-400">Boda</p></div>
@@ -570,7 +570,7 @@ export default function LandingPage() {
                 <span className="font-display text-lg text-ink-900 pr-4">¿Cómo es el proceso?</span>
                 <span className="faq-icon w-8 h-8 rounded-full bg-ink-50 flex items-center justify-center text-ink-500 text-xl font-light flex-shrink-0 transition-transform">+</span>
               </summary>
-              <div className="px-5 sm:px-6 pb-5 -mt-1"><p className="text-ink-500 leading-relaxed">Elegís un estilo de las demos, completás el formulario con los datos de tu evento y nos llega por WhatsApp. Coordinamos la seña (50%), diseñamos y en 3 días hábiles te entregamos el link listo para compartir.</p></div>
+              <div className="px-5 sm:px-6 pb-5 -mt-1"><p className="text-ink-500 leading-relaxed">Elegís un estilo de las demos, completás el formulario con los datos de tu evento y nos llega por WhatsApp. Coordinamos la seña (50%), diseñamos y en 24 hs hábiles te entregamos el link listo para compartir.</p></div>
             </details>
             <details className="group bg-white rounded-2xl border border-ink-100 shadow-soft">
               <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 list-none">
@@ -584,7 +584,7 @@ export default function LandingPage() {
                 <span className="font-display text-lg text-ink-900 pr-4">¿Cuánto demora?</span>
                 <span className="faq-icon w-8 h-8 rounded-full bg-ink-50 flex items-center justify-center text-ink-500 text-xl font-light flex-shrink-0 transition-transform">+</span>
               </summary>
-              <div className="px-5 sm:px-6 pb-5 -mt-1"><p className="text-ink-500 leading-relaxed">Estándar: <strong className="text-ink-800">3 días hábiles</strong>. Express: <strong className="text-ink-800">24 horas</strong> (+$8.000).</p></div>
+              <div className="px-5 sm:px-6 pb-5 -mt-1"><p className="text-ink-500 leading-relaxed">Estándar: <strong className="text-ink-800">24 hs hábiles</strong>. Express: <strong className="text-ink-800">24 horas</strong> (+$8.000).</p></div>
             </details>
             <details className="group bg-white rounded-2xl border border-ink-100 shadow-soft">
               <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 list-none">
@@ -619,7 +619,7 @@ export default function LandingPage() {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight text-balance">
             Elegí el estilo.<br />Nosotros la <em className="italic text-gold-400">dejamos lista</em>.
           </h2>
-          <p className="mt-5 text-ink-300 text-lg max-w-md mx-auto">En 3 días tenés tu invitación web lista para sorprender a todos por WhatsApp.</p>
+          <p className="mt-5 text-ink-300 text-lg max-w-md mx-auto">En 24 hs tenés tu invitación web lista para sorprender a todos por WhatsApp.</p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="#estilos" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-900 bg-gold-400 hover:bg-gold-300 transition shadow-lg">
               Ver estilos y empezar
