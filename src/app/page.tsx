@@ -283,6 +283,13 @@ export default function LandingPage() {
             </p>
           </div>
 
+          <div className="max-w-3xl mx-auto mb-12 bg-gradient-to-r from-terracotta-50 to-sage-50 border border-terracotta-100/50 rounded-2xl p-6 sm:p-8 text-center shadow-sm">
+            <h3 className="font-display text-2xl text-ink-900 mb-3">Tu evento, tu estilo único ✨</h3>
+            <p className="text-ink-600 text-base leading-relaxed">
+              Lo que ves aquí es solo una muestra de lo que podemos hacer. No te limites al catálogo: personalizamos cualquier diseño o creamos uno exclusivo para tu fiesta. <strong className="text-ink-900 font-medium">El único límite es tu imaginación.</strong>
+            </p>
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12 justify-items-center" id="styles-grid">
             <PhoneMockup title="Elegante Oscuro" url="/demo-boda-noche-dorada.html" desc="Bodas de noche · Sofisticado" selected={selectedStyle === "Elegante Oscuro"} onSelect={() => handleSelectStyle("Elegante Oscuro", "Boda")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-boda-noche-dorada.html"), "_blank")} />
             <PhoneMockup title="Floral Claro" url="/demo-boda-floral-claro.html" desc="Bodas jardín · Romántico" selected={selectedStyle === "Floral Claro"} onSelect={() => handleSelectStyle("Floral Claro", "Boda")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-boda-floral-claro.html"), "_blank")} />
