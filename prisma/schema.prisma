@@ -80,9 +80,12 @@ model RSVP {
 }
 
 model Photo {
-  id      String @id @default(cuid())
-  eventId String
-  event   Event  @relation(fields: [eventId], references: [id])
-  url     String
-  order   Int    @default(0)
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  url          String
+  uploaderName String?
+  isApproved   Boolean  @default(true)
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
 }

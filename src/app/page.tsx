@@ -463,6 +463,108 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ========== MURO SOCIAL SPOTLIGHT ========== */}
+      <section className="py-20 sm:py-28 bg-white border-y border-ink-100">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div className="flex-1 text-center lg:text-left">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-semibold mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-terracotta-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-terracotta-500"></span>
+                </span>
+                Nuevo Servicio Premium
+              </span>
+              <h2 className="font-display text-4xl sm:text-5xl text-ink-950 tracking-tight mb-6">
+                Muro Social en Vivo
+              </h2>
+              <p className="text-lg text-ink-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Llevá tu fiesta al siguiente nivel. Tus invitados escanean un QR en sus mesas, suben fotos desde sus celulares y aparecen <strong className="text-ink-900">al instante en la pantalla gigante</strong> del salón con animaciones increíbles.
+              </p>
+              
+              <ul className="space-y-4 mb-10 text-left max-w-md mx-auto lg:mx-0">
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-terracotta-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-ink-700">Sin descargar apps, directo desde el navegador.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-terracotta-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-ink-700">No requiere Instagram ni redes sociales.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-terracotta-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-ink-700">Fotos con estilo Polaroid organizadas automáticamente.</span>
+                </li>
+              </ul>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                <Link href="/demo-wall/pantalla" target="_blank" className="h-14 px-8 rounded-full bg-ink-950 text-white font-semibold flex items-center justify-center gap-2 hover:bg-ink-800 transition shadow-lg w-full sm:w-auto">
+                  Ver demo de la pantalla
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </Link>
+                <Link href="/demo-wall/upload" target="_blank" className="h-14 px-8 rounded-full bg-white text-ink-900 border-2 border-ink-200 font-semibold flex items-center justify-center hover:border-ink-400 hover:bg-ink-50 transition w-full sm:w-auto">
+                  Probar subida celular
+                </Link>
+              </div>
+            </div>
+            
+            <div className="flex-1 relative w-full max-w-lg">
+              {/* Decoración abstracta detrás de la imagen */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-terracotta-100 to-sage-100 rounded-[2.5rem] blur-2xl opacity-60"></div>
+              
+              <div className="relative bg-ink-950 rounded-3xl overflow-hidden shadow-2xl border-4 border-ink-900 aspect-[4/3] flex flex-col">
+                {/* Cabecera del proyector simulada */}
+                <div className="h-12 bg-ink-900 flex items-center px-4 border-b border-white/10 shrink-0 justify-between">
+                  <div className="text-white font-display text-sm">Boda de Juan & Ana</div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    <span className="text-xs text-white/50 font-medium tracking-wider">EN VIVO</span>
+                  </div>
+                </div>
+                {/* Contenido simulado del muro */}
+                <div className="flex-1 p-4 flex gap-4 overflow-hidden bg-ink-950">
+                  <div className="flex-1 space-y-4 translate-y-4">
+                    <div className="bg-white p-2 pb-6 rounded-sm shadow-xl rotate-[-2deg]">
+                      <div className="w-full aspect-square bg-ink-200 rounded-sm overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400&auto=format&fit=crop" className="object-cover w-full h-full" alt="Wedding guest" />
+                      </div>
+                      <p className="font-handwriting mt-2 text-ink-900 text-center">Tía Marta</p>
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-4 -translate-y-2">
+                    <div className="bg-white p-2 pb-6 rounded-sm shadow-xl rotate-[3deg]">
+                      <div className="w-full aspect-[4/5] bg-ink-200 rounded-sm overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=400&auto=format&fit=crop" className="object-cover w-full h-full" alt="Party" />
+                      </div>
+                      <p className="font-handwriting mt-2 text-ink-900 text-center">Los primos</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* QR simulado superpuesto */}
+              <div className="absolute -bottom-6 -left-6 bg-white p-3 rounded-2xl shadow-xl border border-ink-100 flex items-center gap-3 transform -rotate-3 hover:rotate-0 transition duration-300">
+                <div className="w-16 h-16 bg-ink-50 rounded-lg flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" className="w-12 h-12 text-ink-900">
+                    <path d="M10,10 h30 v30 h-30 z M15,15 h20 v20 h-20 z" fill="currentColor"/>
+                    <path d="M60,10 h30 v30 h-30 z M65,15 h20 v20 h-20 z" fill="currentColor"/>
+                    <path d="M10,60 h30 v30 h-30 z M15,65 h20 v20 h-20 z" fill="currentColor"/>
+                    <rect x="60" y="60" width="10" height="10" fill="currentColor"/>
+                    <rect x="75" y="70" width="15" height="15" fill="currentColor"/>
+                    <rect x="65" y="80" width="5" height="10" fill="currentColor"/>
+                    <rect x="85" y="60" width="5" height="5" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-ink-900">Escaneá para subir</p>
+                  <p className="text-[10px] text-ink-500">teinvitoapp.com.ar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ========== PRICING ========== */}
       <section id="pricing" className="py-20 sm:py-28 bg-ink-900 text-ink-50 relative overflow-hidden">
         <div className="absolute inset-0 grain opacity-30 pointer-events-none"></div>
