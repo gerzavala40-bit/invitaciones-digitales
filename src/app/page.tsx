@@ -78,7 +78,6 @@ export default function LandingPage() {
     const fecha = formData.get("fecha") as string;
     const lugar = (formData.get("lugar") as string) || "—";
     const plan = formData.get("plan") as string;
-    const express = formData.get("express") ? "Sí (+$8.000)" : "No";
     const whatsapp = formData.get("whatsapp") as string;
     const notas = (formData.get("notas") as string) || "—";
 
@@ -96,7 +95,6 @@ export default function LandingPage() {
 *Fecha:* ${fechaFmt}
 *Lugar:* ${lugar}
 *Plan:* ${plan}
-*Express 24hs:* ${express}
 *Mi WhatsApp:* ${whatsapp}
 *Notas:* ${notas}
 
@@ -157,7 +155,7 @@ export default function LandingPage() {
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-ink-100 shadow-soft mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-terracotta-500 animate-pulse-soft"></span>
-                <span className="text-xs font-semibold tracking-wide text-ink-600 uppercase">Lista en 24 hs · Express 24hs</span>
+                <span className="text-xs font-semibold tracking-wide text-ink-600 uppercase">Lista en 24 hs</span>
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl leading-[1.08] tracking-tight text-ink-950 text-balance">
@@ -253,7 +251,7 @@ export default function LandingPage() {
             <div className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sage-100 text-sage-700 font-display text-2xl mb-5 step-num">3</div>
               <h3 className="font-display text-xl text-ink-900 mb-2">La diseñamos</h3>
-              <p className="text-ink-500 text-[15px] leading-relaxed">En 24 hs hábiles (o 24hs Express) armamos tu invitación personalizada.</p>
+              <p className="text-ink-500 text-[15px] leading-relaxed">En 24 hs armamos tu invitación personalizada.</p>
             </div>
             <div className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-ink-100 text-ink-700 font-display text-2xl mb-5 step-num">4</div>
@@ -405,15 +403,6 @@ export default function LandingPage() {
                 🎁 30% OFF abonando por transferencia
               </p>
             </div>
-
-            {/* Express */}
-            <label className="flex items-center gap-3 p-4 rounded-xl border border-ink-100 bg-ink-50/50 cursor-pointer hover:bg-ink-50 transition">
-              <input type="checkbox" name="express" className="w-4 h-4 rounded border-ink-300 text-terracotta-600 focus:ring-terracotta-500" />
-              <div>
-                <p className="text-sm font-semibold text-ink-800">Express 24hs <span className="text-terracotta-600 font-normal">+$8.000</span></p>
-                <p className="text-xs text-ink-400">Entrega en 24 horas hábiles</p>
-              </div>
-            </label>
 
             {/* WhatsApp del cliente */}
             <div>
@@ -641,7 +630,7 @@ export default function LandingPage() {
               <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="block text-center h-12 leading-[3rem] rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full">Elegir Plus</button>
             </div>
           </div>
-          <p className="text-center mt-10 text-ink-400 text-sm">Express 24hs: <strong className="text-gold-400">+$8.000</strong> · Seña 50% para iniciar</p>
+          <p className="text-center mt-10 text-ink-400 text-sm">Seña 50% para iniciar</p>
         </div>
       </section>
 
@@ -708,7 +697,7 @@ export default function LandingPage() {
                 <span className="font-display text-lg text-ink-900 pr-4">¿Cuánto demora?</span>
                 <span className="faq-icon w-8 h-8 rounded-full bg-ink-50 flex items-center justify-center text-ink-500 text-xl font-light flex-shrink-0 transition-transform">+</span>
               </summary>
-              <div className="px-5 sm:px-6 pb-5 -mt-1"><p className="text-ink-500 leading-relaxed">Estándar: <strong className="text-ink-800">24 hs hábiles</strong>. Express: <strong className="text-ink-800">24 horas</strong> (+$8.000).</p></div>
+              <div className="px-5 sm:px-6 pb-5 -mt-1"><p className="text-ink-500 leading-relaxed">Demora solo <strong className="text-ink-800">24 horas</strong> desde que nos envías los datos de tu evento y abonás la seña.</p></div>
             </details>
             <details className="group bg-white rounded-2xl border border-ink-100 shadow-soft">
               <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 list-none">
