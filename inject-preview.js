@@ -8,7 +8,8 @@ const demos = [
     'demo-15-camila-glam.html',
     'demo-bautismo-benicio.html',
     'demo-corporativo-gala.html',
-    'demo-canva-boho.html'
+    'demo-canva-boho.html',
+    'demo-babyshower-malena.html'
 ]; 
 
 const injection = `

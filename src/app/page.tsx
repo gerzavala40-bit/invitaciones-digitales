@@ -283,6 +283,7 @@ export default function LandingPage() {
             <PhoneMockup title="Bautismo Tierno" url="/demo-bautismo-benicio.html" desc="Bautismos · Celeste suave" selected={selectedStyle === "Bautismo Tierno"} onSelect={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-bautismo-benicio.html"), "_blank")} />
             <PhoneMockup title="Corporativo" url="/demo-corporativo-gala.html" desc="Eventos de empresa" selected={selectedStyle === "Corporativo"} onSelect={() => handleSelectStyle("Corporativo", "Corporativo")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-corporativo-gala.html"), "_blank")} />
             <PhoneMockup title="Boda Boho / Canva" url="/demo-canva-boho.html" desc="Estilo Canva · Tonos crema" selected={selectedStyle === "Boda Boho / Canva"} onSelect={() => handleSelectStyle("Boda Boho / Canva", "Boda")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-canva-boho.html"), "_blank")} />
+            <PhoneMockup title="Baby Shower" url="/demo-babyshower-malena.html" desc="Baby Showers · Tierno" selected={selectedStyle === "Baby Shower"} onSelect={() => handleSelectStyle("Baby Shower", "Baby Shower")} onPreview={() => window.open("/preview?url=" + encodeURIComponent("/demo-babyshower-malena.html"), "_blank")} />
           </div>
 
           <p className="text-center mt-14 text-ink-500 text-sm">
