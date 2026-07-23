@@ -33,51 +33,20 @@ function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customNa
   );
 }
 
-// --- Urgency Timer Component ---
+// --- Urgency Banner Component ---
 function UrgencyTimer() {
-  const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 mins in seconds
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-    const storedStart = localStorage.getItem("teinvito_timer_start");
-    
-    if (storedStart) {
-      const elapsed = Math.floor((Date.now() - parseInt(storedStart)) / 1000);
-      const remaining = (15 * 60) - elapsed;
-      if (remaining > 0) {
-        setTimeLeft(remaining);
-      } else {
-        setTimeLeft(0);
-      }
-    } else {
-      localStorage.setItem("teinvito_timer_start", Date.now().toString());
-    }
-
-    const interval = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!isClient || timeLeft === 0) return null;
-
-  const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-  const s = (timeLeft % 60).toString().padStart(2, '0');
-
   return (
-    <div className="bg-terracotta-600 text-white p-4 rounded-2xl mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg border border-terracotta-500 animate-pulse-soft">
+    <div className="bg-terracotta-600 text-white p-4 rounded-2xl mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg border border-terracotta-500">
       <div className="flex items-center gap-3 text-center sm:text-left">
         <span className="text-3xl">🎁</span>
         <div>
-          <p className="font-bold text-lg leading-tight">Oferta Relámpago</p>
+          <p className="font-bold text-lg leading-tight">Promo Especial</p>
           <p className="text-terracotta-100 text-sm">Contratando hoy, te bonificamos la Party Cam en cualquier plan.</p>
         </div>
       </div>
-      <div className="flex items-center gap-2 bg-ink-950/40 px-4 py-2 rounded-xl font-display text-2xl tracking-widest text-gold-400 shrink-0">
+      <div className="flex items-center gap-2 bg-ink-950/40 px-4 py-2 rounded-xl font-display text-xl tracking-wider text-gold-400 shrink-0">
         <svg className="w-5 h-5 text-gold-400/80 -ml-1 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        {m}:{s}
+        ¡Solo por hoy!
       </div>
     </div>
   );
