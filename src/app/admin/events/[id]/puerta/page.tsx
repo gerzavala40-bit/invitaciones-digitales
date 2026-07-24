@@ -21,7 +21,7 @@ export default function DoorScanner({ params }: { params: Promise<{ id: string }
 
     async function onScanSuccess(decodedText: string) {
       setScanning(false);
-      scanner.pause(true);
+      // Remove scanner.pause(true) because it crashes when scanning a file
       
       try {
         const res = await fetch("/api/checkin", {
