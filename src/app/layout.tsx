@@ -2,8 +2,30 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Te Invito | Invitaciones Digitales a Medida",
-  description: "Invitaciones web interactivas para bodas, 15 años, bautismos y más. Cuenta regresiva, mapa, RSVP y regalos en un solo link. @teinvitoapp",
+  title: "Te Invito | Agencia de Invitaciones Digitales a Medida",
+  description: "Invitaciones web interactivas para bodas, 15 años y eventos. Sorprendé a tus invitados con cuenta regresiva, confirmación de asistencia (RSVP) y mapas en un solo link.",
+  keywords: ["invitaciones digitales", "tarjetas virtuales", "casamiento", "15 años", "boda", "invitacion web"],
+  openGraph: {
+    title: "Te Invito | Invitaciones Digitales a Medida",
+    description: "La forma más elegante e interactiva de invitar. Cuenta regresiva, mapas y RSVP integrados.",
+    url: "https://www.teinvitoapp.com.ar",
+    siteName: "Te Invito App",
+    images: [
+      {
+        url: "https://www.teinvitoapp.com.ar/og-image.jpg", // TODO: Asegurar que exista una imagen en public/og-image.jpg
+        width: 1200,
+        height: 630,
+        alt: "Te Invito - Invitaciones Digitales",
+      },
+    ],
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Te Invito | Invitaciones Digitales",
+    description: "Invitaciones web interactivas para tu próximo evento.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

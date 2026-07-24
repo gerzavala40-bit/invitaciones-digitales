@@ -10,6 +10,7 @@ import CamilaGlam from "./CamilaGlam";
 import BautismoTierno from "./BautismoTierno";
 import GalaCorporativa from "./GalaCorporativa";
 import CanvaBoho from "./CanvaBoho";
+import BodaElegante from "./BodaElegante";
 
 export const TEMPLATES = {
   "elegant-dark": { name: "Elegante Oscuro", component: ElegantDark, description: "Boda oscura con dorado, pantalla de bienvenida" },
@@ -21,6 +22,7 @@ export const TEMPLATES = {
   "julia-xv": { name: "Julia XV", component: JuliaXV, description: "15 Años, fondo claro, tipografía Montserrat, limpio" },
   "camila-glam": { name: "15 Años Glam", component: CamilaGlam, description: "15 años oscuro, rosa y dorado, pantalla de bienvenida" },
   "bautismo-tierno": { name: "Bautismo Tierno", component: BautismoTierno, description: "Bautismo fondo claro, celeste, pantalla de bienvenida" },
+  "boda-elegante": { name: "Boda Elegante", component: BodaElegante, description: "Boda elegante negro con borde dorado" },
 } as const;
 
 export type TemplateId = keyof typeof TEMPLATES;
