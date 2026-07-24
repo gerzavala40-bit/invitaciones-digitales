@@ -265,7 +265,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
           <h1 className="be-title-script fade-in" style={{ transitionDelay: "0.2s" }}>{name1} & {name2}</h1>
           
           <p className="be-serif text-sm text-gray-300 mt-8 mb-2 fade-in" style={{ transitionDelay: "0.4s" }}>
-            TENEMOS EL HONOR DE INVITARLOS A CELEBRAR<br/>ESTE D\u00cdA TAN ESPECIAL
+            TENEMOS EL HONOR DE INVITARLOS A CELEBRAR<br/>ESTE DÍA TAN ESPECIAL
           </p>
 
           <div className="my-10 fade-in" style={{ transitionDelay: "0.6s" }}>
@@ -277,7 +277,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
           </div>
 
           <div className="be-cd fade-in" style={{ transitionDelay: "0.8s" }}>
-            <div><span className="n">{countdown.d}</span><span className="l">D\u00edas</span></div>
+            <div><span className="n">{countdown.d}</span><span className="l">Días</span></div>
             <div><span className="n">{countdown.h}</span><span className="l">Hrs</span></div>
             <div><span className="n">{countdown.m}</span><span className="l">Min</span></div>
             <div><span className="n">{countdown.s}</span><span className="l">Seg</span></div>
@@ -290,9 +290,9 @@ export default function BodaElegante({ event }: { event: EventData }) {
             </div>
           )}
 
-          {/* D\u00f3nde */}
+          {/* Dónde */}
           <div className="mb-14 fade-in">
-            <h2 className="be-serif text-2xl text-gold mb-6" style={{ color: "var(--gold)" }}>Ubicaci\u00f3n</h2>
+            <h2 className="be-serif text-2xl text-gold mb-6" style={{ color: "var(--gold)" }}>Ubicación</h2>
             
             {event.ceremonyName && (
               <div className="mb-8">
