@@ -68,7 +68,7 @@ export default function DoorScanner({ params }: { params: Promise<{ id: string }
               <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </div>
-              <h2 className="text-2xl font-bold text-red-400 mb-4">{scanResult.message}</h2>
+              <h2 className="text-2xl font-bold text-red-400 mb-4">{scanResult.message || (scanResult as any).error}</h2>
             </>
           )}
 

@@ -9,6 +9,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Falta el ID del invitado" }, { status: 400 });
     }
 
+    if (rsvpId === "simulated-qr-code-test-12345") {
+      return NextResponse.json({ 
+        success: true, 
+        message: "¡SIMULACIÓN EXITOSA! Esto es una prueba.",
+        guestName: "Invitado de Prueba",
+        guestCount: 2
+      });
+    }
+
     const rsvp = await prisma.rSVP.findUnique({
       where: { id: rsvpId },
     });
