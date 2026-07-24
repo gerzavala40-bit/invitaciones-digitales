@@ -376,7 +376,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
                   {rsvpData.id && (
                     <div className="mt-8 p-6 bg-white rounded-xl shadow-lg inline-block">
                       <p className="text-black text-xs font-bold mb-4">TU PASE DE INGRESO</p>
-                      <QRCodeSVG value={rsvpData.id} size={200} level="H" />
+                      <QRCodeSVG value={rsvpData.id} size={200} level="H" includeMargin={true} />
                       <p className="text-gray-500 text-xs mt-4">Mostrá este código en puerta</p>
                     </div>
                   )}
