@@ -492,7 +492,22 @@ export default function LandingPage() {
             <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">✅</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Confirmación RSVP</h3>
-              <p className="text-sm text-ink-500">Lista en tiempo real (según plan).</p>
+              <p className="text-sm text-ink-500">Lista en tiempo real en tu panel.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+              <span className="text-2xl mb-3 block">🎫</span>
+              <h3 className="font-display text-lg text-ink-900 mb-1">Pases con QR</h3>
+              <p className="text-sm text-ink-500">Control de acceso rápido en la puerta.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+              <span className="text-2xl mb-3 block">📅</span>
+              <h3 className="font-display text-lg text-ink-900 mb-1">Itinerario</h3>
+              <p className="text-sm text-ink-500">Línea de tiempo interactiva del evento.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+              <span className="text-2xl mb-3 block">✍️</span>
+              <h3 className="font-display text-lg text-ink-900 mb-1">Muro de firmas</h3>
+              <p className="text-sm text-ink-500">Los invitados te dejan mensajes y deseos.</p>
             </div>
             <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">🎁</span>
@@ -507,7 +522,7 @@ export default function LandingPage() {
             <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">📸</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Galería de fotos</h3>
-              <p className="text-sm text-ink-500">Carrusel con sus fotos.</p>
+              <p className="text-sm text-ink-500">Carrusel con sus mejores momentos.</p>
             </div>
           </div>
         </div>

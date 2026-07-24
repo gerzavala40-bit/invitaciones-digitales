@@ -3,6 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { EventData } from "./types";
 
+import AddToCalendar from "../features/AddToCalendar";
+import Guestbook from "../features/Guestbook";
+import Timeline from "../features/Timeline";
+import { QRCodeSVG } from "qrcode.react";
+
 export interface TemplatePalette {
   bg: string;
   bgSoft: string;
@@ -40,6 +45,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   const [countdown, setCountdown] = useState({ d: "\u2014", h: "\u2014", m: "\u2014", s: "\u2014" });
   const [copyOk, setCopyOk] = useState(false);
   const [rsvpSent, setRsvpSent] = useState(false);
+  const [rsvpId, setRsvpId] = useState<string | null>(null);
   const [rsvpLoading, setRsvpLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -88,9 +94,19 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   async function handleRsvp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setRsvpLoading(true);
+    
+    if (event.slug === "test-15" || event.slug === "test-elegante") {
+      setTimeout(() => {
+        setRsvpSent(true);
+        setRsvpId("simulated-qr-code-test-12345");
+        setRsvpLoading(false);
+      }, 1000);
+      return;
+    }
+
     const fd = new FormData(e.currentTarget);
     try {
-      await fetch("/api/rsvp", {
+      const res = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -101,7 +117,11 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           songRequest: fd.get("cancion") || "",
         }),
       });
+      const data = await res.json();
       setRsvpSent(true);
+      if (data.success && data.rsvp) {
+        setRsvpId(data.rsvp.id);
+      }
     } finally {
       setRsvpLoading(false);
     }
@@ -271,38 +291,59 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
         <section className="section" id="cuando">
           <div className="wrap">
-            <p className="eyebrow reveal">La celebraci\u00f3n</p>
-            <h2 className="reveal">\u00bfCu\u00e1ndo &amp; d\u00f3nde?</h2>
+            <p className="eyebrow reveal">La celebración</p>
+            <h2 className="reveal">¿Cuándo &amp; dónde?</h2>
             <p className="lead reveal">Todo listo para celebrar juntos.</p>
             {event.ceremonyName && (
               <div className="card reveal">
-                <div className="icon">\u271d</div>
+                <div className="icon">✝</div>
                 <h3>Ceremonia</h3>
                 <p><strong>{event.ceremonyTime} hs</strong>{event.ceremonyName}<br />{event.ceremonyAddress}</p>
-                {event.ceremonyAddress && <a className="link" href={`https://maps.google.com/?q=${encodeURIComponent(event.ceremonyAddress)}`} target="_blank" rel="noopener noreferrer">C\u00f3mo llegar \u2192</a>}
+                {event.ceremonyAddress && <a className="link" href={`https://maps.google.com/?q=${encodeURIComponent(event.ceremonyAddress)}`} target="_blank" rel="noopener noreferrer">Cómo llegar →</a>}
               </div>
             )}
             <div className="card reveal">
-              <div className="icon">\u25c8</div>
-              <h3>\u00bfCu\u00e1ndo?</h3>
+              <div className="icon">◈</div>
+              <h3>¿Cuándo?</h3>
               <p><strong>{dateLong}</strong>{event.eventTime} hs</p>
+              <div style={{ marginTop: "1rem" }}>
+                <AddToCalendar event={event} />
+              </div>
             </div>
             <div className="card reveal">
-              <div className="icon">\u25ce</div>
-              <h3>\u00bfD\u00f3nde?</h3>
+              <div className="icon">◎</div>
+              <h3>¿Dónde?</h3>
               <p><strong>{event.venueName}</strong>{event.venueAddress}</p>
-              <a className="link" href={`https://maps.google.com/?q=${encodeURIComponent(event.venueAddress || "")}`} target="_blank" rel="noopener noreferrer">C\u00f3mo llegar \u2192</a>
+              <a className="link" href={`https://maps.google.com/?q=${encodeURIComponent(event.venueAddress || "")}`} target="_blank" rel="noopener noreferrer">Cómo llegar →</a>
             </div>
           </div>
         </section>
 
+        {event.timeline && event.timeline.length > 0 && (
+          <section className="section" id="itinerario" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+            <div className="wrap">
+              <p className="eyebrow reveal">Itinerario</p>
+              <h2 className="reveal">Línea de Tiempo</h2>
+              {event.timeline.map((item) => (
+                <div key={item.id} className="card reveal" style={{ textAlign: "left", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                  <div style={{ color: "var(--accent)", fontWeight: 600, fontSize: "0.95rem", minWidth: "3.5rem", paddingTop: "0.1rem" }}>{item.time}</div>
+                  <div>
+                    <h3 style={{ fontSize: "1.1rem", marginBottom: "0.2rem" }}>{item.title}</h3>
+                    {item.description && <p style={{ fontSize: "0.85rem", marginTop: 0 }}>{item.description}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {dressInfo.name && (
           <section className="section" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
             <div className="wrap reveal">
-              <p className="eyebrow">C\u00f3digo de vestimenta</p>
+              <p className="eyebrow">Código de vestimenta</p>
               <h2>Dress code</h2>
               <div className="card" style={{ marginBottom: 0 }}>
-                <div className="icon">\u25c7</div>
+                <div className="icon">◇</div>
                 <h3>{dressInfo.name}</h3>
                 {dressInfo.pills.length > 0 && <div className="pills">{dressInfo.pills.map((pill) => <span key={pill}>{pill}</span>)}</div>}
               </div>
@@ -324,16 +365,46 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
+        {event.guestbookEnabled && (
+          <section className="section" id="mensajes" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+            <div className="wrap">
+              <p className="eyebrow reveal">Mensajes</p>
+              <h2 className="reveal">Muro de Firmas</h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                {event.messages && event.messages.map((msg) => (
+                  <div key={msg.id} className="card reveal" style={{ textAlign: "left" }}>
+                    <p style={{ fontStyle: "italic", fontSize: "0.95rem", color: "var(--text)" }}>"{msg.message}"</p>
+                    <p style={{ marginTop: "0.5rem", fontSize: "0.8rem", color: "var(--gold-soft)", fontWeight: 600 }}>— {msg.guestName}</p>
+                  </div>
+                ))}
+              </div>
+              <a className="btn btn-primary reveal" href={`/${event.slug}/guestbook`} style={{ marginTop: "1.5rem" }}>Dejar un mensaje</a>
+            </div>
+          </section>
+        )}
+
         {event.rsvpEnabled && (
           <section className="section" id="rsvp">
             <div className="wrap">
               <p className="eyebrow reveal">Tu respuesta</p>
               <h2 className="reveal">Confirm\u00e1 tu asistencia</h2>
-              {rsvpSent ? (
+              {rsvpId ? (
                 <div className="card reveal" style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>\ud83e\udd42</div>
-                  <h3>\u00a1Gracias!</h3>
-                  <p style={{ color: "var(--text-muted)", marginTop: "0.5rem" }}>Recibimos tu confirmaci\u00f3n.</p>
+                  <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>🍾</div>
+                  <h3>¡Confirmado!</h3>
+                  <p style={{ color: "var(--text-muted)", marginTop: "0.5rem", marginBottom: "1.5rem" }}>
+                    Guardá este código QR. Lo vas a necesitar para ingresar al evento.
+                  </p>
+                  <div style={{ background: "white", padding: "1rem", borderRadius: "12px", display: "inline-block", margin: "0 auto 1.5rem" }}>
+                    <QRCodeSVG value={rsvpId} size={160} fgColor="#000000" bgColor="#FFFFFF" />
+                  </div>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>Hacé captura de pantalla</p>
+                </div>
+              ) : rsvpSent ? (
+                <div className="card reveal" style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>🥂</div>
+                  <h3>¡Gracias!</h3>
+                  <p style={{ color: "var(--text-muted)", marginTop: "0.5rem" }}>Recibimos tu confirmación.</p>
                 </div>
               ) : (
                 <form className="card rsvp-form reveal" onSubmit={handleRsvp}>
