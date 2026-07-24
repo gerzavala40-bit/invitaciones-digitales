@@ -59,6 +59,16 @@ export default function BodaElegante({ event }: { event: EventData }) {
   async function handleRsvp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setRsvpLoading(true);
+    
+    // Si estamos en la página de prueba, simulamos el código QR para que se pueda testear visualmente
+    if (event.slug === "test-elegante") {
+      setTimeout(() => {
+        setRsvpData({ sent: true, id: "simulated-qr-code-test-12345" });
+        setRsvpLoading(false);
+      }, 1000);
+      return;
+    }
+
     const fd = new FormData(e.currentTarget);
     try {
       const res = await fetch("/api/rsvp", {
@@ -361,7 +371,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
               
               {rsvpData.sent ? (
                 <div style={{ padding: "2rem 0" }}>
-                  <p className="be-serif text-xl mb-2" style={{ color: "var(--gold)" }}>\u00a1Gracias por confirmar!</p>
+                  <p className="be-serif text-xl mb-2" style={{ color: "var(--gold)" }}>¡Gracias por confirmar!</p>
                   
                   {rsvpData.id && (
                     <div className="mt-8 p-6 bg-white rounded-xl shadow-lg inline-block">
