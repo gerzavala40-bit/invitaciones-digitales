@@ -3,6 +3,7 @@
 import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 import OnboardingQuiz from "@/components/OnboardingQuiz";
+import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 
 
 function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customName }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void, customName: string }) {
@@ -195,7 +196,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            <div className="text-center lg:text-left">
+            <Reveal className="text-center lg:text-left" y={14}>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-ink-100 shadow-soft mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-terracotta-500 animate-pulse-soft"></span>
                 <span className="text-xs font-semibold tracking-wide text-ink-600 uppercase">Lista en 24 hs</span>
@@ -230,10 +231,10 @@ export default function LandingPage() {
                 <span className="hidden sm:inline w-1 h-1 rounded-full bg-ink-300"></span>
                 <span>30% OFF transferencia</span>
               </div>
-            </div>
+            </Reveal>
 
             {/* Phone mockup */}
-            <div className="relative flex justify-center lg:justify-end">
+            <Reveal className="relative flex justify-center lg:justify-end" delay={0.15} y={24}>
               <div className="relative animate-float">
                 <div className="absolute inset-0 bg-terracotta-400/20 blur-3xl rounded-full scale-90"></div>
                 <div className="relative phone-frame rounded-[2.5rem] p-3 w-[280px] sm:w-[300px]">
@@ -264,7 +265,7 @@ export default function LandingPage() {
                   <div><p className="text-[10px] font-semibold text-ink-800">RSVP en vivo</p><p className="text-[9px] text-ink-400">Lista en tiempo real</p></div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </header>
@@ -272,36 +273,36 @@ export default function LandingPage() {
       {/* ========== CÓMO FUNCIONA ========== */}
       <section id="como-funciona" className="py-20 sm:py-24 bg-white border-y border-ink-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <Reveal className="text-center max-w-2xl mx-auto mb-14">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">Simple y sin vueltas</p>
             <h2 className="font-display text-3xl sm:text-4xl text-ink-950 tracking-tight">
               Así de fácil es
             </h2>
             <p className="mt-4 text-ink-500 text-lg">Vos elegís y nos pasás los datos. Nosotros diseñamos y te entregamos el link listo.</p>
-          </div>
+          </Reveal>
 
-          <div className="grid md:grid-cols-4 gap-6 sm:gap-8">
-            <div className="relative text-center">
+          <Stagger className="grid md:grid-cols-4 gap-6 sm:gap-8">
+            <StaggerItem className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-terracotta-100 text-terracotta-700 font-display text-2xl mb-5 step-num">1</div>
               <h3 className="font-display text-xl text-ink-900 mb-2">Elegís el estilo</h3>
               <p className="text-ink-500 text-[15px] leading-relaxed">Mirás las demos en vivo y elegís el que más te guste para tu evento.</p>
-            </div>
-            <div className="relative text-center">
+            </StaggerItem>
+            <StaggerItem className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-100 text-gold-700 font-display text-2xl mb-5 step-num">2</div>
               <h3 className="font-display text-xl text-ink-900 mb-2">Nos pasás los datos</h3>
               <p className="text-ink-500 text-[15px] leading-relaxed">Nombres, fecha, lugares, fotos y el plan. Todo en un formulario rápido.</p>
-            </div>
-            <div className="relative text-center">
+            </StaggerItem>
+            <StaggerItem className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sage-100 text-sage-700 font-display text-2xl mb-5 step-num">3</div>
               <h3 className="font-display text-xl text-ink-900 mb-2">La diseñamos</h3>
               <p className="text-ink-500 text-[15px] leading-relaxed">En 24 hs armamos tu invitación personalizada.</p>
-            </div>
-            <div className="relative text-center">
+            </StaggerItem>
+            <StaggerItem className="relative text-center">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-ink-100 text-ink-700 font-display text-2xl mb-5 step-num">4</div>
               <h3 className="font-display text-xl text-ink-900 mb-2">Recibís el link</h3>
               <p className="text-ink-500 text-[15px] leading-relaxed">Te mandamos el link final. Lo compartís por WhatsApp a todos, sin límite.</p>
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
 
           <div className="mt-12 text-center">
             <Link href="#estilos" className="inline-flex items-center gap-2 text-terracotta-600 font-semibold hover:text-terracotta-700 transition">
@@ -315,7 +316,7 @@ export default function LandingPage() {
       {/* ========== ESTILOS / DEMOS ========== */}
       <section id="estilos" className="py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <Reveal className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="font-display text-3xl sm:text-4xl text-ink-900 tracking-tight mb-4">Catálogo de estilos</h2>
             <p className="text-lg text-ink-600 mb-8">Elegí una base para arrancar. Los colores, fuentes y secciones se adaptan a lo que necesites.</p>
             
@@ -333,7 +334,7 @@ export default function LandingPage() {
               />
               <p className="text-xs text-ink-500 mt-2 text-center">Mirá cómo los diseños se actualizan mágicamente ✨</p>
             </div>
-          </div>
+          </Reveal>
 
           <div className="max-w-3xl mx-auto mb-12 bg-gradient-to-r from-terracotta-50 to-sage-50 border border-terracotta-100/50 rounded-2xl p-6 sm:p-8 text-center shadow-sm">
             <h3 className="font-display text-2xl text-ink-900 mb-3">Tu evento, tu estilo único ✨</h3>
@@ -342,16 +343,16 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-            <PhoneMockup customName={customName} title="Elegante Oscuro" url="/demo-boda-noche-dorada.html" desc="Bodas de noche · Sofisticado" selected={selectedStyle === "Elegante Oscuro"} onSelect={() => handleSelectStyle("Elegante Oscuro", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-boda-noche-dorada.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="Floral Claro" url="/demo-boda-floral-claro.html" desc="Bodas jardín · Romántico" selected={selectedStyle === "Floral Claro"} onSelect={() => handleSelectStyle("Floral Claro", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-boda-floral-claro.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="Minimalista" url="/demo-cumple-minimalista.html" desc="Cumpleaños · Moderno" selected={selectedStyle === "Minimalista"} onSelect={() => handleSelectStyle("Minimalista", "Cumpleaños")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-cumple-minimalista.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="15 Años Glam" url="/demo-15-camila-glam.html" desc="Quince · Fucsia y dorado" selected={selectedStyle === "15 Años Glam"} onSelect={() => handleSelectStyle("15 Años Glam", "15 Años")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-15-camila-glam.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="Bautismo Tierno" url="/demo-bautismo-benicio.html" desc="Bautismos · Celeste suave" selected={selectedStyle === "Bautismo Tierno"} onSelect={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-bautismo-benicio.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="Corporativo" url="/demo-corporativo-gala.html" desc="Eventos de empresa" selected={selectedStyle === "Corporativo"} onSelect={() => handleSelectStyle("Corporativo", "Corporativo")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-corporativo-gala.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="Boda Boho / Canva" url="/demo-canva-boho.html" desc="Estilo Canva · Tonos crema" selected={selectedStyle === "Boda Boho / Canva"} onSelect={() => handleSelectStyle("Boda Boho / Canva", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-canva-boho.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-            <PhoneMockup customName={customName} title="Baby Shower" url="/demo-babyshower-malena.html" desc="Baby Showers · Tierno" selected={selectedStyle === "Baby Shower"} onSelect={() => handleSelectStyle("Baby Shower", "Baby Shower")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-babyshower-malena.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} />
-          </div>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12" stagger={0.08}>
+            <StaggerItem><PhoneMockup customName={customName} title="Elegante Oscuro" url="/demo-boda-noche-dorada.html" desc="Bodas de noche · Sofisticado" selected={selectedStyle === "Elegante Oscuro"} onSelect={() => handleSelectStyle("Elegante Oscuro", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-boda-noche-dorada.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="Floral Claro" url="/demo-boda-floral-claro.html" desc="Bodas jardín · Romántico" selected={selectedStyle === "Floral Claro"} onSelect={() => handleSelectStyle("Floral Claro", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-boda-floral-claro.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="Minimalista" url="/demo-cumple-minimalista.html" desc="Cumpleaños · Moderno" selected={selectedStyle === "Minimalista"} onSelect={() => handleSelectStyle("Minimalista", "Cumpleaños")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-cumple-minimalista.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="15 Años Glam" url="/demo-15-camila-glam.html" desc="Quince · Fucsia y dorado" selected={selectedStyle === "15 Años Glam"} onSelect={() => handleSelectStyle("15 Años Glam", "15 Años")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-15-camila-glam.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="Bautismo Tierno" url="/demo-bautismo-benicio.html" desc="Bautismos · Celeste suave" selected={selectedStyle === "Bautismo Tierno"} onSelect={() => handleSelectStyle("Bautismo Tierno", "Bautismo")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-bautismo-benicio.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="Corporativo" url="/demo-corporativo-gala.html" desc="Eventos de empresa" selected={selectedStyle === "Corporativo"} onSelect={() => handleSelectStyle("Corporativo", "Corporativo")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-corporativo-gala.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="Boda Boho / Canva" url="/demo-canva-boho.html" desc="Estilo Canva · Tonos crema" selected={selectedStyle === "Boda Boho / Canva"} onSelect={() => handleSelectStyle("Boda Boho / Canva", "Boda")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-canva-boho.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+            <StaggerItem><PhoneMockup customName={customName} title="Baby Shower" url="/demo-babyshower-malena.html" desc="Baby Showers · Tierno" selected={selectedStyle === "Baby Shower"} onSelect={() => handleSelectStyle("Baby Shower", "Baby Shower")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-babyshower-malena.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
+          </Stagger>
 
           <p className="text-center mt-14 text-ink-500 text-sm">
             ¿No encontrás el estilo ideal? <button type="button" onClick={handleSelectCustom} className="text-terracotta-600 font-semibold hover:underline">Contanos qué buscás</button> y lo diseñamos a medida.
@@ -474,57 +475,57 @@ export default function LandingPage() {
       {/* ========== FEATURES (resumen) ========== */}
       <section id="features" className="py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <Reveal className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">Todo incluido</p>
             <h2 className="font-display text-3xl sm:text-4xl text-ink-950 tracking-tight">Lo que lleva tu invitación</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+          </Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" stagger={0.06}>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">⏱️</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Cuenta regresiva</h3>
               <p className="text-sm text-ink-500">En vivo desde que abren el link.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">📍</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Mapa y ubicación</h3>
               <p className="text-sm text-ink-500">Google Maps. Un toque y llegan.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">✅</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Confirmación RSVP</h3>
               <p className="text-sm text-ink-500">Lista en tiempo real en tu panel.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">🎫</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Pases con QR</h3>
               <p className="text-sm text-ink-500">Control de acceso rápido en la puerta.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">📅</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Itinerario</h3>
               <p className="text-sm text-ink-500">Línea de tiempo interactiva del evento.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">✍️</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Muro de firmas</h3>
               <p className="text-sm text-ink-500">Los invitados te dejan mensajes y deseos.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">🎁</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Sección regalos</h3>
               <p className="text-sm text-ink-500">Alias/CBU con botón copiar.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">🎵</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Música de fondo</h3>
               <p className="text-sm text-ink-500">La canción que elijan al abrir.</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
               <span className="text-2xl mb-3 block">📸</span>
               <h3 className="font-display text-lg text-ink-900 mb-1">Galería de fotos</h3>
               <p className="text-sm text-ink-500">Carrusel con sus mejores momentos.</p>
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
         </div>
       </section>
 
@@ -532,7 +533,7 @@ export default function LandingPage() {
       <section className="py-20 sm:py-28 bg-white border-y border-ink-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            <div className="flex-1 text-center lg:text-left">
+            <Reveal className="flex-1 text-center lg:text-left">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-semibold mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-terracotta-400 opacity-75"></span>
@@ -571,9 +572,9 @@ export default function LandingPage() {
                   Probar subida celular
                 </Link>
               </div>
-            </div>
+            </Reveal>
             
-            <div className="flex-1 relative w-full max-w-lg">
+            <Reveal className="flex-1 relative w-full max-w-lg" delay={0.15}>
               {/* Decoración abstracta detrás de la imagen */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-terracotta-100 to-sage-100 rounded-[2.5rem] blur-2xl opacity-60"></div>
               
@@ -625,7 +626,7 @@ export default function LandingPage() {
                   <p className="text-[10px] text-ink-500">teinvitoapp.com.ar</p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -634,10 +635,10 @@ export default function LandingPage() {
       <section id="pricing" className="py-20 sm:py-28 bg-ink-900 text-ink-50 relative overflow-hidden">
         <div className="absolute inset-0 grain opacity-30 pointer-events-none"></div>
         <div className="max-w-6xl mx-auto px-5 sm:px-6 relative">
-          <div className="text-center max-w-2xl mx-auto mb-6">
+          <Reveal className="text-center max-w-2xl mx-auto mb-6">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-400 mb-3">Planes</p>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">Elegí el nivel</h2>
-          </div>
+          </Reveal>
           
           <UrgencyTimer />
 
@@ -722,46 +723,46 @@ export default function LandingPage() {
       {/* ========== TESTIMONIALS ========== */}
       <section className="py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="text-center mb-12">
+          <Reveal className="text-center mb-12">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">+200 eventos</p>
             <h2 className="font-display text-3xl sm:text-4xl text-ink-950">Lo que dicen</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
+          </Reveal>
+          <Stagger className="grid md:grid-cols-3 gap-6">
+            <StaggerItem className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
               <div className="flex gap-0.5 text-gold-400 mb-4">★★★★★</div>
               <p className="text-ink-600 leading-relaxed mb-6">“Elegimos el estilo, mandamos los datos y en 24 hs teníamos el link. Los invitados quedaron encantados.”</p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-terracotta-100 flex items-center justify-center font-display italic text-terracotta-700">V</div>
                 <div><p className="font-semibold text-sm text-ink-900">Valentina R.</p><p className="text-xs text-ink-400">Boda</p></div>
               </div>
-            </div>
-            <div className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
               <div className="flex gap-0.5 text-gold-400 mb-4">★★★★★</div>
               <p className="text-ink-600 leading-relaxed mb-6">“Cero complicaciones. Les pasé todo por el formulario y me devolvieron la invitación perfecta.”</p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center font-display italic text-sage-700">M</div>
                 <div><p className="font-semibold text-sm text-ink-900">Martín G.</p><p className="text-xs text-ink-400">Cumpleaños 30</p></div>
               </div>
-            </div>
-            <div className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
+            </StaggerItem>
+            <StaggerItem className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
               <div className="flex gap-0.5 text-gold-400 mb-4">★★★★★</div>
               <p className="text-ink-600 leading-relaxed mb-6">“El estilo Glam quedó soñado. Mi hija no podía creer que era una invitación web.”</p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center font-display italic text-gold-700">C</div>
                 <div><p className="font-semibold text-sm text-ink-900">Carolina S.</p><p className="text-xs text-ink-400">15 Años</p></div>
               </div>
-            </div>
-          </div>
+            </StaggerItem>
+          </Stagger>
         </div>
       </section>
 
       {/* ========== FAQ ========== */}
       <section id="faq" className="py-20 sm:py-24 bg-ink-100/50">
         <div className="max-w-3xl mx-auto px-5 sm:px-6">
-          <div className="text-center mb-12">
+          <Reveal className="text-center mb-12">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">FAQ</p>
             <h2 className="font-display text-3xl sm:text-4xl text-ink-950">Preguntas frecuentes</h2>
-          </div>
+          </Reveal>
           <div className="space-y-3">
             <details className="group bg-white rounded-2xl border border-ink-100 shadow-soft" open>
               <summary className="flex items-center justify-between cursor-pointer p-5 sm:p-6 list-none">
@@ -813,7 +814,7 @@ export default function LandingPage() {
       <section className="py-20 sm:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-ink-900"></div>
         <div className="absolute inset-0 grain opacity-20 pointer-events-none"></div>
-        <div className="max-w-3xl mx-auto px-5 sm:px-6 relative text-center">
+        <Reveal className="max-w-3xl mx-auto px-5 sm:px-6 relative text-center">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight text-balance">
             Elegí el estilo.<br />Nosotros la <em className="italic text-gold-400">dejamos lista</em>.
           </h2>
@@ -826,7 +827,7 @@ export default function LandingPage() {
               Hablar con un asesor (Sin compromiso)
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* ========== FOOTER ========== */}
