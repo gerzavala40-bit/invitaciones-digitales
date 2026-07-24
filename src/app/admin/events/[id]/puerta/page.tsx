@@ -1,21 +1,23 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useState, use, useRef } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
 export default function DoorScanner({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [scanResult, setScanResult] = useState<{ success: boolean; message: string; guestName?: string; guestCount?: number } | null>(null);
   const [scanning, setScanning] = useState(true);
+  const scannerRef = useRef<Html5QrcodeScanner | null>(null);
 
   useEffect(() => {
-    if (!scanning) return;
+    if (!scanning || scannerRef.current) return;
 
     const scanner = new Html5QrcodeScanner(
       "reader",
       { fps: 10, qrbox: { width: 250, height: 250 } },
       false
     );
+    scannerRef.current = scanner;
 
     async function onScanSuccess(decodedText: string) {
       setScanning(false);
@@ -35,11 +37,12 @@ export default function DoorScanner({ params }: { params: Promise<{ id: string }
     }
 
     scanner.render(onScanSuccess, (error) => {
-      // Ignorar errores de lectura constantes
+      // Ignorar errores
     });
 
     return () => {
       scanner.clear().catch(error => console.error("Failed to clear scanner", error));
+      scannerRef.current = null;
     };
   }, [scanning]);
 
