@@ -2,11 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { EventData } from "./types";
+import AddToCalendar from "../features/AddToCalendar";
+import Guestbook from "../features/Guestbook";
+import Timeline from "../features/Timeline";
+import { QRCodeSVG } from "qrcode.react";
 
 export default function BodaElegante({ event }: { event: EventData }) {
   const [entered, setEntered] = useState(false);
   const [countdown, setCountdown] = useState({ d: "00", h: "00", m: "00", s: "00" });
-  const [rsvpSent, setRsvpSent] = useState(false);
+  const [rsvpData, setRsvpData] = useState<{ sent: boolean; id?: string }>({ sent: false });
   const [rsvpLoading, setRsvpLoading] = useState(false);
   const [copyOk, setCopyOk] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -57,7 +61,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
     setRsvpLoading(true);
     const fd = new FormData(e.currentTarget);
     try {
-      await fetch("/api/rsvp", {
+      const res = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -68,7 +72,12 @@ export default function BodaElegante({ event }: { event: EventData }) {
           songRequest: fd.get("cancion") || "",
         }),
       });
-      setRsvpSent(true);
+      const data = await res.json();
+      if (data.success && data.rsvp) {
+        setRsvpData({ sent: true, id: data.rsvp.id });
+      } else {
+        setRsvpData({ sent: true }); // Fallback if no ID is returned
+      }
     } finally {
       setRsvpLoading(false);
     }
@@ -261,7 +270,10 @@ export default function BodaElegante({ event }: { event: EventData }) {
 
           <div className="my-10 fade-in" style={{ transitionDelay: "0.6s" }}>
             <p className="be-serif text-xl" style={{ color: "var(--gold)" }}>{dateLong}</p>
-            <p className="be-serif text-sm text-gray-400 mt-2">A LAS {event.eventTime} HORAS</p>
+            <p className="be-serif text-sm text-gray-400 mt-2 mb-6">A LAS {event.eventTime} HORAS</p>
+            
+            {/* FEATURE: Agregar a Calendario */}
+            <AddToCalendar event={event} className="max-w-xs mx-auto text-[var(--gold)]" />
           </div>
 
           <div className="be-cd fade-in" style={{ transitionDelay: "0.8s" }}>
@@ -270,6 +282,13 @@ export default function BodaElegante({ event }: { event: EventData }) {
             <div><span className="n">{countdown.m}</span><span className="l">Min</span></div>
             <div><span className="n">{countdown.s}</span><span className="l">Seg</span></div>
           </div>
+
+          {/* FEATURE: Timeline */}
+          {event.timeline && event.timeline.length > 0 && (
+            <div className="mb-14 fade-in">
+              <Timeline event={event} />
+            </div>
+          )}
 
           {/* D\u00f3nde */}
           <div className="mb-14 fade-in">
@@ -335,15 +354,22 @@ export default function BodaElegante({ event }: { event: EventData }) {
             </div>
           )}
 
-          {/* RSVP */}
+          {/* RSVP con FEATURE DJ Song Request y FEATURE QR Ticket */}
           {event.rsvpEnabled && (
             <div className="mb-14 fade-in">
               <h2 className="be-serif text-2xl mb-6" style={{ color: "var(--gold)" }}>Confirmar Asistencia</h2>
               
-              {rsvpSent ? (
-                <div style={{ padding: "3rem 0" }}>
-                  <p className="be-serif text-xl text-gold mb-2" style={{ color: "var(--gold)" }}>\u00a1Gracias!</p>
-                  <p className="be-serif text-sm text-gray-400">Tu respuesta ha sido enviada.</p>
+              {rsvpData.sent ? (
+                <div style={{ padding: "2rem 0" }}>
+                  <p className="be-serif text-xl mb-2" style={{ color: "var(--gold)" }}>\u00a1Gracias por confirmar!</p>
+                  
+                  {rsvpData.id && (
+                    <div className="mt-8 p-6 bg-white rounded-xl shadow-lg inline-block">
+                      <p className="text-black text-xs font-bold mb-4">TU PASE DE INGRESO</p>
+                      <QRCodeSVG value={rsvpData.id} size={200} level="H" />
+                      <p className="text-gray-500 text-xs mt-4">Mostrá este código en puerta</p>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <form onSubmit={handleRsvp} style={{ textAlign: "left" }}>
@@ -356,17 +382,27 @@ export default function BodaElegante({ event }: { event: EventData }) {
                     <option value="no">No podr\u00e9 asistir</option>
                   </select>
                   
-                  <label className="be-label">Acompa\u00f1antes</label>
+                  <label className="be-label">Acompa\u00f1antes (incluyéndote)</label>
                   <input name="personas" type="number" min="1" defaultValue="1" className="be-input" />
                   
                   <label className="be-label">Men\u00fa Especial / Notas</label>
                   <input name="dieta" className="be-input" placeholder="Opcional..." />
                   
+                  <label className="be-label">¿Qué canción no puede faltar?</label>
+                  <input name="cancion" className="be-input" placeholder="Nombre o link (opcional)..." />
+
                   <button type="submit" disabled={rsvpLoading} className="be-btn" style={{ marginTop: "1rem" }}>
                     {rsvpLoading ? "ENVIANDO..." : "ENVIAR CONFIRMACI\u00d3N"}
                   </button>
                 </form>
               )}
+            </div>
+          )}
+
+          {/* FEATURE: Libro de Firmas */}
+          {event.guestbookEnabled && (
+            <div className="mb-14 fade-in">
+              <Guestbook event={event} className="text-[var(--gold)]" />
             </div>
           )}
           

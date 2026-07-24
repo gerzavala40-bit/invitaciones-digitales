@@ -23,6 +23,10 @@ export interface EventData {
   bankCBU?: string | null;
   bankHolder?: string | null;
   rsvpEnabled: boolean;
-  rsvpDeadline?: string | null;
+  rsvpDeadline?: string;
+  isActive: boolean;
+  guestbookEnabled: boolean;
   photos: { url: string; order: number }[];
+  messages?: { id: string; guestName: string; message: string; createdAt: Date }[];
+  timeline?: { id: string; time: string; title: string; description?: string | null; icon?: string | null; order: number }[];
 }

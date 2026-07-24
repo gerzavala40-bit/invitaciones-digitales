@@ -59,9 +59,14 @@ model Event {
   rsvpDeadline String?
   isActive     Boolean  @default(true)
   
+  // Funciones Premium
+  guestbookEnabled Boolean  @default(false)
+  
   // Relaciones
   photos       Photo[]
   rsvps        RSVP[]
+  messages     GuestMessage[]
+  timeline     TimelineItem[]
   
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -76,7 +81,29 @@ model RSVP {
   dietaryNotes String?
   songRequest  String?
   confirmed    Boolean  @default(true)
+  attended     Boolean  @default(false)
   createdAt    DateTime @default(now())
+}
+
+model GuestMessage {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  guestName    String
+  message      String
+  isApproved   Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model TimelineItem {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  time         String
+  title        String
+  description  String?
+  icon         String?  @default("clock") // Nombre de icono opcional
+  order        Int      @default(0)
 }
 
 model Photo {
