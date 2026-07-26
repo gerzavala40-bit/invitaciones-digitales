@@ -706,10 +706,9 @@ export default function LandingPage() {
       {/* ========== TESTIMONIALS ========== */}
       <section className="py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <Reveal className="text-center mb-12">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">+200 eventos</p>
+          <div className="text-center mb-12">
             <h2 className="font-display text-3xl sm:text-4xl text-ink-950">Lo que dicen</h2>
-          </Reveal>
+          </div>
           <Stagger className="grid md:grid-cols-3 gap-6">
             <StaggerItem className="bg-white rounded-2xl p-7 border border-ink-100 shadow-soft">
               <div className="flex gap-0.5 text-gold-400 mb-4">★★★★★</div>
