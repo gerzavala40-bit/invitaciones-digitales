@@ -2,14 +2,21 @@
 
 import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import OnboardingQuiz from "@/components/OnboardingQuiz";
 import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 
 
 function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customName }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void, customName: string }) {
   return (
-    <div className={'relative flex flex-col items-center group cursor-pointer transition-transform duration-300 ' + (selected ? 'scale-100' : 'hover:scale-[1.02]')} onClick={onSelect}>
-      <div className={'relative w-[260px] h-[520px] bg-black rounded-[38px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] p-[6px] border-4 ' + (selected ? 'border-terracotta-500 ring-4 ring-terracotta-100' : 'border-ink-200')}>
+    <motion.div
+      className="relative flex flex-col items-center group cursor-pointer"
+      onClick={onSelect}
+      whileHover={{ y: -10, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
+    >
+      <div className={'relative w-[260px] h-[520px] bg-black rounded-[38px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] p-[6px] border-4 transition-shadow duration-300 group-hover:shadow-[0_28px_50px_-12px_rgba(0,0,0,0.28)] ' + (selected ? 'border-terracotta-500 ring-4 ring-terracotta-100' : 'border-ink-200')}>
         {/* Dynamic Island */}
         <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[85px] h-[22px] bg-black rounded-b-2xl z-20 flex justify-center pt-1">
           <div className="w-12 h-1.5 rounded-full bg-white/10"></div>
@@ -20,17 +27,33 @@ function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customNa
           {/* Glass overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 pointer-events-none"></div>
         </div>
-        <div className={'absolute -right-4 -top-4 w-9 h-9 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-xl font-bold shadow-lg transition-opacity ' + (selected ? 'opacity-100' : 'opacity-0')}>✓</div>
+        <motion.div
+          className={'absolute -right-4 -top-4 w-9 h-9 rounded-full bg-terracotta-600 text-white flex items-center justify-center text-xl font-bold shadow-lg ' + (selected ? 'opacity-100' : 'opacity-0')}
+          initial={false}
+          animate={selected ? { scale: [0.6, 1.15, 1] } : { scale: 1 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        >✓</motion.div>
       </div>
       <div className="mt-6 text-center px-2 w-full max-w-[260px]">
         <h3 className="font-display text-xl text-ink-900">{title}</h3>
         <p className="text-sm text-ink-400 mt-1">{desc}</p>
         <div className="mt-4 flex gap-2">
-          <button type="button" onClick={(e) => { e.stopPropagation(); onPreview(); }} className="flex-1 flex justify-center items-center h-10 rounded-full text-[11px] font-semibold tracking-widest uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition">Ver demo</button>
-          <button type="button" className="flex-1 h-10 rounded-full text-[11px] font-semibold tracking-widest uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition">Quiero este</button>
+          <motion.button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onPreview(); }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-1 flex justify-center items-center h-10 rounded-full text-[11px] font-semibold tracking-widest uppercase border border-ink-200 text-ink-600 hover:bg-ink-50 transition-colors"
+          >Ver demo</motion.button>
+          <motion.button
+            type="button"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-1 h-10 rounded-full text-[11px] font-semibold tracking-widest uppercase bg-terracotta-600 text-white hover:bg-terracotta-700 transition-colors"
+          >Quiero este</motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -212,10 +235,17 @@ export default function LandingPage() {
               </p>
 
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
-                <button type="button" onClick={() => setIsQuizOpen(true)} className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-glow transition group">
+                <motion.button
+                  type="button"
+                  onClick={() => setIsQuizOpen(true)}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-glow transition-colors group"
+                >
                   Empezar mi diseño
                   <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                </button>
+                </motion.button>
                 <Link href="#como-funciona" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-800 bg-white border border-ink-200 hover:border-ink-400 hover:bg-ink-50 transition">
                   Cómo funciona
                 </Link>
@@ -652,7 +682,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            <div className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
+            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
               <h3 className="font-display text-2xl text-white">Básico</h3>
               <p className="text-sm text-ink-400 mt-1 mb-5">Eventos simples</p>
               <p className="font-display text-4xl text-white mb-6">$25.000</p>
@@ -663,16 +693,16 @@ export default function LandingPage() {
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Envíos ilimitados</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full disabled:opacity-50">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition-colors w-full disabled:opacity-50">
                   {isProcessingPayment === "BASICO" ? "Procesando..." : "Comprar con MercadoPago"}
-                </button>
+                </motion.button>
                 <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Básico]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-white transition py-2 text-center w-full underline">
                   Pagar luego por transferencia (-30%)
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-ink-800 rounded-3xl p-7 border-2 border-terracotta-500 shadow-glow flex flex-col relative">
+            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-ink-800 rounded-3xl p-7 border-2 border-terracotta-500 shadow-glow flex flex-col relative">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                 <span className="px-4 py-1 rounded-full bg-terracotta-600 text-white text-[11px] font-bold tracking-wider uppercase">Más elegido</span>
               </div>
@@ -687,16 +717,16 @@ export default function LandingPage() {
                 <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Party Cam (Gratis)</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="block text-center h-12 rounded-full bg-terracotta-600 text-white font-semibold text-sm hover:bg-terracotta-500 transition w-full shadow-glow disabled:opacity-50">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="block text-center h-12 rounded-full bg-terracotta-600 text-white font-semibold text-sm hover:bg-terracotta-500 transition-colors w-full shadow-glow disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM" ? "Procesando..." : "Comprar con MercadoPago"}
-                </button>
+                </motion.button>
                 <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Premium]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-300 hover:text-white transition py-2 text-center w-full underline">
                   Pagar luego por transferencia (-30%)
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
+            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
               <h3 className="font-display text-2xl text-white">Premium Plus</h3>
               <p className="text-sm text-ink-400 mt-1 mb-5">Experiencia completa</p>
               <p className="font-display text-4xl text-white mb-6">$65.000</p>
@@ -707,14 +737,14 @@ export default function LandingPage() {
                 <li className="flex gap-2"><span className="text-sage-400">✓</span> Fotos ilimitadas + soporte</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition w-full disabled:opacity-50">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition-colors w-full disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM_PLUS" ? "Procesando..." : "Comprar con MercadoPago"}
-                </button>
+                </motion.button>
                 <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-white transition py-2 text-center w-full underline">
                   Pagar luego por transferencia (-30%)
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
           <p className="text-center mt-10 text-ink-400 text-sm">Seña 50% para iniciar</p>
         </div>
