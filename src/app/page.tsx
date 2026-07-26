@@ -212,9 +212,10 @@ export default function LandingPage() {
       </nav>
 
       {/* ========== HERO ========== */}
-      <header className="relative pt-32 sm:pt-36 pb-16 sm:pb-24 overflow-hidden">
+      <header className="relative pt-32 sm:pt-36 pb-16 sm:pb-24 overflow-hidden bg-ink-50">
         <div className="absolute inset-0 grain pointer-events-none"></div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-terracotta-100/60 via-transparent to-transparent rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
+        <div className="absolute inset-0 pointer-events-none opacity-60" style={{ backgroundImage: 'radial-gradient(circle, #C4B8A8 1px, transparent 1px)', backgroundSize: '22px 22px', maskImage: 'radial-gradient(ellipse 60% 50% at 85% 20%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 85% 20%, black 0%, transparent 70%)' }}></div>
 
         <div className="max-w-6xl mx-auto px-5 sm:px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -260,6 +261,23 @@ export default function LandingPage() {
                 <span>Envíos ilimitados</span>
                 <span className="hidden sm:inline w-1 h-1 rounded-full bg-ink-300"></span>
                 <span>30% OFF transferencia</span>
+              </div>
+
+              <div className="mt-8 grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0">
+                {[
+                  { label: "Boda", icon: "💍", href: "#estilos" },
+                  { label: "15 años", icon: "👑", href: "#estilos" },
+                  { label: "Cumpleaños", icon: "🎉", href: "#estilos" },
+                ].map((cat) => (
+                  <Link
+                    key={cat.label}
+                    href={cat.href}
+                    className="flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl bg-white border border-ink-100 shadow-soft hover:border-terracotta-300 hover:-translate-y-0.5 transition-all"
+                  >
+                    <span className="w-9 h-9 rounded-full bg-terracotta-100 flex items-center justify-center text-base">{cat.icon}</span>
+                    <span className="text-xs font-medium text-ink-700">{cat.label}</span>
+                  </Link>
+                ))}
               </div>
             </Reveal>
 
@@ -662,85 +680,85 @@ export default function LandingPage() {
       </section>
 
       {/* ========== PRICING ========== */}
-      <section id="pricing" className="py-20 sm:py-28 bg-ink-900 text-ink-50 relative overflow-hidden">
+      <section id="pricing" className="py-20 sm:py-28 bg-ink-50 relative overflow-hidden">
         <div className="absolute inset-0 grain opacity-30 pointer-events-none"></div>
         <div className="max-w-6xl mx-auto px-5 sm:px-6 relative">
           <Reveal className="text-center max-w-2xl mx-auto mb-6">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-400 mb-3">Planes</p>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">Elegí el nivel</h2>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600 mb-3">Planes</p>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-ink-950 tracking-tight">Elegí el nivel</h2>
           </Reveal>
           
           <UrgencyTimer />
 
           <div className="text-center mb-12 flex flex-col items-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sage-500/20 text-sage-300 text-sm font-semibold border border-sage-500/30 mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sage-100 text-sage-700 text-sm font-semibold border border-sage-500/30 mb-4">
               30% OFF abonando por transferencia
             </span>
-            <p className="text-ink-300 text-lg max-w-xl">
+            <p className="text-ink-500 text-lg max-w-xl">
               Llevate una invitación premium de diseño exclusivo por menos de lo que cuesta el centro de mesa o el cubierto de un solo invitado.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
-              <h3 className="font-display text-2xl text-white">Básico</h3>
-              <p className="text-sm text-ink-400 mt-1 mb-5">Eventos simples</p>
-              <p className="font-display text-4xl text-white mb-6">$25.000</p>
-              <ul className="space-y-3 text-[15px] text-ink-300 mb-8 flex-1">
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Cuenta regresiva + mapa</li>
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Confirmación WhatsApp</li>
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Regalos + dress code</li>
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Envíos ilimitados</li>
+            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-white rounded-3xl p-7 border border-ink-100 shadow-soft flex flex-col">
+              <h3 className="font-display text-2xl text-ink-950">Básico</h3>
+              <p className="text-sm text-ink-500 mt-1 mb-5">Eventos simples</p>
+              <p className="font-display text-4xl text-ink-950 mb-6">$25.000</p>
+              <ul className="space-y-3 text-[15px] text-ink-600 mb-8 flex-1">
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Cuenta regresiva + mapa</li>
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Confirmación WhatsApp</li>
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Regalos + dress code</li>
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Envíos ilimitados</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition-colors w-full disabled:opacity-50">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="block text-center h-12 rounded-full border border-ink-200 text-ink-800 font-semibold text-sm hover:bg-ink-50 transition-colors w-full disabled:opacity-50">
                   {isProcessingPayment === "BASICO" ? "Procesando..." : "Comprar con MercadoPago"}
                 </motion.button>
-                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Básico]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-white transition py-2 text-center w-full underline">
+                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Básico]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-ink-800 transition py-2 text-center w-full underline">
                   Pagar luego por transferencia (-30%)
                 </button>
               </div>
             </motion.div>
 
-            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-ink-800 rounded-3xl p-7 border-2 border-terracotta-500 shadow-glow flex flex-col relative">
+            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-white rounded-3xl p-7 border-2 border-terracotta-500 shadow-glow flex flex-col relative">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                 <span className="px-4 py-1 rounded-full bg-terracotta-600 text-white text-[11px] font-bold tracking-wider uppercase">Más elegido</span>
               </div>
-              <h3 className="font-display text-2xl text-white">Premium</h3>
-              <p className="text-sm text-ink-400 mt-1 mb-5">Bodas y 15 años</p>
-              <p className="font-display text-4xl text-white mb-6">$45.000</p>
-              <ul className="space-y-3 text-[15px] text-ink-200 mb-8 flex-1">
-                <li className="flex gap-2"><span className="text-gold-400">✓</span> Todo lo del Básico</li>
-                <li className="flex gap-2"><span className="text-gold-400">✓</span> RSVP propio + Excel</li>
-                <li className="flex gap-2"><span className="text-gold-400">✓</span> Música de fondo</li>
-                <li className="flex gap-2"><span className="text-gold-400">✓</span> Música + Galería (8 fotos)</li>
-                <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Party Cam (Gratis)</li>
+              <h3 className="font-display text-2xl text-ink-950">Premium</h3>
+              <p className="text-sm text-ink-500 mt-1 mb-5">Bodas y 15 años</p>
+              <p className="font-display text-4xl text-ink-950 mb-6">$45.000</p>
+              <ul className="space-y-3 text-[15px] text-ink-700 mb-8 flex-1">
+                <li className="flex gap-2"><span className="text-gold-600">✓</span> Todo lo del Básico</li>
+                <li className="flex gap-2"><span className="text-gold-600">✓</span> RSVP propio + Excel</li>
+                <li className="flex gap-2"><span className="text-gold-600">✓</span> Música de fondo</li>
+                <li className="flex gap-2"><span className="text-gold-600">✓</span> Música + Galería (8 fotos)</li>
+                <li className="flex gap-2 font-bold text-ink-950"><span className="text-terracotta-500">✓</span> Party Cam (Gratis)</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
                 <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="block text-center h-12 rounded-full bg-terracotta-600 text-white font-semibold text-sm hover:bg-terracotta-500 transition-colors w-full shadow-glow disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM" ? "Procesando..." : "Comprar con MercadoPago"}
                 </motion.button>
-                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Premium]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-300 hover:text-white transition py-2 text-center w-full underline">
+                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value=Premium]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-500 hover:text-ink-900 transition py-2 text-center w-full underline">
                   Pagar luego por transferencia (-30%)
                 </button>
               </div>
             </motion.div>
 
-            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-ink-800/80 rounded-3xl p-7 border border-ink-700 flex flex-col">
-              <h3 className="font-display text-2xl text-white">Premium Plus</h3>
-              <p className="text-sm text-ink-400 mt-1 mb-5">Experiencia completa</p>
-              <p className="font-display text-4xl text-white mb-6">$65.000</p>
-              <ul className="space-y-3 text-[15px] text-ink-300 mb-8 flex-1">
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Todo lo del Premium</li>
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Personalizada + trivia</li>
-                <li className="flex gap-2 font-bold text-white"><span className="text-terracotta-400">✓</span> Tu propio dominio web (.com.ar)</li>
-                <li className="flex gap-2"><span className="text-sage-400">✓</span> Fotos ilimitadas + soporte</li>
+            <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }} className="bg-white rounded-3xl p-7 border border-ink-100 shadow-soft flex flex-col">
+              <h3 className="font-display text-2xl text-ink-950">Premium Plus</h3>
+              <p className="text-sm text-ink-500 mt-1 mb-5">Experiencia completa</p>
+              <p className="font-display text-4xl text-ink-950 mb-6">$65.000</p>
+              <ul className="space-y-3 text-[15px] text-ink-600 mb-8 flex-1">
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Todo lo del Premium</li>
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Personalizada + trivia</li>
+                <li className="flex gap-2 font-bold text-ink-950"><span className="text-terracotta-500">✓</span> Tu propio dominio web (.com.ar)</li>
+                <li className="flex gap-2"><span className="text-sage-600">✓</span> Fotos ilimitadas + soporte</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="block text-center h-12 rounded-full border border-ink-500 text-white font-semibold text-sm hover:bg-ink-700 transition-colors w-full disabled:opacity-50">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="block text-center h-12 rounded-full border border-ink-200 text-ink-800 font-semibold text-sm hover:bg-ink-50 transition-colors w-full disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM_PLUS" ? "Procesando..." : "Comprar con MercadoPago"}
                 </motion.button>
-                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-white transition py-2 text-center w-full underline">
+                <button type="button" onClick={() => { document.querySelector<HTMLInputElement>('input[value="Premium Plus"]')!.checked = true; document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-ink-400 hover:text-ink-800 transition py-2 text-center w-full underline">
                   Pagar luego por transferencia (-30%)
                 </button>
               </div>
@@ -842,18 +860,18 @@ export default function LandingPage() {
 
       {/* ========== CTA FINAL ========== */}
       <section className="py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-ink-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-terracotta-100 via-ink-50 to-gold-100"></div>
         <div className="absolute inset-0 grain opacity-20 pointer-events-none"></div>
         <Reveal className="max-w-3xl mx-auto px-5 sm:px-6 relative text-center">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight text-balance">
-            Elegí el estilo.<br />Nosotros la <em className="italic text-gold-400">dejamos lista</em>.
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-ink-950 tracking-tight text-balance">
+            Elegí el estilo.<br />Nosotros la <em className="italic text-terracotta-600">dejamos lista</em>.
           </h2>
-          <p className="mt-5 text-ink-300 text-lg max-w-md mx-auto">En 24 hs tenés tu invitación web lista para sorprender a todos por WhatsApp.</p>
+          <p className="mt-5 text-ink-600 text-lg max-w-md mx-auto">En 24 hs tenés tu invitación web lista para sorprender a todos por WhatsApp.</p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#estilos" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-900 bg-gold-400 hover:bg-gold-300 transition shadow-lg">
+            <Link href="#estilos" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 transition shadow-glow">
               Ver estilos y empezar
             </Link>
-            <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white border border-ink-600 hover:border-ink-400 hover:bg-ink-800 transition">
+            <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-800 bg-white border border-ink-200 hover:border-ink-400 hover:bg-ink-50 transition">
               Hablar con un asesor (Sin compromiso)
             </a>
           </div>
