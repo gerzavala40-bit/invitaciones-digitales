@@ -34,6 +34,14 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/te-invito-landing.html',
+      },
+    ]
+  },
   async headers() {
     return [
       {
