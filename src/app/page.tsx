@@ -149,164 +149,147 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="font-sans bg-ink-50 text-ink-900 antialiased min-h-screen">
+    <div className="font-sans bg-[#F9F7F3] text-stone-800 antialiased min-h-screen selection:bg-amber-200">
       {/* ========== NAV ========== */}
-            {/* ========== TOP BANNER ========== */}
-      <div className="fixed top-0 inset-x-0 h-9 bg-terracotta-600 text-white z-[60] flex items-center justify-center text-[13px] font-medium tracking-wide shadow-sm">
-        🎁 30% OFF abonando por transferencia
-      </div>
-
       <nav
-        className={`fixed top-9 inset-x-0 z-50 transition-all duration-300 ${
-          navScrolled ? "bg-ink-50/90 backdrop-blur-md shadow-soft border-b border-ink-100/50" : ""
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+          navScrolled ? "bg-[#F9F7F3]/90 backdrop-blur-md shadow-sm border-b border-[#EAE5DB] py-3" : "py-6 bg-transparent"
         }`}
         id="navbar"
       >
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="flex items-center justify-between h-16 sm:h-[4.5rem]">
-            <Link href="#" className="font-display text-xl sm:text-2xl tracking-tight text-ink-900">
-              Te <em className="italic text-terracotta-600">invito</em>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="flex items-center justify-between">
+            <Link href="#" className="font-display text-2xl sm:text-3xl tracking-tight text-stone-900">
+              Te Invito
             </Link>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-ink-600">
-              <Link href="#estilos" className="hover:text-ink-900 transition">Estilos</Link>
-              <Link href="#como-funciona" className="hover:text-ink-900 transition">Cómo funciona</Link>
-              <Link href="#pricing" className="hover:text-ink-900 transition">Precios</Link>
-              <Link href="#faq" className="hover:text-ink-900 transition">FAQ</Link>
+            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+              <Link href="#" className="hover:text-amber-600 transition">Inicio</Link>
+              <Link href="#features" className="hover:text-amber-600 transition">Características</Link>
+              <Link href="#estilos" className="hover:text-amber-600 transition">Diseños</Link>
+              <Link href="#pricing" className="hover:text-amber-600 transition">Precios</Link>
             </div>
-            <div className="flex items-center gap-3">
-              <Link href="#pedido" className="hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-ink-800 border border-ink-200 hover:border-ink-400 hover:bg-white transition">
-                Hacer pedido
+            <div className="flex items-center gap-4">
+              <Link href="#pedido" className="hidden sm:inline-flex items-center justify-center h-11 px-7 rounded-full text-sm font-medium text-white bg-[#E87A5D] hover:bg-[#D96B4F] shadow-sm transition">
+                Empezar
               </Link>
-              <a href="https://www.instagram.com/teinvitoapp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="inline-flex items-center justify-center w-10 h-10 rounded-full text-ink-500 hover:text-terracotta-600 hover:bg-ink-100 transition">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" /></svg>
-              </a>
-              <a href="https://wa.me/5493425299942?text=Hola!%20Quiero%20una%20invitación" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-soft transition">
-                WhatsApp
-              </a>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* ========== HERO ========== */}
-      <header className="relative pt-32 sm:pt-36 pb-16 sm:pb-24 overflow-hidden">
-        <div className="absolute inset-0 grain pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-terracotta-100/60 via-transparent to-transparent rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
+      {/* ========== HERO DAYLIGHT MOCKUP ========== */}
+      <header className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden min-h-screen flex flex-col justify-center">
+        {/* Soft Ambient Glows */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-amber-100/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-100/30 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
 
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 relative">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10 w-full flex-1 flex flex-col justify-center">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            <Reveal className="text-center lg:text-left" y={14}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-ink-100 shadow-soft mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-terracotta-500 animate-pulse-soft"></span>
-                <span className="text-xs font-semibold tracking-wide text-ink-600 uppercase">Lista en 24 hs</span>
+            {/* Left Content */}
+            <Reveal className="text-center lg:text-left" y={20}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#EAE5DB] shadow-sm mb-8">
+                <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                <span className="text-xs font-semibold tracking-wide text-stone-600 uppercase">Hechas para compartir</span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl leading-[1.08] tracking-tight text-ink-950 text-balance">
-                Elegí tu estilo.<br />
-                Nosotros la <span className="italic text-terracotta-600">armamos</span>.
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-[4rem] leading-[1.1] tracking-tight text-stone-900 mb-6">
+                Invitaciones <br/>digitales que se <span className="text-[#E87A5D] italic">sienten bien.</span>
               </h1>
-
-              <p className="mt-5 sm:mt-6 text-lg sm:text-xl text-ink-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Mirás las demos, nos pasás los datos de tu evento y en 24 hs tenés tu invitación web lista para WhatsApp. Sin apps. Sin vueltas.
+              
+              <p className="text-lg sm:text-xl text-stone-600 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10">
+                Diseños limpios, elegantes y sin distracciones. Crea la invitación perfecta para tu evento en minutos, lista para WhatsApp.
               </p>
 
-              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
-                <button type="button" onClick={() => setIsQuizOpen(true)} className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-white bg-terracotta-600 hover:bg-terracotta-700 shadow-glow transition group">
-                  Empezar mi diseño
-                  <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                <button type="button" onClick={() => setIsQuizOpen(true)} className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-medium text-white bg-[#E87A5D] hover:bg-[#D96B4F] shadow-md transition">
+                  Diseñar mi invitación
                 </button>
-                <Link href="#como-funciona" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold text-ink-800 bg-white border border-ink-200 hover:border-ink-400 hover:bg-ink-50 transition">
-                  Cómo funciona
+                <Link href="#estilos" className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-medium text-stone-700 bg-white border border-[#EAE5DB] hover:bg-stone-50 hover:border-stone-300 transition">
+                  Ver ejemplos
                 </Link>
-              </div>
-
-              <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-ink-500">
-                <span className="inline-flex items-center gap-1.5">
-                  <svg className="w-4 h-4 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  +200 eventos
-                </span>
-                <span className="hidden sm:inline w-1 h-1 rounded-full bg-ink-300"></span>
-                <span>Envíos ilimitados</span>
-                <span className="hidden sm:inline w-1 h-1 rounded-full bg-ink-300"></span>
-                <span>30% OFF transferencia</span>
               </div>
             </Reveal>
 
-            {/* Phone mockup */}
-            <Reveal className="relative flex justify-center lg:justify-end" delay={0.15} y={24}>
-              <div className="relative animate-float">
-                <div className="absolute inset-0 bg-terracotta-400/20 blur-3xl rounded-full scale-90"></div>
-                <div className="relative phone-frame rounded-[2.5rem] p-3 w-[280px] sm:w-[300px]">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 rounded-b-2xl bg-ink-950 z-10"></div>
-                  <div className="relative rounded-[2rem] overflow-hidden bg-ink-50 aspect-[9/19]">
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-ink-50 to-ink-100">
-                      <div className="w-12 h-12 rounded-full border border-gold-400 flex items-center justify-center mb-4">
-                        <span className="font-display italic text-gold-600 text-lg">V&M</span>
-                      </div>
-                      <p className="text-[10px] tracking-[0.25em] uppercase text-terracotta-600 font-semibold mb-2">Nos casamos</p>
-                      <h3 className="font-display text-2xl text-ink-900 leading-tight">Valentina<br /><span className="italic text-terracotta-600">&</span> Matías</h3>
-                      <p className="text-[11px] text-ink-500 mt-2 tracking-wide">12 Dic 2026 · Córdoba</p>
-                      <div className="flex gap-3 mt-5">
-                        <div className="text-center"><div className="font-display text-xl text-terracotta-600">48</div><div className="text-[8px] uppercase tracking-wider text-ink-400">Días</div></div>
-                        <div className="text-center"><div className="font-display text-xl text-terracotta-600">14</div><div className="text-[8px] uppercase tracking-wider text-ink-400">Hs</div></div>
-                        <div className="text-center"><div className="font-display text-xl text-terracotta-600">22</div><div className="text-[8px] uppercase tracking-wider text-ink-400">Min</div></div>
-                      </div>
-                      <div className="mt-5 px-5 py-2 rounded-full border border-sage-500 text-[10px] tracking-wider uppercase text-sage-600 font-medium">Confirmar asistencia</div>
-                    </div>
+            {/* Right Content - Single Clean Phone */}
+            <Reveal className="relative flex justify-center h-[500px] lg:h-[600px] items-center" delay={0.2} y={30}>
+              <div className="relative animate-float-slow">
+                {/* Soft shadow under phone */}
+                <div className="absolute inset-x-8 -bottom-10 h-10 bg-stone-900/10 blur-xl rounded-full"></div>
+                
+                <div className="relative phone-frame rounded-[2.5rem] p-3 w-[290px] sm:w-[320px] bg-[#F2EFEB] border border-[#E5E0D8] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 rounded-b-2xl bg-[#F2EFEB] z-10 flex justify-center items-center">
+                    <div className="w-12 h-1.5 rounded-full bg-stone-300"></div>
                   </div>
-                </div>
-                <div className="absolute -left-4 sm:-left-8 top-1/4 bg-white rounded-2xl shadow-card px-3.5 py-2.5 flex items-center gap-2">
-                  <span className="text-lg">🗺️</span>
-                  <div><p className="text-[10px] font-semibold text-ink-800">Mapa integrado</p><p className="text-[9px] text-ink-400">Un toque y llegan</p></div>
-                </div>
-                <div className="absolute -right-2 sm:-right-6 bottom-1/4 bg-white rounded-2xl shadow-card px-3.5 py-2.5 flex items-center gap-2">
-                  <span className="text-lg">✅</span>
-                  <div><p className="text-[10px] font-semibold text-ink-800">RSVP en vivo</p><p className="text-[9px] text-ink-400">Lista en tiempo real</p></div>
+                  <div className="relative rounded-[2rem] overflow-hidden bg-white border border-[#EAE5DB] aspect-[9/19]">
+                    <iframe src="/demo-boda-floral-claro.html?preview=1" className="w-[375px] h-[812px] border-none pointer-events-none origin-top-left" style={{ transform: 'scale(0.75)' }} tabIndex={-1} loading="lazy" />
+                  </div>
                 </div>
               </div>
             </Reveal>
           </div>
+
+          {/* Bottom Paper Cards */}
+          <Stagger className="grid md:grid-cols-3 gap-6 mt-20" stagger={0.1}>
+            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">💍</div>
+              <h3 className="font-display text-2xl text-stone-900 mb-3">Bodas</h3>
+              <p className="text-stone-500 text-sm mb-6 leading-relaxed">Diseños minimalistas y románticos para el día más importante.</p>
+              <div className="text-[#E87A5D] text-xs font-semibold tracking-widest uppercase flex items-center gap-2">Explorar <span className="transition-transform group-hover:translate-x-1">→</span></div>
+            </StaggerItem>
+            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">🥂</div>
+              <h3 className="font-display text-2xl text-stone-900 mb-3">Eventos</h3>
+              <p className="text-stone-500 text-sm mb-6 leading-relaxed">Elegancia sutil para recepciones, galas y eventos corporativos.</p>
+              <div className="text-[#E87A5D] text-xs font-semibold tracking-widest uppercase flex items-center gap-2">Explorar <span className="transition-transform group-hover:translate-x-1">→</span></div>
+            </StaggerItem>
+            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">🎈</div>
+              <h3 className="font-display text-2xl text-stone-900 mb-3">Cumpleaños</h3>
+              <p className="text-stone-500 text-sm mb-6 leading-relaxed">Invitaciones cálidas y divertidas para celebrar con amigos.</p>
+              <div className="text-[#E87A5D] text-xs font-semibold tracking-widest uppercase flex items-center gap-2">Explorar <span className="transition-transform group-hover:translate-x-1">→</span></div>
+            </StaggerItem>
+          </Stagger>
         </div>
       </header>
 
       {/* ========== CÓMO FUNCIONA ========== */}
-      <section id="como-funciona" className="py-20 sm:py-24 bg-white border-y border-ink-100">
+      <section id="como-funciona" className="py-20 sm:py-24 bg-[#FDFBF7] border-y border-[#EAE5DB]">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <Reveal className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">Simple y sin vueltas</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-ink-950 tracking-tight">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-3">Simple y orgánico</p>
+            <h2 className="font-display text-3xl sm:text-4xl text-stone-900 tracking-tight">
               Así de fácil es
             </h2>
-            <p className="mt-4 text-ink-500 text-lg">Vos elegís y nos pasás los datos. Nosotros diseñamos y te entregamos el link listo.</p>
+            <p className="mt-4 text-stone-500 text-lg">Vos elegís el diseño y nos pasás los datos. Nosotros armamos tu invitación y te entregamos el link listo.</p>
           </Reveal>
 
           <Stagger className="grid md:grid-cols-4 gap-6 sm:gap-8">
             <StaggerItem className="relative text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-terracotta-100 text-terracotta-700 font-display text-2xl mb-5 step-num">1</div>
-              <h3 className="font-display text-xl text-ink-900 mb-2">Elegís el estilo</h3>
-              <p className="text-ink-500 text-[15px] leading-relaxed">Mirás las demos en vivo y elegís el que más te guste para tu evento.</p>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white border border-[#EAE5DB] shadow-sm text-amber-600 font-display text-2xl mb-5 step-num">1</div>
+              <h3 className="font-display text-xl text-stone-900 mb-2">Elegís el estilo</h3>
+              <p className="text-stone-500 text-[15px] leading-relaxed">Mirás las opciones y elegís la vibra que más te guste para tu evento.</p>
             </StaggerItem>
             <StaggerItem className="relative text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-100 text-gold-700 font-display text-2xl mb-5 step-num">2</div>
-              <h3 className="font-display text-xl text-ink-900 mb-2">Nos pasás los datos</h3>
-              <p className="text-ink-500 text-[15px] leading-relaxed">Nombres, fecha, lugares, fotos y el plan. Todo en un formulario rápido.</p>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white border border-[#EAE5DB] shadow-sm text-amber-600 font-display text-2xl mb-5 step-num">2</div>
+              <h3 className="font-display text-xl text-stone-900 mb-2">Nos pasás los datos</h3>
+              <p className="text-stone-500 text-[15px] leading-relaxed">Nombres, fecha, lugares, fotos y el plan. Todo en un paso simple.</p>
             </StaggerItem>
             <StaggerItem className="relative text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sage-100 text-sage-700 font-display text-2xl mb-5 step-num">3</div>
-              <h3 className="font-display text-xl text-ink-900 mb-2">La diseñamos</h3>
-              <p className="text-ink-500 text-[15px] leading-relaxed">En 24 hs armamos tu invitación personalizada.</p>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white border border-[#EAE5DB] shadow-sm text-amber-600 font-display text-2xl mb-5 step-num">3</div>
+              <h3 className="font-display text-xl text-stone-900 mb-2">La diseñamos</h3>
+              <p className="text-stone-500 text-[15px] leading-relaxed">En 24 hs armamos tu invitación con cuidado y detalle.</p>
             </StaggerItem>
             <StaggerItem className="relative text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-ink-100 text-ink-700 font-display text-2xl mb-5 step-num">4</div>
-              <h3 className="font-display text-xl text-ink-900 mb-2">Recibís el link</h3>
-              <p className="text-ink-500 text-[15px] leading-relaxed">Te mandamos el link final. Lo compartís por WhatsApp a todos, sin límite.</p>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white border border-[#EAE5DB] shadow-sm text-amber-600 font-display text-2xl mb-5 step-num">4</div>
+              <h3 className="font-display text-xl text-stone-900 mb-2">Recibís el link</h3>
+              <p className="text-stone-500 text-[15px] leading-relaxed">Te mandamos el link final para compartir por WhatsApp a todos.</p>
             </StaggerItem>
           </Stagger>
 
           <div className="mt-12 text-center">
-            <Link href="#estilos" className="inline-flex items-center gap-2 text-terracotta-600 font-semibold hover:text-terracotta-700 transition">
-              Empezar eligiendo estilo
+            <Link href="#estilos" className="inline-flex items-center gap-2 text-amber-600 font-semibold hover:text-amber-700 transition">
+              Ver opciones de diseño
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
             </Link>
           </div>
@@ -314,32 +297,31 @@ export default function LandingPage() {
       </section>
 
       {/* ========== ESTILOS / DEMOS ========== */}
-      <section id="estilos" className="py-20 sm:py-28">
+      <section id="estilos" className="py-20 sm:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <Reveal className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="font-display text-3xl sm:text-4xl text-ink-900 tracking-tight mb-4">Catálogo de estilos</h2>
-            <p className="text-lg text-ink-600 mb-8">Elegí una base para arrancar. Los colores, fuentes y secciones se adaptan a lo que necesites.</p>
+            <h2 className="font-display text-3xl sm:text-4xl text-stone-900 tracking-tight mb-4">Opciones de diseño</h2>
+            <p className="text-lg text-stone-500 mb-8">Elegí una base para arrancar. Los colores y fuentes se adaptan a tu evento de forma armónica.</p>
             
             {/* Input de personalización */}
-            <div className="max-w-md mx-auto mb-10 bg-white p-4 rounded-2xl shadow-soft border border-ink-100">
-              <label className="block text-sm font-semibold text-ink-700 mb-2 text-center">
-                Escribí tu nombre y el de tu pareja (o agasajado)
+            <div className="max-w-md mx-auto mb-10 bg-[#FDFBF7] p-4 rounded-3xl border border-[#EAE5DB] shadow-sm">
+              <label className="block text-sm font-semibold text-stone-600 mb-2 text-center">
+                Probá con tu nombre
               </label>
               <input 
                 type="text" 
                 placeholder="Ej: Ana y Juan" 
                 value={customName}
                 onChange={(e) => setCustomName(e.target.value)}
-                className="w-full h-12 px-6 rounded-full bg-ink-50 border border-ink-200 outline-none focus:border-terracotta-500 focus:ring-1 focus:ring-terracotta-500 transition shadow-inner text-center text-lg text-ink-900 placeholder:text-ink-300"
+                className="w-full h-12 px-6 rounded-full bg-white border border-[#EAE5DB] outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition text-center text-lg text-stone-900 placeholder:text-stone-300"
               />
-              <p className="text-xs text-ink-500 mt-2 text-center">Mirá cómo los diseños se actualizan mágicamente ✨</p>
             </div>
           </Reveal>
 
-          <div className="max-w-3xl mx-auto mb-12 bg-gradient-to-r from-terracotta-50 to-sage-50 border border-terracotta-100/50 rounded-2xl p-6 sm:p-8 text-center shadow-sm">
-            <h3 className="font-display text-2xl text-ink-900 mb-3">Tu evento, tu estilo único ✨</h3>
-            <p className="text-ink-600 text-base leading-relaxed">
-              Lo que ves aquí es solo una muestra de lo que podemos hacer. No te limites al catálogo: personalizamos cualquier diseño o creamos uno exclusivo para tu fiesta. <strong className="text-ink-900 font-medium">El único límite es tu imaginación.</strong>
+          <div className="max-w-3xl mx-auto mb-12 bg-amber-50/50 border border-amber-100 rounded-3xl p-6 sm:p-8 text-center shadow-sm">
+            <h3 className="font-display text-2xl text-stone-900 mb-3">Tu evento, tu estilo único ✨</h3>
+            <p className="text-stone-600 text-base leading-relaxed">
+              Lo que ves aquí es solo una muestra. Adaptamos los diseños a tu paleta de colores preferida manteniendo la elegancia.
             </p>
           </div>
 
@@ -354,41 +336,41 @@ export default function LandingPage() {
             <StaggerItem><PhoneMockup customName={customName} title="Baby Shower" url="/demo-babyshower-malena.html" desc="Baby Showers · Tierno" selected={selectedStyle === "Baby Shower"} onSelect={() => handleSelectStyle("Baby Shower", "Baby Shower")} onPreview={() => window.open(`/preview?url=${encodeURIComponent("/demo-babyshower-malena.html")}${customName ? `&customName=${encodeURIComponent(customName)}` : ''}`, "_blank")} /></StaggerItem>
           </Stagger>
 
-          <p className="text-center mt-14 text-ink-500 text-sm">
-            ¿No encontrás el estilo ideal? <button type="button" onClick={handleSelectCustom} className="text-terracotta-600 font-semibold hover:underline">Contanos qué buscás</button> y lo diseñamos a medida.
+          <p className="text-center mt-14 text-stone-500 text-sm">
+            ¿No encontrás el estilo ideal? <button type="button" onClick={handleSelectCustom} className="text-amber-600 font-medium hover:underline">Contanos qué buscás</button> y lo diseñamos a medida.
           </p>
         </div>
       </section>
 
       {/* ========== FORMULARIO DE PEDIDO ========== */}
-      <section id="pedido" className="py-20 sm:py-28 bg-ink-100/60">
+      <section id="pedido" className="py-20 sm:py-28 bg-[#F9F7F3]">
         <div className="max-w-2xl mx-auto px-5 sm:px-6">
           <div className="text-center mb-10">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">Paso 2</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-ink-950 tracking-tight">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-3">Siguiente paso</p>
+            <h2 className="font-display text-3xl sm:text-4xl text-stone-900 tracking-tight">
               Contanos de tu evento
             </h2>
-            <p className="mt-3 text-ink-500">Completá los datos y te contactamos por WhatsApp para confirmar y coordinar la seña.</p>
+            <p className="mt-3 text-stone-500">Completá los datos y te contactamos por WhatsApp para confirmar y coordinar la seña.</p>
           </div>
 
           {/* Selected style banner */}
-          <div className={`mb-6 p-4 rounded-2xl bg-white border-2 border-terracotta-500 shadow-soft flex items-center justify-between gap-4 ${selectedStyle ? "" : "hidden"}`}>
+          <div className={`mb-6 p-4 rounded-3xl bg-white border border-[#EAE5DB] shadow-sm flex items-center justify-between gap-4 ${selectedStyle ? "" : "hidden"}`}>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-terracotta-100 flex items-center justify-center text-terracotta-600 font-bold">✓</div>
+              <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 font-bold">✓</div>
               <div>
-                <p className="text-xs text-ink-400 uppercase tracking-wide">Estilo elegido</p>
-                <p className="font-display text-lg text-ink-900">{selectedStyle || "—"}</p>
+                <p className="text-xs text-stone-400 uppercase tracking-wide">Estilo elegido</p>
+                <p className="font-display text-lg text-stone-900">{selectedStyle || "—"}</p>
               </div>
             </div>
-            <button type="button" onClick={handleClearStyle} className="text-xs text-ink-400 hover:text-ink-600 underline">Cambiar</button>
+            <button type="button" onClick={handleClearStyle} className="text-xs text-stone-400 hover:text-stone-600 underline">Cambiar</button>
           </div>
 
-          <form id="order-form" className="bg-white rounded-3xl p-6 sm:p-8 border border-ink-100 shadow-card space-y-5" onSubmit={handleSubmitOrder}>
+          <form id="order-form" className="bg-white rounded-[2rem] p-6 sm:p-8 border border-[#EAE5DB] shadow-sm space-y-6" onSubmit={handleSubmitOrder}>
             
             {/* Tipo de evento */}
             <div>
-              <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Tipo de evento *</label>
-              <select name="evento" required value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)} className="form-input w-full h-12 px-4 rounded-xl border border-ink-200 bg-ink-50/50 text-ink-900 text-[15px]">
+              <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Tipo de evento *</label>
+              <select name="evento" required value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)} className="form-input w-full h-12 px-4 rounded-xl border border-[#EAE5DB] bg-stone-50 text-stone-900 text-[15px] focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none">
                 <option value="">Seleccionar…</option>
                 <option value="Boda">Boda</option>
                 <option value="15 Años">15 Años</option>
@@ -402,70 +384,70 @@ export default function LandingPage() {
             {/* Nombres */}
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Nombre(s) *</label>
-                <input type="text" name="nombres" required placeholder="Ej: Valentina & Matías" className="form-input w-full h-12 px-4 rounded-xl border border-ink-200 bg-ink-50/50 text-ink-900 text-[15px] placeholder:text-ink-300" />
+                <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Nombre(s) *</label>
+                <input type="text" name="nombres" required placeholder="Ej: Valentina & Matías" className="form-input w-full h-12 px-4 rounded-xl border border-[#EAE5DB] bg-stone-50 text-stone-900 text-[15px] placeholder:text-stone-300 focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none" />
               </div>
               <div>
-                <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Fecha del evento *</label>
-                <input type="date" name="fecha" required className="form-input w-full h-12 px-4 rounded-xl border border-ink-200 bg-ink-50/50 text-ink-900 text-[15px]" />
+                <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Fecha del evento *</label>
+                <input type="date" name="fecha" required className="form-input w-full h-12 px-4 rounded-xl border border-[#EAE5DB] bg-stone-50 text-stone-900 text-[15px] focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none" />
               </div>
             </div>
 
             {/* Lugar */}
             <div>
-              <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Ciudad / Lugar</label>
-              <input type="text" name="lugar" placeholder="Ej: Córdoba · Salón Los Álamos" className="form-input w-full h-12 px-4 rounded-xl border border-ink-200 bg-ink-50/50 text-ink-900 text-[15px] placeholder:text-ink-300" />
+              <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Ciudad / Lugar</label>
+              <input type="text" name="lugar" placeholder="Ej: Córdoba · Salón Los Álamos" className="form-input w-full h-12 px-4 rounded-xl border border-[#EAE5DB] bg-stone-50 text-stone-900 text-[15px] placeholder:text-stone-300 focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none" />
             </div>
 
             {/* Plan */}
             <div>
-              <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Plan *</label>
+              <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Plan *</label>
               <div className="grid grid-cols-3 gap-3">
                 <label className="relative cursor-pointer">
                   <input type="radio" name="plan" value="Básico" required className="peer sr-only" />
-                  <div className="h-full p-2 sm:p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
-                    <p className="font-display text-ink-900 text-[13px] sm:text-sm">Básico</p>
-                    <p className="text-[11px] sm:text-xs text-ink-400 mt-0.5">$25.000</p>
+                  <div className="h-full p-2 sm:p-3 rounded-2xl border border-[#EAE5DB] peer-checked:border-amber-500 peer-checked:bg-amber-50 text-center transition">
+                    <p className="font-display text-stone-900 text-[13px] sm:text-sm">Básico</p>
+                    <p className="text-[11px] sm:text-xs text-stone-400 mt-0.5">$25.000</p>
                   </div>
                 </label>
                 <label className="relative cursor-pointer">
                   <input type="radio" name="plan" value="Premium" defaultChecked className="peer sr-only" />
-                  <div className="h-full p-2 sm:p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
-                    <p className="font-display text-ink-900 text-[13px] sm:text-sm">Premium</p>
-                    <p className="text-[11px] sm:text-xs text-ink-400 mt-0.5">$45.000</p>
+                  <div className="h-full p-2 sm:p-3 rounded-2xl border border-[#EAE5DB] peer-checked:border-amber-500 peer-checked:bg-amber-50 text-center transition">
+                    <p className="font-display text-stone-900 text-[13px] sm:text-sm">Premium</p>
+                    <p className="text-[11px] sm:text-xs text-stone-400 mt-0.5">$45.000</p>
                   </div>
                 </label>
                 <label className="relative cursor-pointer">
                   <input type="radio" name="plan" value="Premium Plus" className="peer sr-only" />
-                  <div className="h-full p-2 sm:p-3 rounded-xl border-2 border-ink-200 peer-checked:border-terracotta-500 peer-checked:bg-terracotta-50 text-center transition">
-                    <p className="font-display text-ink-900 text-[13px] sm:text-sm">Plus</p>
-                    <p className="text-[11px] sm:text-xs text-ink-400 mt-0.5">$65.000</p>
+                  <div className="h-full p-2 sm:p-3 rounded-2xl border border-[#EAE5DB] peer-checked:border-amber-500 peer-checked:bg-amber-50 text-center transition">
+                    <p className="font-display text-stone-900 text-[13px] sm:text-sm">Plus</p>
+                    <p className="text-[11px] sm:text-xs text-stone-400 mt-0.5">$65.000</p>
                   </div>
                 </label>
               </div>
-              <p className="mt-2 text-center text-xs font-semibold text-terracotta-600 bg-terracotta-50 rounded-lg py-1.5 border border-terracotta-200">
+              <p className="mt-3 text-center text-xs font-medium text-amber-700 bg-amber-50 rounded-xl py-2 border border-amber-100">
                 🎁 30% OFF abonando por transferencia
               </p>
             </div>
 
             {/* WhatsApp del cliente */}
             <div>
-              <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Tu WhatsApp *</label>
-              <input type="tel" name="whatsapp" required placeholder="Ej: 351 123 4567" className="form-input w-full h-12 px-4 rounded-xl border border-ink-200 bg-ink-50/50 text-ink-900 text-[15px] placeholder:text-ink-300" />
+              <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Tu WhatsApp *</label>
+              <input type="tel" name="whatsapp" required placeholder="Ej: 351 123 4567" className="form-input w-full h-12 px-4 rounded-xl border border-[#EAE5DB] bg-stone-50 text-stone-900 text-[15px] placeholder:text-stone-300 focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none" />
             </div>
 
             {/* Notas / referencias */}
             <div>
-              <label className="block text-xs font-semibold tracking-wide uppercase text-ink-500 mb-2">Notas o referencias (opcional)</label>
-              <textarea name="notas" rows={3} placeholder="Colores preferidos, frase especial, link de fotos, algo que quieras destacar…" className="form-input w-full px-4 py-3 rounded-xl border border-ink-200 bg-ink-50/50 text-ink-900 text-[15px] placeholder:text-ink-300 resize-none"></textarea>
+              <label className="block text-xs font-semibold tracking-wide uppercase text-stone-500 mb-2">Notas o referencias (opcional)</label>
+              <textarea name="notas" rows={3} placeholder="Colores preferidos, frase especial, link de fotos, algo que quieras destacar…" className="form-input w-full px-4 py-3 rounded-xl border border-[#EAE5DB] bg-stone-50 text-stone-900 text-[15px] placeholder:text-stone-300 resize-none focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none"></textarea>
             </div>
 
-            <button type="submit" className="w-full h-14 rounded-full bg-terracotta-600 hover:bg-terracotta-700 text-white font-semibold text-base shadow-glow transition flex items-center justify-center gap-2">
+            <button type="submit" className="w-full h-14 rounded-full bg-[#E87A5D] hover:bg-[#D96B4F] text-white font-medium text-base shadow-sm transition flex items-center justify-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52--.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
               Guardar diseño y recibir presupuesto
             </button>
 
-            <p className="text-center text-xs text-ink-400 mt-3">
+            <p className="text-center text-xs text-stone-400 mt-3">
               Sin compromiso de compra. Te enviamos el diseño y el link para abonar luego.
             </p>
           </form>
@@ -473,102 +455,103 @@ export default function LandingPage() {
       </section>
 
       {/* ========== FEATURES (resumen) ========== */}
-      <section id="features" className="py-20 sm:py-24">
+      <section id="features" className="py-20 sm:py-24 bg-white border-y border-[#EAE5DB]">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <Reveal className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-terracotta-600 mb-3">Todo incluido</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-ink-950 tracking-tight">Lo que lleva tu invitación</h2>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-600 mb-3">Todo incluido</p>
+            <h2 className="font-display text-3xl sm:text-4xl text-stone-900 tracking-tight">Lo que lleva tu invitación</h2>
           </Reveal>
           <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" stagger={0.06}>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">⏱️</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Cuenta regresiva</h3>
-              <p className="text-sm text-ink-500">En vivo desde que abren el link.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Cuenta regresiva</h3>
+              <p className="text-sm text-stone-500">En vivo desde que abren el link.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">📍</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Mapa y ubicación</h3>
-              <p className="text-sm text-ink-500">Google Maps. Un toque y llegan.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Mapa y ubicación</h3>
+              <p className="text-sm text-stone-500">Google Maps. Un toque y llegan.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">✅</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Confirmación RSVP</h3>
-              <p className="text-sm text-ink-500">Lista en tiempo real en tu panel.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Confirmación RSVP</h3>
+              <p className="text-sm text-stone-500">Lista en tiempo real en tu panel.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">🎫</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Pases con QR</h3>
-              <p className="text-sm text-ink-500">Control de acceso rápido en la puerta.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Pases con QR</h3>
+              <p className="text-sm text-stone-500">Control de acceso rápido en la puerta.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">📅</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Itinerario</h3>
-              <p className="text-sm text-ink-500">Línea de tiempo interactiva del evento.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Itinerario</h3>
+              <p className="text-sm text-stone-500">Línea de tiempo interactiva del evento.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">✍️</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Muro de firmas</h3>
-              <p className="text-sm text-ink-500">Los invitados te dejan mensajes y deseos.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Muro de firmas</h3>
+              <p className="text-sm text-stone-500">Los invitados te dejan mensajes y deseos.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">🎁</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Sección regalos</h3>
-              <p className="text-sm text-ink-500">Alias/CBU con botón copiar.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Sección regalos</h3>
+              <p className="text-sm text-stone-500">Alias/CBU con botón copiar.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">🎵</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Música de fondo</h3>
-              <p className="text-sm text-ink-500">La canción que elijan al abrir.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Música de fondo</h3>
+              <p className="text-sm text-stone-500">La canción que elijan al abrir.</p>
             </StaggerItem>
-            <StaggerItem className="bg-white rounded-2xl p-6 border border-ink-100 shadow-soft">
+            <StaggerItem className="bg-[#FDFBF7] rounded-3xl p-6 border border-[#EAE5DB] shadow-sm">
               <span className="text-2xl mb-3 block">📸</span>
-              <h3 className="font-display text-lg text-ink-900 mb-1">Galería de fotos</h3>
-              <p className="text-sm text-ink-500">Carrusel con sus mejores momentos.</p>
+              <h3 className="font-display text-lg text-stone-900 mb-1">Galería de fotos</h3>
+              <p className="text-sm text-stone-500">Carrusel con sus mejores momentos.</p>
             </StaggerItem>
           </Stagger>
         </div>
       </section>
 
       {/* ========== Party Cam SPOTLIGHT ========== */}
-      <section className="py-20 sm:py-28 bg-white border-y border-ink-100">
+      {/* ========== Party Cam SPOTLIGHT ========== */}
+      <section className="py-20 sm:py-28 bg-white border-y border-[#EAE5DB]">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <Reveal className="flex-1 text-center lg:text-left">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-semibold mb-6">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 text-sm font-semibold mb-6 border border-amber-100">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-terracotta-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-terracotta-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
                 </span>
                 Nuevo Servicio Premium
               </span>
-              <h2 className="font-display text-4xl sm:text-5xl text-ink-950 tracking-tight mb-6">
+              <h2 className="font-display text-4xl sm:text-5xl text-stone-900 tracking-tight mb-6">
                 Party Cam
               </h2>
-              <p className="text-lg text-ink-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Llevá tu fiesta al siguiente nivel. Tus invitados escanean un QR en sus mesas, suben fotos desde sus celulares y aparecen <strong className="text-ink-900">al instante en la pantalla gigante</strong> del salón con animaciones increíbles.
+              <p className="text-lg text-stone-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Llevá tu fiesta al siguiente nivel. Tus invitados escanean un QR en sus mesas, suben fotos desde sus celulares y aparecen <strong className="text-stone-900">al instante en la pantalla gigante</strong> del salón con animaciones increíbles.
               </p>
               
               <ul className="space-y-4 mb-10 text-left max-w-md mx-auto lg:mx-0">
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-terracotta-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  <span className="text-ink-700">Sin descargar apps, directo desde el navegador.</span>
+                  <svg className="w-6 h-6 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-stone-700">Sin descargar apps, directo desde el navegador.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-terracotta-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  <span className="text-ink-700">No requiere Instagram ni redes sociales.</span>
+                  <svg className="w-6 h-6 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-stone-700">No requiere Instagram ni redes sociales.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-terracotta-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  <span className="text-ink-700">Fotos con estilo Polaroid organizadas automáticamente.</span>
+                  <svg className="w-6 h-6 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-stone-700">Fotos con estilo Polaroid organizadas automáticamente.</span>
                 </li>
               </ul>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <Link href="/demo-wall/pantalla" target="_blank" className="h-14 px-8 rounded-full bg-ink-950 text-white font-semibold flex items-center justify-center gap-2 hover:bg-ink-800 transition shadow-lg w-full sm:w-auto">
+                <Link href="/demo-wall/pantalla" target="_blank" className="h-14 px-8 rounded-full bg-stone-900 text-white font-semibold flex items-center justify-center gap-2 hover:bg-stone-800 transition shadow-lg w-full sm:w-auto">
                   Ver demo de la pantalla
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </Link>
-                <Link href="/demo-wall/upload" target="_blank" className="h-14 px-8 rounded-full bg-white text-ink-900 border-2 border-ink-200 font-semibold flex items-center justify-center hover:border-ink-400 hover:bg-ink-50 transition w-full sm:w-auto">
+                <Link href="/demo-wall/upload" target="_blank" className="h-14 px-8 rounded-full bg-[#FDFBF7] text-stone-900 border border-[#EAE5DB] shadow-sm font-semibold flex items-center justify-center hover:border-amber-300 hover:bg-white transition w-full sm:w-auto">
                   Probar subida celular
                 </Link>
               </div>
