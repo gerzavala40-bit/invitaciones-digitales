@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Fusión Premium</title>
+  
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* VARIABLES FUSIÓN OSCURA / DORADA */
+    :root {
+      --bg: #0C0A09;
+      --bg-soft: #161210;
+      --text: #F5EFE4;
+      --text-muted: rgba(245, 239, 228, 0.55);
+      --gold: #C9A84C;
+      --gold-dim: rgba(201, 168, 76, 0.3);
+      --font-body: 'Montserrat', sans-serif;
+      --font-script: 'Great Vibes', cursive;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* Botón de Audio Flotante */
+    .audio-btn {
+      position: fixed; top: 20px; right: 20px; z-index: 999;
+      background: rgba(12, 10, 9, 0.8); border-radius: 50%;
+      border: 1px solid var(--gold);
+      width: 50px; height: 50px; display: flex;
+      align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      color: var(--gold);
+      transition: all 0.3s ease;
+      animation: pulse-music 2s infinite;
+    }
+    .audio-btn:hover { background: var(--gold); color: var(--bg); }
+    @keyframes pulse-music {
+      0% { box-shadow: 0 0 0 0 rgba(201,168,76, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(201,168,76, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(201,168,76, 0); }
+    }
+
+    /* Portada Parallax Híbrida */
+    .parallax-portada {
+      height: 100vh;
+      background-image: url('novia (5).webp');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    /* Filtro Oscuro sobre la foto */
+    .parallax-portada::before {
+      content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(12, 10, 9, 0.65); /* Filtro negro elegante */
+      z-index: 0;
+    }
+    
+    .logo-portada {
+      position: relative;
+      z-index: 1;
+      padding: 40px; text-align: center;
+    }
+    .logo-portada p { 
+      letter-spacing: 5px; font-weight: 300; color: var(--gold); 
+      margin-bottom: 5px; font-size: 0.9rem; text-transform: uppercase;
+    }
+    .logo-portada h1 { 
+      font-weight: 400; font-size: 4.5rem; line-height: 1; 
+      color: var(--text); margin: 0; font-family: var(--font-script);
+      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+    .logo-portada h1 span { color: var(--gold); font-size: 0.7em; margin: 0 10px; }
+
+    /* Flecha de Scroll Animada */
+    .scroll-down {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+    }
+    .scroll-down .mouse {
+      width: 24px; height: 38px; border: 2px solid var(--gold); border-radius: 12px; position: relative;
+    }
+    .scroll-down .mouse::before {
+      content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 4px; background: var(--gold); border-radius: 50%;
+      animation: scrolldown 1.5s infinite;
+    }
+    @keyframes scrolldown {
+      0% { transform: translate(-50%, 0); opacity: 1; }
+      100% { transform: translate(-50%, 15px); opacity: 0; }
+    }
+
+    /* Cuenta Regresiva Limpia pero Oscura */
+    .cuenta-regresiva { padding: 80px 0; text-align: center; background: var(--bg-soft); }
+    .num_cuenta { font-size: 3.5rem; font-weight: 300; margin: 0; line-height: 1; color: var(--gold); }
+    .text_cuenta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: 8px; font-weight: 400; }
+    
+    /* Ceremonia y Fiesta */
+    .ceremonia-fiesta { padding: 90px 0; text-align: center; }
+    .btn-custom {
+      background: transparent; border: 1px solid var(--gold);
+      color: var(--gold); padding: 12px 35px; text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 400; letter-spacing: 2px;
+      margin-top: 30px; transition: all 0.4s;
+      border-radius: 50px; /* Botón redondeado elegante */
+    }
+    .btn-custom:hover { background: var(--gold); color: var(--bg); box-shadow: 0 5px 20px var(--gold-dim); }
+    .icono-grande { color: var(--gold); margin-bottom: 25px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
+
+    /* Galería */
+    .galeria { padding: 80px 0; background: var(--bg-soft); text-align: center; }
+    .title-galery { font-weight: 300; letter-spacing: 4px; margin-bottom: 40px; color: var(--gold); text-transform: uppercase; }
+    .item-galeria img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; transition: transform 0.4s; border-radius: 5px; }
+    .item-galeria img:hover { transform: scale(1.02); }
+
+    /* CBU / Regalos */
+    .cbu { padding: 90px 0; text-align: center; }
+
+    /* Confirmar Asistencia Parallax */
+    .confirmar {
+      padding: 130px 0; text-align: center;
+      background-image: url('hero_bg_exact.jpg');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      color: var(--text); position: relative;
+    }
+    .confirmar::before {
+      content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(12, 10, 9, 0.85);
+    }
+    .confirmar .container { position: relative; z-index: 1; }
+    .confirmar h4 { font-weight: 300; letter-spacing: 3px; color: var(--gold); margin-bottom: 15px; }
+
+    /* Modal / Popup */
+    .modal-content { border-radius: 10px; padding: 40px; background: var(--bg-soft); border: 1px solid var(--gold-dim); }
+    .modal-content h5 { font-weight: 400; letter-spacing: 2px; color: var(--gold); margin-bottom: 25px; }
+    
+    /* Footer */
+    footer { padding: 60px 0; text-align: center; background: #000; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+    
+    @media (max-width: 768px) {
+      .num_cuenta { font-size: 2.2rem; }
+      .logo-portada h1 { font-size: 3.5rem; }
+      .text_cuenta { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Audio Botón -->
+  <div class="audio-btn" id="btnMusic">
+    <i class="fas fa-music" id="iconMusic"></i>
+  </div>
+  <audio id="music" src="camila.mp3" loop></audio>
+
+  <!-- Portada Híbrida -->
+  <section class="parallax-portada">
+    <div class="logo-portada">
+      <p>Nos Casamos</p>
+      <h1>Sofía <span>&</span> Tomás</h1>
+    </div>
+    <div class="scroll-down"><div class="mouse"></div></div>
+  </section>
+
+  <!-- Cuenta Regresiva Limpia y Dorada -->
+  <section class="cuenta-regresiva">
+    <div class="container">
+      <p class="mb-5" style="letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem;">Ya falta menos</p>
+      <div class="row justify-content-center align-items-start">
+        <div class="col-2"><p class="num_cuenta">14</p><p class="text_cuenta">días</p></div>
+        <div class="col-1"><p class="num_cuenta" style="color: var(--text-muted);">:</p></div>
+        <div class="col-2"><p class="num_cuenta">08</p><p class="text_cuenta">hs</p></div>
+        <div class="col-1"><p class="num_cuenta" style="color: var(--text-muted);">:</p></div>
+        <div class="col-2"><p class="num_cuenta">30</p><p class="text_cuenta">min</p></div>
+        <div class="col-1"><p class="num_cuenta" style="color: var(--text-muted);">:</p></div>
+        <div class="col-2"><p class="num_cuenta">45</p><p class="text_cuenta">seg</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ceremonia y Fiesta (Lado a Lado) -->
+  <section class="ceremonia-fiesta">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-md-6 mb-5">
+          <i class="fas fa-church fa-3x icono-grande"></i>
+          <h4 style="font-weight: 300; letter-spacing: 3px; color: var(--text); margin-bottom: 20px;">Ceremonia</h4>
+          <p style="color: var(--text-muted); line-height: 2; font-weight: 300;">
+            14 de Noviembre <br> 
+            19:00 hs <br> 
+            Parroquia Nuestra Señora
+          </p>
+          <button class="btn btn-custom">Llegar a la Ceremonia</button>
+        </div>
+        
+        <div class="col-md-6 mb-5">
+          <i class="fas fa-glass-cheers fa-3x icono-grande"></i>
+          <h4 style="font-weight: 300; letter-spacing: 3px; color: var(--text); margin-bottom: 20px;">Fiesta</h4>
+          <p style="color: var(--text-muted); line-height: 2; font-weight: 300;">
+            Luego de la ceremonia <br> 
+            Salón Dorado <br> 
+            Palermo, Buenos Aires
+          </p>
+          <button class="btn btn-custom">Llegar a la Fiesta</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería Oscura -->
+  <section class="galeria">
+    <div class="container">
+      <h4 class="title-galery">Nosotros</h4>
+      <div class="row">
+        <!-- Fila 1 -->
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=400&q=80" alt="Boda 1"></div>
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=400&q=80" alt="Boda 2"></div>
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=400&q=80" alt="Boda 3"></div>
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=400&q=80" alt="Boda 4"></div>
+        <!-- Fila 2 -->
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=400&q=80" alt="Boda 5"></div>
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=400&q=80" alt="Boda 6"></div>
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=400&q=80" alt="Boda 7"></div>
+        <div class="col-6 col-md-3 item-galeria"><img src="https://images.unsplash.com/photo-1583939008085-3bcbd65a4484?auto=format&fit=crop&w=400&q=80" alt="Boda 8"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CBU / Regalo Elegante -->
+  <section class="cbu">
+    <div class="container">
+      <i class="fas fa-gift fa-3x icono-grande"></i>
+      <p style="color: var(--text-muted); line-height: 2; font-weight: 300; max-width: 600px; margin: 0 auto;">
+        ¡El mejor regalo es tu presencia!<br><br>Si deseás realizarnos otro regalo, podés colaborar con nuestra Luna de Miel...
+      </p>
+      <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#cbuModal">Ver Datos Bancarios</button>
+    </div>
+  </section>
+
+  <!-- Modal CBU Oscuro -->
+  <div class="modal fade" id="cbuModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <h5>DATOS BANCARIOS</h5>
+        <p style="color: var(--text-muted); line-height: 2.2; font-weight: 300;">
+          <strong>Titular:</strong> Sofía y Tomás<br>
+          <strong>CBU:</strong> 00000000000000<br>
+          <strong>Alias:</strong> boda.sofia.tomas
+        </p>
+        <button type="button" class="btn btn-custom mx-auto mt-2" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmar Asistencia Claro -->
+  <section class="confirmar-claro" style="padding: 100px 0; text-align: center; background-color: #Fdfbf7; color: #333; position: relative;">
+    <!-- Sutil textura o borde decorativo -->
+    <div style="position: absolute; top: 10px; bottom: 10px; left: 10px; right: 10px; border: 1px solid rgba(201,168,76,0.2); pointer-events: none;"></div>
+    
+    <div class="container" style="position: relative; z-index: 1;">
+      <h4 style="font-weight: 400; letter-spacing: 4px; color: #222; margin-bottom: 15px; text-transform: uppercase;">Confirmación de Asistencia</h4>
+      <p class="mb-5 mt-3" style="font-weight: 300; color: #666; letter-spacing: 1px;">Nos haría muy felices compartir este día con vos. ¡Por favor confirmanos!</p>
+      <button class="btn" style="background: #C9A84C; color: #fff; padding: 14px 45px; border-radius: 50px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; border: none; box-shadow: 0 5px 20px rgba(201,168,76,0.3); transition: all 0.3s; font-size: 0.85rem;">Confirmar Asistencia</button>
+    </div>
+  </section>
+
+  <!-- Contacto / Demo Info -->
+  <section class="contacto-footer" style="padding: 80px 0; background: #fff; color: #333; border-top: 1px solid #eaeaea;">
+    <div class="container">
+      <div class="row text-start justify-content-center">
+        <div class="col-md-5 mb-5 mb-md-0">
+          <h5 style="font-weight: 400; letter-spacing: 2px; margin-bottom: 20px; color: #222; text-transform: uppercase;">¿Te gusta nuestro demo?</h5>
+          <p style="font-weight: 300; color: #666; margin-bottom: 25px; line-height: 1.8;">Diseñamos invitaciones digitales desde Argentina para todo el mundo, cuidando cada detalle.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-weight: 300; color: #555; line-height: 2.2;">
+            <li><i class="fab fa-whatsapp" style="color: #C9A84C; width: 30px; text-align: center;"></i> <a href="#" style="color: #C9A84C; text-decoration: none; font-weight: 400;">¡Envianos un mensaje!</a></li>
+            <li><i class="fas fa-phone-alt" style="color: #777; width: 30px; text-align: center;"></i> +549 351 8754822 | +549 351 8115010</li>
+            <li><i class="fas fa-envelope" style="color: #777; width: 30px; text-align: center;"></i> agendalafecha@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-5 offset-md-1">
+          <h5 style="font-weight: 400; letter-spacing: 2px; margin-bottom: 20px; color: #222; text-transform: uppercase;">Seguinos en Instagram</h5>
+          <p style="font-weight: 300; color: #666; margin-bottom: 25px; line-height: 1.8;">Para ver más ejemplos de nuestro trabajo y enterarte de todas las novedades.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; font-weight: 300;">
+            <li><i class="fab fa-instagram" style="color: #C9A84C; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="#" style="color: #C9A84C; text-decoration: none; font-weight: 400;">@agendalafecha</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Invitaciones Digitales 2026. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Configuración de Música
+    const musicBtn = document.getElementById('btnMusic');
+    const musicIcon = document.getElementById('iconMusic');
+    const audio = document.getElementById('music');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        musicIcon.classList.remove('fa-music');
+        musicIcon.classList.add('fa-play');
+        musicBtn.style.animation = 'none';
+      } else {
+        audio.play().catch(e => console.log('Autoplay prevent', e));
+        musicIcon.classList.remove('fa-play');
+        musicIcon.classList.add('fa-music');
+        musicBtn.style.animation = 'pulse-music 2s infinite';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Configuración de Cuenta Regresiva (14 Nov 2026 19:00:00)
+    const countDate = new Date('Nov 14, 2026 19:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const gap = countDate - now;
+
+      if (gap < 0) {
+        document.getElementById('cd-d').innerText = "00";
+        document.getElementById('cd-h').innerText = "00";
+        document.getElementById('cd-m').innerText = "00";
+        document.getElementById('cd-s').innerText = "00";
+        return;
+      }
+
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+
+      const d = Math.floor(gap / day);
+      const h = Math.floor((gap % day) / hour);
+      const m = Math.floor((gap % hour) / minute);
+      const s = Math.floor((gap % minute) / second);
+
+      document.getElementById('cd-d').innerText = d.toString().padStart(2, '0');
+      document.getElementById('cd-h').innerText = h.toString().padStart(2, '0');
+      document.getElementById('cd-m').innerText = m.toString().padStart(2, '0');
+      document.getElementById('cd-s').innerText = s.toString().padStart(2, '0');
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
