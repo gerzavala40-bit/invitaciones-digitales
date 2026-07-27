@@ -655,7 +655,97 @@ footer p { color: rgba(30,42,56,.3) !important; }
 }
 
 </style>
+
+  <!-- START INJECTED HERO BACKGROUND -->
+  <style>
+    .hero {
+      background-image: url('hero_bg_exact.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+      position: relative !important;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5); /* Filtro oscuro para resaltar texto */
+      z-index: 0;
+    }
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+  <!-- END INJECTED HERO BACKGROUND -->
+
+  <!-- SPLASH SCREEN CSS -->
+  <style>
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+    .splash-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: #fafafa;
+      background-image: url('boda-floral.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 12vh;
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
+    }
+    .splash-screen.slide-up {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .splash-content {
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn-abrir {
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      border: 1px solid #555;
+      padding: 15px 40px;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .btn-abrir:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .splash-hint {
+      color: #666;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+  </style>
 </head>
+
+
 <body class="locked">
 
   <!-- ============================================================
@@ -878,7 +968,74 @@ footer p { color: rgba(30,42,56,.3) !important; }
       </div>
     </section>
 
-    <footer>
+    
+  
+  
+  <!-- Contacto / Demo Info (Injected) -->
+  <style>
+    .contacto-footer-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .contacto-col { flex: 1; }
+    @media (min-width: 768px) {
+      .contacto-footer-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    .contacto-footer h5 {
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: #222;
+      text-transform: uppercase;
+    }
+    .contacto-footer p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    .contacto-footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 2.2;
+    }
+    .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
+  </style>
+  <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
+    <div class="contacto-footer-wrap">
+      <div class="contacto-col">
+        <h5>¿Te gustó la invitación?</h5>
+        <p>¡Contactate y pedí la tuya!</p>
+        <ul>
+          <li><i class="fab fa-whatsapp" style="color: #61ce70; width: 30px; text-align: center;"></i> <a href="#">¡Envianos un Whatsapp!</a></li>
+          <li><i class="fas fa-phone-alt" style="color: #333; width: 30px; text-align: center;"></i> +549 351 8754822 | +549 351 8115010</li>
+          <li><i class="fas fa-envelope" style="color: #333; width: 30px; text-align: center;"></i> agendalafecha@gmail.com</li>
+        </ul>
+      </div>
+      <div class="contacto-col">
+        <h5>Seguinos en Instagram</h5>
+        <p>Para ver ejemplos de nuestro trabajo y enterarte de todas nuestras novedades.</p>
+        <ul>
+          <li><i class="fab fa-instagram" style="color: #555; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="https://instagram.com/agendalafecha">agendalafecha</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
       <div class="brand">Te <em>invito</em></div>
       <p>Demo · Bautismo Tierno</p>
     </footer>
@@ -1121,5 +1278,35 @@ footer p { color: rgba(30,42,56,.3) !important; }
     }
   })();
 </script>
+
+  <script>
+    // Injected Splash Screen Logic
+    document.addEventListener("DOMContentLoaded", function() {
+      const btnOpen = document.getElementById('btnOpenInvite');
+      if(btnOpen) {
+        btnOpen.addEventListener('click', () => {
+          document.getElementById('splashScreen').classList.add('slide-up');
+          document.body.classList.remove('locked');
+          
+          // Auto-play music if exists
+          const audio = document.getElementById('music');
+          if (audio) {
+            audio.play().catch(e => console.log('Autoplay prevent', e));
+            const musicBtn = document.getElementById('btnMusic');
+            const musicIcon = document.getElementById('iconMusic');
+            if (musicIcon) {
+               musicIcon.classList.remove('fa-play');
+               musicIcon.classList.add('fa-music');
+            }
+            if (musicBtn) {
+               musicBtn.style.animation = 'pulse-music 2s infinite';
+            }
+            // If the template uses isPlaying variable, we can't easily sync it here without breaking scope,
+            // but calling play() ensures it starts.
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
