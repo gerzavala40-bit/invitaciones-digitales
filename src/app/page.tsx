@@ -155,9 +155,9 @@ Quedo a la espera para coordinar la sena!`;
   ];
 
   const testimonials = [
-    { name: "Valentina R.", event: "Boda", text: "Elegimos el estilo, mandamos los datos y en 24 hs teniamos el link. Los invitados quedaron encantados.", color: "#FF6B9D" },
-    { name: "Martin G.", event: "Cumpleanos 30", text: "Cero complicaciones. Les pase todo por el formulario y me devolvieron la invitacion perfecta.", color: "#4ECDC4" },
-    { name: "Carolina S.", event: "15 Anos", text: "El estilo Glam quedo sonado. Mi hija no podia creer que era una invitacion web.", color: "#FF8C42" },
+    { name: "Valentina R.", event: "Boda", text: "Les mandamos la info y al otro dia ya teniamos todo listo. Nuestros invitados no paraban de decirnos lo linda que era.", color: "#FF6B9D" },
+    { name: "Martin G.", event: "Cumpleanos 30", text: "Super simple todo el proceso. Yo no entiendo nada de diseño y me entregaron algo increible sin que me complique.", color: "#4ECDC4" },
+    { name: "Carolina S.", event: "15 Anos", text: "Mi hija quedo fascinada con el resultado. No podia creer que fuera una web y no una app. Todos nos preguntaron donde la hicimos.", color: "#FF8C42" },
   ];
 
   return (
@@ -405,7 +405,7 @@ Quedo a la espera para coordinar la sena!`;
       <section className="py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold">Lo que dicen 💬</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">Testimonios 💬</h2>
           </Reveal>
 
           <Stagger className="grid md:grid-cols-3 gap-6" stagger={0.1}>
