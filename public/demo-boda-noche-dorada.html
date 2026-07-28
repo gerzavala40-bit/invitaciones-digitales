@@ -1332,6 +1332,20 @@ footer p { color: rgba(245,239,228,.3) !important; }
       if (musicBtn) {
         musicBtn.style.display = 'none';
       }
+      // In preview mode, keep splash visible as the "cover" of the mockup
+      // Hide the enter button and make splash non-interactive
+      const enterBtn = document.getElementById('enterBtn');
+      if (enterBtn) { enterBtn.style.display = 'none'; }
+      const splash = document.getElementById('splash');
+      if (splash) {
+        splash.style.pointerEvents = 'none';
+        splash.classList.remove('hide');
+      }
+      // Hide main content
+      const main = document.getElementById('main');
+      if (main) { main.style.display = 'none'; }
+      // Remove body lock so it doesn't look weird
+      document.body.classList.remove('locked');
     });
   }
 </script>
