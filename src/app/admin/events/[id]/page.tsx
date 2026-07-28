@@ -15,6 +15,9 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
   if (!event) notFound();
 
   const totalGuests = event.rsvps.reduce((sum, r) => sum + r.guestCount, 0);
+  const confirmedCount = event.rsvps.filter((r) => r.confirmed).length;
+  const attendedCount = event.rsvps.filter((r) => r.attended).length;
+  const pendingCount = confirmedCount - attendedCount;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -32,7 +35,7 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
 
       <div className="max-w-5xl mx-auto px-6 py-8">
         {/* STATS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div className="bg-white rounded-xl p-5 border border-gray-200">
             <p className="text-sm text-gray-500">Confirmaciones</p>
             <p className="text-2xl font-bold text-gray-900">{event.rsvps.length}</p>
@@ -45,6 +48,35 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
             <p className="text-sm text-gray-500">Fecha evento</p>
             <p className="text-2xl font-bold text-gray-900">{new Date(event.eventDate).toLocaleDateString("es-AR")}</p>
           </div>
+        </div>
+
+        {/* ACCESS CONTROL STATS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="bg-white rounded-xl p-5 border border-green-200">
+            <p className="text-sm text-gray-500">Confirmados</p>
+            <p className="text-2xl font-bold text-green-600">{confirmedCount}</p>
+          </div>
+          <div className="bg-white rounded-xl p-5 border border-blue-200">
+            <p className="text-sm text-gray-500">Ingresaron</p>
+            <p className="text-2xl font-bold text-blue-600">{attendedCount}</p>
+          </div>
+          <div className="bg-white rounded-xl p-5 border border-yellow-200">
+            <p className="text-sm text-gray-500">Pendientes de ingreso</p>
+            <p className="text-2xl font-bold text-yellow-600">{pendingCount}</p>
+          </div>
+        </div>
+
+        {/* LINK TO DOOR SCANNER */}
+        <div className="mb-8">
+          <Link
+            href={`/admin/events/${id}/puerta`}
+            className="inline-flex items-center gap-2 bg-gray-900 text-white px-5 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+            </svg>
+            Abrir Scanner de Puerta
+          </Link>
         </div>
 
         {/* TABLE */}
@@ -72,8 +104,9 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
                   <tr>
                     <th className="px-6 py-3">Nombre</th>
                     <th className="px-6 py-3">Personas</th>
+                    <th className="px-6 py-3">Estado</th>
                     <th className="px-6 py-3">Dieta</th>
-                    <th className="px-6 py-3">Canción</th>
+                    <th className="px-6 py-3">Cancion</th>
                     <th className="px-6 py-3">Fecha</th>
                   </tr>
                 </thead>
@@ -82,6 +115,17 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
                     <tr key={rsvp.id} className="hover:bg-gray-50">
                       <td className="px-6 py-3 font-medium text-gray-900">{rsvp.guestName}</td>
                       <td className="px-6 py-3 text-gray-600">{rsvp.guestCount}</td>
+                      <td className="px-6 py-3">
+                        {rsvp.attended ? (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            Ingreso
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                            Pendiente
+                          </span>
+                        )}
+                      </td>
                       <td className="px-6 py-3 text-gray-600">{rsvp.dietaryNotes || "-"}</td>
                       <td className="px-6 py-3 text-gray-600">{rsvp.songRequest || "-"}</td>
                       <td className="px-6 py-3 text-gray-500 text-sm">{new Date(rsvp.createdAt).toLocaleDateString("es-AR")}</td>

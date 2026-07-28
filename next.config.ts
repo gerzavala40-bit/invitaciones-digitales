@@ -7,8 +7,8 @@ const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   // Controlar referrer
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  // Desactivar permisos innecesarios
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+  // Permisos del navegador - camera habilitada para scanner QR
+  { key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=(), browsing-topics=()" },
   // Forzar HTTPS
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
   // Prevenir XSS en navegadores viejos
