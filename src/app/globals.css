@@ -1,58 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFF9E0;
+  --foreground: #1a1a1a;
+  --pink: #FF6B9D;
+  --teal: #4ECDC4;
+  --orange: #FF8C42;
+  --yellow: #FFF9E0;
+  --black: #1a1a1a;
+  --border-width: 3px;
+  --shadow-offset: 4px;
+  --shadow-offset-lg: 6px;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Te Invito Landing Theme Colors */
-  --color-ink-950: #0F0C0A;
-  --color-ink-900: #1A1512;
-  --color-ink-800: #2C241C;
-  --color-ink-700: #3D3228;
-  --color-ink-600: #5A4B3D;
-  --color-ink-500: #7A6A5A;
-  --color-ink-400: #9A8C7A;
-  --color-ink-300: #C4B8A8;
-  --color-ink-200: #E0D6C8;
-  --color-ink-100: #F0E9DE;
-  --color-ink-50: #F8F4EC;
+  --color-neo-pink: #FF6B9D;
+  --color-neo-teal: #4ECDC4;
+  --color-neo-orange: #FF8C42;
+  --color-neo-yellow: #FFF9E0;
+  --color-neo-black: #1a1a1a;
+  --color-neo-white: #ffffff;
 
-  --color-terracotta-700: #9C3B2E;
-  --color-terracotta-600: #B84A3A;
-  --color-terracotta-500: #C45C4A;
-  --color-terracotta-400: #D47A6A;
-  --color-terracotta-300: #E8A898;
-  --color-terracotta-100: #FCEEEA;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
 
-  --color-gold-600: #A67C2A;
-  --color-gold-500: #C49A3C;
-  --color-gold-400: #D4B05A;
-  --color-gold-300: #E4C878;
-  --color-gold-100: #F8F0D8;
-
-  --color-sage-700: #4A5C45;
-  --color-sage-600: #5C7055;
-  --color-sage-500: #6E7B5C;
-  --color-sage-400: #8A9878;
-  --color-sage-100: #E8EDE4;
-
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-
-  --shadow-soft: 0 4px 24px -4px rgba(15,12,10,0.08);
-  --shadow-card: 0 8px 40px -8px rgba(15,12,10,0.1);
-  --shadow-glow: 0 0 40px -8px rgba(196,90,74,0.25);
+  --shadow-brutal: 4px 4px 0px #1a1a1a;
+  --shadow-brutal-lg: 6px 6px 0px #1a1a1a;
+  --shadow-brutal-pink: 6px 6px 0px #FF6B9D;
+  --shadow-brutal-teal: 6px 6px 0px #4ECDC4;
+  --shadow-brutal-orange: 6px 6px 0px #FF8C42;
 
   --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
 }
-
-
 
 body {
   background: var(--background);
@@ -60,27 +42,131 @@ body {
   font-family: var(--font-sans), sans-serif;
 }
 
-/* Animations and Utilities for Landing */
+/* Neobrutalism Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
 }
 
-.text-balance { text-wrap: balance; }
-.grain {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
 }
-.phone-frame {
-  background: linear-gradient(145deg, #2C241C 0%, #1A1512 100%);
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08), 0 25px 50px -12px rgba(15,12,10,0.4);
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
 }
+
+/* Neobrutalism Utilities */
+.neo-border {
+  border: 3px solid #1a1a1a;
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-shadow-pink {
+  box-shadow: 6px 6px 0px #FF6B9D;
+}
+
+.neo-shadow-teal {
+  box-shadow: 6px 6px 0px #4ECDC4;
+}
+
+.neo-shadow-orange {
+  box-shadow: 6px 6px 0px #FF8C42;
+}
+
+.neo-btn {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.neo-card {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.neo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #1a1a1a;
+}
+
+/* Sticker style */
+.neo-sticker {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  font-weight: 700;
+}
+
+/* Phone frame neobrutalism */
+.neo-phone-frame {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* FAQ accordion */
 details summary::-webkit-details-marker { display: none; }
 details[open] summary .faq-icon { transform: rotate(45deg); }
-.step-num { font-variant-numeric: tabular-nums; }
-.form-input:focus { outline: none; border-color: #C45C4A; box-shadow: 0 0 0 3px rgba(196,92,74,0.15); }
-.style-card.selected { border-color: #C45C4A; box-shadow: 0 0 0 2px #C45C4A; }
-.style-card.selected .check-badge { opacity: 1; transform: scale(1); }
+
+/* Form inputs neobrutalism */
+.neo-input {
+  border: 3px solid #1a1a1a;
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.neo-input:focus {
+  box-shadow: 4px 4px 0px #4ECDC4;
+  transform: translate(-2px, -2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9E0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #FFF9E0;
+}
+
+/* Selection */
+::selection {
+  background: #FF6B9D;
+  color: #fff;
+}
