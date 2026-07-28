@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Invito - Studio Creativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F5F2EB;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        nav .logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            background: #F5F2EB;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(80px, 12vw, 160px);
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title .line-accent {
+            color: transparent;
+            -webkit-text-stroke: 2px #1a1a1a;
+        }
+
+        .hero-mockups {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1;
+        }
+
+        .hero-mockup-item {
+            width: 180px;
+            height: 360px;
+            border-radius: 24px;
+            overflow: hidden;
+            transform: rotate(-5deg);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .hero-mockup-item:nth-child(2) {
+            transform: rotate(3deg) translateY(40px);
+        }
+
+        .hero-mockup-item:nth-child(3) {
+            transform: rotate(-2deg) translateY(-20px);
+        }
+
+        .hero-mockup-item .mock-fill {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero-mockup-item .mock-fill.c1 { background: linear-gradient(180deg, #FFE4E1, #FFB6C1); }
+        .hero-mockup-item .mock-fill.c2 { background: linear-gradient(180deg, #E8F4FD, #B8D4E3); }
+        .hero-mockup-item .mock-fill.c3 { background: linear-gradient(180deg, #F0FFF0, #B8E6B8); }
+
+        .hero-mockup-item .mock-fill .mock-emoji {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .hero-mockup-item .mock-fill .mock-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .hero-subtitle {
+            position: absolute;
+            bottom: 60px;
+            left: 50px;
+            font-size: 14px;
+            color: #888;
+            max-width: 350px;
+            line-height: 1.7;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 60px;
+            right: 50px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #aaa;
+            writing-mode: vertical-rl;
+        }
+
+        /* Steps */
+        .steps {
+            padding: 140px 50px;
+            position: relative;
+        }
+
+        .steps::before {
+            content: 'PROCESO';
+            position: absolute;
+            top: 80px;
+            right: 50px;
+            font-family: 'Anton', sans-serif;
+            font-size: 120px;
+            color: rgba(0,0,0,0.03);
+            text-transform: uppercase;
+        }
+
+        .steps-header {
+            margin-bottom: 80px;
+        }
+
+        .steps-header h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 64px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .steps-header h2 span {
+            color: #FF6B35;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .step-block {
+            padding: 50px 40px;
+            border: 1px solid rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .step-block:hover {
+            background: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .step-block:nth-child(1) .step-num { color: #FF6B35; }
+        .step-block:nth-child(2) .step-num { color: #4ECDC4; }
+        .step-block:nth-child(3) .step-num { color: #9B59B6; }
+
+        .step-num {
+            font-family: 'Anton', sans-serif;
+            font-size: 80px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .step-block h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step-block p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #777;
+        }
+
+        /* Demos */
+        .demos {
+            padding: 140px 50px;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demos-header {
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .demos-header h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 64px;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .demos-header p {
+            font-size: 14px;
+            color: #888;
+            margin-top: 15px;
+        }
+
+        .demos-mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .demo-tile {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .demo-tile:nth-child(1) {
+            grid-column: span 1;
+            grid-row: span 2;
+            transform: rotate(-2deg);
+        }
+
+        .demo-tile:nth-child(2) {
+            grid-column: span 1;
+            transform: rotate(1deg) translateY(20px);
+        }
+
+        .demo-tile:nth-child(3) {
+            grid-column: span 1;
+            transform: rotate(-1.5deg) translateY(-10px);
+        }
+
+        .demo-tile:nth-child(4) {
+            grid-column: span 1;
+            grid-row: span 2;
+            transform: rotate(2deg);
+        }
+
+        .demo-tile:hover {
+            transform: rotate(0deg) scale(1.03) !important;
+            z-index: 5;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .demo-tile-inner {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .demo-tile:nth-child(1) .demo-tile-inner {
+            min-height: 500px;
+            background: linear-gradient(180deg, #FFF5E6, #FFDAA5);
+        }
+
+        .demo-tile:nth-child(2) .demo-tile-inner {
+            background: linear-gradient(180deg, #FFE4EC, #FFB6D0);
+        }
+
+        .demo-tile:nth-child(3) .demo-tile-inner {
+            background: linear-gradient(180deg, #E4F7FF, #A8DAFF);
+        }
+
+        .demo-tile:nth-child(4) .demo-tile-inner {
+            min-height: 500px;
+            background: linear-gradient(180deg, #E8FFE4, #A8FFBA);
+        }
+
+        .demo-tile-inner .tile-emoji {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .demo-tile-inner .tile-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .demo-tile-inner .tile-cat {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 140px 50px;
+            position: relative;
+        }
+
+        .pricing::before {
+            content: 'PLANES';
+            position: absolute;
+            bottom: 100px;
+            left: 50px;
+            font-family: 'Anton', sans-serif;
+            font-size: 150px;
+            color: rgba(0,0,0,0.03);
+            text-transform: uppercase;
+        }
+
+        .pricing-header {
+            margin-bottom: 80px;
+        }
+
+        .pricing-header h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 64px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .pricing-header h2 span { color: #4ECDC4; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .price-card {
+            background: #fff;
+            padding: 50px 36px;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .price-card.highlighted {
+            border-color: #FF6B35;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(255,107,53,0.15);
+        }
+
+        .price-card .card-tag {
+            position: absolute;
+            top: -14px;
+            left: 36px;
+            background: #FF6B35;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+
+        .price-card .card-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .price-card .card-price {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .price-card .card-price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: #aaa;
+        }
+
+        .price-card .card-desc {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 36px;
+        }
+
+        .price-card ul li {
+            font-size: 13px;
+            color: #555;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0ede7;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .price-card ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #FF6B35;
+        }
+
+        .price-card .card-btn {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .price-card .card-btn:hover {
+            background: #FF6B35;
+        }
+
+        .price-card.highlighted .card-btn {
+            background: #FF6B35;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 50px;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .foot-left .foot-brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 28px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        footer .foot-left .foot-tagline {
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+        }
+
+        footer .foot-right {
+            display: flex;
+            gap: 16px;
+        }
+
+        footer .foot-right a {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        footer .foot-right a:hover {
+            background: #FF6B35;
+            border-color: #FF6B35;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 60px; }
+            .hero-mockups { display: none; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .demos-mosaic { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: 1fr; }
+            nav .nav-links { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 44px; }
+            .demos-mosaic { grid-template-columns: 1fr; }
+            .steps-header h2, .demos-header h2, .pricing-header h2 { font-size: 40px; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="logo">Te Invito</div>
+        <ul class="nav-links">
+            <li><a href="#pasos">Proceso</a></li>
+            <li><a href="#demos">Demos</a></li>
+            <li><a href="#planes">Planes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">
+            Invitaciones<br>
+            <span class="line-accent">Digitales</span><br>
+            Para Tu Evento
+        </h1>
+        <div class="hero-mockups">
+            <div class="hero-mockup-item">
+                <div class="mock-fill c1">
+                    <div class="mock-emoji">💒</div>
+                    <div class="mock-text">Boda Elegante</div>
+                </div>
+            </div>
+            <div class="hero-mockup-item">
+                <div class="mock-fill c2">
+                    <div class="mock-emoji">🎂</div>
+                    <div class="mock-text">Cumpleanos</div>
+                </div>
+            </div>
+            <div class="hero-mockup-item">
+                <div class="mock-fill c3">
+                    <div class="mock-emoji">🍼</div>
+                    <div class="mock-text">Baby Shower</div>
+                </div>
+            </div>
+        </div>
+        <p class="hero-subtitle">Disenos unicos hechos a medida para bodas, cumpleanos, baby showers y cualquier celebracion que merece una invitacion especial.</p>
+        <span class="hero-scroll">scroll &darr;</span>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps" id="pasos">
+        <div class="steps-header">
+            <h2>Asi de <span>facil</span></h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-block">
+                <div class="step-num">01</div>
+                <h3>Elegi el estilo</h3>
+                <p>Explora nuestros disenos y encontra la estetica perfecta para tu evento. Minimalista, floral, moderno o clasico.</p>
+            </div>
+            <div class="step-block">
+                <div class="step-num">02</div>
+                <h3>Mandanos los datos</h3>
+                <p>Compartinos la info de tu evento por WhatsApp: fecha, lugar, nombres, colores y todo lo que imagines.</p>
+            </div>
+            <div class="step-block">
+                <div class="step-num">03</div>
+                <h3>Recibi el link en 24hs</h3>
+                <p>En menos de un dia tenes tu invitacion digital lista para compartir. Un link unico, elegante y funcional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos -->
+    <section class="demos" id="demos">
+        <div class="demos-header">
+            <h2>Nuestros Disenos</h2>
+            <p>Cada invitacion es una pieza unica creada con atencion al detalle.</p>
+        </div>
+        <div class="demos-mosaic">
+            <div class="demo-tile">
+                <div class="demo-tile-inner">
+                    <div class="tile-emoji">💒</div>
+                    <div class="tile-title">Boda Elegante</div>
+                    <div class="tile-cat">Matrimonio</div>
+                </div>
+            </div>
+            <div class="demo-tile">
+                <div class="demo-tile-inner">
+                    <div class="tile-emoji">👑</div>
+                    <div class="tile-title">15 Anos</div>
+                    <div class="tile-cat">Quinceanera</div>
+                </div>
+            </div>
+            <div class="demo-tile">
+                <div class="demo-tile-inner">
+                    <div class="tile-emoji">🎂</div>
+                    <div class="tile-title">Cumpleanos</div>
+                    <div class="tile-cat">Celebracion</div>
+                </div>
+            </div>
+            <div class="demo-tile">
+                <div class="demo-tile-inner">
+                    <div class="tile-emoji">🍼</div>
+                    <div class="tile-title">Baby Shower</div>
+                    <div class="tile-cat">Bebe en camino</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="planes">
+        <div class="pricing-header">
+            <h2>Nuestros <span>Planes</span></h2>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="card-name">Basico</div>
+                <div class="card-price">$25.000 <span>ARS</span></div>
+                <div class="card-desc">Perfecto para eventos simples con un diseno profesional.</div>
+                <ul>
+                    <li>Invitacion digital personalizada</li>
+                    <li>Link unico para compartir</li>
+                    <li>Confirmacion de asistencia</li>
+                    <li>Entrega en 24hs</li>
+                </ul>
+                <a href="#" class="card-btn">Quiero este</a>
+            </div>
+            <div class="price-card highlighted">
+                <div class="card-tag">Mas elegido</div>
+                <div class="card-name">Premium</div>
+                <div class="card-price">$45.000 <span>ARS</span></div>
+                <div class="card-desc">El pack mas completo. Diseno exclusivo + funciones premium.</div>
+                <ul>
+                    <li>Todo del plan Basico</li>
+                    <li>Musica de fondo</li>
+                    <li>Galeria de fotos</li>
+                    <li>Cuenta regresiva</li>
+                    <li>Mapa interactivo</li>
+                </ul>
+                <a href="#" class="card-btn">Quiero este</a>
+            </div>
+            <div class="price-card">
+                <div class="card-name">Premium Plus</div>
+                <div class="card-price">$65.000 <span>ARS</span></div>
+                <div class="card-desc">Experiencia completa. Todo lo que necesitas y mas.</div>
+                <ul>
+                    <li>Todo del plan Premium</li>
+                    <li>Animaciones avanzadas</li>
+                    <li>Video de portada</li>
+                    <li>Secciones ilimitadas</li>
+                    <li>Soporte prioritario</li>
+                    <li>Revisiones ilimitadas</li>
+                </ul>
+                <a href="#" class="card-btn">Quiero este</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="foot-left">
+            <div class="foot-brand">Te Invito</div>
+            <div class="foot-tagline">Invitaciones digitales a medida</div>
+        </div>
+        <div class="foot-right">
+            <a href="#" title="WhatsApp">📱</a>
+            <a href="#" title="Instagram">📷</a>
+        </div>
+    </footer>
+
+</body>
+</html>

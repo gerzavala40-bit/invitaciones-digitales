@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Invito - Editorial Magazine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+        }
+
+        nav .logo span {
+            color: #C9A96E;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #C9A96E;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            padding: 120px 60px 60px;
+            gap: 40px;
+        }
+
+        .hero-text {
+            padding-right: 40px;
+        }
+
+        .hero-text .eyebrow {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #C9A96E;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 82px;
+            line-height: 0.95;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .hero-text h1 em {
+            font-style: italic;
+            color: #C9A96E;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            max-width: 420px;
+            margin-bottom: 40px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: #C9A96E;
+            color: #1a1a1a;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-phone {
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(145deg, #f8f6f3, #ebe7e0);
+            border-radius: 36px;
+            border: 2px solid #e0dbd4;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 30px 30px 80px rgba(0,0,0,0.1), -10px -10px 40px rgba(255,255,255,0.8);
+        }
+
+        .hero-phone::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 6px;
+            background: #d4cfc8;
+            border-radius: 3px;
+        }
+
+        .hero-phone-content {
+            padding: 50px 24px 24px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f5f0e8 100%);
+        }
+
+        .hero-phone-content .phone-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .hero-phone-content .phone-subtitle {
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-phone-content .phone-ornament {
+            width: 60px;
+            height: 1px;
+            background: #C9A96E;
+            margin: 20px 0;
+        }
+
+        .hero-phone-content .phone-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: #C9A96E;
+        }
+
+        .floating-tag {
+            position: absolute;
+            top: 60px;
+            right: -20px;
+            background: #C9A96E;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Steps Section */
+        .steps {
+            padding: 120px 60px;
+            background: #faf9f7;
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-header .eyebrow {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #C9A96E;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.1;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 1px solid #e0dbd4;
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 300;
+            color: #C9A96E;
+            opacity: 0.4;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #777;
+        }
+
+        /* Demos - Horizontal Carousel */
+        .demos {
+            padding: 120px 0;
+            overflow: hidden;
+        }
+
+        .demos .section-header {
+            padding: 0 60px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            padding: 0 60px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .demo-card {
+            min-width: 300px;
+            flex-shrink: 0;
+        }
+
+        .demo-phone {
+            width: 100%;
+            height: 520px;
+            border-radius: 28px;
+            border: 2px solid #e8e4de;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .demo-phone:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .demo-phone-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .demo-phone-inner.boda {
+            background: linear-gradient(180deg, #f9f5f0 0%, #ede6db 100%);
+        }
+
+        .demo-phone-inner.quince {
+            background: linear-gradient(180deg, #fdf0f5 0%, #f5dce6 100%);
+        }
+
+        .demo-phone-inner.cumple {
+            background: linear-gradient(180deg, #f0f7fd 0%, #dbe9f5 100%);
+        }
+
+        .demo-phone-inner.baby {
+            background: linear-gradient(180deg, #f5fdf0 0%, #e2f5db 100%);
+        }
+
+        .demo-phone-inner .demo-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(201,169,110,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .demo-phone-inner .demo-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .demo-phone-inner .demo-subtitle {
+            font-size: 12px;
+            color: #999;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .demo-label {
+            margin-top: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 120px 60px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .pricing .section-header h2 {
+            color: #fff;
+        }
+
+        .pricing .section-header .eyebrow {
+            color: #C9A96E;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 50px 40px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: #C9A96E;
+        }
+
+        .pricing-card.featured {
+            border-color: #C9A96E;
+            background: rgba(201,169,110,0.05);
+        }
+
+        .pricing-card .plan-badge {
+            position: absolute;
+            top: -1px;
+            right: 30px;
+            background: #C9A96E;
+            color: #1a1a1a;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 6px 14px;
+        }
+
+        .pricing-card .plan-name {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .pricing-card .plan-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .plan-price span {
+            font-size: 20px;
+            color: #999;
+        }
+
+        .pricing-card .plan-desc {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .pricing-card ul li {
+            font-size: 13px;
+            color: #ccc;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-card ul li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #C9A96E;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .pricing-card .plan-cta {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .pricing-card .plan-cta:hover {
+            background: #C9A96E;
+            border-color: #C9A96E;
+            color: #1a1a1a;
+        }
+
+        .pricing-card.featured .plan-cta {
+            background: #C9A96E;
+            border-color: #C9A96E;
+            color: #1a1a1a;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 60px;
+            border-top: 1px solid #eee;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 40px;
+        }
+
+        footer .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        footer .footer-tagline {
+            font-size: 13px;
+            color: #999;
+        }
+
+        footer .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        footer .footer-social a {
+            width: 44px;
+            height: 44px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        footer .footer-social a:hover {
+            background: #1a1a1a;
+            color: #fff;
+            border-color: #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; padding: 140px 40px 60px; }
+            .hero-text h1 { font-size: 56px; }
+            .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            nav { padding: 20px 30px; }
+            nav ul { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 42px; }
+            .section-header h2 { font-size: 38px; }
+            footer { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Te <span>Invito</span></div>
+        <ul>
+            <li><a href="#pasos">Proceso</a></li>
+            <li><a href="#demos">Demos</a></li>
+            <li><a href="#planes">Planes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <p class="eyebrow">Invitaciones digitales a medida</p>
+            <h1>Invitaciones que cuentan <em>historias</em></h1>
+            <p>Creamos experiencias digitales unicas para tus momentos mas importantes. Cada invitacion es una obra de arte pensada para emocionar.</p>
+            <a href="#planes" class="hero-cta">Descubri los planes &rarr;</a>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-phone">
+                <div class="hero-phone-content">
+                    <div class="phone-title">Sofia & Mateo</div>
+                    <div class="phone-subtitle">Nos casamos</div>
+                    <div class="phone-ornament"></div>
+                    <div class="phone-date">15 de Marzo, 2025</div>
+                </div>
+            </div>
+            <div class="floating-tag">Nuevo</div>
+        </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps" id="pasos">
+        <div class="section-header">
+            <p class="eyebrow">Como funciona</p>
+            <h2>Tres pasos simples</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <div class="step-title">Elegi el estilo</div>
+                <div class="step-desc">Explora nuestros disenos y encontra el que mejor represente tu evento. Tenemos opciones para bodas, 15 anos, cumpleanos y mas.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <div class="step-title">Mandanos los datos</div>
+                <div class="step-desc">Compartinos la informacion de tu evento: fecha, lugar, nombres y todo lo que quieras incluir en tu invitacion personalizada.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <div class="step-title">Recibi el link en 24hs</div>
+                <div class="step-desc">Te enviamos tu invitacion digital lista para compartir por WhatsApp. Un link unico y elegante para cada invitado.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos -->
+    <section class="demos" id="demos">
+        <div class="section-header">
+            <p class="eyebrow">Nuestro portfolio</p>
+            <h2>Disenos que inspiran</h2>
+        </div>
+        <div class="carousel-track">
+            <div class="demo-card">
+                <div class="demo-phone">
+                    <div class="demo-phone-inner boda">
+                        <div class="demo-icon">💒</div>
+                        <div class="demo-title">Boda Elegante</div>
+                        <div class="demo-subtitle">Clasica & Sofisticada</div>
+                    </div>
+                </div>
+                <div class="demo-label">Boda Elegante</div>
+            </div>
+            <div class="demo-card">
+                <div class="demo-phone">
+                    <div class="demo-phone-inner quince">
+                        <div class="demo-icon">👑</div>
+                        <div class="demo-title">Mis 15 Anos</div>
+                        <div class="demo-subtitle">Glamour & Magia</div>
+                    </div>
+                </div>
+                <div class="demo-label">15 Anos</div>
+            </div>
+            <div class="demo-card">
+                <div class="demo-phone">
+                    <div class="demo-phone-inner cumple">
+                        <div class="demo-icon">🎂</div>
+                        <div class="demo-title">Cumpleanos</div>
+                        <div class="demo-subtitle">Divertido & Moderno</div>
+                    </div>
+                </div>
+                <div class="demo-label">Cumpleanos</div>
+            </div>
+            <div class="demo-card">
+                <div class="demo-phone">
+                    <div class="demo-phone-inner baby">
+                        <div class="demo-icon">🍼</div>
+                        <div class="demo-title">Baby Shower</div>
+                        <div class="demo-subtitle">Dulce & Tierno</div>
+                    </div>
+                </div>
+                <div class="demo-label">Baby Shower</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="planes">
+        <div class="section-header">
+            <p class="eyebrow">Planes & Precios</p>
+            <h2>Elegi tu plan</h2>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Basico</div>
+                <div class="plan-price"><span>$</span>25.000</div>
+                <div class="plan-desc">Ideal para eventos intimos con un diseno hermoso y funcional.</div>
+                <ul>
+                    <li>Invitacion digital personalizada</li>
+                    <li>Link unico para compartir</li>
+                    <li>Confirmacion de asistencia</li>
+                    <li>Entrega en 24hs</li>
+                </ul>
+                <a href="#" class="plan-cta">Elegir plan</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="plan-badge">Popular</div>
+                <div class="plan-name">Premium</div>
+                <div class="plan-price"><span>$</span>45.000</div>
+                <div class="plan-desc">El favorito. Diseno exclusivo con funciones avanzadas para tu evento.</div>
+                <ul>
+                    <li>Todo del plan Basico</li>
+                    <li>Musica de fondo personalizada</li>
+                    <li>Galeria de fotos</li>
+                    <li>Cuenta regresiva animada</li>
+                    <li>Mapa interactivo</li>
+                </ul>
+                <a href="#" class="plan-cta">Elegir plan</a>
+            </div>
+            <div class="pricing-card">
+                <div class="plan-name">Premium Plus</div>
+                <div class="plan-price"><span>$</span>65.000</div>
+                <div class="plan-desc">La experiencia completa. Maximo impacto visual para eventos inolvidables.</div>
+                <ul>
+                    <li>Todo del plan Premium</li>
+                    <li>Animaciones avanzadas</li>
+                    <li>Video de portada</li>
+                    <li>Multiples secciones</li>
+                    <li>Soporte prioritario</li>
+                    <li>Revisiones ilimitadas</li>
+                </ul>
+                <a href="#" class="plan-cta">Elegir plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div>
+            <div class="footer-brand">Te Invito</div>
+            <div class="footer-tagline">Invitaciones digitales a medida</div>
+        </div>
+        <div class="footer-social">
+            <a href="#" title="WhatsApp">📱</a>
+            <a href="#" title="Instagram">📷</a>
+        </div>
+    </footer>
+
+</body>
+</html>

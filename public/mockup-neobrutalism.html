@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Invito - Neobrutalism Pop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #FFF9E0;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: #FFF9E0;
+            border-bottom: 3px solid #1a1a1a;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: #FF6B9D;
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 4px 4px 0px #1a1a1a;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border: 2px solid #1a1a1a;
+            background: #fff;
+            box-shadow: 3px 3px 0px #1a1a1a;
+            transition: all 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #1a1a1a;
+            background: #4ECDC4;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 40px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-sticker {
+            position: absolute;
+            background: #fff;
+            border: 3px solid #1a1a1a;
+            box-shadow: 4px 4px 0px #1a1a1a;
+            padding: 12px 20px;
+            font-weight: 700;
+            font-size: 14px;
+            transform: rotate(-5deg);
+        }
+
+        .hero-sticker.s1 {
+            top: 160px;
+            left: 8%;
+            background: #4ECDC4;
+            transform: rotate(-8deg);
+        }
+
+        .hero-sticker.s2 {
+            top: 200px;
+            right: 10%;
+            background: #FF8C42;
+            transform: rotate(5deg);
+        }
+
+        .hero-sticker.s3 {
+            bottom: 120px;
+            left: 12%;
+            background: #FF6B9D;
+            transform: rotate(3deg);
+        }
+
+        .hero-sticker.s4 {
+            bottom: 160px;
+            right: 8%;
+            background: #FFF9E0;
+            transform: rotate(-4deg);
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        .hero h1 .highlight {
+            background: #FF6B9D;
+            padding: 0 12px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 4px 4px 0px #1a1a1a;
+            display: inline-block;
+            transform: rotate(-1deg);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 500px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #1a1a1a;
+            color: #FFF9E0;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            border: 3px solid #1a1a1a;
+            box-shadow: 6px 6px 0px #FF6B9D;
+            transition: all 0.2s;
+        }
+
+        .hero-cta:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #FF6B9D;
+        }
+
+        /* Steps */
+        .steps {
+            padding: 100px 40px;
+            background: #fff;
+            border-top: 3px solid #1a1a1a;
+            border-bottom: 3px solid #1a1a1a;
+        }
+
+        .steps-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .steps-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .steps-header h2 .accent {
+            background: #4ECDC4;
+            padding: 2px 10px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 3px 3px 0px #1a1a1a;
+            display: inline-block;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: #fff;
+            border: 3px solid #1a1a1a;
+            box-shadow: 6px 6px 0px #1a1a1a;
+            padding: 36px 28px;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #1a1a1a;
+        }
+
+        .step-card:nth-child(1) { border-color: #FF6B9D; box-shadow: 6px 6px 0px #FF6B9D; }
+        .step-card:nth-child(2) { border-color: #4ECDC4; box-shadow: 6px 6px 0px #4ECDC4; }
+        .step-card:nth-child(3) { border-color: #FF8C42; box-shadow: 6px 6px 0px #FF8C42; }
+
+        .step-card:nth-child(1):hover { box-shadow: 9px 9px 0px #FF6B9D; }
+        .step-card:nth-child(2):hover { box-shadow: 9px 9px 0px #4ECDC4; }
+        .step-card:nth-child(3):hover { box-shadow: 9px 9px 0px #FF8C42; }
+
+        .step-card .step-num {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .step-card:nth-child(1) .step-num { color: #FF6B9D; }
+        .step-card:nth-child(2) .step-num { color: #4ECDC4; }
+        .step-card:nth-child(3) .step-num { color: #FF8C42; }
+
+        .step-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Demos */
+        .demos {
+            padding: 100px 40px;
+        }
+
+        .demos-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .demos-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .demos-header h2 .accent {
+            background: #FF8C42;
+            padding: 2px 10px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 3px 3px 0px #1a1a1a;
+            display: inline-block;
+        }
+
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .demo-brutal-card {
+            border: 3px solid #1a1a1a;
+            box-shadow: 6px 6px 0px #1a1a1a;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .demo-brutal-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px #1a1a1a;
+        }
+
+        .demo-brutal-card:nth-child(1) { background: #FFE4EC; }
+        .demo-brutal-card:nth-child(2) { background: #E4F9F7; }
+        .demo-brutal-card:nth-child(3) { background: #FFF0E4; }
+        .demo-brutal-card:nth-child(4) { background: #E8FFE4; }
+
+        .demo-brutal-card .card-phone-area {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .demo-brutal-card .card-phone {
+            width: 160px;
+            height: 300px;
+            background: #fff;
+            border: 3px solid #1a1a1a;
+            border-radius: 20px;
+            box-shadow: 4px 4px 0px #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .demo-brutal-card .card-phone .phone-emoji {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .demo-brutal-card .card-phone .phone-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-brutal-card .card-info {
+            padding: 20px 30px 24px;
+            border-top: 3px solid #1a1a1a;
+            background: #fff;
+        }
+
+        .demo-brutal-card .card-info .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .demo-brutal-card .card-info .card-cat {
+            font-size: 12px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 100px 40px;
+            background: #fff;
+            border-top: 3px solid #1a1a1a;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .pricing-header h2 .accent {
+            background: #FF6B9D;
+            padding: 2px 10px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 3px 3px 0px #1a1a1a;
+            display: inline-block;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .price-brutal {
+            border: 3px solid #1a1a1a;
+            box-shadow: 6px 6px 0px #1a1a1a;
+            padding: 40px 30px;
+            text-align: center;
+            background: #fff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .price-brutal:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #1a1a1a;
+        }
+
+        .price-brutal:nth-child(1) { border-top: 8px solid #4ECDC4; }
+        .price-brutal:nth-child(2) { border-top: 8px solid #FF6B9D; }
+        .price-brutal:nth-child(3) { border-top: 8px solid #FF8C42; }
+
+        .price-brutal .popular-tag {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FF6B9D;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border: 2px solid #1a1a1a;
+            box-shadow: 3px 3px 0px #1a1a1a;
+        }
+
+        .price-brutal .plan-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .price-brutal .plan-price {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .price-brutal .plan-period {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 28px;
+        }
+
+        .price-brutal ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .price-brutal ul li {
+            font-size: 14px;
+            padding: 10px 0;
+            border-bottom: 2px dashed #eee;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .price-brutal ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #4ECDC4;
+        }
+
+        .price-brutal .plan-btn {
+            display: block;
+            padding: 16px;
+            background: #1a1a1a;
+            color: #FFF9E0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            border: 3px solid #1a1a1a;
+            box-shadow: 4px 4px 0px #1a1a1a;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .price-brutal .plan-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #1a1a1a;
+        }
+
+        .price-brutal:nth-child(1) .plan-btn { box-shadow: 4px 4px 0px #4ECDC4; }
+        .price-brutal:nth-child(2) .plan-btn { box-shadow: 4px 4px 0px #FF6B9D; background: #FF6B9D; }
+        .price-brutal:nth-child(3) .plan-btn { box-shadow: 4px 4px 0px #FF8C42; }
+
+        /* Footer */
+        footer {
+            padding: 50px 40px;
+            border-top: 3px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer .foot-brand {
+            font-size: 20px;
+            font-weight: 700;
+            background: #4ECDC4;
+            padding: 8px 16px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 4px 4px 0px #1a1a1a;
+        }
+
+        footer .foot-tagline {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        footer .foot-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        footer .foot-social a {
+            width: 44px;
+            height: 44px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 3px 3px 0px #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            background: #fff;
+            transition: all 0.2s;
+        }
+
+        footer .foot-social a:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #1a1a1a;
+            background: #FF8C42;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .steps-grid { grid-template-columns: 1fr; }
+            .demos-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            nav .nav-links { display: none; }
+            .hero-sticker { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .steps-header h2, .demos-header h2, .pricing-header h2 { font-size: 30px; }
+            footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="logo">Te Invito ✨</div>
+        <ul class="nav-links">
+            <li><a href="#pasos">Proceso</a></li>
+            <li><a href="#demos">Demos</a></li>
+            <li><a href="#planes">Planes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-sticker s1">Bodas 💒</div>
+        <div class="hero-sticker s2">15 Anos 👑</div>
+        <div class="hero-sticker s3">Cumples 🎂</div>
+        <div class="hero-sticker s4">Baby Shower 🍼</div>
+
+        <h1>Tu evento merece una invitacion <span class="highlight">increible</span></h1>
+        <p>Creamos invitaciones digitales personalizadas que sorprenden. Modernas, divertidas y listas en 24 horas.</p>
+        <a href="#planes" class="hero-cta">Ver planes →</a>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps" id="pasos">
+        <div class="steps-header">
+            <h2>Super <span class="accent">facil</span></h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h3>Elegi el estilo</h3>
+                <p>Mira nuestros disenos y elegir el que mas te guste para tu evento. Tenemos de todo!</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h3>Mandanos los datos</h3>
+                <p>Por WhatsApp nos contas toda la info: fecha, lugar, nombres, colores, lo que quieras.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h3>Recibi el link en 24hs</h3>
+                <p>Te mandamos tu invitacion digital lista para compartir. Asi de rapido y simple.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos -->
+    <section class="demos" id="demos">
+        <div class="demos-header">
+            <h2>Nuestros <span class="accent">disenos</span></h2>
+        </div>
+        <div class="demos-grid">
+            <div class="demo-brutal-card">
+                <div class="card-phone-area">
+                    <div class="card-phone">
+                        <div class="phone-emoji">💒</div>
+                        <div class="phone-label">Boda Elegante</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="card-title">Boda Elegante</div>
+                    <div class="card-cat">Matrimonio clasico</div>
+                </div>
+            </div>
+            <div class="demo-brutal-card">
+                <div class="card-phone-area">
+                    <div class="card-phone">
+                        <div class="phone-emoji">👑</div>
+                        <div class="phone-label">15 Anos</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="card-title">15 Anos</div>
+                    <div class="card-cat">Fiesta soñada</div>
+                </div>
+            </div>
+            <div class="demo-brutal-card">
+                <div class="card-phone-area">
+                    <div class="card-phone">
+                        <div class="phone-emoji">🎂</div>
+                        <div class="phone-label">Cumpleanos</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="card-title">Cumpleanos</div>
+                    <div class="card-cat">Para todas las edades</div>
+                </div>
+            </div>
+            <div class="demo-brutal-card">
+                <div class="card-phone-area">
+                    <div class="card-phone">
+                        <div class="phone-emoji">🍼</div>
+                        <div class="phone-label">Baby Shower</div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="card-title">Baby Shower</div>
+                    <div class="card-cat">Bienvenida al bebe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="planes">
+        <div class="pricing-header">
+            <h2>Nuestros <span class="accent">planes</span></h2>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-brutal">
+                <div class="plan-name">Basico</div>
+                <div class="plan-price">$25.000</div>
+                <div class="plan-period">por invitacion</div>
+                <ul>
+                    <li>Invitacion digital personalizada</li>
+                    <li>Link unico para compartir</li>
+                    <li>Confirmacion de asistencia</li>
+                    <li>Entrega en 24hs</li>
+                </ul>
+                <a href="#" class="plan-btn">Lo quiero!</a>
+            </div>
+            <div class="price-brutal">
+                <div class="popular-tag">★ Popular</div>
+                <div class="plan-name">Premium</div>
+                <div class="plan-price">$45.000</div>
+                <div class="plan-period">por invitacion</div>
+                <ul>
+                    <li>Todo del plan Basico</li>
+                    <li>Musica de fondo</li>
+                    <li>Galeria de fotos</li>
+                    <li>Cuenta regresiva</li>
+                    <li>Mapa interactivo</li>
+                </ul>
+                <a href="#" class="plan-btn">Lo quiero!</a>
+            </div>
+            <div class="price-brutal">
+                <div class="plan-name">Premium Plus</div>
+                <div class="plan-price">$65.000</div>
+                <div class="plan-period">por invitacion</div>
+                <ul>
+                    <li>Todo del plan Premium</li>
+                    <li>Animaciones avanzadas</li>
+                    <li>Video de portada</li>
+                    <li>Secciones ilimitadas</li>
+                    <li>Soporte prioritario</li>
+                    <li>Revisiones ilimitadas</li>
+                </ul>
+                <a href="#" class="plan-btn">Lo quiero!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="foot-brand">Te Invito</div>
+        <div class="foot-tagline">Invitaciones digitales a medida ✨</div>
+        <div class="foot-social">
+            <a href="#" title="WhatsApp">📱</a>
+            <a href="#" title="Instagram">📷</a>
+        </div>
+    </footer>
+
+</body>
+</html>
