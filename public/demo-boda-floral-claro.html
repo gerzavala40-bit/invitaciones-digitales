@@ -580,6 +580,7 @@
   </style>
 </head>
 <body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/abel-pintos.mp3" type="audio/mpeg"></audio>
 
   <!-- ===== SVG DEFINITIONS ===== -->
   <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -914,11 +915,20 @@
 
     // ===== MUSIC =====
     var musicPlaying = false;
+    var bgAudio = document.getElementById('bgAudio');
     function toggleMusic() {
-      musicPlaying = !musicPlaying;
       var btn = document.getElementById('musicBtn');
-      btn.style.background = musicPlaying ? 'var(--green-dark)' : 'var(--bg)';
-      btn.style.color = musicPlaying ? '#fff' : 'var(--green-dark)';
+      if (!bgAudio) return;
+      if (musicPlaying) {
+        bgAudio.pause();
+        musicPlaying = false;
+      } else {
+        bgAudio.volume = 0.7;
+        bgAudio.play().catch(function(){});
+        musicPlaying = true;
+      }
+      btn.style.opacity = musicPlaying ? '1' : '0.6';
+      btn.style.transform = musicPlaying ? 'scale(1.1)' : 'scale(1)';
     }
 
     // ===== REVEAL ON SCROLL =====

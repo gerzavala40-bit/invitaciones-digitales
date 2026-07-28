@@ -470,6 +470,7 @@
   </style>
 </head>
 <body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/bad-bunny.mp3" type="audio/mpeg"></audio>
 
   <!-- ===== SPLASH ===== -->
   <div class="splash" id="splash">
@@ -845,11 +846,20 @@
 
     // ===== MUSIC =====
     var musicPlaying = false;
+    var bgAudio = document.getElementById('bgAudio');
     function toggleMusic() {
-      musicPlaying = !musicPlaying;
       var btn = document.getElementById('musicBtn');
-      btn.style.background = musicPlaying ? 'var(--red)' : 'var(--bg-card)';
-      btn.style.color = musicPlaying ? '#fff' : 'var(--text)';
+      if (!bgAudio) return;
+      if (musicPlaying) {
+        bgAudio.pause();
+        musicPlaying = false;
+      } else {
+        bgAudio.volume = 0.7;
+        bgAudio.play().catch(function(){});
+        musicPlaying = true;
+      }
+      btn.style.opacity = musicPlaying ? '1' : '0.6';
+      btn.style.transform = musicPlaying ? 'scale(1.1)' : 'scale(1)';
     }
 
     // ===== REVEAL ON SCROLL =====

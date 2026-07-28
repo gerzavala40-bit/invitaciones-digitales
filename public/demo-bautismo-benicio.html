@@ -654,6 +654,7 @@
   </style>
 </head>
 <body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/carin-leon.mp3" type="audio/mpeg"></audio>
   <!-- ===== SPLASH ===== -->
   <div id="splash">
     <!-- Olive leaves top -->
@@ -950,10 +951,19 @@
       var musicPlaying = false;
       var musicBtn = document.getElementById('musicBtn');
       var musicIcon = document.getElementById('musicIcon');
+      var bgAudio = document.getElementById('bgAudio');
       musicBtn.addEventListener('click', function() {
-        musicPlaying = !musicPlaying;
-        musicIcon.textContent = musicPlaying ? '⏸' : '♫';
-        // Audio would be added here with actual music file
+        if (!bgAudio) return;
+        if (musicPlaying) {
+          bgAudio.pause();
+          musicPlaying = false;
+        } else {
+          bgAudio.volume = 0.7;
+          bgAudio.play().catch(function(){});
+          musicPlaying = true;
+        }
+        musicIcon.textContent = musicPlaying ? '\u23F8' : '\u266B';
+        musicBtn.style.opacity = musicPlaying ? '1' : '0.6';
       });
     })();
 

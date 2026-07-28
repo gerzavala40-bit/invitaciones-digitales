@@ -577,6 +577,7 @@
   </style>
 </head>
 <body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/camila.mp3" type="audio/mpeg"></audio>
 
   <!-- SPLASH -->
   <div class="splash" id="splash">
@@ -877,9 +878,19 @@
     // ===== MUSIC BTN =====
     var musicBtn = document.getElementById('musicBtn');
     var musicPlaying = false;
+    var bgAudio = document.getElementById('bgAudio');
     musicBtn.addEventListener('click', function() {
-      musicPlaying = !musicPlaying;
+      if (!bgAudio) return;
+      if (musicPlaying) {
+        bgAudio.pause();
+        musicPlaying = false;
+      } else {
+        bgAudio.volume = 0.7;
+        bgAudio.play().catch(function(){});
+        musicPlaying = true;
+      }
       musicBtn.textContent = musicPlaying ? '\u23F8' : '\u266B';
+      musicBtn.style.opacity = musicPlaying ? '1' : '0.6';
     });
 
     // ===== REVEAL ON SCROLL =====
