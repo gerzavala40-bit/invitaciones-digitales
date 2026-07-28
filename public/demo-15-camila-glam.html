@@ -668,13 +668,10 @@ footer p { color: rgba(255,245,248,.3) !important; }
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background-color: #fafafa;
-      background-image: 
-        url('boda-floral.png'), 
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-        url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&w=1920&q=80');
-      background-repeat: no-repeat, no-repeat, no-repeat;
-      background-position: center center, center center, center center;
-      background-size: contain, cover, cover;
+      background-image: url('portada-15.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
       z-index: 99999;
       display: flex;
       flex-direction: column;
@@ -682,6 +679,11 @@ footer p { color: rgba(255,245,248,.3) !important; }
       justify-content: flex-end;
       padding-bottom: 12vh;
       transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
+    }
+    @media (min-width: 768px) {
+      .splash-screen {
+        background-size: contain;
+      }
     }
     .splash-screen.slide-up {
       transform: translateY(-100%);
