@@ -617,31 +617,7 @@
     }
   </style>
 
-  <!-- START INJECTED HERO BACKGROUND -->
-  <style>
-    .hero {
-      background-image: url('hero_bg_exact.jpg') !important;
-      background-size: cover !important;
-      background-position: center !important;
-      background-attachment: fixed !important;
-      position: relative !important;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5); /* Filtro oscuro para resaltar texto */
-      z-index: 0;
-    }
-    .hero > * {
-      position: relative;
-      z-index: 1;
-    }
-  </style>
-  <!-- END INJECTED HERO BACKGROUND -->
+  
 
   <!-- SPLASH SCREEN CSS -->
   <style>
@@ -653,10 +629,13 @@
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background-color: #fafafa;
-      background-image: url('boda-floral.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: contain;
+      background-image: 
+        url('boda-floral.png'), 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+        url('https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1920&q=80');
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position: center center, center center, center center;
+      background-size: contain, cover, cover;
       z-index: 99999;
       display: flex;
       flex-direction: column;
