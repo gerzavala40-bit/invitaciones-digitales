@@ -84,6 +84,7 @@ model RSVP {
   qrCode       String?  @unique
   confirmed    Boolean  @default(true)
   attended     Boolean  @default(false)
+  tableNumber  String?
   createdAt    DateTime @default(now())
 }
 

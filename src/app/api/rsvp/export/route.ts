@@ -23,22 +23,26 @@ export async function GET(request: Request) {
 
   // Crear datos para Excel
   const data = event.rsvps.map((rsvp, index) => ({
+    "ID_SISTEMA": rsvp.id, // Do not modify
     "#": index + 1,
     "Nombre": rsvp.guestName,
     "Personas": rsvp.guestCount,
     "Dieta": rsvp.dietaryNotes || "-",
     "Canción": rsvp.songRequest || "-",
+    "Mesa": rsvp.tableNumber || "",
     "Fecha confirmación": new Date(rsvp.createdAt).toLocaleDateString("es-AR"),
   }));
 
   // Agregar fila de totales
   const totalGuests = event.rsvps.reduce((sum, r) => sum + r.guestCount, 0);
   data.push({
+    "ID_SISTEMA": "",
     "#": data.length + 1,
     "Nombre": "TOTAL",
     "Personas": totalGuests,
     "Dieta": "",
     "Canción": "",
+    "Mesa": "",
     "Fecha confirmación": `${event.rsvps.length} confirmaciones`,
   });
 
@@ -49,11 +53,13 @@ export async function GET(request: Request) {
 
   // Ajustar ancho de columnas
   ws["!cols"] = [
+    { wch: 25 }, // ID_SISTEMA
     { wch: 5 },  // #
     { wch: 30 }, // Nombre
     { wch: 10 }, // Personas
     { wch: 20 }, // Dieta
     { wch: 30 }, // Canción
+    { wch: 15 }, // Mesa
     { wch: 18 }, // Fecha
   ];
 

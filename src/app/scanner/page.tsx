@@ -8,6 +8,7 @@ interface ScanResult {
   message: string;
   guestName?: string;
   guestCount?: number;
+  tableNumber?: string;
   status?: string;
   error?: string;
 }
@@ -232,6 +233,12 @@ export default function ScannerPage() {
                     {scanResult.guestCount} {scanResult.guestCount === 1 ? "persona" : "personas"}
                   </p>
                 </div>
+                {scanResult.tableNumber && (
+                  <div className="bg-green-600/40 border border-green-400 rounded-xl py-3 px-4 mb-4 shadow-lg">
+                    <p className="text-sm font-bold text-green-200 uppercase tracking-widest mb-1">MESA ASIGNADA</p>
+                    <p className="text-3xl font-extrabold text-white">{scanResult.tableNumber}</p>
+                  </div>
+                )}
                 <p className="text-lg font-semibold text-green-400">ACCESO AUTORIZADO</p>
               </div>
             ) : scanResult.status === "already_attended" ? (

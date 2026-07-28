@@ -16,9 +16,9 @@ async function main() {
   });
 
   // Create demo event
-  await prisma.event.upsert({
+  const event = await prisma.event.upsert({
     where: { slug: "boda-valentina-y-matias" },
-    update: {},
+    update: { scannerPin: "1234" },
     create: {
       slug: "boda-valentina-y-matias",
       userId: user.id,
@@ -44,58 +44,24 @@ async function main() {
       rsvpEnabled: true,
       rsvpDeadline: "1 de Noviembre",
       isActive: true,
+      scannerPin: "1234"
     },
   });
 
-  // Floral demo
-  await prisma.event.upsert({
-    where: { slug: "boda-luciana-y-gonzalo" },
-    update: {},
+  // Create test RSVP for the event
+  await prisma.rSVP.upsert({
+    where: { qrCode: "QR-TEST-555" },
+    update: { attended: false }, // reset attended for testing
     create: {
-      slug: "boda-luciana-y-gonzalo",
-      userId: user.id,
-      title: "Luciana & Gonzalo",
-      eventType: "boda",
-      eventDate: new Date("2025-12-20T20:30:00-03:00"),
-      eventTime: "20:30",
-      venueName: "Salón Terramar",
-      venueAddress: "Camino a La Bolsa km 8, Villa Allende",
-      venueLatLng: "-31.2955,-64.2950",
-      templateId: "floral-light",
-      primaryColor: "#c27a6e",
-      dressCode: "Semi-formal",
-      bankAlias: "luci.gonza.mp",
-      bankHolder: "Luciana Fernández",
-      rsvpEnabled: true,
-      isActive: true,
-    },
+      eventId: event.id,
+      guestName: "Familia Rodriguez",
+      guestCount: 2,
+      qrCode: "QR-TEST-555",
+      confirmed: true
+    }
   });
 
-  // Minimal demo
-  await prisma.event.upsert({
-    where: { slug: "cumple-30-martin" },
-    update: {},
-    create: {
-      slug: "cumple-30-martin",
-      userId: user.id,
-      title: "Martín",
-      subtitle: "Festejo mis 30",
-      eventType: "cumpleanos",
-      eventDate: new Date("2025-10-05T22:00:00-03:00"),
-      eventTime: "22:00",
-      venueName: "Rooftop Bar Central",
-      venueAddress: "Av. Hipólito Yrigoyen 500, Córdoba",
-      templateId: "minimal-white",
-      primaryColor: "#111111",
-      dressCode: "Smart casual",
-      bankAlias: "martin.cumple30",
-      bankHolder: "Martín García",
-      rsvpEnabled: true,
-      isActive: true,
-    },
-  });
-
-  console.log("Seed completado: 3 eventos demo creados");
+  console.log("Seed completado: Evento y RSVP creados exitosamente");
 }
 
 main()

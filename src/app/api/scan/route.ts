@@ -79,6 +79,7 @@ export async function POST(req: Request) {
         message: `${rsvp.guestName} ya ingreso previamente.`,
         guestName: rsvp.guestName,
         guestCount: rsvp.guestCount,
+        tableNumber: rsvp.tableNumber,
         status: "already_attended",
       });
     }
@@ -94,6 +95,7 @@ export async function POST(req: Request) {
       message: `Acceso concedido`,
       guestName: rsvp.guestName,
       guestCount: rsvp.guestCount,
+      tableNumber: rsvp.tableNumber,
       status: "admitted",
     });
   } catch (error) {
