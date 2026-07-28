@@ -2,7 +2,7 @@
   "id": "FEAT-004-qr-improvements",
   "type": "feat",
   "description": "Improve QR system: add scannerPin to Event model, update scanner to ask for event slug + PIN, improve /mi-entrada page with prominent guest count, and update /api/scan to validate PIN against event.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "Add scannerPin String field (default '1234') to Event model in prisma/schema.prisma",
     "Run npx prisma generate",
@@ -25,5 +25,5 @@
     "Run 'cd /projects/sandbox/invitaciones-digitales && npx next build' and confirm exit code 0"
   ],
   "blocked_reason": null,
-  "findings": null
+  "findings": "All changes implemented and verified. prisma generate and next build both pass (exit 0). Scanner auth works by sending a dummy qrCode to /api/scan - if event is found and PIN matches, the 404 for the dummy QR confirms valid credentials. The /mi-entrada page now uses notFound() for invalid codes instead of custom error UI."
 }
