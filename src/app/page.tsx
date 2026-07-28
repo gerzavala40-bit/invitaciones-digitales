@@ -231,19 +231,19 @@ export default function LandingPage() {
 
           {/* Bottom Paper Cards */}
           <Stagger className="grid md:grid-cols-3 gap-6 mt-20" stagger={0.1}>
-            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer">
+            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer" onClick={() => document.getElementById('estilos')?.scrollIntoView({ behavior: 'smooth' })}>
               <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">💍</div>
               <h3 className="font-display text-2xl text-stone-900 mb-3">Bodas</h3>
               <p className="text-stone-500 text-sm mb-6 leading-relaxed">Diseños minimalistas y románticos para el día más importante.</p>
               <div className="text-[#E87A5D] text-xs font-semibold tracking-widest uppercase flex items-center gap-2">Explorar <span className="transition-transform group-hover:translate-x-1">→</span></div>
             </StaggerItem>
-            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer">
+            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer" onClick={() => document.getElementById('estilos')?.scrollIntoView({ behavior: 'smooth' })}>
               <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">🥂</div>
               <h3 className="font-display text-2xl text-stone-900 mb-3">Eventos</h3>
               <p className="text-stone-500 text-sm mb-6 leading-relaxed">Elegancia sutil para recepciones, galas y eventos corporativos.</p>
               <div className="text-[#E87A5D] text-xs font-semibold tracking-widest uppercase flex items-center gap-2">Explorar <span className="transition-transform group-hover:translate-x-1">→</span></div>
             </StaggerItem>
-            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer">
+            <StaggerItem className="bg-white border border-[#EAE5DB] rounded-3xl p-8 hover:shadow-md transition cursor-pointer" onClick={() => document.getElementById('estilos')?.scrollIntoView({ behavior: 'smooth' })}>
               <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">🎈</div>
               <h3 className="font-display text-2xl text-stone-900 mb-3">Cumpleaños</h3>
               <p className="text-stone-500 text-sm mb-6 leading-relaxed">Invitaciones cálidas y divertidas para celebrar con amigos.</p>
