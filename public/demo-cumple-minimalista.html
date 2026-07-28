@@ -3,40 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- ========== EDITAR META SEO ========== -->
-  <title>Martín 30</title>
-  <meta name="description" content="Cumpleaños 30" />
-  <meta name="theme-color" content="#FAFAF8" />
-  <meta property="og:title" content="Mis XV Martín" />
-  <meta property="og:description" content="Sábado 5 de octubre de 2026 · Rooftop Bar Central. Abrí la invitación." />
+  <title>Martin cumple 30</title>
+  <meta name="description" content="Cumpleanos 30 de Martin - Noche de Cumple Retro" />
+  <meta name="theme-color" content="#D94F5C" />
+  <meta property="og:title" content="Martin cumple 30" />
+  <meta property="og:description" content="Sabado 24 de abril de 2027 - Casa de Martin. Abri la invitacion." />
   <meta property="og:type" content="website" />
-  <!-- <meta property="og:image" content="[URL_IMAGEN_PORTADA]" /> -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* =========================================================
-       PALETA — editá estas variables para cambiar toda la look
-       ========================================================= */
     :root {
-      --bg: #0E0A0C;
-      --bg-soft: #1A1218;
-      --bg-card: #211820;
-      --text: #F8F0F4;
-      --text-muted: rgba(248, 240, 244, 0.55);
-      --accent: #E8B4C8;          /* rosa glam */
-      --accent-deep: #C47A9A;
+      --bg: #EDE8DF;
+      --bg-soft: #E5DFD5;
+      --bg-card: #F5F0E8;
+      --text: #3A2E2E;
+      --text-muted: rgba(58, 46, 46, 0.6);
+      --red: #D94F5C;
+      --pink: #F0A0B0;
+      --silver: #A0A0A0;
       --gold: #D4AF37;
-      --gold-soft: #E8D5A3;
-      --line: rgba(248, 240, 244, 0.12);
+      --line: rgba(217, 79, 92, 0.2);
       --success: #25D366;
-      --font-display: "Playfair Display", Georgia, serif;
-      --font-script: "Great Vibes", cursive;
+      --font-script: "Caveat", cursive;
       --font-body: "Montserrat", system-ui, sans-serif;
-      --radius: 16px;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 14px;
+      --shadow: 0 4px 20px rgba(58, 46, 46, 0.1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,1249 +41,857 @@
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      line-height: 1.5;
+      line-height: 1.6;
     }
-    body.locked { overflow: hidden; height: 100dvh; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
-    button, input, select, textarea { font-family: inherit; }
+    body.locked { overflow: hidden; }
 
-    /* ---------- SPLASH / BIENVENIDA ---------- */
-    #splash {
-      position: fixed; inset: 0; z-index: 200;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      background: var(--bg);
-      transition: opacity 0.75s ease, visibility 0.75s ease;
-    }
-    #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-    #splash::before {
+    /* ===== PAPER TEXTURE ===== */
+    body::before {
       content: "";
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(232, 180, 200, 0.18), transparent 55%),
-        radial-gradient(ellipse at 50% 85%, rgba(212, 175, 55, 0.08), transparent 45%);
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
-    }
-    .splash-inner { position: relative; z-index: 1; max-width: 340px; }
-    .splash-ornament {
-      font-size: 1.75rem;
-      color: var(--gold);
-      letter-spacing: 0.5em;
-      margin-bottom: 1.5rem;
-      opacity: 0.85;
-      animation: pulse-soft 3s ease-in-out infinite;
-    }
-    .splash-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
-    }
-    .splash-kicker {
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-    .splash-name {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 14vw, 4rem);
-      font-weight: 500;
-      line-height: 1.05;
-      letter-spacing: 0.02em;
-    }
-    .splash-date {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .splash-btn {
-      margin-top: 2.5rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      padding: 1rem 2.25rem;
-      border: 1px solid var(--accent);
-      background: transparent;
-      color: var(--text);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s, transform 0.2s;
-    }
-    .splash-btn:hover, .splash-btn:active {
-      background: var(--accent);
-      color: var(--bg);
-    }
-    .splash-hint {
-      margin-top: 1.5rem;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+      z-index: 0;
     }
 
-    @keyframes pulse-soft {
-      0%, 100% { opacity: 0.55; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.06); }
-    }
-
-    /* ---------- MAIN ---------- */
-    #main { opacity: 0; transition: opacity 0.55s ease 0.15s; }
-    #main.show { opacity: 1; }
-
-    .section {
-      min-height: 100dvh;
+    /* ===== SPLASH ===== */
+    .splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      background: var(--bg);
       text-align: center;
-      padding: 4rem 1.5rem 5.5rem;
-      position: relative;
-    }
-    .section + .section { border-top: 1px solid var(--line); }
-    .wrap { width: 100%; max-width: 420px; margin: 0 auto; position: relative; z-index: 1; }
-
-    .eyebrow {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: clamp(2.75rem, 13vw, 3.75rem);
-      line-height: 1.05;
-    }
-    h2 {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: clamp(1.75rem, 7vw, 2.25rem);
-      margin-bottom: 0.75rem;
-    }
-    .lead {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 320px;
-      margin: 0 auto 1.75rem;
-    }
-    .script {
-      font-family: var(--font-script);
-
-      font-size: clamp(1.75rem, 6vw, 2.25rem);
-      color: var(--accent);
-      line-height: 1.3;
-    }
-
-    /* HERO */
-    .hero {
-      background:
-        radial-gradient(ellipse at 50% 20%, rgba(232, 180, 200, 0.12), transparent 50%),
-        var(--bg);
-    }
-    .hero-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--gold);
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.12);
-      background: var(--bg-soft);
-    }
-    .hero-photo.placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1.75rem;
-      color: var(--gold);
-    }
-    .hero-kicker {
-      font-size: 0.72rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    .hero-date {
-      margin: 1.25rem 0 1.75rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* Countdown */
-    .countdown {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .countdown > div {
-      min-width: 4.1rem;
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 0.85rem 0.4rem 0.7rem;
-    }
-    .countdown .n {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      color: var(--accent);
-      display: block;
-      line-height: 1;
-    }
-    .countdown .l {
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-      font-weight: 500;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem 1.75rem;
-      border: none;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
-      color: var(--bg);
-      box-shadow: 0 10px 30px rgba(196, 122, 154, 0.35);
-    }
-    .btn-primary:hover { box-shadow: 0 14px 36px rgba(196, 122, 154, 0.45); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--line);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-wa {
-      background: var(--success);
-      color: #fff;
-      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.3);
-    }
-    .btn-full { width: 100%; }
-    .btn-row { display: flex; flex-direction: column; gap: 0.75rem; }
-
-    /* Cards */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.35rem;
-      margin-bottom: 0.85rem;
-      text-align: center;
-    }
-    .card .icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-      color: var(--accent);
-    }
-    .card h3 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: var(--gold-soft);
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-    .card p strong {
-      color: var(--text);
-      font-weight: 500;
-      display: block;
-      margin-bottom: 0.15rem;
-    }
-    .card a.link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(232, 180, 200, 0.35);
-      padding-bottom: 2px;
-    }
-
-    /* Mesa de regalos */
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--line);
-      font-size: 0.9rem;
-    }
-    .price-row:first-of-type { border-top: none; }
-    .price-row .amount {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* Alias / copy */
-    .alias-box {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.25rem;
-    }
-    .alias-box .label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-    .alias-box .value {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--accent);
-      word-break: break-all;
-      margin-bottom: 0.35rem;
-    }
-    .alias-box .sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-    .copy-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.25rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--text);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .copy-btn.ok { border-color: var(--gold); color: var(--gold); }
-
-    /* Dress pills */
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 0.85rem;
-    }
-    .pills span {
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      padding: 0.45rem 0.9rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--text-muted);
-    }
-
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-    }
-    .gallery .ph {
-      aspect-ratio: 1;
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      padding: 1.5rem;
       overflow: hidden;
     }
-    .gallery .ph.wide { grid-column: span 2; aspect-ratio: 2.1 / 1; }
-    .gallery .ph img { width: 100%; height: 100%; object-fit: cover; }
-    .hashtag {
-      margin-top: 1.25rem;
-      font-size: 0.95rem;
-      color: var(--gold);
-      font-weight: 500;
-      letter-spacing: 0.06em;
+    .splash.hidden { display: none; }
+    .splash-deco-tl {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 120px;
+      opacity: 0.9;
+    }
+    .splash-deco-tr {
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      width: 80px;
+      opacity: 0.85;
+    }
+    .splash-deco-bl {
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+      width: 70px;
+      opacity: 0.8;
+    }
+    .splash-deco-br {
+      position: absolute;
+      bottom: 20px;
+      right: 15px;
+      width: 75px;
+      opacity: 0.85;
+    }
+    .splash-content {
+      position: relative;
+      z-index: 2;
+    }
+    .splash-subtitle {
+      font-family: var(--font-script);
+      font-size: 1.5rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .splash-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.8rem, 10vw, 4.5rem);
+      color: var(--red);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .splash-detail {
+      font-family: var(--font-script);
+      font-size: 1.3rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .splash-date {
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .splash-number {
+      margin: 1rem 0;
+    }
+    .enter-btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(217, 79, 92, 0.3);
+      text-decoration: none;
+    }
+    .enter-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(217, 79, 92, 0.4);
     }
 
-    /* Closing */
-    .close-section {
-      background:
-        radial-gradient(ellipse at 50% 55%, rgba(232, 180, 200, 0.12), transparent 50%),
-        var(--bg);
+    /* ===== MAIN ===== */
+    .main-content {
+      display: none;
+      position: relative;
+      z-index: 1;
     }
-    .close-quote {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: clamp(1.5rem, 6vw, 2rem);
-      line-height: 1.35;
-      max-width: 300px;
-      margin: 0 auto 1rem;
-    }
-    .close-name {
-      margin-top: 1.75rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
+    .main-content.visible { display: block; }
 
-    footer {
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 480px;
+      margin: 0 auto;
       text-align: center;
-      padding: 2rem 1.25rem 6rem;
-      border-top: 1px solid var(--line);
     }
-    footer .brand {
-      font-family: var(--font-display);
-      font-size: 1rem;
+
+    /* ===== HERO ===== */
+    .hero h1 {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 12vw, 5rem);
+      color: var(--red);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero .hero-date {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    .hero .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .countdown-item {
+      background: var(--bg-card);
+      border: 2px solid var(--red);
+      border-radius: var(--radius);
+      padding: 0.8rem 1rem;
+      min-width: 65px;
+    }
+    .countdown-item .number {
+      font-family: var(--font-script);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--red);
+      display: block;
+    }
+    .countdown-item .label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       color: var(--text-muted);
     }
-    footer .brand em { font-style: italic; color: var(--accent); }
-    footer p {
-      font-size: 0.65rem;
-      color: rgba(248, 240, 244, 0.3);
-      margin-top: 0.5rem;
-      letter-spacing: 0.06em;
+
+    /* ===== FRASE ===== */
+    .frase {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      margin: 0 auto;
+      max-width: 400px;
+      border: 1px dashed var(--red);
+    }
+    .frase p {
+      font-family: var(--font-script);
+      font-size: 1.6rem;
+      color: var(--red);
+      line-height: 1.4;
     }
 
-    /* Music button */
+    /* ===== CARDS ===== */
+    .info-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    .info-card h3 {
+      font-family: var(--font-script);
+      font-size: 1.8rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .info-card .icon-inline {
+      display: block;
+      margin: 0 auto 0.8rem;
+      width: 40px;
+      height: 40px;
+    }
+
+    /* ===== COPY ROW ===== */
+    .copy-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .copy-row span {
+      flex: 1;
+      font-size: 0.8rem;
+      font-family: monospace;
+      word-break: break-all;
+      text-align: left;
+    }
+    .copy-row button {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* ===== RSVP ===== */
+    .rsvp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--success);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .rsvp-btn:hover { transform: scale(1.05); }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .gallery-grid .photo-placeholder {
+      aspect-ratio: 1;
+      background: var(--bg-soft);
+      border-radius: 8px;
+      border: 2px dashed var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== CONTACTO ===== */
+    .contacto a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contacto a:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    .footer-brand {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .footer-brand a {
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    /* ===== MUSIC BTN ===== */
     .music-btn {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      z-index: 80;
-      width: 2.75rem;
-      height: 2.75rem;
+      z-index: 1000;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
+      background: var(--bg-card);
       border: 1px solid var(--line);
-      background: rgba(14, 10, 12, 0.8);
-      backdrop-filter: blur(10px);
-      color: var(--gold);
-      font-size: 0.95rem;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-    .music-btn.visible { display: flex; }
-    .music-btn.on {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--bg);
-      animation: pulse-soft 1.4s ease-in-out infinite;
-    }
-
-    /* Scroll cue */
-    .scroll-cue {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      animation: bob 2.2s ease-in-out infinite;
-    }
-    .scroll-cue span { display: block; margin-top: 0.35rem; font-size: 0.9rem; }
-    @keyframes bob {
-      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.45; }
-      50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
-    }
-
-    /* Reveal on scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-
-    /* Toast */
-    #toast {
-      display: none;
-      position: fixed;
-      left: 50%;
-      bottom: 5.5rem;
-      transform: translateX(-50%);
-      z-index: 90;
-      background: rgba(14, 10, 12, 0.95);
-      border: 1px solid rgba(232, 180, 200, 0.35);
-      color: var(--text);
-      padding: 0.75rem 1.25rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-    #toast.show { display: block; }
-
-    /* Modal regalos */
-    .modal-backdrop {
-      position: fixed; inset: 0; z-index: 150;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .modal-backdrop.open { display: flex; }
-    .modal {
-      width: 100%;
-      max-width: 400px;
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: 20px 20px 12px 12px;
-      padding: 1.75rem 1.35rem 1.5rem;
-      animation: slideUp 0.35s ease;
-    }
-    @keyframes slideUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .modal h3 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .modal .close-x {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      background: none; border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .modal-inner { position: relative; }
-
-    @media (min-width: 480px) {
-      .modal-backdrop { align-items: center; }
-      .modal { border-radius: 20px; }
-    }
-  
-:root {
-  --bg: #FAFAF8;
-  --bg-soft: #F0F0EC;
-  --bg-card: #FFFFFF;
-  --text: #1A1A1A;
-  --text-muted: rgba(26,26,26,.5);
-  --accent: #2C2C2C;
-  --accent-deep: #111111;
-  --gold: #6B6B6B;
-  --gold-soft: #444444;
-  --line: rgba(26,26,26,.1);
-}
-#splash::before {
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(0,0,0,.04), transparent 55%),
-    radial-gradient(ellipse at 50% 85%, rgba(0,0,0,.02), transparent 45%) !important;
-}
-.hero {
-  background:
-    radial-gradient(ellipse at 50% 20%, rgba(0,0,0,.04), transparent 50%),
-    var(--bg) !important;
-}
-.hero-photo { box-shadow: 0 0 0 6px rgba(0,0,0,.08) !important; }
-.btn-primary {
-  color: #fff !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2) !important;
-}
-.card a.link { border-bottom-color: rgba(26,26,26,.25) !important; }
-footer p { color: rgba(26,26,26,.3) !important; }
-.music-btn { background: rgba(250,250,248,.9) !important; }
-.close-section {
-  background:
-  radial-gradient(ellipse at 50% 55%, rgba(0,0,0,.04), transparent 50%),
-  var(--bg) !important;
-}
-
-</style>
-
-  
-
-  <!-- SPLASH SCREEN CSS -->
-  <style>
-    body.locked {
-      overflow: hidden;
-      height: 100vh;
-    }
-    .splash-screen {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: #fafafa;
-      background-image: url('https://images.unsplash.com/photo-1530103862676-de8892b12a15?auto=format&fit=crop&w=1920&q=80');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      z-index: 99999;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 12vh;
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    @media (min-width: 768px) {
-      .splash-screen {
-        background-size: contain;
-      }
+    .music-btn:hover {
+      background: var(--red);
+      color: #fff;
     }
-    .splash-screen.slide-up {
-      transform: translateY(-100%);
+
+    /* ===== PARTY CAM ===== */
+    .party-cam {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(217, 79, 92, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+    .party-cam:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(217, 79, 92, 0.4);
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
       opacity: 0;
       pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 9999;
+      box-shadow: var(--shadow);
     }
-    .splash-content {
-      text-align: center;
-      animation: fadeIn 2s ease forwards;
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
     }
-    .btn-abrir {
-      background: rgba(255, 255, 255, 0.95);
-      color: #333;
-      border: 1px solid #555;
-      padding: 15px 40px;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 360px;
+      width: 100%;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 0.8rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      margin-bottom: 15px;
+      color: var(--text-muted);
     }
-    .btn-abrir:hover {
-      background: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .splash-hint {
-      color: #666;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin: 0;
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== HASHTAG ===== */
+    .hashtag {
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--red);
+      margin: 1rem 0;
+    }
+
+    /* ===== DISCO BALL ANIMATION ===== */
+    @keyframes discoRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes discoPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
     }
   </style>
 </head>
-
-
 <body class="locked">
 
-  <!-- ============================================================
-       CONFIGURACIÓN RÁPIDA (también buscá [PLACEHOLDERS] en el HTML)
-       ============================================================
-       NOMBRE        → Julia
-       FECHA         → 2027-02-12T21:00:00-03:00  (ISO para countdown)
-       FECHA_LARGA   → Viernes 12 de febrero de 2027
-       HORA_FIESTA   → 21:00
-       LUGAR_FIESTA  → Solares del Sur
-       DIRECCION     → Es 4 de Enero 899
-       URL_MAPS      → link de Google Maps
-       DRESS_CODE    → Formal
-       ALIAS / CBU   → datos de pago
-       WA_NUMBER     → 54911XXXXXXXX (código país + número)
-       MUSICA        → musica.mp3 en la misma carpeta
-       ============================================================ -->
+  <!-- ===== SPLASH ===== -->
+  <div class="splash" id="splash">
+    <!-- Disco Ball top-left -->
+    <svg class="splash-deco-tl" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="0" x2="60" y2="20" stroke="#888" stroke-width="2"/>
+      <circle cx="60" cy="70" r="48" fill="url(#discoGrad)"/>
+      <g opacity="0.5">
+        <line x1="20" y1="40" x2="100" y2="40" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="16" y1="55" x2="104" y2="55" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="14" y1="70" x2="106" y2="70" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="16" y1="85" x2="104" y2="85" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="20" y1="100" x2="100" y2="100" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="35" y1="24" x2="35" y2="116" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="48" y1="23" x2="48" y2="117" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="60" y1="22" x2="60" y2="118" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="72" y1="23" x2="72" y2="117" stroke="#ccc" stroke-width="0.5"/>
+        <line x1="85" y1="24" x2="85" y2="116" stroke="#ccc" stroke-width="0.5"/>
+      </g>
+      <circle cx="45" cy="55" r="3" fill="#fff" opacity="0.8"/>
+      <circle cx="70" cy="65" r="2" fill="#fff" opacity="0.6"/>
+      <circle cx="55" cy="80" r="2.5" fill="#fff" opacity="0.7"/>
+      <circle cx="75" cy="50" r="2" fill="#fff" opacity="0.5"/>
+      <defs>
+        <radialGradient id="discoGrad" cx="0.3" cy="0.3">
+          <stop offset="0%" stop-color="#E8E8E8"/>
+          <stop offset="60%" stop-color="#B0B0B0"/>
+          <stop offset="100%" stop-color="#808080"/>
+        </radialGradient>
+      </defs>
+    </svg>
 
-  <!-- Audio de fondo: poné tu archivo como musica.mp3 al lado de este HTML -->
-  <audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
-    <source src="/se-menea.mp3" type="audio/mpeg" />
-  </audio>
+    <!-- Megaphone top-right -->
+    <svg class="splash-deco-tr" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 55 L35 45 L65 25 L70 20 L72 22 L68 28 L40 50 L20 58 Z" fill="#D94F5C" opacity="0.9"/>
+      <path d="M65 25 L75 15 L78 18 L70 26 Z" fill="#D4AF37"/>
+      <ellipse cx="18" cy="56" rx="5" ry="3" fill="#D94F5C" opacity="0.7"/>
+      <line x1="70" y1="18" x2="74" y2="10" stroke="#D4AF37" stroke-width="1.5"/>
+      <line x1="76" y1="16" x2="80" y2="12" stroke="#D4AF37" stroke-width="1.5"/>
+      <line x1="74" y1="24" x2="80" y2="22" stroke="#D4AF37" stroke-width="1.5"/>
+    </svg>
 
-  <!-- ========== BIENVENIDA ========== -->
-  <div id="splash" role="dialog" aria-label="Bienvenida">
-    <div class="splash-inner">
-      <div class="splash-ornament" aria-hidden="true">—</div>
-      <p class="splash-label">Bienvenida</p>
-      <p class="splash-kicker">Cumpleaños</p>
-      <h1 class="splash-name">Martín</h1>
-      <p class="splash-date">05 · 10 · 2026</p>
-      <button type="button" class="splash-btn" id="enterBtn">
-        Abrir invitación
-      </button>
-      
+    <!-- Party hat bottom-left -->
+    <svg class="splash-deco-bl" viewBox="0 0 70 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="35,5 55,80 15,80" fill="#F0A0B0"/>
+      <polygon points="35,5 38,5 58,80 55,80" fill="#E890A0"/>
+      <ellipse cx="35" cy="80" rx="22" ry="5" fill="#D94F5C"/>
+      <polygon points="35,2 32,10 38,10" fill="#D4AF37"/>
+      <circle cx="35" cy="3" r="3" fill="#D4AF37"/>
+      <line x1="25" y1="35" x2="45" y2="35" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+      <line x1="22" y1="50" x2="48" y2="50" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+      <line x1="19" y1="65" x2="51" y2="65" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+    </svg>
+
+    <!-- Cassette bottom-right -->
+    <svg class="splash-deco-br" viewBox="0 0 80 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="76" height="50" rx="4" fill="#3A2E2E" stroke="#D94F5C" stroke-width="1.5"/>
+      <rect x="8" y="8" width="64" height="30" rx="2" fill="#EDE8DF" opacity="0.9"/>
+      <circle cx="28" cy="23" r="10" fill="none" stroke="#3A2E2E" stroke-width="2"/>
+      <circle cx="28" cy="23" r="4" fill="#3A2E2E"/>
+      <circle cx="52" cy="23" r="10" fill="none" stroke="#3A2E2E" stroke-width="2"/>
+      <circle cx="52" cy="23" r="4" fill="#3A2E2E"/>
+      <rect x="32" y="18" width="16" height="10" fill="#3A2E2E" opacity="0.3" rx="1"/>
+      <rect x="20" y="42" width="40" height="6" rx="3" fill="#3A2E2E" opacity="0.5"/>
+      <text x="40" y="47" text-anchor="middle" font-size="4" fill="#EDE8DF" font-family="monospace">SIDE A</text>
+    </svg>
+
+    <div class="splash-content">
+      <p class="splash-subtitle">Martin te invita a su</p>
+      <h1 class="splash-title">Noche de Cumple</h1>
+      <p class="splash-detail">Trae tu bebida favorita para compartir</p>
+      <p class="splash-date">24 de abril &middot; 7:00 p.m.</p>
+
+      <!-- Number 30 balloons -->
+      <div class="splash-number">
+        <svg width="140" height="100" viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="balloonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F8C0D0"/>
+              <stop offset="50%" stop-color="#F0A0B0"/>
+              <stop offset="100%" stop-color="#D88090"/>
+            </linearGradient>
+          </defs>
+          <!-- 3 -->
+          <ellipse cx="40" cy="42" rx="30" ry="38" fill="url(#balloonGrad)"/>
+          <ellipse cx="32" cy="32" rx="6" ry="8" fill="#fff" opacity="0.3"/>
+          <text x="40" y="55" text-anchor="middle" font-size="40" font-weight="bold" fill="#fff" font-family="sans-serif">3</text>
+          <line x1="40" y1="80" x2="42" y2="98" stroke="#D94F5C" stroke-width="1"/>
+          <!-- 0 -->
+          <ellipse cx="100" cy="42" rx="30" ry="38" fill="url(#balloonGrad)"/>
+          <ellipse cx="92" cy="32" rx="6" ry="8" fill="#fff" opacity="0.3"/>
+          <text x="100" y="55" text-anchor="middle" font-size="40" font-weight="bold" fill="#fff" font-family="sans-serif">0</text>
+          <line x1="100" y1="80" x2="98" y2="98" stroke="#D94F5C" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <button class="enter-btn" id="enterBtn" onclick="openInvite()">Abrir invitacion</button>
     </div>
+
+    <!-- Bow/ribbon decoration -->
+    <svg style="position:absolute;top:50%;right:5px;width:45px;opacity:0.7;" viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25 20 C15 10, 5 10, 5 18 C5 25, 15 28, 25 20" fill="#F0A0B0"/>
+      <path d="M25 20 C35 10, 45 10, 45 18 C45 25, 35 28, 25 20" fill="#F0A0B0"/>
+      <circle cx="25" cy="20" r="4" fill="#D94F5C"/>
+      <path d="M22 24 Q25 35 23 40" stroke="#F0A0B0" stroke-width="2" fill="none"/>
+      <path d="M28 24 Q25 35 27 40" stroke="#F0A0B0" stroke-width="2" fill="none"/>
+    </svg>
   </div>
 
-  <!-- Botón música (aparece al entrar) -->
-  <button type="button" class="music-btn" id="musicBtn" aria-label="Música de fondo" title="Música">♪</button>
-  <div id="toast" role="status"></div>
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content" id="mainContent">
 
-  <!-- ========== CONTENIDO ========== -->
-  <div id="main">
+    <!-- Music Button -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Musica">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    </button>
 
-    <!-- HERO + COUNTDOWN -->
-    <section class="section hero" id="inicio">
-      <div class="wrap">
-        <!-- Foto circular: reemplazá src o dejá el placeholder -->
-        <!-- <img class="hero-photo" src="[URL_FOTO_PRINCIPAL]" alt="Martín" /> -->
-        <div class="hero-photo placeholder" aria-hidden="true">30</div>
-
-        <p class="hero-kicker">Cumpleaños</p>
-        <h1>Martín</h1>
-        <p class="hero-date">Sábado 5 de octubre de 2026 · 22:00 hs</p>
-
-        <div class="countdown" id="countdown" aria-live="polite">
-          <div><span class="n" id="cd-d">—</span><span class="l">Días</span></div>
-          <div><span class="n" id="cd-h">—</span><span class="l">Horas</span></div>
-          <div><span class="n" id="cd-m">—</span><span class="l">Min</span></div>
-          <div><span class="n" id="cd-s">—</span><span class="l">Seg</span></div>
-        </div>
-
-        <a class="btn btn-primary" href="#cuando">Ver detalles</a>
+    <!-- HERO -->
+    <section class="hero reveal">
+      <svg width="80" height="95" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;opacity:0.7;">
+        <line x1="60" y1="0" x2="60" y2="20" stroke="#888" stroke-width="2"/>
+        <circle cx="60" cy="70" r="48" fill="url(#discoGrad2)"/>
+        <g opacity="0.4">
+          <line x1="20" y1="40" x2="100" y2="40" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="16" y1="55" x2="104" y2="55" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="14" y1="70" x2="106" y2="70" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="16" y1="85" x2="104" y2="85" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="20" y1="100" x2="100" y2="100" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="35" y1="24" x2="35" y2="116" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="48" y1="23" x2="48" y2="117" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="60" y1="22" x2="60" y2="118" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="72" y1="23" x2="72" y2="117" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="85" y1="24" x2="85" y2="116" stroke="#ccc" stroke-width="0.5"/>
+        </g>
+        <circle cx="45" cy="55" r="3" fill="#fff" opacity="0.8"/>
+        <circle cx="70" cy="65" r="2" fill="#fff" opacity="0.6"/>
+        <circle cx="55" cy="80" r="2.5" fill="#fff" opacity="0.7"/>
+        <defs>
+          <radialGradient id="discoGrad2" cx="0.3" cy="0.3">
+            <stop offset="0%" stop-color="#E8E8E8"/>
+            <stop offset="60%" stop-color="#B0B0B0"/>
+            <stop offset="100%" stop-color="#808080"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <h1 class="splash-name">Martin</h1>
+      <p class="hero-date">Sabado 24 de abril de 2027</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="number" id="days">--</span><span class="label">Dias</span></div>
+        <div class="countdown-item"><span class="number" id="hours">--</span><span class="label">Horas</span></div>
+        <div class="countdown-item"><span class="number" id="mins">--</span><span class="label">Min</span></div>
+        <div class="countdown-item"><span class="number" id="secs">--</span><span class="label">Seg</span></div>
       </div>
-      <div class="scroll-cue">Deslizá<span>↓</span></div>
     </section>
 
     <!-- FRASE -->
-    <section class="section" style="min-height: auto; padding-top: 4rem; padding-bottom: 3rem;">
-      <div class="wrap reveal">
-        <p class="script">Tres décadas…</p>
-        <p class="lead" style="margin-top: 1rem; margin-bottom: 0;">
-          Vamos a celebrarlo como se debe.
-        </p>
+    <section class="reveal">
+      <div class="frase">
+        <p>&iexcl;No se cumplen 30 todos los dias! Veni a festejar conmigo esta noche epica.</p>
       </div>
     </section>
 
-    <!-- CUÁNDO / DÓNDE -->
-    <section class="section" id="cuando">
-      <div class="wrap">
-        <p class="eyebrow reveal">La celebración</p>
-        <h2 class="reveal">¿Cuándo & dónde?</h2>
-        <p class="lead reveal">Todo listo para una noche inolvidable.</p>
-
-        <div class="card reveal">
-          <div class="icon">◈</div>
-          <h3>¿Cuándo?</h3>
-          <p>
-            <strong>Sábado 5 de octubre de 2026</strong>
-            22:00 hs
-          </p>
-        </div>
-
-        <div class="card reveal">
-          <div class="icon">◎</div>
-          <h3>¿Dónde?</h3>
-          <p>
-            <strong>Rooftop Bar Central</strong>
-            Av. Yrigoyen 500, Córdoba
-          </p>
-          <!-- EDITAR URL_MAPS -->
-          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Rooftop+Cordoba" target="_blank" rel="noopener">
-            Cómo llegar →
-          </a>
-        </div>
-
-        <!-- Si hay ceremonia separada, descomentá:
-        <div class="card reveal">
-          <div class="icon">✝</div>
-          <h3>Ceremonia</h3>
-          <p>
-            <strong>[HORA_CEREMONIA] hs</strong>
-            [LUGAR_CEREMONIA]<br>
-            [DIRECCION_CEREMONIA]
-          </p>
-          <a class="link" href="[URL_MAPS_CEREMONIA]" target="_blank" rel="noopener">Cómo llegar →</a>
-        </div>
-        -->
+    <!-- CUANDO / DONDE -->
+    <section class="reveal">
+      <div class="info-card">
+        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="#D94F5C" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <h3>Cuando</h3>
+        <p>Sabado 24 de abril de 2027</p>
+        <p>19:00 hs</p>
+      </div>
+      <div class="info-card">
+        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="#D94F5C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>Donde</h3>
+        <p>Casa de Martin</p>
+        <p>Calle Mitre 789</p>
       </div>
     </section>
 
-    <!-- DRESS CODE -->
-    <section class="section" id="dress" style="min-height: auto; padding-top: 3rem; padding-bottom: 3rem;">
-      <div class="wrap reveal">
-        <p class="eyebrow">Código de vestimenta</p>
-        <h2>Dress code</h2>
-        <div class="card" style="margin-bottom: 0;">
-          <div class="icon">◇</div>
-          <h3>Smart casual</h3>
-          <p>Cómodo y con estilo</p>
-          <div class="pills">
-            <span>Negro</span>
-            <span>Blanco</span>
-            <span>Denim</span>
-          </div>
-        </div>
+    <!-- QUE TRAER -->
+    <section class="reveal">
+      <div class="info-card">
+        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="#D94F5C" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <h3>Que traer</h3>
+        <p>Trae tu bebida favorita para compartir</p>
+        <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--text-muted);">Cerveza, vino, fernet, lo que te guste. La comida va por mi cuenta.</p>
       </div>
     </section>
 
-    <!-- VALOR TARJETA (típico XV Argentina) -->
-    <section class="section" id="valor">
-      <div class="wrap">
-        <p class="eyebrow reveal">Información</p>
-        <h2 class="reveal">Mesa de regalos</h2>
-        <p class="lead reveal">
-          Tu presencia es el mejor regalo. Si deseás sumar un detalle:
-        </p>
-
-        <div class="alias-box reveal">
-          <p class="label">Alias</p>
-          <p class="value" id="aliasValue">martin.cumple30</p>
-          <p class="sub">CVU / CBU: 0000003100055555555555</p>
-          <p class="sub" style="margin-top: -0.5rem;">Titular: Martín García</p>
-          <button type="button" class="copy-btn" id="copyAliasBtn" data-copy="martin.cumple30">
-            Copiar alias
-          </button>
+    <!-- MESA DE REGALOS -->
+    <section class="reveal">
+      <div class="info-card">
+        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="#D94F5C" stroke-width="2"><rect x="3" y="8" width="18" height="14" rx="1"/><path d="M12 8v14"/><path d="M3 12h18"/><path d="M8 8c0-2 1-4 4-4s4 2 4 4"/></svg>
+        <h3>Mesa de regalos</h3>
+        <p style="margin-bottom:1rem;font-size:0.85rem;color:var(--text-muted);">Si queres hacerme un regalo, podes transferir:</p>
+        <div class="copy-row">
+          <span>cumple.martin.30</span>
+          <button onclick="copyText('cumple.martin.30')">Copiar alias</button>
         </div>
+        <div class="copy-row">
+          <span>0000003100022222222222</span>
+          <button onclick="copyText('0000003100022222222222')">Copiar CBU</button>
+        </div>
+        <button class="enter-btn" style="margin-top:1rem;font-size:1.1rem;padding:0.7rem 1.8rem;" onclick="openModal()">Ver datos de pago</button>
       </div>
     </section>
 
     <!-- RSVP -->
-    <section class="section" id="rsvp">
-      <div class="wrap">
-        <p class="eyebrow reveal">Tu respuesta</p>
-        <h2 class="reveal">Confirmá tu asistencia</h2>
-        <p class="lead reveal">
-          Por favor respondé antes del <strong style="color: var(--text);">20 de septiembre de 2026</strong>.
-        </p>
-
-        <div class="btn-row reveal">
-          <!--
-            LINK_WHATSAPP: wa.me/549XXXXXXXXX?text=...
-            El mensaje se arma abajo en CONFIG JS también.
-          -->
-          <a class="btn btn-wa btn-full" id="rsvpWa" href="https://wa.me/5493425299942?text=Hola%21%20Confirmo%20asistencia%20al%20cumple%20de%20Martin" target="_blank" rel="noopener">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Confirmar por WhatsApp
-          </a>
-          <button type="button" class="btn btn-outline btn-full" id="openGiftsBtn">
-            Ver datos de pago / regalos
-          </button>
-        </div>
-      </div>
+    <section class="reveal">
+      <h3 style="font-family:var(--font-script);font-size:2rem;color:var(--red);margin-bottom:1rem;">Confirma tu asistencia</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">Avisame si venis asi organizo mejor la fiesta</p>
+      <a class="rsvp-btn" href="https://wa.me/5493425299942?text=Hola%20Martin!%20Confirmo%20que%20voy%20a%20tu%20cumple%20%F0%9F%8E%89" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.529-1.471A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.239 0-4.308-.724-5.994-1.952l-.418-.312-2.688.873.896-2.637-.343-.437A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Confirmar por WhatsApp
+      </a>
+      <p class="hashtag">#Los30DeMartin</p>
     </section>
 
-    <!-- GALERÍA -->
-    <section class="section" id="fotos">
-      <div class="wrap">
-        <p class="eyebrow reveal">Momentos</p>
-        <h2 class="reveal">Galería</h2>
-        <p class="lead reveal">Algunos instantes de esta historia.</p>
-
-        <div class="gallery reveal">
-          <!-- Reemplazá los .ph por <div class="ph"><img src="foto1.jpg" alt=""></div> -->
-          <div class="ph">Foto 1</div>
-          <div class="ph">Foto 2</div>
-          <div class="ph wide">Foto portada</div>
-          <div class="ph">Foto 3</div>
-          <div class="ph">Foto 4</div>
-        </div>
-
-        <p class="hashtag reveal">#Martin30</p>
-        <p class="lead reveal" style="margin-bottom: 0; margin-top: 0.5rem; font-size: 0.85rem;">
-          Usá el hashtag en tus stories y publicaciones.
-        </p>
+    <!-- GALERIA -->
+    <section class="reveal">
+      <h3 style="font-family:var(--font-script);font-size:2rem;color:var(--red);margin-bottom:0.5rem;">Galeria</h3>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;">Comparti tus fotos de la noche</p>
+      <div class="gallery-grid">
+        <div class="photo-placeholder">Foto 1</div>
+        <div class="photo-placeholder">Foto 2</div>
+        <div class="photo-placeholder">Foto 3</div>
+        <div class="photo-placeholder">Foto 4</div>
+        <div class="photo-placeholder">Foto 5</div>
+        <div class="photo-placeholder">Foto 6</div>
       </div>
     </section>
 
     <!-- CIERRE -->
-    <section class="section close-section" id="cierre">
-      <div class="wrap reveal">
-        <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1.25rem;" aria-hidden="true">—</div>
-        <p class="close-quote">“Que no pare la fiesta…”</p>
-        <p class="lead" style="margin-bottom: 0;">Te espero.</p>
-        <p class="close-name">Martín · 30 años</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; letter-spacing: 0.16em; color: var(--text-muted);">
-          05 · 10 · 2026
-        </p>
-      </div>
+    <section class="reveal">
+      <svg width="60" height="75" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;opacity:0.6;">
+        <line x1="60" y1="0" x2="60" y2="20" stroke="#888" stroke-width="2"/>
+        <circle cx="60" cy="70" r="48" fill="url(#discoGrad3)"/>
+        <g opacity="0.4">
+          <line x1="20" y1="40" x2="100" y2="40" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="14" y1="70" x2="106" y2="70" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="20" y1="100" x2="100" y2="100" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="35" y1="24" x2="35" y2="116" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="60" y1="22" x2="60" y2="118" stroke="#ccc" stroke-width="0.5"/>
+          <line x1="85" y1="24" x2="85" y2="116" stroke="#ccc" stroke-width="0.5"/>
+        </g>
+        <circle cx="50" cy="60" r="3" fill="#fff" opacity="0.7"/>
+        <circle cx="72" cy="75" r="2" fill="#fff" opacity="0.5"/>
+        <defs>
+          <radialGradient id="discoGrad3" cx="0.3" cy="0.3">
+            <stop offset="0%" stop-color="#E8E8E8"/>
+            <stop offset="60%" stop-color="#B0B0B0"/>
+            <stop offset="100%" stop-color="#808080"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <h3 style="font-family:var(--font-script);font-size:2.2rem;color:var(--red);margin-bottom:0.5rem;">Esta noche va a ser epica</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);">Te espero para festejar juntos</p>
     </section>
 
-    
-  
-  
-  
+    <!-- CONTACTO FOOTER -->
+    <section class="contacto reveal">
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;">Invitacion creada con</p>
+      <p style="font-family:var(--font-script);font-size:1.8rem;color:var(--red);margin-bottom:0.8rem;">Te Invito</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);">
+        <a href="https://wa.me/5493425299942" target="_blank" rel="noopener">WhatsApp: +54 9 342 529 9942</a>
+      </p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem;">
+        <a href="https://instagram.com/teinvitoapp" target="_blank" rel="noopener">@teinvitoapp</a>
+      </p>
+    </section>
 
-  
-  <!-- Contacto / Demo Info (Injected) -->
-  <style>
-    .contacto-footer-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .contacto-col { flex: 1; }
-    @media (min-width: 768px) {
-      .contacto-footer-wrap {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-    .contacto-footer h5 {
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      color: #222;
-      text-transform: uppercase;
-    }
-    .contacto-footer p {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #666;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
-    .contacto-footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #555;
-      line-height: 2.2;
-    }
-    .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
-  </style>
-  <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
-    <div class="contacto-footer-wrap">
-      <div class="contacto-col">
-        <h5>¿Te gustó la invitación?</h5>
-        <p>¡Contactate y pedí la tuya!</p>
-        <ul>
-          <li><i class="fab fa-whatsapp" style="color: #61ce70; width: 30px; text-align: center;"></i> <a href="https://wa.me/5493425299942">¡Envianos un Whatsapp!</a></li>
-          <li><i class="fas fa-phone-alt" style="color: #333; width: 30px; text-align: center;"></i> +549 342 5299942</li>
-          <li><i class="fas fa-envelope" style="color: #333; width: 30px; text-align: center;"></i> teinvitoapp@gmail.com</li>
-        </ul>
-      </div>
-      <div class="contacto-col">
-        <h5>Seguinos en Instagram</h5>
-        
-        <ul>
-          <li><i class="fab fa-instagram" style="color: #555; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
-        </ul>
-      </div>
+    <!-- FOOTER BRAND -->
+    <div class="footer-brand">
+      <p>Hecho con amor por <a href="https://teinvitoapp.com.ar" target="_blank">Te Invito</a></p>
     </div>
-  </section>
 
-  <footer>
-      <div class="brand">Te <em>invito</em></div>
-      <p>Demo · Cumple Minimalista</p>
-    </footer>
-  </div>
+  </div><!-- /main -->
 
-  <!-- MODAL REGALOS / PAGO -->
-  <div class="modal-backdrop" id="giftsModal" role="dialog" aria-modal="true" aria-labelledby="giftsTitle">
+  <!-- Party Cam Button -->
+  <a class="party-cam" id="partyCam" href="#" aria-label="Party Cam">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+  </a>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal de pago -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
     <div class="modal">
-      <div class="modal-inner">
-        <button type="button" class="close-x" id="closeGifts" aria-label="Cerrar">&times;</button>
-        <h3 id="giftsTitle">Datos de pago</h3>
-        <p class="lead" style="margin: 0.5rem 0 1.25rem;">Transferencia · Mercado Pago</p>
-
-        <div class="alias-box" style="margin-bottom: 0.75rem;">
-          <p class="label">Alias</p>
-          <p class="value">martin.cumple30</p>
-          <button type="button" class="copy-btn" data-copy="martin.cumple30">Copiar alias</button>
-        </div>
-        <div class="alias-box">
-          <p class="label">CBU / CVU</p>
-          <p class="value" style="font-size: 1.1rem;">0000003100055555555555</p>
-          <p class="sub">Titular: Martín García</p>
-          <button type="button" class="copy-btn" data-copy="0000003100055555555555">Copiar CBU</button>
-        </div>
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <h3 style="font-family:var(--font-script);color:var(--red);font-size:1.8rem;margin-bottom:1rem;">Datos de Pago</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Podes transferir al siguiente alias o CBU:</p>
+      <div class="copy-row">
+        <span>cumple.martin.30</span>
+        <button onclick="copyText('cumple.martin.30')">Copiar</button>
+      </div>
+      <div class="copy-row">
+        <span>0000003100022222222222</span>
+        <button onclick="copyText('0000003100022222222222')">Copiar</button>
       </div>
     </div>
   </div>
 
+  <!-- ===== SCRIPTS ===== -->
   <script>
-    /* ============================================================
-       CONFIG — editá solo este bloque para personalizar
-       ============================================================ */
-    const CONFIG = {
-      // Fecha del evento (countdown). Formato ISO con zona AR -03:00
-      eventDateISO: "2026-10-05T22:00:00-03:00",
-
-      // WhatsApp del anfitrión (código país + número, sin + ni espacios)
-      waNumber: "5493425299942",
-
-      // Mensaje RSVP (se codifica solo)
-      waMessage: "¡Hola! Confirmo mi asistencia a los XV de Martín 💖\n\nNombre:\nCantidad de personas:\nMenú / notas:",
-
-      // Nombre para textos dinámicos del mensaje
-      nombre: "Martín",
-    };
-
-    /* ---------- SPLASH + AUDIO ---------- */
-    const splash = document.getElementById("splash");
-    const main = document.getElementById("main");
-    const enterBtn = document.getElementById("enterBtn");
-    const musicBtn = document.getElementById("musicBtn");
-    const audio = document.getElementById("bgMusic");
-    const toast = document.getElementById("toast");
-    const body = document.body;
-    let playing = false;
-
-    function showToast(msg) {
-      toast.textContent = msg;
-      toast.classList.add("show");
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => toast.classList.remove("show"), 3500);
+    // ===== OPEN INVITE =====
+    function openInvite() {
+      document.getElementById('splash').classList.add('hidden');
+      document.getElementById('mainContent').classList.add('visible');
+      document.body.classList.remove('locked');
     }
 
-    function setPlaying(on) {
-      playing = !!on;
-      musicBtn.classList.toggle("on", playing);
-      musicBtn.textContent = playing ? "❚❚" : "♪";
-    }
-
-    function playMusic() {
-      try {
-        audio.volume = 0.85;
-        audio.muted = false;
-        const p = audio.play();
-        if (p && typeof p.then === "function") {
-          p.then(() => setPlaying(true)).catch(() => {
-            setPlaying(false);
-            showToast("Tocá ♪ para activar la música");
-          });
+    // ===== COUNTDOWN =====
+    (function() {
+      var target = new Date('2027-04-24T19:00:00-03:00').getTime();
+      function update() {
+        var now = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '0';
+          document.getElementById('hours').textContent = '0';
+          document.getElementById('mins').textContent = '0';
+          document.getElementById('secs').textContent = '0';
+          return;
         }
-      } catch (_) {
-        setPlaying(false);
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').textContent = d;
+        document.getElementById('hours').textContent = h;
+        document.getElementById('mins').textContent = m;
+        document.getElementById('secs').textContent = s;
+      }
+      update();
+      setInterval(update, 1000);
+    })();
+
+    // ===== COPY TEXT =====
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('Copiado al portapapeles');
+      }).catch(function() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Copiado al portapapeles');
+      });
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 2500);
+    }
+
+    // ===== MODAL =====
+    function openModal() {
+      document.getElementById('modalOverlay').classList.add('active');
+    }
+    function closeModal(e) {
+      if (e.target === document.getElementById('modalOverlay')) {
+        document.getElementById('modalOverlay').classList.remove('active');
       }
     }
-
-    function enter() {
-      // play() dentro del gesto del usuario
-      playMusic();
-      splash.classList.add("hide");
-      body.classList.remove("locked");
-      main.classList.add("show");
-      musicBtn.classList.add("visible");
-      // revelar elementos visibles
-      requestAnimationFrame(() => observeReveals());
+    function closeModalDirect() {
+      document.getElementById('modalOverlay').classList.remove('active');
     }
 
-    enterBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      enter();
-    });
-    splash.addEventListener("click", () => {
-      if (!splash.classList.contains("hide")) enter();
-    });
-
-    musicBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (playing || !audio.paused) {
-        audio.pause();
-        setPlaying(false);
-      } else {
-        playMusic();
-      }
-    });
-
-    try { audio.load(); } catch (_) {}
-
-    /* ---------- COUNTDOWN ---------- */
-    const target = new Date(CONFIG.eventDateISO).getTime();
-
-    function tick() {
-      const diff = Math.max(0, target - Date.now());
-      document.getElementById("cd-d").textContent = Math.floor(diff / 86400000);
-      document.getElementById("cd-h").textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, "0");
-      document.getElementById("cd-m").textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
-      document.getElementById("cd-s").textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+    // ===== MUSIC =====
+    var musicPlaying = false;
+    function toggleMusic() {
+      musicPlaying = !musicPlaying;
+      var btn = document.getElementById('musicBtn');
+      btn.style.background = musicPlaying ? 'var(--red)' : 'var(--bg-card)';
+      btn.style.color = musicPlaying ? '#fff' : 'var(--text)';
     }
-    tick();
-    setInterval(tick, 1000);
 
-    /* ---------- WHATSAPP RSVP ---------- */
-    (function buildWa() {
-      const msg = CONFIG.waMessage.replace(/\[NOMBRE\]/g, CONFIG.nombre);
-      const href = "https://wa.me/" + CONFIG.waNumber + "?text=" + encodeURIComponent(msg);
-      const el = document.getElementById("rsvpWa");
-      // Si el href del HTML sigue con placeholder, lo pisamos con CONFIG
-      if (el && (el.getAttribute("href") || "").includes("[")) {
-        el.href = href;
+    // ===== REVEAL ON SCROLL =====
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // ===== PREVIEW MODE =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('preview') === '1') {
+        var enterBtn = document.getElementById('enterBtn');
+        if (enterBtn) enterBtn.style.display = 'none';
+        var splash = document.getElementById('splash');
+        if (splash) splash.classList.remove('hidden');
+        var main = document.getElementById('mainContent');
+        if (main) main.classList.remove('visible');
+        document.body.classList.remove('locked');
       }
     })();
 
-    /* ---------- COPY ---------- */
-    function copyText(text, btn) {
-      navigator.clipboard.writeText(text).then(() => {
-        const prev = btn.textContent;
-        btn.textContent = "¡Copiado!";
-        btn.classList.add("ok");
-        setTimeout(() => {
-          btn.textContent = prev;
-          btn.classList.remove("ok");
-        }, 2000);
-      }).catch(() => showToast("No se pudo copiar"));
-    }
-
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const text = (btn.getAttribute("data-copy") || "").trim();
-        if (text && !text.startsWith("[")) copyText(text, btn);
-        else showToast("Reemplazá el placeholder del alias/CBU");
-      });
-    });
-
-    /* ---------- MODAL REGALOS ---------- */
-    const giftsModal = document.getElementById("giftsModal");
-    document.getElementById("openGiftsBtn").addEventListener("click", () => {
-      giftsModal.classList.add("open");
-    });
-    document.getElementById("closeGifts").addEventListener("click", () => {
-      giftsModal.classList.remove("open");
-    });
-    giftsModal.addEventListener("click", (e) => {
-      if (e.target === giftsModal) giftsModal.classList.remove("open");
-    });
-
-    /* ---------- REVEAL ON SCROLL ---------- */
-    function observeReveals() {
-      const els = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) {
-        els.forEach((el) => el.classList.add("in"));
-        return;
+    // ===== CUSTOM NAME =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var customName = params.get('customName');
+      if (customName) {
+        var decoded = decodeURIComponent(customName);
+        var h1 = document.querySelector('.hero h1');
+        if (h1) h1.textContent = decoded;
+        var splashTitle = document.querySelector('.splash-title');
+        if (splashTitle) splashTitle.textContent = decoded;
       }
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((en) => {
-            if (en.isIntersecting) {
-              en.target.classList.add("in");
-              io.unobserve(en.target);
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-      );
-      els.forEach((el) => io.observe(el));
-    }
+    })();
   </script>
 
-<script>
-  if (window.location.search.includes('preview=1')) {
-    document.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bgMusic');
-      if (audio) {
-        audio.pause();
-        audio.remove();
-      }
-      const musicBtn = document.querySelector('.music-btn');
-      if (musicBtn) {
-        musicBtn.style.display = 'none';
-      }
-    });
-  }
-</script>
-
-  <!-- Muro Social Floating Button -->
-  <a href="/demo-wall/upload" target="_blank" style="position: fixed; bottom: 90px; right: 20px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background-color: var(--primary, #d4af37); border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff; text-decoration: none; transition: transform 0.3s; animation: pulseCamera 2s infinite;">
-    <svg style="width: 26px; height: 26px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-    <div style="position: absolute; right: 65px; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; white-space: nowrap; pointer-events: none; opacity: 0.9;">📸 ¡Subí tus fotos!</div>
-  </a>
-  <style>
-    @keyframes pulseCamera {
-      0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-      50% { transform: scale(1.05); box-shadow: 0 4px 25px var(--primary, rgba(212,175,55,0.6)); }
-      100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    }
-  </style>
-\n
-<!-- Dynamic Name Injection -->
-<script>
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    var customName = params.get('customName');
-    if (customName) {
-      document.addEventListener('DOMContentLoaded', function() {
-        var h1 = document.querySelector('h1');
-        if (h1) h1.innerText = customName;
-        var splashName = document.querySelector('.splash-name');
-        if (splashName) splashName.innerText = customName;
-      });
-    }
-  })();
-</script>
-
-  <script>
-    // Injected Splash Screen Logic
-    document.addEventListener("DOMContentLoaded", function() {
-      const btnOpen = document.getElementById('btnOpenInvite');
-      if(btnOpen) {
-        btnOpen.addEventListener('click', () => {
-          document.getElementById('splashScreen').classList.add('slide-up');
-          document.body.classList.remove('locked');
-          
-          // Auto-play music if exists
-          const audio = document.getElementById('music');
-          if (audio) {
-            audio.play().catch(e => console.log('Autoplay prevent', e));
-            const musicBtn = document.getElementById('btnMusic');
-            const musicIcon = document.getElementById('iconMusic');
-            if (musicIcon) {
-               musicIcon.classList.remove('fa-play');
-               musicIcon.classList.add('fa-music');
-            }
-            if (musicBtn) {
-               musicBtn.style.animation = 'pulse-music 2s infinite';
-            }
-            // If the template uses isPlaying variable, we can't easily sync it here without breaking scope,
-            // but calling play() ensures it starts.
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>
