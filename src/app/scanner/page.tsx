@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
 interface ScanResult {
@@ -15,6 +15,7 @@ export default function ScannerPage() {
   const [pinVerified, setPinVerified] = useState(false);
   const [pinError, setPinError] = useState("");
   const [scanning, setScanning] = useState(true);
+  const [scannerReady, setScannerReady] = useState(true);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
   const [loading, setLoading] = useState(false);
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
@@ -31,9 +32,20 @@ export default function ScannerPage() {
     setPinError("");
   };
 
+  // Handle resuming scanner after result dismissal
+  const handleScanNext = useCallback(() => {
+    setScanResult(null);
+    setScannerReady(false);
+    // Delay to allow camera release before re-initializing
+    setTimeout(() => {
+      setScannerReady(true);
+      setScanning(true);
+    }, 500);
+  }, []);
+
   // QR Scanner
   useEffect(() => {
-    if (!pinVerified || !scanning || scannerRef.current) return;
+    if (!pinVerified || !scanning || !scannerReady || scannerRef.current) return;
 
     const scanner = new Html5QrcodeScanner(
       "scanner-reader",
@@ -69,7 +81,7 @@ export default function ScannerPage() {
       scanner.clear().catch((error) => console.error("Failed to clear scanner", error));
       scannerRef.current = null;
     };
-  }, [pinVerified, scanning, pin]);
+  }, [pinVerified, scanning, scannerReady, pin]);
 
   // PIN entry screen
   if (!pinVerified) {
@@ -162,10 +174,7 @@ export default function ScannerPage() {
           )}
 
           <button
-            onClick={() => {
-              setScanResult(null);
-              setScanning(true);
-            }}
+            onClick={handleScanNext}
             className="mt-8 w-full bg-white text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition"
           >
             ESCANEAR SIGUIENTE

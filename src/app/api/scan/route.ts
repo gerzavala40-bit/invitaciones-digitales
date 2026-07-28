@@ -1,9 +1,23 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { scanSchema } from "@/lib/validators";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
   try {
+    // Rate limit: 10 requests per minute per IP
+    const ip = getClientIp(req);
+    const limiter = await rateLimit(`scan:${ip}`, {
+      maxRequests: 10,
+      windowMs: 60000,
+    });
+    if (!limiter.success) {
+      return NextResponse.json(
+        { error: "Demasiados intentos. Intenta de nuevo en un minuto." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
 
     // Validate request body

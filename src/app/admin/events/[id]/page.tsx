@@ -69,7 +69,7 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
         {/* LINK TO DOOR SCANNER */}
         <div className="mb-8">
           <Link
-            href={`/admin/events/${id}/puerta`}
+            href="/scanner"
             className="inline-flex items-center gap-2 bg-gray-900 text-white px-5 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
