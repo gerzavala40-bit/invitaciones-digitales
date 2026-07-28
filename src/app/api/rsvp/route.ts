@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { rsvpSchema } from "@/lib/validators";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
+import { v4 as uuidv4 } from "uuid";
 
 export async function POST(request: Request) {
   try {
@@ -36,6 +37,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Evento no encontrado" }, { status: 404 });
     }
 
+    const qrCode = uuidv4();
+
     const rsvp = await prisma.rSVP.create({
       data: {
         eventId: event.id,
@@ -43,10 +46,11 @@ export async function POST(request: Request) {
         guestCount,
         dietaryNotes: dietaryNotes || null,
         songRequest: songRequest || null,
+        qrCode,
       },
     });
 
-    return NextResponse.json({ success: true, rsvp });
+    return NextResponse.json({ success: true, rsvp, qrCode });
   } catch (error) {
     console.error("RSVP error:", error);
     return NextResponse.json({ error: "Error interno" }, { status: 500 });

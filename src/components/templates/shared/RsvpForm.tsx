@@ -12,6 +12,7 @@ interface RsvpFormProps {
 export default function RsvpForm({ eventSlug, inputClassName = "", buttonClassName = "", labelClassName = "" }: RsvpFormProps) {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [qrCode, setQrCode] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,9 +33,10 @@ export default function RsvpForm({ eventSlug, inputClassName = "", buttonClassNa
         body: JSON.stringify(data),
       });
       if (res.ok) {
+        const responseData = await res.json();
         setSuccess(true);
+        setQrCode(responseData.qrCode || null);
         (e.target as HTMLFormElement).reset();
-        setTimeout(() => setSuccess(false), 5000);
       }
     } catch {
       alert("Error al enviar. Intenta nuevamente.");
@@ -70,7 +72,19 @@ export default function RsvpForm({ eventSlug, inputClassName = "", buttonClassNa
       <button type="submit" disabled={loading} className={`w-full py-3 rounded-full font-semibold text-sm transition-all ${buttonClassName} ${loading ? "opacity-50" : ""}`}>
         {loading ? "Enviando..." : "Confirmar Asistencia"}
       </button>
-      {success && <p className="text-green-500 text-center text-sm mt-2 animate-pulse">✓ Confirmación enviada correctamente</p>}
+      {success && (
+        <div className="text-center mt-2">
+          <p className="text-green-500 text-sm animate-pulse">✓ Confirmación enviada correctamente</p>
+          {qrCode && (
+            <a
+              href={`/mi-entrada/${qrCode}`}
+              className="inline-block mt-2 text-sm underline text-blue-400 hover:text-blue-300"
+            >
+              Ver mi entrada QR
+            </a>
+          )}
+        </div>
+      )}
     </form>
   );
 }

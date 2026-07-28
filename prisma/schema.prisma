@@ -80,6 +80,7 @@ model RSVP {
   guestCount   Int      @default(1)
   dietaryNotes String?
   songRequest  String?
+  qrCode       String?  @unique
   confirmed    Boolean  @default(true)
   attended     Boolean  @default(false)
   createdAt    DateTime @default(now())

@@ -57,3 +57,11 @@ export const loginSchema = z.object({
 });
 
 export type LoginInput = z.infer<typeof loginSchema>;
+
+// ===== SCAN (QR door access) =====
+export const scanSchema = z.object({
+  qrCode: z.string().min(1).max(100),
+  pin: z.string().min(1).max(20),
+});
+
+export type ScanInput = z.infer<typeof scanSchema>;
