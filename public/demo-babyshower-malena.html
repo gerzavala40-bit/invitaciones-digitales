@@ -4,39 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Baby Shower de Malena</title>
-  <meta name="description" content="Baby Shower de Malena - 3 de septiembre" />
-  <meta name="theme-color" content="#FDF5F0" />
+  <meta name="description" content="Baby Shower de Malena - 3 de septiembre de 2026" />
+  <meta name="theme-color" content="#C8BEB4" />
   <meta property="og:title" content="Baby Shower de Malena" />
-  <meta property="og:description" content="3 de septiembre · 13:00 hs. Abrí la invitación." />
+  <meta property="og:description" content="Jueves 3 de septiembre 2026 - 13:00 hs. Abri la invitacion." />
   <meta property="og:type" content="website" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FDF5F0;
-      --bg-soft: #FBE8E0;
+      --bg: #C8BEB4;
+      --bg-soft: #D4C5A9;
       --bg-card: #FFFFFF;
-      --text: #5C3D2E;
-      --text-muted: rgba(92, 61, 46, 0.6);
-      --accent: #E8A0B4;
-      --accent-deep: #D4728C;
-      --gold: #C9956B;
-      --gold-soft: #F0D6B8;
-      --star-pink: #E8A0B4;
-      --line: rgba(92, 61, 46, 0.1);
+      --text: #4A3F35;
+      --text-muted: rgba(74, 63, 53, 0.6);
+      --brown: #6B4E3D;
+      --brown-light: #8B7355;
+      --beige: #D4C5A9;
+      --beige-light: #E8DCC8;
+      --white: #FFFFFF;
+      --pink-nose: #E8A0A0;
+      --line: rgba(74, 63, 53, 0.15);
       --success: #25D366;
-      --font-display: "Fredoka", system-ui, sans-serif;
       --font-script: "Dancing Script", cursive;
-      --font-handwritten: "Amatic SC", cursive;
       --font-body: "Montserrat", system-ui, sans-serif;
       --radius: 20px;
-      --shadow: 0 20px 50px rgba(212, 114, 140, 0.12);
+      --shadow: 0 8px 30px rgba(74, 63, 53, 0.1);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -46,1153 +41,885 @@
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      line-height: 1.5;
-    }
-    body.locked { overflow: hidden; height: 100dvh; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
-    button, input, select, textarea { font-family: inherit; }
-
-
-    /* ---------- STARS DECORATION ---------- */
-    .stars-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .hanging-star {
-      position: absolute;
-      top: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .hanging-star .string {
-      width: 2px;
-      background: var(--star-pink);
-      opacity: 0.6;
-    }
-    .hanging-star .star-shape {
-      width: 40px;
-      height: 40px;
-      position: relative;
-    }
-    .hanging-star .star-shape svg {
-      width: 100%;
-      height: 100%;
-      fill: var(--star-pink);
-      filter: drop-shadow(0 3px 6px rgba(232, 160, 180, 0.3));
-    }
-    .hanging-star:nth-child(1) { left: 15%; }
-    .hanging-star:nth-child(1) .string { height: 45px; }
-    .hanging-star:nth-child(2) { left: 42%; }
-    .hanging-star:nth-child(2) .string { height: 25px; }
-    .hanging-star:nth-child(2) .star-shape { width: 30px; height: 30px; }
-    .hanging-star:nth-child(3) { left: 70%; }
-    .hanging-star:nth-child(3) .string { height: 55px; }
-    .hanging-star:nth-child(4) { left: 85%; }
-    .hanging-star:nth-child(4) .string { height: 35px; }
-    .hanging-star:nth-child(4) .star-shape { width: 25px; height: 25px; }
-
-    /* Polka dots background pattern */
-    .dots-pattern {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.25;
-      background-image: radial-gradient(circle, var(--accent) 4px, transparent 4px);
-      background-size: 40px 40px;
-      background-position: 10px 10px;
-    }
-
-
-    /* ---------- SPLASH / BIENVENIDA ---------- */
-    #splash {
-      position: fixed; inset: 0; z-index: 200;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      background: var(--bg);
-      transition: opacity 0.75s ease, visibility 0.75s ease;
-      overflow: hidden;
-    }
-    #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-
-    .splash-inner { position: relative; z-index: 1; max-width: 340px; }
-    .splash-label {
-      font-family: var(--font-handwritten);
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .splash-kicker {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .splash-name {
-      font-family: var(--font-script);
-      font-size: clamp(3.5rem, 18vw, 5rem);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--accent-deep);
-      margin-bottom: 0.5rem;
-    }
-    .splash-date {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .splash-btn {
-      margin-top: 2.5rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      padding: 1rem 2.25rem;
-      border: none;
-      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
-      color: #fff;
-      font-family: var(--font-display);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(212, 114, 140, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .splash-btn:hover, .splash-btn:active { transform: translateY(-2px); }
-
-
-    /* ---------- ELEPHANTS SVG ---------- */
-    .elephants-container {
-      margin: 1.5rem auto;
-      width: 180px;
-      height: 140px;
-      position: relative;
-    }
-
-    /* ---------- PINK BAND ---------- */
-    .pink-band {
-      background: var(--bg-soft);
-      padding: 1rem 1.5rem;
-      margin: 0.5rem -1.5rem;
-      position: relative;
-    }
-    .pink-band::before,
-    .pink-band::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.3;
-    }
-    .pink-band::before { top: 0; }
-    .pink-band::after { bottom: 0; }
-
-    /* ---------- MAIN ---------- */
-    #main { opacity: 0; transition: opacity 0.55s ease 0.15s; }
-    #main.show { opacity: 1; }
-
-    .section {
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 1.5rem 5.5rem;
-      position: relative;
-    }
-    .section + .section { border-top: 1px dashed var(--line); }
-    .wrap { width: 100%; max-width: 420px; margin: 0 auto; position: relative; z-index: 1; }
-
-    .eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-family: var(--font-script);
-      font-weight: 700;
-      font-size: clamp(3rem, 14vw, 4rem);
-      line-height: 1.1;
-      color: var(--accent-deep);
-    }
-    h2 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: clamp(1.7rem, 6.5vw, 2.1rem);
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-    .lead {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 320px;
-      margin: 0 auto 1.75rem;
-    }
-
-
-    /* HERO */
-    .hero {
-      background: var(--bg);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-kicker {
-      font-family: var(--font-handwritten);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .hero-date {
-      margin: 1.25rem 0 1.75rem;
-      font-size: 0.82rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Countdown */
-    .countdown {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .countdown > div {
-      min-width: 4.1rem;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 0.85rem 0.4rem 0.7rem;
-      box-shadow: 0 8px 20px rgba(212, 114, 140, 0.08);
-    }
-    .countdown .n {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.7rem;
-      color: var(--accent-deep);
-      display: block;
-      line-height: 1;
-    }
-    .countdown .l {
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-      font-weight: 600;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem 1.75rem;
-      border: none;
-      border-radius: 999px;
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(212, 114, 140, 0.3);
-    }
-    .btn-primary:hover { box-shadow: 0 14px 36px rgba(212, 114, 140, 0.4); }
-    .btn-outline {
-      background: #fff;
-      color: var(--accent-deep);
-      border: 1px solid var(--accent);
-    }
-    .btn-outline:hover { background: var(--bg-soft); }
-    .btn-wa {
-      background: var(--success);
-      color: #fff;
-      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.3);
-    }
-    .btn-full { width: 100%; }
-    .btn-row { display: flex; flex-direction: column; gap: 0.75rem; }
-
-
-    /* Cards */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.35rem;
-      margin-bottom: 0.85rem;
-      text-align: center;
-      box-shadow: 0 10px 26px rgba(212, 114, 140, 0.06);
-    }
-    .card .icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
-    .card h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--accent-deep);
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
       line-height: 1.6;
     }
-    .card p strong {
-      color: var(--text);
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.15rem;
-    }
-    .card a.link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(212, 114, 140, 0.35);
-      padding-bottom: 2px;
-    }
+    body.locked { overflow: hidden; }
 
-    /* Alias / copy */
-    .alias-box {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.25rem;
-      box-shadow: 0 10px 26px rgba(212, 114, 140, 0.06);
-    }
-    .alias-box .label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .alias-box .value {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: var(--accent-deep);
-      word-break: break-all;
-      margin-bottom: 0.35rem;
-    }
-    .alias-box .sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-    .copy-btn {
-      display: inline-flex;
+    /* ===== SPLASH ===== */
+    .splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem 1.25rem;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--accent-deep);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      background: var(--bg);
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    .splash.hidden { display: none; }
+    .splash-frame {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+    .splash-bear {
+      position: absolute;
+      right: -20px;
+      bottom: 5%;
+      width: 55%;
+      max-width: 280px;
+      height: auto;
+      opacity: 0.95;
+    }
+    .splash-content {
+      position: relative;
+      z-index: 2;
+    }
+    .splash-top-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    .splash-title {
+      font-family: var(--font-script);
+      font-size: clamp(3rem, 12vw, 5rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .splash-date {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 4px;
+      color: var(--white);
+      margin-top: 0.5rem;
+      opacity: 0.85;
+    }
+    .splash-enter {
+      margin-top: 2.5rem;
+      padding: 0.8rem 2.5rem;
+      background: var(--white);
+      color: var(--brown);
+      border: none;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
       text-transform: uppercase;
       cursor: pointer;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    .copy-btn.ok { border-color: var(--gold); color: var(--text); background: var(--gold-soft); }
+    .splash-enter:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
 
+    /* ===== MAIN ===== */
+    .main { display: none; }
+    .main.visible { display: block; }
 
-    /* Pills */
-    .pills {
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      color: var(--brown);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .section-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      background: linear-gradient(180deg, var(--beige-light) 0%, var(--bg) 100%);
+    }
+    .hero h1 {
+      font-family: var(--font-script);
+      font-size: clamp(3.5rem, 14vw, 5.5rem);
+      color: var(--brown);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero .hero-date {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .countdown-item {
+      text-align: center;
+    }
+    .countdown-item .number {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--brown);
+      background: var(--beige-light);
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+      margin: 0 auto 0.3rem;
+    }
+    .countdown-item .label {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ===== FRASE ===== */
+    .frase {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--beige-light);
+      border-radius: var(--radius);
+      margin: 0 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .frase p {
+      font-family: var(--font-script);
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--brown);
+      line-height: 1.4;
+    }
+
+    /* ===== CARDS ===== */
+    .info-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .info-card .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .info-card h3 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .info-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .info-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background: var(--beige);
+      color: var(--brown);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+    .info-card a:hover {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    /* ===== LISTA DESEOS ===== */
+    .wishes-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.6rem;
       justify-content: center;
-      margin-top: 0.85rem;
     }
-    .pills span {
-      font-size: 0.72rem;
-      letter-spacing: 0.03em;
-      padding: 0.45rem 0.9rem;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      color: var(--accent-deep);
-      background: var(--bg-soft);
+    .wish-tag {
+      padding: 0.5rem 1.2rem;
+      background: var(--bg-card);
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--brown);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* ===== MESA REGALOS ===== */
+    .gift-box {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .gift-box label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .gift-box .copy-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .gift-box .copy-row span {
+      flex: 1;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--text);
+      word-break: break-all;
+    }
+    .gift-box .copy-btn {
+      padding: 0.4rem 0.8rem;
+      background: var(--beige);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--brown);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .gift-box .copy-btn:hover {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    /* ===== RSVP ===== */
+    .rsvp-section { text-align: center; }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--success);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.8rem;
+      background: transparent;
+      border: 1px solid var(--brown);
+      color: var(--brown);
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--beige-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--brown-light);
+      opacity: 0.6;
+    }
+
+    /* ===== CIERRE ===== */
+    .cierre {
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+    .cierre p {
+      font-family: var(--font-script);
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      color: var(--brown);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .cierre .hashtag {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+    .cierre .mini-bear {
+      width: 60px;
+      height: auto;
+      margin-top: 1.5rem;
+      opacity: 0.7;
+    }
+
+    /* ===== CONTACTO ===== */
+    .contacto {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--beige-light);
+    }
+    .contacto p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .contacto a {
+      color: var(--brown);
+      text-decoration: none;
       font-weight: 500;
     }
 
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-    }
-    .gallery .ph {
-      aspect-ratio: 1;
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-script);
-      font-size: 1rem;
-      color: var(--accent-deep);
-      overflow: hidden;
-    }
-    .gallery .ph.wide { grid-column: span 2; aspect-ratio: 2.1 / 1; }
-
-    /* Closing */
-    .close-section {
-      background: var(--bg);
-      position: relative;
-      overflow: hidden;
-    }
-    .close-quote {
-      font-family: var(--font-script);
-      font-weight: 700;
-      font-size: clamp(1.8rem, 7vw, 2.3rem);
-      line-height: 1.3;
-      max-width: 300px;
-      margin: 0 auto 1rem;
-      color: var(--accent-deep);
-    }
-    .close-name {
-      margin-top: 1.75rem;
-      font-size: 0.82rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    footer {
+    /* ===== FOOTER ===== */
+    .footer {
       text-align: center;
-      padding: 2rem 1.25rem 6rem;
-      border-top: 1px dashed var(--line);
+      padding: 1.5rem;
+      background: var(--brown);
     }
-    footer .brand {
+    .footer p {
       font-family: var(--font-script);
       font-size: 1.2rem;
-      color: var(--accent-deep);
-    }
-    footer .brand a { text-decoration: none; color: var(--accent-deep); font-weight: 700; }
-    footer p {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-      letter-spacing: 0.06em;
+      color: var(--white);
     }
 
-
-    /* Music button */
+    /* ===== MUSIC BTN ===== */
     .music-btn {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      z-index: 80;
-      width: 2.75rem;
-      height: 2.75rem;
+      z-index: 1000;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      border: 1px solid var(--accent);
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      color: var(--accent-deep);
-      font-size: 0.95rem;
-      display: none;
+      border: 1px solid var(--brown);
+      background: var(--bg-card);
+      color: var(--brown);
+      display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.25s;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .music-btn.visible { display: flex; }
-    .music-btn.on {
-      background: var(--accent-deep);
-      color: #fff;
-      animation: pulse-soft 1.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-soft {
-      0%, 100% { opacity: 0.75; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.08); }
+    .music-btn:hover {
+      background: var(--brown);
+      color: var(--white);
     }
 
-    /* Scroll cue */
-    .scroll-cue {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      animation: bob 2.2s ease-in-out infinite;
-      font-weight: 600;
-    }
-    .scroll-cue span { display: block; margin-top: 0.35rem; font-size: 0.9rem; }
-    @keyframes bob {
-      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.45; }
-      50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
-    }
-
-    /* Reveal on scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-
-    /* Toast */
-    #toast {
-      display: none;
+    /* ===== PARTY CAM ===== */
+    .party-cam {
       position: fixed;
-      left: 50%;
-      bottom: 5.5rem;
-      transform: translateX(-50%);
-      z-index: 90;
-      background: var(--text);
-      color: #fff;
-      padding: 0.75rem 1.25rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--beige);
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(107, 78, 61, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
     }
-    #toast.show { display: block; }
+    .party-cam:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(107, 78, 61, 0.3);
+    }
 
-    /* Modal */
-    .modal-backdrop {
-      position: fixed; inset: 0; z-index: 150;
-      background: rgba(92, 61, 46, 0.4);
-      backdrop-filter: blur(6px);
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.8rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 9000;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 8000;
       display: none;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       padding: 1rem;
     }
-    .modal-backdrop.open { display: flex; }
-    .modal {
-      width: 100%;
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem;
       max-width: 400px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 24px 24px 12px 12px;
-      padding: 1.75rem 1.35rem 1.5rem;
-      animation: slideUp 0.35s ease;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
     }
-    @keyframes slideUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .modal-content h3 {
+      font-family: var(--font-script);
+      font-size: 1.8rem;
+      color: var(--brown);
+      margin-bottom: 1rem;
+      text-align: center;
     }
-    .modal h3 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent-deep);
-    }
-    .modal .close-x {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      background: none; border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
+    .modal-close {
+      display: block;
+      margin: 1.5rem auto 0;
+      padding: 0.6rem 2rem;
+      background: var(--beige);
+      border: none;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--brown);
       cursor: pointer;
-      line-height: 1;
-    }
-    .modal-inner { position: relative; }
-
-    @media (min-width: 480px) {
-      .modal-backdrop { align-items: center; }
-      .modal { border-radius: 24px; }
     }
 
-    /* Bottom pink band for splash */
-    .splash-bottom-band {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 15%;
-      background: var(--bg-soft);
-      border-radius: 60% 60% 0 0 / 100% 100% 0 0;
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
-    /* Flower decorations */
-    .flower-deco {
-      position: absolute;
-      font-size: 1.2rem;
-      opacity: 0.7;
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-
-
 <body class="locked">
 
-  <audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
-    <source src="musica.mp3" type="audio/mpeg" />
-  </audio>
-
-  <!-- ========== SPLASH SCREEN ========== -->
-  <div id="splash" role="dialog" aria-label="Bienvenida">
-    <!-- Stars decoration -->
-    <div class="stars-container">
-      <div class="hanging-star">
-        <div class="string"></div>
-        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
-      </div>
-      <div class="hanging-star">
-        <div class="string"></div>
-        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
-      </div>
-      <div class="hanging-star">
-        <div class="string"></div>
-        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
-      </div>
-      <div class="hanging-star">
-        <div class="string"></div>
-        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
-      </div>
-    </div>
-    <!-- Dots pattern -->
-    <div class="dots-pattern"></div>
-    <!-- Bottom pink band -->
-    <div class="splash-bottom-band"></div>
-
-    <div class="splash-inner">
-      <p class="splash-label">Baby shower de</p>
-      <h1 class="splash-name">Malena</h1>
-      <p class="splash-date">3 de septiembre &middot; 1PM</p>
-
-      <!-- Elephants SVG illustration -->
-      <div class="elephants-container">
-        <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Big elephant (mama) -->
-          <ellipse cx="110" cy="105" rx="40" ry="32" fill="#9B8EC2" opacity="0.85"/>
-          <ellipse cx="110" cy="100" rx="38" ry="30" fill="#A899CC"/>
-          <circle cx="130" cy="80" r="22" fill="#A899CC"/>
-          <ellipse cx="148" cy="88" rx="14" ry="18" fill="#9B8EC2" opacity="0.7"/>
-          <circle cx="135" cy="76" r="3" fill="#5C3D2E"/>
-          <ellipse cx="110" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
-          <ellipse cx="125" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
-          <ellipse cx="95" cy="135" rx="5" ry="9" fill="#8B7BB5"/>
-          <path d="M148 92 C155 100 158 108 152 112" stroke="#9B8EC2" stroke-width="4" stroke-linecap="round" fill="none"/>
-          <!-- Baby elephant -->
-          <ellipse cx="70" cy="115" rx="22" ry="18" fill="#B8ABD8" opacity="0.85"/>
-          <ellipse cx="70" cy="112" rx="20" ry="16" fill="#C4B8E0"/>
-          <circle cx="82" cy="98" r="14" fill="#C4B8E0"/>
-          <ellipse cx="93" cy="103" rx="8" ry="11" fill="#B8ABD8" opacity="0.7"/>
-          <circle cx="85" cy="95" r="2" fill="#5C3D2E"/>
-          <ellipse cx="65" cy="132" rx="4" ry="7" fill="#A899CC"/>
-          <ellipse cx="75" cy="132" rx="4" ry="7" fill="#A899CC"/>
-          <path d="M93 106 C97 111 99 116 95 118" stroke="#B8ABD8" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <!-- Flowers -->
-          <circle cx="55" cy="142" r="4" fill="#F7C948" opacity="0.8"/>
-          <circle cx="52" cy="140" r="2" fill="#E8A0B4"/>
-          <path d="M55 142 L55 152" stroke="#6B8F4A" stroke-width="1.5"/>
-          <circle cx="145" cy="142" r="4" fill="#F7C948" opacity="0.8"/>
-          <circle cx="148" cy="140" r="2" fill="#E8A0B4"/>
-          <path d="M145 142 L145 152" stroke="#6B8F4A" stroke-width="1.5"/>
-          <path d="M50 150 Q55 146 60 150" stroke="#6B8F4A" stroke-width="1" fill="none"/>
-          <path d="M140 150 Q145 146 150 150" stroke="#6B8F4A" stroke-width="1" fill="none"/>
-        </svg>
-      </div>
-
-      <button type="button" class="splash-btn" id="enterBtn">
-        Abrir invitaci&oacute;n
-      </button>
+  <!-- SPLASH -->
+  <div class="splash" id="splash">
+    <div class="splash-frame"></div>
+    <!-- Teddy Bear SVG -->
+    <svg class="splash-bear" viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <ellipse cx="150" cy="360" rx="110" ry="130" fill="#D4C5A9"/>
+      <!-- Belly -->
+      <ellipse cx="150" cy="380" rx="70" ry="85" fill="#E8DCC8"/>
+      <!-- Head -->
+      <circle cx="150" cy="180" r="90" fill="#D4C5A9"/>
+      <!-- Left Ear -->
+      <circle cx="80" cy="110" r="35" fill="#D4C5A9"/>
+      <circle cx="80" cy="110" r="20" fill="#6B4E3D"/>
+      <!-- Right Ear -->
+      <circle cx="220" cy="110" r="35" fill="#D4C5A9"/>
+      <circle cx="220" cy="110" r="20" fill="#6B4E3D"/>
+      <!-- Muzzle -->
+      <ellipse cx="150" cy="210" rx="40" ry="30" fill="#E8DCC8"/>
+      <!-- Eyes (closed/sleeping) -->
+      <path d="M120 175 Q130 182 140 175" stroke="#6B4E3D" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M160 175 Q170 182 180 175" stroke="#6B4E3D" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Nose (heart shape) -->
+      <path d="M150 200 C145 195 138 198 138 203 C138 208 150 215 150 215 C150 215 162 208 162 203 C162 198 155 195 150 200Z" fill="#E8A0A0"/>
+      <!-- Mouth -->
+      <path d="M145 218 Q150 223 155 218" stroke="#6B4E3D" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Left Arm -->
+      <ellipse cx="70" cy="330" rx="30" ry="55" fill="#D4C5A9" transform="rotate(-15 70 330)"/>
+      <!-- Right Arm -->
+      <ellipse cx="230" cy="330" rx="30" ry="55" fill="#D4C5A9" transform="rotate(15 230 330)"/>
+      <!-- Left Foot -->
+      <ellipse cx="110" cy="475" rx="35" ry="25" fill="#D4C5A9"/>
+      <ellipse cx="110" cy="475" rx="22" ry="16" fill="#E8DCC8"/>
+      <!-- Right Foot -->
+      <ellipse cx="190" cy="475" rx="35" ry="25" fill="#D4C5A9"/>
+      <ellipse cx="190" cy="475" rx="22" ry="16" fill="#E8DCC8"/>
+      <!-- Bow tie -->
+      <path d="M130 260 L150 275 L170 260 L170 285 L150 275 L130 285 Z" fill="#E8A0A0" opacity="0.8"/>
+      <circle cx="150" cy="275" r="6" fill="#E8A0A0"/>
+    </svg>
+    <div class="splash-content">
+      <p class="splash-top-text">Acompa&ntilde;anos a celebrar nuestro</p>
+      <h1 class="splash-title">Baby Shower</h1>
+      <p class="splash-date">03.09.2026</p>
+      <button class="splash-enter" id="enterBtn">Abrir invitaci&oacute;n</button>
     </div>
   </div>
 
+  <!-- MAIN -->
+  <div class="main" id="mainContent">
 
-  <!-- Music button -->
-  <button type="button" class="music-btn" id="musicBtn" aria-label="Musica de fondo" title="Musica">&#9835;</button>
-  <div id="toast" role="status"></div>
+    <!-- MUSIC BTN -->
+    <button class="music-btn" id="musicBtn" aria-label="Musica">&#9835;</button>
 
-  <!-- ========== CONTENIDO ========== -->
-  <div id="main">
-
-    <!-- HERO + COUNTDOWN -->
-    <section class="section hero" id="inicio">
-      <div class="stars-container" style="opacity: 0.5;">
-        <div class="hanging-star">
-          <div class="string"></div>
-          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Malena</h1>
+      <p class="hero-date">Jueves 3 de septiembre de 2026 &middot; 13:00 hs</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="number" id="cd-days">--</span>
+          <span class="label">D&iacute;as</span>
         </div>
-        <div class="hanging-star">
-          <div class="string"></div>
-          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        <div class="countdown-item">
+          <span class="number" id="cd-hours">--</span>
+          <span class="label">Horas</span>
         </div>
-        <div class="hanging-star">
-          <div class="string"></div>
-          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        <div class="countdown-item">
+          <span class="number" id="cd-mins">--</span>
+          <span class="label">Min</span>
         </div>
-        <div class="hanging-star">
-          <div class="string"></div>
-          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        <div class="countdown-item">
+          <span class="number" id="cd-secs">--</span>
+          <span class="label">Seg</span>
         </div>
       </div>
-      <div class="dots-pattern" style="opacity: 0.15;"></div>
-      <div class="wrap">
-        <p class="hero-kicker">Baby shower de</p>
-        <h1>Malena</h1>
-        <p class="hero-date">Jueves 3 de septiembre &middot; 13:00 hs</p>
-
-        <div class="countdown" id="countdown" aria-live="polite">
-          <div><span class="n" id="cd-d">&mdash;</span><span class="l">D&iacute;as</span></div>
-          <div><span class="n" id="cd-h">&mdash;</span><span class="l">Horas</span></div>
-          <div><span class="n" id="cd-m">&mdash;</span><span class="l">Min</span></div>
-          <div><span class="n" id="cd-s">&mdash;</span><span class="l">Seg</span></div>
-        </div>
-
-        <a class="btn btn-primary" href="#cuando">Ver detalles</a>
-      </div>
-      <div class="scroll-cue">Desliz&aacute;<span>&darr;</span></div>
     </section>
 
     <!-- FRASE -->
-    <section class="section" style="min-height: auto; padding-top: 4rem; padding-bottom: 3rem;">
-      <div class="wrap reveal">
-        <div class="elephants-container" style="width: 120px; height: 100px; margin-bottom: 1rem;">
-          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="110" cy="105" rx="40" ry="32" fill="#9B8EC2" opacity="0.85"/>
-            <ellipse cx="110" cy="100" rx="38" ry="30" fill="#A899CC"/>
-            <circle cx="130" cy="80" r="22" fill="#A899CC"/>
-            <ellipse cx="148" cy="88" rx="14" ry="18" fill="#9B8EC2" opacity="0.7"/>
-            <circle cx="135" cy="76" r="3" fill="#5C3D2E"/>
-            <ellipse cx="110" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
-            <ellipse cx="125" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
-            <ellipse cx="95" cy="135" rx="5" ry="9" fill="#8B7BB5"/>
-            <path d="M148 92 C155 100 158 108 152 112" stroke="#9B8EC2" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <ellipse cx="70" cy="115" rx="22" ry="18" fill="#B8ABD8" opacity="0.85"/>
-            <ellipse cx="70" cy="112" rx="20" ry="16" fill="#C4B8E0"/>
-            <circle cx="82" cy="98" r="14" fill="#C4B8E0"/>
-            <ellipse cx="93" cy="103" rx="8" ry="11" fill="#B8ABD8" opacity="0.7"/>
-            <circle cx="85" cy="95" r="2" fill="#5C3D2E"/>
-            <ellipse cx="65" cy="132" rx="4" ry="7" fill="#A899CC"/>
-            <ellipse cx="75" cy="132" rx="4" ry="7" fill="#A899CC"/>
-            <path d="M93 106 C97 111 99 116 95 118" stroke="#B8ABD8" stroke-width="3" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-        <p style="font-family: var(--font-script); font-size: clamp(1.8rem, 6vw, 2.4rem); color: var(--accent-deep); font-weight: 700; line-height: 1.3;">Una carita nueva est&aacute; por llegar&hellip;</p>
-        <p class="lead" style="margin-top: 1rem; margin-bottom: 0;">
-          Acompa&ntilde;anos a festejar esta dulce espera.
-        </p>
-      </div>
-    </section>
-
+    <div class="frase reveal">
+      <p>Una carita nueva est&aacute; por llegar...</p>
+    </div>
 
     <!-- CUANDO / DONDE -->
-    <section class="section" id="cuando">
-      <div class="wrap">
-        <p class="eyebrow reveal">La celebraci&oacute;n</p>
-        <h2 class="reveal">&iquest;Cu&aacute;ndo &amp; d&oacute;nde?</h2>
-        <p class="lead reveal">Todo listo para pasarla lindo en familia.</p>
-
-        <div class="card reveal">
-          <div class="icon">&#128197;</div>
-          <h3>&iquest;Cu&aacute;ndo?</h3>
-          <p>
-            <strong>Jueves 3 de septiembre de 2026</strong>
-            13:00 hs
-          </p>
-        </div>
-
-        <div class="card reveal">
-          <div class="icon">&#128205;</div>
-          <h3>&iquest;D&oacute;nde?</h3>
-          <p>
-            <strong>Casa de la familia</strong>
-            Calle Cualquiera 123, Cualquier Lugar
-          </p>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Calle+Cualquiera+123" target="_blank" rel="noopener">
-            C&oacute;mo llegar &rarr;
-          </a>
-        </div>
+    <section class="reveal">
+      <h2 class="section-title">Cuando y Donde</h2>
+      <p class="section-subtitle">Los detalles del evento</p>
+      <div class="info-card">
+        <div class="card-icon">&#128197;</div>
+        <h3>Fecha</h3>
+        <p>Jueves 3 de septiembre de 2026<br>13:00 hs</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">&#128205;</div>
+        <h3>Lugar</h3>
+        <p>Casa de la familia<br>Calle Cualquiera 123, Cualquier Lugar</p>
+        <a href="https://maps.google.com" target="_blank" rel="noopener">Ver mapa</a>
       </div>
     </section>
 
-    <!-- SUGERENCIAS DE REGALO -->
-    <section class="section" id="deseos" style="min-height: auto; padding-top: 3rem; padding-bottom: 3rem;">
-      <div class="wrap reveal">
-        <p class="eyebrow">Para consentir a Malena</p>
-        <h2>Lista de deseos</h2>
-        <div class="card" style="margin-bottom: 0;">
-          <div class="icon">&#127873;</div>
-          <h3>Ideas de regalo</h3>
-          <p>Si quer&eacute;s traerle algo, esto le vendr&iacute;a b&aacute;rbaro</p>
-          <div class="pills">
-            <span>Pa&ntilde;ales talle 1</span>
-            <span>Toallitas</span>
-            <span>Bodys</span>
-            <span>Cositas de ropa</span>
-          </div>
-        </div>
+    <!-- LISTA DE DESEOS -->
+    <section class="reveal">
+      <h2 class="section-title">Lista de Deseos</h2>
+      <p class="section-subtitle">Sugerencias de regalitos</p>
+      <div class="wishes-list">
+        <span class="wish-tag">Bodys</span>
+        <span class="wish-tag">Baberos</span>
+        <span class="wish-tag">Mantitas</span>
+        <span class="wish-tag">Pa&ntilde;ales RN</span>
+        <span class="wish-tag">Toallitas</span>
+        <span class="wish-tag">Sonajeros</span>
+        <span class="wish-tag">Medias</span>
+        <span class="wish-tag">Gorros</span>
+        <span class="wish-tag">Chupetes</span>
+        <span class="wish-tag">Mamaderas</span>
+        <span class="wish-tag">Cremas beb&eacute;</span>
+        <span class="wish-tag">Peluches</span>
       </div>
     </section>
 
     <!-- MESA DE REGALOS -->
-    <section class="section" id="valor">
-      <div class="wrap">
-        <p class="eyebrow reveal">Informaci&oacute;n</p>
-        <h2 class="reveal">Mesa de regalos</h2>
-        <p class="lead reveal">
-          Tu presencia es el mejor regalo. Si dese&aacute;s sumar un detalle:
-        </p>
-
-        <div class="alias-box reveal">
-          <p class="label">Alias</p>
-          <p class="value" id="aliasValue">babyshower.malena</p>
-          <p class="sub">CVU / CBU: 0000003100044444444444</p>
-          <p class="sub" style="margin-top: -0.5rem;">Titular: Familia de Malena</p>
-          <button type="button" class="copy-btn" id="copyAliasBtn" data-copy="babyshower.malena">
-            Copiar alias
-          </button>
+    <section class="reveal">
+      <h2 class="section-title">Mesa de Regalos</h2>
+      <p class="section-subtitle">Si prefer&iacute;s contribuir</p>
+      <div class="gift-box">
+        <label>Alias</label>
+        <div class="copy-row">
+          <span>babyshower.malena</span>
+          <button class="copy-btn" onclick="copyText('babyshower.malena')">Copiar</button>
+        </div>
+      </div>
+      <div class="gift-box">
+        <label>CBU</label>
+        <div class="copy-row">
+          <span>0000003100044444444444</span>
+          <button class="copy-btn" onclick="copyText('0000003100044444444444')">Copiar</button>
         </div>
       </div>
     </section>
 
-
     <!-- RSVP -->
-    <section class="section" id="rsvp">
-      <div class="wrap">
-        <p class="eyebrow reveal">Tu respuesta</p>
-        <h2 class="reveal">Confirm&aacute; tu asistencia</h2>
-        <p class="lead reveal">
-          Por favor respond&eacute; antes del <strong style="color: var(--text);">20 de agosto de 2026</strong>.
-        </p>
-
-        <div class="btn-row reveal">
-          <a class="btn btn-wa btn-full" id="rsvpWa" href="https://wa.me/5491234567678?text=Hola%21%20Confirmo%20asistencia%20al%20baby%20shower%20de%20Malena" target="_blank" rel="noopener">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Confirmar por WhatsApp
-          </a>
-          <button type="button" class="btn btn-outline btn-full" id="openGiftsBtn">
-            Ver datos de pago / regalos
-          </button>
-        </div>
-      </div>
+    <section class="rsvp-section reveal">
+      <h2 class="section-title">Confirmanos</h2>
+      <p class="section-subtitle">Tu asistencia</p>
+      <a class="btn-whatsapp" href="https://wa.me/5493425299942?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Malena%20%F0%9F%92%9B" target="_blank" rel="noopener">
+        &#128172; Confirmar por WhatsApp
+      </a>
+      <br>
+      <button class="btn-secondary" id="showPayBtn">Ver datos de pago</button>
     </section>
 
     <!-- GALERIA -->
-    <section class="section" id="fotos">
-      <div class="wrap">
-        <p class="eyebrow reveal">Momentos</p>
-        <h2 class="reveal">Galer&iacute;a</h2>
-        <p class="lead reveal">Algunos instantes de esta dulce espera.</p>
-
-        <div class="gallery reveal">
-          <div class="ph">Foto 1</div>
-          <div class="ph">Foto 2</div>
-          <div class="ph wide">Foto portada</div>
-          <div class="ph">Foto 3</div>
-          <div class="ph">Foto 4</div>
-        </div>
-
-        <p style="margin-top: 1.25rem; font-size: 1rem; color: var(--accent-deep); font-weight: 700; letter-spacing: 0.02em; font-family: var(--font-display);" class="reveal">#BabyShowerMalena</p>
-        <p class="lead reveal" style="margin-bottom: 0; margin-top: 0.5rem; font-size: 0.85rem;">
-          Us&aacute; el hashtag en tus stories y publicaciones.
-        </p>
+    <section class="reveal">
+      <h2 class="section-title">Galeria</h2>
+      <p class="section-subtitle">Momentos especiales</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">&#128247;</div>
+        <div class="gallery-item">&#128118;</div>
+        <div class="gallery-item">&#127872;</div>
+        <div class="gallery-item">&#128149;</div>
       </div>
     </section>
-
 
     <!-- CIERRE -->
-    <section class="section close-section" id="cierre">
-      <div class="dots-pattern" style="opacity: 0.12;"></div>
-      <div class="wrap reveal">
-        <div class="elephants-container" style="width: 100px; height: 80px; margin-bottom: 1rem;">
-          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="110" cy="105" rx="40" ry="32" fill="#9B8EC2" opacity="0.85"/>
-            <ellipse cx="110" cy="100" rx="38" ry="30" fill="#A899CC"/>
-            <circle cx="130" cy="80" r="22" fill="#A899CC"/>
-            <ellipse cx="148" cy="88" rx="14" ry="18" fill="#9B8EC2" opacity="0.7"/>
-            <circle cx="135" cy="76" r="3" fill="#5C3D2E"/>
-            <ellipse cx="110" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
-            <ellipse cx="125" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
-            <path d="M148 92 C155 100 158 108 152 112" stroke="#9B8EC2" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <ellipse cx="70" cy="115" rx="22" ry="18" fill="#B8ABD8" opacity="0.85"/>
-            <ellipse cx="70" cy="112" rx="20" ry="16" fill="#C4B8E0"/>
-            <circle cx="82" cy="98" r="14" fill="#C4B8E0"/>
-            <ellipse cx="93" cy="103" rx="8" ry="11" fill="#B8ABD8" opacity="0.7"/>
-            <circle cx="85" cy="95" r="2" fill="#5C3D2E"/>
-            <ellipse cx="65" cy="132" rx="4" ry="7" fill="#A899CC"/>
-            <ellipse cx="75" cy="132" rx="4" ry="7" fill="#A899CC"/>
-            <path d="M93 106 C97 111 99 116 95 118" stroke="#B8ABD8" stroke-width="3" stroke-linecap="round" fill="none"/>
-          </svg>
-        </div>
-        <p class="close-quote">&ldquo;Con amor la esperamos&hellip;&rdquo;</p>
-        <p class="lead" style="margin-bottom: 0;">Los esperamos con mucha alegr&iacute;a.</p>
-        <p class="close-name">Familia de Malena</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; letter-spacing: 0.16em; color: var(--text-muted);">
-          03 &middot; 09 &middot; 2026
-        </p>
-      </div>
+    <section class="cierre reveal">
+      <p>Te esperamos con mucho amor para celebrar la llegada de Malena</p>
+      <span class="hashtag">#BabyShowerMalena</span>
+      <!-- Mini bear decorative -->
+      <svg class="mini-bear" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="55" r="30" fill="#D4C5A9"/>
+        <circle cx="30" cy="30" r="12" fill="#D4C5A9"/>
+        <circle cx="30" cy="30" r="7" fill="#6B4E3D"/>
+        <circle cx="70" cy="30" r="12" fill="#D4C5A9"/>
+        <circle cx="70" cy="30" r="7" fill="#6B4E3D"/>
+        <ellipse cx="50" cy="62" rx="12" ry="9" fill="#E8DCC8"/>
+        <path d="M46 55 Q50 59 54 55" stroke="#6B4E3D" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M50 60 C48 58 45 59 45 61 C45 63 50 66 50 66 C50 66 55 63 55 61 C55 59 52 58 50 60Z" fill="#E8A0A0"/>
+        <ellipse cx="50" cy="95" rx="22" ry="20" fill="#D4C5A9"/>
+        <ellipse cx="50" cy="95" rx="14" ry="13" fill="#E8DCC8"/>
+      </svg>
     </section>
 
-    <!-- Contacto / Demo Info -->
-    <style>
-      .contacto-footer-wrap {
-        display: flex; flex-direction: column; gap: 3rem;
-        max-width: 1000px; margin: 0 auto;
-      }
-      .contacto-col { flex: 1; }
-      @media (min-width: 768px) {
-        .contacto-footer-wrap { flex-direction: row; justify-content: space-between; }
-      }
-      .contacto-footer h5 {
-        font-family: inherit; font-size: 1.1rem; font-weight: 400;
-        letter-spacing: 2px; margin-bottom: 20px; color: #222; text-transform: uppercase;
-      }
-      .contacto-footer p { font-size: 0.95rem; font-weight: 300; color: #666; margin-bottom: 25px; line-height: 1.8; }
-      .contacto-footer ul { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; font-weight: 300; color: #555; line-height: 2.2; }
-      .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
-    </style>
-    <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
-      <div class="contacto-footer-wrap">
-        <div class="contacto-col">
-          <h5>&iquest;Te gust&oacute; la invitaci&oacute;n?</h5>
-          <p>&iexcl;Contactate y ped&iacute; la tuya!</p>
-          <ul>
-            <li><a href="https://wa.me/5493425299942">&iexcl;Envianos un Whatsapp!</a></li>
-            <li>+549 342 5299942</li>
-            <li>teinvitoapp@gmail.com</li>
-          </ul>
-        </div>
-        <div class="contacto-col">
-          <h5>Seguinos en Instagram</h5>
-          <ul>
-            <li><a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <!-- CONTACTO FOOTER -->
+    <div class="contacto">
+      <p>Invitacion digital creada por</p>
+      <p><a href="https://wa.me/5493425299942" target="_blank" rel="noopener">WhatsApp: +54 9 342 529 9942</a></p>
+      <p><a href="https://instagram.com/teinvitoapp" target="_blank" rel="noopener">@teinvitoapp</a></p>
+    </div>
 
-    <footer>
-      <div class="brand">Te <a href="https://www.teinvitoapp.com.ar" target="_blank" rel="noopener">Invito</a></div>
-      <p>Demo &middot; Baby Shower Elefantes</p>
-    </footer>
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>Te Invito</p>
+    </div>
+
+    <!-- PARTY CAM -->
+    <a class="party-cam" href="#" aria-label="Party Cam">&#128247;</a>
   </div>
 
-
-  <!-- MODAL REGALOS / PAGO -->
-  <div class="modal-backdrop" id="giftsModal" role="dialog" aria-modal="true" aria-labelledby="giftsTitle">
-    <div class="modal">
-      <div class="modal-inner">
-        <button type="button" class="close-x" id="closeGifts" aria-label="Cerrar">&times;</button>
-        <h3 id="giftsTitle">Datos de pago</h3>
-        <p class="lead" style="margin: 0.5rem 0 1.25rem;">Transferencia &middot; Mercado Pago</p>
-
-        <div class="alias-box" style="margin-bottom: 0.75rem;">
-          <p class="label">Alias</p>
-          <p class="value">babyshower.malena</p>
-          <button type="button" class="copy-btn" data-copy="babyshower.malena">Copiar alias</button>
-        </div>
-        <div class="alias-box">
-          <p class="label">CBU / CVU</p>
-          <p class="value" style="font-size: 1.1rem;">0000003100044444444444</p>
-          <p class="sub">Titular: Familia de Malena</p>
-          <button type="button" class="copy-btn" data-copy="0000003100044444444444">Copiar CBU</button>
+  <!-- MODAL PAGO -->
+  <div class="modal-overlay" id="payModal">
+    <div class="modal-content">
+      <h3>Datos de Pago</h3>
+      <div class="gift-box">
+        <label>Alias</label>
+        <div class="copy-row">
+          <span>babyshower.malena</span>
+          <button class="copy-btn" onclick="copyText('babyshower.malena')">Copiar</button>
         </div>
       </div>
+      <div class="gift-box">
+        <label>CBU</label>
+        <div class="copy-row">
+          <span>0000003100044444444444</span>
+          <button class="copy-btn" onclick="copyText('0000003100044444444444')">Copiar</button>
+        </div>
+      </div>
+      <button class="modal-close" id="closePayModal">Cerrar</button>
     </div>
   </div>
 
+  <!-- TOAST -->
+  <div class="toast" id="toast">Copiado al portapapeles</div>
+
   <script>
-    const CONFIG = {
-      eventDateISO: "2026-09-03T13:00:00-03:00",
-      waNumber: "5491234567678",
-      waMessage: "Hola! Confirmo mi asistencia al baby shower de Malena\n\nNombre:\nCantidad de personas:\nNotas:",
-      nombre: "Malena",
-    };
+    // ===== SPLASH ENTER =====
+    var enterBtn = document.getElementById('enterBtn');
+    var splash = document.getElementById('splash');
+    var mainContent = document.getElementById('mainContent');
 
-    /* ---------- SPLASH + AUDIO ---------- */
-    const splash = document.getElementById("splash");
-    const main = document.getElementById("main");
-    const enterBtn = document.getElementById("enterBtn");
-    const musicBtn = document.getElementById("musicBtn");
-    const audio = document.getElementById("bgMusic");
-    const toast = document.getElementById("toast");
-    const body = document.body;
-    let playing = false;
+    enterBtn.addEventListener('click', function() {
+      splash.classList.add('hidden');
+      mainContent.classList.add('visible');
+      document.body.classList.remove('locked');
+    });
 
-    function showToast(msg) {
-      toast.textContent = msg;
-      toast.classList.add("show");
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => toast.classList.remove("show"), 3500);
+    // ===== COUNTDOWN =====
+    var eventDate = new Date('2026-09-03T13:00:00-03:00').getTime();
+    function updateCountdown() {
+      var now = new Date().getTime();
+      var diff = eventDate - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-mins').textContent = '0';
+        document.getElementById('cd-secs').textContent = '0';
+        return;
+      }
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var secs = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours;
+      document.getElementById('cd-mins').textContent = mins;
+      document.getElementById('cd-secs').textContent = secs;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== COPY TEXT =====
+    function copyText(text) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          showToast();
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast();
+      }
+    }
+    function showToast() {
+      var toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 2000);
     }
 
-    function setPlaying(on) {
-      playing = !!on;
-      musicBtn.classList.toggle("on", playing);
-      musicBtn.textContent = playing ? "\u275A\u275A" : "\u266B";
-    }
+    // ===== MODAL =====
+    var payModal = document.getElementById('payModal');
+    var showPayBtn = document.getElementById('showPayBtn');
+    var closePayModal = document.getElementById('closePayModal');
 
-    function playMusic() {
-      try {
-        audio.volume = 0.85;
-        audio.muted = false;
-        const p = audio.play();
-        if (p && typeof p.then === "function") {
-          p.then(() => setPlaying(true)).catch(() => {
-            setPlaying(false);
-            showToast("Toca el boton de musica para activarla");
-          });
+    showPayBtn.addEventListener('click', function() {
+      payModal.classList.add('active');
+    });
+    closePayModal.addEventListener('click', function() {
+      payModal.classList.remove('active');
+    });
+    payModal.addEventListener('click', function(e) {
+      if (e.target === payModal) payModal.classList.remove('active');
+    });
+
+    // ===== MUSIC BTN =====
+    var musicBtn = document.getElementById('musicBtn');
+    var musicPlaying = false;
+    musicBtn.addEventListener('click', function() {
+      musicPlaying = !musicPlaying;
+      musicBtn.textContent = musicPlaying ? '\u23F8' : '\u266B';
+    });
+
+    // ===== REVEAL ON SCROLL =====
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
-      } catch (_) { setPlaying(false); }
-    }
+      });
+    }, { threshold: 0.15 });
 
-    function enter() {
-      playMusic();
-      splash.classList.add("hide");
-      body.classList.remove("locked");
-      main.classList.add("show");
-      musicBtn.classList.add("visible");
-      requestAnimationFrame(() => observeReveals());
-    }
-
-    enterBtn.addEventListener("click", (e) => { e.stopPropagation(); enter(); });
-    splash.addEventListener("click", () => { if (!splash.classList.contains("hide")) enter(); });
-
-    musicBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (playing || !audio.paused) { audio.pause(); setPlaying(false); }
-      else { playMusic(); }
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
     });
 
-    try { audio.load(); } catch (_) {}
+    // ===== PREVIEW MODE =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('preview') === '1') {
+        var enterBtn = document.getElementById('enterBtn');
+        if (enterBtn) enterBtn.style.display = 'none';
+        var splash = document.getElementById('splash');
+        if (splash) splash.classList.remove('hidden');
+        var main = document.getElementById('mainContent');
+        if (main) main.classList.remove('visible');
+        document.body.classList.remove('locked');
+      }
+    })();
 
-
-    /* ---------- COUNTDOWN ---------- */
-    const target = new Date(CONFIG.eventDateISO).getTime();
-    function tick() {
-      const diff = Math.max(0, target - Date.now());
-      document.getElementById("cd-d").textContent = Math.floor(diff / 86400000);
-      document.getElementById("cd-h").textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, "0");
-      document.getElementById("cd-m").textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
-      document.getElementById("cd-s").textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
-    }
-    tick();
-    setInterval(tick, 1000);
-
-    /* ---------- COPY ---------- */
-    function copyText(text, btn) {
-      navigator.clipboard.writeText(text).then(() => {
-        const prev = btn.textContent;
-        btn.textContent = "Copiado!";
-        btn.classList.add("ok");
-        setTimeout(() => { btn.textContent = prev; btn.classList.remove("ok"); }, 2000);
-      }).catch(() => showToast("No se pudo copiar"));
-    }
-
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const text = (btn.getAttribute("data-copy") || "").trim();
-        if (text) copyText(text, btn);
-      });
-    });
-
-    /* ---------- MODAL REGALOS ---------- */
-    const giftsModal = document.getElementById("giftsModal");
-    document.getElementById("openGiftsBtn").addEventListener("click", () => { giftsModal.classList.add("open"); });
-    document.getElementById("closeGifts").addEventListener("click", () => { giftsModal.classList.remove("open"); });
-    giftsModal.addEventListener("click", (e) => { if (e.target === giftsModal) giftsModal.classList.remove("open"); });
-
-    /* ---------- REVEAL ON SCROLL ---------- */
-    function observeReveals() {
-      const els = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("in")); return; }
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-      els.forEach((el) => io.observe(el));
-    }
-  </script>
-
-  <!-- Preview mode: disable audio -->
-  <script>
-    if (window.location.search.includes('preview=1')) {
-      document.addEventListener('DOMContentLoaded', () => {
-        const audio = document.getElementById('bgMusic');
-        if (audio) { audio.pause(); audio.remove(); }
-        const musicBtn = document.querySelector('.music-btn');
-        if (musicBtn) { musicBtn.style.display = 'none'; }
-      });
-    }
-  </script>
-
-  <!-- Dynamic Name Injection -->
-  <script>
+    // ===== CUSTOM NAME =====
     (function() {
       var params = new URLSearchParams(window.location.search);
       var customName = params.get('customName');
       if (customName) {
-        document.addEventListener('DOMContentLoaded', function() {
-          var h1 = document.querySelector('h1');
-          if (h1) h1.innerText = customName;
-          var splashName = document.querySelector('.splash-name');
-          if (splashName) splashName.innerText = customName;
-        });
+        var decoded = decodeURIComponent(customName);
+        var h1 = document.querySelector('.hero h1');
+        if (h1) h1.textContent = decoded;
       }
     })();
   </script>
-
-  <!-- Muro Social Floating Button -->
-  <a href="/demo-wall/upload" target="_blank" style="position: fixed; bottom: 90px; right: 20px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background-color: var(--accent-deep); border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff; text-decoration: none; transition: transform 0.3s; animation: pulseCamera 2s infinite;">
-    <svg style="width: 26px; height: 26px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-    <div style="position: absolute; right: 65px; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; white-space: nowrap; pointer-events: none; opacity: 0.9;">&#128248; &iexcl;Sub&iacute; tus fotos!</div>
-  </a>
-  <style>
-    @keyframes pulseCamera {
-      0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-      50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(212,114,140,0.6); }
-      100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    }
-  </style>
 
 </body>
 </html>
