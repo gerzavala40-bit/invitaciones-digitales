@@ -64,9 +64,9 @@ const staggerItem: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {
+export function StaggerItem({ children, className, onClick }: { children: ReactNode; className?: string; onClick?: () => void }) {
   return (
-    <motion.div className={className} variants={staggerItem}>
+    <motion.div className={className} variants={staggerItem} onClick={onClick}>
       {children}
     </motion.div>
   );
