@@ -61,136 +61,139 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
-      padding: 2rem;
-      background: #F9F6F1;
-      background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      padding: 2rem 1.5rem;
+      background: #FFFFFF;
       transition: opacity 0.75s ease, visibility 0.75s ease;
       overflow: hidden;
     }
     #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    /* Eucalyptus leaves - top left */
-    .splash-leaves-tl {
+    /* Large foliage - top right corner */
+    .splash-foliage-tr {
       position: absolute;
-      top: -20px;
-      left: -30px;
-      width: 200px;
-      height: 280px;
+      top: -10px;
+      right: -20px;
+      width: 55%;
+      max-width: 220px;
       pointer-events: none;
-      opacity: 0.7;
       z-index: 0;
     }
-    /* Eucalyptus leaves - bottom right */
-    .splash-leaves-br {
+    /* Large foliage - bottom left corner */
+    .splash-foliage-bl {
       position: absolute;
-      bottom: -20px;
-      right: -30px;
-      width: 200px;
-      height: 280px;
+      bottom: -10px;
+      left: -20px;
+      width: 50%;
+      max-width: 200px;
       pointer-events: none;
-      opacity: 0.7;
       z-index: 0;
-      transform: rotate(180deg);
     }
 
-    .splash-inner { position: relative; z-index: 1; max-width: 340px; }
-    .splash-ornament {
-      display: none;
+    .splash-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .splash-label {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      margin-bottom: 1rem;
-    }
-    .splash-kicker {
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
+    .splash-ornament { display: none; }
+    .splash-label { display: none; }
+    .splash-kicker { display: none; }
     .splash-name {
-      font-family: var(--font-body);
-      font-size: clamp(2.8rem, 13vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      text-transform: uppercase;
-    }
-    .splash-name .ampersand {
       font-family: var(--font-script);
-      font-size: 0.5em;
-      color: var(--accent-deep);
-      text-transform: none;
+      font-size: clamp(4rem, 20vw, 6rem);
       font-weight: 400;
-      display: block;
-      margin: 0.1em 0;
+      line-height: 0.9;
+      color: #4A6741;
+      margin-bottom: 0.25rem;
     }
-    .splash-date {
-      margin-top: 1.75rem;
+    .splash-name .name-line {
+      display: block;
+    }
+    .splash-info {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .splash-info .info-title {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #2C3E2D;
+    }
+    .splash-info .info-date {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      color: var(--text);
-      font-weight: 400;
     }
-    .splash-date .date-month {
-      font-size: 0.7rem;
+    .splash-info .info-date .d-side {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2C3E2D;
+      padding: 0 0.6rem;
+    }
+    .splash-info .info-date .d-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0.75rem;
+      border-left: 1.5px solid #2C3E2D;
+      border-right: 1.5px solid #2C3E2D;
+    }
+    .splash-info .info-date .d-center .d-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1;
+      color: #2C3E2D;
+    }
+    .splash-info .info-date .d-center .d-month {
+      font-family: var(--font-body);
+      font-size: 0.55rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding-right: 0.75rem;
-      border-right: 1.5px solid var(--text);
+      color: #555;
+      margin-top: 2px;
     }
-    .splash-date .date-day {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      font-weight: 600;
-      line-height: 1;
-      padding: 0 0.75rem;
-    }
-    .splash-date .date-year {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      padding-left: 0.75rem;
-      border-left: 1.5px solid var(--text);
+    .splash-info .info-place {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: #666;
+      font-weight: 400;
+      margin-top: 0.25rem;
     }
     .splash-btn {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      padding: 1rem 2.25rem;
-      border: 1.5px solid var(--accent-deep);
+      padding: 0.9rem 2rem;
+      border: 1.5px solid #4A6741;
       background: transparent;
-      color: var(--text);
-      font-size: 0.72rem;
+      color: #4A6741;
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       cursor: pointer;
       transition: background 0.3s, color 0.3s, transform 0.2s;
     }
     .splash-btn:hover, .splash-btn:active {
-      background: var(--accent-deep);
+      background: #4A6741;
       color: #fff;
     }
-    .splash-hint {
-      margin-top: 1.5rem;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-    }
+    .splash-hint { display: none; }
 
     @keyframes pulse-soft {
       0%, 100% { opacity: 0.55; transform: scale(1); }
@@ -803,48 +806,73 @@ footer p { color: rgba(44,36,28,.3) !important; }
 
   <!-- ========== BIENVENIDA ========== -->
   <div id="splash" role="dialog" aria-label="Bienvenida">
-    <!-- Eucalyptus leaves top-left -->
-    <div class="splash-leaves-tl">
-      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M80 280 C80 280 75 200 90 150 C105 100 85 50 95 20" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.6"/>
-        <ellipse cx="75" cy="240" rx="18" ry="30" fill="#B8D4B0" opacity="0.5" transform="rotate(-20 75 240)"/>
-        <ellipse cx="95" cy="200" rx="15" ry="25" fill="#A3C9A0" opacity="0.45" transform="rotate(15 95 200)"/>
-        <ellipse cx="80" cy="160" rx="16" ry="28" fill="#8BA888" opacity="0.4" transform="rotate(-10 80 160)"/>
-        <ellipse cx="92" cy="120" rx="14" ry="22" fill="#B8D4B0" opacity="0.5" transform="rotate(20 92 120)"/>
-        <ellipse cx="85" cy="80" rx="12" ry="20" fill="#A3C9A0" opacity="0.35" transform="rotate(-15 85 80)"/>
-        <ellipse cx="90" cy="45" rx="10" ry="16" fill="#8BA888" opacity="0.3" transform="rotate(10 90 45)"/>
-        <path d="M120 260 C120 260 130 200 115 160 C100 120 125 80 110 40" stroke="#A3C9A0" stroke-width="1" fill="none" opacity="0.4"/>
-        <ellipse cx="125" cy="220" rx="14" ry="22" fill="#C8E0C0" opacity="0.4" transform="rotate(25 125 220)"/>
-        <ellipse cx="112" cy="180" rx="12" ry="20" fill="#B8D4B0" opacity="0.35" transform="rotate(-18 112 180)"/>
-        <ellipse cx="120" cy="140" rx="11" ry="18" fill="#A3C9A0" opacity="0.3" transform="rotate(12 120 140)"/>
-        <ellipse cx="115" cy="100" rx="10" ry="16" fill="#C8E0C0" opacity="0.35" transform="rotate(-8 115 100)"/>
+    <!-- Foliage top-right -->
+    <div class="splash-foliage-tr">
+      <svg viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main branch -->
+        <path d="M300 0 C250 30 200 80 180 130 C160 180 170 220 160 280" stroke="#6B8F5E" stroke-width="2" fill="none" opacity="0.7"/>
+        <!-- Large leaves -->
+        <ellipse cx="260" cy="30" rx="30" ry="14" fill="#8BAF7E" opacity="0.6" transform="rotate(-40 260 30)"/>
+        <ellipse cx="240" cy="60" rx="26" ry="12" fill="#6B8F5E" opacity="0.55" transform="rotate(20 240 60)"/>
+        <ellipse cx="220" cy="95" rx="32" ry="14" fill="#9BC48E" opacity="0.5" transform="rotate(-25 220 95)"/>
+        <ellipse cx="200" cy="130" rx="28" ry="12" fill="#7AA36D" opacity="0.6" transform="rotate(15 200 130)"/>
+        <ellipse cx="190" cy="165" rx="30" ry="13" fill="#8BAF7E" opacity="0.5" transform="rotate(-30 190 165)"/>
+        <ellipse cx="180" cy="200" rx="25" ry="11" fill="#6B8F5E" opacity="0.55" transform="rotate(22 180 200)"/>
+        <ellipse cx="170" cy="240" rx="22" ry="10" fill="#9BC48E" opacity="0.45" transform="rotate(-18 170 240)"/>
+        <!-- Secondary branch -->
+        <path d="M300 50 C270 60 240 100 230 140 C220 180 225 200 220 240" stroke="#7AA36D" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <ellipse cx="275" cy="65" rx="22" ry="10" fill="#A8C89E" opacity="0.5" transform="rotate(-35 275 65)"/>
+        <ellipse cx="255" cy="100" rx="20" ry="9" fill="#7AA36D" opacity="0.45" transform="rotate(25 255 100)"/>
+        <ellipse cx="240" cy="140" rx="24" ry="10" fill="#8BAF7E" opacity="0.5" transform="rotate(-20 240 140)"/>
+        <ellipse cx="230" cy="180" rx="18" ry="8" fill="#6B8F5E" opacity="0.4" transform="rotate(15 230 180)"/>
+        <!-- Small accent branch -->
+        <path d="M280 20 C260 50 255 80 260 120" stroke="#9BC48E" stroke-width="1" fill="none" opacity="0.4"/>
+        <ellipse cx="270" cy="45" rx="14" ry="7" fill="#B8D4A8" opacity="0.5" transform="rotate(30 270 45)"/>
+        <ellipse cx="260" cy="80" rx="12" ry="6" fill="#A8C89E" opacity="0.4" transform="rotate(-25 260 80)"/>
+        <!-- Round eucalyptus leaves -->
+        <circle cx="285" cy="85" r="8" fill="#9BC48E" opacity="0.35"/>
+        <circle cx="250" cy="120" r="7" fill="#A8C89E" opacity="0.3"/>
+        <circle cx="210" cy="150" r="6" fill="#B8D4A8" opacity="0.35"/>
       </svg>
     </div>
-    <!-- Eucalyptus leaves bottom-right -->
-    <div class="splash-leaves-br">
-      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M80 280 C80 280 75 200 90 150 C105 100 85 50 95 20" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.6"/>
-        <ellipse cx="75" cy="240" rx="18" ry="30" fill="#B8D4B0" opacity="0.5" transform="rotate(-20 75 240)"/>
-        <ellipse cx="95" cy="200" rx="15" ry="25" fill="#A3C9A0" opacity="0.45" transform="rotate(15 95 200)"/>
-        <ellipse cx="80" cy="160" rx="16" ry="28" fill="#8BA888" opacity="0.4" transform="rotate(-10 80 160)"/>
-        <ellipse cx="92" cy="120" rx="14" ry="22" fill="#B8D4B0" opacity="0.5" transform="rotate(20 92 120)"/>
-        <ellipse cx="85" cy="80" rx="12" ry="20" fill="#A3C9A0" opacity="0.35" transform="rotate(-15 85 80)"/>
-        <ellipse cx="90" cy="45" rx="10" ry="16" fill="#8BA888" opacity="0.3" transform="rotate(10 90 45)"/>
-        <path d="M120 260 C120 260 130 200 115 160 C100 120 125 80 110 40" stroke="#A3C9A0" stroke-width="1" fill="none" opacity="0.4"/>
-        <ellipse cx="125" cy="220" rx="14" ry="22" fill="#C8E0C0" opacity="0.4" transform="rotate(25 125 220)"/>
-        <ellipse cx="112" cy="180" rx="12" ry="20" fill="#B8D4B0" opacity="0.35" transform="rotate(-18 112 180)"/>
-        <ellipse cx="120" cy="140" rx="11" ry="18" fill="#A3C9A0" opacity="0.3" transform="rotate(12 120 140)"/>
-        <ellipse cx="115" cy="100" rx="10" ry="16" fill="#C8E0C0" opacity="0.35" transform="rotate(-8 115 100)"/>
+    <!-- Foliage bottom-left -->
+    <div class="splash-foliage-bl">
+      <svg viewBox="0 0 280 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main branch -->
+        <path d="M0 300 C40 270 80 220 100 170 C120 120 110 80 120 20" stroke="#6B8F5E" stroke-width="2" fill="none" opacity="0.7"/>
+        <!-- Large leaves -->
+        <ellipse cx="30" cy="275" rx="28" ry="13" fill="#8BAF7E" opacity="0.6" transform="rotate(35 30 275)"/>
+        <ellipse cx="55" cy="245" rx="30" ry="13" fill="#6B8F5E" opacity="0.55" transform="rotate(-20 55 245)"/>
+        <ellipse cx="75" cy="210" rx="32" ry="14" fill="#9BC48E" opacity="0.5" transform="rotate(28 75 210)"/>
+        <ellipse cx="90" cy="175" rx="26" ry="11" fill="#7AA36D" opacity="0.6" transform="rotate(-15 90 175)"/>
+        <ellipse cx="100" cy="140" rx="28" ry="12" fill="#8BAF7E" opacity="0.5" transform="rotate(25 100 140)"/>
+        <ellipse cx="108" cy="105" rx="22" ry="10" fill="#6B8F5E" opacity="0.45" transform="rotate(-22 108 105)"/>
+        <ellipse cx="115" cy="70" rx="20" ry="9" fill="#9BC48E" opacity="0.4" transform="rotate(18 115 70)"/>
+        <!-- Secondary branch -->
+        <path d="M0 250 C30 240 60 200 70 160 C80 120 75 90 80 50" stroke="#7AA36D" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <ellipse cx="25" cy="250" rx="20" ry="9" fill="#A8C89E" opacity="0.5" transform="rotate(30 25 250)"/>
+        <ellipse cx="50" cy="215" rx="22" ry="9" fill="#7AA36D" opacity="0.45" transform="rotate(-25 50 215)"/>
+        <ellipse cx="65" cy="175" rx="20" ry="8" fill="#8BAF7E" opacity="0.5" transform="rotate(20 65 175)"/>
+        <!-- Round eucalyptus leaves -->
+        <circle cx="20" cy="265" r="7" fill="#9BC48E" opacity="0.35"/>
+        <circle cx="45" cy="230" r="6" fill="#A8C89E" opacity="0.3"/>
+        <circle cx="80" cy="190" r="8" fill="#B8D4A8" opacity="0.35"/>
       </svg>
     </div>
 
     <div class="splash-inner">
-      <p class="splash-kicker">&iexcl;Nos casamos!</p>
-      <h1 class="splash-name">LUCIANA<span class="ampersand">&amp;</span>GONZALO</h1>
-      <div class="splash-date">
-        <span class="date-month">MAR</span>
-        <span class="date-day">14</span>
-        <span class="date-year">2027</span>
+      <h1 class="splash-name"><span class="name-line">Luciana</span><span class="name-line">Daniel</span></h1>
+      <div class="splash-info">
+        <p class="info-title">Nuestra boda</p>
+        <div class="info-date">
+          <span class="d-side">S&aacute;bado</span>
+          <div class="d-center">
+            <span class="d-num">14</span>
+            <span class="d-month">Marzo</span>
+          </div>
+          <span class="d-side">A las 17:30</span>
+        </div>
+        <p class="info-place">Quinta Los Robles, Santa Fe</p>
       </div>
       <button type="button" class="splash-btn" id="enterBtn">
         Abrir invitaci&oacute;n
