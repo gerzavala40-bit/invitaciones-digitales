@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Update Prisma schema to add qrCode field to RSVP model, update the RSVP API to generate a unique QR code on confirmation, and create the /api/scan endpoint for QR validation at the event door.",
+  "status": "completed",
+  "steps": [
+    "In prisma/schema.prisma, add a 'qrCode' field (String, @unique, optional/nullable) to the RSVP model. This will store a UUID that uniquely identifies each guest's QR entry pass.",
+    "Run 'npx prisma generate' to regenerate the Prisma client with the new field.",
+    "Update src/app/api/rsvp/route.ts POST handler: after creating the RSVP, generate a UUID (using the 'uuid' package already installed) and update the RSVP record with it. Return the qrCode in the response alongside the existing data. Import { v4 as uuidv4 } from 'uuid'.",
+    "Update the RsvpForm component at src/components/templates/shared/RsvpForm.tsx to show the QR entry link after successful RSVP. After the form submission succeeds, display a link to /mi-entrada/[qrCode] so the guest can access their QR pass. Store the returned qrCode from the API response.",
+    "Create src/app/api/scan/route.ts with a POST handler that: accepts { qrCode, pin } in the body, validates the PIN against env var SCANNER_PIN (default '1234' in dev), looks up the RSVP by qrCode field, checks if already attended, marks as attended if valid, returns guest name, count, and status. Follow the pattern of the existing /api/checkin/route.ts but use qrCode instead of rsvpId and add PIN protection.",
+    "Add a 'scanSchema' to src/lib/validators.ts for validating the /api/scan request body (qrCode: string, pin: string)."
+  ],
+  "acceptance_criteria": [
+    "prisma/schema.prisma has qrCode String? @unique field on RSVP model",
+    "npx prisma generate succeeds without errors",
+    "POST /api/rsvp returns a qrCode field (UUID) in the response",
+    "POST /api/scan validates PIN, looks up RSVP by qrCode, marks attended, returns guest info",
+    "RsvpForm shows a link to /mi-entrada/[code] after successful confirmation",
+    "npx next build passes successfully"
+  ],
+  "verification": [
+    "Run 'cd /projects/sandbox/invitaciones-digitales && npx prisma generate' and confirm exit code 0",
+    "Run 'cd /projects/sandbox/invitaciones-digitales && npx next build' and confirm exit code 0 with /api/scan in the output"
+  ],
+  "blocked_reason": null,
+  "findings": "All steps implemented and verified. prisma generate and next build both pass. /api/scan route appears in build output. uuid import works with v14 using { v4 as uuidv4 } syntax."
+}

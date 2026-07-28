@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create the /mi-entrada/[code] page where guests see their QR code, the /scanner page with camera QR reader and PIN protection, and enhance the /admin panel with real-time guest stats (confirmed, entered, pending).",
+  "status": "completed",
+  "steps": [
+    "Create src/app/mi-entrada/[code]/page.tsx - a server component that: looks up the RSVP by qrCode field, displays the guest name, event title (join with Event), and renders the QR code image using qrcode.react (QRCodeSVG). The QR code content should be the qrCode UUID string itself (which the scanner will read and send to /api/scan). Show a nice mobile-friendly card layout. If qrCode not found, show a 'not found' message. Use the 'use client' directive only if needed for QRCodeSVG, or wrap it in a client component.",
+    "Create src/app/mi-entrada/[code]/QrDisplay.tsx - a client component that receives the qrCode string and renders it as a QR code using QRCodeSVG from 'qrcode.react'. Make it large (256x256) and centered.",
+    "Create src/app/scanner/page.tsx - a client component page with: (1) a PIN entry screen (4-digit input, checks against /api/scan), (2) once PIN is verified locally (store in state), show the camera QR scanner using Html5QrcodeScanner (same pattern as /admin/events/[id]/puerta/page.tsx), (3) when a QR is scanned, call POST /api/scan with { qrCode: scannedText, pin: storedPin }, (4) display result (green for success, red for already entered or not found), (5) button to scan next guest. Style it for dark mode (bg-black text-white) since it will be used at event doors.",
+    "Update src/app/admin/events/[id]/page.tsx to add access control stats: show counts for 'Confirmados', 'Ingresaron', 'Pendientes de ingreso'. Add a column to the RSVP table showing entry status (green badge for 'Ingreso' if attended=true, gray for 'Pendiente'). Add a link to the /admin/events/[id]/puerta scanner page.",
+    "Update the Content-Security-Policy in next.config.ts to allow camera access on the scanner page. Change the Permissions-Policy header from 'camera=()' to 'camera=(self)' so the scanner can use the device camera.",
+    "Update src/middleware.ts to NOT protect /mi-entrada routes (they should be publicly accessible). Also do NOT protect /scanner (it has its own PIN protection). The existing matcher already only matches /admin/:path* and /api/events/:path* and /api/rsvp/export/:path*, so this should already be fine - but verify and note in findings."
+  ],
+  "acceptance_criteria": [
+    "/mi-entrada/[code] page renders a QR code SVG for a valid qrCode",
+    "/scanner page shows PIN entry first, then camera scanner after PIN is entered",
+    "/scanner page calls /api/scan with qrCode and pin, shows result",
+    "/admin/events/[id] page shows entry stats (confirmed, entered, pending) and attended status column",
+    "next.config.ts allows camera permission via Permissions-Policy",
+    "npx next build passes with all new routes appearing in output"
+  ],
+  "verification": [
+    "Run 'cd /projects/sandbox/invitaciones-digitales && npx next build' and confirm exit code 0",
+    "Verify new routes /mi-entrada/[code] and /scanner appear in the build output"
+  ],
+  "blocked_reason": null,
+  "findings": "Middleware matcher already excludes /mi-entrada and /scanner (only protects /admin/:path*, /api/events/:path*, /api/rsvp/export/:path*), so no changes needed. Build passes with all new routes visible: /mi-entrada/[code] (dynamic), /scanner (static). Permissions-Policy updated to camera=(self)."
+}

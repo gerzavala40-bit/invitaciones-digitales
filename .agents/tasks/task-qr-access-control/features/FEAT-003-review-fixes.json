@@ -1,0 +1,22 @@
+{
+  "id": "FEAT-003-review-fixes",
+  "type": "fix",
+  "description": "Address code review issues: add rate limiting to /api/scan, fix admin scanner link, fix scanner camera race condition.",
+  "status": "completed",
+  "steps": [
+    "Add rate limiting to /api/scan using existing rateLimit utility from src/lib/rate-limit.ts, keyed on IP (10 requests per minute)",
+    "Fix admin events page link: change 'Abrir Scanner de Puerta' href from /admin/events/${id}/puerta to /scanner so it uses the correct qrCode-based flow",
+    "Fix scanner cleanup race condition: add scannerReady state with 500ms delay between scanner sessions to allow camera release before re-initialization"
+  ],
+  "acceptance_criteria": [
+    "/api/scan returns 429 when rate limit is exceeded",
+    "Admin events page 'Abrir Scanner de Puerta' link points to /scanner",
+    "Scanner page waits 500ms after clearing before re-initializing camera",
+    "npx next build passes"
+  ],
+  "verification": [
+    "Run 'cd /projects/sandbox/invitaciones-digitales && npx next build' and confirm exit code 0"
+  ],
+  "blocked_reason": null,
+  "findings": "Issue #5 (guest entry page accessible without auth) was left as-is per review guidance since UUIDs are unguessable by design. All other issues resolved."
+}

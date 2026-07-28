@@ -1,0 +1,14 @@
+{
+  "task_id": "task-qr-access-control",
+  "task_description": "Build a QR-based event access control system: update Prisma schema with qrCode field, create /api/scan endpoint, create /mi-entrada/[code] page for guests to see their QR, create /scanner page with camera reader and PIN protection, and enhance admin panel with entry stats.",
+  "status": "completed",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003-review-fixes"],
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "npx next build exits with code 0. All new routes appear in output: /api/scan, /mi-entrada/[code], /scanner. Review fixes applied: rate limiting on /api/scan, admin scanner link corrected, camera race condition resolved."
+  }
+}

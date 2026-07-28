@@ -1,0 +1,31 @@
+{
+  "project_type": "Next.js App Router with Prisma ORM - digital event invitation platform",
+  "language": "TypeScript",
+  "build_system": "Next.js (npx next build). Prisma generate runs before build. Deployed on Vercel.",
+  "test_framework": "No test framework configured. Validation is via build success.",
+  "build_command": "cd /projects/sandbox/invitaciones-digitales && npx next build",
+  "test_command": "cd /projects/sandbox/invitaciones-digitales && npx next build",
+  "verification_instructions": "Run npx next build and confirm it exits with code 0. All routes should appear in the output.",
+  "snapshot_or_generated_files": "Prisma Client is generated via 'npx prisma generate'. The .next/ directory is the build output (gitignored).",
+  "setup_instructions": "npm install, then npx prisma generate. Build with npx next build.",
+  "environment_constraints": "OPEN_INTERNET - full network access. No DATABASE_URL configured (uses placeholder from .env.example). Build works without DB connection since Prisma only needs to generate client types.",
+  "contribution_requirements": "AGENTS.md says: Read node_modules/next/dist/docs/ guides before writing code. Next.js 16 with App Router. Params in dynamic routes are Promises (must await params).",
+  "key_patterns": "1) Prisma singleton in src/lib/prisma.ts. 2) API routes use NextResponse, return JSON. 3) Rate limiting via src/lib/rate-limit.ts. 4) Validation via Zod schemas in src/lib/validators.ts. 5) Admin auth via middleware checking admin_session cookie (cookie-based, not JWT). 6) Dynamic pages use 'params: Promise<{...}>' pattern (Next.js 16). 7) Client components use 'use client' directive. 8) Already has html5-qrcode and qrcode.react in dependencies. 9) Already has uuid package. 10) Existing /api/checkin route validates rsvpId and marks attended. 11) Existing /admin/events/[id]/puerta page has QR scanner using Html5QrcodeScanner.",
+  "relevant_files": [
+    "prisma/schema.prisma",
+    "src/app/api/rsvp/route.ts",
+    "src/app/api/checkin/route.ts",
+    "src/app/admin/events/[id]/puerta/page.tsx",
+    "src/app/admin/events/[id]/page.tsx",
+    "src/app/admin/page.tsx",
+    "src/lib/prisma.ts",
+    "src/lib/validators.ts",
+    "src/lib/auth.ts",
+    "src/lib/rate-limit.ts",
+    "src/middleware.ts",
+    "src/components/templates/shared/RsvpForm.tsx",
+    "next.config.ts",
+    "package.json"
+  ],
+  "directory_structure": "src/app/ - Next.js App Router pages and API routes. src/components/ - React components (templates, shared). src/lib/ - utilities (prisma, auth, validators, rate-limit). prisma/ - schema and migrations. public/ - static files."
+}
