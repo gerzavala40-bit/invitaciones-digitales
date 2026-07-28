@@ -3,40 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- ========== EDITAR META SEO ========== -->
   <title>Baby Shower de Malena</title>
-  <meta name="description" content="Baby Shower" />
-  <meta name="theme-color" content="#FBEAF0" />
+  <meta name="description" content="Baby Shower de Malena - 3 de septiembre" />
+  <meta name="theme-color" content="#FDF5F0" />
   <meta property="og:title" content="Baby Shower de Malena" />
-  <meta property="og:description" content="Jueves 3 de septiembre · 13:00 hs · Casa de la familia. Abrí la invitación." />
+  <meta property="og:description" content="3 de septiembre · 13:00 hs. Abrí la invitación." />
   <meta property="og:type" content="website" />
-  <!-- <meta property="og:image" content="[URL_IMAGEN_PORTADA]" /> -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 
   <style>
-    /* =========================================================
-       PALETA — editá estas variables para cambiar toda la look
-       ========================================================= */
     :root {
-      --bg: #FFF6F9;
-      --bg-soft: #FDEAF1;
+      --bg: #FDF5F0;
+      --bg-soft: #FBE8E0;
       --bg-card: #FFFFFF;
-      --text: #5A2A3C;
-      --text-muted: rgba(90, 42, 60, 0.55);
-      --accent: #F4A6C6;          /* rosa divertido */
-      --accent-deep: #E96FA0;
-      --gold: #F7C948;            /* amarillo bebé, contraste divertido */
-      --gold-soft: #FBE29B;
-      --line: rgba(90, 42, 60, 0.1);
+      --text: #5C3D2E;
+      --text-muted: rgba(92, 61, 46, 0.6);
+      --accent: #E8A0B4;
+      --accent-deep: #D4728C;
+      --gold: #C9956B;
+      --gold-soft: #F0D6B8;
+      --star-pink: #E8A0B4;
+      --line: rgba(92, 61, 46, 0.1);
       --success: #25D366;
       --font-display: "Fredoka", system-ui, sans-serif;
-      --font-script: "Caveat", cursive;
+      --font-script: "Dancing Script", cursive;
+      --font-handwritten: "Amatic SC", cursive;
       --font-body: "Montserrat", system-ui, sans-serif;
       --radius: 20px;
-      --shadow: 0 20px 50px rgba(233, 111, 160, 0.18);
+      --shadow: 0 20px 50px rgba(212, 114, 140, 0.12);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,6 +53,63 @@
     a { color: inherit; }
     button, input, select, textarea { font-family: inherit; }
 
+
+    /* ---------- STARS DECORATION ---------- */
+    .stars-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hanging-star {
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hanging-star .string {
+      width: 2px;
+      background: var(--star-pink);
+      opacity: 0.6;
+    }
+    .hanging-star .star-shape {
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
+    .hanging-star .star-shape svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--star-pink);
+      filter: drop-shadow(0 3px 6px rgba(232, 160, 180, 0.3));
+    }
+    .hanging-star:nth-child(1) { left: 15%; }
+    .hanging-star:nth-child(1) .string { height: 45px; }
+    .hanging-star:nth-child(2) { left: 42%; }
+    .hanging-star:nth-child(2) .string { height: 25px; }
+    .hanging-star:nth-child(2) .star-shape { width: 30px; height: 30px; }
+    .hanging-star:nth-child(3) { left: 70%; }
+    .hanging-star:nth-child(3) .string { height: 55px; }
+    .hanging-star:nth-child(4) { left: 85%; }
+    .hanging-star:nth-child(4) .string { height: 35px; }
+    .hanging-star:nth-child(4) .star-shape { width: 25px; height: 25px; }
+
+    /* Polka dots background pattern */
+    .dots-pattern {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image: radial-gradient(circle, var(--accent) 4px, transparent 4px);
+      background-size: 40px 40px;
+      background-position: 10px 10px;
+    }
+
+
     /* ---------- SPLASH / BIENVENIDA ---------- */
     #splash {
       position: fixed; inset: 0; z-index: 200;
@@ -64,55 +119,43 @@
       padding: 2rem;
       background: var(--bg);
       transition: opacity 0.75s ease, visibility 0.75s ease;
+      overflow: hidden;
     }
     #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-    #splash::before {
-      content: "";
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 25%, rgba(244, 166, 198, 0.35), transparent 55%),
-        radial-gradient(ellipse at 50% 85%, rgba(247, 201, 72, 0.18), transparent 45%);
-      pointer-events: none;
-    }
+
     .splash-inner { position: relative; z-index: 1; max-width: 340px; }
-    .splash-ornament {
-      font-size: 2.2rem;
-      letter-spacing: 0.3em;
-      margin-bottom: 1.25rem;
-      opacity: 0.9;
-      animation: pulse-soft 3s ease-in-out infinite;
-    }
     .splash-label {
-      font-size: 0.7rem;
+      font-family: var(--font-handwritten);
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent-deep);
-      margin-bottom: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
     }
     .splash-kicker {
-      font-size: 0.8rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
-      -webkit-text-stroke: 0.3px var(--gold);
-      font-weight: 700;
+      color: var(--text-muted);
+      font-weight: 600;
       margin-bottom: 0.5rem;
     }
     .splash-name {
       font-family: var(--font-script);
-      font-size: clamp(3.2rem, 16vw, 4.5rem);
+      font-size: clamp(3.5rem, 18vw, 5rem);
       font-weight: 700;
       line-height: 1;
       color: var(--accent-deep);
+      margin-bottom: 0.5rem;
     }
     .splash-date {
-      margin-top: 1.4rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 500;
     }
     .splash-btn {
       margin-top: 2.5rem;
@@ -131,21 +174,38 @@
       text-transform: uppercase;
       border-radius: 999px;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(233, 111, 160, 0.35);
+      box-shadow: 0 12px 28px rgba(212, 114, 140, 0.3);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .splash-btn:hover, .splash-btn:active { transform: translateY(-2px); }
-    .splash-hint {
-      margin-top: 1.4rem;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+
+
+    /* ---------- ELEPHANTS SVG ---------- */
+    .elephants-container {
+      margin: 1.5rem auto;
+      width: 180px;
+      height: 140px;
+      position: relative;
     }
 
-    @keyframes pulse-soft {
-      0%, 100% { opacity: 0.75; transform: scale(1) rotate(-2deg); }
-      50% { opacity: 1; transform: scale(1.08) rotate(2deg); }
+    /* ---------- PINK BAND ---------- */
+    .pink-band {
+      background: var(--bg-soft);
+      padding: 1rem 1.5rem;
+      margin: 0.5rem -1.5rem;
+      position: relative;
     }
+    .pink-band::before,
+    .pink-band::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.3;
+    }
+    .pink-band::before { top: 0; }
+    .pink-band::after { bottom: 0; }
 
     /* ---------- MAIN ---------- */
     #main { opacity: 0; transition: opacity 0.55s ease 0.15s; }
@@ -173,9 +233,9 @@
       margin-bottom: 1rem;
     }
     h1 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: clamp(2.4rem, 11vw, 3.1rem);
+      font-family: var(--font-script);
+      font-weight: 700;
+      font-size: clamp(3rem, 14vw, 4rem);
       line-height: 1.1;
       color: var(--accent-deep);
     }
@@ -184,7 +244,7 @@
       font-weight: 600;
       font-size: clamp(1.7rem, 6.5vw, 2.1rem);
       margin-bottom: 0.75rem;
-      color: var(--accent-deep);
+      color: var(--text);
     }
     .lead {
       font-size: 0.95rem;
@@ -193,46 +253,20 @@
       max-width: 320px;
       margin: 0 auto 1.75rem;
     }
-    .script {
-      font-family: var(--font-script);
-      font-weight: 700;
-      font-size: clamp(2rem, 7vw, 2.6rem);
-      color: var(--accent-deep);
-      line-height: 1.25;
-    }
+
 
     /* HERO */
     .hero {
-      background:
-        radial-gradient(ellipse at 50% 15%, rgba(244, 166, 198, 0.3), transparent 55%),
-        radial-gradient(ellipse at 15% 85%, rgba(247, 201, 72, 0.2), transparent 45%),
-        var(--bg);
-    }
-    .hero-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #fff;
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 0 0 6px var(--accent), 0 16px 30px rgba(233, 111, 160, 0.25);
-      background: var(--bg-soft);
-    }
-    .hero-photo.placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-script);
-      font-size: 2.5rem;
-      color: var(--accent-deep);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
     }
     .hero-kicker {
-      font-size: 0.75rem;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-family: var(--font-handwritten);
+      font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
     }
     .hero-date {
       margin: 1.25rem 0 1.75rem;
@@ -256,7 +290,7 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 0.85rem 0.4rem 0.7rem;
-      box-shadow: 0 8px 20px rgba(233, 111, 160, 0.1);
+      box-shadow: 0 8px 20px rgba(212, 114, 140, 0.08);
     }
     .countdown .n {
       font-family: var(--font-display);
@@ -297,9 +331,9 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--accent-deep), var(--accent));
       color: #fff;
-      box-shadow: 0 10px 30px rgba(233, 111, 160, 0.35);
+      box-shadow: 0 10px 30px rgba(212, 114, 140, 0.3);
     }
-    .btn-primary:hover { box-shadow: 0 14px 36px rgba(233, 111, 160, 0.45); }
+    .btn-primary:hover { box-shadow: 0 14px 36px rgba(212, 114, 140, 0.4); }
     .btn-outline {
       background: #fff;
       color: var(--accent-deep);
@@ -314,6 +348,7 @@
     .btn-full { width: 100%; }
     .btn-row { display: flex; flex-direction: column; gap: 0.75rem; }
 
+
     /* Cards */
     .card {
       background: var(--bg-card);
@@ -322,12 +357,9 @@
       padding: 1.6rem 1.35rem;
       margin-bottom: 0.85rem;
       text-align: center;
-      box-shadow: 0 10px 26px rgba(233, 111, 160, 0.08);
+      box-shadow: 0 10px 26px rgba(212, 114, 140, 0.06);
     }
-    .card .icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-    }
+    .card .icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
     .card h3 {
       font-family: var(--font-display);
       font-size: 1.3rem;
@@ -355,7 +387,7 @@
       text-transform: uppercase;
       color: var(--accent-deep);
       text-decoration: none;
-      border-bottom: 1px solid rgba(233, 111, 160, 0.35);
+      border-bottom: 1px solid rgba(212, 114, 140, 0.35);
       padding-bottom: 2px;
     }
 
@@ -365,7 +397,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 1.5rem 1.25rem;
-      box-shadow: 0 10px 26px rgba(233, 111, 160, 0.08);
+      box-shadow: 0 10px 26px rgba(212, 114, 140, 0.06);
     }
     .alias-box .label {
       font-size: 0.65rem;
@@ -406,7 +438,8 @@
     }
     .copy-btn.ok { border-color: var(--gold); color: var(--text); background: var(--gold-soft); }
 
-    /* Pills (sugerencias / lista deseos) */
+
+    /* Pills */
     .pills {
       display: flex;
       flex-wrap: wrap;
@@ -445,21 +478,12 @@
       overflow: hidden;
     }
     .gallery .ph.wide { grid-column: span 2; aspect-ratio: 2.1 / 1; }
-    .gallery .ph img { width: 100%; height: 100%; object-fit: cover; }
-    .hashtag {
-      margin-top: 1.25rem;
-      font-size: 1rem;
-      color: var(--accent-deep);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      font-family: var(--font-display);
-    }
 
     /* Closing */
     .close-section {
-      background:
-        radial-gradient(ellipse at 50% 55%, rgba(244, 166, 198, 0.3), transparent 50%),
-        var(--bg);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
     }
     .close-quote {
       font-family: var(--font-script);
@@ -497,6 +521,7 @@
       letter-spacing: 0.06em;
     }
 
+
     /* Music button */
     .music-btn {
       position: fixed;
@@ -522,6 +547,11 @@
       background: var(--accent-deep);
       color: #fff;
       animation: pulse-soft 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.08); }
     }
 
     /* Scroll cue */
@@ -569,10 +599,10 @@
     }
     #toast.show { display: block; }
 
-    /* Modal regalos */
+    /* Modal */
     .modal-backdrop {
       position: fixed; inset: 0; z-index: 150;
-      background: rgba(90, 42, 60, 0.45);
+      background: rgba(92, 61, 46, 0.4);
       backdrop-filter: blur(6px);
       display: none;
       align-items: flex-end;
@@ -615,74 +645,23 @@
       .modal-backdrop { align-items: center; }
       .modal { border-radius: 24px; }
     }
-  </style>
 
-  
+    /* Bottom pink band for splash */
+    .splash-bottom-band {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 15%;
+      background: var(--bg-soft);
+      border-radius: 60% 60% 0 0 / 100% 100% 0 0;
+    }
 
-  <!-- SPLASH SCREEN CSS -->
-  <style>
-    body.locked {
-      overflow: hidden;
-      height: 100vh;
-    }
-    .splash-screen {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: #fafafa;
-      background-image: url('https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1920&q=80');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      z-index: 99999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 12vh;
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
-    }
-    @media (min-width: 768px) {
-      .splash-screen {
-        background-size: contain;
-      }
-    }
-    .splash-screen.slide-up {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-    .splash-content {
-      text-align: center;
-      animation: fadeIn 2s ease forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .btn-abrir {
-      background: rgba(255, 255, 255, 0.95);
-      color: #333;
-      border: 1px solid #555;
-      padding: 15px 40px;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      margin-bottom: 15px;
-    }
-    .btn-abrir:hover {
-      background: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
-    .splash-hint {
-      color: #666;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin: 0;
+    /* Flower decorations */
+    .flower-deco {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -690,43 +669,84 @@
 
 <body class="locked">
 
-  <!-- ============================================================
-       CONFIGURACIÓN RÁPIDA (también buscá [PLACEHOLDERS] en el HTML)
-       ============================================================
-       NOMBRE           → Malena
-       FECHA            → 2026-09-03T13:00:00-03:00  (ISO para countdown)
-       FECHA_LARGA      → Jueves 3 de septiembre de 2026
-       HORA             → 13:00 hs
-       LUGAR            → Casa de la familia
-       DIRECCION        → Calle Cualquiera 123, Cualquier Lugar
-       URL_MAPS         → link de Google Maps
-       ALIAS / CBU      → datos de pago (opcional)
-       WA_NUMBER        → 54911XXXXXXXX (código país + número)
-       MUSICA           → musica.mp3 en la misma carpeta
-       ============================================================ -->
-
-  <!-- Audio de fondo: poné tu archivo como musica.mp3 al lado de este HTML -->
   <audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
     <source src="musica.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- ========== BIENVENIDA ========== -->
+  <!-- ========== SPLASH SCREEN ========== -->
   <div id="splash" role="dialog" aria-label="Bienvenida">
+    <!-- Stars decoration -->
+    <div class="stars-container">
+      <div class="hanging-star">
+        <div class="string"></div>
+        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+      </div>
+      <div class="hanging-star">
+        <div class="string"></div>
+        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+      </div>
+      <div class="hanging-star">
+        <div class="string"></div>
+        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+      </div>
+      <div class="hanging-star">
+        <div class="string"></div>
+        <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+      </div>
+    </div>
+    <!-- Dots pattern -->
+    <div class="dots-pattern"></div>
+    <!-- Bottom pink band -->
+    <div class="splash-bottom-band"></div>
+
     <div class="splash-inner">
-      <div class="splash-ornament" aria-hidden="true">🎈🍼🎈</div>
-      <p class="splash-label">Baby Shower</p>
-      <p class="splash-kicker">Ya casi llega</p>
+      <p class="splash-label">Baby shower de</p>
       <h1 class="splash-name">Malena</h1>
-      <p class="splash-date">3 · 09 · 2026</p>
+      <p class="splash-date">3 de septiembre &middot; 1PM</p>
+
+      <!-- Elephants SVG illustration -->
+      <div class="elephants-container">
+        <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Big elephant (mama) -->
+          <ellipse cx="110" cy="105" rx="40" ry="32" fill="#9B8EC2" opacity="0.85"/>
+          <ellipse cx="110" cy="100" rx="38" ry="30" fill="#A899CC"/>
+          <circle cx="130" cy="80" r="22" fill="#A899CC"/>
+          <ellipse cx="148" cy="88" rx="14" ry="18" fill="#9B8EC2" opacity="0.7"/>
+          <circle cx="135" cy="76" r="3" fill="#5C3D2E"/>
+          <ellipse cx="110" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
+          <ellipse cx="125" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
+          <ellipse cx="95" cy="135" rx="5" ry="9" fill="#8B7BB5"/>
+          <path d="M148 92 C155 100 158 108 152 112" stroke="#9B8EC2" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- Baby elephant -->
+          <ellipse cx="70" cy="115" rx="22" ry="18" fill="#B8ABD8" opacity="0.85"/>
+          <ellipse cx="70" cy="112" rx="20" ry="16" fill="#C4B8E0"/>
+          <circle cx="82" cy="98" r="14" fill="#C4B8E0"/>
+          <ellipse cx="93" cy="103" rx="8" ry="11" fill="#B8ABD8" opacity="0.7"/>
+          <circle cx="85" cy="95" r="2" fill="#5C3D2E"/>
+          <ellipse cx="65" cy="132" rx="4" ry="7" fill="#A899CC"/>
+          <ellipse cx="75" cy="132" rx="4" ry="7" fill="#A899CC"/>
+          <path d="M93 106 C97 111 99 116 95 118" stroke="#B8ABD8" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <!-- Flowers -->
+          <circle cx="55" cy="142" r="4" fill="#F7C948" opacity="0.8"/>
+          <circle cx="52" cy="140" r="2" fill="#E8A0B4"/>
+          <path d="M55 142 L55 152" stroke="#6B8F4A" stroke-width="1.5"/>
+          <circle cx="145" cy="142" r="4" fill="#F7C948" opacity="0.8"/>
+          <circle cx="148" cy="140" r="2" fill="#E8A0B4"/>
+          <path d="M145 142 L145 152" stroke="#6B8F4A" stroke-width="1.5"/>
+          <path d="M50 150 Q55 146 60 150" stroke="#6B8F4A" stroke-width="1" fill="none"/>
+          <path d="M140 150 Q145 146 150 150" stroke="#6B8F4A" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+
       <button type="button" class="splash-btn" id="enterBtn">
-        Abrir invitación
+        Abrir invitaci&oacute;n
       </button>
-      
     </div>
   </div>
 
-  <!-- Botón música (aparece al entrar) -->
-  <button type="button" class="music-btn" id="musicBtn" aria-label="Música de fondo" title="Música">♪</button>
+
+  <!-- Music button -->
+  <button type="button" class="music-btn" id="musicBtn" aria-label="Musica de fondo" title="Musica">&#9835;</button>
   <div id="toast" role="status"></div>
 
   <!-- ========== CONTENIDO ========== -->
@@ -734,47 +754,84 @@
 
     <!-- HERO + COUNTDOWN -->
     <section class="section hero" id="inicio">
+      <div class="stars-container" style="opacity: 0.5;">
+        <div class="hanging-star">
+          <div class="string"></div>
+          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        </div>
+        <div class="hanging-star">
+          <div class="string"></div>
+          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        </div>
+        <div class="hanging-star">
+          <div class="string"></div>
+          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        </div>
+        <div class="hanging-star">
+          <div class="string"></div>
+          <div class="star-shape"><svg viewBox="0 0 51 48"><path d="M25.5 0l6.5 16.5L50 19l-13 12 3.5 17L25.5 39 10.5 48 14 31 1 19l18-2.5z"/></svg></div>
+        </div>
+      </div>
+      <div class="dots-pattern" style="opacity: 0.15;"></div>
       <div class="wrap">
-        <!-- Foto circular: reemplazá src o dejá el placeholder -->
-        <!-- <img class="hero-photo" src="[URL_FOTO_PRINCIPAL]" alt="Malena" /> -->
-        <div class="hero-photo placeholder" aria-hidden="true">👶</div>
-
-        <p class="hero-kicker">Baby Shower de</p>
+        <p class="hero-kicker">Baby shower de</p>
         <h1>Malena</h1>
-        <p class="hero-date">Jueves 3 de septiembre · 13:00 hs</p>
+        <p class="hero-date">Jueves 3 de septiembre &middot; 13:00 hs</p>
 
         <div class="countdown" id="countdown" aria-live="polite">
-          <div><span class="n" id="cd-d">—</span><span class="l">Días</span></div>
-          <div><span class="n" id="cd-h">—</span><span class="l">Horas</span></div>
-          <div><span class="n" id="cd-m">—</span><span class="l">Min</span></div>
-          <div><span class="n" id="cd-s">—</span><span class="l">Seg</span></div>
+          <div><span class="n" id="cd-d">&mdash;</span><span class="l">D&iacute;as</span></div>
+          <div><span class="n" id="cd-h">&mdash;</span><span class="l">Horas</span></div>
+          <div><span class="n" id="cd-m">&mdash;</span><span class="l">Min</span></div>
+          <div><span class="n" id="cd-s">&mdash;</span><span class="l">Seg</span></div>
         </div>
 
         <a class="btn btn-primary" href="#cuando">Ver detalles</a>
       </div>
-      <div class="scroll-cue">Deslizá<span>↓</span></div>
+      <div class="scroll-cue">Desliz&aacute;<span>&darr;</span></div>
     </section>
 
     <!-- FRASE -->
     <section class="section" style="min-height: auto; padding-top: 4rem; padding-bottom: 3rem;">
       <div class="wrap reveal">
-        <p class="script">Una carita nueva está por llegar…</p>
+        <div class="elephants-container" style="width: 120px; height: 100px; margin-bottom: 1rem;">
+          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="110" cy="105" rx="40" ry="32" fill="#9B8EC2" opacity="0.85"/>
+            <ellipse cx="110" cy="100" rx="38" ry="30" fill="#A899CC"/>
+            <circle cx="130" cy="80" r="22" fill="#A899CC"/>
+            <ellipse cx="148" cy="88" rx="14" ry="18" fill="#9B8EC2" opacity="0.7"/>
+            <circle cx="135" cy="76" r="3" fill="#5C3D2E"/>
+            <ellipse cx="110" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
+            <ellipse cx="125" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
+            <ellipse cx="95" cy="135" rx="5" ry="9" fill="#8B7BB5"/>
+            <path d="M148 92 C155 100 158 108 152 112" stroke="#9B8EC2" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <ellipse cx="70" cy="115" rx="22" ry="18" fill="#B8ABD8" opacity="0.85"/>
+            <ellipse cx="70" cy="112" rx="20" ry="16" fill="#C4B8E0"/>
+            <circle cx="82" cy="98" r="14" fill="#C4B8E0"/>
+            <ellipse cx="93" cy="103" rx="8" ry="11" fill="#B8ABD8" opacity="0.7"/>
+            <circle cx="85" cy="95" r="2" fill="#5C3D2E"/>
+            <ellipse cx="65" cy="132" rx="4" ry="7" fill="#A899CC"/>
+            <ellipse cx="75" cy="132" rx="4" ry="7" fill="#A899CC"/>
+            <path d="M93 106 C97 111 99 116 95 118" stroke="#B8ABD8" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <p style="font-family: var(--font-script); font-size: clamp(1.8rem, 6vw, 2.4rem); color: var(--accent-deep); font-weight: 700; line-height: 1.3;">Una carita nueva est&aacute; por llegar&hellip;</p>
         <p class="lead" style="margin-top: 1rem; margin-bottom: 0;">
-          Acompañanos a festejar esta dulce espera.
+          Acompa&ntilde;anos a festejar esta dulce espera.
         </p>
       </div>
     </section>
 
-    <!-- CUÁNDO / DÓNDE -->
+
+    <!-- CUANDO / DONDE -->
     <section class="section" id="cuando">
       <div class="wrap">
-        <p class="eyebrow reveal">La celebración</p>
-        <h2 class="reveal">¿Cuándo & dónde?</h2>
+        <p class="eyebrow reveal">La celebraci&oacute;n</p>
+        <h2 class="reveal">&iquest;Cu&aacute;ndo &amp; d&oacute;nde?</h2>
         <p class="lead reveal">Todo listo para pasarla lindo en familia.</p>
 
         <div class="card reveal">
-          <div class="icon">🗓️</div>
-          <h3>¿Cuándo?</h3>
+          <div class="icon">&#128197;</div>
+          <h3>&iquest;Cu&aacute;ndo?</h3>
           <p>
             <strong>Jueves 3 de septiembre de 2026</strong>
             13:00 hs
@@ -782,15 +839,14 @@
         </div>
 
         <div class="card reveal">
-          <div class="icon">📍</div>
-          <h3>¿Dónde?</h3>
+          <div class="icon">&#128205;</div>
+          <h3>&iquest;D&oacute;nde?</h3>
           <p>
             <strong>Casa de la familia</strong>
             Calle Cualquiera 123, Cualquier Lugar
           </p>
-          <!-- EDITAR URL_MAPS -->
           <a class="link" href="https://www.google.com/maps/search/?api=1&query=Calle+Cualquiera+123" target="_blank" rel="noopener">
-            Cómo llegar →
+            C&oacute;mo llegar &rarr;
           </a>
         </div>
       </div>
@@ -802,11 +858,11 @@
         <p class="eyebrow">Para consentir a Malena</p>
         <h2>Lista de deseos</h2>
         <div class="card" style="margin-bottom: 0;">
-          <div class="icon">🎁</div>
+          <div class="icon">&#127873;</div>
           <h3>Ideas de regalo</h3>
-          <p>Si querés traerle algo, esto le vendría bárbaro</p>
+          <p>Si quer&eacute;s traerle algo, esto le vendr&iacute;a b&aacute;rbaro</p>
           <div class="pills">
-            <span>Pañales talle 1</span>
+            <span>Pa&ntilde;ales talle 1</span>
             <span>Toallitas</span>
             <span>Bodys</span>
             <span>Cositas de ropa</span>
@@ -818,10 +874,10 @@
     <!-- MESA DE REGALOS -->
     <section class="section" id="valor">
       <div class="wrap">
-        <p class="eyebrow reveal">Información</p>
+        <p class="eyebrow reveal">Informaci&oacute;n</p>
         <h2 class="reveal">Mesa de regalos</h2>
         <p class="lead reveal">
-          Tu presencia es el mejor regalo. Si deseás sumar un detalle:
+          Tu presencia es el mejor regalo. Si dese&aacute;s sumar un detalle:
         </p>
 
         <div class="alias-box reveal">
@@ -836,13 +892,14 @@
       </div>
     </section>
 
+
     <!-- RSVP -->
     <section class="section" id="rsvp">
       <div class="wrap">
         <p class="eyebrow reveal">Tu respuesta</p>
-        <h2 class="reveal">Confirmá tu asistencia</h2>
+        <h2 class="reveal">Confirm&aacute; tu asistencia</h2>
         <p class="lead reveal">
-          Por favor respondé antes del <strong style="color: var(--text);">20 de agosto de 2026</strong>.
+          Por favor respond&eacute; antes del <strong style="color: var(--text);">20 de agosto de 2026</strong>.
         </p>
 
         <div class="btn-row reveal">
@@ -857,15 +914,14 @@
       </div>
     </section>
 
-    <!-- GALERÍA -->
+    <!-- GALERIA -->
     <section class="section" id="fotos">
       <div class="wrap">
         <p class="eyebrow reveal">Momentos</p>
-        <h2 class="reveal">Galería</h2>
+        <h2 class="reveal">Galer&iacute;a</h2>
         <p class="lead reveal">Algunos instantes de esta dulce espera.</p>
 
         <div class="gallery reveal">
-          <!-- Reemplazá los .ph por <div class="ph"><img src="foto1.jpg" alt=""></div> -->
           <div class="ph">Foto 1</div>
           <div class="ph">Foto 2</div>
           <div class="ph wide">Foto portada</div>
@@ -873,101 +929,91 @@
           <div class="ph">Foto 4</div>
         </div>
 
-        <p class="hashtag reveal">#BabyShowerMalena</p>
+        <p style="margin-top: 1.25rem; font-size: 1rem; color: var(--accent-deep); font-weight: 700; letter-spacing: 0.02em; font-family: var(--font-display);" class="reveal">#BabyShowerMalena</p>
         <p class="lead reveal" style="margin-bottom: 0; margin-top: 0.5rem; font-size: 0.85rem;">
-          Usá el hashtag en tus stories y publicaciones.
+          Us&aacute; el hashtag en tus stories y publicaciones.
         </p>
       </div>
     </section>
+
 
     <!-- CIERRE -->
     <section class="section close-section" id="cierre">
+      <div class="dots-pattern" style="opacity: 0.12;"></div>
       <div class="wrap reveal">
-        <div style="font-size: 1.75rem; margin-bottom: 1.25rem;" aria-hidden="true">🎈👶🎈</div>
-        <p class="close-quote">“Con amor la esperamos…”</p>
-        <p class="lead" style="margin-bottom: 0;">Los esperamos con mucha alegría.</p>
+        <div class="elephants-container" style="width: 100px; height: 80px; margin-bottom: 1rem;">
+          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="110" cy="105" rx="40" ry="32" fill="#9B8EC2" opacity="0.85"/>
+            <ellipse cx="110" cy="100" rx="38" ry="30" fill="#A899CC"/>
+            <circle cx="130" cy="80" r="22" fill="#A899CC"/>
+            <ellipse cx="148" cy="88" rx="14" ry="18" fill="#9B8EC2" opacity="0.7"/>
+            <circle cx="135" cy="76" r="3" fill="#5C3D2E"/>
+            <ellipse cx="110" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
+            <ellipse cx="125" cy="135" rx="6" ry="10" fill="#8B7BB5"/>
+            <path d="M148 92 C155 100 158 108 152 112" stroke="#9B8EC2" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <ellipse cx="70" cy="115" rx="22" ry="18" fill="#B8ABD8" opacity="0.85"/>
+            <ellipse cx="70" cy="112" rx="20" ry="16" fill="#C4B8E0"/>
+            <circle cx="82" cy="98" r="14" fill="#C4B8E0"/>
+            <ellipse cx="93" cy="103" rx="8" ry="11" fill="#B8ABD8" opacity="0.7"/>
+            <circle cx="85" cy="95" r="2" fill="#5C3D2E"/>
+            <ellipse cx="65" cy="132" rx="4" ry="7" fill="#A899CC"/>
+            <ellipse cx="75" cy="132" rx="4" ry="7" fill="#A899CC"/>
+            <path d="M93 106 C97 111 99 116 95 118" stroke="#B8ABD8" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <p class="close-quote">&ldquo;Con amor la esperamos&hellip;&rdquo;</p>
+        <p class="lead" style="margin-bottom: 0;">Los esperamos con mucha alegr&iacute;a.</p>
         <p class="close-name">Familia de Malena</p>
         <p style="margin-top: 0.5rem; font-size: 0.75rem; letter-spacing: 0.16em; color: var(--text-muted);">
-          03 · 09 · 2026
+          03 &middot; 09 &middot; 2026
         </p>
       </div>
     </section>
 
-    
-  
-  
-  
-
-  
-  <!-- Contacto / Demo Info (Injected) -->
-  <style>
-    .contacto-footer-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .contacto-col { flex: 1; }
-    @media (min-width: 768px) {
+    <!-- Contacto / Demo Info -->
+    <style>
       .contacto-footer-wrap {
-        flex-direction: row;
-        justify-content: space-between;
+        display: flex; flex-direction: column; gap: 3rem;
+        max-width: 1000px; margin: 0 auto;
       }
-    }
-    .contacto-footer h5 {
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      color: #222;
-      text-transform: uppercase;
-    }
-    .contacto-footer p {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #666;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
-    .contacto-footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #555;
-      line-height: 2.2;
-    }
-    .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
-  </style>
-  <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
-    <div class="contacto-footer-wrap">
-      <div class="contacto-col">
-        <h5>¿Te gustó la invitación?</h5>
-        <p>¡Contactate y pedí la tuya!</p>
-        <ul>
-          <li><i class="fab fa-whatsapp" style="color: #61ce70; width: 30px; text-align: center;"></i> <a href="https://wa.me/5493425299942">¡Envianos un Whatsapp!</a></li>
-          <li><i class="fas fa-phone-alt" style="color: #333; width: 30px; text-align: center;"></i> +549 342 5299942</li>
-          <li><i class="fas fa-envelope" style="color: #333; width: 30px; text-align: center;"></i> teinvitoapp@gmail.com</li>
-        </ul>
+      .contacto-col { flex: 1; }
+      @media (min-width: 768px) {
+        .contacto-footer-wrap { flex-direction: row; justify-content: space-between; }
+      }
+      .contacto-footer h5 {
+        font-family: inherit; font-size: 1.1rem; font-weight: 400;
+        letter-spacing: 2px; margin-bottom: 20px; color: #222; text-transform: uppercase;
+      }
+      .contacto-footer p { font-size: 0.95rem; font-weight: 300; color: #666; margin-bottom: 25px; line-height: 1.8; }
+      .contacto-footer ul { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; font-weight: 300; color: #555; line-height: 2.2; }
+      .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
+    </style>
+    <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
+      <div class="contacto-footer-wrap">
+        <div class="contacto-col">
+          <h5>&iquest;Te gust&oacute; la invitaci&oacute;n?</h5>
+          <p>&iexcl;Contactate y ped&iacute; la tuya!</p>
+          <ul>
+            <li><a href="https://wa.me/5493425299942">&iexcl;Envianos un Whatsapp!</a></li>
+            <li>+549 342 5299942</li>
+            <li>teinvitoapp@gmail.com</li>
+          </ul>
+        </div>
+        <div class="contacto-col">
+          <h5>Seguinos en Instagram</h5>
+          <ul>
+            <li><a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="contacto-col">
-        <h5>Seguinos en Instagram</h5>
-        
-        <ul>
-          <li><i class="fab fa-instagram" style="color: #555; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
+    <footer>
       <div class="brand">Te <a href="https://www.teinvitoapp.com.ar" target="_blank" rel="noopener">Invito</a></div>
-      <p>Demo · Baby Shower Divertido Rosa</p>
+      <p>Demo &middot; Baby Shower Elefantes</p>
     </footer>
   </div>
+
 
   <!-- MODAL REGALOS / PAGO -->
   <div class="modal-backdrop" id="giftsModal" role="dialog" aria-modal="true" aria-labelledby="giftsTitle">
@@ -975,7 +1021,7 @@
       <div class="modal-inner">
         <button type="button" class="close-x" id="closeGifts" aria-label="Cerrar">&times;</button>
         <h3 id="giftsTitle">Datos de pago</h3>
-        <p class="lead" style="margin: 0.5rem 0 1.25rem;">Transferencia · Mercado Pago</p>
+        <p class="lead" style="margin: 0.5rem 0 1.25rem;">Transferencia &middot; Mercado Pago</p>
 
         <div class="alias-box" style="margin-bottom: 0.75rem;">
           <p class="label">Alias</p>
@@ -993,20 +1039,10 @@
   </div>
 
   <script>
-    /* ============================================================
-       CONFIG — editá solo este bloque para personalizar
-       ============================================================ */
     const CONFIG = {
-      // Fecha del evento (countdown). Formato ISO con zona AR -03:00
       eventDateISO: "2026-09-03T13:00:00-03:00",
-
-      // WhatsApp del anfitrión (código país + número, sin + ni espacios)
       waNumber: "5491234567678",
-
-      // Mensaje RSVP (se codifica solo)
-      waMessage: "¡Hola! Confirmo mi asistencia al baby shower de Malena 💕\n\nNombre:\nCantidad de personas:\nNotas:",
-
-      // Nombre para textos dinámicos del mensaje
+      waMessage: "Hola! Confirmo mi asistencia al baby shower de Malena\n\nNombre:\nCantidad de personas:\nNotas:",
       nombre: "Malena",
     };
 
@@ -1030,7 +1066,7 @@
     function setPlaying(on) {
       playing = !!on;
       musicBtn.classList.toggle("on", playing);
-      musicBtn.textContent = playing ? "❚❚" : "♪";
+      musicBtn.textContent = playing ? "\u275A\u275A" : "\u266B";
     }
 
     function playMusic() {
@@ -1041,48 +1077,35 @@
         if (p && typeof p.then === "function") {
           p.then(() => setPlaying(true)).catch(() => {
             setPlaying(false);
-            showToast("Tocá ♪ para activar la música");
+            showToast("Toca el boton de musica para activarla");
           });
         }
-      } catch (_) {
-        setPlaying(false);
-      }
+      } catch (_) { setPlaying(false); }
     }
 
     function enter() {
-      // play() dentro del gesto del usuario
       playMusic();
       splash.classList.add("hide");
       body.classList.remove("locked");
       main.classList.add("show");
       musicBtn.classList.add("visible");
-      // revelar elementos visibles
       requestAnimationFrame(() => observeReveals());
     }
 
-    enterBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      enter();
-    });
-    splash.addEventListener("click", () => {
-      if (!splash.classList.contains("hide")) enter();
-    });
+    enterBtn.addEventListener("click", (e) => { e.stopPropagation(); enter(); });
+    splash.addEventListener("click", () => { if (!splash.classList.contains("hide")) enter(); });
 
     musicBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      if (playing || !audio.paused) {
-        audio.pause();
-        setPlaying(false);
-      } else {
-        playMusic();
-      }
+      if (playing || !audio.paused) { audio.pause(); setPlaying(false); }
+      else { playMusic(); }
     });
 
     try { audio.load(); } catch (_) {}
 
+
     /* ---------- COUNTDOWN ---------- */
     const target = new Date(CONFIG.eventDateISO).getTime();
-
     function tick() {
       const diff = Math.max(0, target - Date.now());
       document.getElementById("cd-d").textContent = Math.floor(diff / 86400000);
@@ -1093,147 +1116,83 @@
     tick();
     setInterval(tick, 1000);
 
-    /* ---------- WHATSAPP RSVP ---------- */
-    (function buildWa() {
-      const msg = CONFIG.waMessage.replace(/\[NOMBRE\]/g, CONFIG.nombre);
-      const href = "https://wa.me/" + CONFIG.waNumber + "?text=" + encodeURIComponent(msg);
-      const el = document.getElementById("rsvpWa");
-      if (el && (el.getAttribute("href") || "").includes("[")) {
-        el.href = href;
-      }
-    })();
-
     /* ---------- COPY ---------- */
     function copyText(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
         const prev = btn.textContent;
-        btn.textContent = "¡Copiado!";
+        btn.textContent = "Copiado!";
         btn.classList.add("ok");
-        setTimeout(() => {
-          btn.textContent = prev;
-          btn.classList.remove("ok");
-        }, 2000);
+        setTimeout(() => { btn.textContent = prev; btn.classList.remove("ok"); }, 2000);
       }).catch(() => showToast("No se pudo copiar"));
     }
 
     document.querySelectorAll(".copy-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const text = (btn.getAttribute("data-copy") || "").trim();
-        if (text && !text.startsWith("[")) copyText(text, btn);
-        else showToast("Reemplazá el placeholder del alias/CBU");
+        if (text) copyText(text, btn);
       });
     });
 
     /* ---------- MODAL REGALOS ---------- */
     const giftsModal = document.getElementById("giftsModal");
-    document.getElementById("openGiftsBtn").addEventListener("click", () => {
-      giftsModal.classList.add("open");
-    });
-    document.getElementById("closeGifts").addEventListener("click", () => {
-      giftsModal.classList.remove("open");
-    });
-    giftsModal.addEventListener("click", (e) => {
-      if (e.target === giftsModal) giftsModal.classList.remove("open");
-    });
+    document.getElementById("openGiftsBtn").addEventListener("click", () => { giftsModal.classList.add("open"); });
+    document.getElementById("closeGifts").addEventListener("click", () => { giftsModal.classList.remove("open"); });
+    giftsModal.addEventListener("click", (e) => { if (e.target === giftsModal) giftsModal.classList.remove("open"); });
 
     /* ---------- REVEAL ON SCROLL ---------- */
     function observeReveals() {
       const els = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) {
-        els.forEach((el) => el.classList.add("in"));
-        return;
-      }
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((en) => {
-            if (en.isIntersecting) {
-              en.target.classList.add("in");
-              io.unobserve(en.target);
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-      );
+      if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("in")); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
       els.forEach((el) => io.observe(el));
     }
   </script>
 
-<script>
-  if (window.location.search.includes('preview=1')) {
-    document.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bgMusic');
-      if (audio) {
-        audio.pause();
-        audio.remove();
+  <!-- Preview mode: disable audio -->
+  <script>
+    if (window.location.search.includes('preview=1')) {
+      document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('bgMusic');
+        if (audio) { audio.pause(); audio.remove(); }
+        const musicBtn = document.querySelector('.music-btn');
+        if (musicBtn) { musicBtn.style.display = 'none'; }
+      });
+    }
+  </script>
+
+  <!-- Dynamic Name Injection -->
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var customName = params.get('customName');
+      if (customName) {
+        document.addEventListener('DOMContentLoaded', function() {
+          var h1 = document.querySelector('h1');
+          if (h1) h1.innerText = customName;
+          var splashName = document.querySelector('.splash-name');
+          if (splashName) splashName.innerText = customName;
+        });
       }
-      const musicBtn = document.querySelector('.music-btn');
-      if (musicBtn) {
-        musicBtn.style.display = 'none';
-      }
-    });
-  }
-</script>
+    })();
+  </script>
 
   <!-- Muro Social Floating Button -->
-  <a href="/demo-wall/upload" target="_blank" style="position: fixed; bottom: 90px; right: 20px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background-color: var(--primary, #d4af37); border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff; text-decoration: none; transition: transform 0.3s; animation: pulseCamera 2s infinite;">
+  <a href="/demo-wall/upload" target="_blank" style="position: fixed; bottom: 90px; right: 20px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background-color: var(--accent-deep); border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff; text-decoration: none; transition: transform 0.3s; animation: pulseCamera 2s infinite;">
     <svg style="width: 26px; height: 26px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
       <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
-    <div style="position: absolute; right: 65px; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; white-space: nowrap; pointer-events: none; opacity: 0.9;">📸 ¡Subí tus fotos!</div>
+    <div style="position: absolute; right: 65px; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; white-space: nowrap; pointer-events: none; opacity: 0.9;">&#128248; &iexcl;Sub&iacute; tus fotos!</div>
   </a>
   <style>
     @keyframes pulseCamera {
       0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-      50% { transform: scale(1.05); box-shadow: 0 4px 25px var(--primary, rgba(212,175,55,0.6)); }
+      50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(212,114,140,0.6); }
       100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
     }
   </style>
-\n
-<!-- Dynamic Name Injection -->
-<script>
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    var customName = params.get('customName');
-    if (customName) {
-      document.addEventListener('DOMContentLoaded', function() {
-        var h1 = document.querySelector('h1');
-        if (h1) h1.innerText = customName;
-        var splashName = document.querySelector('.splash-name');
-        if (splashName) splashName.innerText = customName;
-      });
-    }
-  })();
-</script>
 
-  <script>
-    // Injected Splash Screen Logic
-    document.addEventListener("DOMContentLoaded", function() {
-      const btnOpen = document.getElementById('btnOpenInvite');
-      if(btnOpen) {
-        btnOpen.addEventListener('click', () => {
-          document.getElementById('splashScreen').classList.add('slide-up');
-          document.body.classList.remove('locked');
-          
-          // Auto-play music if exists
-          const audio = document.getElementById('music');
-          if (audio) {
-            audio.play().catch(e => console.log('Autoplay prevent', e));
-            const musicBtn = document.getElementById('btnMusic');
-            const musicIcon = document.getElementById('iconMusic');
-            if (musicIcon) {
-               musicIcon.classList.remove('fa-play');
-               musicIcon.classList.add('fa-music');
-            }
-            if (musicBtn) {
-               musicBtn.style.animation = 'pulse-music 2s infinite';
-            }
-            // If the template uses isPlaying variable, we can't easily sync it here without breaking scope,
-            // but calling play() ensures it starts.
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>
