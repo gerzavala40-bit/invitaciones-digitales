@@ -62,12 +62,15 @@ model Event {
   
   // Funciones Premium
   guestbookEnabled Boolean  @default(false)
+  chatEnabled      Boolean  @default(false)
   
   // Relaciones
   photos       Photo[]
   rsvps        RSVP[]
   messages     GuestMessage[]
   timeline     TimelineItem[]
+  chatMessages ChatMessage[]
+  chatParticipants ChatParticipant[]
   
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -118,4 +121,39 @@ model Photo {
   isApproved   Boolean  @default(true)
   order        Int      @default(0)
   createdAt    DateTime @default(now())
+}
+
+
+
+model ChatParticipant {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  nickname     String
+  tableNumber  String
+  avatarColor  String   @default("#1E90FF") // Color MSN del nick
+  statusText   String?  // Estado personalizado tipo MSN
+  accessToken  String   @unique // Token para validar acceso al chat
+  isOnline     Boolean  @default(false)
+  lastSeen     DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  messages     ChatMessage[]
+
+  @@unique([eventId, nickname])
+}
+
+model ChatMessage {
+  id              String   @id @default(cuid())
+  eventId         String
+  event           Event    @relation(fields: [eventId], references: [id])
+  participantId   String
+  participant     ChatParticipant @relation(fields: [participantId], references: [id])
+  message         String
+  messageType     String   @default("text") // text, nudge, join, leave
+  channel         String   @default("general") // "general" o "mesa-5" etc
+  fontColor       String   @default("#000000")
+  createdAt       DateTime @default(now())
+
+  @@index([eventId, channel, createdAt])
 }
