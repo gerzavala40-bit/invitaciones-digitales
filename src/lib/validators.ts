@@ -62,6 +62,7 @@ export type LoginInput = z.infer<typeof loginSchema>;
 export const scanSchema = z.object({
   qrCode: z.string().min(1).max(100),
   pin: z.string().min(1).max(20),
+  eventSlug: z.string().min(1).max(200),
 });
 
 export type ScanInput = z.infer<typeof scanSchema>;

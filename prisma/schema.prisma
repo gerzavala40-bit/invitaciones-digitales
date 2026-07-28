@@ -58,6 +58,7 @@ model Event {
   rsvpEnabled  Boolean  @default(true)
   rsvpDeadline String?
   isActive     Boolean  @default(true)
+  scannerPin   String   @default("1234")
   
   // Funciones Premium
   guestbookEnabled Boolean  @default(false)

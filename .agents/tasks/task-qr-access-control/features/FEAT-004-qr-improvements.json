@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-004-qr-improvements",
+  "type": "feat",
+  "description": "Improve QR system: add scannerPin to Event model, update scanner to ask for event slug + PIN, improve /mi-entrada page with prominent guest count, and update /api/scan to validate PIN against event.",
+  "status": "in_progress",
+  "steps": [
+    "Add scannerPin String field (default '1234') to Event model in prisma/schema.prisma",
+    "Run npx prisma generate",
+    "Update scanSchema in src/lib/validators.ts to include eventSlug field",
+    "Update /api/scan/route.ts to accept eventSlug, look up event by slug, validate PIN against event.scannerPin",
+    "Rewrite /scanner/page.tsx to ask for event slug + PIN, show scan results with guest count, dark mode optimized UX",
+    "Rewrite /mi-entrada/[code]/page.tsx to show guest count prominently, event info, and instructive note"
+  ],
+  "acceptance_criteria": [
+    "prisma/schema.prisma has scannerPin String @default('1234') on Event model",
+    "npx prisma generate succeeds",
+    "/api/scan accepts eventSlug, validates PIN against event.scannerPin",
+    "/scanner page asks for event slug + 4-digit PIN before opening camera",
+    "/scanner shows guest name, count, and attended status after scan",
+    "/mi-entrada/[code] shows 'Entrada valida para X personas' prominently",
+    "npx next build passes"
+  ],
+  "verification": [
+    "Run 'cd /projects/sandbox/invitaciones-digitales && npx prisma generate' and confirm exit code 0",
+    "Run 'cd /projects/sandbox/invitaciones-digitales && npx next build' and confirm exit code 0"
+  ],
+  "blocked_reason": null,
+  "findings": null
+}

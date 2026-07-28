@@ -24,16 +24,27 @@ export async function POST(req: Request) {
     const result = scanSchema.safeParse(body);
     if (!result.success) {
       return NextResponse.json(
-        { error: "Datos inválidos", details: result.error.flatten().fieldErrors },
+        { error: "Datos invalidos", details: result.error.flatten().fieldErrors },
         { status: 400 }
       );
     }
 
-    const { qrCode, pin } = result.data;
+    const { qrCode, pin, eventSlug } = result.data;
 
-    // Validate PIN against environment variable (default '1234' in dev)
-    const validPin = process.env.SCANNER_PIN || "1234";
-    if (pin !== validPin) {
+    // Look up event by slug to get its scannerPin
+    const event = await prisma.event.findUnique({
+      where: { slug: eventSlug },
+    });
+
+    if (!event) {
+      return NextResponse.json(
+        { error: "Evento no encontrado" },
+        { status: 404 }
+      );
+    }
+
+    // Validate PIN against event's scannerPin
+    if (pin !== event.scannerPin) {
       return NextResponse.json(
         { error: "PIN incorrecto" },
         { status: 401 }
@@ -43,12 +54,21 @@ export async function POST(req: Request) {
     // Look up RSVP by qrCode
     const rsvp = await prisma.rSVP.findUnique({
       where: { qrCode },
+      include: { event: true },
     });
 
     if (!rsvp) {
       return NextResponse.json(
-        { error: "Código QR no encontrado" },
+        { error: "Codigo QR no encontrado" },
         { status: 404 }
+      );
+    }
+
+    // Verify the RSVP belongs to this event
+    if (rsvp.eventId !== event.id) {
+      return NextResponse.json(
+        { error: "Este QR no pertenece a este evento" },
+        { status: 400 }
       );
     }
 
@@ -56,7 +76,7 @@ export async function POST(req: Request) {
     if (rsvp.attended) {
       return NextResponse.json({
         success: false,
-        message: `¡ALERTA! El invitado ${rsvp.guestName} ya ingresó previamente.`,
+        message: `${rsvp.guestName} ya ingreso previamente.`,
         guestName: rsvp.guestName,
         guestCount: rsvp.guestCount,
         status: "already_attended",
@@ -71,7 +91,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: `Acceso concedido a ${rsvp.guestName} (${rsvp.guestCount} pers.)`,
+      message: `Acceso concedido`,
       guestName: rsvp.guestName,
       guestCount: rsvp.guestCount,
       status: "admitted",
