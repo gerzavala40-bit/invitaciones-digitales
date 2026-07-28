@@ -21,22 +21,22 @@
        PALETA — editá estas variables para cambiar toda la look
        ========================================================= */
     :root {
-      --bg: #0E0A0C;
-      --bg-soft: #1A1218;
-      --bg-card: #211820;
-      --text: #F8F0F4;
-      --text-muted: rgba(248, 240, 244, 0.55);
-      --accent: #E8B4C8;          /* rosa glam */
-      --accent-deep: #C47A9A;
-      --gold: #D4AF37;
-      --gold-soft: #E8D5A3;
-      --line: rgba(248, 240, 244, 0.12);
+      --bg: #F9F6F1;
+      --bg-soft: #F0EBE3;
+      --bg-card: #FFFFFF;
+      --text: #2C3E2D;
+      --text-muted: rgba(44, 62, 45, 0.55);
+      --accent: #8BA888;          /* verde salvia */
+      --accent-deep: #5C7A5E;
+      --gold: #B8956B;
+      --gold-soft: #E8D5B8;
+      --line: rgba(44, 62, 45, 0.12);
       --success: #25D366;
       --font-display: "Playfair Display", Georgia, serif;
       --font-script: "Great Vibes", cursive;
       --font-body: "Montserrat", system-ui, sans-serif;
       --radius: 16px;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,56 +62,107 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 2rem;
-      background: var(--bg);
+      background: #F9F6F1;
+      background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       transition: opacity 0.75s ease, visibility 0.75s ease;
+      overflow: hidden;
     }
     #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-    #splash::before {
-      content: "";
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(232, 180, 200, 0.18), transparent 55%),
-        radial-gradient(ellipse at 50% 85%, rgba(212, 175, 55, 0.08), transparent 45%);
+
+    /* Eucalyptus leaves - top left */
+    .splash-leaves-tl {
+      position: absolute;
+      top: -20px;
+      left: -30px;
+      width: 200px;
+      height: 280px;
       pointer-events: none;
+      opacity: 0.7;
+      z-index: 0;
     }
+    /* Eucalyptus leaves - bottom right */
+    .splash-leaves-br {
+      position: absolute;
+      bottom: -20px;
+      right: -30px;
+      width: 200px;
+      height: 280px;
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: 0;
+      transform: rotate(180deg);
+    }
+
     .splash-inner { position: relative; z-index: 1; max-width: 340px; }
     .splash-ornament {
-      font-size: 1.75rem;
-      color: var(--gold);
-      letter-spacing: 0.5em;
-      margin-bottom: 1.5rem;
-      opacity: 0.85;
-      animation: pulse-soft 3s ease-in-out infinite;
+      display: none;
     }
     .splash-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.45em;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
+      color: var(--accent-deep);
+      margin-bottom: 1rem;
     }
     .splash-kicker {
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-deep);
       font-weight: 500;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
     .splash-name {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 14vw, 4rem);
-      font-weight: 500;
+      font-family: var(--font-body);
+      font-size: clamp(2.8rem, 13vw, 3.8rem);
+      font-weight: 700;
       line-height: 1.05;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+    .splash-name .ampersand {
+      font-family: var(--font-script);
+      font-size: 0.5em;
+      color: var(--accent-deep);
+      text-transform: none;
+      font-weight: 400;
+      display: block;
+      margin: 0.1em 0;
     }
     .splash-date {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
+      margin-top: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .splash-date .date-month {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      padding-right: 0.75rem;
+      border-right: 1.5px solid var(--text);
+    }
+    .splash-date .date-day {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1;
+      padding: 0 0.75rem;
+    }
+    .splash-date .date-year {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      padding-left: 0.75rem;
+      border-left: 1.5px solid var(--text);
     }
     .splash-btn {
       margin-top: 2.5rem;
@@ -120,7 +171,7 @@
       justify-content: center;
       gap: 0.6rem;
       padding: 1rem 2.25rem;
-      border: 1px solid var(--accent);
+      border: 1.5px solid var(--accent-deep);
       background: transparent;
       color: var(--text);
       font-size: 0.72rem;
@@ -131,8 +182,8 @@
       transition: background 0.3s, color 0.3s, transform 0.2s;
     }
     .splash-btn:hover, .splash-btn:active {
-      background: var(--accent);
-      color: var(--bg);
+      background: var(--accent-deep);
+      color: #fff;
     }
     .splash-hint {
       margin-top: 1.5rem;
@@ -752,16 +803,52 @@ footer p { color: rgba(44,36,28,.3) !important; }
 
   <!-- ========== BIENVENIDA ========== -->
   <div id="splash" role="dialog" aria-label="Bienvenida">
+    <!-- Eucalyptus leaves top-left -->
+    <div class="splash-leaves-tl">
+      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 280 C80 280 75 200 90 150 C105 100 85 50 95 20" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <ellipse cx="75" cy="240" rx="18" ry="30" fill="#B8D4B0" opacity="0.5" transform="rotate(-20 75 240)"/>
+        <ellipse cx="95" cy="200" rx="15" ry="25" fill="#A3C9A0" opacity="0.45" transform="rotate(15 95 200)"/>
+        <ellipse cx="80" cy="160" rx="16" ry="28" fill="#8BA888" opacity="0.4" transform="rotate(-10 80 160)"/>
+        <ellipse cx="92" cy="120" rx="14" ry="22" fill="#B8D4B0" opacity="0.5" transform="rotate(20 92 120)"/>
+        <ellipse cx="85" cy="80" rx="12" ry="20" fill="#A3C9A0" opacity="0.35" transform="rotate(-15 85 80)"/>
+        <ellipse cx="90" cy="45" rx="10" ry="16" fill="#8BA888" opacity="0.3" transform="rotate(10 90 45)"/>
+        <path d="M120 260 C120 260 130 200 115 160 C100 120 125 80 110 40" stroke="#A3C9A0" stroke-width="1" fill="none" opacity="0.4"/>
+        <ellipse cx="125" cy="220" rx="14" ry="22" fill="#C8E0C0" opacity="0.4" transform="rotate(25 125 220)"/>
+        <ellipse cx="112" cy="180" rx="12" ry="20" fill="#B8D4B0" opacity="0.35" transform="rotate(-18 112 180)"/>
+        <ellipse cx="120" cy="140" rx="11" ry="18" fill="#A3C9A0" opacity="0.3" transform="rotate(12 120 140)"/>
+        <ellipse cx="115" cy="100" rx="10" ry="16" fill="#C8E0C0" opacity="0.35" transform="rotate(-8 115 100)"/>
+      </svg>
+    </div>
+    <!-- Eucalyptus leaves bottom-right -->
+    <div class="splash-leaves-br">
+      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 280 C80 280 75 200 90 150 C105 100 85 50 95 20" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <ellipse cx="75" cy="240" rx="18" ry="30" fill="#B8D4B0" opacity="0.5" transform="rotate(-20 75 240)"/>
+        <ellipse cx="95" cy="200" rx="15" ry="25" fill="#A3C9A0" opacity="0.45" transform="rotate(15 95 200)"/>
+        <ellipse cx="80" cy="160" rx="16" ry="28" fill="#8BA888" opacity="0.4" transform="rotate(-10 80 160)"/>
+        <ellipse cx="92" cy="120" rx="14" ry="22" fill="#B8D4B0" opacity="0.5" transform="rotate(20 92 120)"/>
+        <ellipse cx="85" cy="80" rx="12" ry="20" fill="#A3C9A0" opacity="0.35" transform="rotate(-15 85 80)"/>
+        <ellipse cx="90" cy="45" rx="10" ry="16" fill="#8BA888" opacity="0.3" transform="rotate(10 90 45)"/>
+        <path d="M120 260 C120 260 130 200 115 160 C100 120 125 80 110 40" stroke="#A3C9A0" stroke-width="1" fill="none" opacity="0.4"/>
+        <ellipse cx="125" cy="220" rx="14" ry="22" fill="#C8E0C0" opacity="0.4" transform="rotate(25 125 220)"/>
+        <ellipse cx="112" cy="180" rx="12" ry="20" fill="#B8D4B0" opacity="0.35" transform="rotate(-18 112 180)"/>
+        <ellipse cx="120" cy="140" rx="11" ry="18" fill="#A3C9A0" opacity="0.3" transform="rotate(12 120 140)"/>
+        <ellipse cx="115" cy="100" rx="10" ry="16" fill="#C8E0C0" opacity="0.35" transform="rotate(-8 115 100)"/>
+      </svg>
+    </div>
+
     <div class="splash-inner">
-      <div class="splash-ornament" aria-hidden="true">❀</div>
-      <p class="splash-label">Bienvenida</p>
-      <p class="splash-kicker">Nos casamos</p>
-      <h1 class="splash-name">Luciana<br><span style="font-family:var(--font-script);font-size:.55em;color:var(--accent)">&amp;</span><br>Gonzalo</h1>
-      <p class="splash-date">14 · 03 · 2027</p>
+      <p class="splash-kicker">&iexcl;Nos casamos!</p>
+      <h1 class="splash-name">LUCIANA<span class="ampersand">&amp;</span>GONZALO</h1>
+      <div class="splash-date">
+        <span class="date-month">MAR</span>
+        <span class="date-day">14</span>
+        <span class="date-year">2027</span>
+      </div>
       <button type="button" class="splash-btn" id="enterBtn">
-        Abrir invitación
+        Abrir invitaci&oacute;n
       </button>
-      
     </div>
   </div>
 

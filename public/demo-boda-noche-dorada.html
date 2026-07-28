@@ -62,56 +62,72 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 2rem;
-      background: var(--bg);
+      background: #0A0809;
       transition: opacity 0.75s ease, visibility 0.75s ease;
+      overflow: hidden;
     }
     #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-    #splash::before {
-      content: "";
+
+    /* Ambient glow overlay */
+    .splash-overlay {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 50% 30%, rgba(232, 180, 200, 0.18), transparent 55%),
-        radial-gradient(ellipse at 50% 85%, rgba(212, 175, 55, 0.08), transparent 45%);
+        radial-gradient(ellipse at 50% 40%, rgba(212, 175, 55, 0.06), transparent 60%),
+        radial-gradient(ellipse at 30% 70%, rgba(232, 180, 200, 0.04), transparent 50%);
       pointer-events: none;
     }
-    .splash-inner { position: relative; z-index: 1; max-width: 340px; }
-    .splash-ornament {
-      font-size: 1.75rem;
-      color: var(--gold);
-      letter-spacing: 0.5em;
-      margin-bottom: 1.5rem;
-      opacity: 0.85;
-      animation: pulse-soft 3s ease-in-out infinite;
-    }
-    .splash-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
-    }
+
+    .splash-inner { position: relative; z-index: 1; max-width: 360px; }
+    .splash-ornament { display: none; }
+    .splash-label { display: none; }
     .splash-kicker {
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
+      color: var(--gold-soft);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
     }
     .splash-name {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 14vw, 4rem);
-      font-weight: 500;
-      line-height: 1.05;
-      letter-spacing: 0.02em;
+      font-family: var(--font-script);
+      font-size: clamp(3.5rem, 16vw, 5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: #FAFAF8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .splash-name .name-script {
+      display: block;
+    }
+    .splash-name .ampersand {
+      font-size: 0.45em;
+      color: var(--gold);
+      opacity: 0.7;
+      margin: 0.1em 0;
+      font-style: italic;
     }
     .splash-date {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .splash-date .date-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+    .splash-date .date-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
       color: var(--text-muted);
+      font-weight: 300;
     }
     .splash-btn {
       margin-top: 2.5rem;
@@ -120,19 +136,20 @@
       justify-content: center;
       gap: 0.6rem;
       padding: 1rem 2.25rem;
-      border: 1px solid var(--accent);
+      border: 1px solid var(--gold);
       background: transparent;
-      color: var(--text);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
+      color: var(--gold-soft);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s, transform 0.2s;
+      transition: background 0.3s, color 0.3s, transform 0.2s, border-color 0.3s;
     }
     .splash-btn:hover, .splash-btn:active {
-      background: var(--accent);
-      color: var(--bg);
+      background: var(--gold);
+      color: #0A0809;
+      border-color: var(--gold);
     }
     .splash-hint {
       margin-top: 1.5rem;
@@ -752,16 +769,19 @@ footer p { color: rgba(245,239,228,.3) !important; }
 
   <!-- ========== BIENVENIDA ========== -->
   <div id="splash" role="dialog" aria-label="Bienvenida">
+    <!-- Ambient overlay -->
+    <div class="splash-overlay"></div>
     <div class="splash-inner">
-      <div class="splash-ornament" aria-hidden="true">◆</div>
-      <p class="splash-label">Bienvenida</p>
       <p class="splash-kicker">Nos casamos</p>
-      <h1 class="splash-name">Sofía<br><span style="font-family:var(--font-script);font-size:.55em;color:var(--accent)">&amp;</span><br>Tomás</h1>
-      <p class="splash-date">14 · 11 · 2026</p>
+      <h1 class="splash-name"><span class="name-script">Sof&iacute;a</span><span class="ampersand">&amp;</span><span class="name-script">Tom&aacute;s</span></h1>
+      <div class="splash-date">
+        <div class="date-line"></div>
+        <span class="date-text">14 &middot; 11 &middot; 2026</span>
+        <div class="date-line"></div>
+      </div>
       <button type="button" class="splash-btn" id="enterBtn">
-        Abrir invitación
+        Abrir invitaci&oacute;n
       </button>
-      
     </div>
   </div>
 
