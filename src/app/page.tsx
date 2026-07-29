@@ -432,6 +432,117 @@ Quedo a la espera para coordinar la sena!`;
         </div>
       </section>
 
+      {/* ========== PARTY CAM - MURO DE FOTOS ========== */}
+      <section id="party-cam" className="py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
+        <div className="max-w-6xl mx-auto">
+          <Reveal className="text-center mb-14">
+            <div className="inline-block bg-[#FF8C42] text-[#1a1a1a] text-xs font-bold px-4 py-2 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a] uppercase tracking-wider mb-6">
+              Incluido en Premium
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+              Party{" "}
+              <span className="inline-block bg-[#FF6B9D] px-3 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a]">Cam</span>{" "}
+            </h2>
+            <p className="text-lg text-[#555] max-w-2xl mx-auto leading-relaxed">
+              Un muro de fotos en tiempo real para tu fiesta. Los invitados sacan fotos, las suben escaneando un QR, y aparecen al instante en la pantalla gigante del salon.
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+            {/* Left: Visual mockup */}
+            <Reveal>
+              <div className="bg-[#0f0f0f] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] rounded-xl overflow-hidden">
+                {/* Header pantalla */}
+                <div className="bg-[#1a1a1a]/80 backdrop-blur px-6 py-4 flex items-center justify-between border-b border-white/10">
+                  <div>
+                    <p className="text-white font-bold text-lg">Boda de Juan & Ana</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-widest">Party Cam</p>
+                  </div>
+                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" className="w-10 h-10 text-black">
+                      <path d="M10,10 h30 v30 h-30 z M15,15 h20 v20 h-20 z" fill="currentColor"/>
+                      <path d="M60,10 h30 v30 h-30 z M65,15 h20 v20 h-20 z" fill="currentColor"/>
+                      <path d="M10,60 h30 v30 h-30 z M15,65 h20 v20 h-20 z" fill="currentColor"/>
+                      <rect x="60" y="60" width="10" height="10" fill="currentColor"/>
+                      <rect x="75" y="70" width="15" height="15" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </div>
+                {/* Grid de fotos simulado */}
+                <div className="p-4 grid grid-cols-3 gap-3">
+                  <div className="bg-white p-1.5 pb-6 shadow-lg rotate-1">
+                    <div className="w-full aspect-square bg-gradient-to-br from-pink-200 to-pink-400 rounded-sm flex items-center justify-center text-3xl">🥂</div>
+                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Familia Gomez</p>
+                  </div>
+                  <div className="bg-white p-1.5 pb-6 shadow-lg -rotate-1">
+                    <div className="w-full aspect-square bg-gradient-to-br from-blue-200 to-blue-400 rounded-sm flex items-center justify-center text-3xl">💃</div>
+                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Mesa 7</p>
+                  </div>
+                  <div className="bg-white p-1.5 pb-6 shadow-lg rotate-2">
+                    <div className="w-full aspect-square bg-gradient-to-br from-yellow-200 to-orange-300 rounded-sm flex items-center justify-center text-3xl">🎂</div>
+                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Los novios</p>
+                  </div>
+                  <div className="bg-white p-1.5 pb-6 shadow-lg -rotate-2">
+                    <div className="w-full aspect-square bg-gradient-to-br from-green-200 to-emerald-400 rounded-sm flex items-center justify-center text-3xl">🎉</div>
+                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Tio Carlos</p>
+                  </div>
+                  <div className="bg-white p-1.5 pb-6 shadow-lg rotate-1">
+                    <div className="w-full aspect-square bg-gradient-to-br from-purple-200 to-purple-400 rounded-sm flex items-center justify-center text-3xl">❤️</div>
+                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Amigas novia</p>
+                  </div>
+                  <div className="bg-white p-1.5 pb-6 shadow-lg -rotate-1">
+                    <div className="w-full aspect-square bg-gradient-to-br from-rose-200 to-red-300 rounded-sm flex items-center justify-center text-3xl">📸</div>
+                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">El DJ</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Right: features */}
+            <Reveal delay={0.2}>
+              <div className="space-y-4">
+                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">📸</span> Subida instantanea
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">El invitado saca una foto, escanea el QR y la sube en 2 toques. Sin descargar nada.</p>
+                </div>
+
+                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">📺</span> Pantalla en vivo
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">Las fotos aparecen al instante en la pantalla del salon. Se actualiza sola cada 3 segundos.</p>
+                </div>
+
+                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">🖼️</span> Estilo polaroid
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">Cada foto se muestra como una polaroid con el nombre del invitado. Queda hermoso en el proyector.</p>
+                </div>
+
+                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">🎁</span> Recuerdo para los novios
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">Despues del evento recibis todas las fotos que subieron tus invitados. Momentos unicos desde su perspectiva.</p>
+                </div>
+              </div>
+
+              <a
+                href="/demo-wall/upload"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block px-8 py-4 bg-[#FF8C42] text-[#1a1a1a] font-bold text-base border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all"
+              >
+                Probar Party Cam demo →
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ========== PLANES ========== */}
       <section id="planes" className="py-24 px-5">
         <div className="max-w-6xl mx-auto">
