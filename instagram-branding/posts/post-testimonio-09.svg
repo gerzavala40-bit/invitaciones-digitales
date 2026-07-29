@@ -1,0 +1,27 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#FF8C42"/>
+  
+  <!-- Quote card -->
+  <rect x="108" y="188" width="880" height="580" fill="#1a1a1a" stroke="none"/>
+  <rect x="100" y="180" width="880" height="580" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="12"/>
+  
+  <!-- Big quote marks -->
+  <text x="180" y="310" font-family="Georgia, serif" font-size="150" fill="#FF8C42" opacity="0.5">"</text>
+  
+  <!-- Testimonial text -->
+  <text x="540" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="52" fill="#1a1a1a">Contrate el servicio</text>
+  <text x="540" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="52" fill="#1a1a1a">y cumplieron</text>
+  <text x="540" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="52" fill="#1a1a1a">con todo.</text>
+  
+  <!-- Stars -->
+  <text x="540" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="50" fill="#FF8C42">★★★★★</text>
+  
+  <!-- Author -->
+  <rect x="280" y="710" width="520" height="70" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="6"/>
+  <text x="540" y="758" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#1a1a1a">Mauro R. · Cumpleanos</text>
+  
+  <!-- Bottom branding -->
+  <text x="540" y="920" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="40" fill="#1a1a1a">@teinvitoapp</text>
+  <text x="540" y="980" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#1a1a1a" opacity="0.7">Invitaciones digitales a medida</text>
+</svg>
