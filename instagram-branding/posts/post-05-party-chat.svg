@@ -1,0 +1,53 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#1a3a5c"/>
+  
+  <!-- Badge NUEVO -->
+  <rect x="376" y="76" width="328" height="66" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="6"/>
+  <text x="540" y="120" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="36" fill="#1a1a1a">NUEVO 🔥</text>
+  
+  <!-- Title -->
+  <text x="540" y="230" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="80" fill="#FFF9E0">Party Chat</text>
+  <text x="540" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-weight="400" font-size="32" fill="#FFF9E0" opacity="0.7">Chat en vivo para tu fiesta</text>
+  
+  <!-- Chat mockup -->
+  <rect x="168" y="358" width="760" height="480" rx="16" fill="white" stroke="#1a1a1a" stroke-width="6"/>
+  
+  <!-- Chat header -->
+  <rect x="168" y="358" width="760" height="60" rx="16" fill="#0058a8"/>
+  <rect x="168" y="398" width="760" height="20" fill="#0058a8"/>
+  <circle cx="208" cy="388" r="10" fill="#4CAF50"/>
+  <text x="240" y="398" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="white">Boda Ana + Pedro - Party Messenger</text>
+  
+  <!-- Messages -->
+  <text x="210" y="470" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#FF6347">El tio Carlos</text>
+  <text x="405" y="470" font-family="Arial, sans-serif" font-size="16" fill="#999">(Mesa 3) dice:</text>
+  <text x="210" y="500" font-family="Arial, sans-serif" font-size="22" fill="#333">Que grande la novia!! 🎉</text>
+  
+  <text x="210" y="560" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#8A2BE2">La prima Laura</text>
+  <text x="425" y="560" font-family="Arial, sans-serif" font-size="16" fill="#999">(Mesa 7) dice:</text>
+  <text x="210" y="590" font-family="Arial, sans-serif" font-size="22" fill="#8A2BE2">Alguien sabe cuando cortan la torta?</text>
+  
+  <!-- Nudge -->
+  <rect x="300" y="630" width="430" height="40" rx="20" fill="#FFD700" opacity="0.2"/>
+  <text x="515" y="658" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#FF8C00">📳 Pedro envio un zumbido!</text>
+  
+  <text x="210" y="720" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#1E90FF">Mama de Ana</text>
+  <text x="398" y="720" font-family="Arial, sans-serif" font-size="16" fill="#999">(Mesa 1) dice:</text>
+  <text x="210" y="750" font-family="Arial, sans-serif" font-size="22" fill="#333">Estoy llorando de la emocion 😭❤️</text>
+  
+  <!-- Input bar -->
+  <rect x="168" y="790" width="760" height="48" fill="#eef3f7" stroke="#7fbfff" stroke-width="2"/>
+  <text x="210" y="820" font-family="Arial, sans-serif" font-size="18" fill="#999">Escribi un mensaje...</text>
+  <rect x="790" y="796" width="120" height="36" rx="6" fill="#4CAF50"/>
+  <text x="850" y="821" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="white">Enviar</text>
+  
+  <!-- Bottom features -->
+  <text x="200" y="920" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#4ECDC4">🎫 QR por mesa</text>
+  <text x="200" y="960" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#FF6B9D">📳 Zumbidos MSN</text>
+  <text x="580" y="920" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#FF8C42">🎨 Colores de nick</text>
+  <text x="580" y="960" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#FFF9E0">🪑 Chat por mesa</text>
+  
+  <!-- CTA -->
+  <text x="540" y="1040" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#FFF9E0" opacity="0.6">Probalo gratis → link en bio</text>
+</svg>

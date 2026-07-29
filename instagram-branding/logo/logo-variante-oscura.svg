@@ -1,0 +1,30 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background oscuro -->
+  <rect width="1080" height="1080" rx="240" fill="#1a1a1a"/>
+  
+  <!-- Shadow -->
+  <g transform="translate(6, 6)">
+    <path d="M280 340 L540 520 L800 340 L800 700 Q800 740 760 740 L320 740 Q280 740 280 700 Z" fill="#FF6B9D" stroke="none"/>
+  </g>
+  
+  <!-- Sobre -->
+  <path d="M280 340 L540 520 L800 340 L800 700 Q800 740 760 740 L320 740 Q280 740 280 700 Z" fill="#FFF9E0" stroke="#FFF9E0" stroke-width="4"/>
+  
+  <!-- Solapa -->
+  <path d="M280 340 L540 520 L800 340 L800 340 Q800 300 760 300 L320 300 Q280 300 280 340 Z" fill="#4ECDC4" stroke="#FFF9E0" stroke-width="4"/>
+  
+  <!-- Linea -->
+  <path d="M280 340 L540 520 L800 340" fill="none" stroke="#1a1a1a" stroke-width="8" stroke-linejoin="round"/>
+  
+  <!-- Sparkles -->
+  <g transform="translate(750, 240)">
+    <path d="M0 -30 L8 -8 L30 0 L8 8 L0 30 L-8 8 L-30 0 L-8 -8 Z" fill="#FF8C42" stroke="none"/>
+  </g>
+  <g transform="translate(320, 260)">
+    <path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z" fill="#FFD700" stroke="none"/>
+  </g>
+  
+  <!-- Texto -->
+  <text x="540" y="870" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="110" fill="#FFF9E0" letter-spacing="-3">Te Invito</text>
+  <rect x="350" y="888" width="380" height="12" rx="6" fill="#FF6B9D"/>
+</svg>

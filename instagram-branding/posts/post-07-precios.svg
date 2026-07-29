@@ -1,0 +1,52 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#FFF9E0"/>
+  
+  <!-- Title -->
+  <text x="540" y="110" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="60" fill="#1a1a1a">Nuestros planes</text>
+  <rect x="300" y="130" width="480" height="10" fill="#FF6B9D"/>
+  
+  <!-- Plan Basico -->
+  <rect x="68" y="198" width="300" height="750" fill="#1a1a1a" stroke="none"/>
+  <rect x="60" y="190" width="300" height="750" fill="white" stroke="#1a1a1a" stroke-width="8"/>
+  <rect x="60" y="190" width="300" height="60" fill="#4ECDC4" stroke="#1a1a1a" stroke-width="8"/>
+  <text x="210" y="230" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="#1a1a1a">BASICO</text>
+  <text x="210" y="320" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="48" fill="#1a1a1a">$25.000</text>
+  <text x="210" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Cuenta regresiva</text>
+  <text x="210" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Mapa interactivo</text>
+  <text x="210" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Confirmacion WA</text>
+  <text x="210" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Regalos + Dresscode</text>
+  <text x="210" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Envios ilimitados</text>
+  
+  <!-- Plan Premium -->
+  <rect x="398" y="178" width="300" height="780" fill="#1a1a1a" stroke="none"/>
+  <rect x="390" y="170" width="300" height="780" fill="white" stroke="#1a1a1a" stroke-width="8"/>
+  <rect x="390" y="170" width="300" height="60" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="8"/>
+  <text x="540" y="210" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="white">PREMIUM ★</text>
+  <text x="540" y="300" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="48" fill="#1a1a1a">$45.000</text>
+  <text x="540" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Todo lo del Basico</text>
+  <text x="540" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ RSVP propio</text>
+  <text x="540" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Musica + Galeria</text>
+  <text x="540" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#FF6B9D">✓ Party Cam GRATIS</text>
+  <text x="540" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#4ECDC4">✓ Party Chat GRATIS</text>
+  
+  <!-- Badge popular -->
+  <rect x="440" y="140" width="200" height="36" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="540" y="166" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="18" fill="white">MAS ELEGIDO</text>
+  
+  <!-- Plan Plus -->
+  <rect x="728" y="198" width="300" height="750" fill="#1a1a1a" stroke="none"/>
+  <rect x="720" y="190" width="300" height="750" fill="white" stroke="#1a1a1a" stroke-width="8"/>
+  <rect x="720" y="190" width="300" height="60" fill="#FF8C42" stroke="#1a1a1a" stroke-width="8"/>
+  <text x="870" y="230" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="#1a1a1a">PLUS</text>
+  <text x="870" y="320" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="48" fill="#1a1a1a">$65.000</text>
+  <text x="870" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Todo lo Premium</text>
+  <text x="870" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Personalizada</text>
+  <text x="870" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Tu dominio propio</text>
+  <text x="870" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Trivia interactiva</text>
+  <text x="870" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#666">✓ Soporte priority</text>
+  
+  <!-- Bottom -->
+  <text x="540" y="1020" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="28" fill="#1a1a1a">30% OFF por transferencia 💸</text>
+  <text x="540" y="1060" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#666">@teinvitoapp · Link en bio</text>
+</svg>

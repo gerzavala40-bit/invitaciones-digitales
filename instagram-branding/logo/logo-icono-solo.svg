@@ -1,0 +1,38 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" rx="240" fill="#FF6B9D"/>
+  
+  <!-- Shadow del sobre -->
+  <g transform="translate(8, 8)">
+    <path d="M240 320 L540 540 L840 320 L840 720 Q840 770 790 770 L290 770 Q240 770 240 720 Z" fill="#1a1a1a" stroke="none"/>
+  </g>
+  
+  <!-- Sobre principal -->
+  <path d="M240 320 L540 540 L840 320 L840 720 Q840 770 790 770 L290 770 Q240 770 240 720 Z" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="14"/>
+  
+  <!-- Solapa -->
+  <path d="M240 320 L540 540 L840 320 L840 320 Q840 270 790 270 L290 270 Q240 270 240 320 Z" fill="#4ECDC4" stroke="#1a1a1a" stroke-width="14"/>
+  
+  <!-- Linea sobre -->
+  <path d="M240 320 L540 540 L840 320" fill="none" stroke="#1a1a1a" stroke-width="14" stroke-linejoin="round"/>
+  
+  <!-- Sparkle grande arriba derecha -->
+  <g transform="translate(780, 200)">
+    <path d="M0 -45 L12 -12 L45 0 L12 12 L0 45 L-12 12 L-45 0 L-12 -12 Z" fill="#FF8C42" stroke="#1a1a1a" stroke-width="6"/>
+  </g>
+  
+  <!-- Sparkle chico arriba izquierda -->
+  <g transform="translate(300, 220)">
+    <path d="M0 -25 L7 -7 L25 0 L7 7 L0 25 L-7 7 L-25 0 L-7 -7 Z" fill="#FFD700" stroke="#1a1a1a" stroke-width="5"/>
+  </g>
+  
+  <!-- Sparkle derecha -->
+  <g transform="translate(880, 550)">
+    <path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="4"/>
+  </g>
+  
+  <!-- Corazon dentro del sobre -->
+  <g transform="translate(540, 650)">
+    <path d="M0 -20 C0 -35 -20 -40 -30 -25 C-40 -10 0 20 0 35 C0 20 40 -10 30 -25 C20 -40 0 -35 0 -20 Z" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="5" transform="scale(1.5)"/>
+  </g>
+</svg>

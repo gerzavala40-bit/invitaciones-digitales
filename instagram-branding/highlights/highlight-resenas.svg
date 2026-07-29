@@ -1,0 +1,7 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="540" cy="540" r="540" fill="#FFD700"/>
+  <rect x="298" y="398" width="500" height="300" rx="0" fill="#1a1a1a" stroke="none" transform="translate(6,6)"/>
+  <rect x="290" y="390" width="500" height="300" rx="0" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="12"/>
+  <text x="540" y="560" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="100">⭐</text>
+  <text x="540" y="660" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="48" fill="#1a1a1a">RESENAS</text>
+</svg>
