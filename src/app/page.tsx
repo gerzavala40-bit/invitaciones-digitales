@@ -176,6 +176,7 @@ Quedo a la espera para coordinar la sena!`;
             <div className="hidden md:flex items-center gap-3">
               <Link href="#pasos" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Proceso</Link>
               <Link href="#estilos" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Demos</Link>
+              <Link href="#party-chat" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Party Chat</Link>
               <Link href="#planes" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Planes</Link>
               <button type="button" onClick={() => setIsQuizOpen(true)} className="px-4 py-2 text-sm font-bold border-[3px] border-[#1a1a1a] bg-[#1a1a1a] text-[#FFF9E0] shadow-[3px_3px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#FF6B9D] transition-all">Empezar</button>
             </div>
@@ -318,6 +319,116 @@ Quedo a la espera para coordinar la sena!`;
               </StaggerItem>
             ))}
           </Stagger>
+        </div>
+      </section>
+
+      {/* ========== PARTY CHAT - NUEVO FEATURE ========== */}
+      <section id="party-chat" className="py-24 px-5">
+        <div className="max-w-6xl mx-auto">
+          <Reveal className="text-center mb-14">
+            <div className="inline-block bg-[#1a1a1a] text-[#FFF9E0] text-xs font-bold px-4 py-2 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#FF6B9D] uppercase tracking-wider mb-6">
+              Nuevo
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+              Party{" "}
+              <span className="inline-block bg-[#4ECDC4] px-3 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a]">Chat</span>{" "}
+              en vivo
+            </h2>
+            <p className="text-lg text-[#555] max-w-2xl mx-auto leading-relaxed">
+              Un chat grupal exclusivo para tu fiesta. Cada mesa tiene su QR: los invitados lo escanean, eligen un apodo y empiezan a hablar entre todos. Ideal para casamientos donde no todos se conocen.
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+            {/* Left: mockup/visual */}
+            <Reveal className="relative">
+              <div className="bg-[#1a3a5c] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] rounded-xl overflow-hidden">
+                {/* MSN-style header */}
+                <div className="bg-gradient-to-r from-[#0058a8] to-[#3b8dd4] px-4 py-3 flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  <span className="text-white text-sm font-bold">Fiesta de Ana y Pedro - Party Messenger</span>
+                  <span className="ml-auto text-white/60 text-xs bg-white/10 px-2 py-1 rounded">12 online</span>
+                </div>
+                {/* Messages */}
+                <div className="bg-white p-4 space-y-3">
+                  <div>
+                    <span className="text-xs font-bold text-[#FF6347]">El tio Carlos</span>
+                    <span className="text-[10px] text-gray-400 ml-1">(Mesa 3) dice:</span>
+                    <p className="text-sm bg-white rounded px-2 py-1">Que grande la novia!! Felicitaciones!!</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-[#8A2BE2]">La prima Laura</span>
+                    <span className="text-[10px] text-gray-400 ml-1">(Mesa 7) dice:</span>
+                    <p className="text-sm bg-white rounded px-2 py-1 text-[#8A2BE2]">Alguien sabe cuando cortan la torta?</p>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-xs text-[#FF8C00] font-bold bg-[#FFD700]/10 px-3 py-1 rounded-full">Pedro envio un zumbido!</span>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-[#1E90FF]">Mama de Ana</span>
+                    <span className="text-[10px] text-gray-400 ml-1">(Mesa 1) dice:</span>
+                    <p className="text-sm bg-white rounded px-2 py-1">Estoy llorando de la emocion</p>
+                  </div>
+                </div>
+                {/* Input */}
+                <div className="bg-[#eef3f7] border-t-2 border-[#7fbfff] p-3 flex gap-2">
+                  <div className="flex-1 bg-white border-2 border-[#7fbfff] rounded px-3 py-2 text-sm text-gray-400">Escribi un mensaje...</div>
+                  <div className="bg-[#4CAF50] text-white px-4 py-2 rounded text-sm font-bold">Enviar</div>
+                </div>
+              </div>
+              {/* QR card floating */}
+              <div className="absolute -bottom-6 -right-4 bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-3 rotate-3 w-28">
+                <div className="w-full aspect-square bg-[#f0f0f0] border-2 border-gray-200 flex items-center justify-center mb-2">
+                  <svg className="w-16 h-16 text-gray-700" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm10-2h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2z"/>
+                  </svg>
+                </div>
+                <p className="text-[9px] font-bold text-center">MESA 5</p>
+              </div>
+            </Reveal>
+
+            {/* Right: features list */}
+            <Reveal delay={0.2}>
+              <div className="space-y-4">
+                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">🎫</span> QR por mesa
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">Cada mesa tiene su propio QR. Los invitados lo escanean y entran al chat sin registrarse.</p>
+                </div>
+
+                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">💬</span> Chat general + por mesa
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">Un chat para toda la fiesta y otro privado solo para tu mesa. Como MSN Messenger pero en tu evento.</p>
+                </div>
+
+                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">📳</span> Zumbidos y colores
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">Mandales un zumbido que sacude la pantalla! Cada invitado elige su color de nick. Pura nostalgia MSN.</p>
+                </div>
+
+                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <span className="text-2xl">🔒</span> Solo dura tu fiesta
+                  </h3>
+                  <p className="text-sm text-[#666] mt-1">El chat se activa cuando vos quieras y se cierra al terminar. Privado y exclusivo para tu evento.</p>
+                </div>
+              </div>
+
+              <a
+                href="/demo-chat?mesa=5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block px-8 py-4 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-base border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#4ECDC4] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#4ECDC4] transition-all"
+              >
+                Probar el chat demo →
+              </a>
+            </Reveal>
+          </div>
         </div>
       </section>
 
