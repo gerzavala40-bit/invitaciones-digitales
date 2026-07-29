@@ -1,0 +1,243 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone background -->
+  <rect width="1080" height="1920" fill="#000"/>
+  
+  <!-- Instagram App Background -->
+  <rect x="0" y="0" width="1080" height="1920" fill="#121212"/>
+  
+  <!-- ======== TOP BAR ======== -->
+  <rect x="0" y="0" width="1080" height="90" fill="#121212"/>
+  <text x="40" y="60" font-family="Arial, sans-serif" font-weight="700" font-size="32" fill="white">teinvitoapp</text>
+  <text x="290" y="60" font-family="Arial, sans-serif" font-size="28" fill="#666">▼</text>
+  
+  <!-- Icons right -->
+  <text x="880" y="60" font-family="Arial, sans-serif" font-size="28" fill="white">+</text>
+  <text x="940" y="60" font-family="Arial, sans-serif" font-size="28" fill="white">≡</text>
+  
+  <!-- ======== PROFILE SECTION ======== -->
+  <rect x="0" y="90" width="1080" height="360" fill="#121212"/>
+  
+  <!-- Profile pic -->
+  <circle cx="120" cy="200" r="60" fill="#FF6B9D" stroke="#FF6B9D" stroke-width="4"/>
+  <!-- Sobre mini dentro del avatar -->
+  <path d="M95 185 L120 200 L145 185 L145 215 L95 215 Z" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="2"/>
+  <path d="M95 185 L120 200 L145 185" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Stats -->
+  <text x="350" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="30" fill="white">12</text>
+  <text x="350" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#999">Posts</text>
+  
+  <text x="540" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="30" fill="white">847</text>
+  <text x="540" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#999">Seguidores</text>
+  
+  <text x="730" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="30" fill="white">156</text>
+  <text x="730" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#999">Seguidos</text>
+  
+  <!-- Bio -->
+  <text x="40" y="280" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="white">Te Invito App</text>
+  <text x="40" y="310" font-family="Arial, sans-serif" font-size="22" fill="#ddd">✨ Invitaciones digitales a medida</text>
+  <text x="40" y="340" font-family="Arial, sans-serif" font-size="22" fill="#ddd">📱 Listas en 24hs | Envia por WhatsApp</text>
+  <text x="40" y="370" font-family="Arial, sans-serif" font-size="22" fill="#ddd">🎉 Bodas · 15 · Cumples · Bautismos</text>
+  <text x="40" y="400" font-family="Arial, sans-serif" font-size="22" fill="#ddd">💬 NUEVO: Party Chat para tu fiesta</text>
+  <text x="40" y="430" font-family="Arial, sans-serif" font-size="22" fill="#3897f0">www.teinvitoapp.com.ar</text>
+  
+  <!-- ======== HIGHLIGHTS ======== -->
+  <rect x="0" y="455" width="1080" height="150" fill="#121212"/>
+  
+  <!-- Highlight 1: BODAS -->
+  <circle cx="80" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="80" cy="520" r="42" fill="#FF6B9D"/>
+  <text x="80" y="530" text-anchor="middle" font-size="28">💒</text>
+  <text x="80" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">Bodas</text>
+  
+  <!-- Highlight 2: CUMPLES -->
+  <circle cx="210" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="210" cy="520" r="42" fill="#4ECDC4"/>
+  <text x="210" y="530" text-anchor="middle" font-size="28">🎂</text>
+  <text x="210" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">Cumples</text>
+  
+  <!-- Highlight 3: 15 -->
+  <circle cx="340" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="340" cy="520" r="42" fill="#FF8C42"/>
+  <text x="340" y="530" text-anchor="middle" font-size="28">👑</text>
+  <text x="340" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">15 Anos</text>
+  
+  <!-- Highlight 4: CHAT -->
+  <circle cx="470" cy="520" r="48" fill="none" stroke="#4ECDC4" stroke-width="3"/>
+  <circle cx="470" cy="520" r="42" fill="#1a1a1a"/>
+  <text x="470" y="530" text-anchor="middle" font-size="28">💬</text>
+  <text x="470" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">Chat</text>
+  
+  <!-- Highlight 5: RESENAS -->
+  <circle cx="600" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="600" cy="520" r="42" fill="#FFD700"/>
+  <text x="600" y="530" text-anchor="middle" font-size="28">⭐</text>
+  <text x="600" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">Resenas</text>
+  
+  <!-- Highlight 6: PRECIOS -->
+  <circle cx="730" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="730" cy="520" r="42" fill="#4ECDC4"/>
+  <text x="730" y="530" text-anchor="middle" font-size="28">💰</text>
+  <text x="730" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">Precios</text>
+  
+  <!-- Highlight 7: PROCESO -->
+  <circle cx="860" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="860" cy="520" r="42" fill="#FF6B9D"/>
+  <text x="860" y="530" text-anchor="middle" font-size="28">📦</text>
+  <text x="860" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">Proceso</text>
+  
+  <!-- Highlight 8: FAQ -->
+  <circle cx="990" cy="520" r="48" fill="none" stroke="#666" stroke-width="3"/>
+  <circle cx="990" cy="520" r="42" fill="#FFF9E0"/>
+  <text x="990" y="530" text-anchor="middle" font-size="28">❓</text>
+  <text x="990" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#999">FAQ</text>
+  
+  <!-- ======== TAB BAR (grid/reels) ======== -->
+  <rect x="0" y="610" width="1080" height="50" fill="#121212"/>
+  <line x1="0" y1="610" x2="1080" y2="610" stroke="#333" stroke-width="1"/>
+  <!-- Grid icon selected -->
+  <rect x="230" y="625" width="8" height="8" fill="white"/>
+  <rect x="242" y="625" width="8" height="8" fill="white"/>
+  <rect x="254" y="625" width="8" height="8" fill="white"/>
+  <rect x="230" y="637" width="8" height="8" fill="white"/>
+  <rect x="242" y="637" width="8" height="8" fill="white"/>
+  <rect x="254" y="637" width="8" height="8" fill="white"/>
+  <rect x="230" y="649" width="8" height="8" fill="white"/>
+  <rect x="242" y="649" width="8" height="8" fill="white"/>
+  <rect x="254" y="649" width="8" height="8" fill="white"/>
+  <!-- Underline -->
+  <rect x="180" y="658" width="120" height="2" fill="white"/>
+  
+  <!-- Reels icon -->
+  <rect x="500" y="624" width="24" height="32" rx="4" fill="none" stroke="#666" stroke-width="2"/>
+  <path d="M506 624 L518 624" stroke="#666" stroke-width="2"/>
+  
+  <!-- ======== GRID - 3x3 ======== -->
+  <!-- Row 1 -->
+  <!-- Post 1: Frase gancho -->
+  <rect x="2" y="664" width="356" height="356" fill="#FFF9E0"/>
+  <rect x="52" y="734" width="256" height="180" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="180" y="810" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="#1a1a1a">Tu evento</text>
+  <text x="180" y="840" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="#1a1a1a">merece una</text>
+  <text x="180" y="870" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="#1a1a1a">invitacion</text>
+  <rect x="80" y="880" width="200" height="30" fill="#1a1a1a"/>
+  <text x="180" y="902" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="20" fill="#FFF9E0">QUE ROMPA</text>
+  
+  <!-- Post 2: Reel Demo (placeholder) -->
+  <rect x="362" y="664" width="356" height="356" fill="#222"/>
+  <!-- Play button -->
+  <circle cx="540" cy="842" r="35" fill="rgba(255,255,255,0.2)"/>
+  <polygon points="530,825 530,860 560,842" fill="white"/>
+  <text x="540" y="940" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#999">REEL</text>
+  <text x="540" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">Demo Boda</text>
+  
+  <!-- Post 3: Testimonio -->
+  <rect x="722" y="664" width="356" height="356" fill="#FF8C42"/>
+  <rect x="762" y="740" width="276" height="200" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="900" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="60" fill="#FF6B9D" opacity="0.4">"</text>
+  <text x="900" y="830" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#1a1a1a">Les mandamos la</text>
+  <text x="900" y="855" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#1a1a1a">info y al otro dia</text>
+  <text x="900" y="880" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#1a1a1a">ya estaba listo</text>
+  <text x="900" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#FF8C42">★★★★★</text>
+  
+  <!-- Row 2 -->
+  <!-- Post 4: Carrusel Proceso -->
+  <rect x="2" y="1024" width="356" height="356" fill="white"/>
+  <rect x="42" y="1070" width="276" height="70" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="180" y="1115" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" fill="#1a1a1a">01 Elegi estilo</text>
+  <rect x="42" y="1150" width="276" height="70" fill="#4ECDC4" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="180" y="1195" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" fill="#1a1a1a">02 Manda datos</text>
+  <rect x="42" y="1230" width="276" height="70" fill="#FF8C42" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="180" y="1275" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" fill="#1a1a1a">03 Link en 24hs</text>
+  <!-- Carousel indicator -->
+  <rect x="154" y="1340" width="12" height="12" rx="6" fill="#1a1a1a"/>
+  <rect x="172" y="1340" width="12" height="12" rx="6" fill="#ccc"/>
+  <rect x="190" y="1340" width="12" height="12" rx="6" fill="#ccc"/>
+  
+  <!-- Post 5: PARTY CHAT (destacado!) -->
+  <rect x="362" y="1024" width="356" height="356" fill="#1a3a5c"/>
+  <!-- Badge -->
+  <rect x="430" y="1050" width="180" height="30" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="2"/>
+  <text x="520" y="1072" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="16" fill="#1a1a1a">NUEVO 🔥</text>
+  <text x="540" y="1130" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="36" fill="#FFF9E0">Party</text>
+  <text x="540" y="1175" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="36" fill="#4ECDC4">Chat</text>
+  <!-- Mini chat -->
+  <rect x="410" y="1200" width="260" height="120" rx="8" fill="white"/>
+  <text x="430" y="1230" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#FF6347">Tio Carlos:</text>
+  <text x="430" y="1250" font-family="Arial, sans-serif" font-size="14" fill="#333">Que grande!! 🎉</text>
+  <text x="430" y="1280" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#8A2BE2">Prima Laura:</text>
+  <text x="430" y="1300" font-family="Arial, sans-serif" font-size="14" fill="#8A2BE2">Cuando la torta?</text>
+  <!-- Features -->
+  <text x="540" y="1350" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#FFF9E0" opacity="0.7">📳 Zumbidos · 🎨 Colores · 🪑 Mesas</text>
+  
+  <!-- Post 6: Antes/Despues -->
+  <rect x="722" y="1024" width="356" height="356" fill="#e8e8e8"/>
+  <!-- Split -->
+  <rect x="722" y="1024" width="178" height="356" fill="#e8e8e8"/>
+  <rect x="900" y="1024" width="178" height="356" fill="#FF6B9D"/>
+  <line x1="900" y1="1024" x2="900" y2="1380" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Labels -->
+  <rect x="760" y="1050" width="100" height="30" fill="#1a1a1a"/>
+  <text x="810" y="1072" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="white">ANTES</text>
+  <rect x="938" y="1050" width="110" height="30" fill="#1a1a1a"/>
+  <text x="993" y="1072" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="white">DESPUES</text>
+  <!-- Mini chat bubble left -->
+  <rect x="745" y="1130" width="130" height="40" rx="10" fill="#DCF8C6"/>
+  <text x="760" y="1155" font-family="Arial, sans-serif" font-size="12" fill="#333">hola el sabado</text>
+  <rect x="745" y="1180" width="140" height="40" rx="10" fill="#DCF8C6"/>
+  <text x="760" y="1205" font-family="Arial, sans-serif" font-size="12" fill="#333">es el cumple traig</text>
+  <!-- Mini phone right -->
+  <rect x="930" y="1120" width="100" height="180" rx="12" fill="#1a1a1a"/>
+  <rect x="935" y="1130" width="90" height="160" rx="8" fill="white"/>
+  <rect x="935" y="1130" width="90" height="40" fill="#FF6B9D" rx="8"/>
+  <text x="980" y="1155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cumple Emi</text>
+  <text x="980" y="1200" text-anchor="middle" font-size="24">🎂</text>
+  <!-- VS circle -->
+  <circle cx="900" cy="1200" r="22" fill="#1a1a1a"/>
+  <text x="900" y="1208" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="16" fill="white">VS</text>
+  
+  <!-- Row 3 -->
+  <!-- Post 7: Precios -->
+  <rect x="2" y="1384" width="356" height="356" fill="#FFF9E0"/>
+  <!-- 3 plan cards mini -->
+  <rect x="28" y="1430" width="96" height="260" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="28" y="1430" width="96" height="30" fill="#4ECDC4" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="76" y="1452" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="#1a1a1a">BASICO</text>
+  <text x="76" y="1500" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="18" fill="#1a1a1a">$25K</text>
+  
+  <rect x="132" y="1420" width="96" height="280" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="132" y="1420" width="96" height="30" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="180" y="1442" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="white">PREMIUM★</text>
+  <text x="180" y="1490" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="18" fill="#1a1a1a">$45K</text>
+  
+  <rect x="236" y="1430" width="96" height="260" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="236" y="1430" width="96" height="30" fill="#FF8C42" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="284" y="1452" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="#1a1a1a">PLUS</text>
+  <text x="284" y="1500" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="18" fill="#1a1a1a">$65K</text>
+  
+  <text x="180" y="1720" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="#1a1a1a">30% OFF transferencia</text>
+  
+  <!-- Post 8: Reel Demo 15 -->
+  <rect x="362" y="1384" width="356" height="356" fill="#333"/>
+  <circle cx="540" cy="1562" r="35" fill="rgba(255,255,255,0.2)"/>
+  <polygon points="530,1545 530,1580 560,1562" fill="white"/>
+  <text x="540" y="1660" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#999">REEL</text>
+  <text x="540" y="1685" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">Demo 15 Anos</text>
+  
+  <!-- Post 9: Frase link -->
+  <rect x="722" y="1384" width="356" height="356" fill="#4ECDC4"/>
+  <rect x="762" y="1450" width="276" height="220" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="900" y="1510" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="#1a1a1a">Un link.</text>
+  <text x="900" y="1555" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="#1a1a1a">Envios</text>
+  <text x="900" y="1590" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="#1a1a1a">ilimitados.</text>
+  <text x="900" y="1640" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="24" fill="#FF6B9D">Sin apps.</text>
+  <text x="900" y="1700" text-anchor="middle" font-size="30">📱✨</text>
+  
+  <!-- ======== BOTTOM NAV ======== -->
+  <rect x="0" y="1840" width="1080" height="80" fill="#121212" stroke="#333" stroke-width="1"/>
+  <text x="108" y="1890" text-anchor="middle" font-size="28">🏠</text>
+  <text x="324" y="1890" text-anchor="middle" font-size="28">🔍</text>
+  <text x="540" y="1890" text-anchor="middle" font-size="28">➕</text>
+  <text x="756" y="1890" text-anchor="middle" font-size="28">🎬</text>
+  <circle cx="972" cy="1880" r="18" fill="#FF6B9D"/>
+</svg>
