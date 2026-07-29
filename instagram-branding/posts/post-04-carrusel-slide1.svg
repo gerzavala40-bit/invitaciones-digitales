@@ -1,0 +1,37 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#FFF9E0"/>
+  
+  <!-- Border -->
+  <rect x="40" y="40" width="1000" height="1000" fill="none" stroke="#1a1a1a" stroke-width="8"/>
+  
+  <!-- Main card -->
+  <rect x="148" y="308" width="800" height="400" fill="#1a1a1a" stroke="none"/>
+  <rect x="140" y="300" width="800" height="400" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="12"/>
+  
+  <!-- Text -->
+  <text x="540" y="480" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="80" fill="#1a1a1a">Como</text>
+  <text x="540" y="580" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="80" fill="#1a1a1a">funciona?</text>
+  
+  <!-- Sparkles -->
+  <g transform="translate(200, 200)">
+    <path d="M0 -25 L7 -7 L25 0 L7 7 L0 25 L-7 7 L-25 0 L-7 -7 Z" fill="#4ECDC4" stroke="#1a1a1a" stroke-width="4"/>
+  </g>
+  <g transform="translate(880, 250)">
+    <path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z" fill="#FF8C42" stroke="#1a1a1a" stroke-width="4"/>
+  </g>
+  <g transform="translate(150, 850)">
+    <path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z" fill="#FFD700" stroke="#1a1a1a" stroke-width="4"/>
+  </g>
+  
+  <!-- Subtitle -->
+  <text x="540" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="36" fill="#1a1a1a">3 pasos y listo →</text>
+  
+  <!-- Dots -->
+  <circle cx="500" cy="920" r="14" fill="#1a1a1a"/>
+  <circle cx="540" cy="920" r="14" fill="#ccc"/>
+  <circle cx="580" cy="920" r="14" fill="#ccc"/>
+  
+  <!-- Branding -->
+  <text x="540" y="1000" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#1a1a1a">@teinvitoapp</text>
+</svg>

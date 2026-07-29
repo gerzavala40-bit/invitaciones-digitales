@@ -1,0 +1,29 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#1a1a1a"/>
+  
+  <!-- Main card -->
+  <rect x="108" y="208" width="880" height="500" fill="#4ECDC4" stroke="none"/>
+  <rect x="100" y="200" width="880" height="500" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="12"/>
+  
+  <!-- Text -->
+  <text x="540" y="380" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="70" fill="#1a1a1a">Empeza</text>
+  <text x="540" y="470" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="70" fill="#1a1a1a">ahora</text>
+  <text x="540" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#666">Listo en 24hs. Envios ilimitados.</text>
+  
+  <!-- CTA Button -->
+  <rect x="278" y="770" width="540" height="100" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="10"/>
+  <rect x="286" y="778" width="540" height="100" fill="none" stroke="none"/>
+  <text x="548" y="835" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="40" fill="#1a1a1a">Link en bio 👆</text>
+  
+  <!-- Arrow -->
+  <text x="540" y="940" text-anchor="middle" font-size="60" fill="#FFF9E0">↑</text>
+  
+  <!-- Dots -->
+  <circle cx="500" cy="1000" r="14" fill="#666"/>
+  <circle cx="540" cy="1000" r="14" fill="#666"/>
+  <circle cx="580" cy="1000" r="14" fill="#FFF9E0"/>
+  
+  <!-- Branding -->
+  <text x="540" y="1050" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="#FFF9E0">@teinvitoapp</text>
+</svg>
