@@ -1,0 +1,34 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="white"/>
+  
+  <!-- Border neo -->
+  <rect x="40" y="40" width="1000" height="1000" fill="none" stroke="#1a1a1a" stroke-width="8"/>
+  
+  <!-- Title -->
+  <text x="540" y="180" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="65" fill="#1a1a1a">Como funciona?</text>
+  <rect x="300" y="200" width="480" height="10" fill="#FF6B9D"/>
+  
+  <!-- Step 1 -->
+  <rect x="148" y="298" width="800" height="160" fill="#1a1a1a" stroke="none"/>
+  <rect x="140" y="290" width="800" height="160" fill="#FF6B9D" stroke="#1a1a1a" stroke-width="10"/>
+  <text x="540" y="390" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="55" fill="#1a1a1a">01 Elegi estilo</text>
+  
+  <!-- Step 2 -->
+  <rect x="148" y="498" width="800" height="160" fill="#1a1a1a" stroke="none"/>
+  <rect x="140" y="490" width="800" height="160" fill="#4ECDC4" stroke="#1a1a1a" stroke-width="10"/>
+  <text x="540" y="590" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="55" fill="#1a1a1a">02 Manda datos</text>
+  
+  <!-- Step 3 -->
+  <rect x="148" y="698" width="800" height="160" fill="#1a1a1a" stroke="none"/>
+  <rect x="140" y="690" width="800" height="160" fill="#FF8C42" stroke="#1a1a1a" stroke-width="10"/>
+  <text x="540" y="790" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="55" fill="#1a1a1a">03 Link en 24hs</text>
+  
+  <!-- Carousel dots -->
+  <circle cx="500" cy="940" r="14" fill="#1a1a1a"/>
+  <circle cx="540" cy="940" r="14" fill="#ccc"/>
+  <circle cx="580" cy="940" r="14" fill="#ccc"/>
+  
+  <!-- Branding -->
+  <text x="540" y="1020" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#1a1a1a">@teinvitoapp</text>
+</svg>
