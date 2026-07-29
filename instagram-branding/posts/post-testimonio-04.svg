@@ -1,0 +1,29 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#1a1a1a"/>
+  
+  <!-- Quote card -->
+  <rect x="108" y="188" width="880" height="580" fill="#FF8C42" stroke="none"/>
+  <rect x="100" y="180" width="880" height="580" fill="#FFF9E0" stroke="#1a1a1a" stroke-width="12"/>
+  
+  <!-- Big quote marks -->
+  <text x="180" y="310" font-family="Georgia, serif" font-size="150" fill="#1a1a1a" opacity="0.15">"</text>
+  
+  <!-- Testimonial text -->
+  <text x="540" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="#1a1a1a">Mis invitados me</text>
+  <text x="540" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="#1a1a1a">decian que fue la</text>
+  <text x="540" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="#1a1a1a">invitacion mas linda</text>
+  <text x="540" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="#1a1a1a">que recibieron en</text>
+  <text x="540" y="590" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="#1a1a1a">su vida. Literal.</text>
+  
+  <!-- Stars -->
+  <text x="540" y="680" text-anchor="middle" font-family="Arial, sans-serif" font-size="50" fill="#FF8C42">★★★★★</text>
+  
+  <!-- Author -->
+  <rect x="310" y="720" width="460" height="70" fill="#FF8C42" stroke="#1a1a1a" stroke-width="6"/>
+  <text x="540" y="768" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#1a1a1a">Lucia M. · Boda</text>
+  
+  <!-- Bottom branding -->
+  <text x="540" y="920" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="40" fill="#FFF9E0">@teinvitoapp</text>
+  <text x="540" y="980" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#FFF9E0" opacity="0.7">Invitaciones digitales a medida</text>
+</svg>
