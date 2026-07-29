@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { Suspense, useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import MSNLogin from "@/components/chat/MSNLogin";
 import MSNChatWindow from "@/components/chat/MSNChatWindow";
@@ -20,7 +20,7 @@ interface EventData {
   title: string;
 }
 
-export default function ChatPage() {
+function ChatPageContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const slug = params.slug as string;
@@ -154,5 +154,22 @@ export default function ChatPage() {
       participant={participant}
       onLogout={handleLogout}
     />
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#1a3a5c] flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin w-12 h-12 border-4 border-white/20 border-t-white rounded-full mx-auto mb-4"></div>
+            <p className="text-white/60 text-sm">Cargando chat...</p>
+          </div>
+        </div>
+      }
+    >
+      <ChatPageContent />
+    </Suspense>
   );
 }
