@@ -61,7 +61,7 @@ export default function TemplateDespedida({ event }: { event: EventData }) {
         )}
       </AnimatePresence>
 
-      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} autoPlay={entered} />}
+      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} />}
 
       <div className={`transition-opacity duration-1000 ${entered ? "opacity-100" : "opacity-0"}`}>
         <main>
