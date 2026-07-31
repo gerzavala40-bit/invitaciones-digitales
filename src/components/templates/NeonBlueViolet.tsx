@@ -8,6 +8,9 @@ import CopyButton from "./shared/CopyButton";
 import RsvpForm from "./shared/RsvpForm";
 import MusicPlayer from "./shared/MusicPlayer";
 import PhotoGallery from "./shared/PhotoGallery";
+import AddToCalendar from "../features/AddToCalendar";
+import Guestbook from "../features/Guestbook";
+import Timeline from "../features/Timeline";
 
 export default function NeonBlueViolet({ event }: { event: EventData }) {
   const [entered, setEntered] = useState(false);
@@ -213,13 +216,30 @@ export default function NeonBlueViolet({ event }: { event: EventData }) {
                   <p className="text-3xl nbv-serif text-white mb-3">{event.eventTime} HS</p>
                   <p className="text-lg font-medium text-purple-200 mb-2">{event.venueName}</p>
                   <p className="text-gray-400 text-sm mb-8 max-w-xs leading-relaxed">{event.venueAddress}</p>
-                  <a href={event.venueLatLng ? `https://maps.google.com/?q=${event.venueLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.venueAddress)}`} target="_blank" rel="noopener" className="nbv-btn mt-auto px-8 py-3 text-xs tracking-[0.2em] uppercase rounded-full">
-                    Ver Mapa
-                  </a>
+                  <div className="flex flex-col gap-4 mt-auto">
+                    <a href={event.venueLatLng ? `https://maps.google.com/?q=${event.venueLatLng}` : `https://maps.google.com/?q=${encodeURIComponent(event.venueAddress)}`} target="_blank" rel="noopener" className="nbv-btn px-8 py-3 text-xs tracking-[0.2em] uppercase rounded-full text-center">
+                      Ver Mapa
+                    </a>
+                    <div className="flex justify-center mt-2">
+                      <AddToCalendar event={event} />
+                    </div>
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
           </section>
+
+          {/* ITINERARIO */}
+          {event.timeline && event.timeline.length > 0 && (
+            <section className="py-24 px-6 relative">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-3xl mx-auto text-center">
+                <motion.h2 variants={fadeUp} className="nbv-serif text-4xl text-white mb-16 italic">Itinerario</motion.h2>
+                <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 text-left backdrop-blur-sm">
+                  <Timeline items={event.timeline} accentColor="#3a7bd5" />
+                </motion.div>
+              </motion.div>
+            </section>
+          )}
 
           {/* DRESS CODE */}
           {event.dressCode && (
@@ -238,6 +258,25 @@ export default function NeonBlueViolet({ event }: { event: EventData }) {
                 <h2 className="nbv-serif text-4xl text-white mb-16 italic">Nosotros</h2>
                 <div className="rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,210,255,0.1)]">
                   <PhotoGallery photos={event.photos} accentColor="#00d2ff" title="" />
+                </div>
+              </motion.div>
+            </section>
+          )}
+
+          {/* MURO DE FIRMAS */}
+          {event.guestbookEnabled && (
+            <section className="py-24 px-6 relative border-t border-white/5">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="max-w-3xl mx-auto text-center">
+                <h2 className="nbv-serif text-4xl text-white mb-8 italic">Mensajes</h2>
+                <p className="text-gray-400 text-sm tracking-wide leading-relaxed mb-12 font-light">
+                  Déjanos tus buenos deseos en nuestro muro de firmas.
+                </p>
+                <div className="text-left bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                  <Guestbook 
+                    eventSlug={event.slug} 
+                    messages={event.messages || []} 
+                    isTrial={event.isTrial}
+                  />
                 </div>
               </motion.div>
             </section>
