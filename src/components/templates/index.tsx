@@ -11,6 +11,7 @@ import BautismoTierno from "./BautismoTierno";
 import GalaCorporativa from "./GalaCorporativa";
 import CanvaBoho from "./CanvaBoho";
 import BodaElegante from "./BodaElegante";
+import ModernBlackAndWhite from "./ModernBlackAndWhite";
 
 export const TEMPLATES = {
   "elegant-dark": { name: "Elegante Oscuro", component: ElegantDark, description: "Boda oscura con dorado, pantalla de bienvenida" },
@@ -23,6 +24,7 @@ export const TEMPLATES = {
   "camila-glam": { name: "15 Años Glam", component: CamilaGlam, description: "15 años oscuro, rosa y dorado, pantalla de bienvenida" },
   "bautismo-tierno": { name: "Bautismo Tierno", component: BautismoTierno, description: "Bautismo fondo claro, celeste, pantalla de bienvenida" },
   "boda-elegante": { name: "Boda Elegante", component: BodaElegante, description: "Boda elegante negro con borde dorado" },
+  "modern-black-and-white": { name: "Ilustración Moderno B&N", component: ModernBlackAndWhite, description: "Ilustración moderna blanco y negro para bodas" },
 } as const;
 
 export type TemplateId = keyof typeof TEMPLATES;
