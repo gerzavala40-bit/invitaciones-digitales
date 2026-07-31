@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { EventData } from "./types";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import RsvpForm from "./shared/RsvpForm";
 import MusicPlayer from "./shared/MusicPlayer";
 import PhotoGallery from "./shared/PhotoGallery";
@@ -18,12 +18,12 @@ export default function TemplateDespedida({ event }: { event: EventData }) {
     ? { backgroundImage: `url(${heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }
     : { background: "linear-gradient(135deg, #FF8C42 0%, #FF6B9D 100%)" };
 
-  const fadeUp = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
   };
