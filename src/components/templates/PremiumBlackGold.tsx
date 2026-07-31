@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { EventData } from "./types";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Countdown from "./shared/Countdown";
 import CopyButton from "./shared/CopyButton";
 import RsvpForm from "./shared/RsvpForm";
@@ -25,12 +25,12 @@ export default function PremiumBlackGold({ event }: { event: EventData }) {
   const dateLong = dateObj.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" }).toUpperCase();
 
   // Animation variants
-  const fadeUp = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
   
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
