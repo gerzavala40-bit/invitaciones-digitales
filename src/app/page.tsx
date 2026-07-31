@@ -178,7 +178,8 @@ Quedo a la espera para coordinar la sena!`;
               <Link href="#estilos" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Demos</Link>
               <Link href="#party-chat" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Party Chat</Link>
               <Link href="#planes" className="px-4 py-2 text-sm font-semibold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Planes</Link>
-              <button type="button" onClick={() => setIsQuizOpen(true)} className="px-4 py-2 text-sm font-bold border-[3px] border-[#1a1a1a] bg-[#1a1a1a] text-[#FFF9E0] shadow-[3px_3px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#FF6B9D] transition-all">Empezar</button>
+              <Link href="/cliente/login" className="px-4 py-2 text-sm font-bold border-[2px] border-[#1a1a1a] text-[#1a1a1a] bg-transparent hover:underline transition-all">Ingresar</Link>
+              <Link href="/crear" className="px-4 py-2 text-sm font-bold border-[3px] border-[#1a1a1a] bg-[#1a1a1a] text-[#FFF9E0] shadow-[3px_3px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#FF6B9D] transition-all">Crear Gratis</Link>
             </div>
           </div>
         </div>
@@ -214,9 +215,9 @@ Quedo a la espera para coordinar la sena!`;
           </p>
         </Reveal>
         <Reveal y={20} delay={0.2}>
-          <button type="button" onClick={() => setIsQuizOpen(true)} className="inline-block px-10 py-5 bg-[#1a1a1a] text-[#FFF9E0] text-lg font-bold border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#FF6B9D] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#FF6B9D] transition-all cursor-pointer">
-            Disenar mi invitacion →
-          </button>
+          <Link href="/crear" className="inline-block px-10 py-5 bg-[#1a1a1a] text-[#FFF9E0] text-lg font-bold border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#FF6B9D] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#FF6B9D] transition-all cursor-pointer">
+            Diseñar mi invitacion →
+          </Link>
         </Reveal>
       </header>
 
