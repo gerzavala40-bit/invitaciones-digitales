@@ -43,6 +43,7 @@ export default function DespedidasLanding() {
     { emoji: "📅", title: "Itinerario", desc: "Línea de tiempo de toda la noche/viaje" },
     { emoji: "✅", title: "RSVP Ampliado", desc: "Consultá dietas, alergias y talles" },
     { emoji: "📸", title: "Party Cam", desc: "Muro en vivo para subir las fotos" },
+    { emoji: "💬", title: "Party Chat", desc: "Chat privado tipo MSN para la joda" },
     { emoji: "📍", title: "Google Maps", desc: "Ubicación exacta del bar/quinta" },
     { emoji: "🎵", title: "Música", desc: "La canción que los representa de fondo" },
   ];
@@ -200,6 +201,7 @@ export default function DespedidasLanding() {
               <ul className="text-left text-sm space-y-3 mb-8 flex-1 text-gray-300">
                 <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> Todo lo del plan Estándar</li>
                 <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> RSVP Avanzado (Dietas y Talles)</li>
+                <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> Party Chat (Privado para el grupo)</li>
                 <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> Módulo Party Cam (Muro fotos en vivo)</li>
                 <li className="flex gap-2 items-start"><span className="text-[#FF6B9D] font-bold">✓</span> Muro de firmas y anécdotas</li>
               </ul>

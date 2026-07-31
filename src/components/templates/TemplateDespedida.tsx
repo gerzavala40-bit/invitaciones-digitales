@@ -196,6 +196,21 @@ export default function TemplateDespedida({ event }: { event: EventData }) {
             </section>
           )}
 
+          {/* PARTY CHAT */}
+          <section className="py-24 px-6 relative border-t border-white/10">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-xl mx-auto text-center">
+              <motion.h2 variants={fadeUp} className="text-4xl font-black mb-6 text-[#FF6B9D]">Party Chat 💬</motion.h2>
+              <motion.p variants={fadeUp} className="text-gray-400 mb-10">
+                Sumate al chat secreto de la despedida. Elegí tu color y empezá a mandar zumbidos.
+              </motion.p>
+              <motion.div variants={fadeUp}>
+                <a href={`/demo-chat?mesa=Amigos`} target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-5 bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white text-lg font-bold shadow-[0_0_30px_rgba(255,107,157,0.4)] hover:shadow-[0_0_40px_rgba(255,107,157,0.6)] hover:scale-105 transition-all cursor-pointer rounded-full">
+                  Entrar al Chat
+                </a>
+              </motion.div>
+            </motion.div>
+          </section>
+
           {/* MURO DE FIRMAS */}
           {event.guestbookEnabled && (
             <section className="py-24 px-6 relative border-t border-white/10">
