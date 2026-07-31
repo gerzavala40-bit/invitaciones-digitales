@@ -104,7 +104,7 @@ export default function DespedidasLanding() {
         </Reveal>
         
         <Reveal y={20} delay={0.3}>
-          <Link href="/preview?url=/test-15.html&customName=Despedida+Vip" target="_blank" className="inline-block px-10 py-5 bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white text-lg font-bold shadow-[0_0_30px_rgba(255,107,157,0.4)] hover:shadow-[0_0_40px_rgba(255,107,157,0.6)] hover:scale-105 transition-all cursor-pointer rounded-full">
+          <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="inline-block px-10 py-5 bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white text-lg font-bold shadow-[0_0_30px_rgba(255,107,157,0.4)] hover:shadow-[0_0_40px_rgba(255,107,157,0.6)] hover:scale-105 transition-all cursor-pointer rounded-full">
             Ver Demo en Vivo →
           </Link>
         </Reveal>
