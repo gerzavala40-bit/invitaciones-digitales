@@ -143,10 +143,11 @@ export default function RusticKraft({ event }: { event: EventData }) {
           <div className="max-w-md mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-3">Confirmación</p>
             <p className="text-[#3d2b1f] text-xl italic mb-8">¿Nos acompañás?</p>
-            <div className="bg-[#F3E7D4] border border-[#8B4513]/20 rounded-lg p-7 text-left">
+            <div className="bg-white/80 backdrop-blur p-6 rounded-lg border border-[#c4a99b]/30 shadow-xl max-w-md mx-auto text-left">
               <RsvpForm
                 eventSlug={event.slug}
-                inputClassName="bg-[#EBDCC3] border border-[#8B4513]/20 text-[#3d2b1f] placeholder-[#8B4513]/40 rounded-lg focus:outline-none focus:border-[#8B4513]"
+                isTrial={event.isTrial}
+                inputClassName="bg-white/50 border border-[#c4a99b]/50 focus:border-[#8b7355] text-gray-800"
                 buttonClassName="bg-[#8B4513] text-[#F3E7D4] hover:bg-[#6d3610] rounded-full"
                 labelClassName="text-[#5c4033] text-xs uppercase tracking-wider"
               />

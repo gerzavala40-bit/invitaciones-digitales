@@ -27,7 +27,24 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       photos: event.photos.map((p) => ({ url: p.url, order: p.order })),
     };
 
-    return <InvitationTemplate event={eventData} />;
+    return (
+      <>
+        {event.isTrial && (
+          <div className="fixed top-0 left-0 w-full z-[9999] bg-amber-500 text-black text-center py-2 px-4 shadow-md flex items-center justify-center gap-4">
+            <span className="font-bold text-sm">⚠️ Esta es una prueba de tu invitación.</span>
+            <a 
+              href={`https://wa.me/5491100000000?text=Hola,%20quiero%20activar%20mi%20invitacion%20${event.slug}`} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black text-white px-3 py-1 rounded text-xs font-bold hover:bg-gray-800 transition"
+            >
+              Activar Ahora
+            </a>
+          </div>
+        )}
+        <InvitationTemplate event={eventData} />
+      </>
+    );
   } catch (error) {
     console.error("Error loading event:", error);
     notFound();

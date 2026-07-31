@@ -191,6 +191,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
             <div className="text-left bg-white p-6 shadow-sm border border-[#eaeaea]">
               <RsvpForm 
                 eventSlug={event.slug} 
+                isTrial={event.isTrial}
                 buttonClassName="bg-[#c2a990] text-white hover:bg-[#a98f73]"
                 inputClassName="border border-[#eaeaea] bg-[#f9f8f6]"
                 labelClassName="text-[#333] tracking-widest uppercase text-xs font-semibold"

@@ -101,7 +101,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
           <div className="max-w-lg mx-auto text-center">
             <h2 className="text-3xl font-black mb-4">¿Venís?</h2>
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6">
-              <RsvpForm eventSlug={event.slug} inputClassName="bg-white/15 border border-white/25 text-white placeholder-white/40 rounded-xl focus:outline-none focus:border-white/60" buttonClassName="bg-white text-purple-700 font-bold hover:shadow-xl" labelClassName="text-white/80" />
+              <RsvpForm eventSlug={event.slug} isTrial={event.isTrial} inputClassName="bg-white/15 border border-white/25 text-white placeholder-white/40 rounded-xl focus:outline-none focus:border-white/60" buttonClassName="bg-white text-purple-700 font-bold hover:shadow-xl" labelClassName="text-white/80" />
             </div>
           </div>
         </section>

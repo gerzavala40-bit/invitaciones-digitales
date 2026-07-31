@@ -13,6 +13,7 @@ model User {
   email     String   @unique
   name      String?
   password  String
+  role      String   @default("CLIENT")
   plan      String   @default("BASICO")
   events    Event[]
   createdAt DateTime @default(now())
@@ -59,6 +60,8 @@ model Event {
   rsvpDeadline String?
   isActive     Boolean  @default(true)
   scannerPin   String   @default("1234")
+  isTrial      Boolean  @default(true)
+  paymentStatus String  @default("pending")
   
   // Funciones Premium
   guestbookEnabled Boolean  @default(false)

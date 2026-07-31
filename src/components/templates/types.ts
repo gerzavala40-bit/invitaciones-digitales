@@ -25,6 +25,7 @@ export interface EventData {
   rsvpEnabled: boolean;
   rsvpDeadline?: string | null;
   isActive: boolean;
+  isTrial?: boolean;
   guestbookEnabled: boolean;
   photos: { url: string; order: number }[];
   messages?: { id: string; guestName: string; message: string; createdAt: Date }[];

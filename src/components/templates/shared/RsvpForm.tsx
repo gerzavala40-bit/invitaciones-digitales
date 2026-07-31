@@ -7,9 +7,10 @@ interface RsvpFormProps {
   inputClassName?: string;
   buttonClassName?: string;
   labelClassName?: string;
+  isTrial?: boolean;
 }
 
-export default function RsvpForm({ eventSlug, inputClassName = "", buttonClassName = "", labelClassName = "" }: RsvpFormProps) {
+export default function RsvpForm({ eventSlug, inputClassName = "", buttonClassName = "", labelClassName = "", isTrial = false }: RsvpFormProps) {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [qrCode, setQrCode] = useState<string | null>(null);
@@ -69,8 +70,8 @@ export default function RsvpForm({ eventSlug, inputClassName = "", buttonClassNa
         <label className={`block text-sm mb-1 ${labelClassName}`}>Canción infaltable</label>
         <input type="text" name="cancion" placeholder="Artista - Nombre" className={`w-full px-4 py-3 rounded-lg ${inputClassName}`} />
       </div>
-      <button type="submit" disabled={loading} className={`w-full py-3 rounded-full font-semibold text-sm transition-all ${buttonClassName} ${loading ? "opacity-50" : ""}`}>
-        {loading ? "Enviando..." : "Confirmar Asistencia"}
+      <button type="submit" disabled={loading || isTrial} className={`w-full py-3 rounded-full font-semibold text-sm transition-all ${buttonClassName} ${(loading || isTrial) ? "opacity-50" : ""}`}>
+        {loading ? "Enviando..." : isTrial ? "Deshabilitado en Prueba" : "Confirmar Asistencia"}
       </button>
       {success && (
         <div className="text-center mt-2">

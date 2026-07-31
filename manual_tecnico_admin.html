@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Técnico del Administrador</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f3f4f6;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #111827;
+            text-align: center;
+            border-bottom: 3px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #111827;
+            margin-top: 40px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #4b5563;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #f1f5f9;
+            color: #ef4444;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+        }
+        .link-box {
+            background-color: #111827;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .link-box a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-box a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚙️ Manual Técnico de Administración</h1>
+        <p>Este documento es tu guía técnica para operar la plataforma <strong>TeInvitoApp</strong>. Contiene los enlaces de acceso directo, explicaciones de la base de datos y cómo gestionar los eventos de tus clientes.</p>
+
+        <h2>1. Arquitectura y Servidores</h2>
+        <ul>
+            <li><strong>Código Fuente:</strong> Alojado en tu cuenta de GitHub (<code>gerzavala40-bit/invitaciones-digitales</code>).</li>
+            <li><strong>Hosting:</strong> Vercel (Se actualiza automáticamente cada vez que se suben cambios a GitHub).</li>
+            <li><strong>Base de Datos:</strong> PostgreSQL (conectada mediante Prisma ORM). Vercel gestiona las actualizaciones de las tablas automáticamente.</li>
+        </ul>
+
+        <h2>2. Enlaces del Panel de Control</h2>
+        
+        <div class="link-box">
+            <span><strong>Dashboard Principal:</strong> Ver todos los eventos y estadísticas</span>
+            <a href="https://teinvitoapp.com.ar/admin" target="_blank">/admin</a>
+        </div>
+        
+        <div class="link-box">
+            <span><strong>Crear Nuevo Evento:</strong> Formulario para dar de alta a un cliente</span>
+            <a href="https://teinvitoapp.com.ar/admin/events/new" target="_blank">/admin/events/new</a>
+        </div>
+
+        <div class="link-box">
+            <span><strong>Control de Puerta (Scanner):</strong> App para la recepción</span>
+            <a href="https://teinvitoapp.com.ar/scanner" target="_blank">/scanner</a>
+        </div>
+
+        <h2>3. Cómo crear y gestionar un Evento</h2>
+        <h3>Paso 1: Alta del Evento</h3>
+        <p>Ingresa a <code>/admin/events/new</code>. Completa el formulario con los datos de los novios, fecha, dirección del salón y plantilla elegida. Al hacer clic en "Crear", el sistema generará automáticamente la URL única (el "slug").</p>
+        
+        <h3>Paso 2: Gestionar Confirmados (RSVP)</h3>
+        <p>Desde el Panel Principal (<code>/admin</code>), haz clic en un evento para entrar a su panel específico. Allí verás la lista en vivo de todos los invitados que han confirmado.</p>
+        
+        <h3>Paso 3: Asignar Mesas (Importar/Exportar)</h3>
+        <p>En el panel del evento específico:</p>
+        <ol>
+            <li>Haz clic en <strong>"Exportar Excel"</strong>. Esto te bajará la lista de invitados.</li>
+            <li>Envíale el Excel al cliente para que rellene la columna <strong>"Mesa"</strong>.</li>
+            <li><span style="color: red; font-weight: bold;">MUY IMPORTANTE:</span> Indícale al cliente que <strong>NO borre ni modifique</strong> la primera columna (<code>ID_SISTEMA</code>).</li>
+            <li>Una vez que te devuelvan el Excel, entra al panel y haz clic en <strong>"Importar Excel"</strong>. Sube el archivo y las mesas se actualizarán automáticamente en la base de datos.</li>
+        </ol>
+
+        <h2>4. Seguridad y Scanner QR</h2>
+        <p>Para usar el escáner de la puerta (<code>/scanner</code>), el personal de recepción necesita dos datos:</p>
+        <ul>
+            <li><strong>El Código del Evento (slug):</strong> Es la parte final de la URL del cliente (Ej: si la web es <code>teinvitoapp.com.ar/boda-ana-y-juan</code>, el código es <code>boda-ana-y-juan</code>).</li>
+            <li><strong>El PIN de acceso:</strong> Por defecto, el sistema asigna el PIN <code>1234</code> a todos los eventos nuevos creados desde el formulario. <em>(En el futuro, podemos agregar un campo en el formulario de creación para que elijas el PIN manualmente)</em>.</li>
+        </ul>
+
+        <div class="note">
+            <strong>¿Cómo funciona el escáner a nivel técnico?</strong><br>
+            El QR contiene el ID único del invitado en la base de datos. La API <code>/api/scan</code> recibe el QR, valida que pertenezca al evento correcto mediante el PIN, comprueba si el campo <code>attended</code> es falso, lo cambia a verdadero, y devuelve el número de mesa.
+        </div>
+
+        <h2>5. Modificaciones de Diseño Avanzadas (Demos)</h2>
+        <p>Si deseas cambiar la música, los íconos o crear un nuevo diseño (Demo) usando plantillas de Canva:</p>
+        <ol>
+            <li>Exporta el HTML desde Canva.</li>
+            <li>Colócalo en la carpeta <code>public/</code> con el nombre <code>demo-[nombre].html</code>.</li>
+            <li>Puedes ejecutar los scripts de limpieza (Node.js) que creamos en el proyecto (ej: <code>node fix-music-script.js</code>) para estandarizar los botones y el reproductor de música.</li>
+            <li>Sube los cambios a GitHub mediante los comandos:
+                <br><code>git add .</code>
+                <br><code>git commit -m "Nuevo diseño"</code>
+                <br><code>git push</code>
+            </li>
+            <li>Vercel detectará el cambio y lo publicará en vivo en menos de 1 minuto.</li>
+        </ol>
+
+    </div>
+</body>
+</html>
