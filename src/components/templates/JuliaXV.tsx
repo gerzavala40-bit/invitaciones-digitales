@@ -6,6 +6,9 @@ import { motion } from "framer-motion";
 import RsvpForm from "./shared/RsvpForm";
 import Countdown from "./shared/Countdown";
 import Image from "next/image";
+import MusicPlayer from "./shared/MusicPlayer";
+import PhotoGallery from "./shared/PhotoGallery";
+import CopyButton from "./shared/CopyButton";
 
 export default function JuliaXV({ event }: { event: EventData }) {
   // Use event details, fallback to some defaults to keep the format if data is missing
@@ -39,6 +42,8 @@ export default function JuliaXV({ event }: { event: EventData }) {
   return (
     <div style={{ fontFamily: "'Montserrat', sans-serif" }} className="min-h-screen bg-[#FDFDFD] text-[#333333] selection:bg-[#c2a990] selection:text-white pb-20">
       
+      {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#c2a990" />}
+
       {/* HERO SECTION */}
       <section className="relative w-full h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
@@ -116,6 +121,23 @@ export default function JuliaXV({ event }: { event: EventData }) {
         </motion.div>
       </section>
 
+      {/* HISTORIA / FRASE */}
+      {event.phrase && (
+        <section className="py-20 px-6 text-center bg-white">
+          <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="max-w-2xl mx-auto"
+          >
+            <h3 className="text-2xl font-bold tracking-[0.2em] mb-6 text-[#333]">NUESTRA FRASE</h3>
+            <p className="text-lg font-light text-gray-600 leading-relaxed italic max-w-xl mx-auto">
+              "{event.phrase}"
+            </p>
+          </motion.div>
+        </section>
+      )}
+
       {/* SECONDARY PHOTO */}
       <section className="w-full h-[60vh] relative">
         <Image 
@@ -126,45 +148,58 @@ export default function JuliaXV({ event }: { event: EventData }) {
         />
       </section>
 
-      {/* PAYMENT / GIFTS SECTION */}
-      <section className="py-20 px-6 text-center bg-white">
-        <motion.div
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           viewport={{ once: true }}
-           className="max-w-2xl mx-auto"
-        >
-          <h3 className="text-2xl font-bold tracking-[0.2em] mb-6 text-[#333]">VALOR TARJETA</h3>
-          <p className="text-sm font-light text-gray-500 leading-relaxed tracking-wide mb-10 max-w-lg mx-auto uppercase">
-            Me llenaría de felicidad poder compartir este día tan especial con ustedes. A continuación les dejo los detalles para realizar el pago de su tarjeta.
-          </p>
+      {/* PHOTO GALLERY */}
+      {event.photos && event.photos.length > 2 && (
+        <section className="py-20 px-6 bg-[#f9f8f6]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-2xl font-bold tracking-[0.2em] mb-10 text-[#333]">GALERÍA</h3>
+            <PhotoGallery photos={event.photos} accentColor="#c2a990" title="" />
+          </div>
+        </section>
+      )}
 
-          <details className="group border border-[#eaeaea] rounded-none bg-[#fdfdfd] cursor-pointer">
-            <summary className="px-6 py-4 font-medium tracking-[0.15em] text-[#c2a990] list-none flex justify-between items-center uppercase text-sm">
-              Ver valor tarjeta
-              <span className="transition group-open:rotate-180">▼</span>
-            </summary>
-            <div className="px-6 pb-6 pt-2 text-left border-t border-[#eaeaea]">
-              <div className="mb-6">
-                <p className="font-bold text-sm tracking-widest text-[#333] mb-1">ADULTOS</p>
-                <p className="text-lg text-gray-600">$80.000</p>
+      {/* PAYMENT / GIFTS SECTION */}
+      {event.bankAlias && (
+        <section className="py-20 px-6 text-center bg-white">
+          <motion.div
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             viewport={{ once: true }}
+             className="max-w-2xl mx-auto"
+          >
+            <h3 className="text-2xl font-bold tracking-[0.2em] mb-6 text-[#333]">MESA DE REGALOS</h3>
+            <p className="text-sm font-light text-gray-500 leading-relaxed tracking-wide mb-10 max-w-lg mx-auto uppercase">
+              Tu presencia es mi mejor regalo. Si además deseas hacerme un presente, puedes transferir a la siguiente cuenta.
+            </p>
+
+            <details className="group border border-[#eaeaea] rounded-none bg-[#fdfdfd] cursor-pointer">
+              <summary className="px-6 py-4 font-medium tracking-[0.15em] text-[#c2a990] list-none flex justify-between items-center uppercase text-sm">
+                Ver datos bancarios
+                <span className="transition group-open:rotate-180">▼</span>
+              </summary>
+              <div className="px-6 pb-6 pt-2 text-left border-t border-[#eaeaea]">
+                <div className="mb-6">
+                  <p className="font-bold text-sm tracking-widest text-[#333] mb-1">ALIAS</p>
+                  <p className="text-lg text-[#c2a990] font-medium break-all">{event.bankAlias}</p>
+                  {event.bankHolder && <p className="text-xs text-gray-500 mt-1 uppercase tracking-widest">{event.bankHolder}</p>}
+                  <div className="mt-3">
+                    <CopyButton text={event.bankAlias} className="border border-[#c2a990] text-[#c2a990] hover:bg-[#c2a990] hover:text-white px-4 py-2 text-xs uppercase tracking-widest transition-colors" />
+                  </div>
+                </div>
+                {event.bankCBU && (
+                  <div>
+                    <p className="font-bold text-sm tracking-widest text-[#333] mb-1">CBU / CVU</p>
+                    <p className="text-lg text-[#c2a990] font-medium break-all">{event.bankCBU}</p>
+                    <div className="mt-3">
+                      <CopyButton text={event.bankCBU} className="border border-[#c2a990] text-[#c2a990] hover:bg-[#c2a990] hover:text-white px-4 py-2 text-xs uppercase tracking-widest transition-colors" />
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="mb-6">
-                <p className="font-bold text-sm tracking-widest text-[#333] mb-1">JÓVENES</p>
-                <p className="text-lg text-gray-600">$60.000</p>
-              </div>
-              <div>
-                <p className="font-bold text-sm tracking-widest text-[#333] mb-3">PAGO</p>
-                <p className="text-xs tracking-widest text-gray-500 mb-1">ALIAS:</p>
-                <p className="text-sm font-medium text-gray-700 mb-3 bg-gray-100 p-2 inline-block rounded">j.del.pino</p>
-                
-                <p className="text-xs tracking-widest text-gray-500 mb-1">CVU:</p>
-                <p className="text-sm font-medium text-gray-700 break-all bg-gray-100 p-2 inline-block rounded">0000003100022314329967</p>
-              </div>
-            </div>
-          </details>
-        </motion.div>
-      </section>
+            </details>
+          </motion.div>
+        </section>
+      )}
 
       {/* DRESS CODE & RSVP */}
       <section className="py-16 px-6 bg-[#f9f8f6] text-center">

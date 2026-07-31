@@ -286,6 +286,12 @@ export default function BodaElegante({ event }: { event: EventData }) {
             <AddToCalendar event={event} className="max-w-xs mx-auto text-[var(--gold)]" />
           </div>
 
+          {event.phrase && (
+            <div className="mb-14 fade-in">
+              <p className="be-serif text-md text-gray-300 italic">"{event.phrase}"</p>
+            </div>
+          )}
+
           <div className="be-cd fade-in" style={{ transitionDelay: "0.8s" }}>
             <div><span className="n">{countdown.d}</span><span className="l">Días</span></div>
             <div><span className="n">{countdown.h}</span><span className="l">Hrs</span></div>
