@@ -235,7 +235,7 @@ export default function NeonBlueViolet({ event }: { event: EventData }) {
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-3xl mx-auto text-center">
                 <motion.h2 variants={fadeUp} className="nbv-serif text-4xl text-white mb-16 italic">Itinerario</motion.h2>
                 <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 text-left backdrop-blur-sm">
-                  <Timeline items={event.timeline} accentColor="#3a7bd5" />
+                  <Timeline event={event} />
                 </motion.div>
               </motion.div>
             </section>
