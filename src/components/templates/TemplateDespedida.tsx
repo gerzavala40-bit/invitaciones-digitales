@@ -220,7 +220,13 @@ export default function TemplateDespedida({ event }: { event: EventData }) {
                   Confirmá rápido así calculamos cuánto escabio comprar.
                 </motion.p>
                 <motion.div variants={fadeUp} className="text-left bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
-                  <RsvpForm event={event} primaryColor="#FF8C42" buttonText="CONFIRMAR PRESENCIA" />
+                  <RsvpForm 
+                    eventSlug={event.slug || "demo"} 
+                    isTrial={event.status === "TRIAL"} 
+                    buttonClassName="bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white" 
+                    inputClassName="bg-white/5 border border-white/20 text-white" 
+                    labelClassName="text-gray-300" 
+                  />
                 </motion.div>
               </motion.div>
             </section>
