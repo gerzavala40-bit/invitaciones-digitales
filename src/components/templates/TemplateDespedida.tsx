@@ -222,7 +222,7 @@ export default function TemplateDespedida({ event }: { event: EventData }) {
                 <motion.div variants={fadeUp} className="text-left bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
                   <RsvpForm 
                     eventSlug={event.slug || "demo"} 
-                    isTrial={event.status === "TRIAL"} 
+                    isTrial={event.isTrial || false} 
                     buttonClassName="bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white" 
                     inputClassName="bg-white/5 border border-white/20 text-white" 
                     labelClassName="text-gray-300" 
