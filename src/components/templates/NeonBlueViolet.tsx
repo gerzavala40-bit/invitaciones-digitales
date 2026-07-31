@@ -272,11 +272,7 @@ export default function NeonBlueViolet({ event }: { event: EventData }) {
                   Déjanos tus buenos deseos en nuestro muro de firmas.
                 </p>
                 <div className="text-left bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
-                  <Guestbook 
-                    eventSlug={event.slug} 
-                    messages={event.messages || []} 
-                    isTrial={event.isTrial}
-                  />
+                  <Guestbook event={event} />
                 </div>
               </motion.div>
             </section>
