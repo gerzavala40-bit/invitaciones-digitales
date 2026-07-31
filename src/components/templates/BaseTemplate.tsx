@@ -179,7 +179,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     .splash-hint { margin-top: 1.5rem; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.08em; }
     @keyframes pulse-soft { 0%,100% { opacity:0.55; transform:scale(1); } 50% { opacity:1; transform:scale(1.06); } }
     #main { opacity: 0; transition: opacity 0.55s ease 0.15s; } #main.show { opacity: 1; }
-    .section { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 1.5rem 5.5rem; position: relative; }
+    .section { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 3.5rem 1.5rem; position: relative; }
     .section + .section { border-top: 1px solid var(--line); }
     .wrap { width: 100%; max-width: 420px; margin: 0 auto; position: relative; z-index: 1; }
     .eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
@@ -281,7 +281,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         </section>
 
         {event.phrase && (
-          <section className="section" style={{ minHeight: "auto", paddingTop: "4rem", paddingBottom: "3rem" }}>
+          <section className="section">
             <div className="wrap reveal">
               <p className="script">{scriptPhrase}</p>
               <p className="lead" style={{ marginTop: "1rem", marginBottom: 0 }}>{event.phrase}</p>
@@ -320,7 +320,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         </section>
 
         {event.timeline && event.timeline.length > 0 && (
-          <section className="section" id="itinerario" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <section className="section" id="itinerario">
             <div className="wrap">
               <p className="eyebrow reveal">Itinerario</p>
               <h2 className="reveal">Línea de Tiempo</h2>
@@ -338,7 +338,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         )}
 
         {dressInfo.name && (
-          <section className="section" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <section className="section">
             <div className="wrap reveal">
               <p className="eyebrow">Código de vestimenta</p>
               <h2>Dress code</h2>
@@ -352,7 +352,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         )}
 
         {event.photos && event.photos.length > 1 && (
-          <section className="section" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <section className="section">
             <div className="wrap reveal">
               <p className="eyebrow">Fotos</p>
               <h2>Nuestra historia</h2>
@@ -366,7 +366,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         )}
 
         {event.guestbookEnabled && (
-          <section className="section" id="mensajes" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <section className="section" id="mensajes">
             <div className="wrap">
               <p className="eyebrow reveal">Mensajes</p>
               <h2 className="reveal">Muro de Firmas</h2>
@@ -424,7 +424,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         )}
 
         {event.bankAlias && (
-          <section className="section" style={{ minHeight: "auto", paddingTop: "3rem", paddingBottom: "3rem" }}>
+          <section className="section">
             <div className="wrap reveal">
               <p className="eyebrow">Con cari\u00f1o</p>
               <h2>Mesa de regalos</h2>

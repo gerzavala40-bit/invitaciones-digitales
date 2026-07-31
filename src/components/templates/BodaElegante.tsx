@@ -167,7 +167,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 20px;
-      padding: 4rem 2rem;
+      padding: 2.5rem 1.5rem;
       text-align: center;
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       opacity: 0; transition: opacity 0.5s ease 0.2s;
@@ -287,7 +287,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
           </div>
 
           {event.phrase && (
-            <div className="mb-14 fade-in">
+            <div className="mb-10 fade-in">
               <p className="be-serif text-md text-gray-300 italic">"{event.phrase}"</p>
             </div>
           )}
@@ -301,13 +301,13 @@ export default function BodaElegante({ event }: { event: EventData }) {
 
           {/* FEATURE: Timeline */}
           {event.timeline && event.timeline.length > 0 && (
-            <div className="mb-14 fade-in">
+            <div className="mb-10 fade-in">
               <Timeline event={event} />
             </div>
           )}
 
           {/* Dónde */}
-          <div className="mb-14 fade-in">
+          <div className="mb-10 fade-in">
             <h2 className="be-serif text-2xl text-gold mb-6" style={{ color: "var(--gold)" }}>Ubicación</h2>
             
             {event.ceremonyName && (
@@ -332,7 +332,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
           </div>
 
           {/* Dress Code */}
-          <div className="mb-14 fade-in">
+          <div className="mb-10 fade-in">
             <h2 className="be-serif text-2xl mb-4" style={{ color: "var(--gold)" }}>Dress Code</h2>
             <p className="be-serif text-md text-white mb-4 uppercase">{event.dressCode || "Elegante"}</p>
             <div className="flex gap-2 justify-center" style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
@@ -344,7 +344,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
 
           {/* Fotos */}
           {event.photos && event.photos.length > 1 && (
-            <div className="mb-14 fade-in">
+            <div className="mb-10 fade-in">
               <h2 className="be-serif text-2xl mb-6" style={{ color: "var(--gold)" }}>Nuestra Historia</h2>
               <div className="be-gallery">
                 {event.photos.slice(1).map((ph, i) => (
@@ -356,7 +356,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
 
           {/* Mesa de Regalos */}
           {event.bankAlias && (
-            <div className="mb-14 fade-in">
+            <div className="mb-10 fade-in">
               <h2 className="be-serif text-2xl mb-4" style={{ color: "var(--gold)" }}>Regalos</h2>
               <p className="be-serif text-sm text-gray-300 mb-6">Tu presencia es nuestro mejor regalo. Si deseas hacernos un obsequio:</p>
               <div style={{ background: "rgba(255,255,255,0.05)", padding: "2rem", borderRadius: "8px", border: "1px solid rgba(212,175,55,0.3)" }}>
@@ -372,7 +372,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
 
           {/* RSVP con FEATURE DJ Song Request y FEATURE QR Ticket */}
           {event.rsvpEnabled && (
-            <div className="mb-14 fade-in">
+            <div className="mb-10 fade-in">
               <h2 className="be-serif text-2xl mb-6" style={{ color: "var(--gold)" }}>Confirmar Asistencia</h2>
               
               {rsvpData.sent ? (
@@ -417,7 +417,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
 
           {/* FEATURE: Libro de Firmas */}
           {event.guestbookEnabled && (
-            <div className="mb-14 fade-in">
+            <div className="mb-10 fade-in">
               <Guestbook event={event} className="text-[var(--gold)]" />
             </div>
           )}

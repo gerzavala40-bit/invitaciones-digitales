@@ -76,7 +76,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
       </section>
 
       {/* COUNTDOWN SECTION */}
-      <section className="py-20 px-6 text-center bg-white">
+      <section className="py-10 px-6 text-center bg-white">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -95,7 +95,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
       </section>
 
       {/* EVENT DETAILS */}
-      <section className="py-16 px-6 bg-[#f9f8f6] text-center">
+      <section className="py-10 px-6 bg-[#f9f8f6] text-center">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
 
       {/* HISTORIA / FRASE */}
       {event.phrase && (
-        <section className="py-20 px-6 text-center bg-white">
+        <section className="py-10 px-6 text-center bg-white">
           <motion.div
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
 
       {/* PHOTO GALLERY */}
       {event.photos && event.photos.length > 2 && (
-        <section className="py-20 px-6 bg-[#f9f8f6]">
+        <section className="py-10 px-6 bg-[#f9f8f6]">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl font-bold tracking-[0.2em] mb-10 text-[#333]">GALERÍA</h3>
             <PhotoGallery photos={event.photos} accentColor="#c2a990" title="" />
@@ -160,7 +160,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
 
       {/* PAYMENT / GIFTS SECTION */}
       {event.bankAlias && (
-        <section className="py-20 px-6 text-center bg-white">
+        <section className="py-10 px-6 text-center bg-white">
           <motion.div
              initial={{ opacity: 0 }}
              whileInView={{ opacity: 1 }}
@@ -202,12 +202,12 @@ export default function JuliaXV({ event }: { event: EventData }) {
       )}
 
       {/* DRESS CODE & RSVP */}
-      <section className="py-16 px-6 bg-[#f9f8f6] text-center">
+      <section className="py-10 px-6 bg-[#f9f8f6] text-center">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           className="max-w-2xl mx-auto space-y-16"
+           className="max-w-2xl mx-auto space-y-10"
         >
           {/* Dress Code */}
           <div>
@@ -237,7 +237,7 @@ export default function JuliaXV({ event }: { event: EventData }) {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-20 text-center">
+      <footer className="py-10 text-center">
         <motion.div
            initial={{ opacity: 0 }}
            whileInView={{ opacity: 1 }}

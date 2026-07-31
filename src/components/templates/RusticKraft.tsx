@@ -16,7 +16,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
       {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#8B4513" />}
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-10">
         <div className="w-16 h-16 rounded-full border border-[#8B4513]/50 flex items-center justify-center italic text-xl text-[#8B4513] mb-8">
           {firstName[0]}{secondName ? `&${secondName[0]}` : ""}
         </div>
@@ -33,7 +33,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
       </section>
 
       {/* COUNTDOWN */}
-      <section className="py-20 px-6 bg-[#EBDCC3]">
+      <section className="py-10 px-6 bg-[#EBDCC3]">
         <div className="max-w-lg mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-8">Cuenta regresiva</p>
           <Countdown
@@ -47,7 +47,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
 
       {/* HISTORIA */}
       {event.phrase && (
-        <section className="py-20 px-6">
+        <section className="py-10 px-6">
           <div className="max-w-lg mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-6">Nuestra historia</p>
             <p className="text-[#5c4033] text-lg leading-relaxed italic">{event.phrase}</p>
@@ -56,7 +56,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
       )}
 
       {/* UBICACIONES */}
-      <section className="py-20 px-6 bg-[#EBDCC3]">
+      <section className="py-10 px-6 bg-[#EBDCC3]">
         <div className="max-w-lg mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-2">Cuándo y dónde</p>
           <p className="text-[#5c4033]/60 text-sm mb-10">Los esperamos</p>
@@ -89,7 +89,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
 
       {/* DRESS CODE */}
       {event.dressCode && (
-        <section className="py-16 px-6">
+        <section className="py-10 px-6">
           <div className="max-w-md mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-3">Dress code</p>
             <p className="text-[#3d2b1f] text-lg italic">{event.dressCode}</p>
@@ -106,7 +106,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
 
       {/* GALERÍA */}
       {event.photos && event.photos.length > 0 && (
-        <section className="py-20 px-6 bg-[#EBDCC3]">
+        <section className="py-10 px-6 bg-[#EBDCC3]">
           <div className="max-w-lg mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-2">Nosotros</p>
             <p className="text-[#5c4033]/60 text-sm mb-10">Un poco de nuestra historia</p>
@@ -117,7 +117,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
 
       {/* REGALOS */}
       {event.bankAlias && (
-        <section className="py-20 px-6">
+        <section className="py-10 px-6">
           <div className="max-w-md mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-3">Regalos</p>
             <p className="text-[#3d2b1f] text-lg italic mb-2">Tu presencia es nuestro regalo</p>
@@ -139,7 +139,7 @@ export default function RusticKraft({ event }: { event: EventData }) {
 
       {/* RSVP */}
       {event.rsvpEnabled && (
-        <section className="py-20 px-6 bg-[#EBDCC3]">
+        <section className="py-10 px-6 bg-[#EBDCC3]">
           <div className="max-w-md mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-[#8B4513] mb-3">Confirmación</p>
             <p className="text-[#3d2b1f] text-xl italic mb-8">¿Nos acompañás?</p>

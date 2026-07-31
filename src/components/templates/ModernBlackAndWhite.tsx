@@ -43,7 +43,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
       </section>
 
       {/* COUNTDOWN */}
-      <section className="py-24 px-6 bg-black text-white">
+      <section className="py-12 px-6 bg-black text-white">
         <div className="max-w-xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-12">Falta muy poco</p>
           <Countdown
@@ -57,7 +57,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
 
       {/* HISTORIA */}
       {event.phrase && (
-        <section className="py-32 px-6">
+        <section className="py-16 px-6">
           <div className="max-w-2xl mx-auto text-center">
             <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-8">Nuestra frase</p>
             <p className="text-2xl md:text-3xl font-light leading-relaxed italic text-black">"{event.phrase}"</p>
@@ -66,7 +66,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
       )}
 
       {/* UBICACIONES */}
-      <section className="py-24 px-6 bg-gray-50 border-y border-black/5">
+      <section className="py-12 px-6 bg-gray-50 border-y border-black/5">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-bold uppercase tracking-[0.4em] mb-12">Cuándo y dónde</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -98,7 +98,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
 
       {/* DRESS CODE */}
       {event.dressCode && (
-        <section className="py-24 px-6 bg-black text-white">
+        <section className="py-12 px-6 bg-black text-white">
           <div className="max-w-xl mx-auto text-center border border-white/20 p-12">
             <p className="text-xs font-bold uppercase tracking-[0.4em] mb-6 text-gray-400">Dress code</p>
             <p className="text-2xl font-light uppercase tracking-widest">{event.dressCode}</p>
@@ -108,7 +108,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
 
       {/* GALERÍA */}
       {event.photos && event.photos.length > 0 && (
-        <section className="py-24 px-6">
+        <section className="py-12 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-xs font-bold uppercase tracking-[0.4em] mb-12">Nosotros</p>
             <div className="border-[4px] border-black p-2">
@@ -120,7 +120,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
 
       {/* REGALOS */}
       {event.bankAlias && (
-        <section className="py-24 px-6 bg-gray-50 border-t border-black/5">
+        <section className="py-12 px-6 bg-gray-50 border-t border-black/5">
           <div className="max-w-xl mx-auto text-center">
             <p className="text-xs font-bold uppercase tracking-[0.4em] mb-8">Mesa de Regalos</p>
             <p className="text-lg font-light mb-12 text-gray-600">Lo más importante es compartir con ustedes. Si desean hacernos un presente, pueden utilizar los siguientes datos.</p>
@@ -145,7 +145,7 @@ export default function ModernBlackAndWhite({ event }: { event: EventData }) {
 
       {/* RSVP */}
       {event.rsvpEnabled && (
-        <section className="py-24 px-6 bg-black text-white">
+        <section className="py-12 px-6 bg-black text-white">
           <div className="max-w-xl mx-auto text-center">
             <p className="text-xs font-bold uppercase tracking-[0.4em] mb-4 text-gray-400">Confirmación</p>
             <p className="text-3xl font-light mb-12">Esperamos contar<br/>con tu presencia</p>

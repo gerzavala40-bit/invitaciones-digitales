@@ -16,7 +16,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
       {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#ffffff" />}
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-10">
         <p className="text-sm uppercase tracking-[0.3em] text-white/70 mb-6">¡Estás invitado!</p>
         <h1 className="text-6xl md:text-8xl font-black leading-tight">
           {firstName}{secondName && <span className="text-white/50 mx-2">&</span>}{secondName}
@@ -29,7 +29,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
       </section>
 
       {/* COUNTDOWN */}
-      <section className="py-16 px-6">
+      <section className="py-10 px-6">
         <div className="max-w-lg mx-auto text-center">
           <h2 className="text-3xl font-black mb-8">Cuenta regresiva</h2>
           <Countdown targetDate={event.eventDate} boxClassName="bg-white/15 backdrop-blur-sm border border-white/20 rounded-2xl" numberClassName="text-white font-black" labelClassName="text-white/60" />
@@ -38,7 +38,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
 
       {/* HISTORIA */}
       {event.phrase && (
-        <section className="py-16 px-6">
+        <section className="py-10 px-6">
           <div className="max-w-lg mx-auto text-center bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
             <h2 className="text-xs uppercase tracking-[0.3em] text-white/60 mb-4">Nuestra historia</h2>
             <p className="text-white/85 text-lg leading-relaxed">{event.phrase}</p>
@@ -47,7 +47,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
       )}
 
       {/* UBICACIONES */}
-      <section className="py-16 px-6">
+      <section className="py-10 px-6">
         <div className="max-w-lg mx-auto text-center">
           <h2 className="text-3xl font-black mb-8">Ubicación</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -97,7 +97,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
 
       {/* RSVP */}
       {event.rsvpEnabled && (
-        <section className="py-16 px-6">
+        <section className="py-10 px-6">
           <div className="max-w-lg mx-auto text-center">
             <h2 className="text-3xl font-black mb-4">¿Venís?</h2>
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6">
@@ -109,7 +109,7 @@ export default function ModernGradient({ event }: { event: EventData }) {
 
       {/* REGALOS */}
       {event.bankAlias && (
-        <section className="py-16 px-6">
+        <section className="py-10 px-6">
           <div className="max-w-lg mx-auto text-center">
             <h2 className="text-3xl font-black mb-4">Regalos</h2>
             <p className="text-white/60 text-sm mb-8">Si querés hacernos un regalo, podés transferir acá</p>
