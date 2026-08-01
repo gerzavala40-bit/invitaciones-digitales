@@ -3,6 +3,7 @@
 import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
+import { motion } from "framer-motion";
 
 export default function DespedidasLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
