@@ -118,7 +118,6 @@ export default function DespedidasLanding() {
           </h1>
         </Reveal>
         
-        <Reveal y={20} delay={0.2}>
         <Reveal y={20} delay={0.3}>
           <p className="text-lg text-gray-400 max-w-[600px] mx-auto mb-10 leading-relaxed font-light">
             Olvídate de los mensajes perdidos en el grupo de WhatsApp. Centraliza la vaca, el itinerario y las confirmaciones en un solo link con diseño Premium.
