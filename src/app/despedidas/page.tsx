@@ -67,11 +67,22 @@ export default function DespedidasLanding() {
             <Link href="/" className="inline-block bg-[#FF8C42] px-4 py-2 border-[2px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] font-bold text-xl text-[#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
               Te Invito 🔥
             </Link>
-            <div className="hidden md:flex items-center gap-3">
-              <Link href="#como-funciona" className="px-4 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">Proceso</Link>
-              <Link href="#features" className="px-4 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">Súper Poderes</Link>
-              <Link href="#planes" className="px-4 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">Planes</Link>
-              <Link href="/" className="px-4 py-2 text-sm font-bold border-[2px] border-white/20 text-white bg-transparent hover:bg-white/10 transition-all">Volver al inicio</Link>
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="#como-funciona" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
+                Proceso
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#FF8C42] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link href="#features" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
+                Súper Poderes
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#FF8C42] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link href="#planes" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
+                Planes
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#FF8C42] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link href="/" className="relative px-6 py-2.5 text-sm font-bold rounded-full border border-white/20 text-white bg-transparent hover:bg-white/5 hover:border-[#FF8C42] hover:shadow-[0_0_15px_rgba(255,140,66,0.3)] transition-all overflow-hidden group">
+                <span className="relative z-10">Volver al inicio</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -79,34 +90,45 @@ export default function DespedidasLanding() {
 
       {/* ========== HERO ========== */}
       <header className="relative min-h-screen flex flex-col items-center justify-center text-center pt-32 pb-16 px-5 overflow-hidden">
-        {/* Decoraciones fondo */}
-        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-purple-600/30 blur-[120px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#4ECDC4]/20 blur-[120px] rounded-full pointer-events-none"></div>
+        {/* Decoraciones fondo con movimiento */}
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-purple-600/30 blur-[120px] rounded-full pointer-events-none"
+        ></motion.div>
+        <motion.div 
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }} 
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#FF8C42]/20 blur-[120px] rounded-full pointer-events-none"
+        ></motion.div>
 
-        <Reveal y={20}>
-          <div className="inline-block border border-white/20 bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full text-sm tracking-widest text-[#FF8C42] uppercase font-bold mb-6">
-            Especial Despedidas
+        <Reveal y={20} delay={0.1}>
+          <div className="relative inline-flex items-center gap-2 border border-[#FF8C42]/30 bg-[#FF8C42]/10 backdrop-blur-md px-5 py-2 rounded-full text-sm tracking-widest text-[#FF8C42] uppercase font-bold mb-8 shadow-[0_0_15px_rgba(255,140,66,0.2)]">
+            <span className="animate-pulse">🔥</span> Especial Despedidas
+            <div className="absolute inset-0 rounded-full border border-white/20 blur-[2px] opacity-50"></div>
           </div>
         </Reveal>
         
-        <Reveal y={20} delay={0.1}>
+        <Reveal y={20} delay={0.2}>
           <h1 className="text-[clamp(42px,8vw,86px)] font-bold leading-[1.05] max-w-[900px] mb-6">
             La mejor noche merece una organización{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C42] via-[#FF6B9D] to-[#FF8C42] bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">
               impecable
             </span>
           </h1>
         </Reveal>
         
         <Reveal y={20} delay={0.2}>
+        <Reveal y={20} delay={0.3}>
           <p className="text-lg text-gray-400 max-w-[600px] mx-auto mb-10 leading-relaxed font-light">
             Olvídate de los mensajes perdidos en el grupo de WhatsApp. Centraliza la vaca, el itinerario y las confirmaciones en un solo link con diseño Premium.
           </p>
         </Reveal>
         
-        <Reveal y={20} delay={0.3}>
-          <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="inline-block px-10 py-5 bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white text-lg font-bold shadow-[0_0_30px_rgba(255,107,157,0.4)] hover:shadow-[0_0_40px_rgba(255,107,157,0.6)] hover:scale-105 transition-all cursor-pointer rounded-full">
-            Ver Demo en Vivo →
+        <Reveal y={20} delay={0.4}>
+          <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="relative group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white transition-all duration-300 bg-[#0f0f13] rounded-full overflow-hidden border border-[#FF8C42]/50 hover:border-[#FF8C42] shadow-[0_0_30px_rgba(255,140,66,0.2)] hover:shadow-[0_0_40px_rgba(255,107,157,0.5)] hover:scale-[1.02]">
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#FF8C42] via-[#FF6B9D] to-[#FF8C42] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></span>
+            <span className="relative z-10 flex items-center gap-2">Ver Demo en Vivo <span className="group-hover:translate-x-1 transition-transform">→</span></span>
           </Link>
         </Reveal>
       </header>
