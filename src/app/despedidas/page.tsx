@@ -94,52 +94,33 @@ export default function DespedidasLanding() {
       </nav>
 
       {/* ========== HERO ========== */}
-      <header className="relative min-h-screen flex flex-col items-center justify-center text-center pt-32 pb-16 px-5 overflow-hidden">
+      <header className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 overflow-hidden">
         {/* Disco Ball Drop Animation */}
-        <div className="absolute inset-0 z-0 opacity-90">
+        <div className="absolute inset-0 z-0">
           <DiscoBall3D />
         </div>
 
-        {/* Decoraciones fondo con movimiento */}
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }} 
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-gray-500/30 blur-[120px] rounded-full pointer-events-none"
-        ></motion.div>
-        <motion.div 
-          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }} 
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-white/10 blur-[120px] rounded-full pointer-events-none"
-        ></motion.div>
+        {/* UI Layer */}
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full pointer-events-none mt-[25vh]">
+          <Reveal y={20} delay={0.1}>
+            <div className="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-xs sm:text-sm tracking-[0.1em] text-white uppercase font-bold flex items-center gap-2 border border-white/10">
+              <span>🪩</span> ESPECIAL DESPEDIDAS
+            </div>
+          </Reveal>
+          
+          <Reveal y={20} delay={0.2}>
+            <h1 className="font-black text-[12vw] md:text-[8vw] lg:text-[5vw] tracking-tighter mt-8 text-white uppercase">
+              la mejor noche
+            </h1>
+          </Reveal>
 
-        <Reveal y={20} delay={0.1} className="relative z-10 mt-20">
-          <div className="relative inline-flex items-center gap-2 border border-gray-400/30 bg-gray-600/10 backdrop-blur-md px-5 py-2 rounded-full text-sm tracking-widest text-gray-300 uppercase font-bold mb-8 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-            <span className="animate-pulse">🪩</span> Especial Despedidas
-            <div className="absolute inset-0 rounded-full border border-white/20 blur-[2px] opacity-50"></div>
-          </div>
-        </Reveal>
-        
-        <Reveal y={20} delay={0.2} className="relative z-10">
-          <h1 className="text-[clamp(42px,8vw,86px)] font-bold leading-[1.05] max-w-[900px] mb-6">
-            La mejor noche merece una organización{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">
-              impecable
-            </span>
-          </h1>
-        </Reveal>
-        
-        <Reveal y={20} delay={0.3} className="relative z-10">
-          <p className="text-lg text-gray-400 max-w-[600px] mx-auto mb-10 leading-relaxed font-light">
-            Olvídate de los mensajes perdidos en el grupo de WhatsApp. Centraliza la vaca, el itinerario y las confirmaciones en un solo link con diseño Premium.
-          </p>
-        </Reveal>
-        
-        <Reveal y={20} delay={0.4} className="relative z-10">
-          <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="relative group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white transition-all duration-300 bg-black rounded-full overflow-hidden border border-gray-500/50 hover:border-white shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-[1.02]">
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 via-gray-600 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></span>
-            <span className="relative z-10 flex items-center gap-2">Ver Demo en Vivo <span className="group-hover:translate-x-1 transition-transform">→</span></span>
-          </Link>
-        </Reveal>
+          <Reveal y={20} delay={0.3} className="pointer-events-auto mt-8">
+            <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="relative group inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-300 bg-black rounded-full overflow-hidden border border-gray-500/50 hover:border-white shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-[1.02]">
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 via-gray-600 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></span>
+              <span className="relative z-10 flex items-center gap-2">Ver Demo en Vivo <span className="group-hover:translate-x-1 transition-transform">→</span></span>
+            </Link>
+          </Reveal>
+        </div>
       </header>
 
       {/* ========== COMO FUNCIONA ========== */}
