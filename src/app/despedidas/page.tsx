@@ -56,17 +56,17 @@ export default function DespedidasLanding() {
   ];
 
   return (
-    <div className="font-sans bg-[#0f0f13] text-white antialiased min-h-screen">
+    <div className="font-sans bg-black text-white antialiased min-h-screen">
       {/* ========== NAV ========== */}
       <nav
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b-[2px] border-white/10 ${
-          navScrolled ? "bg-[#0f0f13]/95 backdrop-blur-md py-3" : "py-4 bg-[#0f0f13]"
+          navScrolled ? "bg-black/95 backdrop-blur-md py-3" : "py-4 bg-black"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="flex items-center justify-between">
-            <Link href="/" className="inline-block bg-[#FF8C42] px-4 py-2 border-[2px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] font-bold text-xl text-[#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
-              Te Invito 🔥
+            <Link href="/" className="inline-block bg-gradient-to-r from-gray-200 to-gray-400 px-4 py-2 border-[2px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] font-bold text-xl text-[#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
+              Te Invito 🪩
             </Link>
             <div className="hidden md:flex items-center gap-6">
               <Link href="#como-funciona" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
@@ -79,9 +79,9 @@ export default function DespedidasLanding() {
               </Link>
               <Link href="#planes" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
                 Planes
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#FF8C42] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gray-300 transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <Link href="/" className="relative px-6 py-2.5 text-sm font-bold rounded-full border border-white/20 text-white bg-transparent hover:bg-white/5 hover:border-[#FF8C42] hover:shadow-[0_0_15px_rgba(255,140,66,0.3)] transition-all overflow-hidden group">
+              <Link href="/" className="relative px-6 py-2.5 text-sm font-bold rounded-full border border-white/20 text-white bg-transparent hover:bg-white/5 hover:border-gray-400 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all overflow-hidden group">
                 <span className="relative z-10">Volver al inicio</span>
               </Link>
             </div>
@@ -91,43 +91,55 @@ export default function DespedidasLanding() {
 
       {/* ========== HERO ========== */}
       <header className="relative min-h-screen flex flex-col items-center justify-center text-center pt-32 pb-16 px-5 overflow-hidden">
+        {/* Disco Ball Drop Animation */}
+        <motion.div
+          initial={{ y: -300 }}
+          animate={{ y: [-20, 0, -20], rotate: [-3, 3, -3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 z-0 w-72 h-72 mix-blend-screen opacity-90 pointer-events-none"
+        >
+          {/* Un hilo para que parezca que cuelga */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-[40px] bg-gradient-to-b from-gray-800 to-gray-300 z-0"></div>
+          <img src="/disco-ball.jpg" alt="Disco Ball" className="w-full h-full object-contain rounded-full drop-shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10 mt-6" />
+        </motion.div>
+
         {/* Decoraciones fondo con movimiento */}
         <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }} 
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-purple-600/30 blur-[120px] rounded-full pointer-events-none"
+          className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-gray-500/30 blur-[120px] rounded-full pointer-events-none"
         ></motion.div>
         <motion.div 
-          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }} 
+          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }} 
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#FF8C42]/20 blur-[120px] rounded-full pointer-events-none"
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-white/10 blur-[120px] rounded-full pointer-events-none"
         ></motion.div>
 
-        <Reveal y={20} delay={0.1}>
-          <div className="relative inline-flex items-center gap-2 border border-[#FF8C42]/30 bg-[#FF8C42]/10 backdrop-blur-md px-5 py-2 rounded-full text-sm tracking-widest text-[#FF8C42] uppercase font-bold mb-8 shadow-[0_0_15px_rgba(255,140,66,0.2)]">
-            <span className="animate-pulse">🔥</span> Especial Despedidas
+        <Reveal y={20} delay={0.1} className="relative z-10 mt-20">
+          <div className="relative inline-flex items-center gap-2 border border-gray-400/30 bg-gray-600/10 backdrop-blur-md px-5 py-2 rounded-full text-sm tracking-widest text-gray-300 uppercase font-bold mb-8 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <span className="animate-pulse">🪩</span> Especial Despedidas
             <div className="absolute inset-0 rounded-full border border-white/20 blur-[2px] opacity-50"></div>
           </div>
         </Reveal>
         
-        <Reveal y={20} delay={0.2}>
+        <Reveal y={20} delay={0.2} className="relative z-10">
           <h1 className="text-[clamp(42px,8vw,86px)] font-bold leading-[1.05] max-w-[900px] mb-6">
             La mejor noche merece una organización{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C42] via-[#FF6B9D] to-[#FF8C42] bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]">
               impecable
             </span>
           </h1>
         </Reveal>
         
-        <Reveal y={20} delay={0.3}>
+        <Reveal y={20} delay={0.3} className="relative z-10">
           <p className="text-lg text-gray-400 max-w-[600px] mx-auto mb-10 leading-relaxed font-light">
             Olvídate de los mensajes perdidos en el grupo de WhatsApp. Centraliza la vaca, el itinerario y las confirmaciones en un solo link con diseño Premium.
           </p>
         </Reveal>
         
-        <Reveal y={20} delay={0.4}>
-          <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="relative group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white transition-all duration-300 bg-[#0f0f13] rounded-full overflow-hidden border border-[#FF8C42]/50 hover:border-[#FF8C42] shadow-[0_0_30px_rgba(255,140,66,0.2)] hover:shadow-[0_0_40px_rgba(255,107,157,0.5)] hover:scale-[1.02]">
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#FF8C42] via-[#FF6B9D] to-[#FF8C42] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></span>
+        <Reveal y={20} delay={0.4} className="relative z-10">
+          <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="relative group inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white transition-all duration-300 bg-black rounded-full overflow-hidden border border-gray-500/50 hover:border-white shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-[1.02]">
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 via-gray-600 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></span>
             <span className="relative z-10 flex items-center gap-2">Ver Demo en Vivo <span className="group-hover:translate-x-1 transition-transform">→</span></span>
           </Link>
         </Reveal>
