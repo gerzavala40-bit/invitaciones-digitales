@@ -4,6 +4,10 @@ import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+// Import dynamic to avoid SSR issues with Three.js
+const DiscoBall3D = dynamic(() => import("@/components/DiscoBall3D"), { ssr: false });
 
 export default function DespedidasLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -92,16 +96,9 @@ export default function DespedidasLanding() {
       {/* ========== HERO ========== */}
       <header className="relative min-h-screen flex flex-col items-center justify-center text-center pt-32 pb-16 px-5 overflow-hidden">
         {/* Disco Ball Drop Animation */}
-        <motion.div
-          initial={{ y: -300 }}
-          animate={{ y: [-20, 0, -20], rotate: [-3, 3, -3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 z-0 w-72 h-72 mix-blend-screen opacity-90 pointer-events-none"
-        >
-          {/* Un hilo para que parezca que cuelga */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-[40px] bg-gradient-to-b from-gray-800 to-gray-300 z-0"></div>
-          <img src="/disco-ball.jpg" alt="Disco Ball" className="w-full h-full object-contain rounded-full drop-shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10 mt-6" />
-        </motion.div>
+        <div className="absolute inset-0 z-0 opacity-90">
+          <DiscoBall3D />
+        </div>
 
         {/* Decoraciones fondo con movimiento */}
         <motion.div 
