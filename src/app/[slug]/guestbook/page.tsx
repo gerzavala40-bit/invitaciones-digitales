@@ -33,7 +33,7 @@ export default async function GuestbookPage({ params }: { params: Promise<{ slug
         .clara-guestbook .bg-white\\/5 { background: #ffffff !important; border: 1px solid var(--line, rgba(0,0,0,0.1)) !important; color: #5A6B7C !important; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .clara-guestbook .bg-black\\/20 { background: #F0F6FA !important; border: 1px solid rgba(59, 126, 174, 0.2) !important; color: #5A6B7C !important; font-family: var(--font-sans); }
         .clara-guestbook input::placeholder, .clara-guestbook textarea::placeholder { color: #5A6B7C; opacity: 0.5; }
-        .clara-guestbook button[type="submit"] { background: linear-gradient(135deg, #7BB4E3, #5A9BD5) !important; color: #ffffff !important; border-radius: 999px !important; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.16em; font-weight: 600; padding: 1rem 1.75rem !important; }
+        .clara-guestbook button[type="submit"] { background: linear-gradient(135deg, #CDE8F9, #9DCFEF) !important; color: #3B7EAE !important; border-radius: 999px !important; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.16em; font-weight: 600; padding: 1rem 1.75rem !important; }
         .clara-guestbook .text-green-400 { color: #3B7EAE !important; font-weight: 900; font-family: var(--font-display); }
         .clara-guestbook p.opacity-60 { color: #C4A661 !important; opacity: 1 !important; font-weight: 600 !important; font-size: 0.85rem; }
         .clara-guestbook .italic { font-family: var(--font-sans); }

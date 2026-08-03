@@ -287,8 +287,8 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       letter-spacing: 0.05em !important;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #7BB4E3, #5A9BD5) !important;
-      color: #ffffff !important;
+      background: linear-gradient(135deg, #CDE8F9, #9DCFEF) !important;
+      color: #3B7EAE !important;
       border: none !important;
     }
     .hero, .section {
