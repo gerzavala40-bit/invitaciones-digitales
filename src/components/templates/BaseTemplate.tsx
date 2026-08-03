@@ -49,10 +49,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       { url: '/clara-galeria/1.jpg', order: 1 },
       { url: '/clara-galeria/2.jpg', order: 2 },
       { url: '/clara-galeria/3.jpg', order: 3 },
-      { url: '/clara-galeria/4.jpg', order: 4 },
-      { url: '/clara-galeria/5.jpg', order: 5 },
-      { url: '/clara-galeria/6.jpg', order: 6 },
-      { url: '/clara-galeria/7.jpg', order: 7 }
+      { url: '/clara-galeria/4.jpg', order: 4 }
     ];
     event.bankAlias = null;
   }
@@ -421,6 +418,16 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
+        {event.slug === '15anos-clara' && event.photos && event.photos[1] && (
+          <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+            <div className="wrap stagger-reveal">
+              <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto rounded-[12px]" style={{ border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}>
+                <img className="hero-photo clip-reveal-img m-0" src={event.photos[1].url} alt="Foto 1" style={{ display: "block" }} />
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="section" id="cuando">
           <div className="wrap">
             <p className="eyebrow reveal">La celebración</p>
@@ -469,6 +476,16 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
+        {event.slug === '15anos-clara' && event.photos && event.photos[2] && (
+          <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+            <div className="wrap stagger-reveal">
+              <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto rounded-[12px]" style={{ border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}>
+                <img className="hero-photo clip-reveal-img m-0" src={event.photos[2].url} alt="Foto 2" style={{ display: "block" }} />
+              </div>
+            </div>
+          </section>
+        )}
+
         {dressInfo.name && (
           <section className="section">
             <div className="wrap reveal">
@@ -483,7 +500,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
-        {event.photos && event.photos.length > 1 && (
+        {event.photos && event.photos.length > 1 && event.slug !== '15anos-clara' && (
           <section className="section">
             <div className="wrap stagger-reveal">
               <p className="eyebrow">Fotos</p>
@@ -494,6 +511,16 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
                     <img src={ph.url} alt={`Foto ${i}`} className="clip-reveal-img" />
                   </div>
                 ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {event.slug === '15anos-clara' && event.photos && event.photos[3] && (
+          <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+            <div className="wrap stagger-reveal">
+              <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto rounded-[12px]" style={{ border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}>
+                <img className="hero-photo clip-reveal-img m-0" src={event.photos[3].url} alt="Foto 3" style={{ display: "block" }} />
               </div>
             </div>
           </section>
@@ -513,6 +540,16 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
                 ))}
               </div>
               <a className="btn btn-primary reveal" href={`/${event.slug}/guestbook`} style={{ marginTop: "1.5rem" }}>Dejar un mensaje</a>
+            </div>
+          </section>
+        )}
+
+        {event.slug === '15anos-clara' && event.photos && event.photos[4] && (
+          <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+            <div className="wrap stagger-reveal">
+              <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto rounded-[12px]" style={{ border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}>
+                <img className="hero-photo clip-reveal-img m-0" src={event.photos[4].url} alt="Foto 4" style={{ display: "block" }} />
+              </div>
             </div>
           </section>
         )}
