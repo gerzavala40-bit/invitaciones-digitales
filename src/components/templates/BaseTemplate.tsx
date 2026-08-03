@@ -246,47 +246,28 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   `;
 
   const claraCss = event.slug === '15anos-clara' ? `
-    :root {
-      --bg: #F8FAFC !important; 
-      --bg-soft: rgba(255,255,255,0.6) !important;
-      --bg-card: rgba(255,255,255,0.85) !important;
-      --text: #1e3a8a !important;
-      --text-muted: #3b82f6 !important;
-      --accent: #2563eb !important;
-      --accent-deep: #1d4ed8 !important;
-      --gold: #2563eb !important;
-      --gold-soft: #60a5fa !important;
-      --font-body: "Playfair Display", Georgia, serif !important;
-      --font-display: "Great Vibes", cursive !important;
-    }
-    body {
-      background-image: url('/clara-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
     #splash {
-      background-image: url('/clara-bg.jpg') !important;
+      background-image: url('/splash-clara.png') !important;
       background-size: cover !important;
       background-position: center !important;
     }
     #splash::before {
-      background: rgba(255, 255, 255, 0.2) !important;
+      display: none !important;
     }
-    .hero, .close-section { background: transparent !important; }
-    .hero-photo {
-      width: 100% !important;
-      height: auto !important;
-      max-width: 340px !important;
-      aspect-ratio: 3/4 !important;
-      border-radius: 12px !important;
-      border: 4px solid rgba(255,255,255,0.8) !important;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2) !important;
-      margin-bottom: 2.5rem !important;
+    #splash .splash-ornament, 
+    #splash .splash-label, 
+    #splash .splash-kicker, 
+    #splash .splash-name, 
+    #splash .splash-date {
+      display: none !important;
     }
-    .section { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,0.5) !important; }
-    .splash-name, h1, h2, h3, .script { color: #1e3a8a !important; font-weight: normal !important; }
-    .btn-primary { background: #2563eb !important; color: white !important; }
+    #splash .splash-btn {
+      background: rgba(255, 255, 255, 0.8) !important;
+      color: #1a365d !important;
+      border: none !important;
+      font-weight: bold !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    }
   ` : "";
 
   return (
