@@ -54,6 +54,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       { url: '/clara-galeria/6.jpg', order: 6 },
       { url: '/clara-galeria/7.jpg', order: 7 }
     ];
+    event.bankAlias = null;
   }
   const [entered, setEntered] = useState(false);
   const [countdown, setCountdown] = useState({ d: "—", h: "—", m: "—", s: "—" });
