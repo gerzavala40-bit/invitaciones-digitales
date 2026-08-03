@@ -495,7 +495,15 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
-        {dressInfo.name && (
+        {dressInfo.name && event.slug === '15anos-clara' ? (
+          <section className="section">
+            <div className="wrap reveal" style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>💎</div>
+              <h2 style={{ fontSize: "1.8rem", letterSpacing: "0.1em", marginBottom: "0.5rem" }}>Dress Code</h2>
+              <p style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{dressInfo.name}</p>
+            </div>
+          </section>
+        ) : dressInfo.name ? (
           <section className="section">
             <div className="wrap reveal">
               <p className="eyebrow">Código de vestimenta</p>
@@ -507,7 +515,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
               </div>
             </div>
           </section>
-        )}
+        ) : null}
 
         {event.photos && event.photos.length > 1 && event.slug !== '15anos-clara' && (
           <section className="section">
