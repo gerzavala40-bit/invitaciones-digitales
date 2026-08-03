@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : "¡Estás invitado! Hacé clic para ver todos los detalles, ubicación y confirmar tu asistencia.";
 
     const imgUrl = event.photos[0]?.url || "/og-image.jpg";
-    const absoluteImageUrl = imgUrl.startsWith('http') ? imgUrl : \`https://www.teinvitoapp.com.ar\${imgUrl}\`;
+    const absoluteImageUrl = imgUrl.startsWith('http') ? imgUrl : `https://www.teinvitoapp.com.ar${imgUrl}`;
 
     return {
       title,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       openGraph: {
         title,
         description,
-        url: \`https://www.teinvitoapp.com.ar/\${slug}\`,
+        url: `https://www.teinvitoapp.com.ar/${slug}`,
         siteName: "Te Invito App",
         images: [
           {
