@@ -248,11 +248,11 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
       --bg: #bde0fe !important;
-      --text: #03254c !important;
-      --text-muted: #113f67 !important;
-      --accent: #113f67 !important;
-      --gold: #113f67 !important;
-      --bg-card: rgba(255, 255, 255, 0.65) !important;
+      --text: #01132b !important;
+      --text-muted: #0a2d52 !important;
+      --accent: #0a2d52 !important;
+      --gold: #0a2d52 !important;
+      --bg-card: rgba(255, 255, 255, 0.9) !important;
       --font-body: "Montserrat", sans-serif !important;
       --font-display: "Montserrat", sans-serif !important;
       --font-script: "Montserrat", sans-serif !important;
@@ -261,11 +261,30 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       text-transform: uppercase !important;
     }
     h1, h2, h3, .splash-name, .script {
-      font-weight: 800 !important;
+      font-weight: 900 !important;
       letter-spacing: 0.05em !important;
     }
+    .hero {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(4px);
+    }
+    .section {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8) !important;
+    }
+    .hero-photo {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 400px !important;
+      aspect-ratio: 3/4 !important;
+      border-radius: 12px !important;
+      border: 4px solid #fff !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+      margin: 0 auto 2rem !important;
+    }
     .hero, .section, .splash-inner, .alias-box {
-      text-shadow: 0 1px 3px rgba(255,255,255,0.9) !important;
+      text-shadow: 0 1px 1px rgba(255,255,255,1) !important;
     }
     #splash {
       background: var(--bg) !important;
