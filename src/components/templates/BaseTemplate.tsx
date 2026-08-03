@@ -246,27 +246,43 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   `;
 
   const claraCss = event.slug === '15anos-clara' ? `
+    :root {
+      --bg: #bde0fe !important;
+      --text: #03254c !important;
+      --text-muted: #113f67 !important;
+      --accent: #113f67 !important;
+      --gold: #113f67 !important;
+      --bg-card: rgba(255, 255, 255, 0.65) !important;
+      --font-body: "Montserrat", sans-serif !important;
+      --font-display: "Montserrat", sans-serif !important;
+      --font-script: "Montserrat", sans-serif !important;
+    }
+    body, h1, h2, h3, p, span, div, button, a {
+      text-transform: uppercase !important;
+    }
+    h1, h2, h3, .splash-name, .script {
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+    }
+    .hero, .section, .splash-inner, .alias-box {
+      text-shadow: 0 1px 3px rgba(255,255,255,0.9) !important;
+    }
     #splash {
-      background-image: url('/splash-clara.png') !important;
-      background-size: cover !important;
-      background-position: center !important;
+      background: var(--bg) !important;
+      background-image: none !important;
     }
     #splash::before {
-      display: none !important;
+      background: rgba(255, 255, 255, 0.2) !important;
     }
-    #splash .splash-ornament, 
-    #splash .splash-label, 
-    #splash .splash-kicker, 
-    #splash .splash-name, 
-    #splash .splash-date {
-      display: none !important;
+    .btn-primary {
+      background: #03254c !important;
+      color: white !important;
+      text-shadow: none !important;
     }
-    #splash .splash-btn {
-      background: rgba(255, 255, 255, 0.8) !important;
-      color: #1a365d !important;
+    .splash-btn {
+      background: #03254c !important;
+      color: white !important;
       border: none !important;
-      font-weight: bold !important;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
     }
   ` : "";
 
