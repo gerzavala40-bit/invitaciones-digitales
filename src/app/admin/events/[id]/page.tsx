@@ -2,8 +2,22 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ImportExcelButton from "./ImportExcelButton";
+import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
+
+async function toggleTrial(formData: FormData) {
+  "use server";
+  const eventId = formData.get("eventId") as string;
+  const currentIsTrial = formData.get("isTrial") === "true";
+  
+  await prisma.event.update({
+    where: { id: eventId },
+    data: { isTrial: !currentIsTrial }
+  });
+  
+  revalidatePath(`/admin/events/${eventId}`);
+}
 
 export default async function EventRsvpsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -30,6 +44,18 @@ export default async function EventRsvpsPage({ params }: { params: Promise<{ id:
           <div>
             <h1 className="text-xl font-bold text-gray-900">{event.title}</h1>
             <p className="text-sm text-gray-500">/{event.slug}</p>
+          </div>
+          <div className="ml-auto">
+            <form action={toggleTrial}>
+              <input type="hidden" name="eventId" value={event.id} />
+              <input type="hidden" name="isTrial" value={event.isTrial ? "true" : "false"} />
+              <button 
+                type="submit" 
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${event.isTrial ? 'bg-orange-100 text-orange-700 hover:bg-orange-200 border border-orange-200' : 'bg-green-100 text-green-700 hover:bg-green-200 border border-green-200'}`}
+              >
+                {event.isTrial ? "🟠 Modo Prueba (Activar)" : "🟢 Invitación Activa"}
+              </button>
+            </form>
           </div>
         </div>
       </header>
