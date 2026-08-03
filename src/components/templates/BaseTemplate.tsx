@@ -265,13 +265,13 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       letter-spacing: 0.05em !important;
     }
     .hero {
-      background: rgba(255, 255, 255, 0.75) !important;
-      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.4) !important;
+      backdrop-filter: blur(2px);
     }
     .section {
-      background: rgba(255, 255, 255, 0.85) !important;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8) !important;
+      background: rgba(255, 255, 255, 0.5) !important;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
     }
     .hero-photo {
       width: 100% !important;
@@ -280,11 +280,24 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       aspect-ratio: 3/4 !important;
       border-radius: 12px !important;
       border: 4px solid #fff !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
       margin: 0 auto 2rem !important;
+      object-fit: cover !important;
+      opacity: 1 !important;
+      filter: none !important;
     }
     .hero, .section, .splash-inner, .alias-box {
-      text-shadow: 0 1px 1px rgba(255,255,255,1) !important;
+      text-shadow: 0 1px 1px rgba(255,255,255,1), 0 2px 4px rgba(255,255,255,0.8) !important;
+    }
+    input, select, textarea {
+      background: rgba(255, 255, 255, 0.95) !important;
+      color: #01132b !important;
+      border: 2px solid #0a2d52 !important;
+      font-weight: 700 !important;
+      text-shadow: none !important;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #4a5568 !important;
     }
     #splash {
       background: var(--bg) !important;
