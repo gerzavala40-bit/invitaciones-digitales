@@ -643,6 +643,9 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         <footer>
           <div className="brand">Te <em>invito</em></div>
           <p>Invitaciones digitales · TeInvitoApp</p>
+          <a href="https://www.teinvitoapp.com.ar" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "0.5rem", fontSize: "0.75rem", color: "var(--accent)", textDecoration: "none", fontWeight: 600, letterSpacing: "0.05em" }}>
+            www.teinvitoapp.com.ar
+          </a>
         </footer>
       </div>
     </>
