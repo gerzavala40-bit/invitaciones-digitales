@@ -544,15 +544,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
-        {event.slug === '15anos-clara' && event.photos && event.photos[4] && (
-          <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
-            <div className="wrap stagger-reveal">
-              <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto rounded-[12px]" style={{ border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}>
-                <img className="hero-photo clip-reveal-img m-0" src={event.photos[4].url} alt="Foto 4" style={{ display: "block" }} />
-              </div>
-            </div>
-          </section>
-        )}
+
 
         {event.rsvpEnabled && (
           <section className="section" id="rsvp">
@@ -590,6 +582,16 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
                   <button type="submit" className="btn btn-primary btn-full" style={{ marginTop: "0.5rem" }} disabled={rsvpLoading}>{rsvpLoading ? "Enviando..." : "Confirmar asistencia"}</button>
                 </form>
               )}
+            </div>
+          </section>
+        )}
+
+        {event.slug === '15anos-clara' && event.photos && event.photos[4] && (
+          <section className="section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+            <div className="wrap stagger-reveal">
+              <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto rounded-[12px]" style={{ border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}>
+                <img className="hero-photo clip-reveal-img m-0" src={event.photos[4].url} alt="Foto 4" style={{ display: "block" }} />
+              </div>
             </div>
           </section>
         )}
