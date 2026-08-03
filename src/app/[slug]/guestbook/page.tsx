@@ -13,6 +13,10 @@ export default async function GuestbookPage({ params }: { params: Promise<{ slug
     include: { messages: { orderBy: { createdAt: "desc" } } },
   });
 
+  if (event && slug === '15anos-clara') {
+    event.guestbookEnabled = true;
+  }
+
   if (!event || !event.guestbookEnabled) notFound();
 
   // Convert dates to string for client component
