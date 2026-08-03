@@ -27,19 +27,21 @@ export default async function GuestbookPage({ params }: { params: Promise<{ slug
   } as unknown as EventData;
 
   return (
-    <main className="min-h-screen py-12 px-4" style={{ fontFamily: "var(--font-sans)", background: "linear-gradient(to bottom, #F0F6FA 0%, #C1DFF0 100%)", color: "#5A6B7C" }}>
+    <main className="min-h-screen py-12 px-4" style={{ fontFamily: "var(--font-sans)", background: "url('/clara-bg.jpg') center/cover no-repeat fixed", color: "#ffffff" }}>
       <style>{`
-        .clara-guestbook h2 { font-family: var(--font-display); color: #3B7EAE; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; }
-        .clara-guestbook .bg-white\\/5 { background: #ffffff !important; border: 1px solid var(--line, rgba(0,0,0,0.1)) !important; color: #5A6B7C !important; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-        .clara-guestbook .bg-black\\/20 { background: #F0F6FA !important; border: 1px solid rgba(59, 126, 174, 0.2) !important; color: #5A6B7C !important; font-family: var(--font-sans); }
-        .clara-guestbook input::placeholder, .clara-guestbook textarea::placeholder { color: #5A6B7C; opacity: 0.5; }
-        .clara-guestbook button[type="submit"] { background: linear-gradient(135deg, #CDE8F9, #9DCFEF) !important; color: #3B7EAE !important; border-radius: 999px !important; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.16em; font-weight: 600; padding: 1rem 1.75rem !important; }
-        .clara-guestbook .text-green-400 { color: #3B7EAE !important; font-weight: 900; font-family: var(--font-display); }
+        .clara-guestbook h2 { font-family: var(--font-display); color: #ffffff; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+        .clara-guestbook .bg-white\\/5 { background: rgba(0,0,0,0.2) !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #ffffff !important; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .clara-guestbook .bg-black\\/20 { background: rgba(0,0,0,0.3) !important; border: 1px solid rgba(255,255,255,0.1) !important; color: #ffffff !important; font-family: var(--font-sans); }
+        .clara-guestbook input, .clara-guestbook textarea { color: #ffffff !important; }
+        .clara-guestbook input::placeholder, .clara-guestbook textarea::placeholder { color: rgba(255,255,255,0.6); }
+        .clara-guestbook button[type="submit"] { background: linear-gradient(135deg, #C4A661, #D4AF37) !important; color: #ffffff !important; border-radius: 999px !important; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.16em; font-weight: 600; padding: 1rem 1.75rem !important; box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important; }
+        .clara-guestbook .text-green-400 { color: #ffffff !important; font-weight: 900; font-family: var(--font-display); }
         .clara-guestbook p.opacity-60 { color: #C4A661 !important; opacity: 1 !important; font-weight: 600 !important; font-size: 0.85rem; }
-        .clara-guestbook .italic { font-family: var(--font-sans); }
+        .clara-guestbook .italic { font-family: var(--font-sans); color: rgba(255,255,255,0.8); }
+        .clara-guestbook form label { color: #ffffff !important; }
       `}</style>
       <div className="max-w-2xl mx-auto clara-guestbook text-center">
-        <a href={`/${slug}`} className="text-sm underline mb-8 inline-block opacity-80 hover:opacity-100 uppercase tracking-widest font-bold text-[#3B7EAE]">
+        <a href={`/${slug}`} className="text-sm underline mb-8 inline-block opacity-90 hover:opacity-100 uppercase tracking-widest font-bold text-white drop-shadow-md">
           ← Volver a la invitación
         </a>
         <Guestbook event={eventData} />

@@ -261,35 +261,37 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
-      --bg: #F0F6FA !important;
-      --text: #5A6B7C !important;
-      --text-muted: #7A8B9C !important;
+      --bg: transparent !important;
+      --text: #ffffff !important;
+      --text-muted: rgba(255, 255, 255, 0.8) !important;
       --accent: #C4A661 !important;
       --gold: #C4A661 !important;
-      --bg-card: #ffffff !important;
+      --bg-card: rgba(0, 0, 0, 0.2) !important;
       --font-body: "Montserrat", sans-serif !important;
       --font-display: "Montserrat", sans-serif !important;
       --font-script: "Montserrat", sans-serif !important;
     }
     body {
-      background: linear-gradient(to bottom, #F0F6FA 0%, #C1DFF0 100%) !important;
-      background-attachment: fixed !important;
+      background: url('/clara-bg.jpg') center/cover no-repeat fixed !important;
     }
     body, p, span, div {
       text-transform: uppercase !important;
+      color: #ffffff !important;
     }
     h1, h2, h3, .splash-name {
-      color: #3B7EAE !important;
+      color: #ffffff !important;
       text-transform: uppercase !important;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     }
     h1, h2, h3, .splash-name, .script {
       font-weight: 900 !important;
       letter-spacing: 0.05em !important;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #CDE8F9, #9DCFEF) !important;
-      color: #3B7EAE !important;
+      background: linear-gradient(135deg, #C4A661, #D4AF37) !important;
+      color: #ffffff !important;
       border: none !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
     }
     .hero, .section {
       background: transparent !important;
