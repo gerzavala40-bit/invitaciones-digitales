@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const isClara = slug === '15anos-clara';
     const title = isClara 
       ? "Mis XV Años | Clara" 
-      : `Te Invito | ${event.groomName && event.brideName ? `${event.brideName} & ${event.groomName}` : event.brideName || event.groomName || 'Invitación Especial'}`;
+      : `Te Invito | ${event.title || 'Invitación Especial'}`;
       
     const description = isClara 
       ? "Hagamos de esta noche algo inolvidable. Hacé clic para ver todos los detalles, la ubicación y confirmar tu asistencia."
