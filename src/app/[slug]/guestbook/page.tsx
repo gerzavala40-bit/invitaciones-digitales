@@ -27,7 +27,26 @@ export default async function GuestbookPage({ params }: { params: Promise<{ slug
   } as unknown as EventData;
 
   return (
-    <main className="min-h-screen py-12 px-4" style={{ fontFamily: "var(--font-sans)", background: "url('/clara-bg.jpg') center/cover no-repeat fixed", color: "#ffffff" }}>
+    <>
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -1,
+          opacity: 0.7
+        }}
+      >
+        <source src="/mariposas.mp4" type="video/mp4" />
+      </video>
+      <main className="min-h-screen py-12 px-4" style={{ fontFamily: "var(--font-sans)", color: "#ffffff", background: "transparent" }}>
       <style>{`
         .clara-guestbook h2 { font-family: var(--font-display); color: #ffffff; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
         .clara-guestbook .bg-white\\/5 { background: rgba(0,0,0,0.2) !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #ffffff !important; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
@@ -47,5 +66,6 @@ export default async function GuestbookPage({ params }: { params: Promise<{ slug
         <Guestbook event={eventData} />
       </div>
     </main>
+    </>
   );
 }

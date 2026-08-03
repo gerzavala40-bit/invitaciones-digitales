@@ -11,7 +11,26 @@ export default async function CostosPage({ params }: { params: Promise<{ slug: s
   }
 
   return (
-    <main className="min-h-screen py-12 px-4 flex flex-col items-center justify-center" style={{ fontFamily: "var(--font-sans)", background: "url('/clara-bg.jpg') center/cover no-repeat fixed", color: "#ffffff" }}>
+    <>
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -1,
+          opacity: 0.7
+        }}
+      >
+        <source src="/mariposas.mp4" type="video/mp4" />
+      </video>
+      <main className="min-h-screen py-12 px-4 flex flex-col items-center justify-center" style={{ fontFamily: "var(--font-sans)", color: "#ffffff", background: "transparent" }}>
       <style>{`
         .clara-costos h2 { font-family: var(--font-display); color: #ffffff; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; font-size: 2rem; margin-bottom: 1.5rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
         .clara-costos .price-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; }
@@ -58,5 +77,6 @@ export default async function CostosPage({ params }: { params: Promise<{ slug: s
         </div>
       </div>
     </main>
+    </>
   );
 }

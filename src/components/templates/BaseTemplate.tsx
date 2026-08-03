@@ -272,7 +272,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       --font-script: "Montserrat", sans-serif !important;
     }
     body {
-      background: url('/clara-bg.jpg') center/cover no-repeat fixed !important;
+      background: #010a14 !important;
     }
     body, p, span, div {
       text-transform: uppercase !important;
@@ -384,6 +384,28 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
       {claraCss && <style dangerouslySetInnerHTML={{ __html: claraCss }} />}
+      
+      {event.slug === '15anos-clara' && (
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1,
+            opacity: 0.7
+          }}
+        >
+          <source src="/mariposas.mp4" type="video/mp4" />
+        </video>
+      )}
+
       {event.musicUrl && <audio ref={audioRef} src={event.musicUrl} loop preload="none" />}
 
       <div id="splash" className={entered ? "hide" : ""} onClick={handleEnter}>
