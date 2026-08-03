@@ -52,6 +52,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       { url: '/clara-galeria/5.jpg', order: 4 }
     ];
     event.bankAlias = null;
+    event.guestbookEnabled = true;
   }
   const [entered, setEntered] = useState(false);
   const [countdown, setCountdown] = useState({ d: "—", h: "—", m: "—", s: "—" });
