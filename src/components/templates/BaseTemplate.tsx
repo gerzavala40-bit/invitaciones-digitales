@@ -261,37 +261,35 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
-      --bg: transparent !important;
-      --text: #ffffff !important;
-      --text-muted: rgba(255, 255, 255, 0.8) !important;
+      --bg: #F0F6FA !important;
+      --text: #5A6B7C !important;
+      --text-muted: #7A8B9C !important;
       --accent: #C4A661 !important;
       --gold: #C4A661 !important;
-      --bg-card: rgba(0, 0, 0, 0.2) !important;
+      --bg-card: #ffffff !important;
       --font-body: "Montserrat", sans-serif !important;
       --font-display: "Montserrat", sans-serif !important;
       --font-script: "Montserrat", sans-serif !important;
     }
     body {
-      background: #010a14 !important;
+      background: linear-gradient(to bottom, #F0F6FA 0%, #C1DFF0 100%) !important;
+      background-attachment: fixed !important;
     }
     body, p, span, div {
       text-transform: uppercase !important;
-      color: #ffffff !important;
     }
     h1, h2, h3, .splash-name {
-      color: #ffffff !important;
+      color: #3B7EAE !important;
       text-transform: uppercase !important;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
     }
     h1, h2, h3, .splash-name, .script {
       font-weight: 900 !important;
       letter-spacing: 0.05em !important;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #C4A661, #D4AF37) !important;
-      color: #ffffff !important;
+      background: linear-gradient(135deg, #CDE8F9, #9DCFEF) !important;
+      color: #3B7EAE !important;
       border: none !important;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
     }
     .hero, .section {
       background: transparent !important;
@@ -333,49 +331,45 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     }
     .countdown > div {
       background: #ffffff !important;
-      border: 2px solid #0a2d52 !important;
-      color: #01132b !important;
+      border: 2px solid rgba(59, 126, 174, 0.2) !important;
+      color: #3B7EAE !important;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
     }
     .countdown > div .n {
-      color: #01132b !important;
+      color: #3B7EAE !important;
     }
     .countdown > div .l {
-      color: #0a2d52 !important;
+      color: #5A6B7C !important;
       font-weight: 700 !important;
     }
     input, select, textarea {
       background: #ffffff !important;
-      color: #01132b !important;
-      border: 2px solid #0a2d52 !important;
+      color: #3B7EAE !important;
+      border: 2px solid rgba(59, 126, 174, 0.2) !important;
       font-weight: 700 !important;
       text-shadow: none !important;
     }
     input::placeholder, textarea::placeholder {
-      color: #4a5568 !important;
+      color: #5A6B7C !important;
+      opacity: 0.5 !important;
     }
     #splash {
-      background: #010a14 !important; /* Fondo muy oscuro para que el video en modo screen resalte */
+      background: #F0F6FA !important;
       background-image: none !important;
     }
     #splash .splash-inner {
       text-shadow: none !important;
     }
     #splash .splash-name, #splash h1, #splash h2, #splash p, #splash .splash-ornament {
-      color: #ffffff !important;
-      text-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+      color: #3B7EAE !important;
+      text-shadow: none !important;
     }
     #splash::before {
       background: rgba(255, 255, 255, 0.2) !important;
     }
-    .btn-primary {
-      background: #03254c !important;
-      color: white !important;
-      text-shadow: none !important;
-    }
     .splash-btn {
-      background: #03254c !important;
-      color: white !important;
+      background: linear-gradient(135deg, #CDE8F9, #9DCFEF) !important;
+      color: #3B7EAE !important;
       border: none !important;
     }
   ` : "";
@@ -384,28 +378,6 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
       {claraCss && <style dangerouslySetInnerHTML={{ __html: claraCss }} />}
-      
-      {event.slug === '15anos-clara' && (
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: -1,
-            opacity: 0.7
-          }}
-        >
-          <source src="/mariposas.mp4" type="video/mp4" />
-        </video>
-      )}
-
       {event.musicUrl && <audio ref={audioRef} src={event.musicUrl} loop preload="none" />}
 
       <div id="splash" className={entered ? "hide" : ""} onClick={handleEnter}>
