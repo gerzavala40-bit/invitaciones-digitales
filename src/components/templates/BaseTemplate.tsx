@@ -261,9 +261,9 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
-      --bg: #FAF9F6 !important;
-      --text: #5C4D4D !important;
-      --text-muted: #5C4D4D !important;
+      --bg: #f4f9fd !important;
+      --text: #4A5568 !important;
+      --text-muted: #4A5568 !important;
       --accent: #C4A661 !important;
       --gold: #C4A661 !important;
       --bg-card: #ffffff !important;
@@ -271,11 +271,15 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       --font-display: "Montserrat", sans-serif !important;
       --font-script: "Montserrat", sans-serif !important;
     }
+    body {
+      background: linear-gradient(to bottom, #f4f9fd 0%, #d0e4f5 50%, #9bc2e1 100%) !important;
+      background-attachment: fixed !important;
+    }
     body, p, span, div {
       text-transform: uppercase !important;
     }
     h1, h2, h3, .splash-name {
-      color: #62242D !important;
+      color: #002147 !important;
       text-transform: uppercase !important;
     }
     h1, h2, h3, .splash-name, .script {
@@ -283,21 +287,14 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       letter-spacing: 0.05em !important;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #62242D, #8B3A48) !important;
-      color: #ffffff !important;
+      background: linear-gradient(135deg, #C4A661, #D4AF37) !important;
+      color: #002147 !important;
       border: none !important;
     }
     .hero, .section {
       background: transparent !important;
       backdrop-filter: none !important;
       box-shadow: none !important;
-    }
-    .clara-separator {
-      width: 2px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, #62242D, transparent);
-      margin: 4rem auto;
-      opacity: 0.5;
     }
     .hero-photo {
       width: 100% !important;
@@ -447,7 +444,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
-        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
+
 
         <section className="section" id="cuando">
           <div className="wrap">
@@ -480,7 +477,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </div>
         </section>
 
-        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
+
 
         {event.timeline && event.timeline.length > 0 && (
           <section className="section" id="itinerario">
@@ -630,7 +627,6 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
-        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
 
         {event.slug === '15anos-clara' && (
           <section className="section">
@@ -644,7 +640,6 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
-        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
 
         {event.bankAlias && (
           <section className="section">
