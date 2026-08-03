@@ -28,7 +28,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ? "Hagamos de esta noche algo inolvidable. Hacé clic para ver todos los detalles, la ubicación y confirmar tu asistencia."
       : "¡Estás invitado! Hacé clic para ver todos los detalles, ubicación y confirmar tu asistencia.";
 
-    const imgUrl = event.photos[0]?.url || "/og-image.jpg";
+    const imgUrl = isClara 
+      ? "/splash-clara.png" 
+      : (event.photos[0]?.url || "/portada-15.png");
     const absoluteImageUrl = imgUrl.startsWith('http') ? imgUrl : `https://www.teinvitoapp.com.ar${imgUrl}`;
 
     return {
