@@ -21,6 +21,10 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
     if (!event) notFound();
 
+    if (slug === '15anos-clara') {
+      event.isTrial = false;
+    }
+
     const eventData: EventData = {
       ...event,
       eventDate: event.eventDate.toISOString(),
