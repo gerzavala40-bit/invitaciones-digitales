@@ -12,7 +12,7 @@ const palette: TemplatePalette = {
   heroBg: "radial-gradient(ellipse at 50% 20%, rgba(232,90,140,.2), transparent 50%), #1A0A14",
   closeBg: "radial-gradient(ellipse at 50% 55%, rgba(232,90,140,.2), transparent 50%), #1A0A14",
   musicBtnBg: "rgba(26,10,20,.8)", btnPrimaryColor: "#fff",
-  splashOrnament: "\u2726", splashKicker: "Mis XV",
+  splashOrnament: "✦", splashKicker: "Mis XV",
 };
 
 const config: TemplateConfig = {
@@ -21,8 +21,8 @@ const config: TemplateConfig = {
   getKicker: () => "Mis XV",
   getInitials: () => "XV",
   getSplashTitle: (e) => e.title,
-  closingQuote: () => "Brillemos juntos\u2026",
-  scriptPhrase: () => "Que comience la magia\u2026",
+  closingQuote: () => "Brillemos juntos…",
+  scriptPhrase: () => "Que comience la magia…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Formal / Gala", pills: ["Rosa", "Dorado", "Negro"] }),
 };
 

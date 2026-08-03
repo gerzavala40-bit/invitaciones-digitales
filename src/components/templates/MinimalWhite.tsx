@@ -12,17 +12,17 @@ const palette: TemplatePalette = {
   heroBg: "radial-gradient(ellipse at 50% 20%, rgba(0,0,0,.04), transparent 50%), #FAFAF8",
   closeBg: "radial-gradient(ellipse at 50% 55%, rgba(0,0,0,.04), transparent 50%), #FAFAF8",
   musicBtnBg: "rgba(250,250,248,.9)", btnPrimaryColor: "#fff",
-  splashOrnament: "\u2014", splashKicker: "Celebraci\u00f3n",
+  splashOrnament: "—", splashKicker: "Celebración",
 };
 
 const config: TemplateConfig = {
   palette,
   getTitle: (e) => e.title,
-  getKicker: () => "Cumplea\u00f1os",
+  getKicker: () => "Cumpleaños",
   getInitials: (e) => e.title[0] || "?",
   getSplashTitle: (e) => e.title,
-  closingQuote: () => "Compartamos este momento especial\u2026",
-  scriptPhrase: () => "Compartamos este momento especial\u2026",
+  closingQuote: () => "Compartamos este momento especial…",
+  scriptPhrase: () => "Compartamos este momento especial…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Smart casual", pills: ["Negro", "Blanco", "Minimalista"] }),
 };
 

@@ -12,7 +12,7 @@ const palette: TemplatePalette = {
   heroBg: "radial-gradient(ellipse at 50% 20%, rgba(190,171,142,.15), transparent 50%), #F4F2EE",
   closeBg: "radial-gradient(ellipse at 50% 55%, rgba(190,171,142,.15), transparent 50%), #F4F2EE",
   musicBtnBg: "rgba(244,242,238,.9)", btnPrimaryColor: "#2C2A28",
-  splashOrnament: "\u273F", splashKicker: "Nos casamos",
+  splashOrnament: "✿", splashKicker: "Nos casamos",
 };
 
 const config: TemplateConfig = {

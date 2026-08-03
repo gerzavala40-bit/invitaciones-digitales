@@ -12,7 +12,7 @@ const palette: TemplatePalette = {
   heroBg: "radial-gradient(ellipse at 50% 20%, rgba(91,141,239,.15), transparent 50%), #0B1220",
   closeBg: "radial-gradient(ellipse at 50% 55%, rgba(91,141,239,.15), transparent 50%), #0B1220",
   musicBtnBg: "rgba(11,18,32,.8)", btnPrimaryColor: "#fff",
-  splashOrnament: "\u25c6", splashKicker: "Evento corporativo",
+  splashOrnament: "◆", splashKicker: "Evento corporativo",
 };
 
 const config: TemplateConfig = {
@@ -21,8 +21,8 @@ const config: TemplateConfig = {
   getKicker: () => "Evento corporativo",
   getInitials: (e) => e.title[0] || "?",
   getSplashTitle: (e) => e.title,
-  closingQuote: () => "Los esperamos para celebrar los logros\u2026",
-  scriptPhrase: () => "Una noche para celebrar juntos\u2026",
+  closingQuote: () => "Los esperamos para celebrar los logros…",
+  scriptPhrase: () => "Una noche para celebrar juntos…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Elegante sport / Formal", pills: ["Azul marino", "Plata", "Gala"] }),
 };
 

@@ -42,7 +42,7 @@ export interface TemplateConfig {
 export default function BaseTemplate({ event, config }: { event: EventData; config: TemplateConfig }) {
   const { palette: p } = config;
   const [entered, setEntered] = useState(false);
-  const [countdown, setCountdown] = useState({ d: "\u2014", h: "\u2014", m: "\u2014", s: "\u2014" });
+  const [countdown, setCountdown] = useState({ d: "—", h: "—", m: "—", s: "—" });
   const [copyOk, setCopyOk] = useState(false);
   const [rsvpSent, setRsvpSent] = useState(false);
   const [rsvpId, setRsvpId] = useState<string | null>(null);
@@ -51,7 +51,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   const dateShort = new Date(event.eventDate).toLocaleDateString("es-AR", {
     day: "2-digit", month: "2-digit", year: "numeric",
-  }).replace(/\//g, " \u00b7 ");
+  }).replace(/\//g, " · ");
 
   const dateLong = new Date(event.eventDate).toLocaleDateString("es-AR", {
     weekday: "long", day: "numeric", month: "long", year: "numeric",
@@ -252,13 +252,13 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           <p className="splash-kicker">{p.splashKicker}</p>
           <h1 className="splash-name">{splashTitle}</h1>
           <p className="splash-date">{dateShort}</p>
-          <button type="button" className="splash-btn" onClick={(e) => { e.stopPropagation(); handleEnter(); }}>Abrir invitaci\u00f3n</button>
-          <p className="splash-hint">Toc\u00e1 para entrar</p>
+          <button type="button" className="splash-btn" onClick={(e) => { e.stopPropagation(); handleEnter(); }}>Abrir invitación</button>
+          <p className="splash-hint">Tocá para entrar</p>
         </div>
       </div>
 
-      <button type="button" className={`music-btn${entered ? " visible" : ""}`} aria-label="M\u00fasica"
-        onClick={() => { if (!audioRef.current) return; if (audioRef.current.paused) audioRef.current.play().catch(() => {}); else audioRef.current.pause(); }}>\u266a</button>
+      <button type="button" className={`music-btn${entered ? " visible" : ""}`} aria-label="Música"
+        onClick={() => { if (!audioRef.current) return; if (audioRef.current.paused) audioRef.current.play().catch(() => {}); else audioRef.current.pause(); }}>♪</button>
 
       <div id="main" className={entered ? "show" : ""}>
         <section className="section hero" id="inicio">
@@ -268,16 +268,16 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
               : <div className="hero-photo placeholder">{initials}</div>}
             <p className="hero-kicker">{kicker}</p>
             <h1>{title}</h1>
-            <p className="hero-date">{dateLong} \u00b7 {event.eventTime} hs</p>
+            <p className="hero-date">{dateLong} · {event.eventTime} hs</p>
             <div className="countdown">
-              <div><span className="n">{countdown.d}</span><span className="l">D\u00edas</span></div>
+              <div><span className="n">{countdown.d}</span><span className="l">Días</span></div>
               <div><span className="n">{countdown.h}</span><span className="l">Horas</span></div>
               <div><span className="n">{countdown.m}</span><span className="l">Min</span></div>
               <div><span className="n">{countdown.s}</span><span className="l">Seg</span></div>
             </div>
             <a className="btn btn-primary" href="#cuando">Ver detalles</a>
           </div>
-          <div className="scroll-cue">Desliz\u00e1<span>\u2193</span></div>
+          <div className="scroll-cue">Deslizá<span>↓</span></div>
         </section>
 
         {event.phrase && (
@@ -387,7 +387,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           <section className="section" id="rsvp">
             <div className="wrap">
               <p className="eyebrow reveal">Tu respuesta</p>
-              <h2 className="reveal">Confirm\u00e1 tu asistencia</h2>
+              <h2 className="reveal">Confirmá tu asistencia</h2>
               {rsvpId ? (
                 <div className="card reveal" style={{ textAlign: "center" }}>
                   <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>🍾</div>
@@ -410,12 +410,12 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
                 <form className="card rsvp-form reveal" onSubmit={handleRsvp}>
                   <label htmlFor="nombre">Nombre completo</label>
                   <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre y apellido" />
-                  <label htmlFor="asistencia">\u00bfNos acompa\u00f1\u00e1s?</label>
-                  <select id="asistencia" name="asistencia"><option value="si">\u00a1S\u00ed, all\u00ed estar\u00e9!</option><option value="no">No puedo asistir</option></select>
-                  <label htmlFor="personas">Acompa\u00f1antes</label>
+                  <label htmlFor="asistencia">¿Nos acompañás?</label>
+                  <select id="asistencia" name="asistencia"><option value="si">¡Sí, allí estaré!</option><option value="no">No puedo asistir</option></select>
+                  <label htmlFor="personas">Acompañantes</label>
                   <input id="personas" name="personas" type="number" min="1" defaultValue={1} />
-                  <label htmlFor="dieta">Restricci\u00f3n alimentaria</label>
-                  <input id="dieta" name="dieta" type="text" placeholder="Vegetariano, sin TACC\u2026" />
+                  <label htmlFor="dieta">Restricción alimentaria</label>
+                  <input id="dieta" name="dieta" type="text" placeholder="Vegetariano, sin TACC…" />
                   <button type="submit" className="btn btn-primary btn-full" style={{ marginTop: "0.5rem" }} disabled={rsvpLoading}>{rsvpLoading ? "Enviando..." : "Confirmar asistencia"}</button>
                 </form>
               )}
@@ -426,14 +426,14 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         {event.bankAlias && (
           <section className="section">
             <div className="wrap reveal">
-              <p className="eyebrow">Con cari\u00f1o</p>
+              <p className="eyebrow">Con cariño</p>
               <h2>Mesa de regalos</h2>
               <p className="lead">Tu presencia es el mejor regalo.</p>
               <div className="alias-box">
                 <p className="alias-label">Alias</p>
                 <p className="alias-value">{event.bankAlias}</p>
                 {event.bankHolder && <p className="alias-sub">{event.bankHolder}</p>}
-                <button type="button" className={`copy-btn${copyOk ? " ok" : ""}`} onClick={copyAlias}>{copyOk ? "\u00a1Copiado! \u2713" : "Copiar alias"}</button>
+                <button type="button" className={`copy-btn${copyOk ? " ok" : ""}`} onClick={copyAlias}>{copyOk ? "¡Copiado! ✓" : "Copiar alias"}</button>
               </div>
             </div>
           </section>
@@ -450,7 +450,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
         <footer>
           <div className="brand">Te <em>invito</em></div>
-          <p>Invitaciones digitales \u00b7 TeInvitoApp</p>
+          <p>Invitaciones digitales · TeInvitoApp</p>
         </footer>
       </div>
     </>

@@ -12,7 +12,7 @@ const palette: TemplatePalette = {
   heroBg: "radial-gradient(ellipse at 50% 20%, rgba(91,143,168,.12), transparent 50%), #F4F7FA",
   closeBg: "radial-gradient(ellipse at 50% 55%, rgba(91,143,168,.12), transparent 50%), #F4F7FA",
   musicBtnBg: "rgba(244,247,250,.9)", btnPrimaryColor: "#fff",
-  splashOrnament: "\u2601\ufe0f", splashKicker: "Bautismo",
+  splashOrnament: "☁️", splashKicker: "Bautismo",
 };
 
 const config: TemplateConfig = {
@@ -21,8 +21,8 @@ const config: TemplateConfig = {
   getKicker: () => "Bautismo",
   getInitials: (e) => e.title[0] || "B",
   getSplashTitle: (e) => e.title,
-  closingQuote: () => "Un peque\u00f1o \u00e1ngel a bautizar\u2026",
-  scriptPhrase: () => "Un peque\u00f1o \u00e1ngel a bautizar\u2026",
+  closingQuote: () => "Un pequeño ángel a bautizar…",
+  scriptPhrase: () => "Un pequeño ángel a bautizar…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Elegante sport", pills: ["Celeste", "Blanco", "Pastel"] }),
 };
 

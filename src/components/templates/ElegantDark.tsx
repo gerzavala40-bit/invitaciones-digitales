@@ -12,7 +12,7 @@ const palette: TemplatePalette = {
   heroBg: "radial-gradient(ellipse at 50% 20%, rgba(201,168,76,.16), transparent 50%), #0C0A09",
   closeBg: "radial-gradient(ellipse at 50% 55%, rgba(201,168,76,.16), transparent 50%), #0C0A09",
   musicBtnBg: "rgba(12,10,9,.8)", btnPrimaryColor: "#0C0A09",
-  splashOrnament: "\u25c6", splashKicker: "Nos casamos",
+  splashOrnament: "◆", splashKicker: "Nos casamos",
 };
 
 const config: TemplateConfig = {
@@ -24,8 +24,8 @@ const config: TemplateConfig = {
     const [a, b] = e.title.split("&");
     return <>{a?.trim()}<br /><span style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontSize: ".55em", color: "#C9A84C" }}>&amp;</span><br />{b?.trim()}</>;
   },
-  closingQuote: () => "Que brille el amor esta noche\u2026",
-  scriptPhrase: () => "Que brille el amor esta noche\u2026",
+  closingQuote: () => "Que brille el amor esta noche…",
+  scriptPhrase: () => "Que brille el amor esta noche…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Formal black tie", pills: ["Negro", "Dorado", "Elegante"] }),
 };
 

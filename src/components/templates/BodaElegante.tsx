@@ -18,7 +18,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
   // Fecha corta para el alias y otros
   const dateShort = new Date(event.eventDate).toLocaleDateString("es-AR", {
     day: "2-digit", month: "2-digit", year: "numeric",
-  }).replace(/\//g, " \u00b7 ");
+  }).replace(/\//g, " · ");
 
   // Countdown logic
   useEffect(() => {
@@ -252,13 +252,13 @@ export default function BodaElegante({ event }: { event: EventData }) {
           <h1 className="be-title-script" style={{ fontSize: "4rem" }}>{name1} <br/>&amp;<br/> {name2}</h1>
           <p className="be-serif text-gray-400 mt-6 mb-8 text-sm">{dateShort}</p>
           <button type="button" className="be-btn" style={{ width: "auto" }} onClick={(e) => { e.stopPropagation(); handleEnter(); }}>
-            Abrir invitaci\u00f3n
+            Abrir invitación
           </button>
         </div>
 
         {entered && (
           <button className="be-music" onClick={() => { if(audioRef.current) { audioRef.current.paused ? audioRef.current.play() : audioRef.current.pause() } }}>
-            \u266a
+            ♪
           </button>
         )}
 
@@ -364,7 +364,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
                 <p className="be-serif text-xl text-white mb-2" style={{ color: "var(--gold)", letterSpacing: "0.1em" }}>{event.bankAlias}</p>
                 {event.bankHolder && <p className="be-serif text-xs text-gray-400 mb-6">{event.bankHolder}</p>}
                 <button onClick={copyAlias} className="be-btn">
-                  {copyOk ? "\u00a1COPIADO!" : "COPIAR ALIAS"}
+                  {copyOk ? "¡COPIADO!" : "COPIAR ALIAS"}
                 </button>
               </div>
             </div>
@@ -392,23 +392,23 @@ export default function BodaElegante({ event }: { event: EventData }) {
                   <label className="be-label">Nombre y Apellido</label>
                   <input name="nombre" className="be-input" required />
                   
-                  <label className="be-label">\u00bfAsistir\u00e1s?</label>
+                  <label className="be-label">¿Asistirás?</label>
                   <select name="asistencia" className="be-input">
-                    <option value="si">S\u00ed, confirmo asistencia</option>
-                    <option value="no">No podr\u00e9 asistir</option>
+                    <option value="si">Sí, confirmo asistencia</option>
+                    <option value="no">No podré asistir</option>
                   </select>
                   
-                  <label className="be-label">Acompa\u00f1antes (incluyéndote)</label>
+                  <label className="be-label">Acompañantes (incluyéndote)</label>
                   <input name="personas" type="number" min="1" defaultValue="1" className="be-input" />
                   
-                  <label className="be-label">Men\u00fa Especial / Notas</label>
+                  <label className="be-label">Menú Especial / Notas</label>
                   <input name="dieta" className="be-input" placeholder="Opcional..." />
                   
                   <label className="be-label">¿Qué canción no puede faltar?</label>
                   <input name="cancion" className="be-input" placeholder="Nombre o link (opcional)..." />
 
                   <button type="submit" disabled={rsvpLoading} className="be-btn" style={{ marginTop: "1rem" }}>
-                    {rsvpLoading ? "ENVIANDO..." : "ENVIAR CONFIRMACI\u00d3N"}
+                    {rsvpLoading ? "ENVIANDO..." : "ENVIAR CONFIRMACIÓN"}
                   </button>
                 </form>
               )}
@@ -422,7 +422,7 @@ export default function BodaElegante({ event }: { event: EventData }) {
             </div>
           )}
           
-          <p className="be-title-script mt-20" style={{ fontSize: "3rem" }}>\u00a1Los esperamos!</p>
+          <p className="be-title-script mt-20" style={{ fontSize: "3rem" }}>¡Los esperamos!</p>
         </div>
       </div>
     </>
