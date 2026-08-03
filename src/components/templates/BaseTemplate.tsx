@@ -580,6 +580,8 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
                   <input id="personas" name="personas" type="number" min="1" defaultValue={1} />
                   <label htmlFor="dieta">Restricción alimentaria</label>
                   <input id="dieta" name="dieta" type="text" placeholder="Vegetariano, sin TACC…" />
+                  <label htmlFor="cancion">¿Qué canción no puede faltar?</label>
+                  <input id="cancion" name="cancion" type="text" placeholder="Nombre de la canción o artista..." />
                   <button type="submit" className="btn btn-primary btn-full" style={{ marginTop: "0.5rem" }} disabled={rsvpLoading}>{rsvpLoading ? "Enviando..." : "Confirmar asistencia"}</button>
                 </form>
               )}
