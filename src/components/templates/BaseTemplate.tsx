@@ -388,7 +388,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       <div id="splash" className={entered ? "hide" : ""} onClick={handleEnter}>
         {event.slug === '15anos-clara' && (
           <video autoPlay loop muted playsInline style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }}>
-            <source src="/mariposas.mp4" type="video/mp4" />
+            <source src="/en_color_celeste.mp4" type="video/mp4" />
           </video>
         )}
         {config.showButterflies && <Butterflies />}
