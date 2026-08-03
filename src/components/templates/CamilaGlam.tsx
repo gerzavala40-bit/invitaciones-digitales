@@ -24,6 +24,7 @@ const config: TemplateConfig = {
   closingQuote: () => "Brillemos juntos…",
   scriptPhrase: () => "Que comience la magia…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Formal / Gala", pills: ["Rosa", "Dorado", "Negro"] }),
+  showButterflies: true,
 };
 
 export default function CamilaGlam({ event }: { event: EventData }) {

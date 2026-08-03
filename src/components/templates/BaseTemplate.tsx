@@ -7,6 +7,7 @@ import AddToCalendar from "../features/AddToCalendar";
 import Guestbook from "../features/Guestbook";
 import Timeline from "../features/Timeline";
 import { QRCodeSVG } from "qrcode.react";
+import Butterflies from "./shared/Butterflies";
 
 export interface TemplatePalette {
   bg: string;
@@ -37,6 +38,7 @@ export interface TemplateConfig {
   closingQuote: (event: EventData) => string;
   scriptPhrase: (event: EventData) => string;
   dressCodeOverride?: (event: EventData) => { name: string; pills: string[] };
+  showButterflies?: boolean;
 }
 
 export default function BaseTemplate({ event, config }: { event: EventData; config: TemplateConfig }) {
@@ -243,6 +245,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
+      {config.showButterflies && <Butterflies />}
       {event.musicUrl && <audio ref={audioRef} src={event.musicUrl} loop preload="none" />}
 
       <div id="splash" className={entered ? "hide" : ""} onClick={handleEnter}>

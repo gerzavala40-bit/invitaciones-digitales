@@ -27,6 +27,7 @@ const config: TemplateConfig = {
   closingQuote: () => "Que brille el amor esta noche…",
   scriptPhrase: () => "Que brille el amor esta noche…",
   dressCodeOverride: (e) => ({ name: e.dressCode || "Formal black tie", pills: ["Negro", "Dorado", "Elegante"] }),
+  showButterflies: true,
 };
 
 export default function ElegantDark({ event }: { event: EventData }) {
