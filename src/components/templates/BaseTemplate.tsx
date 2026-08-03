@@ -261,21 +261,29 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
       --bg: #f4f9fd !important;
-      --text: #01132b !important;
-      --text-muted: #0a2d52 !important;
-      --accent: #0a2d52 !important;
-      --gold: #0a2d52 !important;
+      --text: #4A5568 !important;
+      --text-muted: #4A5568 !important;
+      --accent: #C4A661 !important;
+      --gold: #C4A661 !important;
       --bg-card: #ffffff !important;
       --font-body: "Montserrat", sans-serif !important;
       --font-display: "Montserrat", sans-serif !important;
       --font-script: "Montserrat", sans-serif !important;
     }
-    body, h1, h2, h3, p, span, div, button, a {
+    body, p, span, div {
+      text-transform: uppercase !important;
+    }
+    h1, h2, h3, .splash-name {
+      color: #002147 !important;
       text-transform: uppercase !important;
     }
     h1, h2, h3, .splash-name, .script {
       font-weight: 900 !important;
       letter-spacing: 0.05em !important;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #C4A661, #D4AF37) !important;
+      color: #002147 !important;
     }
     .hero, .section {
       background: transparent !important;
