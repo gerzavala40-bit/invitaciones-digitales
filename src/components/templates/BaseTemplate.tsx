@@ -53,6 +53,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     ];
     event.bankAlias = null;
     event.guestbookEnabled = true;
+    event.musicUrl = "/music/cancion-clara.mp3";
   }
   const [entered, setEntered] = useState(false);
   const [countdown, setCountdown] = useState({ d: "—", h: "—", m: "—", s: "—" });
@@ -157,7 +158,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   const kicker = config.getKicker(event);
   const initials = config.getInitials(event);
   const splashTitle = config.getSplashTitle(event);
-  const closingQuote = config.closingQuote(event);
+  const closingQuote = event.slug === '15anos-clara' ? "Hagamos de esta noche algo inolvidable" : config.closingQuote(event);
   const scriptPhrase = config.scriptPhrase(event);
 
   const dressInfo = config.dressCodeOverride
