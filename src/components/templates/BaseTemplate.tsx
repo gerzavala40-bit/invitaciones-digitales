@@ -252,12 +252,12 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
-      --bg: #bde0fe !important;
+      --bg: #f4f9fd !important;
       --text: #01132b !important;
       --text-muted: #0a2d52 !important;
       --accent: #0a2d52 !important;
       --gold: #0a2d52 !important;
-      --bg-card: rgba(255, 255, 255, 0.9) !important;
+      --bg-card: #ffffff !important;
       --font-body: "Montserrat", sans-serif !important;
       --font-display: "Montserrat", sans-serif !important;
       --font-script: "Montserrat", sans-serif !important;
@@ -269,14 +269,10 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       font-weight: 900 !important;
       letter-spacing: 0.05em !important;
     }
-    .hero {
-      background: rgba(255, 255, 255, 0.4) !important;
-      backdrop-filter: blur(2px);
-    }
-    .section {
-      background: rgba(255, 255, 255, 0.5) !important;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
+    .hero, .section {
+      background: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
     }
     .hero-photo {
       width: 100% !important;
@@ -292,10 +288,10 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       filter: none !important;
     }
     .hero, .section, .splash-inner, .alias-box {
-      text-shadow: 0 1px 1px rgba(255,255,255,1), 0 2px 4px rgba(255,255,255,0.8) !important;
+      text-shadow: none !important;
     }
     input, select, textarea {
-      background: rgba(255, 255, 255, 0.95) !important;
+      background: #ffffff !important;
       color: #01132b !important;
       border: 2px solid #0a2d52 !important;
       font-weight: 700 !important;
