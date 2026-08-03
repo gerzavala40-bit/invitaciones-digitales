@@ -405,6 +405,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
                 </div>
               )
               : <div className="hero-photo placeholder mb-8">{initials}</div>}
+            {event.slug === '15anos-clara' && <div style={{ fontSize: "2.5rem", marginBottom: "0.5rem", marginTop: "-1rem" }}>👑</div>}
             <p className="hero-kicker">{kicker}</p>
             <h1>{title}</h1>
             <p className="hero-date">{dateLong} · {event.eventTime} hs</p>
@@ -441,6 +442,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
         <section className="section" id="cuando">
           <div className="wrap">
             <p className="eyebrow reveal">La celebración</p>
+            {event.slug === '15anos-clara' && <div className="reveal" style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>📅</div>}
             <h2 className="reveal">¿Cuándo &amp; dónde?</h2>
             <p className="lead reveal">Todo listo para celebrar juntos.</p>
             {event.ceremonyName && (
