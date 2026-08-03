@@ -9,6 +9,7 @@ import Image from "next/image";
 import MusicPlayer from "./shared/MusicPlayer";
 import PhotoGallery from "./shared/PhotoGallery";
 import CopyButton from "./shared/CopyButton";
+import Butterflies from "./shared/Butterflies";
 
 export default function JuliaXV({ event }: { event: EventData }) {
   // Use event details, fallback to some defaults to keep the format if data is missing
@@ -41,6 +42,8 @@ export default function JuliaXV({ event }: { event: EventData }) {
 
   return (
     <div style={{ fontFamily: "'Montserrat', sans-serif" }} className="min-h-screen bg-[#FDFDFD] text-[#333333] selection:bg-[#c2a990] selection:text-white pb-20">
+      
+      <Butterflies />
       
       {event.musicUrl && <MusicPlayer musicUrl={event.musicUrl} accentColor="#c2a990" />}
 
