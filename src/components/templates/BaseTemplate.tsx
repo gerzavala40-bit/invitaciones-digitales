@@ -287,7 +287,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       letter-spacing: 0.05em !important;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #C4A661, #D4AF37) !important;
+      background: linear-gradient(135deg, #7BB4E3, #5A9BD5) !important;
       color: #ffffff !important;
       border: none !important;
     }
