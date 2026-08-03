@@ -305,8 +305,15 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       color: #4a5568 !important;
     }
     #splash {
-      background: var(--bg) !important;
+      background: #010a14 !important; /* Fondo muy oscuro para que el video en modo screen resalte */
       background-image: none !important;
+    }
+    #splash .splash-inner {
+      text-shadow: none !important;
+    }
+    #splash .splash-name, #splash h1, #splash h2, #splash p, #splash .splash-ornament {
+      color: #ffffff !important;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
     }
     #splash::before {
       background: rgba(255, 255, 255, 0.2) !important;
@@ -327,10 +334,10 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
       {claraCss && <style dangerouslySetInnerHTML={{ __html: claraCss }} />}
-      {config.showButterflies && <Butterflies />}
       {event.musicUrl && <audio ref={audioRef} src={event.musicUrl} loop preload="none" />}
 
       <div id="splash" className={entered ? "hide" : ""} onClick={handleEnter}>
+        {config.showButterflies && <Butterflies />}
         <div className="splash-inner">
           <div className="splash-ornament">{p.splashOrnament}</div>
           <p className="splash-label">Bienvenida</p>
