@@ -290,6 +290,22 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     .hero, .section, .splash-inner, .alias-box {
       text-shadow: none !important;
     }
+    .scroll-cue {
+      display: none !important;
+    }
+    .countdown > div {
+      background: #ffffff !important;
+      border: 2px solid #0a2d52 !important;
+      color: #01132b !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    }
+    .countdown > div .n {
+      color: #01132b !important;
+    }
+    .countdown > div .l {
+      color: #0a2d52 !important;
+      font-weight: 700 !important;
+    }
     input, select, textarea {
       background: #ffffff !important;
       color: #01132b !important;
