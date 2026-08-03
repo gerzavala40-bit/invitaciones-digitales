@@ -43,6 +43,9 @@ export interface TemplateConfig {
 
 export default function BaseTemplate({ event, config }: { event: EventData; config: TemplateConfig }) {
   const { palette: p } = config;
+  if (event.slug === '15anos-clara') {
+    event.photos = [{ url: '/foto-clara.jpg', order: 0 }];
+  }
   const [entered, setEntered] = useState(false);
   const [countdown, setCountdown] = useState({ d: "—", h: "—", m: "—", s: "—" });
   const [copyOk, setCopyOk] = useState(false);
