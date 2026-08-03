@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : "¡Estás invitado! Hacé clic para ver todos los detalles, ubicación y confirmar tu asistencia.";
 
     const imgUrl = isClara 
-      ? "/splash-clara.png" 
+      ? "/foto-clara.jpg" 
       : (event.photos[0]?.url || "/portada-15.png");
     const absoluteImageUrl = imgUrl.startsWith('http') ? imgUrl : `https://www.teinvitoapp.com.ar${imgUrl}`;
 
