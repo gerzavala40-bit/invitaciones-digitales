@@ -176,3 +176,51 @@ details[open] summary .faq-icon { transform: rotate(45deg); }
   background: #FF6B9D;
   color: #fff;
 }
+
+/* ==============================================================
+   1. Animación de Aparición en Cascada (Staggered Fade-In)
+   ============================================================== */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-reveal.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-reveal.active > *:nth-child(1) { transition-delay: 0.15s; }
+.stagger-reveal.active > *:nth-child(2) { transition-delay: 0.30s; }
+.stagger-reveal.active > *:nth-child(3) { transition-delay: 0.45s; }
+.stagger-reveal.active > *:nth-child(4) { transition-delay: 0.60s; }
+.stagger-reveal.active > *:nth-child(5) { transition-delay: 0.75s; }
+.stagger-reveal.active > *:nth-child(6) { transition-delay: 0.90s; }
+.stagger-reveal.active > *:nth-child(7) { transition-delay: 1.05s; }
+.stagger-reveal.active > *:nth-child(8) { transition-delay: 1.20s; }
+.stagger-reveal.active > *:nth-child(9) { transition-delay: 1.35s; }
+.stagger-reveal.active > *:nth-child(10) { transition-delay: 1.50s; }
+
+
+/* ==============================================================
+   2. Máscara Fotográfica (Clip-Path Reveal)
+   ============================================================== */
+.image-mask-container {
+  overflow: hidden; 
+}
+
+.clip-reveal-img {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.15);
+  transition: 
+    clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), 
+    transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  object-fit: cover;
+  width: 100%;
+}
+
+.image-mask-container.active .clip-reveal-img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}

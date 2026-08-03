@@ -80,12 +80,17 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   useEffect(() => {
     if (!entered) return;
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
-      { threshold: 0.12 }
+    const observer = new IntersectionObserver(
+      (entries, obs) => entries.forEach((e) => { 
+        if (e.isIntersecting) {
+          e.target.classList.add("in", "active"); 
+          obs.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.15 }
     );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    document.querySelectorAll(".reveal, .stagger-reveal, .image-mask-container").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, [entered]);
 
   function handleEnter() {
@@ -342,10 +347,14 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
       <div id="main" className={entered ? "show" : ""}>
         <section className="section hero" id="inicio">
-          <div className="wrap">
+          <div className="wrap stagger-reveal">
             {event.photos && event.photos.length > 0
-              ? <img className="hero-photo" src={event.photos[0].url} alt={title} />
-              : <div className="hero-photo placeholder">{initials}</div>}
+              ? (
+                <div className="image-mask-container inline-block w-full max-w-[400px] mx-auto mb-8 rounded-[12px]">
+                  <img className="hero-photo clip-reveal-img m-0" src={event.photos[0].url} alt={title} />
+                </div>
+              )
+              : <div className="hero-photo placeholder mb-8">{initials}</div>}
             <p className="hero-kicker">{kicker}</p>
             <h1>{title}</h1>
             <p className="hero-date">{dateLong} · {event.eventTime} hs</p>
