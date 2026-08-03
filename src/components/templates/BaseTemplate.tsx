@@ -303,6 +303,20 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
     .scroll-cue {
       display: none !important;
     }
+    .gallery {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2rem !important;
+    }
+    .gallery .ph {
+      aspect-ratio: auto !important;
+      width: 100% !important;
+    }
+    .gallery .ph img {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
     .countdown > div {
       background: #ffffff !important;
       border: 2px solid #0a2d52 !important;
