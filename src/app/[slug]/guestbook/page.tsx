@@ -19,7 +19,8 @@ export default async function GuestbookPage({ params }: { params: Promise<{ slug
   const eventData: EventData = {
     ...event,
     eventDate: event.eventDate.toISOString(),
-  } as EventData;
+    photos: [],
+  } as unknown as EventData;
 
   return (
     <main className="min-h-screen bg-[#f4f9fd] text-[#01132b] py-12 px-4" style={{ fontFamily: "var(--font-sans)" }}>
