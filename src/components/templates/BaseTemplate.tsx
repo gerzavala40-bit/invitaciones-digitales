@@ -46,10 +46,10 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   if (event.slug === '15anos-clara') {
     event.photos = [
       { url: '/foto-clara.jpg', order: 0 },
-      { url: '/clara-galeria/1.jpg', order: 1 },
-      { url: '/clara-galeria/2.jpg', order: 2 },
-      { url: '/clara-galeria/3.jpg', order: 3 },
-      { url: '/clara-galeria/4.jpg', order: 4 }
+      { url: '/clara-galeria/2.jpg', order: 1 },
+      { url: '/clara-galeria/3.jpg', order: 2 },
+      { url: '/clara-galeria/4.jpg', order: 3 },
+      { url: '/clara-galeria/5.jpg', order: 4 }
     ];
     event.bankAlias = null;
   }
