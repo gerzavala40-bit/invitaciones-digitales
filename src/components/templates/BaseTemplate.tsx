@@ -44,7 +44,16 @@ export interface TemplateConfig {
 export default function BaseTemplate({ event, config }: { event: EventData; config: TemplateConfig }) {
   const { palette: p } = config;
   if (event.slug === '15anos-clara') {
-    event.photos = [{ url: '/foto-clara.jpg', order: 0 }];
+    event.photos = [
+      { url: '/foto-clara.jpg', order: 0 },
+      { url: '/clara-galeria/1.jpg', order: 1 },
+      { url: '/clara-galeria/2.jpg', order: 2 },
+      { url: '/clara-galeria/3.jpg', order: 3 },
+      { url: '/clara-galeria/4.jpg', order: 4 },
+      { url: '/clara-galeria/5.jpg', order: 5 },
+      { url: '/clara-galeria/6.jpg', order: 6 },
+      { url: '/clara-galeria/7.jpg', order: 7 }
+    ];
   }
   const [entered, setEntered] = useState(false);
   const [countdown, setCountdown] = useState({ d: "—", h: "—", m: "—", s: "—" });
@@ -461,12 +470,14 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
         {event.photos && event.photos.length > 1 && (
           <section className="section">
-            <div className="wrap reveal">
+            <div className="wrap stagger-reveal">
               <p className="eyebrow">Fotos</p>
               <h2>Nuestra historia</h2>
-              <div className="gallery">
+              <div className="gallery stagger-reveal">
                 {event.photos.slice(1).map((ph, i) => (
-                  <div key={i} className={`ph${i === 0 ? " wide" : ""}`}><img src={ph.url} alt={`Foto ${i}`} /></div>
+                  <div key={i} className={`ph${i === 0 ? " wide" : ""} image-mask-container`} style={{borderRadius: "12px", border: "4px solid #fff", boxShadow: "0 10px 30px rgba(0,0,0,0.15)"}}>
+                    <img src={ph.url} alt={`Foto ${i}`} className="clip-reveal-img" />
+                  </div>
                 ))}
               </div>
             </div>
