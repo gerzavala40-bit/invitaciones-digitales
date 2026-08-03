@@ -616,6 +616,18 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
+        {event.slug === '15anos-clara' && (
+          <section className="section">
+            <div className="wrap reveal text-center">
+              <h2>Costo de Tarjeta</h2>
+              <p className="lead" style={{ marginBottom: "1.5rem" }}>Información sobre el valor de la tarjeta y datos de pago.</p>
+              <a className="btn btn-primary" href={`/${event.slug}/costos`} style={{ display: "inline-block", padding: "1rem 2.25rem", borderRadius: "999px" }}>
+                Ver costos y alias
+              </a>
+            </div>
+          </section>
+        )}
+
         {event.bankAlias && (
           <section className="section">
             <div className="wrap reveal">
