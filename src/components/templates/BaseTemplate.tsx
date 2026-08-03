@@ -46,7 +46,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
   if (event.slug === '15anos-clara') {
     event.photos = [
       { url: '/foto-clara.jpg', order: 0 },
-      { url: '/clara-galeria/2.jpg', order: 1 },
+      { url: '/clara-galeria/foto-nueva.jpg', order: 1 },
       { url: '/clara-galeria/3.jpg', order: 2 },
       { url: '/clara-galeria/4.jpg', order: 3 },
       { url: '/clara-galeria/5.jpg', order: 4 }
@@ -261,9 +261,9 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
 
   const claraCss = event.slug === '15anos-clara' ? `
     :root {
-      --bg: #f4f9fd !important;
-      --text: #4A5568 !important;
-      --text-muted: #4A5568 !important;
+      --bg: #FAF9F6 !important;
+      --text: #5C4D4D !important;
+      --text-muted: #5C4D4D !important;
       --accent: #C4A661 !important;
       --gold: #C4A661 !important;
       --bg-card: #ffffff !important;
@@ -275,7 +275,7 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       text-transform: uppercase !important;
     }
     h1, h2, h3, .splash-name {
-      color: #002147 !important;
+      color: #62242D !important;
       text-transform: uppercase !important;
     }
     h1, h2, h3, .splash-name, .script {
@@ -283,13 +283,21 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
       letter-spacing: 0.05em !important;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #C4A661, #D4AF37) !important;
-      color: #002147 !important;
+      background: linear-gradient(135deg, #62242D, #8B3A48) !important;
+      color: #ffffff !important;
+      border: none !important;
     }
     .hero, .section {
       background: transparent !important;
       backdrop-filter: none !important;
       box-shadow: none !important;
+    }
+    .clara-separator {
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, #62242D, transparent);
+      margin: 4rem auto;
+      opacity: 0.5;
     }
     .hero-photo {
       width: 100% !important;
@@ -439,6 +447,8 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
+        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
+
         <section className="section" id="cuando">
           <div className="wrap">
             <p className="eyebrow reveal">La celebración</p>
@@ -469,6 +479,8 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
             </div>
           </div>
         </section>
+
+        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
 
         {event.timeline && event.timeline.length > 0 && (
           <section className="section" id="itinerario">
@@ -618,6 +630,8 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
           </section>
         )}
 
+        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
+
         {event.slug === '15anos-clara' && (
           <section className="section">
             <div className="wrap reveal text-center">
@@ -629,6 +643,8 @@ export default function BaseTemplate({ event, config }: { event: EventData; conf
             </div>
           </section>
         )}
+
+        {event.slug === '15anos-clara' && <div className="clara-separator reveal"></div>}
 
         {event.bankAlias && (
           <section className="section">
