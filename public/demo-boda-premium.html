@@ -103,12 +103,12 @@
     }
 
     /* Cuenta Regresiva Limpia pero Oscura */
-    .cuenta-regresiva { padding: 80px 0; text-align: center; background: var(--bg-soft); }
-    .num_cuenta { font-size: 3.5rem; font-weight: 300; margin: 0; line-height: 1; color: var(--gold); }
+    .cuenta-regresiva { padding: clamp(60px, 8vw, 100px) 0; text-align: center; background: var(--bg-soft); overflow: hidden; }
+    .num_cuenta { font-size: clamp(2.2rem, 8vw, 3.5rem); font-weight: 300; margin: 0; line-height: 1; color: var(--gold); }
     .text_cuenta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: 8px; font-weight: 400; }
     
     /* Ceremonia y Fiesta */
-    .ceremonia-fiesta { padding: 90px 0; text-align: center; }
+    .ceremonia-fiesta { padding: clamp(60px, 8vw, 100px) 0; text-align: center; overflow: hidden; }
     .btn-custom {
       background: transparent; border: 1px solid var(--gold);
       color: var(--gold); padding: 12px 35px; text-transform: uppercase;
@@ -120,22 +120,23 @@
     .icono-grande { color: var(--gold); margin-bottom: 25px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
 
     /* Galería */
-    .galeria { padding: 80px 0; background: var(--bg-soft); text-align: center; }
+    .galeria { padding: clamp(60px, 8vw, 100px) 0; background: var(--bg-soft); text-align: center; overflow: hidden; }
     .title-galery { font-weight: 300; letter-spacing: 4px; margin-bottom: 40px; color: var(--gold); text-transform: uppercase; }
     .item-galeria img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; transition: transform 0.4s; border-radius: 5px; }
     .item-galeria img:hover { transform: scale(1.02); }
 
     /* CBU / Regalos */
-    .cbu { padding: 90px 0; text-align: center; }
+    .cbu { padding: clamp(60px, 8vw, 100px) 0; text-align: center; overflow: hidden; }
 
     /* Confirmar Asistencia Parallax */
     .confirmar {
-      padding: 130px 0; text-align: center;
+      padding: clamp(80px, 10vw, 130px) 0; text-align: center;
       background-image: url('hero_bg_exact.jpg');
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
       color: var(--text); position: relative;
+      overflow: hidden;
     }
     .confirmar::before {
       content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
@@ -145,7 +146,16 @@
     .confirmar h4 { font-weight: 300; letter-spacing: 3px; color: var(--gold); margin-bottom: 15px; }
 
     /* Modal / Popup */
-    .modal-content { border-radius: 10px; padding: 40px; background: var(--bg-soft); border: 1px solid var(--gold-dim); }
+    .modal-content { 
+      border-radius: 12px; 
+      padding: 40px; 
+      background: rgba(22, 18, 16, 0.75); 
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 168, 76, 0.25); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      word-wrap: break-word;
+    }
     .modal-content h5 { font-weight: 400; letter-spacing: 2px; color: var(--gold); margin-bottom: 25px; }
     
     /* Footer */
