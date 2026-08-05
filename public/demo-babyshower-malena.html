@@ -134,9 +134,10 @@
 
     /* ===== SECTIONS ===== */
     section {
-      padding: 4rem 1.5rem;
+      padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
       max-width: 600px;
       margin: 0 auto;
+      overflow: hidden;
     }
     .section-title {
       font-family: var(--font-script);
@@ -213,12 +214,17 @@
     .frase {
       text-align: center;
       padding: 3rem 2rem;
-      background: var(--beige-light);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: var(--radius);
       margin: 0 1.5rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      border: 1px solid rgba(222, 203, 193, 0.5);
+      box-shadow: 0 8px 30px rgba(189, 149, 131, 0.1);
+      word-wrap: break-word;
     }
     .frase p {
       font-family: var(--font-script);
@@ -229,12 +235,21 @@
 
     /* ===== CARDS ===== */
     .info-card {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-radius: var(--radius);
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       margin-bottom: 1.5rem;
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 25px rgba(189, 149, 131, 0.1);
+      border: 1px solid rgba(222, 203, 193, 0.4);
       text-align: center;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
     }
     .info-card .card-icon {
       font-size: 1.8rem;
@@ -291,11 +306,15 @@
 
     /* ===== MESA REGALOS ===== */
     .gift-box {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-radius: var(--radius);
       padding: 1.5rem;
       margin-bottom: 1rem;
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 25px rgba(189, 149, 131, 0.1);
+      border: 1px solid rgba(222, 203, 193, 0.4);
+      word-wrap: break-word;
     }
     .gift-box label {
       display: block;
@@ -314,7 +333,7 @@
     .gift-box .copy-row span {
       flex: 1;
       font-family: monospace;
-      font-size: 0.82rem;
+      font-size: clamp(0.75rem, 3vw, 0.85rem);
       color: var(--text);
       word-break: break-all;
     }
