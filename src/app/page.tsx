@@ -7,7 +7,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 
 function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customName }: { title: string, url: string, desc: string, selected: boolean, onSelect: () => void, onPreview: () => void, customName: string }) {
   return (
-    <div className={"relative flex flex-col items-center group cursor-pointer transition-all duration-300 " + (selected ? "scale-100" : "hover:-translate-y-1")} onClick={onSelect}>
+    <div className={"relative flex flex-col items-center group cursor-pointer transition-all duration-300 " + (selected ? "scale-100" : "hover:-translate-y-1")} onClick={onPreview}>
       <div className={"neo-phone-frame relative w-[220px] h-[420px] p-[4px] " + (selected ? "!border-[#FF6B9D] !shadow-[6px_6px_0px_#FF6B9D]" : "")}>
         {/* Notch */}
         <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[70px] h-[18px] bg-[#1a1a1a] rounded-b-xl z-20"></div>
@@ -23,7 +23,7 @@ function PhoneMockup({ title, url, desc, selected, onSelect, onPreview, customNa
         <p className="text-sm text-[#666] mt-1">{desc}</p>
         <div className="mt-3 flex gap-2">
           <button type="button" onClick={(e) => { e.stopPropagation(); onPreview(); }} className="flex-1 h-9 text-[12px] font-bold uppercase border-[3px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] hover:bg-[#4ECDC4] transition-all">Ver demo</button>
-          <button type="button" className="flex-1 h-9 text-[12px] font-bold uppercase border-[3px] border-[#1a1a1a] bg-[#FF6B9D] text-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] transition-all">Quiero este</button>
+          <button type="button" onClick={(e) => { e.stopPropagation(); onSelect(); }} className="flex-1 h-9 text-[12px] font-bold uppercase border-[3px] border-[#1a1a1a] bg-[#FF6B9D] text-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#1a1a1a] transition-all">Quiero este</button>
         </div>
       </div>
     </div>
