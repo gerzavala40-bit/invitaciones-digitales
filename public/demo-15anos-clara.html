@@ -3,40 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Luciana & Gonzalo — Nos casamos</title>
-  <meta name="description" content="Invitación de boda interactiva estilo eucalipto acuarela" />
-  <meta name="theme-color" content="#4A6741" />
-  <meta property="og:title" content="Luciana & Gonzalo — Nos casamos" />
-  <meta property="og:description" content="Sábado 14 de Marzo de 2027 - Quinta Los Robles. Abrí la invitación." />
+  <title>Mis XV — Clara</title>
+  <meta name="description" content="Invitación de 15 Años - Clara" />
+  <meta name="theme-color" content="#1A4A75" />
+  <meta property="og:title" content="Mis XV — Clara" />
+  <meta property="og:description" content="Viernes 20 de Marzo de 2027 · Salón Cristal. Abrí la invitación." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,600;1,700&family=Cinzel+Decorative:wght@700;900&family=Dancing+Script:wght@600;700&family=Parisienne&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,600;1,700&family=Cinzel+Decorative:wght@700;900&family=Dancing+Script:wght@600;700&family=Parisienne&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
     :root {
-      --bg: #F9F6F1;
+      --bg: #E6F2FB;
       --bg-soft: #FFFFFF;
-      --bg-card: #FFFFFF;
-      --text: #2C3529;
-      --text-muted: rgba(44, 53, 41, 0.75);
-      --green-dark: #2F4C2A;
-      --green-sage: #507548;
-      --green-light: #7A9E72;
-      --cream: #F9F6F1;
-      --gold: #2F4C2A;
-      --gold-soft: #507548;
-      --line: rgba(47, 76, 42, 0.22);
+      --bg-card: #F0F8FF;
+      --text: #1A344D;
+      --text-muted: #3D648A;
+      --accent: #6BA4D8;
+      --accent-deep: #296096;
+      --gold: #1A344D;
+      --gold-soft: #A3C9EA;
+      --line: rgba(26, 74, 117, 0.22);
       --success: #25D366;
-      --font-display: "Arvo", Georgia, serif;
-      --font-heading: "Cinzel", Georgia, serif;
-      --font-script: "Parisienne", cursive;
+      --font-display: "Bodoni Moda", Georgia, serif;
+      --font-heading: "Cinzel Decorative", Georgia, serif;
+      --font-script: "Parisienne", "Dancing Script", cursive;
       --font-body: "Montserrat", system-ui, sans-serif;
       --radius: 16px;
-      --shadow: 0 12px 38px rgba(47, 76, 42, 0.12);
+      --shadow: 0 12px 38px rgba(26, 74, 117, 0.14);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,7 +42,7 @@
     body {
       font-family: var(--font-body);
       font-weight: 300;
-      background: linear-gradient(rgba(249, 246, 241, 0.92), rgba(249, 246, 241, 0.92)), url("/boda-galeria/hero.jpg") center/cover fixed;
+      background: linear-gradient(rgba(230, 242, 251, 0.92), rgba(230, 242, 251, 0.92)), url("/clara-bg.jpg") center/cover fixed;
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -53,8 +51,8 @@
     }
     body.locked { overflow: hidden; }
 
-    /* ===== CANVAS LEAVES ===== */
-    #leafCanvas {
+    /* ===== CANVAS BUTTERFLIES ===== */
+    #butterflyCanvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -62,10 +60,10 @@
       height: 100%;
       pointer-events: none;
       z-index: 1;
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
-    /* ===== SPLASH ===== */
+    /* ===== SPLASH SCREEN ANIMACIONES ===== */
     .splash {
       position: fixed;
       inset: 0;
@@ -74,7 +72,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(rgba(249, 246, 241, 0.95), rgba(249, 246, 241, 0.95)), url("/boda-galeria/hero.jpg") center/cover fixed;
+      background: linear-gradient(rgba(230, 242, 251, 0.95), rgba(230, 242, 251, 0.95)), url("/clara-bg.jpg") center/cover fixed;
       text-align: center;
       padding: 2rem;
       overflow: hidden;
@@ -90,7 +88,7 @@
       font-size: clamp(0.8rem, 3.5vw, 1.1rem);
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--green-dark);
+      color: var(--accent-deep);
       margin-bottom: 1.5rem;
       opacity: 0;
       transform: translateY(20px);
@@ -100,27 +98,20 @@
       font-family: var(--font-script);
       font-size: clamp(4rem, 15vw, 7rem);
       font-weight: 400;
-      color: var(--green-dark);
+      color: var(--text);
       line-height: 1.15;
       margin-bottom: 0.5rem;
-      text-shadow: 0 4px 20px rgba(47, 76, 42, 0.12);
+      text-shadow: 0 4px 20px rgba(26, 52, 77, 0.12);
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease 0.5s;
-    }
-    .splash-amp {
-      font-family: var(--font-script);
-      font-size: clamp(2.5rem, 10vw, 4.2rem);
-      color: var(--green-sage);
-      display: block;
-      margin: 0.1rem 0;
     }
     .splash-date {
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 1.1rem;
       letter-spacing: 3px;
-      color: var(--green-dark);
+      color: var(--text);
       margin-top: 1.2rem;
       display: flex;
       align-items: center;
@@ -133,7 +124,7 @@
     .splash-date .sep {
       width: 6px;
       height: 6px;
-      background: var(--green-sage);
+      background: var(--accent-deep);
       border-radius: 50%;
     }
     .splash-location {
@@ -154,8 +145,8 @@
       align-items: center;
       gap: 0.6rem;
       padding: 16px 48px;
-      border: 2px solid var(--green-dark);
-      background: var(--green-dark);
+      border: 2px solid var(--accent-deep);
+      background: var(--accent-deep);
       color: #fff;
       font-family: var(--font-heading);
       font-size: 0.85rem;
@@ -165,7 +156,7 @@
       cursor: pointer;
       border-radius: 50px;
       transition: all 0.4s ease;
-      box-shadow: 0 8px 25px rgba(47, 76, 42, 0.3);
+      box-shadow: 0 8px 25px rgba(41, 96, 150, 0.35);
       opacity: 0;
       transform: translateY(20px);
     }
@@ -182,7 +173,7 @@
       background: var(--text);
       border-color: var(--text);
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(47, 76, 42, 0.4);
+      box-shadow: 0 10px 30px rgba(26, 52, 77, 0.4);
     }
     .splash.hidden {
       opacity: 0;
@@ -209,23 +200,23 @@
       gap: 8px;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(80, 117, 72, 0.35);
+      border: 1.5px solid rgba(107, 164, 216, 0.45);
       border-radius: 30px;
       padding: 7px 16px 7px 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(26, 74, 117, 0.12);
       cursor: pointer;
       transition: all 0.3s ease;
     }
     .music-pill:hover {
       background: #FFFFFF;
-      box-shadow: 0 8px 25px rgba(47, 76, 42, 0.22);
+      box-shadow: 0 8px 25px rgba(26, 74, 117, 0.22);
       transform: translateY(-1px);
     }
     .music-icon-btn {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: var(--green-dark);
+      background: var(--accent-deep);
       color: #fff;
       display: flex;
       align-items: center;
@@ -241,7 +232,7 @@
       font-family: var(--font-body);
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--text);
       line-height: 1.1;
     }
     .music-status {
@@ -256,7 +247,7 @@
     }
     .eq-bar {
       width: 2px;
-      background: var(--green-sage);
+      background: var(--accent-deep);
       border-radius: 1px;
       animation: eq 1s ease-in-out infinite alternate;
     }
@@ -283,7 +274,7 @@
       font-family: var(--font-display);
       font-size: clamp(2.2rem, 6vw, 2.9rem);
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--text);
       margin-bottom: 0.4rem;
       letter-spacing: 0.5px;
       font-style: italic;
@@ -291,7 +282,7 @@
     .section-subtitle {
       font-family: var(--font-heading);
       font-size: 0.85rem;
-      color: var(--green-sage);
+      color: var(--accent-deep);
       letter-spacing: 3.5px;
       text-transform: uppercase;
       font-weight: 700;
@@ -299,7 +290,7 @@
     .section-divider {
       width: 60px;
       height: 2px;
-      background: var(--green-sage);
+      background: var(--accent);
       margin: 0.9rem auto 2.4rem;
       border-radius: 2px;
       opacity: 0.7;
@@ -315,25 +306,25 @@
       height: 170px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--green-dark);
+      border: 4px solid var(--text);
       margin: 0 auto 1.6rem;
-      box-shadow: 0 0 0 7px rgba(80, 117, 72, 0.25);
+      box-shadow: 0 0 0 7px rgba(107, 164, 216, 0.28);
       background: var(--bg-soft);
     }
     .hero h1 {
       font-family: var(--font-script);
       font-size: clamp(3.8rem, 13vw, 6.5rem);
-      color: var(--green-dark);
+      color: var(--text);
       line-height: 1.15;
       margin-bottom: 0.5rem;
-      text-shadow: 0 4px 18px rgba(47, 76, 42, 0.1);
+      text-shadow: 0 4px 18px rgba(26, 52, 77, 0.1);
     }
     .hero .hero-date {
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 1.1rem;
       letter-spacing: 3.5px;
-      color: var(--green-dark);
+      color: var(--text-muted);
       margin-bottom: 2.4rem;
       text-transform: uppercase;
     }
@@ -350,17 +341,17 @@
       flex-direction: column;
       align-items: center;
       background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(80, 117, 72, 0.25);
+      border: 1px solid var(--line);
       border-radius: 14px;
       padding: 0.95rem 1.35rem;
       min-width: 78px;
-      box-shadow: 0 6px 20px rgba(47, 76, 42, 0.06);
+      box-shadow: 0 6px 20px rgba(26, 74, 117, 0.06);
     }
     .countdown-num {
       font-family: var(--font-display);
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--accent-deep);
       line-height: 1;
     }
     .countdown-label {
@@ -368,14 +359,14 @@
       font-size: 0.65rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--green-sage);
+      color: var(--text-muted);
       margin-top: 0.4rem;
       font-weight: 700;
     }
 
     /* ===== FRASE ===== */
     .frase {
-      background: #FFFFFF;
+      background: rgba(255, 255, 255, 0.95);
       padding: 3.2rem 2.2rem;
       border-radius: var(--radius);
       margin: 1rem auto;
@@ -385,7 +376,7 @@
     .frase blockquote {
       font-family: var(--font-script);
       font-size: clamp(2.2rem, 7vw, 3.2rem);
-      color: var(--green-dark);
+      color: var(--text);
       line-height: 1.35;
       max-width: 540px;
       margin: 0 auto;
@@ -416,7 +407,7 @@
       border-radius: 20px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 14px 38px rgba(47, 76, 42, 0.18);
+      box-shadow: 0 14px 38px rgba(26, 74, 117, 0.18);
       border: 1px solid var(--line);
       cursor: pointer;
     }
@@ -444,7 +435,7 @@
       cursor: pointer;
     }
     .slider-dot.active {
-      background: var(--green-dark);
+      background: var(--accent-deep);
       width: 26px;
       border-radius: 10px;
     }
@@ -452,7 +443,7 @@
     /* ===== CARDS ===== */
     .card {
       background: var(--bg-card);
-      border: 1.5px solid rgba(80, 117, 72, 0.25);
+      border: 1.5px solid var(--line);
       border-radius: var(--radius);
       padding: 2.4rem 2rem;
       margin-bottom: 1.8rem;
@@ -461,7 +452,7 @@
     }
     .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(47, 76, 42, 0.16);
+      box-shadow: 0 15px 40px rgba(26, 74, 117, 0.18);
     }
     .card-icon {
       font-size: 2.4rem;
@@ -472,7 +463,7 @@
       font-family: var(--font-display);
       font-size: 1.55rem;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--text);
       margin-bottom: 0.5rem;
     }
     .card p {
@@ -493,18 +484,18 @@
       justify-content: center;
       padding: 1.6rem 1.4rem;
       background: #FFFFFF;
-      border: 2px solid var(--green-dark);
+      border: 2px solid var(--accent-deep);
       border-radius: var(--radius);
-      box-shadow: 0 8px 25px rgba(47, 76, 42, 0.1);
+      box-shadow: 0 8px 25px rgba(64, 126, 184, 0.12);
       cursor: pointer;
       transition: all 0.3s ease;
       margin-bottom: 1.3rem;
       text-decoration: none;
     }
     .action-btn-card:hover {
-      background: var(--green-dark);
+      background: var(--accent-deep);
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(47, 76, 42, 0.28);
+      box-shadow: 0 12px 30px rgba(26, 74, 117, 0.3);
     }
     .action-btn-card:hover .action-title,
     .action-btn-card:hover .action-sub {
@@ -518,13 +509,13 @@
       font-family: var(--font-display);
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--accent-deep);
       transition: color 0.3s ease;
     }
     .action-sub {
       font-family: var(--font-heading);
       font-size: 0.75rem;
-      color: var(--green-sage);
+      color: var(--text-muted);
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-top: 0.3rem;
@@ -549,7 +540,7 @@
     .price-row .amount {
       font-family: var(--font-display);
       font-size: 1.55rem;
-      color: var(--green-dark);
+      color: var(--accent-deep);
       font-weight: 700;
     }
 
@@ -560,9 +551,9 @@
       justify-content: center;
       gap: 0.6rem;
       padding: 15px 36px;
-      border: 2px solid var(--green-dark);
+      border: 2px solid var(--accent-deep);
       background: transparent;
-      color: var(--green-dark);
+      color: var(--accent-deep);
       font-family: var(--font-heading);
       font-size: 0.8rem;
       font-weight: 700;
@@ -575,10 +566,10 @@
       margin: 0.5rem;
     }
     .btn:hover {
-      background: var(--green-dark);
+      background: var(--accent-deep);
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(47, 76, 42, 0.25);
+      box-shadow: 0 6px 20px rgba(64, 126, 184, 0.35);
     }
     .btn-whatsapp {
       border-color: var(--success);
@@ -590,16 +581,16 @@
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
     }
     .btn-secondary {
-      border-color: rgba(47, 76, 42, 0.35);
-      color: var(--green-dark);
+      border-color: rgba(26, 74, 117, 0.35);
+      color: var(--text);
     }
 
-    /* ===== REGALOS / ALIAS ===== */
+    /* ===== REGALOS ===== */
     .copy-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--cream);
+      background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 0.9rem 1.2rem;
@@ -613,9 +604,9 @@
       word-break: break-all;
     }
     .copy-btn {
-      background: #fff;
-      border: 1.5px solid var(--green-dark);
-      color: var(--green-dark);
+      background: var(--bg-card);
+      border: 1.5px solid var(--accent-deep);
+      color: var(--accent-deep);
       font-size: 0.7rem;
       padding: 7px 16px;
       border-radius: 20px;
@@ -629,28 +620,8 @@
       margin-left: 0.5rem;
     }
     .copy-btn:hover {
-      background: var(--green-dark);
+      background: var(--accent-deep);
       color: #fff;
-    }
-
-    /* ===== DRESS PILLS ===== */
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-top: 1.2rem;
-    }
-    .pills span {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      padding: 0.5rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 50px;
-      color: var(--text-muted);
-      background: #fff;
     }
 
     /* ===== FORMULARIOS ===== */
@@ -663,7 +634,7 @@
       font-family: var(--font-heading);
       font-size: 0.75rem;
       font-weight: 700;
-      color: var(--green-dark);
+      color: var(--text);
       margin-bottom: 0.45rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -675,14 +646,13 @@
       border-radius: 10px;
       font-family: var(--font-body);
       font-size: 0.88rem;
-      background: var(--cream);
+      background: #FFFFFF;
       color: var(--text);
       transition: border-color 0.3s ease;
     }
     .form-control:focus {
       outline: none;
-      border-color: var(--green-dark);
-      background: #fff;
+      border-color: var(--accent-deep);
     }
     textarea.form-control {
       resize: vertical;
@@ -694,32 +664,29 @@
       padding: 4.8rem 2rem;
     }
     .cierre blockquote {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-style: italic;
-      font-weight: 600;
-      font-size: clamp(2rem, 6vw, 3rem);
-      color: var(--green-dark);
+      font-family: var(--font-script);
+      font-size: clamp(2.4rem, 8vw, 3.6rem);
+      color: var(--text);
       margin-bottom: 1.6rem;
-      line-height: 1.4;
-      letter-spacing: 0.5px;
+      line-height: 1.3;
     }
     .cierre .cierre-names {
       font-family: var(--font-script);
       font-size: clamp(3.5rem, 12vw, 5.5rem);
-      color: var(--green-dark);
+      color: var(--text);
     }
     .cierre .cierre-date {
       font-family: var(--font-display);
       font-size: 1rem;
       letter-spacing: 4px;
-      color: var(--green-sage);
+      color: var(--text-muted);
       margin-top: 0.6rem;
       font-weight: 700;
     }
 
     /* ===== FOOTER ===== */
     .contacto-footer {
-      background: #FFFFFF;
+      background: rgba(255, 255, 255, 0.95);
       padding: 3rem 1.5rem;
       text-align: center;
       border-top: 1px solid var(--line);
@@ -730,7 +697,7 @@
       margin-bottom: 0.8rem;
     }
     .contacto-footer a {
-      color: var(--green-dark);
+      color: var(--text);
       text-decoration: none;
       font-weight: 600;
     }
@@ -757,20 +724,20 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: var(--green-dark);
+      background: var(--accent-deep);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       font-size: 1.3rem;
-      box-shadow: 0 6px 20px rgba(47, 76, 42, 0.35);
+      box-shadow: 0 6px 20px rgba(64, 126, 184, 0.4);
       transition: transform 0.3s, box-shadow 0.3s;
       text-decoration: none;
     }
     .party-cam:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(47, 76, 42, 0.45);
+      box-shadow: 0 8px 25px rgba(26, 74, 117, 0.5);
     }
 
     /* ===== TOAST ===== */
@@ -779,14 +746,14 @@
       bottom: 5.5rem;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background: var(--bg-card);
-      border: 1px solid var(--green-sage);
-      color: var(--green-dark);
+      background: #FFFFFF;
+      border: 1px solid var(--accent);
+      color: var(--text);
       padding: 0.85rem 1.8rem;
       border-radius: 30px;
       font-size: 0.82rem;
       font-weight: 600;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 25px rgba(26, 74, 117, 0.15);
       opacity: 0;
       pointer-events: none;
       transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -819,7 +786,7 @@
       opacity: 1;
     }
     .modal {
-      background: var(--bg-card);
+      background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 2.2rem 1.8rem;
@@ -841,7 +808,7 @@
       color: var(--text-muted);
       cursor: pointer;
     }
-    .modal-close:hover { color: var(--green-dark); }
+    .modal-close:hover { color: var(--text); }
     .lightbox-img {
       max-width: 100%;
       max-height: 75vh;
@@ -869,45 +836,40 @@
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
 
     .hashtag {
       font-family: var(--font-display);
       font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 2.5px;
-      color: var(--green-sage);
+      color: var(--accent-deep);
       margin-top: 1.2rem;
     }
   </style>
 </head>
 <body class="locked">
-  <!-- ===== CANVAS ANIMATED LEAVES ===== -->
-  <canvas id="leafCanvas"></canvas>
+  <!-- ===== CANVAS BUTTERFLIES ===== -->
+  <canvas id="butterflyCanvas"></canvas>
 
-  <audio id="bgAudio" loop preload="auto"><source src="/abel-pintos.mp3" type="audio/mpeg"></audio>
+  <audio id="bgAudio" loop preload="auto"><source src="/music/cancion-clara.mp3" type="audio/mpeg"></audio>
 
   <!-- ===== SPLASH SCREEN ===== -->
   <div class="splash" id="splash">
     <div class="splash-content">
-      <p class="splash-subtitle" id="sp-sub">NUESTRA BODA</p>
+      <p class="splash-subtitle" id="sp-sub">MIS 15 AÑOS</p>
       <div class="splash-names" id="sp-names">
-        <span class="splash-name">Luciana</span>
-        <span class="splash-amp">&amp;</span>
-        <span class="splash-name">Gonzalo</span>
+        <span class="splash-name">Clari</span>
       </div>
       <div class="splash-date" id="sp-date">
-        <span>Sábado</span>
+        <span>Viernes</span>
         <span class="sep"></span>
-        <span>14 Marzo</span>
+        <span>20 Marzo</span>
         <span class="sep"></span>
-        <span>17:30 HS</span>
+        <span>21:00 HS</span>
       </div>
-      <p class="splash-location" id="sp-loc">Quinta Los Robles, Santa Fe</p>
+      <p class="splash-location" id="sp-loc">Salón Cristal, Santa Fe</p>
       <button class="splash-btn" id="enterBtn" onclick="openInvitation()">
-        <span>💌</span> INGRESAR
+        <span>✨</span> INGRESAR
       </button>
     </div>
   </div>
@@ -919,7 +881,7 @@
     <div class="music-pill paused" id="musicPill" onclick="toggleMusic()">
       <div class="music-icon-btn">🎵</div>
       <div class="music-info">
-        <span class="music-title">Abel Pintos - Motivos</span>
+        <span class="music-title">Canción de Mis 15 - Clara</span>
         <span class="music-status" id="musicStatusText">Toca para reproducir</span>
       </div>
       <div class="eq-bars">
@@ -929,11 +891,11 @@
       </div>
     </div>
 
-    <!-- HERO CON FOTO REDONDA DESTACADA -->
+    <!-- HERO -->
     <section class="hero" data-aos="fade-up">
-      <img src="/boda-galeria/hero.jpg" alt="Luciana y Gonzalo" class="hero-photo" />
-      <h1>Luciana &amp; Gonzalo</h1>
-      <p class="hero-date">SÁBADO 14 DE MARZO DE 2027</p>
+      <img src="/clara-galeria/foto-nueva.jpg" alt="Clari" class="hero-photo" />
+      <h1>Mis XV Clari</h1>
+      <p class="hero-date">VIERNES 20 DE MARZO DE 2027</p>
       <div class="countdown-wrap" id="countdown">
         <div class="countdown-item">
           <span class="countdown-num" id="cd-days">000</span>
@@ -952,22 +914,21 @@
           <span class="countdown-label">Seg</span>
         </div>
       </div>
-      <p style="font-family:var(--font-heading);font-size:0.75rem;letter-spacing:2.5px;color:var(--text-muted);margin-top:1.5rem;text-transform:uppercase;font-weight:700;">Deslizá para ver los detalles ↓</p>
     </section>
 
-    <!-- FRASE INTRODUCTORIA -->
+    <!-- FRASE -->
     <section class="frase" data-aos="fade-up">
-      <blockquote>"Que comience la historia… Nos llenaría de absoluta felicidad compartir este día tan especial e inolvidable con ustedes."</blockquote>
+      <blockquote>"Hay momentos inolvidables que se atesoran en el corazón para siempre... Quiero que compartas conmigo esta noche tan especial."</blockquote>
     </section>
 
-    <!-- 🎠 CAROUSEL SLIDER 1 (FOTO CEREMONIA Y FOTO RECEPCION) -->
+    <!-- 🎠 CAROUSEL SLIDER 1 (FOTO 1 Y FOTO 2) -->
     <div class="photo-slider-container" data-aos="zoom-in-up">
       <div class="photo-slider" id="slider1">
-        <div class="photo-slide-item" onclick="openLightbox('/boda-galeria/ceremonia.jpg')">
-          <img src="/boda-galeria/ceremonia.jpg" alt="Ceremonia Boda" />
+        <div class="photo-slide-item" onclick="openLightbox('/clara-galeria/1.jpg')">
+          <img src="/clara-galeria/1.jpg" alt="Momento 1" />
         </div>
-        <div class="photo-slide-item" onclick="openLightbox('/boda-galeria/recepcion.jpg')">
-          <img src="/boda-galeria/recepcion.jpg" alt="Recepción Boda" />
+        <div class="photo-slide-item" onclick="openLightbox('/clara-galeria/2.jpg')">
+          <img src="/clara-galeria/2.jpg" alt="Momento 2" />
         </div>
       </div>
       <div class="slider-dots" id="dots1">
@@ -978,45 +939,37 @@
 
     <!-- CUANDO Y DONDE -->
     <section data-aos="fade-up">
-      <h2 class="section-title">Ceremonia &amp; Fiesta</h2>
-      <div class="section-subtitle">¿Cuándo &amp; Dónde?</div>
+      <h2 class="section-title">Fiesta de 15</h2>
+      <div class="section-subtitle">¿Cuándo y Dónde?</div>
       <div class="section-divider"></div>
-      
       <div class="card" data-aos="slide-up">
-        <div class="card-icon">💒</div>
-        <h3>Ceremonia Religiosa</h3>
-        <p><span class="highlight">Sábado 14 de Marzo de 2027</span></p>
-        <p>A las 17:30 HS</p>
-        <p>Parroquia Nuestra Señora de la Merced</p>
-        <a href="https://maps.google.com/?q=Parroquia+Nuestra+Senora+de+la+Merced+Santa+Fe" target="_blank" class="btn btn-secondary" style="margin-top:1.2rem;font-size:0.7rem;">
-          🗺️ CÓMO LLEGAR
+        <div class="card-icon">📅</div>
+        <h3>Cuándo</h3>
+        <p><span class="highlight">Viernes 20 de Marzo de 2027</span></p>
+        <p>A las 21:00 HS</p>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+15+Clari&dates=20270320T210000/20270321T060000&details=¡Celebramos+los+15+de+Clara+en+Salón+Cristal!&location=Salón+Cristal,+Calle+Las+Rosas+456,+Santa+Fe" target="_blank" class="btn btn-secondary" style="margin-top:1.2rem;font-size:0.7rem;">
+          📅 AGENDAR EN GOOGLE CALENDAR
         </a>
       </div>
-
       <div class="card" data-aos="slide-up">
-        <div class="card-icon">🎉</div>
-        <h3>Fiesta de Celebración</h3>
-        <p><span class="highlight">Quinta Los Robles</span></p>
-        <p>Calle Los Álamos 123, Santa Fe</p>
-        <p>A partir de las 19:30 HS</p>
-        <a href="https://maps.google.com/?q=Quinta+Los+Robles+Santa+Fe" target="_blank" class="btn" style="margin-top:1rem;font-size:0.7rem;">
+        <div class="card-icon">📍</div>
+        <h3>Dónde</h3>
+        <p><span class="highlight">Salón Cristal</span></p>
+        <p>Calle Las Rosas 456, Santa Fe</p>
+        <a href="https://maps.google.com/?q=Salon+Cristal+Santa+Fe" target="_blank" class="btn" style="margin-top:1.2rem;font-size:0.7rem;">
           🗺️ CÓMO LLEGAR
-        </a>
-        <br/>
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Luciana+y+Gonzalo&dates=20270314T173000/20270315T030000&details=¡Celebramos+nuestra+boda+en+Quinta+Los+Robles!&location=Quinta+Los+Robles,+Santa+Fe" target="_blank" class="btn btn-secondary" style="margin-top:0.5rem;font-size:0.7rem;">
-          📅 AGENDAR EN GOOGLE CALENDAR
         </a>
       </div>
     </section>
 
-    <!-- 🎠 CAROUSEL SLIDER 2 (FOTO BRINDIS Y FOTO ANILLOS) -->
+    <!-- 🎠 CAROUSEL SLIDER 2 (FOTO 3 Y FOTO 4) -->
     <div class="photo-slider-container" data-aos="zoom-in-up">
       <div class="photo-slider" id="slider2">
-        <div class="photo-slide-item" onclick="openLightbox('/boda-galeria/brindis.jpg')">
-          <img src="/boda-galeria/brindis.jpg" alt="Brindis Boda" />
+        <div class="photo-slide-item" onclick="openLightbox('/clara-galeria/3.jpg')">
+          <img src="/clara-galeria/3.jpg" alt="Momento 3" />
         </div>
-        <div class="photo-slide-item" onclick="openLightbox('/boda-galeria/anillos.jpg')">
-          <img src="/boda-galeria/anillos.jpg" alt="Anillos Boda" />
+        <div class="photo-slide-item" onclick="openLightbox('/clara-galeria/4.jpg')">
+          <img src="/clara-galeria/4.jpg" alt="Momento 4" />
         </div>
       </div>
       <div class="slider-dots" id="dots2">
@@ -1028,27 +981,20 @@
     <!-- DRESS CODE -->
     <section data-aos="fade-up">
       <h2 class="section-title">Código de Vestimenta</h2>
-      <div class="section-subtitle">Dress Code</div>
       <div class="section-divider"></div>
       <div class="card" data-aos="slide-up">
-        <div class="card-icon">👔</div>
-        <h3>Elegante / Gala</h3>
-        <p>Elegimos un dress code <span class="highlight">Elegante</span>. Los esperamos listos para festejar con su mejor outfit.</p>
-        <div class="pills">
-          <span>Verde Eucalipto</span>
-          <span>Dorado Soft</span>
-          <span>Negro / Traje</span>
-          <span>Vestido Largo</span>
-        </div>
+        <div class="card-icon">👗</div>
+        <h3>Elegante / Glam</h3>
+        <p>Elegimos un dress code <span class="highlight">Elegante Glam</span>. ¡Vení preparado para brillar y sacar muchas fotos!</p>
       </div>
     </section>
 
-    <!-- ACCESOS SEGUROS: BOTONES A OTRA PANTALLA / MODAL DE VALOR DE TARJETA Y REGALOS -->
+    <!-- ACCESOS SEGUROS: BOTONES A OTRA PANTALLA / MODAL -->
     <section data-aos="fade-up" id="regalos">
       <h2 class="section-title">Información de Accesos</h2>
       <div class="section-subtitle">Pases &amp; Datos Bancarios</div>
       <div class="section-divider"></div>
-      
+
       <!-- BOTON 1: VALOR TARJETA -->
       <div class="action-btn-card" data-aos="slide-up" onclick="openModal('cardPriceModal')">
         <div class="action-icon">💳</div>
@@ -1064,83 +1010,47 @@
       </div>
     </section>
 
-    <!-- FORMULARIO RSVP — ENVÍA A /api/rsvp (Supabase) -->
-    <section data-aos="fade-up" id="rsvp-section">
-      <h2 class="section-title">Confirmá tu Asistencia</h2>
-      <div class="section-subtitle">Por favor respondé antes del 1 de Marzo de 2027</div>
+    <!-- RSVP -->
+    <section data-aos="fade-up">
+      <h2 class="section-title">Confirmar Asistencia</h2>
+      <div class="section-subtitle">Por favor confirma antes del 5 de Marzo</div>
       <div class="section-divider"></div>
-
-      <!-- FORMULARIO (visible por defecto) -->
-      <div class="card" data-aos="slide-up" id="rsvpFormCard">
-        <div class="form-group">
-          <label for="inlineName">Nombre y Apellido *</label>
-          <input type="text" id="inlineName" class="form-control" placeholder="Tu nombre completo" required />
-        </div>
-
-        <div class="form-group">
-          <label for="inlineGuests">Cantidad de personas (incluídote) *</label>
-          <select id="inlineGuests" class="form-control">
-            <option value="1">Solo yo (1 persona)</option>
-            <option value="2">2 personas</option>
-            <option value="3">3 personas</option>
-            <option value="4">4 personas</option>
-            <option value="5">5 personas</option>
-            <option value="6">6 o más</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="inlineMenu">Menú Especial</label>
-          <select id="inlineMenu" class="form-control">
-            <option value="">Sin preferencia especial</option>
-            <option value="Vegetariano">Vegetariano</option>
-            <option value="Vegano">Vegano</option>
-            <option value="Celíaco (Sin TACC)">Celíaco / Sin TACC</option>
-            <option value="Menú Infantil">Menú Infantil</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="inlineSong">🎵 ¿Qué tema querés bailar? (opcional)</label>
-          <input type="text" id="inlineSong" class="form-control" placeholder="Ej: Pepas - Farruko" />
-        </div>
-
-        <!-- Spinner estado -->
-        <div id="rsvpSpinner" style="display:none;text-align:center;padding:1rem;">
-          <div style="width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--green-dark);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto;"></div>
-          <p style="margin-top:0.8rem;font-size:0.82rem;color:var(--text-muted);">Guardando tu confirmación...</p>
-        </div>
-
-        <button class="btn" id="rsvpSubmitBtn" style="width:100%;margin:1rem 0 0;background:var(--green-dark);color:#fff;border-color:var(--green-dark);" onclick="submitRsvpToApi()">
-          ✅ CONFIRMAR ASISTENCIA
-        </button>
-      </div>
-
-      <!-- PANTALLA DE ÉXITO (oculta por defecto) -->
-      <div class="card" id="rsvpSuccessCard" style="display:none;text-align:center;">
-        <div style="font-size:3rem;margin-bottom:0.8rem;">🎉</div>
-        <h3 style="font-family:var(--font-display);font-size:1.5rem;color:var(--green-dark);margin-bottom:0.4rem;">¡Confirmación recibida!</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.2rem;">Gracias por confirmar tu asistencia. Guardá este código QR — te lo pedirán en la entrada.</p>
-        <div id="rsvpQrContainer" style="margin:0 auto 1.2rem;max-width:180px;"></div>
-        <p id="rsvpQrCode" style="font-family:monospace;font-size:0.72rem;color:var(--text-muted);word-break:break-all;"></p>
-        <p style="font-size:0.78rem;color:var(--green-dark);margin-top:1rem;font-weight:600;">Luciana &amp; Gonzalo te esperan el 14 de Marzo 💒</p>
-      </div>
+      <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.8rem;">Quiero saber si cuento con vos para bailar y celebrar mis 15.</p>
+      <button class="btn btn-whatsapp" onclick="openRsvpModal()">✨ CONFIRMAR ASISTENCIA AHORA</button>
     </section>
 
     <!-- FOTO DESTACADA FINAL -->
     <div class="photo-slider-container" data-aos="fade-up" style="margin-top:1rem;">
-      <div class="photo-slide-item" onclick="openLightbox('/boda-galeria/hero.jpg')">
-        <img src="/boda-galeria/hero.jpg" alt="Foto Novios" />
+      <div class="photo-slide-item" onclick="openLightbox('/clara-galeria/5.jpg')">
+        <img src="/clara-galeria/5.jpg" alt="Foto Final" />
       </div>
     </div>
 
-    <!-- CIERRE ELEGANTE -->
+    <!-- SUGERIR CANCION -->
+    <section data-aos="fade-up">
+      <h2 class="section-title">¿Qué tema querés bailar?</h2>
+      <div class="section-subtitle">Sugerencia de Canción para el DJ</div>
+      <div class="section-divider"></div>
+      <div class="card" data-aos="slide-up">
+        <div class="form-group">
+          <label for="songName">Canción y Artista</label>
+          <input type="text" id="songName" class="form-control" placeholder="Ej: Motomami - Rosalía" />
+        </div>
+        <div class="form-group">
+          <label for="songGuest">Tu Nombre</label>
+          <input type="text" id="songGuest" class="form-control" placeholder="Tu nombre" />
+        </div>
+        <button class="btn" onclick="sendSongSuggestion()">🎶 Enviar Recomendación</button>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
     <section class="cierre" data-aos="fade-up">
       <div class="cierre-text">
-        <blockquote>"✦ BRILLEMOS JUNTOS… ¡TE ESPERO!"</blockquote>
-        <p class="cierre-names">Luciana &amp; Gonzalo</p>
-        <p class="cierre-date">14 · 03 · 2027</p>
-        <p class="hashtag" style="margin-top:1.5rem;">#BodaLucianaYGonzalo2027</p>
+        <blockquote>"BRILLEMOS JUNTOS... ¡TE ESPERO!"</blockquote>
+        <p class="cierre-names">Clari</p>
+        <p class="cierre-date">20 . 03 . 2027</p>
+        <p class="hashtag" style="margin-top:1.5rem;">#MisXVClari</p>
       </div>
     </section>
 
@@ -1148,16 +1058,11 @@
     <div class="contacto-footer">
       <p>Invitación digital interactiva creada por</p>
       <div class="contacto-links">
-        <a href="https://wa.me/5493425299942" target="_blank">
-          WhatsApp
-        </a>
-        <a href="https://instagram.com/teinvitoapp" target="_blank">
-          @teinvitoapp
-        </a>
+        <a href="https://wa.me/5493425299942" target="_blank">WhatsApp</a>
+        <a href="https://instagram.com/teinvitoapp" target="_blank">@teinvitoapp</a>
       </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
       <p>Hecho con ❤️ por <a href="https://teinvitoapp.com.ar" target="_blank">Te Invito App</a></p>
     </div>
@@ -1169,7 +1074,7 @@
     📷
   </a>
 
-  <!-- Toast Notification -->
+  <!-- Toast -->
   <div class="toast" id="toast"><span>✓</span> <span id="toastMsg">Notificación</span></div>
 
   <!-- MODAL 1: VALOR DE TARJETA -->
@@ -1177,20 +1082,24 @@
     <div class="modal">
       <button class="modal-close" onclick="closeModal('cardPriceModal')">&times;</button>
       <div style="font-size:2.2rem;margin-bottom:0.5rem;">💳</div>
-      <h3 style="font-family:var(--font-display);color:var(--green-dark);margin-bottom:0.3rem;font-size:1.35rem;">Valor de la Tarjeta</h3>
+      <h3 style="font-family:var(--font-display);color:var(--text);margin-bottom:0.3rem;font-size:1.35rem;">Valor de la Tarjeta</h3>
       <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.4rem;">Información detallada para realizar el pago de pases:</p>
 
       <div class="price-row">
-        <span class="label-price">Adultos</span>
-        <span class="amount">$65.000</span>
+        <span class="label-price">Mayores</span>
+        <span class="amount">$61.900</span>
       </div>
       <div class="price-row">
-        <span class="label-price">Menores (5 a 12 años)</span>
-        <span class="amount">$40.000</span>
+        <span class="label-price">6 a 12 años</span>
+        <span class="amount">$43.500</span>
       </div>
       <div class="price-row">
-        <span class="label-price">Menores de 5 años</span>
-        <span class="amount">Sin cargo</span>
+        <span class="label-price">2 a 5 años</span>
+        <span class="amount">$23.600</span>
+      </div>
+      <div class="price-row">
+        <span class="label-price">Trasnoche</span>
+        <span class="amount">$33.000</span>
       </div>
 
       <button class="btn btn-secondary" style="width:100%;margin-top:1.5rem;" onclick="closeModal('cardPriceModal')">
@@ -1204,13 +1113,13 @@
     <div class="modal">
       <button class="modal-close" onclick="closeModal('bankDataModal')">&times;</button>
       <div style="font-size:2.2rem;margin-bottom:0.5rem;">🎁</div>
-      <h3 style="font-family:var(--font-display);color:var(--green-dark);margin-bottom:0.3rem;font-size:1.35rem;">Datos Bancarios &amp; Regalos</h3>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.4rem;">Cuenta oficial para transferencias y muestras de afecto:</p>
+      <h3 style="font-family:var(--font-display);color:var(--text);margin-bottom:0.3rem;font-size:1.35rem;">Datos Bancarios &amp; Regalos</h3>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.4rem;">Cuenta oficial para transferencias y regalos:</p>
 
       <div class="copy-row">
         <div>
           <div style="font-size:0.7rem;color:var(--text-muted);text-align:left;">ALIAS</div>
-          <span id="alias-modal-text">luciana.gonzalo.2027</span>
+          <span id="alias-modal-text">clari.xv.2027</span>
         </div>
         <button class="copy-btn" onclick="copyText('alias-modal-text','Alias copiado exitosamente')">Copiar Alias</button>
       </div>
@@ -1218,15 +1127,67 @@
       <div class="copy-row">
         <div>
           <div style="font-size:0.7rem;color:var(--text-muted);text-align:left;">CBU</div>
-          <span id="cbu-modal-text">0000003100055555555555</span>
+          <span id="cbu-modal-text">0000003100077777777777</span>
         </div>
         <button class="copy-btn" onclick="copyText('cbu-modal-text','CBU copiado exitosamente')">Copiar CBU</button>
       </div>
 
-      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.8rem;">Titular: Luciana &amp; Gonzalo Ruiz</p>
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.8rem;">Titular: Clari Ruiz</p>
 
       <button class="btn btn-secondary" style="width:100%;margin-top:1.2rem;" onclick="closeModal('bankDataModal')">
         Entendido / Cerrar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL RSVP -->
+  <div class="modal-overlay" id="rsvpModalOverlay" onclick="closeModalOnOverlay(event, 'rsvpModalOverlay')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('rsvpModalOverlay')">&times;</button>
+      <h3 style="font-family:var(--font-display);color:var(--text);margin-bottom:0.4rem;font-size:1.3rem;">Confirmar Asistencia</h3>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.4rem;">Completa tus datos para notificar a Clari</p>
+      
+      <div class="form-group">
+        <label for="rsvpName">Nombre y Apellido *</label>
+        <input type="text" id="rsvpName" class="form-control" placeholder="Tu nombre completo" required />
+      </div>
+
+      <div class="form-group">
+        <label for="rsvpStatus">¿Asistirás? *</label>
+        <select id="rsvpStatus" class="form-control">
+          <option value="¡Sí, voy a festejar con vos!">¡Sí, voy a festejar con vos!</option>
+          <option value="Lamentablemente no puedo">Lamentablemente no podré asistir</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rsvpGuests">Acompañantes</label>
+        <select id="rsvpGuests" class="form-control">
+          <option value="Solo yo">Solo yo</option>
+          <option value="+1 Acompañante">+1 Acompañante</option>
+          <option value="+2 Acompañantes">+2 Acompañantes</option>
+          <option value="+3 o más">+3 o más acompañantes</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rsvpMenu">Menú Especial</label>
+        <select id="rsvpMenu" class="form-control">
+          <option value="Estándar / Ninguno">Sin requerimiento especial</option>
+          <option value="Vegetariano">Vegetariano</option>
+          <option value="Vegano">Vegano</option>
+          <option value="Celíaco (Sin TACC)">Celíaco / Sin TACC</option>
+          <option value="Menú Infantil">Menú Infantil</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rsvpNotes">Mensaje o Dedicatoria para Clari</label>
+        <textarea id="rsvpNotes" class="form-control" placeholder="Un mensaje lindo para la cumpleañera..."></textarea>
+      </div>
+
+      <button class="btn btn-whatsapp" style="width:100%;margin:0.5rem 0 0;" onclick="submitRsvpForm()">
+        Enviar Confirmación por WhatsApp
       </button>
     </div>
   </div>
@@ -1250,7 +1211,7 @@
     });
 
     // ===== EVENT DATE =====
-    var EVENT_DATE = new Date('2027-03-14T17:30:00-03:00');
+    var EVENT_DATE = new Date('2027-03-20T21:00:00-03:00');
 
     // ===== SPLASH / ENTER =====
     function openInvitation() {
@@ -1319,6 +1280,9 @@
     function openModal(id) {
       document.getElementById(id).classList.add('active');
     }
+    function openRsvpModal() {
+      document.getElementById('rsvpModalOverlay').classList.add('active');
+    }
     function openLightbox(src) {
       document.getElementById('lightboxImage').src = src;
       document.getElementById('lightboxModal').classList.add('active');
@@ -1366,73 +1330,48 @@
     }
     initSliders();
 
-    // ===== SUBMIT RSVP → /api/rsvp (Supabase) =====
-    function submitRsvpToApi() {
-      var name = document.getElementById('inlineName').value.trim();
-      var guestCount = parseInt(document.getElementById('inlineGuests').value, 10);
-      var menu = document.getElementById('inlineMenu').value.trim();
-      var song = document.getElementById('inlineSong').value.trim();
+    // ===== RSVP SUBMIT =====
+    function submitRsvpForm() {
+      var name = document.getElementById('rsvpName').value.trim();
+      var status = document.getElementById('rsvpStatus').value;
+      var guests = document.getElementById('rsvpGuests').value;
+      var menu = document.getElementById('rsvpMenu').value;
+      var notes = document.getElementById('rsvpNotes').value.trim();
 
       if (!name) {
-        showToast('Por favor ingresá tu nombre y apellido');
+        showToast('Por favor ingresa tu nombre');
         return;
       }
 
-      // Armar dietaryNotes combinando menú
-      var dietaryNotes = menu || null;
-      var songRequest = song || null;
+      var text = "¡Hola Clari! Confirmo mi asistencia a tus 15 Años 👑%0A%0A" +
+        "*Nombre:* " + encodeURIComponent(name) + "%0A" +
+        "*Asistencia:* " + encodeURIComponent(status) + "%0A" +
+        "*Acompañantes:* " + encodeURIComponent(guests) + "%0A" +
+        "*Menú Especial:* " + encodeURIComponent(menu);
 
-      var submitBtn = document.getElementById('rsvpSubmitBtn');
-      var spinner = document.getElementById('rsvpSpinner');
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.5';
-      spinner.style.display = 'block';
+      if (notes) {
+        text += "%0A*Mensaje:* " + encodeURIComponent(notes);
+      }
 
-      fetch('/api/rsvp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          eventSlug: 'demo-boda-floral-claro',
-          guestName: name,
-          guestCount: guestCount,
-          dietaryNotes: dietaryNotes,
-          songRequest: songRequest
-        })
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        spinner.style.display = 'none';
-        if (data.success && data.qrCode) {
-          // Mostrar pantalla de éxito con QR
-          document.getElementById('rsvpFormCard').style.display = 'none';
-          var successCard = document.getElementById('rsvpSuccessCard');
-          successCard.style.display = 'block';
-          document.getElementById('rsvpQrCode').textContent = 'Código: ' + data.qrCode;
+      closeModal('rsvpModalOverlay');
+      window.open("https://wa.me/5493425299942?text=" + text, "_blank");
+    }
 
-          // Generar QR con API de Google Charts (sin dependencias)
-          var qrImg = document.createElement('img');
-          qrImg.src = 'https://chart.googleapis.com/chart?chs=180x180&cht=qr&chl=' + encodeURIComponent(data.qrCode) + '&choe=UTF-8';
-          qrImg.alt = 'QR de acceso';
-          qrImg.style.cssText = 'width:180px;height:180px;border-radius:12px;border:2px solid var(--line);';
-          document.getElementById('rsvpQrContainer').appendChild(qrImg);
+    // ===== SONG SUGGESTION SUBMIT =====
+    function sendSongSuggestion() {
+      var song = document.getElementById('songName').value.trim();
+      var guest = document.getElementById('songGuest').value.trim();
 
-          // Scroll suave al éxito
-          document.getElementById('rsvpSuccessCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
-          showToast('¡Confirmación guardada exitosamente!');
-        } else {
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-          var errMsg = (data.error) ? data.error : 'Error al confirmar. Intentá de nuevo.';
-          showToast(errMsg);
-        }
-      })
-      .catch(function(err) {
-        spinner.style.display = 'none';
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-        console.error('RSVP error:', err);
-        showToast('Sin conexión. Verificá tu internet e intentá de nuevo.');
-      });
+      if (!song) {
+        showToast('Ingresa el tema o artista');
+        return;
+      }
+
+      var text = "¡Hola Clari! Quiero sugerir una canción para tus 15 🎵%0A%0A" +
+        "*Canción:* " + encodeURIComponent(song) +
+        (guest ? "%0A*Sugerido por:* " + encodeURIComponent(guest) : "");
+
+      window.open("https://wa.me/5493425299942?text=" + text, "_blank");
     }
 
     // ===== MUSIC PLAYER =====
@@ -1462,7 +1401,7 @@
         bgAudio.play().then(function() {
           setMusicState(true);
         }).catch(function(e) {
-          console.log("Play failed", e);
+          console.log("Play error", e);
         });
       }
     }
@@ -1480,9 +1419,9 @@
       observer.observe(el);
     });
 
-    // ===== CANVAS FALLING LEAVES =====
+    // ===== CANVAS FALLING BUTTERFLIES & PARTICLES =====
     (function() {
-      var canvas = document.getElementById('leafCanvas');
+      var canvas = document.getElementById('butterflyCanvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
       var width = canvas.width = window.innerWidth;
@@ -1493,48 +1432,54 @@
         height = canvas.height = window.innerHeight;
       });
 
-      var leaves = [];
-      var numLeaves = 18;
+      var items = [];
+      var numItems = 16;
 
-      for (var i = 0; i < numLeaves; i++) {
-        leaves.push({
+      for (var i = 0; i < numItems; i++) {
+        items.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          size: 8 + Math.random() * 10,
-          speedY: 0.4 + Math.random() * 0.8,
-          speedX: Math.sin(Math.random() * Math.PI) * 0.5 - 0.25,
-          angle: Math.random() * Math.PI * 2,
-          spin: (Math.random() - 0.5) * 0.02,
-          opacity: 0.25 + Math.random() * 0.35,
-          color: Math.random() > 0.5 ? '#8BAF7E' : '#6B8F5E'
+          size: 10 + Math.random() * 12,
+          speedY: 0.3 + Math.random() * 0.6,
+          speedX: Math.sin(Math.random() * Math.PI) * 0.6 - 0.3,
+          wingAngle: 0,
+          wingSpeed: 0.08 + Math.random() * 0.06,
+          opacity: 0.3 + Math.random() * 0.45
         });
       }
 
-      function drawLeaf(l) {
+      function drawButterfly(b) {
         ctx.save();
-        ctx.translate(l.x, l.y);
-        ctx.rotate(l.angle);
-        ctx.fillStyle = l.color;
-        ctx.globalAlpha = l.opacity;
+        ctx.translate(b.x, b.y);
+        ctx.fillStyle = '#6BA4D8';
+        ctx.globalAlpha = b.opacity;
+
+        var wingScale = Math.sin(b.wingAngle);
+
         ctx.beginPath();
-        ctx.ellipse(0, 0, l.size, l.size / 2.2, 0, 0, Math.PI * 2);
+        ctx.ellipse(-b.size / 2 * Math.abs(wingScale), 0, b.size / 1.6 * Math.abs(wingScale), b.size / 2.2, Math.PI / 4, 0, Math.PI * 2);
         ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(b.size / 2 * Math.abs(wingScale), 0, b.size / 1.6 * Math.abs(wingScale), b.size / 2.2, -Math.PI / 4, 0, Math.PI * 2);
+        ctx.fill();
+
         ctx.restore();
       }
 
       function update() {
         ctx.clearRect(0, 0, width, height);
-        for (var i = 0; i < leaves.length; i++) {
-          var l = leaves[i];
-          l.y += l.speedY;
-          l.x += l.speedX + Math.sin(l.y * 0.01) * 0.3;
-          l.angle += l.spin;
+        for (var i = 0; i < items.length; i++) {
+          var b = items[i];
+          b.y -= b.speedY;
+          b.x += b.speedX + Math.sin(b.y * 0.015) * 0.4;
+          b.wingAngle += b.wingSpeed;
 
-          if (l.y > height + 20) {
-            l.y = -20;
-            l.x = Math.random() * width;
+          if (b.y < -20) {
+            b.y = height + 20;
+            b.x = Math.random() * width;
           }
-          drawLeaf(l);
+          drawButterfly(b);
         }
         requestAnimationFrame(update);
       }
