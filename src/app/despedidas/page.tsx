@@ -138,6 +138,10 @@ export default function DespedidasLanding() {
             <Stagger className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto lg:h-[800px]" stagger={0.1}>
               {/* Large Feature */}
               <StaggerItem className="md:col-span-2 md:row-span-2 chrome-border bg-s-surface p-12 flex flex-col justify-between group relative overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img alt="Fondo Común" className="w-full h-full object-cover blur-sm opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLt1yecdG-I1zZpzTrLBDUl_GFdpSdhNyQOlp_CvUplOlw691xM_Y5cp8t1oZi5fB31VMPsusvgAcAuBxQOZdOxQxFQjRCI9eaIk5UxlFbPUT5KK31tFchSF0FLvrGu3BQJnsaIzxNvXSODQuwwaflyPKLaO051o8wCcs8cBZTNLxcfz_OgzXPzapJd-IpsSBxHKdmC5uqxGFtCzGZMnnVH55zD-hsjME2Pq1ItnyBo10BQir49xIK1iGFfO"/>
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-s-surface-variant/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 <div className="relative z-10">
                   <span className="material-symbols-outlined text-4xl text-s-primary mb-6 block" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
@@ -154,29 +158,41 @@ export default function DespedidasLanding() {
               </StaggerItem>
               
               {/* Medium Feature 1 */}
-              <StaggerItem className="md:col-span-2 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group">
-                <div className="flex justify-between items-start">
+              <StaggerItem className="md:col-span-2 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group relative overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img alt="Itinerario" className="w-full h-full object-cover blur-sm opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLseMYrtEtLvakCVTPvMP40AhXc-c2o4oG-CVLX7hsg0ULniIPq92TjIAaVy_wHgYisqP4Xay6KqR7p6iFmHmz0Fin65hQ90EwvHbsmXK9zvpfV4YCzlXRNXUxH4rmcX0AJZBaI1YL7aLiopsnAhnjjhz2xh4yJhcrOnBLPh0lmlmvqkaD4QEUDstIpOOZCmmxah9ooLLioZmmCC23fasNOtLQvcaoq8_aLWK14rYqXjNrJ_Ufyx4rF06Kk"/>
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+                <div className="flex justify-between items-start relative z-10">
                   <h3 className="font-headline-lg text-2xl md:text-3xl text-s-primary max-w-[200px] uppercase">Itinerario<br/>de la Noche</h3>
                   <span className="material-symbols-outlined text-3xl text-s-primary" style={{ fontVariationSettings: "'FILL' 1" }}>calendar_month</span>
                 </div>
-                <p className="font-body-md text-s-secondary mt-12">
+                <p className="font-body-md text-s-secondary mt-12 relative z-10">
                   Marcá las horas de la previa, la comida y el boliche con accesos directos y ubicaciones exactas en Google Maps.
                 </p>
               </StaggerItem>
               
               {/* Small Feature 1 */}
-              <StaggerItem className="md:col-span-1 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group hover:bg-s-surface-variant transition-colors">
-                <span className="material-symbols-outlined text-3xl text-s-primary mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>fact_check</span>
-                <div>
+              <StaggerItem className="md:col-span-1 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group hover:bg-s-surface-variant transition-colors relative overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img alt="RSVP" className="w-full h-full object-cover blur-sm opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLv5fB6gaJw1ZrsFWoYcVbprCuwz-vbg-0bG6jRs7tRSmAFgYq-sfdlRn8e4uVNYz3lxC4dFPDShbwb4LoWXSqnfMrHJctFSPAnMD5QkmDvWhIRC1zaJBchpMWV9OGKkrp7F4IuYSV2BPl_VO9VhFjvRSenshw6VpxKQtTk2aiqhUsWFNwFt_gEQjF-8iCPNXyxKnuSMumymyBD4t8YQRh-QBwbNqcvvJERkNpGGYca6tfcTeYPhlQ4EVrlP"/>
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+                <span className="material-symbols-outlined text-3xl text-s-primary mb-4 relative z-10" style={{ fontVariationSettings: "'FILL' 1" }}>fact_check</span>
+                <div className="relative z-10">
                   <h3 className="font-headline-lg text-xl text-s-primary mb-2 uppercase">Asistencia RSVP</h3>
                   <p className="font-body-md text-s-secondary text-sm">Controlá quiénes asisten y sus dietas especiales en tiempo real.</p>
                 </div>
               </StaggerItem>
               
               {/* Small Feature 2 */}
-              <StaggerItem className="md:col-span-1 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group hover:bg-s-surface-variant transition-colors">
-                <span className="material-symbols-outlined text-3xl text-s-primary mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>photo_camera</span>
-                <div>
+              <StaggerItem className="md:col-span-1 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group hover:bg-s-surface-variant transition-colors relative overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img alt="Fotos" className="w-full h-full object-cover blur-sm opacity-50" src="https://lh3.googleusercontent.com/aida/AP1WRLuo9OGZpso-Ghpe0x3LAyeaHXTQk_vmsJ5qjfDs7BGOMnAmRHe4gvd3_F5h5eoa71cPtXdgFvH2epYyqpfZ75fWzPYIU00I-Y2o8koLMiqQ2R01LnStL5AYKjPLk7RZjL6TGvnUnf-ht-a-4vbpNwMj5K5hDv24k4zXcC4S13h1acTwKwtlgeJY23vvfXAa1sKEUrJe3N32EjksIMW2KOarGLxj1R4KqholMfRIbGIiMhHrCiSNRdiANuju"/>
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+                <span className="material-symbols-outlined text-3xl text-s-primary mb-4 relative z-10" style={{ fontVariationSettings: "'FILL' 1" }}>photo_camera</span>
+                <div className="relative z-10">
                   <h3 className="font-headline-lg text-xl text-s-primary mb-2 uppercase">Muro de Fotos</h3>
                   <p className="font-body-md text-s-secondary text-sm">Tus amigos pueden subir fotos durante la noche a una galería común.</p>
                 </div>
