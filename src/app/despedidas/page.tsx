@@ -57,8 +57,8 @@ export default function DespedidasLanding() {
           <h1 className="font-display-xl text-headline-lg font-extrabold text-s-primary tracking-tighter uppercase">TE INVITO</h1>
         </div>
         <div className="hidden md:flex gap-4">
-          <Link href="#proceso" className="font-label-caps text-label-caps text-s-secondary hover:text-s-primary px-4 py-3 uppercase transition-colors">Método</Link>
-          <Link href="#super-poderes" className="font-label-caps text-label-caps text-s-secondary hover:text-s-primary px-4 py-3 uppercase transition-colors">Sistema</Link>
+          <Link href="#proceso" className="font-label-caps text-label-caps text-s-secondary hover:text-s-primary px-4 py-3 uppercase transition-colors">Cómo Funciona</Link>
+          <Link href="#super-poderes" className="font-label-caps text-label-caps text-s-secondary hover:text-s-primary px-4 py-3 uppercase transition-colors">Características</Link>
           <Link href="#pricing" className="font-label-caps text-label-caps bg-s-primary text-s-on-primary px-6 py-3 hover:bg-s-secondary transition-colors duration-300 uppercase">Planes</Link>
         </div>
         <button className="md:hidden text-s-on-surface hover:text-s-silver transition-colors active:scale-95">
@@ -74,8 +74,8 @@ export default function DespedidasLanding() {
               <span className="font-label-caps text-label-caps text-s-secondary tracking-widest uppercase mb-4 border border-s-outline-variant rounded-full px-4 py-1 w-fit">Especial Despedidas</span>
               <h2 className="font-display-xl text-4xl md:text-display-xl text-s-primary mb-8 leading-none silver-gradient-text uppercase">La Mejor<br/>Noche</h2>
               <p className="font-body-md text-s-secondary max-w-2xl mb-12 text-lg">
-                Te Invito redefine la gestión de despedidas con un enfoque brutalista y de alta gama. Fusionamos estética vanguardista con funcionalidad implacable. Entra a la nueva era de invitaciones sofisticadas.
-              </p>
+                Te Invito redefine la organización de tu despedida con un estilo premium. Combinamos un diseño increíble con herramientas prácticas para que invitar, cobrar y organizar sea mucho más simple y elegante.
+              </p>>
               <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="#pricing" className="btn-chrome font-label-caps text-label-caps px-10 py-5 w-fit uppercase font-bold text-center">Elegir Plan</Link>
                 <Link href="#proceso" className="chrome-border font-label-caps text-label-caps px-10 py-5 w-fit text-s-primary uppercase hover:bg-s-surface-variant transition-colors text-center">Ver Demo</Link>
@@ -90,7 +90,7 @@ export default function DespedidasLanding() {
         <section className="py-32 px-s-container-padding-mobile md:px-s-container-padding-desktop border-t border-s-outline-variant" id="proceso">
           <div className="max-w-7xl mx-auto">
             <Reveal className="mb-24 flex items-center gap-4">
-              <span className="font-label-caps text-s-secondary uppercase tracking-widest">Metodología</span>
+              <span className="font-label-caps text-s-secondary uppercase tracking-widest">Cómo Funciona</span>
               <div className="h-[1px] bg-s-outline-variant flex-grow"></div>
             </Reveal>
             
@@ -98,9 +98,9 @@ export default function DespedidasLanding() {
               {/* Step 01 */}
               <Reveal y={30} delay={0.1} className="relative group cursor-pointer">
                 <div className="text-display-xl font-display-xl text-s-surface-variant group-hover:text-s-secondary transition-colors duration-500 absolute -top-16 -left-8 -z-10 opacity-50">01</div>
-                <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-6 uppercase">Adquiere</h3>
+                <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-6 uppercase">Elegí tu Plan</h3>
                 <p className="font-body-md text-s-secondary">
-                  Elige nuestro diseño exclusivo "Syne Silver", realiza el pago y envíanos los detalles. La plataforma transformará la simple logística en una narrativa visual contundente.
+                  Seleccioná el plan que mejor se adapte a la onda de tu grupo, realizá el pago y envianos los datos de tu evento. Nosotros nos encargamos de todo el armado.
                 </p>
                 <div className="mt-8 w-12 h-[1px] bg-s-primary group-hover:w-full transition-all duration-500"></div>
               </Reveal>
@@ -108,9 +108,9 @@ export default function DespedidasLanding() {
               {/* Step 02 */}
               <Reveal y={30} delay={0.2} className="relative group cursor-pointer mt-12 md:mt-24">
                 <div className="text-display-xl font-display-xl text-s-surface-variant group-hover:text-s-secondary transition-colors duration-500 absolute -top-16 -left-8 -z-10 opacity-50">02</div>
-                <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-6 uppercase">Procesa</h3>
+                <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-6 uppercase">Personalizamos</h3>
                 <p className="font-body-md text-s-secondary">
-                  Configuramos el CBU/Alias, el itinerario de alta fidelidad y los módulos interactivos. Infraestructura segura para que tu evento alcance el nivel de presentación impecable.
+                  Agregamos tu CBU, el itinerario de la noche, las ubicaciones y habilitamos todas las funciones para que tus amigos tengan todo listo en su celular.
                 </p>
                 <div className="mt-8 w-12 h-[1px] bg-s-primary group-hover:w-full transition-all duration-500"></div>
               </Reveal>
@@ -118,9 +118,9 @@ export default function DespedidasLanding() {
               {/* Step 03 */}
               <Reveal y={30} delay={0.3} className="relative group cursor-pointer mt-24 md:mt-48">
                 <div className="text-display-xl font-display-xl text-s-surface-variant group-hover:text-s-secondary transition-colors duration-500 absolute -top-16 -left-8 -z-10 opacity-50">03</div>
-                <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-6 uppercase">Despliega</h3>
+                <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-6 uppercase">Compartí</h3>
                 <p className="font-body-md text-s-secondary">
-                  Comparte el enlace maestro. Visualiza transferencias, confirmaciones y galerías en vivo a través de módulos monocromáticos que priorizan la claridad y la inmediatez.
+                  Enviá el enlace por WhatsApp y empezá a recibir confirmaciones de asistencia, comprobantes de pago y fotos de tus invitados de forma inmediata.
                 </p>
                 <div className="mt-8 w-12 h-[1px] bg-s-primary group-hover:w-full transition-all duration-500"></div>
               </Reveal>
@@ -132,7 +132,7 @@ export default function DespedidasLanding() {
         <section className="py-32 px-s-container-padding-mobile md:px-s-container-padding-desktop bg-s-surface-container-lowest" id="super-poderes">
           <div className="max-w-7xl mx-auto">
             <Reveal className="mb-24">
-              <h2 className="font-display-xl text-headline-lg md:text-display-xl text-s-primary silver-gradient-text uppercase text-center leading-none">Capacidades<br/>Nucleares</h2>
+              <h2 className="font-display-xl text-headline-lg md:text-display-xl text-s-primary silver-gradient-text uppercase text-center leading-none">Características<br/>Exclusivas</h2>
             </Reveal>
             
             <Stagger className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto lg:h-[800px]" stagger={0.1}>
@@ -141,14 +141,14 @@ export default function DespedidasLanding() {
                 <div className="absolute inset-0 bg-gradient-to-br from-s-surface-variant/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
                 <div className="relative z-10">
                   <span className="material-symbols-outlined text-4xl text-s-primary mb-6 block" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
-                  <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-4 leading-tight uppercase">Gestión de<br/>Fondo Común</h3>
+                  <h3 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-s-primary mb-4 leading-tight uppercase">Fondo Común<br/>Integrado</h3>
                 </div>
                 <div className="relative z-10 mt-12 md:mt-0">
                   <p className="font-body-md text-s-secondary mb-8 max-w-sm">
-                    Módulo de alta precisión diseñado para recaudación inmediata. Expone CBU o Alias eliminando la fricción de pagos en el grupo.
+                    Recaudá la plata de la noche sin tener que perseguir a nadie. Agregamos tu CBU o Alias directo en la invitación para que organizar los pagos sea súper fácil.
                   </p>
                   <span className="font-label-caps text-s-primary uppercase inline-flex items-center gap-2 group-hover:gap-4 transition-all">
-                    Arquitectura Financiera <span className="material-symbols-outlined">arrow_right_alt</span>
+                    Olvidate de las deudas <span className="material-symbols-outlined">arrow_right_alt</span>
                   </span>
                 </div>
               </StaggerItem>
@@ -156,11 +156,11 @@ export default function DespedidasLanding() {
               {/* Medium Feature 1 */}
               <StaggerItem className="md:col-span-2 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group">
                 <div className="flex justify-between items-start">
-                  <h3 className="font-headline-lg text-2xl md:text-3xl text-s-primary max-w-[200px] uppercase">Itinerario<br/>Dinámico</h3>
+                  <h3 className="font-headline-lg text-2xl md:text-3xl text-s-primary max-w-[200px] uppercase">Itinerario<br/>de la Noche</h3>
                   <span className="material-symbols-outlined text-3xl text-s-primary" style={{ fontVariationSettings: "'FILL' 1" }}>calendar_month</span>
                 </div>
                 <p className="font-body-md text-s-secondary mt-12">
-                  Implementa cronogramas estructurados de acceso inmediato y coordenadas exactas vía Google Maps.
+                  Marcá las horas de la previa, la comida y el boliche con accesos directos y ubicaciones exactas en Google Maps.
                 </p>
               </StaggerItem>
               
@@ -168,8 +168,8 @@ export default function DespedidasLanding() {
               <StaggerItem className="md:col-span-1 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group hover:bg-s-surface-variant transition-colors">
                 <span className="material-symbols-outlined text-3xl text-s-primary mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>fact_check</span>
                 <div>
-                  <h3 className="font-headline-lg text-xl text-s-primary mb-2 uppercase">Telemetría RSVP</h3>
-                  <p className="font-body-md text-s-secondary text-sm">Métricas de asistencia y dietas en tiempo real.</p>
+                  <h3 className="font-headline-lg text-xl text-s-primary mb-2 uppercase">Asistencia RSVP</h3>
+                  <p className="font-body-md text-s-secondary text-sm">Controlá quiénes asisten y sus dietas especiales en tiempo real.</p>
                 </div>
               </StaggerItem>
               
@@ -177,8 +177,8 @@ export default function DespedidasLanding() {
               <StaggerItem className="md:col-span-1 md:row-span-1 chrome-border bg-s-surface p-8 flex flex-col justify-between group hover:bg-s-surface-variant transition-colors">
                 <span className="material-symbols-outlined text-3xl text-s-primary mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>photo_camera</span>
                 <div>
-                  <h3 className="font-headline-lg text-xl text-s-primary mb-2 uppercase">Transmisión Muro</h3>
-                  <p className="font-body-md text-s-secondary text-sm">Galería fotográfica en vivo subida por los asistentes.</p>
+                  <h3 className="font-headline-lg text-xl text-s-primary mb-2 uppercase">Muro de Fotos</h3>
+                  <p className="font-body-md text-s-secondary text-sm">Tus amigos pueden subir fotos durante la noche a una galería común.</p>
                 </div>
               </StaggerItem>
             </Stagger>
@@ -189,13 +189,13 @@ export default function DespedidasLanding() {
         <section id="pricing" className="py-32 px-s-container-padding-mobile md:px-s-container-padding-desktop border-t border-s-outline-variant relative">
           <div className="max-w-6xl mx-auto relative z-10">
             <Reveal className="mb-24 flex items-center gap-4">
-              <span className="font-label-caps text-s-secondary uppercase tracking-widest">Inversión</span>
+              <span className="font-label-caps text-s-secondary uppercase tracking-widest">Nuestros Planes</span>
               <div className="h-[1px] bg-s-outline-variant flex-grow"></div>
             </Reveal>
             
             <Reveal className="mb-16">
               <h2 className="font-display-xl text-headline-lg md:text-display-xl text-s-primary mb-4 uppercase leading-none silver-gradient-text">
-                Protocolos de<br/>Acceso
+                Elegí tu<br/>Plan
               </h2>
             </Reveal>
 
@@ -243,7 +243,7 @@ export default function DespedidasLanding() {
                 onClick={() => setShowCompare(!showCompare)}
                 className="w-full py-6 px-8 bg-s-surface chrome-border flex items-center justify-between font-headline-md text-xl transition-colors uppercase"
               >
-                Análisis de Sistemas
+                Comparar Beneficios
                 <div className={`transition-transform duration-300 ${showCompare ? "rotate-180 text-s-primary" : "text-s-secondary"}`}>
                   <span className="material-symbols-outlined">expand_more</span>
                 </div>
@@ -258,7 +258,7 @@ export default function DespedidasLanding() {
                   >
                     <div className="p-8 mt-4 bg-s-surface-container-low chrome-border text-base text-s-secondary">
                       <div className="grid grid-cols-3 font-label-caps text-s-primary border-b border-s-outline-variant pb-4 mb-4 uppercase tracking-widest">
-                        <div>Módulo</div>
+                        <div>Característica</div>
                         <div className="text-center text-s-secondary">Estándar</div>
                         <div className="text-center text-s-primary">PRO</div>
                       </div>
@@ -290,7 +290,7 @@ export default function DespedidasLanding() {
         <section className="py-32 px-s-container-padding-mobile md:px-s-container-padding-desktop bg-s-surface-container-lowest border-t border-s-outline-variant">
           <div className="max-w-7xl mx-auto">
             <Reveal className="mb-24 flex items-center gap-4">
-              <span className="font-label-caps text-s-secondary uppercase tracking-widest">Operadores</span>
+              <span className="font-label-caps text-s-secondary uppercase tracking-widest">Testimonios</span>
               <div className="h-[1px] bg-s-outline-variant flex-grow"></div>
             </Reveal>
 
@@ -326,7 +326,7 @@ export default function DespedidasLanding() {
         <section className="py-32 px-s-container-padding-mobile md:px-s-container-padding-desktop border-t border-s-outline-variant relative overflow-hidden">
           <div className="max-w-container-max mx-auto text-center relative z-10">
             <Reveal>
-              <h2 className="font-display-xl text-headline-lg md:text-display-xl text-s-primary mb-12 uppercase leading-none silver-gradient-text">Iniciar<br/>Despliegue</h2>
+              <h2 className="font-display-xl text-headline-lg md:text-display-xl text-s-primary mb-12 uppercase leading-none silver-gradient-text">Empezá a<br/>Festejar</h2>
               <Link href="#pricing" className="btn-chrome font-label-caps text-label-caps px-16 py-6 uppercase text-lg inline-flex items-center gap-4 group">
                 Crear Invitación
                 <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
@@ -347,7 +347,7 @@ export default function DespedidasLanding() {
           <li><Link className="hover:text-s-primary transition-colors text-s-on-surface-variant uppercase" href="#">Instagram</Link></li>
         </ul>
         <div className="font-label-caps text-label-caps text-s-secondary opacity-80 hover:opacity-100 uppercase tracking-widest mt-8 md:mt-0 text-center">
-          © 2026 TE INVITO. ALL REBELLION RESERVED.
+          © 2026 TE INVITO. TODOS LOS DERECHOS RESERVADOS.
         </div>
       </footer>
     </div>
