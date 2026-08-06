@@ -132,7 +132,7 @@ export default function DespedidasLanding() {
         <section className="py-32 px-s-container-padding-mobile md:px-s-container-padding-desktop bg-s-surface-container-lowest" id="super-poderes">
           <div className="max-w-7xl mx-auto">
             <Reveal className="mb-24">
-              <h2 className="font-display-xl text-headline-lg md:text-display-xl text-s-primary silver-gradient-text uppercase text-center leading-none">Características<br/>Exclusivas</h2>
+              <h2 className="font-display-xl text-4xl md:text-5xl lg:text-display-lg text-s-primary silver-gradient-text uppercase text-center leading-none">Características<br/>Exclusivas</h2>
             </Reveal>
             
             <Stagger className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto lg:h-[800px]" stagger={0.1}>
@@ -201,9 +201,9 @@ export default function DespedidasLanding() {
 
             <div className="grid lg:grid-cols-2 gap-10 max-w-4xl mx-auto mb-20">
               {/* Standard */}
-              <div className="chrome-border bg-s-surface p-10 flex flex-col group hover:bg-s-surface-variant transition-colors">
-                <h3 className="font-headline-md text-2xl uppercase tracking-widest mb-4 text-s-secondary">Despedida Estándar</h3>
-                <p className="font-display-lg text-display-lg mb-3 text-s-primary">$25.000</p>
+              <div className="chrome-border bg-s-surface p-10 flex flex-col group hover:bg-s-surface-variant transition-colors overflow-hidden">
+                <h3 className="font-headline-md text-xl md:text-2xl uppercase tracking-widest mb-4 text-s-secondary break-words">Despedida Estándar</h3>
+                <p className="font-display-lg text-5xl md:text-6xl mb-3 text-s-primary">$25.000</p>
                 <p className="font-label-caps text-label-caps text-s-outline mb-8 uppercase tracking-widest">Pago único vitalicio</p>
                 <ul className="text-left font-body-md text-body-md space-y-4 mb-10 flex-1 text-s-secondary">
                   <li className="flex gap-4 items-start"><span className="material-symbols-outlined text-s-primary text-sm mt-1">stop</span> Fondo Común (Alias/CBU)</li>
@@ -217,12 +217,12 @@ export default function DespedidasLanding() {
               </div>
 
               {/* Premium */}
-              <div className="chrome-border bg-s-surface-container-high p-10 flex flex-col relative group">
+              <div className="chrome-border bg-s-surface-container-high p-10 flex flex-col relative group overflow-hidden">
                 <div className="absolute top-0 right-0 bg-s-primary text-s-on-primary font-label-caps text-[10px] px-4 py-1 uppercase tracking-widest font-bold">
                   Recomendado
                 </div>
-                <h3 className="font-headline-md text-2xl uppercase tracking-widest mb-4 text-s-primary">Despedida PRO</h3>
-                <p className="font-display-lg text-display-lg mb-3 text-s-primary">$45.000</p>
+                <h3 className="font-headline-md text-xl md:text-2xl uppercase tracking-widest mb-4 text-s-primary break-words">Despedida PRO</h3>
+                <p className="font-display-lg text-5xl md:text-6xl mb-3 text-s-primary">$45.000</p>
                 <p className="font-label-caps text-label-caps text-s-secondary mb-8 uppercase tracking-widest">Pago único vitalicio</p>
                 <ul className="text-left font-body-md text-body-md space-y-4 mb-10 flex-1 text-s-primary">
                   <li className="flex gap-4 items-start"><span className="material-symbols-outlined text-s-primary text-sm mt-1">close</span> <strong>Todo lo del plan Estándar</strong></li>
