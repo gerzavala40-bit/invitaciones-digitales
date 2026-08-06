@@ -57,9 +57,9 @@ export default function DespedidasLanding() {
           </div>
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#proceso">How it Works</Link>
-            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#super-poderes">Super Powers</Link>
-            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#pricing">Pricing</Link>
+            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#proceso">Cómo Funciona</Link>
+            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#super-poderes">Súper Poderes</Link>
+            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#pricing">Precios</Link>
           </nav>
           <button className="md:hidden text-s-on-surface hover:text-s-primary transition-colors active:scale-95">
             <span className="material-symbols-outlined text-2xl">menu</span>
@@ -360,9 +360,9 @@ export default function DespedidasLanding() {
             © 2026 Te Invito. Organiza la despedida perfecta.
           </div>
           <nav className="flex gap-4">
-            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Privacy</Link>
-            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Terms</Link>
-            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Support</Link>
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Privacidad</Link>
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Términos</Link>
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Soporte</Link>
             <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Instagram</Link>
           </nav>
         </div>
