@@ -37,52 +37,23 @@
 
   /* Google Stitch Theme */
   --color-s-surface-container-high: #2a292f;
-  --color-s-error-container: #93000a;
-  --color-s-on-primary: #60004a;
-  --color-s-on-primary-container: #540040;
-  --color-s-on-error: #690005;
-  --color-s-on-secondary-container: #ddcdff;
-  --color-s-secondary-fixed-dim: #d1bcff;
-  --color-s-secondary-fixed: #e9ddff;
-  --color-s-on-secondary-fixed-variant: #5700c9;
-  --color-s-tertiary-fixed: #9cf0ff;
-  --color-s-tertiary: #00daf3;
   --color-s-surface-variant: #35343a;
-  --color-s-inverse-primary: #b2008a;
-  --color-s-tertiary-fixed-dim: #00daf3;
-  --color-s-on-primary-fixed: #3b002c;
   --color-s-surface-container-low: #1b1b20;
   --color-s-inverse-surface: #e4e1e9;
-  --color-s-on-tertiary-fixed: #001f24;
-  --color-s-on-surface-variant: #dfbdce;
+  --color-s-on-surface-variant: #a0a0a0;
   --color-s-surface: #131318;
   --color-s-surface-bright: #39383e;
-  --color-s-on-primary-fixed-variant: #880069;
   --color-s-inverse-on-surface: #303036;
-  --color-s-error: #ffb4ab;
-  --color-s-on-tertiary: #00363d;
-  --color-s-on-error-container: #ffdad6;
   --color-s-surface-container-highest: #35343a;
-  --color-s-primary-container: #ff36c9;
-  --color-s-outline-variant: #583f4d;
   --color-s-surface-container-lowest: #0e0e13;
-  --color-s-secondary-container: #7000ff;
-  --color-s-on-tertiary-container: #002f35;
-  --color-s-primary: #ffaedd;
-  --color-s-tertiary-container: #009fb2;
-  --color-s-on-secondary-fixed: #23005b;
-  --color-s-primary-fixed: #ffd8eb;
-  --color-s-outline: #a78898;
-  --color-s-secondary: #d1bcff;
   --color-s-on-background: #e4e1e9;
   --color-s-surface-dim: #131318;
-  --color-s-on-tertiary-fixed-variant: #004f58;
   --color-s-background: #131318;
-  --color-s-surface-tint: #ffaedd;
-  --color-s-on-surface: #e4e1e9;
-  --color-s-on-secondary: #3c0090;
+  --color-s-on-surface: #ffffff;
   --color-s-surface-container: #1f1f25;
-  --color-s-primary-fixed-dim: #ffaedd;
+  --color-s-silver: #c0c0c0;
+  --color-s-silver-dark: #71717a;
+  --color-s-primary: #ffffff;
 
   --spacing-s-gutter: 16px;
   --spacing-s-container-padding-mobile: 20px;
@@ -94,9 +65,9 @@
   --font-display-lg: 'Sora', sans-serif;
   --font-headline-lg: 'Sora', sans-serif;
   --font-headline-md: 'Sora', sans-serif;
-  --font-body-lg: 'Hanken Grotesk', sans-serif;
-  --font-body-md: 'Hanken Grotesk', sans-serif;
-  --font-label-caps: 'JetBrains Mono', monospace;
+  --font-body-lg: 'Sora', sans-serif;
+  --font-body-md: 'Sora', sans-serif;
+  --font-label-caps: 'Sora', sans-serif;
 }
 
 body {
@@ -487,12 +458,36 @@ details[open] summary .faq-icon { transform: rotate(45deg); }
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
-.text-glow-primary {
-  text-shadow: 0 0 10px rgba(255,174,221,0.5), 0 0 20px rgba(255,174,221,0.3);
+.text-glow-silver {
+  text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.3);
 }
-.neon-border {
-  box-shadow: 0 0 15px rgba(255,54,201,0.3), inset 0 0 10px rgba(255,54,201,0.2);
-  border: 1px solid rgba(255,54,201,0.5);
+.silver-border {
+  box-shadow: 0 0 15px rgba(200,200,210,0.1), inset 0 0 10px rgba(200,200,210,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.silver-glow-button {
+  background-color: var(--color-s-surface-container-high);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+.silver-glow-button:hover {
+  box-shadow: 0 0 15px rgba(200, 200, 210, 0.5);
+  border-color: rgba(255,255,255,0.6);
+  transform: translateY(-2px);
+}
+.silver-glow-button:active {
+  transform: translateY(0);
+}
+.bg-stars {
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.2), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 @utility text-headline-lg-mobile {
