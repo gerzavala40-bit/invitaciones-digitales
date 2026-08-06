@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Te invito — Invitaciones digitales elegantes</title>
@@ -102,6 +114,18 @@
 
   <!-- ========== HERO EXACT MOCKUP ========== -->
   <header class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden min-h-screen flex flex-col justify-center">
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0">
       <img 
@@ -906,3 +930,4 @@
   </script>
 </body>
 </html>
+
