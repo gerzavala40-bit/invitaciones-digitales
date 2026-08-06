@@ -9,6 +9,11 @@ export function middleware(request: NextRequest) {
   // Verificar si la ruta requiere autenticación
   const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
 
+  // Tracking de comportamiento del Admin
+  if (pathname.startsWith("/admin")) {
+    console.log(`[ADMIN TRACKING] Acceso a ruta de admin: ${pathname} [${new Date().toISOString()}]`);
+  }
+
   if (!isProtected) {
     return NextResponse.next();
   }

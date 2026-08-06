@@ -325,10 +325,11 @@
 
     /* ===== SECTION BASE ===== */
     section {
-      padding: 3.8rem 1.5rem;
+      padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
       max-width: 650px;
       margin: 0 auto;
       text-align: center;
+      overflow: hidden;
     }
     .section-title {
       font-family: var(--font-display);
@@ -426,12 +427,15 @@
 
     /* ===== FRASE ===== */
     .frase {
-      background: #FFFFFF;
-      padding: 3.2rem 2.2rem;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 2.5rem 1.5rem;
       border-radius: var(--radius);
       margin: 1rem auto;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(47, 76, 42, 0.08);
+      word-wrap: break-word;
     }
     .frase blockquote {
       font-family: var(--font-script);
@@ -502,13 +506,17 @@
 
     /* ===== CARDS ===== */
     .card {
-      background: var(--bg-card);
-      border: 1.5px solid rgba(80, 117, 72, 0.25);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: var(--radius);
-      padding: 2.4rem 2rem;
-      margin-bottom: 1.8rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(47, 76, 42, 0.08);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     .card:hover {
       transform: translateY(-3px);
@@ -542,15 +550,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.6rem 1.4rem;
-      background: #FFFFFF;
+      padding: 1.4rem 1.2rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 2px solid var(--green-dark);
       border-radius: var(--radius);
-      box-shadow: 0 8px 25px rgba(47, 76, 42, 0.1);
+      box-shadow: 0 6px 20px rgba(47, 76, 42, 0.08);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       margin-bottom: 1.3rem;
       text-decoration: none;
+      word-wrap: break-word;
     }
     .action-btn-card:hover {
       background: var(--green-dark);
@@ -657,7 +668,7 @@
       margin: 0.9rem 0;
     }
     .copy-row span {
-      font-size: 0.9rem;
+      font-size: clamp(0.75rem, 3vw, 0.9rem);
       font-family: monospace;
       font-weight: 700;
       color: var(--text);

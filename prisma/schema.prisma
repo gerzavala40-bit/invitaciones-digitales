@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -16,6 +15,7 @@ model User {
   role      String   @default("CLIENT")
   plan      String   @default("BASICO")
   events    Event[]
+  preferences UserPreferences?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -159,4 +159,14 @@ model ChatMessage {
   createdAt       DateTime @default(now())
 
   @@index([eventId, channel, createdAt])
+}
+
+model UserPreferences {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  receiveEmails     Boolean  @default(true)
+  defaultTemplateId String   @default("elegant-dark")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }

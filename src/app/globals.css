@@ -34,6 +34,69 @@
   --shadow-brutal-orange: 6px 6px 0px #FF8C42;
 
   --animate-float: float 6s ease-in-out infinite;
+
+  /* Google Stitch Theme */
+  --color-s-surface-container-high: #2a292f;
+  --color-s-error-container: #93000a;
+  --color-s-on-primary: #60004a;
+  --color-s-on-primary-container: #540040;
+  --color-s-on-error: #690005;
+  --color-s-on-secondary-container: #ddcdff;
+  --color-s-secondary-fixed-dim: #d1bcff;
+  --color-s-secondary-fixed: #e9ddff;
+  --color-s-on-secondary-fixed-variant: #5700c9;
+  --color-s-tertiary-fixed: #9cf0ff;
+  --color-s-tertiary: #00daf3;
+  --color-s-surface-variant: #35343a;
+  --color-s-inverse-primary: #b2008a;
+  --color-s-tertiary-fixed-dim: #00daf3;
+  --color-s-on-primary-fixed: #3b002c;
+  --color-s-surface-container-low: #1b1b20;
+  --color-s-inverse-surface: #e4e1e9;
+  --color-s-on-tertiary-fixed: #001f24;
+  --color-s-on-surface-variant: #dfbdce;
+  --color-s-surface: #131318;
+  --color-s-surface-bright: #39383e;
+  --color-s-on-primary-fixed-variant: #880069;
+  --color-s-inverse-on-surface: #303036;
+  --color-s-error: #ffb4ab;
+  --color-s-on-tertiary: #00363d;
+  --color-s-on-error-container: #ffdad6;
+  --color-s-surface-container-highest: #35343a;
+  --color-s-primary-container: #ff36c9;
+  --color-s-outline-variant: #583f4d;
+  --color-s-surface-container-lowest: #0e0e13;
+  --color-s-secondary-container: #7000ff;
+  --color-s-on-tertiary-container: #002f35;
+  --color-s-primary: #ffaedd;
+  --color-s-tertiary-container: #009fb2;
+  --color-s-on-secondary-fixed: #23005b;
+  --color-s-primary-fixed: #ffd8eb;
+  --color-s-outline: #a78898;
+  --color-s-secondary: #d1bcff;
+  --color-s-on-background: #e4e1e9;
+  --color-s-surface-dim: #131318;
+  --color-s-on-tertiary-fixed-variant: #004f58;
+  --color-s-background: #131318;
+  --color-s-surface-tint: #ffaedd;
+  --color-s-on-surface: #e4e1e9;
+  --color-s-on-secondary: #3c0090;
+  --color-s-surface-container: #1f1f25;
+  --color-s-primary-fixed-dim: #ffaedd;
+
+  --spacing-s-gutter: 16px;
+  --spacing-s-container-padding-mobile: 20px;
+  --spacing-s-section-gap: 48px;
+  --spacing-s-base: 8px;
+  --spacing-s-container-padding-desktop: 40px;
+
+  --font-headline-lg-mobile: 'Sora', sans-serif;
+  --font-display-lg: 'Sora', sans-serif;
+  --font-headline-lg: 'Sora', sans-serif;
+  --font-headline-md: 'Sora', sans-serif;
+  --font-body-lg: 'Hanken Grotesk', sans-serif;
+  --font-body-md: 'Hanken Grotesk', sans-serif;
+  --font-label-caps: 'JetBrains Mono', monospace;
 }
 
 body {
@@ -223,4 +286,250 @@ details[open] summary .faq-icon { transform: rotate(45deg); }
 .image-mask-container.active .clip-reveal-img {
   clip-path: inset(0 0 0 0);
   transform: scale(1);
+}
+
+/* Stitch custom utilities */
+.material-symbols-outlined {
+--font-body-md: 'Hanken Grotesk', sans-serif;
+  --font-label-caps: 'JetBrains Mono', monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Neobrutalism Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neobrutalism Utilities */
+.neo-border {
+  border: 3px solid #1a1a1a;
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-shadow-pink {
+  box-shadow: 6px 6px 0px #FF6B9D;
+}
+
+.neo-shadow-teal {
+  box-shadow: 6px 6px 0px #4ECDC4;
+}
+
+.neo-shadow-orange {
+  box-shadow: 6px 6px 0px #FF8C42;
+}
+
+.neo-btn {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.neo-card {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.neo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #1a1a1a;
+}
+
+/* Sticker style */
+.neo-sticker {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  font-weight: 700;
+}
+
+/* Phone frame neobrutalism */
+.neo-phone-frame {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* FAQ accordion */
+details summary::-webkit-details-marker { display: none; }
+details[open] summary .faq-icon { transform: rotate(45deg); }
+
+/* Form inputs neobrutalism */
+.neo-input {
+  border: 3px solid #1a1a1a;
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.neo-input:focus {
+  box-shadow: 4px 4px 0px #4ECDC4;
+  transform: translate(-2px, -2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9E0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #FFF9E0;
+}
+
+/* Selection */
+::selection {
+  background: #FF6B9D;
+  color: #fff;
+}
+
+/* ==============================================================
+   1. Animación de Aparición en Cascada (Staggered Fade-In)
+   ============================================================== */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-reveal.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-reveal.active > *:nth-child(1) { transition-delay: 0.15s; }
+.stagger-reveal.active > *:nth-child(2) { transition-delay: 0.30s; }
+.stagger-reveal.active > *:nth-child(3) { transition-delay: 0.45s; }
+.stagger-reveal.active > *:nth-child(4) { transition-delay: 0.60s; }
+.stagger-reveal.active > *:nth-child(5) { transition-delay: 0.75s; }
+.stagger-reveal.active > *:nth-child(6) { transition-delay: 0.90s; }
+.stagger-reveal.active > *:nth-child(7) { transition-delay: 1.05s; }
+.stagger-reveal.active > *:nth-child(8) { transition-delay: 1.20s; }
+.stagger-reveal.active > *:nth-child(9) { transition-delay: 1.35s; }
+.stagger-reveal.active > *:nth-child(10) { transition-delay: 1.50s; }
+
+
+/* ==============================================================
+   2. Máscara Fotográfica (Clip-Path Reveal)
+   ============================================================== */
+.image-mask-container {
+  overflow: hidden; 
+}
+
+.clip-reveal-img {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.15);
+  transition: 
+    clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), 
+    transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  object-fit: cover;
+  width: 100%;
+}
+
+.image-mask-container.active .clip-reveal-img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+
+/* Stitch custom utilities */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.text-glow-primary {
+  text-shadow: 0 0 10px rgba(255,174,221,0.5), 0 0 20px rgba(255,174,221,0.3);
+}
+.neon-border {
+  box-shadow: 0 0 15px rgba(255,54,201,0.3), inset 0 0 10px rgba(255,54,201,0.2);
+  border: 1px solid rgba(255,54,201,0.5);
+}
+
+@utility text-headline-lg-mobile {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 700;
+}
+@utility text-display-lg {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+@utility text-headline-lg {
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+@utility text-headline-md {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@utility text-label-caps {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }

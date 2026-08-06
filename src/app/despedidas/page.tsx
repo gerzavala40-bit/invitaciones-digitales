@@ -1,18 +1,15 @@
 "use client";
 
-import { useEffect, useState, FormEvent } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
-import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
-
-// Import dynamic to avoid SSR issues with Three.js
-const DiscoBall3D = dynamic(() => import("@/components/DiscoBall3D"), { ssr: false });
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function DespedidasLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [customName, setCustomName] = useState("");
   const [isProcessingPayment, setIsProcessingPayment] = useState("");
+  const [showCompare, setShowCompare] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,16 +40,6 @@ export default function DespedidasLanding() {
     }
   };
 
-  const features = [
-    { emoji: "💸", title: "Fondo Común", desc: "Muestra CBU/Alias para juntar plata fácil" },
-    { emoji: "📅", title: "Itinerario", desc: "Línea de tiempo de toda la noche/viaje" },
-    { emoji: "✅", title: "RSVP Ampliado", desc: "Consultá dietas, alergias y talles" },
-    { emoji: "📸", title: "Party Cam", desc: "Muro en vivo para subir las fotos" },
-    { emoji: "💬", title: "Party Chat", desc: "Chat privado tipo MSN para la joda" },
-    { emoji: "📍", title: "Google Maps", desc: "Ubicación exacta del bar/quinta" },
-    { emoji: "🎵", title: "Música", desc: "La canción que los representa de fondo" },
-  ];
-
   const testimonials = [
     { name: "Lucía M.", event: "Viaje a Mendoza", text: "Fue la salvación para organizar la plata. Todos transfirieron viendo el CBU en la invitación y nos ahorró mil peleas en el grupo.", color: "#FF6B9D" },
     { name: "Julián P.", event: "Despedida en Tigre", text: "El itinerario ayudó a que nadie se pierda. Estaba la hora de la previa, la hora del asado y la ubicación de todo.", color: "#4ECDC4" },
@@ -60,204 +47,325 @@ export default function DespedidasLanding() {
   ];
 
   return (
-    <div className="font-sans bg-black text-white antialiased min-h-screen">
-      {/* ========== NAV ========== */}
-      <nav
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b-[2px] border-white/10 ${
-          navScrolled ? "bg-black/95 backdrop-blur-md py-3" : "py-4 bg-black"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="inline-block bg-gradient-to-r from-gray-200 to-gray-400 px-4 py-2 border-[2px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] font-bold text-xl text-[#1a1a1a] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
-              Te Invito 🪩
-            </Link>
-            <div className="hidden md:flex items-center gap-6">
-              <Link href="#como-funciona" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
-                Proceso
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#FF8C42] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link href="#features" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
-                Súper Poderes
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#FF8C42] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link href="#planes" className="relative group px-2 py-2 text-sm font-semibold text-white/80 hover:text-white transition-all">
-                Planes
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gray-300 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link href="/" className="relative px-6 py-2.5 text-sm font-bold rounded-full border border-white/20 text-white bg-transparent hover:bg-white/5 hover:border-gray-400 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all overflow-hidden group">
-                <span className="relative z-10">Volver al inicio</span>
-              </Link>
-            </div>
+    <div className="bg-s-background text-s-on-background font-body-md min-h-screen overflow-x-hidden selection:bg-s-primary-container selection:text-s-on-primary-container">
+      {/* TopAppBar */}
+      <header className="fixed top-0 w-full z-50 bg-s-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(255,174,221,0.1)]">
+        <div className="flex items-center justify-between px-s-container-padding-mobile md:px-s-container-padding-desktop h-16 w-full max-w-7xl mx-auto">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-s-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>celebration</span>
+            <span className="font-headline-md text-headline-md font-bold text-s-primary tracking-tight">Te Invito</span>
           </div>
-        </div>
-      </nav>
-
-      {/* ========== HERO ========== */}
-      <header className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 overflow-hidden">
-        {/* Disco Ball Drop Animation */}
-        <div className="absolute inset-0 z-0">
-          <DiscoBall3D />
-        </div>
-
-        {/* UI Layer */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full pointer-events-none mt-[25vh]">
-          <Reveal y={20} delay={0.1}>
-            <div className="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-xs sm:text-sm tracking-[0.1em] text-white uppercase font-bold flex items-center gap-2 border border-white/10">
-              <span>🪩</span> ESPECIAL DESPEDIDAS
-            </div>
-          </Reveal>
-          
-          <Reveal y={20} delay={0.2}>
-            <h1 className="font-black text-[12vw] md:text-[8vw] lg:text-[5vw] tracking-tighter mt-8 text-white uppercase">
-              la mejor noche
-            </h1>
-          </Reveal>
-
-          <Reveal y={20} delay={0.3} className="pointer-events-auto mt-8">
-            <Link href="/preview?url=/demo-despedida&customName=Julieta" target="_blank" className="relative group inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-300 bg-black rounded-full overflow-hidden border border-gray-500/50 hover:border-white shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-[1.02]">
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 via-gray-600 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></span>
-              <span className="relative z-10 flex items-center gap-2">Ver Demo en Vivo <span className="group-hover:translate-x-1 transition-transform">→</span></span>
-            </Link>
-          </Reveal>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#proceso">How it Works</Link>
+            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#super-poderes">Super Powers</Link>
+            <Link className="text-s-on-surface hover:text-s-primary transition-colors font-label-caps text-label-caps uppercase" href="#pricing">Pricing</Link>
+          </nav>
+          <button className="md:hidden text-s-on-surface hover:text-s-primary transition-colors active:scale-95">
+            <span className="material-symbols-outlined text-2xl">menu</span>
+          </button>
         </div>
       </header>
 
-      {/* ========== COMO FUNCIONA ========== */}
-      <section id="como-funciona" className="py-24 px-5 bg-white/5 border-t border-b border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold">
-              Organizarla nunca fue tan <span className="text-[#4ECDC4]">fácil</span>
-            </h2>
-          </Reveal>
-
-          <Stagger className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto" stagger={0.1}>
-            <StaggerItem className="bg-[#1a1a24] border border-white/10 p-8 hover:border-white/30 transition-all rounded-2xl">
-              <div className="text-5xl font-bold text-[#FF6B9D] mb-3 opacity-80">01</div>
-              <h3 className="text-xl font-bold mb-2">Comprá la plantilla</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">Elegís el diseño "Neón" o "Party", hacés el pago y nos mandás los datos por WhatsApp.</p>
-            </StaggerItem>
-            <StaggerItem className="bg-[#1a1a24] border border-white/10 p-8 hover:border-white/30 transition-all rounded-2xl">
-              <div className="text-5xl font-bold text-[#4ECDC4] mb-3 opacity-80">02</div>
-              <h3 className="text-xl font-bold mb-2">Armamos el Link</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">Cargamos el CBU, el itinerario (previa, cena, boliche) y las preguntas para los invitados.</p>
-            </StaggerItem>
-            <StaggerItem className="bg-[#1a1a24] border border-white/10 p-8 hover:border-white/30 transition-all rounded-2xl">
-              <div className="text-5xl font-bold text-[#FF8C42] mb-3 opacity-80">03</div>
-              <h3 className="text-xl font-bold mb-2">Pasalo al Grupo</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">Mandás el link al grupo de WhatsApp. Todos transfieren, confirman y saben a qué hora es todo.</p>
-            </StaggerItem>
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ========== FEATURES ========== */}
-      <section id="features" className="py-24 px-5">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold">
-              Súper Poderes de la <span className="text-[#FF6B9D]">Plantilla</span>
-            </h2>
-          </Reveal>
-
-          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" stagger={0.05}>
-            {features.map((feat) => (
-              <StaggerItem key={feat.title} className="bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition-all rounded-2xl text-left">
-                <span className="text-3xl mb-4 block bg-white/10 w-12 h-12 flex items-center justify-center rounded-xl">{feat.emoji}</span>
-                <h3 className="font-bold text-lg mb-2 text-white">{feat.title}</h3>
-                <p className="text-sm text-gray-400">{feat.desc}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ========== PLANES ========== */}
-      <section id="planes" className="py-24 px-5 bg-white/5 border-t border-b border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold">
-              Elige el <span className="text-[#4ECDC4]">Plan</span>
-            </h2>
-            <p className="mt-4 text-gray-400 text-lg">Se paga una sola vez y lo usan todos los invitados.</p>
-          </Reveal>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Standard */}
-            <div className="bg-[#1a1a24] border border-white/10 rounded-2xl p-8 text-center hover:border-white/30 transition-all flex flex-col">
-              <h3 className="text-xl font-bold uppercase mb-3 text-white">Despedida Estándar</h3>
-              <p className="text-4xl font-bold mb-1">$25.000</p>
-              <p className="text-sm text-gray-500 mb-6">Un solo pago</p>
-              <ul className="text-left text-sm space-y-3 mb-8 flex-1 text-gray-300">
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#4ECDC4] font-bold">✓</span> Fondo Común (Alias/CBU)</li>
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#4ECDC4] font-bold">✓</span> Itinerario de la noche</li>
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#4ECDC4] font-bold">✓</span> RSVP simple por WhatsApp</li>
-                <li className="flex gap-2 items-start"><span className="text-[#4ECDC4] font-bold">✓</span> Diseño temático "Neón"</li>
-              </ul>
-              <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("DESPEDIDA_STD")} disabled={isProcessingPayment === "DESPEDIDA_STD"} className="w-full py-4 bg-white/10 text-white font-bold text-sm uppercase rounded-xl hover:bg-white/20 transition-all disabled:opacity-50">
-                  {isProcessingPayment === "DESPEDIDA_STD" ? "Procesando..." : "Lo quiero"}
-                </button>
-              </div>
-            </div>
-
-            {/* Premium */}
-            <div className="bg-[#1a1a24] border border-[#FF6B9D] rounded-2xl p-8 text-center shadow-[0_0_30px_rgba(255,107,157,0.1)] hover:shadow-[0_0_40px_rgba(255,107,157,0.2)] transition-all flex flex-col relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                La Mejor Opción
-              </div>
-              <h3 className="text-xl font-bold uppercase mb-3 text-white">Despedida PRO</h3>
-              <p className="text-4xl font-bold mb-1">$45.000</p>
-              <p className="text-sm text-gray-500 mb-6">Un solo pago</p>
-              <ul className="text-left text-sm space-y-3 mb-8 flex-1 text-gray-300">
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> Todo lo del plan Estándar</li>
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> RSVP Avanzado (Dietas y Talles)</li>
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> Party Chat (Privado para el grupo)</li>
-                <li className="flex gap-2 items-start pb-2"><span className="text-[#FF6B9D] font-bold">✓</span> Módulo Party Cam (Muro fotos en vivo)</li>
-                <li className="flex gap-2 items-start"><span className="text-[#FF6B9D] font-bold">✓</span> Muro de firmas y anécdotas</li>
-              </ul>
-              <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("DESPEDIDA_PRO")} disabled={isProcessingPayment === "DESPEDIDA_PRO"} className="w-full py-4 bg-gradient-to-r from-[#FF8C42] to-[#FF6B9D] text-white font-bold text-sm uppercase rounded-xl hover:opacity-90 transition-all disabled:opacity-50">
-                  {isProcessingPayment === "DESPEDIDA_PRO" ? "Procesando..." : "Lo quiero"}
-                </button>
-              </div>
-            </div>
+      <main>
+        {/* Hero Section */}
+        <section className="relative min-h-[90vh] flex items-center justify-center px-s-container-padding-mobile md:px-s-container-padding-desktop pt-24 pb-s-section-gap overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-s-background/80 backdrop-blur-sm z-10"></div>
+            <div className="bg-cover bg-center w-full h-full opacity-60" data-alt="A vibrant, high-energy nightclub atmosphere captured from a slightly elevated angle." style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnJzh82hzEHio3q8Vu5vGM_a0NkoN5Q_8hsODD7DcNaDPhdbmqLC5YjtEa1e60S5yfZc26ETXbXBrm70LB7fbQAp78apX_ea_YH4VieOK2IB3wQS371qFzy5OHfgfpl0lWyvt-nd086TXXdNoctgvhYd4VccG-Kyy8hAE7OaMHiC9VanONzveG4MESAImdVd8bROZGkLvR_1XI0QXPUEsOP-iNaroh2kZC2oi8z6z8YOyC-72Ex0sGPA')" }}></div>
           </div>
-        </div>
-      </section>
+          
+          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-8">
+            <Reveal y={20} delay={0.1}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-s-primary/30 bg-s-primary/10 backdrop-blur-md">
+                <span className="material-symbols-outlined text-s-primary text-sm">local_fire_department</span>
+                <span className="font-label-caps text-label-caps text-s-primary tracking-widest uppercase">Especial Despedidas</span>
+              </div>
+            </Reveal>
+            <Reveal y={20} delay={0.2}>
+              <h1 className="font-display-lg text-display-lg md:text-[72px] md:leading-[80px] font-extrabold text-white text-glow-primary tracking-tighter">
+                la mejor noche
+              </h1>
+            </Reveal>
+            <Reveal y={20} delay={0.3}>
+              <p className="font-body-lg text-body-lg text-s-on-surface-variant max-w-2xl mx-auto">
+                Organiza la despedida perfecta sin dolores de cabeza. La invitación digital definitiva para juntar plata, compartir el itinerario y subir fotos en vivo.
+              </p>
+            </Reveal>
+            <Reveal y={20} delay={0.4}>
+              <Link className="group relative inline-flex items-center justify-center px-8 py-4 bg-s-primary text-s-on-primary font-label-caps text-label-caps uppercase rounded-lg shadow-[0_0_30px_rgba(255,174,221,0.4)] hover:shadow-[0_0_50px_rgba(255,174,221,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden" href="#pricing">
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                <span className="relative flex items-center gap-2 font-bold tracking-wider">
+                  Ver Demo en Vivo
+                  <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </span>
+              </Link>
+            </Reveal>
+          </div>
+        </section>
 
-      {/* ========== TESTIMONIOS ========== */}
-      <section className="py-24 px-5">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold">Lo que dicen los <span className="text-[#FF8C42]">Organizadores</span></h2>
+        {/* Glow Divider */}
+        <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-s-primary/50 to-transparent shadow-[0_0_10px_rgba(255,174,221,0.5)]"></div>
+
+        {/* Process Section */}
+        <section className="py-24 px-s-container-padding-mobile md:px-s-container-padding-desktop max-w-7xl mx-auto" id="proceso">
+          <Reveal className="text-center mb-16">
+            <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Organizarla nunca fue tan fácil</h2>
           </Reveal>
+          <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-s-gutter" stagger={0.15}>
+            {/* Step 1 */}
+            <StaggerItem className="bg-s-surface-container-high rounded-xl p-8 border border-white/5 relative overflow-hidden group hover:border-s-primary/30 transition-colors">
+              <div className="absolute -right-4 -top-4 text-9xl font-display-lg text-s-surface-variant/30 font-black z-0 group-hover:text-s-primary/10 transition-colors">01</div>
+              <div className="relative z-10 flex flex-col gap-4">
+                <div className="w-12 h-12 rounded-full bg-s-primary/20 flex items-center justify-center border border-s-primary/50 text-s-primary mb-4 shadow-[0_0_15px_rgba(255,174,221,0.2)]">
+                  <span className="material-symbols-outlined">shopping_cart</span>
+                </div>
+                <h3 className="font-headline-md text-headline-md text-white">Comprá la plantilla</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant">Elegís el diseño "Neón" o "Party", hacés el pago y nos mandás los datos por WhatsApp.</p>
+              </div>
+            </StaggerItem>
+            {/* Step 2 */}
+            <StaggerItem className="bg-s-surface-container-high rounded-xl p-8 border border-white/5 relative overflow-hidden group hover:border-s-tertiary/30 transition-colors">
+              <div className="absolute -right-4 -top-4 text-9xl font-display-lg text-s-surface-variant/30 font-black z-0 group-hover:text-s-tertiary/10 transition-colors">02</div>
+              <div className="relative z-10 flex flex-col gap-4">
+                <div className="w-12 h-12 rounded-full bg-s-tertiary/20 flex items-center justify-center border border-s-tertiary/50 text-s-tertiary mb-4 shadow-[0_0_15px_rgba(0,218,243,0.2)]">
+                  <span className="material-symbols-outlined">link</span>
+                </div>
+                <h3 className="font-headline-md text-headline-md text-white">Armamos el Link</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant">Cargamos el CBU, el itinerario (previa, cena, boliche) y las preguntas para los invitados.</p>
+              </div>
+            </StaggerItem>
+            {/* Step 3 */}
+            <StaggerItem className="bg-s-surface-container-high rounded-xl p-8 border border-white/5 relative overflow-hidden group hover:border-s-secondary-container/50 transition-colors">
+              <div className="absolute -right-4 -top-4 text-9xl font-display-lg text-s-surface-variant/30 font-black z-0 group-hover:text-s-secondary-container/20 transition-colors">03</div>
+              <div className="relative z-10 flex flex-col gap-4">
+                <div className="w-12 h-12 rounded-full bg-s-secondary-container/20 flex items-center justify-center border border-s-secondary-container/50 text-s-secondary-fixed mb-4 shadow-[0_0_15px_rgba(112,0,255,0.2)]">
+                  <span className="material-symbols-outlined">send</span>
+                </div>
+                <h3 className="font-headline-md text-headline-md text-white">Pasalo al Grupo</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant">Mandás el link al grupo de WhatsApp. Todos transfieren, confirman y saben a qué hora es todo.</p>
+              </div>
+            </StaggerItem>
+          </Stagger>
+        </section>
 
-          <Stagger className="grid md:grid-cols-3 gap-6" stagger={0.1}>
-            {testimonials.map((t) => (
-              <StaggerItem key={t.name} className="bg-white/5 border border-white/10 p-7 rounded-2xl text-left">
-                <div className="flex gap-1 text-[#FF8C42] text-lg mb-4">★★★★★</div>
-                <p className="text-gray-300 leading-relaxed mb-6">"{t.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 flex items-center justify-center font-bold text-white rounded-full" style={{ background: t.color }}>
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm text-white">{t.name}</p>
-                    <p className="text-xs text-gray-500">{t.event}</p>
-                  </div>
+        {/* Features Section (Bento Grid) */}
+        <section className="py-24 px-s-container-padding-mobile md:px-s-container-padding-desktop bg-s-surface-container-lowest" id="super-poderes">
+          <div className="max-w-7xl mx-auto">
+            <Reveal className="text-center mb-16">
+              <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Súper Poderes de la Plantilla</h2>
+              <p className="font-body-lg text-body-lg text-s-on-surface-variant">Todo lo que necesitas para una noche legendaria.</p>
+            </Reveal>
+            <Stagger className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-s-gutter" stagger={0.1}>
+              {/* Feature 1: Fondo Común (Large) */}
+              <StaggerItem className="md:col-span-2 md:row-span-1 bg-s-surface-container-high rounded-xl p-8 border border-white/5 neon-border flex flex-col justify-end relative overflow-hidden min-h-[250px] hover:scale-[1.02] transition-transform">
+                <div className="absolute right-0 top-0 w-32 h-32 bg-s-primary/20 blur-[50px]"></div>
+                <div className="relative z-10">
+                  <span className="material-symbols-outlined text-4xl text-s-primary mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
+                  <h3 className="font-headline-md text-headline-md text-white mb-2">Fondo Común</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant">Muestra CBU/Alias para juntar plata fácil y rápido. Sin excusas.</p>
                 </div>
               </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+              {/* Feature 2: Itinerario */}
+              <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
+                <span className="material-symbols-outlined text-3xl text-s-tertiary mb-4">calendar_month</span>
+                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Itinerario</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Línea de tiempo de toda la noche/viaje.</p>
+              </StaggerItem>
+              {/* Feature 3: RSVP */}
+              <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
+                <span className="material-symbols-outlined text-3xl text-s-secondary-fixed mb-4">fact_check</span>
+                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">RSVP Ampliado</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Consultá dietas, alergias y talles.</p>
+              </StaggerItem>
+              {/* Feature 4: Party Cam (Tall) */}
+              <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 relative overflow-hidden group hover:scale-[1.02] transition-transform">
+                <div className="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4oQjmmf6vwVzCoO00gKDBYWtFo7IkOuw-uaE2kDCPqYn_Zr2DxWvYmFO2u6GWn6aRvDIWboQwYAYXzDbmdmnChjZIOWPQx0Ef3VSmt9dlDVMaZcB32RHxxHQLha20WRaNnaJxLPBgB4NjoD2Ng8abWHfN3pSawIWKGqEvHrIuhBB5s6bMNeHrdwalsKbenBFFMs7H8jdOLrbTeY0dK3f1eSztkKXuDtStY3Sfc8UyydUCGumBDm42Kg')" }}></div>
+                <div className="relative z-10 h-full flex flex-col justify-end">
+                  <span className="material-symbols-outlined text-3xl text-white mb-4">photo_camera</span>
+                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Party Cam</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Muro en vivo para subir las fotos de la noche.</p>
+                </div>
+              </StaggerItem>
+              {/* Feature 5: Party Chat */}
+              <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
+                <span className="material-symbols-outlined text-3xl text-s-primary mb-4">forum</span>
+                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Party Chat</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Chat privado tipo MSN para la joda.</p>
+              </StaggerItem>
+              {/* Feature 6 & 7: Map & Music (Combined Wide) */}
+              <StaggerItem className="md:col-span-2 md:row-span-1 flex flex-col sm:flex-row gap-s-gutter">
+                <div className="flex-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
+                  <span className="material-symbols-outlined text-3xl text-s-tertiary mb-4">location_on</span>
+                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Google Maps</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Ubicación exacta del bar/quinta.</p>
+                </div>
+                <div className="flex-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
+                  <span className="material-symbols-outlined text-3xl text-s-secondary-fixed mb-4">music_note</span>
+                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Música</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">La canción que los representa de fondo.</p>
+                </div>
+              </StaggerItem>
+            </Stagger>
+          </div>
+        </section>
 
-      {/* ========== FOOTER ========== */}
-      <footer className="py-10 text-center border-t border-white/10 bg-[#0f0f13]">
-        <Link href="/" className="font-bold text-xl text-white mb-2 block">Te Invito 🔥</Link>
-        <p className="text-gray-500 text-sm">Organiza la despedida perfecta. © 2026</p>
+        {/* ========== PLANES ========== */}
+        <section id="pricing" className="py-24 px-s-container-padding-mobile md:px-s-container-padding-desktop relative border-t border-white/5">
+          <div className="max-w-6xl mx-auto relative z-10">
+            <Reveal className="text-center mb-16">
+              <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">
+                Elige tu Plan
+              </h2>
+              <p className="font-body-lg text-body-lg text-s-on-surface-variant max-w-2xl mx-auto">
+                Se paga una sola vez y la invitación queda activa para siempre.
+              </p>
+            </Reveal>
+
+            <div className="grid lg:grid-cols-2 gap-10 max-w-4xl mx-auto mb-20">
+              {/* Standard */}
+              <div className="bg-s-surface-container-high border border-white/10 rounded-2xl p-10 text-center hover:border-s-tertiary/50 transition-all duration-500 flex flex-col shadow-xl">
+                <h3 className="font-headline-md text-headline-md uppercase tracking-widest mb-4 text-s-on-surface-variant">Despedida Estándar</h3>
+                <p className="font-display-lg text-display-lg mb-3 text-white">$25.000</p>
+                <p className="font-label-caps text-label-caps text-s-tertiary mb-8 uppercase tracking-widest">Pago único</p>
+                <ul className="text-left font-body-md text-body-md space-y-4 mb-10 flex-1 text-s-on-surface-variant">
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-tertiary">check_circle</span> Fondo Común (Alias/CBU)</li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-tertiary">check_circle</span> Itinerario de la noche</li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-tertiary">check_circle</span> RSVP simple por WhatsApp</li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-tertiary">check_circle</span> Diseño temático "Neón"</li>
+                </ul>
+                <div className="flex flex-col gap-4 mt-auto">
+                  <button type="button" onClick={() => handleMercadoPagoCheckout("DESPEDIDA_STD")} disabled={isProcessingPayment === "DESPEDIDA_STD"} className="w-full py-4 bg-white/10 text-white font-label-caps text-label-caps uppercase tracking-widest rounded-lg hover:bg-white/20 transition-all disabled:opacity-50 border border-white/10">
+                    {isProcessingPayment === "DESPEDIDA_STD" ? "Procesando..." : "Lo quiero Estándar"}
+                  </button>
+                  <p className="font-label-caps text-[10px] text-s-on-surface-variant uppercase tracking-wide">Acceso inmediato. Creador web.</p>
+                </div>
+              </div>
+
+              {/* Premium */}
+              <div className="bg-s-surface-container-high border border-s-primary rounded-2xl p-10 text-center neon-border hover:shadow-[0_0_30px_rgba(255,174,221,0.3)] transition-all duration-500 flex flex-col relative z-10 transform lg:-translate-y-4">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-s-primary text-s-on-primary font-label-caps text-label-caps px-6 py-2 rounded-full uppercase tracking-widest shadow-lg animate-pulse">
+                  Recomendado
+                </div>
+                <h3 className="font-headline-md text-headline-md uppercase tracking-widest mb-4 text-s-primary">Despedida PRO</h3>
+                <p className="font-display-lg text-display-lg mb-3 text-white">$45.000</p>
+                <p className="font-label-caps text-label-caps text-s-primary mb-8 uppercase tracking-widest">Pago único</p>
+                <ul className="text-left font-body-md text-body-md space-y-4 mb-10 flex-1 text-white">
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-primary">star</span> <strong>Todo lo del plan Estándar</strong></li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-primary">check_circle</span> <strong>RSVP Avanzado</strong> (Dietas/Talles)</li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-primary">check_circle</span> <strong>Party Chat</strong> (Privado)</li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-primary">check_circle</span> <strong>Party Cam</strong> (Muro fotos)</li>
+                  <li className="flex gap-4 items-center"><span className="material-symbols-outlined text-s-primary">check_circle</span> Soporte VIP por WhatsApp</li>
+                </ul>
+                <div className="flex flex-col gap-4 mt-auto">
+                  <button type="button" onClick={() => handleMercadoPagoCheckout("DESPEDIDA_PRO")} disabled={isProcessingPayment === "DESPEDIDA_PRO"} className="w-full py-4 bg-s-primary text-s-on-primary font-label-caps text-label-caps uppercase rounded-lg hover:scale-[1.02] transition-transform shadow-[0_5px_15px_rgba(255,174,221,0.4)] disabled:opacity-50 tracking-widest">
+                    {isProcessingPayment === "DESPEDIDA_PRO" ? "Procesando..." : "Lo quiero PRO"}
+                  </button>
+                  <p className="font-label-caps text-[10px] text-s-primary uppercase tracking-wide">Acceso inmediato. Creador web.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Comparador Acordeon */}
+            <div className="max-w-4xl mx-auto mt-12">
+              <button 
+                onClick={() => setShowCompare(!showCompare)}
+                className="w-full py-5 px-8 bg-s-surface-container-high hover:bg-s-surface-bright rounded-xl flex items-center justify-between font-headline-md text-xl transition-colors border border-white/5"
+              >
+                ¿Qué incluye exactamente cada plan?
+                <div className={`transition-transform duration-300 ${showCompare ? "rotate-180 text-s-primary" : "text-s-on-surface-variant"}`}>
+                  <span className="material-symbols-outlined">expand_more</span>
+                </div>
+              </button>
+              <AnimatePresence>
+                {showCompare && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-8 mt-4 bg-s-surface-container-lowest rounded-xl border border-white/5 text-base text-s-on-surface-variant shadow-2xl">
+                      <div className="grid grid-cols-3 font-bold text-white border-b border-white/10 pb-4 mb-4 text-lg">
+                        <div>Característica</div>
+                        <div className="text-center text-s-tertiary">Estándar</div>
+                        <div className="text-center text-s-primary">PRO</div>
+                      </div>
+                      {[
+                        { name: "CBU y Fondo Común", std: true, pro: true },
+                        { name: "Itinerario", std: true, pro: true },
+                        { name: "Música de fondo", std: true, pro: true },
+                        { name: "Google Maps", std: true, pro: true },
+                        { name: "RSVP Simple (Si/No)", std: true, pro: true },
+                        { name: "RSVP Avanzado (Alergias)", std: false, pro: true },
+                        { name: "Party Cam (Muro interactivo)", std: false, pro: true },
+                        { name: "Party Chat privado", std: false, pro: true },
+                      ].map((item, i) => (
+                        <div key={i} className="grid grid-cols-3 py-4 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors rounded-lg px-2">
+                          <div className="font-medium text-white">{item.name}</div>
+                          <div className="text-center text-xl">{item.std ? "✅" : <span className="opacity-30">❌</span>}</div>
+                          <div className="text-center text-xl">{item.pro ? "✅" : <span className="opacity-30">❌</span>}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </section>
+
+        {/* ========== TESTIMONIOS ========== */}
+        <section className="py-24 px-s-container-padding-mobile md:px-s-container-padding-desktop bg-s-surface-container-lowest border-t border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <Reveal className="text-center mb-16">
+              <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Lo que dicen los <span className="text-glow-primary text-s-primary">Organizadores</span></h2>
+            </Reveal>
+
+            <Stagger className="grid md:grid-cols-3 gap-s-gutter" stagger={0.15}>
+              {testimonials.map((t) => (
+                <StaggerItem key={t.name} className="bg-s-surface-container-high border border-white/5 p-8 rounded-xl text-left hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                  <div className="flex gap-1 text-s-primary text-xl mb-6">
+                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  </div>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant leading-relaxed mb-8">"{t.text}"</p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 flex items-center justify-center font-headline-md text-white rounded-full shadow-lg" style={{ background: t.color }}>
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <p className="font-headline-md text-lg text-white">{t.name}</p>
+                      <p className="font-label-caps text-label-caps text-s-on-surface-variant uppercase tracking-wider mt-1">{t.event}</p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-s-surface-container-lowest border-t border-white/5 w-full">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-s-base px-s-container-padding-mobile md:px-s-container-padding-desktop py-s-base w-full max-w-7xl mx-auto min-h-[80px]">
+          <div className="font-headline-md text-headline-md text-s-primary font-bold">
+            Te Invito 🔥
+          </div>
+          <div className="text-s-on-surface-variant font-label-caps text-label-caps">
+            © 2026 Te Invito. Organiza la despedida perfecta.
+          </div>
+          <nav className="flex gap-4">
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Privacy</Link>
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Terms</Link>
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Support</Link>
+            <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Instagram</Link>
+          </nav>
+        </div>
       </footer>
     </div>
   );
