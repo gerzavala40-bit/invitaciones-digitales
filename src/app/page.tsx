@@ -224,9 +224,9 @@ Quedo a la espera para coordinar la sena!`;
         </Reveal>
 
         <Reveal y={20}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] max-w-[800px] mb-6">
-            Tu evento merece una invitacion<br className="sm:hidden" />{" "}
-            <span className="inline-block bg-[#FF6B9D] px-3 border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] -rotate-1 mt-2 sm:mt-0">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.2] max-w-[800px] mb-6 break-words px-2">
+            Tu evento merece una<br className="sm:hidden" /> invitacion<br className="sm:hidden" />{" "}
+            <span className="inline-block bg-[#FF6B9D] px-2 sm:px-3 border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] -rotate-1 mt-2 sm:mt-0 text-2xl sm:text-5xl md:text-6xl lg:text-7xl">
               que rompa
             </span>
           </h1>

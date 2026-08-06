@@ -768,6 +768,22 @@ footer p { color: rgba(245,239,228,.3) !important; }
       margin: 0;
     }
   </style>
+
+<style>
+  /* Global fix for mobile text overflow */
+  @media (max-width: 768px) {
+    h1, h2, h3, h4, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl, .font-display-xl, .font-headline-lg {
+      font-size: clamp(1.75rem, 8vw, 3rem) !important;
+      line-height: 1.1 !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+    body, html {
+      overflow-x: hidden !important;
+    }
+  }
+</style>
+
 </head>
 
 
