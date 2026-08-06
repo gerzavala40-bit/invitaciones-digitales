@@ -38,6 +38,7 @@ export default function LandingPage() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isProcessingPayment, setIsProcessingPayment] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMercadoPagoCheckout = async (planId: string) => {
     setIsProcessingPayment(planId);
@@ -182,8 +183,28 @@ Quedo a la espera para coordinar la sena!`;
               <Link href="/cliente/login" className="px-4 py-2 text-sm font-bold border-[2px] border-[#1a1a1a] text-[#1a1a1a] bg-transparent hover:underline transition-all">Ingresar</Link>
               <Link href="/crear" className="px-4 py-2 text-sm font-bold border-[3px] border-[#1a1a1a] bg-[#1a1a1a] text-[#FFF9E0] shadow-[3px_3px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#FF6B9D] transition-all">Crear Gratis</Link>
             </div>
+            
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden p-2 border-[2px] border-[#1a1a1a] bg-white shadow-[2px_2px_0px_#1a1a1a] active:translate-y-1 active:shadow-none flex items-center justify-center"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span className="material-symbols-outlined font-bold text-[#1a1a1a]">{isMobileMenuOpen ? "close" : "menu"}</span>
+            </button>
           </div>
         </div>
+
+        {/* Mobile menu dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-[#FFF9E0] border-b-[3px] border-[#1a1a1a] flex flex-col gap-3 p-5 shadow-[0px_4px_0px_#1a1a1a] z-50">
+            <Link onClick={() => setIsMobileMenuOpen(false)} href="#pasos" className="px-4 py-3 text-base font-bold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] text-center active:translate-y-1 active:shadow-none">Proceso</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} href="#estilos" className="px-4 py-3 text-base font-bold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] text-center active:translate-y-1 active:shadow-none">Demos</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} href="#party-chat" className="px-4 py-3 text-base font-bold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] text-center active:translate-y-1 active:shadow-none">Party Chat</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} href="/despedidas" className="px-4 py-3 text-base font-bold border-[2px] border-[#1a1a1a] bg-[#FF8C42] shadow-[3px_3px_0px_#1a1a1a] text-center active:translate-y-1 active:shadow-none">🔥 Despedidas</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} href="#planes" className="px-4 py-3 text-base font-bold border-[2px] border-[#1a1a1a] bg-white shadow-[3px_3px_0px_#1a1a1a] text-center active:translate-y-1 active:shadow-none">Planes</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} href="/crear" className="px-4 py-3 text-base font-bold border-[2px] border-[#1a1a1a] bg-[#1a1a1a] text-[#FFF9E0] shadow-[3px_3px_0px_#FF6B9D] text-center active:translate-y-1 active:shadow-none">Crear Gratis</Link>
+          </div>
+        )}
       </nav>
 
       {/* ========== HERO ========== */}
@@ -223,7 +244,7 @@ Quedo a la espera para coordinar la sena!`;
       </header>
 
       {/* ========== PASOS ========== */}
-      <section id="pasos" className="py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
+      <section id="pasos" className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold">
@@ -254,7 +275,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== DEMOS ========== */}
-      <section id="estilos" className="py-24 px-5">
+      <section id="estilos" className="py-12 md:py-24 px-5">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-8">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -278,9 +299,9 @@ Quedo a la espera para coordinar la sena!`;
             </div>
           </Reveal>
 
-          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12" stagger={0.06}>
+          <Stagger className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] -mx-5 px-5 md:mx-0 md:px-0" stagger={0.06}>
             {demos.map((demo) => (
-              <StaggerItem key={demo.title}>
+              <StaggerItem key={demo.title} className="snap-center shrink-0 w-[240px] md:w-auto flex justify-center">
                 <PhoneMockup
                   customName={customName}
                   title={demo.title}
@@ -303,7 +324,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== FEATURES ========== */}
-      <section id="features" className="py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
+      <section id="features" className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-14">
             <h2 className="text-4xl sm:text-5xl font-bold">
@@ -312,9 +333,9 @@ Quedo a la espera para coordinar la sena!`;
             </h2>
           </Reveal>
 
-          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" stagger={0.05}>
+          <Stagger className="flex overflow-x-auto md:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] -mx-5 px-5 md:mx-0 md:px-0" stagger={0.05}>
             {features.map((feat) => (
-              <StaggerItem key={feat.title} className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-6 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
+              <StaggerItem key={feat.title} className="min-w-[260px] md:min-w-0 snap-center shrink-0 bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-6 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
                 <span className="text-3xl mb-3 block">{feat.emoji}</span>
                 <h3 className="font-bold text-lg mb-1">{feat.title}</h3>
                 <p className="text-sm text-[#666]">{feat.desc}</p>
@@ -325,7 +346,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== PARTY CHAT - NUEVO FEATURE ========== */}
-      <section id="party-chat" className="py-24 px-5">
+      <section id="party-chat" className="py-12 md:py-24 px-5">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-14">
             <div className="inline-block bg-[#1a1a1a] text-[#FFF9E0] text-xs font-bold px-4 py-2 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#FF6B9D] uppercase tracking-wider mb-6">
@@ -435,7 +456,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== PARTY CAM - MURO DE FOTOS ========== */}
-      <section id="party-cam" className="py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
+      <section id="party-cam" className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-14">
             <div className="inline-block bg-[#FF8C42] text-[#1a1a1a] text-xs font-bold px-4 py-2 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a] uppercase tracking-wider mb-6">
@@ -546,7 +567,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== PLANES ========== */}
-      <section id="planes" className="py-24 px-5">
+      <section id="planes" className="py-12 md:py-24 px-5">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-14">
             <h2 className="text-4xl sm:text-5xl font-bold">
@@ -626,15 +647,15 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== TESTIMONIOS ========== */}
-      <section className="py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
+      <section className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-14">
             <h2 className="text-4xl sm:text-5xl font-bold">Testimonios 💬</h2>
           </Reveal>
 
-          <Stagger className="grid md:grid-cols-3 gap-6" stagger={0.1}>
+          <Stagger className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] -mx-5 px-5 md:mx-0 md:px-0" stagger={0.1}>
             {testimonials.map((t) => (
-              <StaggerItem key={t.name} className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] p-7 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all">
+              <StaggerItem key={t.name} className="min-w-[280px] md:min-w-0 snap-center shrink-0 bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] p-7 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all">
                 <div className="flex gap-1 text-[#FF8C42] text-lg mb-4">★★★★★</div>
                 <p className="text-[#444] leading-relaxed mb-6">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
@@ -653,7 +674,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== FAQ ========== */}
-      <section id="faq" className="py-24 px-5">
+      <section id="faq" className="py-12 md:py-24 px-5">
         <div className="max-w-3xl mx-auto">
           <Reveal className="text-center mb-14">
             <h2 className="text-4xl sm:text-5xl font-bold">
@@ -685,7 +706,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== CTA FINAL ========== */}
-      <section className="py-24 px-5 bg-[#FF6B9D] border-t-[3px] border-b-[3px] border-[#1a1a1a]">
+      <section className="py-12 md:py-24 px-5 bg-[#FF6B9D] border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <Reveal className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1a1a1a] mb-6">
             Tu invitacion esta a un click ✨
@@ -703,7 +724,7 @@ Quedo a la espera para coordinar la sena!`;
       </section>
 
       {/* ========== FORMULARIO ========== */}
-      <section id="pedido" className="py-24 px-5">
+      <section id="pedido" className="py-12 md:py-24 px-5">
         <div className="max-w-2xl mx-auto">
           <Reveal className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">Contanos de tu evento 📝</h2>
