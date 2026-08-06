@@ -111,7 +111,7 @@ export default function DespedidasLanding() {
         {/* Process Section */}
         <section className="py-24 px-s-container-padding-mobile md:px-s-container-padding-desktop max-w-7xl mx-auto" id="proceso">
           <Reveal className="text-center mb-16">
-            <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Organizarla nunca fue tan fácil</h2>
+            <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4 uppercase">Organizarla nunca fue tan fácil</h2>
           </Reveal>
           <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-s-gutter" stagger={0.15}>
             {/* Step 1 */}
@@ -121,8 +121,8 @@ export default function DespedidasLanding() {
                 <div className="w-12 h-12 rounded-full bg-s-primary/20 flex items-center justify-center border border-s-primary/50 text-s-primary mb-4 shadow-[0_0_15px_rgba(255,174,221,0.2)]">
                   <span className="material-symbols-outlined">shopping_cart</span>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-white">Comprá la plantilla</h3>
-                <p className="font-body-md text-body-md text-s-on-surface-variant">Elegís el diseño "Neón" o "Party", hacés el pago y nos mandás los datos por WhatsApp.</p>
+                <h3 className="font-headline-md text-headline-md text-white">Adquiere la Plantilla</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant">Elige nuestro diseño exclusivo 'Electric Social', realiza el pago y envíanos los detalles por WhatsApp.</p>
               </div>
             </StaggerItem>
             {/* Step 2 */}
@@ -130,10 +130,10 @@ export default function DespedidasLanding() {
               <div className="absolute -right-4 -top-4 text-9xl font-display-lg text-s-surface-variant/30 font-black z-0 group-hover:text-s-tertiary/10 transition-colors">02</div>
               <div className="relative z-10 flex flex-col gap-4">
                 <div className="w-12 h-12 rounded-full bg-s-tertiary/20 flex items-center justify-center border border-s-tertiary/50 text-s-tertiary mb-4 shadow-[0_0_15px_rgba(0,218,243,0.2)]">
-                  <span className="material-symbols-outlined">link</span>
+                  <span className="material-symbols-outlined">visibility</span>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-white">Armamos el Link</h3>
-                <p className="font-body-md text-body-md text-s-on-surface-variant">Cargamos el CBU, el itinerario (previa, cena, boliche) y las preguntas para los invitados.</p>
+                <h3 className="font-headline-md text-headline-md text-white">Preparamos tu Enlace</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant">Configuramos el CBU, el itinerario detallado de la velada y el formulario RSVP para tus invitados.</p>
               </div>
             </StaggerItem>
             {/* Step 3 */}
@@ -143,8 +143,8 @@ export default function DespedidasLanding() {
                 <div className="w-12 h-12 rounded-full bg-s-secondary-container/20 flex items-center justify-center border border-s-secondary-container/50 text-s-secondary-fixed mb-4 shadow-[0_0_15px_rgba(112,0,255,0.2)]">
                   <span className="material-symbols-outlined">send</span>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-white">Pasalo al Grupo</h3>
-                <p className="font-body-md text-body-md text-s-on-surface-variant">Mandás el link al grupo de WhatsApp. Todos transfieren, confirman y saben a qué hora es todo.</p>
+                <h3 className="font-headline-md text-headline-md text-white">Compártelo</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant">Envía el enlace al grupo. Todos podrán transferir, confirmar asistencia y conocer el cronograma al instante.</p>
               </div>
             </StaggerItem>
           </Stagger>
@@ -154,8 +154,8 @@ export default function DespedidasLanding() {
         <section className="py-24 px-s-container-padding-mobile md:px-s-container-padding-desktop bg-s-surface-container-lowest" id="super-poderes">
           <div className="max-w-7xl mx-auto">
             <Reveal className="text-center mb-16">
-              <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4">Súper Poderes de la Plantilla</h2>
-              <p className="font-body-lg text-body-lg text-s-on-surface-variant">Todo lo que necesitas para una noche legendaria.</p>
+              <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4 uppercase">Características Exclusivas</h2>
+              <p className="font-body-lg text-body-lg text-s-on-surface-variant">Todo lo necesario para una celebración legendaria e impecable.</p>
             </Reveal>
             <Stagger className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-s-gutter" stagger={0.1}>
               {/* Feature 1: Fondo Común (Large) */}
@@ -163,48 +163,48 @@ export default function DespedidasLanding() {
                 <div className="absolute right-0 top-0 w-32 h-32 bg-s-primary/20 blur-[50px]"></div>
                 <div className="relative z-10">
                   <span className="material-symbols-outlined text-4xl text-s-primary mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
-                  <h3 className="font-headline-md text-headline-md text-white mb-2">Fondo Común</h3>
-                  <p className="font-body-md text-body-md text-s-on-surface-variant">Muestra CBU/Alias para juntar plata fácil y rápido. Sin excusas.</p>
+                  <h3 className="font-headline-md text-headline-md text-white mb-2 uppercase">Fondo Común</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant">Visualiza CBU/Alias para gestionar los aportes de manera elegante y eficiente. Sin complicaciones.</p>
                 </div>
               </StaggerItem>
               {/* Feature 2: Itinerario */}
               <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
                 <span className="material-symbols-outlined text-3xl text-s-tertiary mb-4">calendar_month</span>
-                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Itinerario</h3>
-                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Línea de tiempo de toda la noche/viaje.</p>
+                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2 uppercase">Itinerario</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Cronograma detallado de cada momento de la celebración.</p>
               </StaggerItem>
               {/* Feature 3: RSVP */}
               <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
                 <span className="material-symbols-outlined text-3xl text-s-secondary-fixed mb-4">fact_check</span>
-                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">RSVP Ampliado</h3>
-                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Consultá dietas, alergias y talles.</p>
+                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2 uppercase">RSVP Ampliado</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Gestión sofisticada de dietas, alergias y preferencias de los invitados.</p>
               </StaggerItem>
               {/* Feature 4: Party Cam (Tall) */}
               <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 relative overflow-hidden group hover:scale-[1.02] transition-transform">
                 <div className="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4oQjmmf6vwVzCoO00gKDBYWtFo7IkOuw-uaE2kDCPqYn_Zr2DxWvYmFO2u6GWn6aRvDIWboQwYAYXzDbmdmnChjZIOWPQx0Ef3VSmt9dlDVMaZcB32RHxxHQLha20WRaNnaJxLPBgB4NjoD2Ng8abWHfN3pSawIWKGqEvHrIuhBB5s6bMNeHrdwalsKbenBFFMs7H8jdOLrbTeY0dK3f1eSztkKXuDtStY3Sfc8UyydUCGumBDm42Kg')" }}></div>
                 <div className="relative z-10 h-full flex flex-col justify-end">
                   <span className="material-symbols-outlined text-3xl text-white mb-4">photo_camera</span>
-                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Party Cam</h3>
-                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Muro en vivo para subir las fotos de la noche.</p>
+                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2 uppercase">Galería en Vivo</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Muro interactivo para compartir instantáneas del evento en tiempo real.</p>
                 </div>
               </StaggerItem>
               {/* Feature 5: Party Chat */}
               <StaggerItem className="md:col-span-1 md:row-span-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
                 <span className="material-symbols-outlined text-3xl text-s-primary mb-4">forum</span>
-                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Party Chat</h3>
-                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Chat privado tipo MSN para la joda.</p>
+                <h3 className="font-headline-md text-headline-md text-white text-lg mb-2 uppercase">Chat Privado</h3>
+                <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Espacio de comunicación exclusivo para los asistentes.</p>
               </StaggerItem>
               {/* Feature 6 & 7: Map & Music (Combined Wide) */}
               <StaggerItem className="md:col-span-2 md:row-span-1 flex flex-col sm:flex-row gap-s-gutter">
                 <div className="flex-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
                   <span className="material-symbols-outlined text-3xl text-s-tertiary mb-4">location_on</span>
-                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Google Maps</h3>
-                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Ubicación exacta del bar/quinta.</p>
+                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2 uppercase">Ubicación</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">Coordenadas exactas del lugar del evento vía Google Maps.</p>
                 </div>
                 <div className="flex-1 bg-s-surface-container-high rounded-xl p-6 border border-white/5 hover:bg-s-surface-bright hover:scale-[1.02] transition-all">
                   <span className="material-symbols-outlined text-3xl text-s-secondary-fixed mb-4">music_note</span>
-                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2">Música</h3>
-                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">La canción que los representa de fondo.</p>
+                  <h3 className="font-headline-md text-headline-md text-white text-lg mb-2 uppercase">Banda Sonora</h3>
+                  <p className="font-body-md text-body-md text-s-on-surface-variant text-sm">La música que define el estilo de la velada de fondo.</p>
                 </div>
               </StaggerItem>
             </Stagger>
@@ -357,7 +357,7 @@ export default function DespedidasLanding() {
             Te Invito 🔥
           </div>
           <div className="text-s-on-surface-variant font-label-caps text-label-caps">
-            © 2026 Te Invito. Organiza la despedida perfecta.
+            © 2026 Te Invito. Organiza tu celebración perfecta.
           </div>
           <nav className="flex gap-4">
             <Link className="text-s-on-surface-variant hover:text-s-primary transition-colors font-label-caps text-label-caps opacity-80 hover:opacity-100" href="#">Privacidad</Link>
