@@ -54,7 +54,7 @@ export default function DespedidasLanding() {
           <span className="material-symbols-outlined text-s-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>celebration</span>
         </div>
         <div className="absolute left-1/2 -translate-x-1/2">
-          <h1 className="font-display-xl text-headline-lg font-extrabold text-s-primary tracking-tighter uppercase">TE INVITO</h1>
+          <h1 className="font-display-xl text-2xl md:text-headline-lg font-extrabold text-s-primary tracking-tighter uppercase">TE INVITO</h1>
         </div>
         <div className="hidden md:flex gap-4">
           <Link href="#proceso" className="font-label-caps text-label-caps text-s-secondary hover:text-s-primary px-4 py-3 uppercase transition-colors">Cómo Funciona</Link>
@@ -355,7 +355,7 @@ export default function DespedidasLanding() {
 
       {/* Footer */}
       <footer className="w-full py-16 px-s-container-padding-mobile md:px-s-container-padding-desktop flex flex-col md:flex-row justify-between items-center gap-s-base bg-s-surface-container-lowest border-t border-s-outline-variant flat">
-        <div className="font-display-xl text-headline-lg font-bold text-s-primary tracking-tighter uppercase">TE INVITO</div>
+        <div className="font-display-xl text-3xl md:text-headline-lg font-bold text-s-primary tracking-tighter uppercase">TE INVITO</div>
         <ul className="flex flex-wrap gap-8 font-label-caps text-label-caps text-s-secondary justify-center md:justify-end">
           <li><Link className="hover:text-s-primary transition-colors text-s-on-surface-variant uppercase" href="#">Privacidad</Link></li>
           <li><Link className="hover:text-s-primary transition-colors text-s-on-surface-variant uppercase" href="#">Términos</Link></li>
