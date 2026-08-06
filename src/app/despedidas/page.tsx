@@ -75,7 +75,7 @@ export default function DespedidasLanding() {
               <h2 className="font-display-xl text-4xl md:text-display-xl text-s-primary mb-8 leading-none silver-gradient-text uppercase">La Mejor<br/>Noche</h2>
               <p className="font-body-md text-s-secondary max-w-2xl mb-12 text-lg">
                 Te Invito redefine la organización de tu despedida con un estilo premium. Combinamos un diseño increíble con herramientas prácticas para que invitar, cobrar y organizar sea mucho más simple y elegante.
-              </p>>
+              </p>
               <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="#pricing" className="btn-chrome font-label-caps text-label-caps px-10 py-5 w-fit uppercase font-bold text-center">Elegir Plan</Link>
                 <Link href="#proceso" className="chrome-border font-label-caps text-label-caps px-10 py-5 w-fit text-s-primary uppercase hover:bg-s-surface-variant transition-colors text-center">Ver Demo</Link>
