@@ -40,10 +40,6 @@ const nextConfig: NextConfig = {
         source: '/',
         destination: '/te-invito-landing.html',
       },
-      {
-        source: '/15anos-clara',
-        destination: '/15anos-clara.html',
-      },
     ]
   },
   async headers() {
