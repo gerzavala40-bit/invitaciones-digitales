@@ -25,7 +25,7 @@ export default async function AdminDashboard() {
 
   const recentRsvps = recentRsvpsRaw.map(r => ({
     guestName: r.guestName,
-    eventName: r.event.title,
+    eventName: r.event?.title || "Desconocido",
     guestCount: r.guestCount,
     confirmed: r.confirmed,
   }));
