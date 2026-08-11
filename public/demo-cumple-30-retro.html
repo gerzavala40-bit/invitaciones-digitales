@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
   
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -104,11 +106,8 @@
     <div class="absolute bottom-[20%] left-[20%] text-white/60 text-xl animate-pulse delay-200">✦</div>
     <div class="absolute top-[50%] right-[10%] text-white/40 text-xl animate-pulse delay-300">✦</div>
 
-    <!-- Disco Ball Image (CSS simulated or SVG) -->
-    <div class="relative w-48 h-48 md:w-64 md:h-64 mb-10 mt-10 animate-on-scroll is-visible">
-      <!-- We use an Unsplash image of a disco ball cropped as a circle -->
-      <div class="absolute inset-0 rounded-full bg-[url('https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center animate-spin-slow box-glow border border-white/20"></div>
-      <div class="absolute inset-0 rounded-full shadow-[0_0_50px_rgba(255,255,255,0.4)] pointer-events-none mix-blend-screen"></div>
+    <!-- Disco Ball 3D Container -->
+    <div id="disco-ball-container" class="relative w-48 h-48 md:w-64 md:h-64 mb-10 mt-10 animate-on-scroll is-visible rounded-full">
       <!-- Hanging wire -->
       <div class="absolute bottom-full left-1/2 w-0.5 h-32 bg-gradient-to-t from-white/40 to-transparent -translate-x-1/2"></div>
     </div>
@@ -124,7 +123,7 @@
     </p>
     
     <!-- Date & Time Layout mimicking the reference -->
-    <div class="flex items-center justify-center gap-6 animate-on-scroll is-visible delay-300">
+    <div class="flex items-center justify-center gap-6 animate-on-scroll is-visible delay-300 p-8 md:px-12 border-2 border-white/20 rounded-[30px] bg-[#111] box-glow mt-4">
       <!-- Date Column -->
       <div class="flex flex-col items-center font-sans text-3xl md:text-4xl">
         <span class="tracking-widest">25</span>
@@ -207,7 +206,7 @@
   <section class="py-24 px-5 w-full max-w-xl mx-auto animate-on-scroll">
     <div class="rounded-[30px] p-8 md:p-12 relative border-2 border-white/20 text-center md:text-left transition-all box-glow bg-[#111]">
       <h3 class="font-groovy text-3xl text-white mb-4 tracking-wider text-glow text-center">¡Confirma tu Asistencia!</h3>
-      <p class="text-sm text-white/70 font-light mb-8 text-center">No me podés fallar. Avisame antes del 10 de Mayo así calculo bien la bebida.</p>
+      <p class="text-sm text-white/70 font-light mb-8 text-center">Avisame antes del 10 de mayo</p>
       
       <form class="space-y-6 text-left">
         <div>
@@ -365,6 +364,100 @@
       iconPlay.classList.remove('hidden');
       iconPlay.classList.add('ml-1');
     });
+
+    // 3. Three.js Disco Ball
+    const container = document.getElementById('disco-ball-container');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x000000, 0.02);
+
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.z = 12;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true;
+    container.appendChild(renderer.domElement);
+
+    // Make canvas fill the container perfectly
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.zIndex = '10';
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.enableZoom = false;
+    controls.enablePan = false;
+
+    const geometry = new THREE.SphereGeometry(7, 32, 32); 
+    const material = new THREE.MeshStandardMaterial({ 
+        color: 0xdddddd,
+        metalness: 1,
+        roughness: 0.1,
+        flatShading: true
+    });
+
+    const discoBall = new THREE.Mesh(geometry, material);
+    
+    const edgesGeometry = new THREE.EdgesGeometry(geometry);
+    const edgesMaterial = new THREE.LineBasicMaterial({ 
+        color: 0x555555,
+        transparent: true,
+        opacity: 0.5
+    });
+    const discoLines = new THREE.LineSegments(edgesGeometry, edgesMaterial);
+    discoBall.add(discoLines); 
+    scene.add(discoBall);
+
+    // Monochrome lighting for the retro black theme
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+    scene.add(hemiLight);
+
+    const lightGroup = new THREE.Group();
+    scene.add(lightGroup);
+
+    function addColorLight(color, x, y, z) {
+        const light = new THREE.DirectionalLight(color, 2);
+        light.position.set(x, y, z);
+        lightGroup.add(light);
+    }
+
+    // White/Silver lights
+    addColorLight(0xffffff, 20, 0, 0);   
+    addColorLight(0xcccccc, -20, 0, 0);  
+    addColorLight(0xeeeeee, 0, 20, 0);   
+    addColorLight(0xaaaaaa, 0, -20, 0);  
+    addColorLight(0xffffff, 0, 0, 20);   
+    addColorLight(0xdddddd, 0, 0, -20);  
+
+    const whiteHighlight = new THREE.DirectionalLight(0xffffff, 2);
+    whiteHighlight.position.set(10, 10, 15);
+    scene.add(whiteHighlight);
+
+    function animate() {
+        requestAnimationFrame(animate);
+        discoBall.rotation.y += 0.005;
+        discoBall.rotation.x += 0.001;
+        
+        lightGroup.rotation.x += 0.006;
+        lightGroup.rotation.y -= 0.008;
+
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    animate();
   </script>
 </body>
 </html>
