@@ -226,7 +226,7 @@
           <input type="text" class="w-full h-12 px-4 border border-white/30 bg-black/50 focus:outline-none focus:border-white transition-colors rounded-xl text-white placeholder:text-white/30" placeholder="Esa que bailás sí o sí..." />
         </div>
         
-        <button type="button" onclick="window.location.href='/dashboard'" class="w-full py-4 mt-6 bg-white text-black font-bold tracking-widest uppercase text-sm rounded-xl hover:bg-gray-200 transition-all hover:scale-105 box-glow">
+        <button type="button" onclick="openCameraModal()" class="w-full py-4 mt-6 bg-white text-black font-bold tracking-widest uppercase text-sm rounded-xl hover:bg-gray-200 transition-all hover:scale-105 box-glow">
           ¡Captura tu confirmacion ya!
         </button>
       </form>
@@ -311,6 +311,27 @@
     <svg id="icon-play" class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
     <svg id="icon-pause" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
   </button>
+
+  <!-- Camera Modal -->
+  <div id="camera-modal" class="fixed inset-0 bg-[#050505]/95 z-[200] hidden flex-col items-center justify-center p-5 backdrop-blur-md">
+    <div class="relative w-full max-w-md bg-[#111] border-2 border-white/20 rounded-[30px] p-6 text-center box-glow flex flex-col items-center">
+      <button onclick="closeCameraModal()" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 class="font-groovy text-2xl text-white mb-2 tracking-wider text-glow mt-4">¡Sonreí para confirmar! 📸</h3>
+      <p class="text-xs text-white/70 font-light mb-6">Te sacamos una foto para el cumpleañero</p>
+      
+      <div class="relative w-full aspect-[3/4] bg-black rounded-xl overflow-hidden mb-6 border border-white/30">
+        <video id="camera-feed" class="w-full h-full object-cover transform scale-x-[-1]" autoplay playsinline></video>
+        <canvas id="camera-canvas" class="hidden"></canvas>
+      </div>
+
+      <button id="btn-take-photo" onclick="takePhoto()" class="w-full py-4 bg-white text-black font-bold tracking-widest uppercase text-sm rounded-xl hover:bg-gray-200 transition-all hover:scale-105 box-glow flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        Sacar Foto y Enviar
+      </button>
+    </div>
+  </div>
 
   <!-- HTML5 Audio -->
   <audio id="wedding-audio" preload="none">
@@ -490,6 +511,64 @@
         initDiscoBall();
     } else {
         window.addEventListener('load', initDiscoBall);
+    }
+
+    // 4. Camera Logic
+    const cameraModal = document.getElementById('camera-modal');
+    const cameraFeed = document.getElementById('camera-feed');
+    const cameraCanvas = document.getElementById('camera-canvas');
+    const btnTakePhoto = document.getElementById('btn-take-photo');
+    let stream = null;
+
+    function openCameraModal() {
+      cameraModal.classList.remove('hidden');
+      cameraModal.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+      
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+        .then(s => {
+          stream = s;
+          cameraFeed.srcObject = stream;
+        })
+        .catch(err => {
+          console.error("Camera error:", err);
+          alert("No se pudo acceder a la cámara. Te redirigimos al panel de todas formas.");
+          window.location.href = '/dashboard';
+        });
+    }
+
+    function closeCameraModal() {
+      cameraModal.classList.add('hidden');
+      cameraModal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    }
+
+    function takePhoto() {
+      // Flash effect
+      const modalBg = cameraModal.firstElementChild;
+      const originalBg = modalBg.style.backgroundColor;
+      modalBg.style.backgroundColor = 'white';
+      setTimeout(() => modalBg.style.backgroundColor = originalBg, 150);
+
+      // Take picture
+      const context = cameraCanvas.getContext('2d');
+      cameraCanvas.width = cameraFeed.videoWidth;
+      cameraCanvas.height = cameraFeed.videoHeight;
+      context.drawImage(cameraFeed, 0, 0, cameraCanvas.width, cameraCanvas.height);
+      
+      // Stop video
+      if (stream) stream.getTracks().forEach(track => track.stop());
+      
+      btnTakePhoto.innerHTML = "¡Enviando...!";
+      
+      // Simulate upload and redirect
+      setTimeout(() => {
+         alert("¡Foto y confirmación enviadas con éxito! Serás redirigido al panel de administrador (Demo).");
+         window.location.href = '/dashboard';
+      }, 1500);
     }
   </script>
 </body>
