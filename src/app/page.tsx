@@ -333,9 +333,9 @@ Quedo a la espera para coordinar la sena!`;
             </h2>
           </Reveal>
 
-          <Stagger className="flex overflow-x-auto md:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] -mx-5 px-5 md:mx-0 md:px-0" stagger={0.05}>
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pb-8 place-items-stretch" stagger={0.05}>
             {features.map((feat) => (
-              <StaggerItem key={feat.title} className="min-w-[260px] md:min-w-0 snap-center shrink-0 bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-6 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
+              <StaggerItem key={feat.title} className="w-full bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-6 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
                 <span className="text-3xl mb-3 block">{feat.emoji}</span>
                 <h3 className="font-bold text-lg mb-1">{feat.title}</h3>
                 <p className="text-sm text-[#666]">{feat.desc}</p>
@@ -653,9 +653,9 @@ Quedo a la espera para coordinar la sena!`;
             <h2 className="text-4xl sm:text-5xl font-bold">Testimonios 💬</h2>
           </Reveal>
 
-          <Stagger className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] -mx-5 px-5 md:mx-0 md:px-0" stagger={0.1}>
+          <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8 place-items-stretch" stagger={0.1}>
             {testimonials.map((t) => (
-              <StaggerItem key={t.name} className="min-w-[280px] md:min-w-0 snap-center shrink-0 bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] p-7 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all">
+              <StaggerItem key={t.name} className="w-full bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] p-7 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all">
                 <div className="flex gap-1 text-[#FF8C42] text-lg mb-4">★★★★★</div>
                 <p className="text-[#444] leading-relaxed mb-6">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
