@@ -25,7 +25,7 @@ export default function OnboardingQuiz({ isOpen, onClose, onComplete }: { isOpen
     if (event === "Boda") {
       if (v === "Elegante") recommendedStyle = "Elegante Oscuro";
       if (v === "Romántico") recommendedStyle = "Floral Claro";
-      if (v === "Boho") recommendedStyle = "Boda Boho / Canva";
+      if (v === "Boho") recommendedStyle = "Boda Premium";
     } else if (event === "15 Años") {
       recommendedStyle = "15 Años Glam";
     } else if (event === "Bautismo / Baby Shower") {

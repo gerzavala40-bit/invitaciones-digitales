@@ -1,475 +1,557 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-<script>
-  if (window.location.search.includes('preview=1')) {
-    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
-    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
-    document.addEventListener('DOMContentLoaded', function() {
-      var audios = document.querySelectorAll('audio, video');
-      for (var i = 0; i < audios.length; i++) {
-        audios[i].remove();
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentina & Tomás - Nuestra Boda</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lato:wght@300;400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wedding: {
+              bg: '#FDFBF7',
+              text: '#2C3E35', // Deep Forest Green
+              accent: '#C4A47C', // Soft Gold
+              accentLight: '#E8DCCB',
+              dark: '#1A241F'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Lato', 'sans-serif'],
+            cursive: ['"Pinyon Script"', 'cursive'],
+          },
+          boxShadow: {
+            'elegant': '0 20px 40px -15px rgba(44, 62, 53, 0.1)',
+          }
+        }
       }
-    });
-  }
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación Fusión Premium</title>
-  
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;900&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-    /* VARIABLES FUSIÓN OSCURA / DORADA */
-    :root {
-      --bg: #0C0A09;
-      --bg-soft: #161210;
-      --text: #F5EFE4;
-      --text-muted: rgba(245, 239, 228, 0.55);
-      --gold: #C9A84C;
-      --gold-dim: rgba(201, 168, 76, 0.3);
-      --font-body: 'Montserrat', sans-serif;
-      --font-script: 'Great Vibes', cursive;
     }
-
+  </script>
+  
+  <style>
     body {
-      font-family: var(--font-body);
-      color: var(--text);
-      background: var(--bg);
+      background-color: #FDFBF7;
+      color: #2C3E35;
     }
-
-    /* Botón de Audio Flotante */
-    .audio-btn {
-      position: fixed; top: 20px; right: 20px; z-index: 999;
-      background: rgba(12, 10, 9, 0.8); border-radius: 50%;
-      border: 1px solid var(--gold);
-      width: 50px; height: 50px; display: flex;
-      align-items: center; justify-content: center;
-      cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      color: var(--gold);
-      transition: all 0.3s ease;
-      animation: pulse-music 2s infinite;
-    }
-    .audio-btn:hover { background: var(--gold); color: var(--bg); }
-    @keyframes pulse-music {
-      0% { box-shadow: 0 0 0 0 rgba(201,168,76, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(201,168,76, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(201,168,76, 0); }
-    }
-
-    /* Portada Parallax Híbrida */
-    .parallax-portada {
-      height: 100vh;
-      background-image: url('novia (5).webp');
-      background-attachment: fixed;
+    
+    .hero-bg {
+      background-image: linear-gradient(to bottom, rgba(26,36,31,0.4), rgba(26,36,31,0.7)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
       background-position: center;
-      background-size: cover;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    /* Filtro Oscuro sobre la foto */
-    .parallax-portada::before {
-      content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-      background: rgba(12, 10, 9, 0.65); /* Filtro negro elegante */
-      z-index: 0;
-    }
-    
-    .logo-portada {
-      position: relative;
-      z-index: 1;
-      padding: 40px; text-align: center;
-    }
-    .logo-portada p { 
-      letter-spacing: 5px; font-weight: 300; color: var(--gold); 
-      margin-bottom: 5px; font-size: 0.9rem; text-transform: uppercase;
-    }
-    .logo-portada h1 { 
-      font-weight: 400; font-size: 4.5rem; line-height: 1; 
-      color: var(--text); margin: 0; font-family: var(--font-script);
-      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    }
-    .logo-portada h1 span { color: var(--gold); font-size: 0.7em; margin: 0 10px; }
-
-    /* Flecha de Scroll Animada */
-    .scroll-down {
-      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
-    }
-    .scroll-down .mouse {
-      width: 24px; height: 38px; border: 2px solid var(--gold); border-radius: 12px; position: relative;
-    }
-    .scroll-down .mouse::before {
-      content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
-      width: 4px; height: 4px; background: var(--gold); border-radius: 50%;
-      animation: scrolldown 1.5s infinite;
-    }
-    @keyframes scrolldown {
-      0% { transform: translate(-50%, 0); opacity: 1; }
-      100% { transform: translate(-50%, 15px); opacity: 0; }
-    }
-
-    /* Cuenta Regresiva Limpia pero Oscura */
-    .cuenta-regresiva { padding: clamp(60px, 8vw, 100px) 0; text-align: center; background: var(--bg-soft); overflow: hidden; }
-    .num_cuenta { font-size: clamp(2.2rem, 8vw, 3.5rem); font-weight: 300; margin: 0; line-height: 1; color: var(--gold); }
-    .text_cuenta { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: 8px; font-weight: 400; }
-    
-    /* Ceremonia y Fiesta */
-    .ceremonia-fiesta { padding: clamp(60px, 8vw, 100px) 0; text-align: center; overflow: hidden; }
-    .btn-custom {
-      background: transparent; border: 1px solid var(--gold);
-      color: var(--gold); padding: 12px 35px; text-transform: uppercase;
-      font-size: 0.8rem; font-weight: 400; letter-spacing: 2px;
-      margin-top: 30px; transition: all 0.4s;
-      border-radius: 50px; /* Botón redondeado elegante */
-    }
-    .btn-custom:hover { background: var(--gold); color: var(--bg); box-shadow: 0 5px 20px var(--gold-dim); }
-    .icono-grande { color: var(--gold); margin-bottom: 25px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
-
-    /* Galería */
-    .galeria { padding: clamp(60px, 8vw, 100px) 0; background: var(--bg-soft); text-align: center; overflow: hidden; }
-    .title-galery { font-weight: 300; letter-spacing: 4px; margin-bottom: 40px; color: var(--gold); text-transform: uppercase; }
-    .item-galeria img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; transition: transform 0.4s; border-radius: 5px; }
-    .item-galeria img:hover { transform: scale(1.02); }
-
-    /* CBU / Regalos */
-    .cbu { padding: clamp(60px, 8vw, 100px) 0; text-align: center; overflow: hidden; }
-
-    /* Confirmar Asistencia Parallax */
-    .confirmar {
-      padding: clamp(80px, 10vw, 130px) 0; text-align: center;
-      background-image: url('hero_bg_exact.jpg');
       background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      color: var(--text); position: relative;
-      overflow: hidden;
     }
-    .confirmar::before {
-      content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-      background: rgba(12, 10, 9, 0.85);
-    }
-    .confirmar .container { position: relative; z-index: 1; }
-    .confirmar h4 { font-weight: 300; letter-spacing: 3px; color: var(--gold); margin-bottom: 15px; }
 
-    /* Modal / Popup */
-    .modal-content { 
-      border-radius: 12px; 
-      padding: 40px; 
-      background: rgba(22, 18, 16, 0.75); 
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(201, 168, 76, 0.25); 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      word-wrap: break-word;
+    .elegant-card {
+      background: #FFFFFF;
+      border: 1px solid #E8DCCB;
     }
-    .modal-content h5 { font-weight: 400; letter-spacing: 2px; color: var(--gold); margin-bottom: 25px; }
-    
-    /* Footer */
-    footer { padding: 60px 0; text-align: center; background: #000; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-    
-    @media (max-width: 768px) {
-      .num_cuenta { font-size: 2.2rem; }
-      .logo-portada h1 { font-size: 3.5rem; }
-      .text_cuenta { font-size: 0.7rem; }
-    }
-  </style>
 
-  
-
-  <!-- SPLASH SCREEN CSS -->
-  <style>
-    body.locked {
-      overflow: hidden;
-      height: 100vh;
-    }
-    .splash-screen {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: #fafafa;
-      background-image: url('boda-floral.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      z-index: 99999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 12vh;
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
-    }
-    @media (min-width: 768px) {
-      .splash-screen {
-        background-size: contain;
-      }
-    }
-    .splash-screen.slide-up {
-      transform: translateY(-100%);
+    /* Scroll Animations */
+    .animate-on-scroll {
       opacity: 0;
-      pointer-events: none;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
     }
-    .splash-content {
-      text-align: center;
-      animation: fadeIn 2s ease forwards;
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+
+    /* Carousel */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 60vh;
+      min-height: 400px;
     }
-    .btn-abrir {
-      background: rgba(255, 255, 255, 0.95);
-      color: #333;
-      border: 1px solid #555;
-      padding: 15px 40px;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      margin-bottom: 15px;
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
     }
-    .btn-abrir:hover {
-      background: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
-    .splash-hint {
-      color: #666;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin: 0;
+    .carousel-slide.active {
+      opacity: 1;
     }
   </style>
-
-<style>
-  /* Global fix for mobile text overflow */
-  @media (max-width: 768px) {
-    h1, h2, h3, h4, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl, .font-display-xl, .font-headline-lg {
-      font-size: clamp(1.75rem, 8vw, 3rem) !important;
-      line-height: 1.1 !important;
-      word-break: break-word !important;
-      overflow-wrap: break-word !important;
-    }
-    body, html {
-      overflow-x: hidden !important;
-    }
-  }
-</style>
-
 </head>
+<body class="font-sans antialiased overflow-hidden">
 
-<body class="locked">
-  
-  <!-- SPLASH SCREEN ENVELOPE -->
-  <div id="splashScreen" class="splash-screen">
-    <div class="splash-content">
-      <button id="btnOpenInvite" class="btn-abrir">ABRIR INVITACIÓN</button>
-      
+  <!-- WELCOME OVERLAY -->
+  <div id="welcome-overlay" class="fixed inset-0 bg-wedding-dark z-[100] flex flex-col items-center justify-center text-center px-5 transition-opacity duration-1000">
+    <div class="animate-pulse mb-8">
+      <svg class="w-12 h-12 text-wedding-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
     </div>
+    <h2 class="font-cursive text-5xl md:text-7xl mb-6 text-wedding-accent">Valentina & Tomás</h2>
+    <p class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-white/80 mb-12">Te invitan a su boda</p>
+    <button id="open-invite-btn" class="px-10 py-5 bg-wedding-accent text-wedding-dark text-xs uppercase tracking-widest font-bold hover:bg-white transition-all hover:scale-105 shadow-[0_0_30px_rgba(196,164,124,0.3)]">
+      Abrir Invitación
+    </button>
   </div>
 
-  <!-- Audio Botón -->
-  <div class="audio-btn" id="btnMusic">
-    <i class="fas fa-music" id="iconMusic"></i>
-  </div>
-  <audio id="music" src="camila.mp3" loop></audio>
-
-  <!-- Portada Híbrida -->
-  
-
-  
-  
-  
-  
-
-  
-  <!-- Contacto / Demo Info (Injected) -->
-  <style>
-    .contacto-footer-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .contacto-col { flex: 1; }
-    @media (min-width: 768px) {
-      .contacto-footer-wrap {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-    .contacto-footer h5 {
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      color: #222;
-      text-transform: uppercase;
-    }
-    .contacto-footer p {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #666;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
-    .contacto-footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #555;
-      line-height: 2.2;
-    }
-    .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
-  </style>
-  <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
-    <div class="contacto-footer-wrap">
-      <div class="contacto-col">
-        <h5>¿Te gustó la invitación?</h5>
-        <p>¡Contactate y pedí la tuya!</p>
-        <ul>
-          <li><i class="fab fa-whatsapp" style="color: #61ce70; width: 30px; text-align: center;"></i> <a href="https://wa.me/5493425299942">¡Envianos un Whatsapp!</a></li>
-          <li><i class="fas fa-phone-alt" style="color: #333; width: 30px; text-align: center;"></i> +549 342 5299942</li>
-          <li><i class="fas fa-envelope" style="color: #333; width: 30px; text-align: center;"></i> teinvitoapp@gmail.com</li>
-        </ul>
+  <!-- HERO SECTION -->
+  <section class="relative h-screen min-h-[700px] flex flex-col items-center justify-center text-center hero-bg text-white px-5">
+    <div class="mb-8 tracking-[0.4em] text-xs uppercase text-wedding-accent font-semibold animate-on-scroll is-visible">
+      Nos casamos
+    </div>
+    
+    <h1 class="font-cursive text-7xl md:text-9xl mb-4 drop-shadow-xl animate-on-scroll is-visible delay-100">
+      Valentina <br class="md:hidden" /><span class="font-serif text-4xl md:text-6xl mx-4 text-wedding-accent">&</span><br class="md:hidden" /> Tomás
+    </h1>
+    
+    <!-- Interactive Wedding Icon -->
+    <div class="my-8 group cursor-pointer animate-on-scroll is-visible delay-200">
+      <div class="relative flex items-center justify-center w-20 h-20 rounded-full bg-wedding-accent/5 border border-wedding-accent/20 backdrop-blur-sm transition-all duration-500 group-hover:bg-wedding-accent/10 group-hover:border-wedding-accent/50 group-hover:scale-105 shadow-[0_0_15px_rgba(196,164,124,0)] group-hover:shadow-[0_0_25px_rgba(196,164,124,0.3)]">
+        <!-- Bride and Groom SVG -->
+        <svg class="w-12 h-12 text-wedding-accent transition-transform duration-500 group-hover:-translate-y-1" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Groom Head & Hair -->
+          <circle cx="24" cy="20" r="4.5" />
+          <path d="M19.5 19c0-4 4.5-5.5 8-3.5-1.5-1.5-5-2-7.5-.5-1 1-1.5 2.5-.5 4z" fill="currentColor" stroke="none" />
+          <!-- Groom Body -->
+          <path d="M24 28l-5 24h10l-5-24z" />
+          <path d="M24 28l-4.5 10 4.5 5 4.5-5-4.5-10z" />
+          <path d="M19 28c-2 0-3 2-3 9h4.5 M29 28c2 0 3 2 3 9h-4.5" />
+          <!-- Bowtie -->
+          <path d="M22 26l2 1.5 2-1.5-2-1.5z" fill="currentColor" stroke="none" />
+          <!-- Bride Head & Bun -->
+          <circle cx="44" cy="20" r="4.5" />
+          <path d="M41 15c0-3 6-3 6 0" />
+          <!-- Bride Dress & Arms -->
+          <path d="M44 28c-2 2-8 10-10 24h20c-2-14-8-22-10-24z" />
+          <path d="M40 28c-2-2-4-2-4 6 M48 28c2-2 4-2 4 6" />
+          <!-- Dress Ruffles -->
+          <path d="M34 52c1.5-1 2.5-1 4 0 1.5-1 2.5-1 4 0 1.5-1 2.5-1 4 0 1.5-1 2.5-1 4 0" />
+        </svg>
       </div>
-      <div class="contacto-col">
-        <h5>Seguinos en Instagram</h5>
-        
-        <ul>
-          <li><i class="fab fa-instagram" style="color: #555; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
-        </ul>
+    </div>
+    
+    <p class="font-serif text-xl md:text-2xl tracking-widest uppercase mb-2 animate-on-scroll is-visible delay-300">
+      15 · 11 · 2026
+    </p>
+    <p class="text-xs md:text-sm tracking-[0.2em] uppercase text-white/80 animate-on-scroll is-visible delay-300">
+      Buenos Aires, Argentina
+    </p>
+    
+    <div class="absolute bottom-10 animate-bounce">
+      <svg class="w-6 h-6 text-wedding-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SECTION -->
+  <section class="py-24 px-5 max-w-4xl mx-auto text-center animate-on-scroll">
+    <h2 class="font-serif text-3xl md:text-4xl text-wedding-dark mb-4">El gran día</h2>
+    <p class="text-sm text-wedding-text/70 mb-16 font-light uppercase tracking-widest">Cuenta regresiva</p>
+    
+    <div class="flex justify-center gap-4 md:gap-10">
+      <div class="flex flex-col items-center">
+        <span class="font-serif text-4xl md:text-6xl text-wedding-dark mb-2">45</span>
+        <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-wedding-accent">Días</span>
+      </div>
+      <div class="w-px h-16 bg-wedding-accentLight/50 my-auto"></div>
+      <div class="flex flex-col items-center">
+        <span class="font-serif text-4xl md:text-6xl text-wedding-dark mb-2">08</span>
+        <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-wedding-accent">Horas</span>
+      </div>
+      <div class="w-px h-16 bg-wedding-accentLight/50 my-auto"></div>
+      <div class="flex flex-col items-center">
+        <span class="font-serif text-4xl md:text-6xl text-wedding-dark mb-2">30</span>
+        <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-wedding-accent">Min</span>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- LOCATION & MAP SECTION -->
+  <section class="py-20 px-5 max-w-6xl mx-auto bg-wedding-dark text-white rounded-t-full mt-10 animate-on-scroll" style="border-top-left-radius: 200px; border-top-right-radius: 200px;">
+    <div class="pt-24 text-center mb-16">
+      <h2 class="font-serif text-3xl md:text-4xl mb-4 text-wedding-accent">Dónde y Cuándo</h2>
+      <p class="text-sm text-white/70 font-light max-w-lg mx-auto">Te esperamos para compartir juntos este momento tan especial.</p>
+    </div>
 
-  <footer>
-    <p>Invitaciones Digitales 2026. Todos los derechos reservados.</p>
+    <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto pb-20">
+      
+      <!-- Ceremony -->
+      <div class="text-center p-8 border border-wedding-accent/20 rounded-3xl relative animate-on-scroll delay-100">
+        <div class="w-16 h-16 mx-auto rounded-full bg-wedding-accent/10 flex items-center justify-center text-wedding-accent mb-6 transition-transform hover:scale-110 hover:bg-wedding-accent/20">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v19M9 6h6M8 10h8M5 14h14M3 18h18" /></svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-2 text-wedding-accent">Ceremonia</h3>
+        <p class="text-sm font-bold tracking-widest uppercase mb-4 text-white/90">19:30 Horas</p>
+        <p class="text-sm font-light text-white/70 mb-8">Parroquia San Benito Abad<br/>Villanueva 905, CABA</p>
+        <button class="px-8 py-3 rounded-none border border-wedding-accent text-wedding-accent text-xs uppercase tracking-widest hover:bg-wedding-accent hover:text-wedding-dark transition-colors">
+          Ver Mapa
+        </button>
+      </div>
+      
+      <!-- Party -->
+      <div class="text-center p-8 border border-wedding-accent/20 rounded-3xl relative bg-wedding-accent/5 animate-on-scroll delay-200">
+        <div class="w-16 h-16 mx-auto rounded-full bg-wedding-accent flex items-center justify-center text-wedding-dark mb-6 transition-transform hover:scale-110 hover:bg-wedding-accent/80">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" /></svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-2 text-wedding-accent">Fiesta</h3>
+        <p class="text-sm font-bold tracking-widest uppercase mb-4 text-white/90">21:00 Horas</p>
+        <p class="text-sm font-light text-white/70 mb-8">Salón La Herencia<br/>Ruta 25 Km 4.5, Pilar</p>
+        <button class="px-8 py-3 rounded-none bg-wedding-accent text-wedding-dark text-xs uppercase tracking-widest hover:bg-white transition-colors">
+          Ver Mapa
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ITINERARY SECTION -->
+  <section class="py-24 px-5 max-w-4xl mx-auto animate-on-scroll">
+    <div class="text-center mb-16">
+      <h2 class="font-serif text-3xl md:text-4xl mb-4 text-wedding-dark">Itinerario</h2>
+      <p class="text-sm text-wedding-text/70 font-light">Los momentos más importantes de nuestro día.</p>
+    </div>
+    
+    <div class="max-w-md mx-auto relative border-l-2 border-wedding-accentLight/50 ml-4 md:mx-auto md:border-none">
+      <!-- Desktop center line -->
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-wedding-accentLight/50 -translate-x-1/2"></div>
+      
+      <!-- Event 1 -->
+      <div class="relative pl-8 md:pl-0 mb-14 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 md:pr-12 md:text-right w-full mb-2 md:mb-0">
+          <h3 class="font-serif text-2xl text-wedding-accent">Ceremonia</h3>
+          <p class="text-sm font-bold tracking-widest uppercase text-wedding-dark mt-2">19:30 HS</p>
+        </div>
+        <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-wedding-accent -translate-x-[9px] md:-translate-x-1/2 mt-1 md:mt-0 shadow-lg z-10"></div>
+        <div class="md:w-1/2 md:pl-12 w-full text-left">
+          <p class="text-sm text-wedding-text/70 font-light">Nos damos el sí y compartimos nuestra unión.</p>
+        </div>
+      </div>
+      
+      <!-- Event 2 -->
+      <div class="relative pl-8 md:pl-0 mb-14 flex flex-col md:flex-row-reverse items-center">
+        <div class="md:w-1/2 md:pl-12 md:text-left w-full mb-2 md:mb-0">
+          <h3 class="font-serif text-2xl text-wedding-accent">Recepción</h3>
+          <p class="text-sm font-bold tracking-widest uppercase text-wedding-dark mt-2">21:00 HS</p>
+        </div>
+        <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-wedding-bg border-4 border-wedding-accent -translate-x-[9px] md:-translate-x-1/2 mt-1 md:mt-0 shadow-lg z-10"></div>
+        <div class="md:w-1/2 md:pr-12 w-full md:text-right text-left">
+          <p class="text-sm text-wedding-text/70 font-light">Comenzamos a celebrar con unos ricos cócteles.</p>
+        </div>
+      </div>
+      
+      <!-- Event 3 -->
+      <div class="relative pl-8 md:pl-0 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 md:pr-12 md:text-right w-full mb-2 md:mb-0">
+          <h3 class="font-serif text-2xl text-wedding-accent">Fiesta</h3>
+          <p class="text-sm font-bold tracking-widest uppercase text-wedding-dark mt-2">22:30 HS</p>
+        </div>
+        <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-wedding-accent -translate-x-[9px] md:-translate-x-1/2 mt-1 md:mt-0 shadow-lg z-10"></div>
+        <div class="md:w-1/2 md:pl-12 w-full text-left">
+          <p class="text-sm text-wedding-text/70 font-light">¡A bailar y disfrutar toda la noche sin parar!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESS CODE SECTION -->
+  <section class="py-20 px-5 max-w-3xl mx-auto text-center animate-on-scroll">
+    <div class="elegant-card shadow-elegant p-10 md:p-16 relative bg-wedding-accentLight/5 border border-wedding-accent/20">
+      <div class="w-12 h-12 mx-auto text-wedding-accent mb-6 animate-pulse">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19.5 10.5h-15m15 0a2.25 2.25 0 012.25 2.25v6a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.25 18.75v-6a2.25 2.25 0 012.25-2.25m15 0H2.25" /></svg>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl text-wedding-dark mb-4">Dress Code</h2>
+      <p class="text-xs md:text-sm tracking-[0.2em] uppercase font-bold text-wedding-accent mb-6">Elegante / Formal</p>
+      <p class="text-sm text-wedding-text/80 font-light max-w-sm mx-auto leading-relaxed">
+        Queremos que te sientas cómodo, pero con ese toque elegante que amerita la ocasión.<br><br><span class="italic font-medium text-wedding-dark">Por favor, sugerimos evitar vestimentas de color blanco.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- RSVP SECTION -->
+  <section class="py-24 px-5 w-full max-w-xl mx-auto animate-on-scroll">
+    <div class="elegant-card shadow-elegant rounded-sm p-8 md:p-12 relative border-t-4 border-t-wedding-accent text-center md:text-left transition-all hover:shadow-2xl">
+      <h3 class="font-serif text-3xl text-wedding-dark mb-4">Confirmación de Asistencia</h3>
+      <p class="text-sm text-wedding-text/80 font-light mb-8">Esperamos contar con tu presencia. Por favor, confirmanos antes del 1 de Noviembre.</p>
+      
+      <form class="space-y-6 text-left">
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-wedding-dark mb-2">Nombre y Apellido</label>
+          <input type="text" class="w-full h-12 px-0 border-b border-wedding-accentLight bg-transparent focus:outline-none focus:border-wedding-accent transition-colors rounded-none" placeholder="Ej: Familia Rossi" />
+        </div>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-wedding-dark mb-2">Asistencia</label>
+          <div class="relative mb-6">
+            <select class="w-full h-12 px-0 border-b border-wedding-accentLight bg-transparent appearance-none focus:outline-none focus:border-wedding-accent text-sm rounded-none">
+              <option>Sí, asistiré</option>
+              <option>No podré asistir</option>
+            </select>
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+              <svg class="w-4 h-4 text-wedding-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-wedding-dark mb-2">Adultos</label>
+            <div class="relative">
+              <select class="w-full h-12 px-0 border-b border-wedding-accentLight bg-transparent appearance-none focus:outline-none focus:border-wedding-accent text-sm rounded-none">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                <svg class="w-4 h-4 text-wedding-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-wedding-dark mb-2">Niños</label>
+            <div class="relative">
+              <select class="w-full h-12 px-0 border-b border-wedding-accentLight bg-transparent appearance-none focus:outline-none focus:border-wedding-accent text-sm rounded-none">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+              <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                <svg class="w-4 h-4 text-wedding-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-wedding-dark mb-2">Menú especial</label>
+          <input type="text" class="w-full h-12 px-0 border-b border-wedding-accentLight bg-transparent focus:outline-none focus:border-wedding-accent transition-colors rounded-none" placeholder="Vegetariano, celíaco, etc (Opcional)" />
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-wedding-dark mb-2">¿Qué música no puede faltar?</label>
+          <input type="text" class="w-full h-12 px-0 border-b border-wedding-accentLight bg-transparent focus:outline-none focus:border-wedding-accent transition-colors rounded-none" placeholder="Esa canción que te hace bailar..." />
+        </div>
+        
+        <button type="button" class="w-full py-4 mt-4 bg-wedding-dark hover:bg-wedding-text transition-colors text-wedding-accent font-serif tracking-widest uppercase text-sm">
+          Enviar Confirmación
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- MESSAGE SECTION -->
+  <section class="py-20 px-5 max-w-4xl mx-auto animate-on-scroll">
+    <div class="elegant-card shadow-elegant p-10 md:p-16 text-center bg-white relative overflow-hidden transition-all hover:shadow-2xl">
+      <h2 class="font-serif text-3xl md:text-4xl text-wedding-dark mb-4">Un mensaje especial</h2>
+      <p class="text-sm text-wedding-text/80 font-light mb-10 max-w-lg mx-auto">
+        Dejanos tus buenos deseos, consejos o simplemente unas palabras lindas.
+      </p>
+      
+      <form class="max-w-lg mx-auto">
+        <textarea class="w-full aspect-square md:aspect-auto md:h-64 p-6 border border-wedding-accentLight bg-wedding-bg focus:outline-none focus:border-wedding-accent transition-colors resize-none text-center font-serif text-lg text-wedding-dark placeholder:text-wedding-dark/30" placeholder="Escribí tu mensaje acá..."></textarea>
+        <button type="button" class="mt-6 px-8 py-4 bg-wedding-dark text-wedding-accent text-xs uppercase tracking-widest hover:bg-wedding-text transition-colors shadow-lg w-full md:w-auto">
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- GIFTS SECTION -->
+  <section class="py-20 px-5 max-w-4xl mx-auto animate-on-scroll">
+    <div class="elegant-card shadow-elegant p-10 md:p-16 text-center bg-white relative overflow-hidden transition-all hover:shadow-2xl">
+      <div class="w-12 h-12 mx-auto text-wedding-accent mb-6 animate-pulse">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" /></svg>
+      </div>
+      
+      <h2 class="font-serif text-3xl md:text-4xl text-wedding-dark mb-4">Regalos</h2>
+      <p class="text-sm text-wedding-text/80 font-light mb-10 max-w-lg mx-auto">
+        El mejor regalo es tu presencia, pero si deseás ayudarnos con nuestra luna de miel, podés hacerlo.
+      </p>
+      
+      <button class="px-8 py-4 bg-wedding-accent text-wedding-dark text-xs uppercase tracking-widest hover:bg-wedding-dark hover:text-wedding-accent transition-colors shadow-lg">
+        Ver datos bancarios
+      </button>
+    </div>
+  </section>
+
+  <!-- PHOTO CAROUSEL SECTION -->
+  <section class="py-24 px-5 max-w-6xl mx-auto text-center animate-on-scroll">
+    <h2 class="font-serif text-3xl md:text-4xl text-wedding-dark mb-4">Nuestros Momentos</h2>
+    <div class="w-16 h-px bg-wedding-accent mx-auto mb-12"></div>
+    
+    <div class="carousel-container rounded-3xl shadow-elegant mx-auto max-w-4xl">
+      <!-- Image 1 -->
+      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="carousel-slide active" alt="Gallery 1">
+      <!-- Image 2 -->
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="carousel-slide" alt="Gallery 2">
+      
+      <!-- Overlay gradient -->
+      <div class="absolute inset-0 bg-gradient-to-t from-wedding-dark/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+    </div>
+  </section>
+
+  <!-- VALOR DE TARJETA SECTION (Para invitados) -->
+  <section class="py-16 px-5 max-w-4xl mx-auto text-center animate-on-scroll">
+    <div class="elegant-card shadow-elegant p-10 md:p-12 bg-wedding-accentLight/10 relative overflow-hidden border-wedding-accent/30 transition-all hover:shadow-2xl">
+      <div class="w-12 h-12 mx-auto text-wedding-accent mb-4 transition-transform hover:scale-110">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
+      </div>
+      <h2 class="font-serif text-3xl text-wedding-dark mb-4">Valor de la Tarjeta</h2>
+      <p class="text-sm text-wedding-text/80 font-light mb-8 max-w-lg mx-auto">
+        Para acompañarnos en esta noche tan especial, te pedimos que abones el valor del cubierto.
+      </p>
+      <button class="px-8 py-4 bg-wedding-dark text-wedding-accent text-xs uppercase tracking-widest hover:bg-wedding-text transition-colors shadow-lg w-full md:w-auto">
+        Ver valor y métodos de pago
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-16 text-center bg-wedding-dark text-white animate-on-scroll">
+    <h2 class="font-cursive text-5xl mb-6 text-wedding-accent">Valentina & Tomás</h2>
+    <p class="text-[9px] font-bold tracking-[0.4em] uppercase text-white/50 mb-12">
+      15 de Noviembre 2026 • ¡Te esperamos!
+    </p>
+
+    <!-- App Links -->
+    <div class="flex flex-col items-center justify-center gap-5 text-sm font-light text-white/80 border-t border-white/10 pt-10 mt-6">
+      <p class="text-[10px] uppercase tracking-[0.2em] text-wedding-accent mb-2 font-bold">¿Te gustó este diseño para tu evento?</p>
+      <a href="https://instagram.com/teinvitoapp" target="_blank" class="flex items-center gap-3 hover:text-wedding-accent transition-colors">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @teinvitoapp
+      </a>
+      <a href="https://www.teinvitoapp.com.ar" target="_blank" class="flex items-center gap-3 hover:text-wedding-accent transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+        www.teinvitoapp.com.ar
+      </a>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Configuración de Música
-    const musicBtn = document.getElementById('btnMusic');
-    const musicIcon = document.getElementById('iconMusic');
-    const audio = document.getElementById('music');
-    let isPlaying = false;
 
-    // Splash Screen Logic
-    document.getElementById('btnOpenInvite').addEventListener('click', () => {
-      document.getElementById('splashScreen').classList.add('slide-up');
-      document.body.classList.remove('locked');
-      
-      // Auto-play music
-      if (!isPlaying) {
-        audio.play().then(() => {
-          musicIcon.classList.remove('fa-play');
-          musicIcon.classList.add('fa-music');
-          musicBtn.style.animation = 'pulse-music 2s infinite';
-          isPlaying = true;
-        }).catch(e => console.log('Autoplay prevent', e));
-      }
+  <!-- FAB Button (Music) -->
+  <button id="music-btn" class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-wedding-accent text-wedding-dark flex items-center justify-center shadow-[0_0_20px_rgba(196,164,124,0.4)] z-50 hover:scale-110 transition-transform" aria-label="Reproducir música">
+    <svg id="icon-play" class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+    <svg id="icon-pause" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+
+  <!-- HTML5 Audio (preload="none" ensures it doesn't slow down page load) -->
+  <audio id="wedding-audio" preload="none">
+    <source src="Alicia%20Keys%20-%20Fallin'%20(Official%20HD%20Video)%20-%20(320%20Kbps).mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // 1. Scroll Animations (Intersection Observer)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          // Optional: stop observing once it's visible so it doesn't animate out
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
     });
 
+    // 2. Carousel Auto-play Logic
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentSlide = 0;
+    
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 4000); // Changes image every 4 seconds
+    }
+    
+    // 3. Audio Player Logic
+    const audio = document.getElementById('wedding-audio');
+    const musicBtn = document.getElementById('music-btn');
+    const iconPlay = document.getElementById('icon-play');
+    const iconPause = document.getElementById('icon-pause');
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const openInviteBtn = document.getElementById('open-invite-btn');
+    let isPlaying = false;
+
+    // Handle "Abrir Invitacion" overlay
+    openInviteBtn.addEventListener('click', () => {
+      // Fade out overlay
+      welcomeOverlay.style.opacity = '0';
+      
+      // Enable scrolling
+      document.body.classList.remove('overflow-hidden');
+      document.body.classList.add('overflow-x-hidden');
+      
+      // Remove overlay from DOM after animation
+      setTimeout(() => {
+        welcomeOverlay.remove();
+      }, 1000);
+      
+      // Set time before playing (works if metadata is loaded)
+      audio.currentTime = 12;
+      
+      // Start audio playback
+      audio.play().then(() => {
+        // Double check for strict mobile browsers that ignore the first seek
+        if (audio.currentTime < 11) {
+          audio.currentTime = 12;
+        }
+        isPlaying = true;
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
+        iconPlay.classList.remove('ml-1');
+      }).catch(e => console.log("Audio play blocked by browser:", e));
+    });
+
+    // Play/Pause button toggle
     musicBtn.addEventListener('click', () => {
       if (isPlaying) {
         audio.pause();
-        musicIcon.classList.remove('fa-music');
-        musicIcon.classList.add('fa-play');
-        musicBtn.style.animation = 'none';
+        iconPause.classList.add('hidden');
+        iconPlay.classList.remove('hidden');
+        iconPlay.classList.add('ml-1'); 
       } else {
-        audio.play().catch(e => console.log('Autoplay prevent', e));
-        musicIcon.classList.remove('fa-play');
-        musicIcon.classList.add('fa-music');
-        musicBtn.style.animation = 'pulse-music 2s infinite';
+        audio.play().catch(e => console.log("Audio play blocked by browser:", e));
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
+        iconPlay.classList.remove('ml-1');
       }
       isPlaying = !isPlaying;
     });
-
-    // Configuración de Cuenta Regresiva (14 Nov 2026 19:00:00)
-    const countDate = new Date('Nov 14, 2026 19:00:00').getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const gap = countDate - now;
-
-      if (gap < 0) {
-        document.getElementById('cd-d').innerText = "00";
-        document.getElementById('cd-h').innerText = "00";
-        document.getElementById('cd-m').innerText = "00";
-        document.getElementById('cd-s').innerText = "00";
-        return;
-      }
-
-      const second = 1000;
-      const minute = second * 60;
-      const hour = minute * 60;
-      const day = hour * 24;
-
-      const d = Math.floor(gap / day);
-      const h = Math.floor((gap % day) / hour);
-      const m = Math.floor((gap % hour) / minute);
-      const s = Math.floor((gap % minute) / second);
-
-      document.getElementById('cd-d').innerText = d.toString().padStart(2, '0');
-      document.getElementById('cd-h').innerText = h.toString().padStart(2, '0');
-      document.getElementById('cd-m').innerText = m.toString().padStart(2, '0');
-      document.getElementById('cd-s').innerText = s.toString().padStart(2, '0');
-    }
     
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    // Reset button when audio ends
+    audio.addEventListener('ended', () => {
+      isPlaying = false;
+      iconPause.classList.add('hidden');
+      iconPlay.classList.remove('hidden');
+      iconPlay.classList.add('ml-1');
+    });
   </script>
-
-<!-- MUSIC AUTOPLAY FIX -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var enterButton = document.getElementById('enterBtn') || document.getElementById('btn-open') || document.getElementById('btnOpenInvite') || document.querySelector('#splash button');
-    
-    if (enterButton) {
-      enterButton.addEventListener('click', function() {
-        var bgAudio = document.getElementById('bgAudio') || document.getElementById('bgMusic') || document.getElementById('music');
-        if (bgAudio) {
-          bgAudio.volume = 0.7;
-          bgAudio.play().then(function() {
-            var musicBtn = document.getElementById('musicBtn') || document.getElementById('btnMusic');
-            if (musicBtn) {
-              musicBtn.classList.add('playing');
-              var icon = document.getElementById('iconMusic') || musicBtn.querySelector('i');
-              if (icon && icon.classList.contains('fa-play')) {
-                icon.classList.remove('fa-play');
-                icon.classList.add('fa-music');
-              }
-              if (typeof window.musicPlaying !== 'undefined') {
-                window.musicPlaying = true;
-                musicBtn.style.opacity = '1';
-                musicBtn.style.transform = 'scale(1.1)';
-              }
-              if (typeof window.playing !== 'undefined') {
-                window.playing = true;
-              }
-            }
-          }).catch(function(e){ console.log("Autoplay prevent: " + e); });
-        }
-      });
-    }
-  });
-</script>
-
 </body>
 </html>
-

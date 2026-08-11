@@ -130,7 +130,7 @@ Quedo a la espera para coordinar la sena!`;
     { title: "15 Anos Glam", url: "/demo-15-camila-glam.html", desc: "15 Anos", event: "15 Anos" },
     { title: "Bautismo Tierno", url: "/demo-bautismo-benicio.html", desc: "Bautismo", event: "Bautismo" },
     { title: "Corporativo", url: "/demo-corporativo-gala.html", desc: "Corporativo", event: "Corporativo" },
-    { title: "Boda Boho", url: "/demo-canva-boho.html", desc: "Boda", event: "Boda" },
+    { title: "Boda Premium", url: "/demo-boda-premium.html", desc: "Boda", event: "Boda" },
     { title: "Baby Shower", url: "/demo-babyshower-malena.html", desc: "Baby Shower", event: "Baby Shower" },
   ];
 
