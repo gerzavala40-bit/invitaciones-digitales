@@ -131,6 +131,7 @@ Quedo a la espera para coordinar la sena!`;
     { title: "Bautismo Tierno", url: "/demo-bautismo-benicio.html", desc: "Bautismo", event: "Bautismo" },
     { title: "Corporativo", url: "/demo-corporativo-gala.html", desc: "Corporativo", event: "Corporativo" },
     { title: "Boda Premium", url: "/demo-boda-premium.html", desc: "Boda", event: "Boda" },
+    { title: "Cumple 30 Retro", url: "/demo-cumple-30-retro.html", desc: "Cumpleaños", event: "Cumpleaños" },
     { title: "Baby Shower", url: "/demo-babyshower-malena.html", desc: "Baby Shower", event: "Baby Shower" },
   ];
 
