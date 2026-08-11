@@ -299,9 +299,9 @@ Quedo a la espera para coordinar la sena!`;
             </div>
           </Reveal>
 
-          <Stagger className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] -mx-5 px-5 md:mx-0 md:px-0" stagger={0.06}>
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-8 place-items-center" stagger={0.06}>
             {demos.map((demo) => (
-              <StaggerItem key={demo.title} className="snap-center shrink-0 w-[240px] md:w-auto flex justify-center">
+              <StaggerItem key={demo.title} className="w-full flex justify-center">
                 <PhoneMockup
                   customName={customName}
                   title={demo.title}
