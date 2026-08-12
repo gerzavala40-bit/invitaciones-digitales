@@ -54,11 +54,26 @@
       background-color: #0a0a0a;
       color: #ffffff;
       background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle at 80% 40%, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle at 70% 90%, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 100px 100px;
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url('./bg-retro.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
     }
     
     .text-glow {
@@ -87,7 +102,7 @@
 <body class="font-sans antialiased overflow-hidden">
 
   <!-- WELCOME OVERLAY -->
-  <div id="welcome-overlay" class="fixed inset-0 bg-[#050505] z-[100] flex flex-col items-center justify-center text-center px-5 transition-opacity duration-1000">
+  <div id="welcome-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center text-center px-5 transition-opacity duration-1000" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('./splash-bg.jpg'); background-size: cover; background-position: center;">
     <div class="animate-bounce mb-8">
       <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
     </div>
@@ -100,10 +115,10 @@
 
   <!-- HERO SECTION -->
   <section class="relative min-h-[100svh] flex flex-col items-center justify-center text-center text-white px-5 overflow-hidden">
-    <!-- Disco Ball 3D Container -->
-    <div id="disco-ball-container" class="relative w-48 h-48 md:w-64 md:h-64 mb-10 mt-10 animate-on-scroll is-visible rounded-full">
+    <!-- Disco Ball 3D Container (Hidden for preview) -->
+    <div id="disco-ball-container" class="relative w-48 h-48 md:w-64 md:h-64 mb-10 mt-10 animate-on-scroll is-visible rounded-full hidden">
       <!-- Hanging wire -->
-      <div class="absolute bottom-full left-1/2 w-0.5 h-32 bg-gradient-to-t from-white/40 to-transparent -translate-x-1/2"></div>
+      <div class="absolute bottom-full left-1/2 w-0.5 h-32 bg-gradient-to-t from-white/40 to-transparent -translate-x-1/2 hidden"></div>
     </div>
     
     <!-- Title -->
@@ -137,6 +152,17 @@
       </div>
     </div>
     
+  </section>
+
+  <!-- PHOTO SECTION -->
+  <section class="py-16 px-5 max-w-xs md:max-w-sm mx-auto text-center animate-on-scroll mt-10">
+    <div class="relative p-4 pb-16 bg-white rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)] rotate-3 hover:-rotate-2 hover:scale-105 transition-all duration-500 ease-out cursor-pointer group">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/40 backdrop-blur-sm shadow-sm rotate-[-2deg] z-10" style="clip-path: polygon(0 0, 100% 5%, 95% 100%, 5% 95%);"></div>
+      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="El cumpleañero" class="w-full h-64 object-cover rounded-sm grayscale group-hover:grayscale-0 transition-all duration-700">
+      <div class="absolute bottom-4 left-0 right-0 text-center">
+        <p class="font-groovy text-3xl text-black opacity-80 group-hover:text-[#FF6B9D] transition-colors">¡Los espero!</p>
+      </div>
+    </div>
   </section>
 
   <!-- COUNTDOWN SECTION -->
@@ -253,8 +279,8 @@
         </button>
       </form>
 
-      <!-- Dummy messages -->
-      <div class="space-y-4 max-w-md mx-auto text-left">
+      <!-- Dummy messages with internal scroll -->
+      <div class="space-y-4 max-w-md mx-auto text-left max-h-64 overflow-y-auto pr-2 custom-scrollbar">
         <div class="p-4 border border-white/10 rounded-xl bg-white/5">
           <p class="font-bold text-sm text-white mb-1">Mati y Sofi</p>
           <p class="text-xs text-white/70">¡Feliz cumpleee! Preparate porque la rompemos toda 🎉</p>
@@ -262,6 +288,22 @@
         <div class="p-4 border border-white/10 rounded-xl bg-white/5">
           <p class="font-bold text-sm text-white mb-1">La Tía Marta</p>
           <p class="text-xs text-white/70">Muy feliz cumpleaños mi amor, que los disfrutes mucho. Besos.</p>
+        </div>
+        <div class="p-4 border border-white/10 rounded-xl bg-white/5">
+          <p class="font-bold text-sm text-white mb-1">Fede</p>
+          <p class="text-xs text-white/70">Hermanooo llegó el día, nos vemos en la barra 🍻</p>
+        </div>
+        <div class="p-4 border border-white/10 rounded-xl bg-white/5">
+          <p class="font-bold text-sm text-white mb-1">Juli y Martín</p>
+          <p class="text-xs text-white/70">¡Ahí estaremos! No nos perdemos este fiestón por nada del mundo.</p>
+        </div>
+        <div class="p-4 border border-white/10 rounded-xl bg-white/5">
+          <p class="font-bold text-sm text-white mb-1">Abuela Cami</p>
+          <p class="text-xs text-white/70">Que pases un día hermoso rodeado de tus seres queridos. Te amo.</p>
+        </div>
+        <div class="p-4 border border-white/10 rounded-xl bg-white/5">
+          <p class="font-bold text-sm text-white mb-1">Los pibes del paddle</p>
+          <p class="text-xs text-white/70">Reserva energías porque hoy se festeja fuerte 💪🎾</p>
         </div>
       </div>
     </div>
