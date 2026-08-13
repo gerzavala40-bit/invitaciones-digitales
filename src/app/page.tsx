@@ -124,7 +124,7 @@ Quedo a la espera para coordinar la sena!`;
   };
 
   const demos = [
-    { title: "Elegante Oscuro", url: "/demo-boda-noche-dorada.html", desc: "Boda", event: "Boda" },
+    { title: "Elegante Oscuro", url: "/demo-boda-elegante-oscuro.html", desc: "Boda", event: "Boda" },
     { title: "Floral Claro", url: "/demo-boda-floral-claro.html", desc: "Boda", event: "Boda" },
     { title: "Minimalista", url: "/demo-cumple-minimalista.html", desc: "Cumpleanos", event: "Cumpleanos" },
     { title: "15 Anos Glam", url: "/demo-15-camila-glam.html", desc: "15 Anos", event: "15 Anos" },
