@@ -8,7 +8,7 @@ export default function DemoDespedidaNeon() {
         const splash = document.getElementById('splash');
         const main = document.getElementById('mainContent') || document.getElementById('main');
         const musicBtn = document.getElementById('musicBtn');
-        const audio = document.getElementById('bgAudio') || document.getElementById('bgMusic') as HTMLAudioElement;
+        const audio = (document.getElementById('bgAudio') || document.getElementById('bgMusic')) as HTMLAudioElement | null;
 
         const handleEnter = () => {
             if (splash) { splash.classList.add('hide'); splash.classList.add('hidden'); splash.style.opacity = '0'; splash.style.visibility = 'hidden'; splash.style.pointerEvents = 'none'; }
