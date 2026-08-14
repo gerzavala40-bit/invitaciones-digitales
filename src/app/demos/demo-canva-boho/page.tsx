@@ -50,8 +50,8 @@ export default function DemoDespedidaNeon() {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     entry.target.classList.add('show');
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    (entry.target as HTMLElement).style.opacity = '1';
+                    (entry.target as HTMLElement).style.transform = 'translateY(0)';
                 }
             });
         }, { threshold: 0.05 });

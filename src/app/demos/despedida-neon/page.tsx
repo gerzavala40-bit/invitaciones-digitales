@@ -15,7 +15,7 @@ function DemoContent() {
     
     const [splashOpen, setSplashOpen] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
     
     const [countdown, setCountdown] = useState({ days: '00', hours: '00', mins: '00', secs: '00' });
     const [copyMsgOpacity, setCopyMsgOpacity] = useState(0);
@@ -70,7 +70,7 @@ function DemoContent() {
         }
     };
 
-    const handleCopy = (text) => {
+    const handleCopy = (text: string) => {
         navigator.clipboard.writeText(text).then(() => {
             setCopyMsgOpacity(1);
             setTimeout(() => setCopyMsgOpacity(0), 2000);
