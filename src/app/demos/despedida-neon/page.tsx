@@ -20,7 +20,7 @@ function DemoContent() {
     const [countdown, setCountdown] = useState({ days: '00', hours: '00', mins: '00', secs: '00' });
     const [copyMsgOpacity, setCopyMsgOpacity] = useState(0);
     
-    const [muroComments, setMuroComments] = useState([]);
+    const [muroComments, setMuroComments] = useState<any[]>([]);
     const [muroInput, setMuroInput] = useState({ author: '', text: '', tag: 'Fiesta' });
     
     const [rsvpData, setRsvpData] = useState({ asiste: 'Si', name: '', diet: 'Sin restricciones', tshirt: 'M' });
@@ -77,14 +77,14 @@ function DemoContent() {
         });
     };
 
-    const handleMuroSubmit = (e) => {
+    const handleMuroSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!muroInput.author || !muroInput.text) return;
         setMuroComments([{...muroInput, id: Date.now()}, ...muroComments]);
         setMuroInput({...muroInput, text: '', author: ''});
     };
 
-    const handleRsvpSubmit = (e) => {
+    const handleRsvpSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         let message = rsvpData.asiste === "Si" 
             ? `¡Hola! Confirmo mi asistencia para la despedida de ${customName} 🎉
@@ -292,7 +292,7 @@ function DemoContent() {
       
       <div className="muro-card">
         <form id="formMuro" onSubmit={handleMuroSubmit}>
-          <textarea className="muro-input" id="muroText" rows="3" placeholder="Escribí tu mensaje anónimo o con firma..." required></textarea>
+          <textarea className="muro-input" id="muroText" rows={3} placeholder="Escribí tu mensaje anónimo acá..." value={muroInput.text} onChange={e => setMuroInput({...muroInput, text: e.target.value})}></textarea>
           <div className="muro-meta-inputs">
             <input type="text" className="muro-meta-input" id="muroAuthor" placeholder="Firma / Apodo" required />
             <select className="muro-meta-input" id="muroTag">
