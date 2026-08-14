@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Los 50 de Ricardo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1A1A1C;
+      --bg-card: rgba(40, 40, 42, 0.7);
+      --text: #E8E6D9;
+      --text-muted: rgba(232, 230, 217, 0.7);
+      --accent: #E8E6D9;
+      --font-script: "Alex Brush", cursive;
+      --font-serif: "Cinzel", serif;
+      --font-body: "Montserrat", sans-serif;
+      --radius: 12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    body.locked { overflow: hidden; }
+
+    /* GLOBAL BACKGROUND */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('fondo_glamour.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* SPLASH */
+    .splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      text-align: center;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+    .splash.hidden { display: none; }
+
+    .splash-content { position: relative; z-index: 2; width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: center;}
+    
+    .arched-text-container {
+      width: 250px;
+      height: 60px;
+      margin-bottom: -10px;
+    }
+    
+    .splash-subtitle {
+      font-family: var(--font-script);
+      font-size: 2.5rem;
+      color: var(--text);
+      margin-bottom: -0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .splash-subtitle span.number {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+    }
+    
+    .splash-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 12vw, 4.5rem);
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+    }
+
+    .drink-ill {
+      width: 180px;
+      height: auto;
+      margin-bottom: 3rem;
+    }
+
+    .enter-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--text);
+      border-radius: 4px;
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .enter-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    /* MAIN */
+    .main-content {
+      display: none;
+      position: relative;
+      z-index: 1;
+    }
+    .main-content.visible { display: block; }
+
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* HERO */
+    .hero {
+      padding-top: 5rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 10vw, 4rem);
+      color: var(--text);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .hero .hero-date {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: baseline;
+      gap: 0.2rem;
+      flex-wrap: nowrap;
+      background: rgba(10, 10, 10, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(232, 230, 217, 0.2);
+      padding: 0.8rem 0.5rem;
+      border-radius: 8px;
+      margin: 0 auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 380px;
+      box-sizing: border-box;
+    }
+    .countdown-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+    }
+    .countdown-separator {
+      color: rgba(232, 230, 217, 0.4);
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+    .countdown-item .number {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+    }
+    .countdown-item .label {
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    /* FRASE */
+    .frase {
+      border-top: 1px solid rgba(232, 230, 217, 0.2);
+      border-bottom: 1px solid rgba(232, 230, 217, 0.2);
+      padding: 3rem 1.5rem;
+      margin: 0 auto;
+    }
+    .frase p {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* CARDS */
+    .info-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(232, 230, 217, 0.1);
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .card-icon {
+      width: 45px;
+      height: 45px;
+      margin: 0 auto 1.2rem;
+      display: block;
+      filter: invert(90%) sepia(10%) saturate(100%) hue-rotate(350deg) brightness(100%) contrast(90%);
+      opacity: 0.9;
+    }
+    .info-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    
+    .copy-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(232, 230, 217, 0.2);
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .copy-row span {
+      flex: 1;
+      font-size: 0.8rem;
+      font-family: monospace;
+      text-align: left;
+    }
+    .copy-row button {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--text);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* RSVP */
+    .rsvp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--text);
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .rsvp-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    /* GALLERY */
+    .gallery-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translate(0, 0); }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 0.7rem 1.5rem;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 9999;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--bg);
+      border: 1px solid var(--text);
+      padding: 2.5rem 1.5rem;
+      max-width: 360px;
+      width: 100%;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/fiesta.mp3#t=21" type="audio/mpeg"></audio>
+
+  <!-- SPLASH -->
+  <div class="splash" id="splash">
+    <div class="splash-content">
+      <div class="arched-text-container">
+        <svg viewBox="0 0 250 60">
+          <path id="curve" d="M 20,50 Q 125,-10 230,50" fill="transparent" />
+          <text width="250">
+            <textPath href="#curve" startOffset="50%" text-anchor="middle" style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 300; fill: #E8E6D9; letter-spacing: 4px;">
+              TE INVITAMOS A FESTEJAR
+            </textPath>
+          </text>
+        </svg>
+      </div>
+      
+      <p class="splash-subtitle">los <span class="number">50</span> de</p>
+      <h1 class="splash-title">RICARDO</h1>
+      
+      <!-- Elegant Cocktail SVG -->
+      <svg class="drink-ill" viewBox="0 0 200 250" fill="none" stroke="#E8E6D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40,50 L160,50 L140,210 L60,210 Z" />
+        <path d="M40,50 Q100,70 160,50" />
+        <path d="M60,210 Q100,225 140,210" />
+        <path d="M50,90 Q100,105 150,90" />
+        <path d="M55,130 Q100,145 145,130" />
+        <circle cx="95" cy="45" r="25" />
+        <path d="M95,20 L95,70" />
+        <path d="M70,45 L120,45" />
+        <path d="M77,27 L113,63" />
+        <path d="M113,27 L77,63" />
+        <path d="M70,180 L130,120 M75,200 L115,160 M90,210 L140,160" />
+      </svg>
+
+      <button class="enter-btn" id="enterBtn" onclick="openInvite()">ABRIR INVITACIÓN</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-content" id="mainContent">
+    
+    <section class="hero reveal">
+      <h1>RICARDO</h1>
+      <p class="hero-date">Viernes 30 de agosto &middot; 8:00 PM</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="number" id="days">--</span><span class="label">Días</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-item"><span class="number" id="hours">--</span><span class="label">Hrs</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-item"><span class="number" id="mins">--</span><span class="label">Min</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-item"><span class="number" id="secs">--</span><span class="label">Seg</span></div>
+      </div>
+    </section>
+
+    <section class="reveal" style="padding-top:0;">
+      <div class="frase">
+        <p>Celebremos medio siglo de buenas historias y grandes momentos.</p>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="info-card">
+        <img src="ayudar.png" alt="Fecha" class="card-icon" />
+        <h3>Cuándo</h3>
+        <p style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text);">Viernes 30 de agosto</p>
+        <p>A las 8:00 PM</p>
+      </div>
+      <div class="info-card">
+        <img src="pin-de-ubicacion.png" alt="Ubicación" class="card-icon" />
+        <h3>Dónde</h3>
+        <p style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text);">Salon El Roble</p>
+        <p style="margin-bottom: 1.5rem;">Calle Cualquiera 123, Ciudad</p>
+        <a href="https://maps.google.com/?q=Salon+El+Roble" target="_blank" rel="noopener" class="enter-btn" style="width: 100%; display: block; box-sizing: border-box;">Cómo llegar</a>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="info-card" style="border-color: rgba(232,230,217,0.3);">
+        <img src="mono.jpg" alt="Dress Code" class="card-icon" style="mix-blend-mode: screen; width: 60px; height: auto;" />
+        <h3>Dress Code</h3>
+        <p style="font-family: var(--font-script); font-size: 2rem; color: var(--text); margin-top: 1rem;">Elegante Sport</p>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="info-card">
+        <h3>Mesa de regalos</h3>
+        <p style="margin-bottom:1.5rem;">Tu presencia es el mejor regalo, pero si deseas tener un detalle:</p>
+        <button class="enter-btn" onclick="openModal()" style="width: 100%;">Ver datos bancarios</button>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="info-card">
+        <h3>Valor de tarjeta</h3>
+        <p style="margin-bottom:1.5rem;">Para confirmar tu lugar, aboná el valor de la tarjeta.</p>
+        <button class="enter-btn" onclick="openModal()" style="width: 100%;">Datos para el pago</button>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h3 style="font-family:var(--font-serif);font-size:1.8rem;margin-bottom:1.5rem;">Confirma tu asistencia</h3>
+      <a class="rsvp-btn" href="https://wa.me/5493425299942?text=Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Ricardo" target="_blank" rel="noopener">
+        Confirmar por WhatsApp
+      </a>
+    </section>
+
+    <section class="reveal">
+      <h3 style="font-family:var(--font-serif);font-size:1.8rem;margin-bottom:1rem;">Muro de Mensajes</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem;">Déjale un saludo a Ricardo</p>
+      
+      <form id="messageForm" style="margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+        <input type="text" id="msgName" placeholder="Tu nombre" required style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(232,230,217,0.2); color: var(--text); border-radius: 4px; font-family: var(--font-body); font-size: 0.9rem;" />
+        <textarea id="msgText" placeholder="Escribe tu mensaje..." required rows="3" style="width: 100%; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(232,230,217,0.2); color: var(--text); border-radius: 4px; font-family: var(--font-body); font-size: 0.9rem; resize: none;"></textarea>
+        <button type="submit" class="enter-btn" style="width: 100%;">Dejar mensaje</button>
+      </form>
+
+      <div id="messageWall" style="display: flex; flex-direction: column; gap: 1rem; text-align: left; max-height: 300px; overflow-y: auto; padding-right: 5px;">
+        <div style="background: var(--bg-card); padding: 1rem; border: 1px solid rgba(232,230,217,0.1); border-radius: 4px;">
+          <strong style="font-family: var(--font-serif); color: var(--text);">Carlos y Familia</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">¡Felicidades en tu día! Que sea una noche inolvidable. Abrazo grande.</p>
+        </div>
+        <div style="background: var(--bg-card); padding: 1rem; border: 1px solid rgba(232,230,217,0.1); border-radius: 4px;">
+          <strong style="font-family: var(--font-serif); color: var(--text);">Marina</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Felices 50!! Preparada para brindar a lo grande.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="reveal" style="font-family:var(--font-serif);font-size:1.8rem;margin-bottom:1rem;">Galería</h3>
+      <p class="reveal" style="font-size:0.85rem;color:var(--text-muted);margin-bottom:3rem;">Reviví los mejores momentos</p>
+      
+      <img src="foto1.jpg" alt="Cumpleaños 1" class="gallery-img reveal-left" />
+      <img src="foto2.jpg" alt="Cumpleaños 2" class="gallery-img reveal-right" />
+      <img src="foto3.jpg" alt="Cumpleaños 3" class="gallery-img reveal-left" />
+    </section>
+
+    <section class="reveal" style="padding-bottom: 4rem;">
+      <svg viewBox="0 0 200 60" style="width: 100px; margin: 0 auto 2rem; display: block;" fill="none" stroke="#E8E6D9" stroke-width="1.5">
+        <path d="M10,30 L190,30 M100,10 L100,50 M80,20 L120,40 M80,40 L120,20" />
+      </svg>
+      <h3 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:1rem;">¡No faltes!</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);">Te espero para brindar</p>
+    </section>
+
+    <footer class="reveal" style="text-align: center; padding: 3rem 1.5rem; border-top: 1px solid rgba(232,230,217,0.1);">
+      <p style="font-family: var(--font-script); font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text);">¿Te gustó esta invitación?</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+        <a href="https://instagram.com/teinvitoapp" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; letter-spacing: 1px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          @teinvitoapp
+        </a>
+        
+        <a href="https://www.teinvitoapp.com.ar" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; letter-spacing: 1px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          www.teinvitoapp.com.ar
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <h3 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:1.5rem;text-transform:uppercase;">Datos Bancarios</h3>
+      <div class="copy-row">
+        <span>ricardo.50.cumple</span>
+        <button onclick="copyText('ricardo.50.cumple')">Copiar</button>
+      </div>
+      <div class="copy-row">
+        <span>0000003100022222222222</span>
+        <button onclick="copyText('0000003100022222222222')">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openInvite() {
+      document.getElementById('splash').classList.add('hidden');
+      document.getElementById('mainContent').classList.add('visible');
+      document.body.classList.remove('locked');
+      var bgAudio = document.getElementById('bgAudio');
+      if (bgAudio) {
+        bgAudio.volume = 0.5;
+        var p = bgAudio.play();
+        if (p !== undefined) {
+          p.then(function() { bgAudio.currentTime = 21; }).catch(function(){});
+        } else {
+          bgAudio.currentTime = 21;
+        }
+      }
+    }
+
+    (function() {
+      var target = new Date('2026-08-30T20:00:00-03:00').getTime();
+      function update() {
+        var now = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '0';
+          document.getElementById('hours').textContent = '0';
+          document.getElementById('mins').textContent = '0';
+          document.getElementById('secs').textContent = '0';
+          return;
+        }
+        document.getElementById('days').textContent = Math.floor(diff / 86400000);
+        document.getElementById('hours').textContent = Math.floor((diff % 86400000) / 3600000);
+        document.getElementById('mins').textContent = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('secs').textContent = Math.floor((diff % 60000) / 1000);
+      }
+      update(); setInterval(update, 1000);
+    })();
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(function() { showToast('Copiado'); })
+      .catch(function() {
+        var ta = document.createElement('textarea'); ta.value = text;
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta); showToast('Copiado');
+      });
+    }
+
+    function showToast(msg) {
+      var t = document.getElementById('toast'); t.textContent = msg;
+      t.classList.add('show'); setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
+
+    function openModal() { document.getElementById('modalOverlay').classList.add('active'); }
+    function closeModal(e) { if (e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
+    function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('active'); }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) { observer.observe(el); });
+    
+    var msgForm = document.getElementById('messageForm');
+    if(msgForm) {
+      msgForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('msgName').value;
+        var text = document.getElementById('msgText').value;
+        var wall = document.getElementById('messageWall');
+        
+        var div = document.createElement('div');
+        div.style.cssText = 'background: var(--bg-card); padding: 1rem; border: 1px solid rgba(232,230,217,0.1); border-radius: 4px; animation: fadeIn 0.5s;';
+        div.innerHTML = '<strong style="font-family: var(--font-serif); color: var(--text);">' + name + '</strong><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">' + text + '</p>';
+        
+        wall.insertBefore(div, wall.firstChild);
+        msgForm.reset();
+        showToast('Mensaje publicado');
+      });
+    }
+
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('preview') === '1') {
+        var enterBtn = document.getElementById('enterBtn');
+        if (enterBtn) enterBtn.style.display = 'none';
+        var splash = document.getElementById('splash');
+        if (splash) splash.classList.remove('hidden');
+        var main = document.getElementById('mainContent');
+        if (main) main.classList.remove('visible');
+        document.body.classList.remove('locked');
+      }
+    })();
+  </script>
+</body>
+</html>
