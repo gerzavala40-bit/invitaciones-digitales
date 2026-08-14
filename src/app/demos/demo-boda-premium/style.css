@@ -39,7 +39,7 @@
     /* Portada Parallax Híbrida */
     .parallax-portada {
       height: 100vh;
-      background-image: url('novia (5).webp');
+      background-image: url('/novia (5).webp');
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
@@ -115,7 +115,7 @@
     /* Confirmar Asistencia Parallax */
     .confirmar {
       padding: clamp(80px, 10vw, 130px) 0; text-align: center;
-      background-image: url('hero_bg_exact.jpg');
+      background-image: url('/assets-demos/hero_bg_exact.jpg');
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
