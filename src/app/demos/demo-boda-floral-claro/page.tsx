@@ -13,7 +13,7 @@ export default function DemoDespedidaNeon() {
         const handleEnter = () => {
             if (splash) { splash.classList.add('hide'); splash.classList.add('hidden'); splash.style.opacity = '0'; splash.style.visibility = 'hidden'; splash.style.pointerEvents = 'none'; }
             if (main) { main.classList.add('show'); main.classList.add('visible'); main.style.opacity = '1'; main.style.visibility = 'visible'; }
-            if (musicBtn) musicBtn.classList.add('visible');
+            if (musicBtn) if (musicBtn) musicBtn.classList.add('visible');
             document.body.classList.remove('locked');
             if (audio) {
                 audio.volume = 0.8;
@@ -31,11 +31,11 @@ export default function DemoDespedidaNeon() {
             if (audio.paused) {
                 audio.play();
                 musicBtn?.classList.add('on');
-                musicBtn.innerHTML = '❚❚';
+                if (musicBtn) musicBtn.innerHTML = '❚❚';
             } else {
                 audio.pause();
                 musicBtn?.classList.remove('on');
-                musicBtn.innerHTML = '♪';
+                if (musicBtn) musicBtn.innerHTML = '♪';
             }
         };
 
