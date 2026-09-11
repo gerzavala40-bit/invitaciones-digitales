@@ -1,0 +1,570 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFF9E0;
+  --foreground: #1a1a1a;
+  --pink: #FF6B9D;
+  --teal: #4ECDC4;
+  --orange: #FF8C42;
+  --yellow: #FFF9E0;
+  --black: #1a1a1a;
+  --border-width: 3px;
+  --shadow-offset: 4px;
+  --shadow-offset-lg: 6px;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-neo-pink: #FF6B9D;
+  --color-neo-teal: #4ECDC4;
+  --color-neo-orange: #FF8C42;
+  --color-neo-yellow: #FFF9E0;
+  --color-neo-black: #1a1a1a;
+  --color-neo-white: #ffffff;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+
+  --shadow-brutal: 4px 4px 0px #1a1a1a;
+  --shadow-brutal-lg: 6px 6px 0px #1a1a1a;
+  --shadow-brutal-pink: 6px 6px 0px #FF6B9D;
+  --shadow-brutal-teal: 6px 6px 0px #4ECDC4;
+  --shadow-brutal-orange: 6px 6px 0px #FF8C42;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  /* Syne Silver Edition Theme */
+  --color-s-surface-variant: #353535;
+  --color-s-error: #ffb4ab;
+  --color-s-on-tertiary-fixed-variant: #474747;
+  --color-s-tertiary-fixed-dim: #c8c6c6;
+  --color-s-outline: #8e9192;
+  --color-s-inverse-on-surface: #303030;
+  --color-s-on-secondary-fixed: #1a1c1c;
+  --color-s-surface-container: #1f1f1f;
+  --color-s-surface-tint: #c6c6c7;
+  --color-s-secondary-container: #484949;
+  --color-s-on-tertiary: #303030;
+  --color-s-background: #131313;
+  --color-s-secondary-fixed-dim: #c6c6c6;
+  --color-s-surface-container-high: #2a2a2a;
+  --color-s-surface-container-lowest: #0e0e0e;
+  --color-s-on-background: #e2e2e2;
+  --color-s-surface-container-low: #1b1b1b;
+  --color-s-on-tertiary-container: #646464;
+  --color-s-tertiary: #ffffff;
+  --color-s-on-secondary-container: #b8b8b8;
+  --color-s-outline-variant: #444748;
+  --color-s-on-primary-fixed-variant: #454747;
+  --color-s-on-secondary-fixed-variant: #464747;
+  --color-s-primary: #ffffff;
+  --color-s-on-surface: #e2e2e2;
+  --color-s-on-secondary: #2f3131;
+  --color-s-on-primary-fixed: #1a1c1c;
+  --color-s-tertiary-container: #e4e2e2;
+  --color-s-on-error: #690005;
+  --color-s-on-primary: #2f3131;
+  --color-s-inverse-primary: #5d5f5f;
+  --color-s-surface: #131313;
+  --color-s-surface-bright: #393939;
+  --color-s-surface-dim: #131313;
+  --color-s-error-container: #93000a;
+  --color-s-primary-fixed: #e2e2e2;
+  --color-s-on-error-container: #ffdad6;
+  --color-s-on-primary-container: #636565;
+  --color-s-inverse-surface: #e2e2e2;
+  --color-s-secondary: #c6c6c6;
+  --color-s-on-surface-variant: #c4c7c8;
+  --color-s-tertiary-fixed: #e4e2e2;
+  --color-s-surface-container-highest: #353535;
+  --color-s-secondary-fixed: #e3e2e2;
+  --color-s-on-tertiary-fixed: #1b1c1c;
+  --color-s-primary-container: #e2e2e2;
+  --color-s-primary-fixed-dim: #c6c6c7;
+  --color-s-silver: #c0c0c0;
+  --color-s-silver-dark: #71717a;
+
+  --spacing-s-gutter: 24px;
+  --spacing-s-container-padding-mobile: 16px;
+  --spacing-s-section-gap: 64px;
+  --spacing-s-base: 8px;
+  --spacing-s-container-padding-desktop: 64px;
+
+  --font-headline-lg-mobile: 'Syne', sans-serif;
+  --font-display-lg: 'Syne', sans-serif;
+  --font-display-xl: 'Syne', sans-serif;
+  --font-headline-lg: 'Syne', sans-serif;
+  --font-headline-md: 'Syne', sans-serif;
+  --font-body-lg: 'Hanken Grotesk', sans-serif;
+  --font-body-md: 'Hanken Grotesk', sans-serif;
+  --font-label-caps: 'Space Mono', monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Neobrutalism Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neobrutalism Utilities */
+.neo-border {
+  border: 3px solid #1a1a1a;
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-shadow-pink {
+  box-shadow: 6px 6px 0px #FF6B9D;
+}
+
+.neo-shadow-teal {
+  box-shadow: 6px 6px 0px #4ECDC4;
+}
+
+.neo-shadow-orange {
+  box-shadow: 6px 6px 0px #FF8C42;
+}
+
+.neo-btn {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.neo-card {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.neo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #1a1a1a;
+}
+
+/* Sticker style */
+.neo-sticker {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  font-weight: 700;
+}
+
+/* Phone frame neobrutalism */
+.neo-phone-frame {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* FAQ accordion */
+details summary::-webkit-details-marker { display: none; }
+details[open] summary .faq-icon { transform: rotate(45deg); }
+
+/* Form inputs neobrutalism */
+.neo-input {
+  border: 3px solid #1a1a1a;
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.neo-input:focus {
+  box-shadow: 4px 4px 0px #4ECDC4;
+  transform: translate(-2px, -2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9E0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #FFF9E0;
+}
+
+/* Selection */
+::selection {
+  background: #FF6B9D;
+  color: #fff;
+}
+
+/* ==============================================================
+   1. Animación de Aparición en Cascada (Staggered Fade-In)
+   ============================================================== */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-reveal.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-reveal.active > *:nth-child(1) { transition-delay: 0.15s; }
+.stagger-reveal.active > *:nth-child(2) { transition-delay: 0.30s; }
+.stagger-reveal.active > *:nth-child(3) { transition-delay: 0.45s; }
+.stagger-reveal.active > *:nth-child(4) { transition-delay: 0.60s; }
+.stagger-reveal.active > *:nth-child(5) { transition-delay: 0.75s; }
+.stagger-reveal.active > *:nth-child(6) { transition-delay: 0.90s; }
+.stagger-reveal.active > *:nth-child(7) { transition-delay: 1.05s; }
+.stagger-reveal.active > *:nth-child(8) { transition-delay: 1.20s; }
+.stagger-reveal.active > *:nth-child(9) { transition-delay: 1.35s; }
+.stagger-reveal.active > *:nth-child(10) { transition-delay: 1.50s; }
+
+
+/* ==============================================================
+   2. Máscara Fotográfica (Clip-Path Reveal)
+   ============================================================== */
+.image-mask-container {
+  overflow: hidden; 
+}
+
+.clip-reveal-img {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.15);
+  transition: 
+    clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), 
+    transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  object-fit: cover;
+  width: 100%;
+}
+
+.image-mask-container.active .clip-reveal-img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+
+/* Stitch custom utilities */
+.material-symbols-outlined {
+--font-body-md: 'Hanken Grotesk', sans-serif;
+  --font-label-caps: 'JetBrains Mono', monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Neobrutalism Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neobrutalism Utilities */
+.neo-border {
+  border: 3px solid #1a1a1a;
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-shadow-pink {
+  box-shadow: 6px 6px 0px #FF6B9D;
+}
+
+.neo-shadow-teal {
+  box-shadow: 6px 6px 0px #4ECDC4;
+}
+
+.neo-shadow-orange {
+  box-shadow: 6px 6px 0px #FF8C42;
+}
+
+.neo-btn {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.neo-card {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.neo-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #1a1a1a;
+}
+
+/* Sticker style */
+.neo-sticker {
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  font-weight: 700;
+}
+
+/* Phone frame neobrutalism */
+.neo-phone-frame {
+  border: 3px solid #1a1a1a;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* FAQ accordion */
+details summary::-webkit-details-marker { display: none; }
+details[open] summary .faq-icon { transform: rotate(45deg); }
+
+/* Form inputs neobrutalism */
+.neo-input {
+  border: 3px solid #1a1a1a;
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.neo-input:focus {
+  box-shadow: 4px 4px 0px #4ECDC4;
+  transform: translate(-2px, -2px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9E0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #FFF9E0;
+}
+
+/* Selection */
+::selection {
+  background: #FF6B9D;
+  color: #fff;
+}
+
+/* ==============================================================
+   1. Animación de Aparición en Cascada (Staggered Fade-In)
+   ============================================================== */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-reveal.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-reveal.active > *:nth-child(1) { transition-delay: 0.15s; }
+.stagger-reveal.active > *:nth-child(2) { transition-delay: 0.30s; }
+.stagger-reveal.active > *:nth-child(3) { transition-delay: 0.45s; }
+.stagger-reveal.active > *:nth-child(4) { transition-delay: 0.60s; }
+.stagger-reveal.active > *:nth-child(5) { transition-delay: 0.75s; }
+.stagger-reveal.active > *:nth-child(6) { transition-delay: 0.90s; }
+.stagger-reveal.active > *:nth-child(7) { transition-delay: 1.05s; }
+.stagger-reveal.active > *:nth-child(8) { transition-delay: 1.20s; }
+.stagger-reveal.active > *:nth-child(9) { transition-delay: 1.35s; }
+.stagger-reveal.active > *:nth-child(10) { transition-delay: 1.50s; }
+
+
+/* ==============================================================
+   2. Máscara Fotográfica (Clip-Path Reveal)
+   ============================================================== */
+.image-mask-container {
+  overflow: hidden; 
+}
+
+.clip-reveal-img {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.15);
+  transition: 
+    clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), 
+    transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  object-fit: cover;
+  width: 100%;
+}
+
+.image-mask-container.active .clip-reveal-img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+
+/* Stitch custom utilities */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+/* Syne Silver Edition Utilities */
+.silver-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.chrome-border {
+  border: 1px solid #4A4A4A;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.chrome-border:hover {
+  border-color: #C0C0C0;
+  box-shadow: 4px 4px 0px 0px #C0C0C0;
+}
+.btn-chrome {
+  background-color: #ffffff;
+  color: #131313;
+  transition: all 0.3s ease;
+}
+.btn-chrome:hover {
+  background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+}
+.chrome-glass {
+  background: rgba(19, 19, 19, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #4A4A4A;
+}
+.text-glow-silver {
+  text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.3);
+}
+
+@utility text-headline-lg-mobile {
+  font-size: 32px;
+  line-height: 110%;
+  font-weight: 700;
+}
+@utility text-display-xl {
+  font-size: 96px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+@utility text-display-lg {
+  font-size: 72px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+@utility text-headline-lg {
+  font-size: 48px;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+@utility text-headline-md {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 160%;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 160%;
+  font-weight: 400;
+}
+@utility text-label-caps {
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}

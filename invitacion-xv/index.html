@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV - Julia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Portada -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <h2 class="pre-title">MIS XV</h2>
+            <h1 class="title">Julia</h1>
+            <p class="subtitle">Que comience la magia...</p>
+        </div>
+    </header>
+
+    <!-- Cuenta Regresiva -->
+    <section id="countdown" class="section dark-section fade-in-scroll">
+        <div class="container">
+            <div class="timer">
+                <div class="timer-box">
+                    <span id="days" class="number">00</span>
+                    <span class="label">DÍAS</span>
+                </div>
+                <div class="timer-box">
+                    <span id="hours" class="number">00</span>
+                    <span class="label">HORAS</span>
+                </div>
+                <div class="timer-box">
+                    <span id="minutes" class="number">00</span>
+                    <span class="label">MINUTOS</span>
+                </div>
+                <div class="timer-box">
+                    <span id="seconds" class="number">00</span>
+                    <span class="label">SEGUNDOS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evento -->
+    <section id="event-details" class="section light-section fade-in-scroll">
+        <div class="container text-center">
+            <h2 class="section-title">¿CUÁNDO?</h2>
+            <p class="event-date">VIERNES 12 DE FEBRERO 2027<br>| 21:00 HS |</p>
+            
+            <div class="divider"></div>
+
+            <h2 class="section-title">¿DÓNDE?</h2>
+            <p class="event-location">Solares del Sur<br>Es 4 de Enero 899</p>
+            
+            <a href="https://maps.google.com/?q=Solares+del+Sur" target="_blank" class="btn btn-primary">CÓMO LLEGAR</a>
+        </div>
+    </section>
+
+    <!-- Pago -->
+    <section id="payment" class="section dark-section fade-in-scroll">
+        <div class="container text-center">
+            <h2 class="section-title">VALOR TARJETA</h2>
+            <p class="payment-text">Me llenaría de felicidad poder compartir este día tan especial con ustedes. A continuación les dejo los detalles para realizar el pago de su tarjeta.</p>
+            
+            <button id="show-payment-btn" class="btn btn-outline">VER VALOR TARJETA</button>
+            
+            <div id="payment-details" class="payment-details hidden">
+                <div class="prices">
+                    <div class="price-box">
+                        <h3>ADULTOS</h3>
+                        <p>$80.000</p>
+                    </div>
+                    <div class="price-box">
+                        <h3>JÓVENES</h3>
+                        <p>$60.000</p>
+                    </div>
+                </div>
+                <div class="bank-info">
+                    <p><strong>Alias:</strong><br>j.del.pino</p>
+                    <p><strong>CVU:</strong><br>0000003100022314329967</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Code -->
+    <section id="dress-code" class="section light-section fade-in-scroll">
+        <div class="container text-center">
+            <h2 class="section-title">DRESS CODE</h2>
+            <div class="dress-icon">👔👗</div>
+            <p class="dress-text">FORMAL</p>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="section dark-section fade-in-scroll">
+        <div class="container text-center">
+            <h2 class="section-title">CONFIRMÁ TU ASISTENCIA</h2>
+            <p class="rsvp-date">ANTES DEL 11 DE ENERO 2027</p>
+            <p class="rsvp-msg">Brillemos juntos... ¡TE ESPERO!</p>
+            
+            <div class="social-links">
+                <a href="#" class="btn btn-social">Instagram</a>
+                <a href="#" class="btn btn-social">WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>La Tarjeta Digital</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

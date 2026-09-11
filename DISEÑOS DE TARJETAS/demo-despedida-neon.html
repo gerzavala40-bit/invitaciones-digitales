@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Julieta — Despedida de Soltera VIP</title>
+  <meta name="description" content="Julieta — Despedida de Soltera VIP" />
+  <meta name="theme-color" content="#0f0f13" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --bg-card: #1a1a24;
+      --pink: #FF6B9D;
+      --orange: #FF8C42;
+      --cyan: #4ECDC4;
+      --white: #ffffff;
+      --gray: #8f8f9e;
+      --line: rgba(255, 255, 255, 0.08);
+      --pink-glow: 0 0 20px rgba(255, 107, 157, 0.4);
+      --cyan-glow: 0 0 20px rgba(78, 205, 196, 0.4);
+      --orange-glow: 0 0 20px rgba(255, 140, 66, 0.4);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+    
+    section {
+      padding: 80px 0;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .divider-vertical {
+      width: 1px;
+      height: 64px;
+      background: linear-gradient(to bottom, var(--pink), transparent);
+      margin: 40px auto 0;
+    }
+    
+    .divider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 40px 0;
+    }
+    
+    .divider-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+    
+    /* SPLASH SCREEN */
+    .splash-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.6s;
+    }
+    
+    .splash-screen.slide-up {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .splash-glow-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 140, 66, 0.15) 0%, rgba(255, 107, 157, 0.15) 50%, transparent 100%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    
+    .splash-card {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+    
+    .splash-logo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 32px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    
+    .splash-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    
+    .splash-title {
+      font-size: 46px;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    
+    .btn-enter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      background: transparent;
+      border: 2px solid var(--pink);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 transparent;
+    }
+    
+    .btn-enter:hover {
+      background: var(--pink);
+      box-shadow: var(--pink-glow);
+      transform: translateY(-2px);
+    }
+    
+    .btn-enter:active {
+      transform: translateY(0);
+    }
+    
+    /* MUSIC BUTTON */
+    .music-control {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .music-control.playing {
+      border-color: var(--pink);
+      box-shadow: var(--pink-glow);
+      animation: musicPulse 2s infinite ease-in-out;
+    }
+    
+    @keyframes musicPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    
+    .music-control svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--white);
+      transition: fill 0.3s ease;
+    }
+    
+    .music-control.playing svg {
+      fill: var(--pink);
+    }
+    
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 100px;
+      padding-bottom: 80px;
+      overflow: hidden;
+    }
+    
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(15,15,19,0.7) 0%, rgba(15,15,19,0.95) 100%);
+      z-index: 1;
+    }
+    
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1b0a1d 0%, #06041a 100%);
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .hero-avatar-wrapper {
+      position: relative;
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--pink) 100%);
+      box-shadow: var(--pink-glow);
+      margin-bottom: 32px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    .hero-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      border: 2px solid var(--bg);
+      overflow: hidden;
+    }
+    
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    
+    .hero-title {
+      font-size: 54px;
+      line-height: 0.95;
+      text-align: center;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      font-weight: 900;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    
+    /* COUNTDOWN */
+    .countdown-section {
+      width: 100%;
+      max-width: 380px;
+      margin-top: 16px;
+    }
+    
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    .countdown-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 6px;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .countdown-num {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--pink);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    
+    .countdown-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+    }
+    
+    /* PHRASE / QUOTE */
+    .phrase-section {
+      background: var(--bg-card);
+      position: relative;
+    }
+    
+    .phrase-card {
+      position: relative;
+      padding: 20px;
+    }
+    
+    .quote-mark {
+      font-size: 64px;
+      font-family: 'Outfit', serif;
+      color: var(--pink);
+      line-height: 0.1;
+      opacity: 0.8;
+      display: block;
+      margin: 10px 0;
+    }
+    
+    .phrase-text {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.95);
+      font-style: italic;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    
+    /* FONDO COMÚN */
+    .vaca-section {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-card) 100%);
+    }
+    
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    
+    .section-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+      max-width: 360px;
+      margin: 0 auto 36px;
+    }
+    
+    .vaca-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .vaca-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+    
+    .vaca-alias {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+    
+    .vaca-holder {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+    
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 28px;
+      background: var(--cyan);
+      color: var(--bg);
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--cyan-glow);
+    }
+    
+    .btn-copy:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+    
+    .btn-copy:active {
+      transform: translateY(0);
+    }
+    
+    .copy-success-msg {
+      font-size: 12px;
+      color: var(--cyan);
+      margin-top: 10px;
+      height: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    /* TIMELINE / ITINERARIO */
+    .itinerario-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px 20px;
+      text-align: left;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      margin-left: 12px;
+      border-left: 2px dashed var(--line);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -37px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--orange);
+      box-shadow: var(--orange-glow);
+    }
+    
+    .timeline-item:nth-child(even) .timeline-dot {
+      border-color: var(--pink);
+      box-shadow: var(--pink-glow);
+    }
+    
+    .timeline-time {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-time {
+      color: var(--pink);
+    }
+    
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    
+    /* COORDENADAS / UBICACIÓN */
+    .lugar-section {
+      background: var(--bg-card);
+    }
+    
+    .lugar-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 36px 24px;
+    }
+    
+    .lugar-time {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    
+    .lugar-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--pink);
+      margin-bottom: 6px;
+    }
+    
+    .lugar-address {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+      max-width: 240px;
+      margin: 0 auto 28px;
+    }
+    
+    .btn-maps {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 28px;
+      background: transparent;
+      border: 2px solid var(--pink);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 12px;
+    }
+    
+    .btn-maps:hover {
+      background: var(--pink);
+      box-shadow: var(--pink-glow);
+      transform: translateY(-2px);
+    }
+    
+    .btn-calendar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    
+    .btn-calendar:hover {
+      color: var(--white);
+    }
+    
+    /* DRESS CODE */
+    .dress-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px 24px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    
+    .dress-icons {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    
+    .dress-badge {
+      display: inline-block;
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    
+    /* SCRAPBOOK / GALLERY */
+    .gallery-section {
+      background: var(--bg-card);
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .gallery-img {
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #15151e;
+    }
+    
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-img:hover img {
+      transform: scale(1.08);
+    }
+    
+    /* PARTY CHAT */
+    .chat-section {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-card) 100%);
+    }
+    
+    .btn-chat {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--pink) 100%);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--pink-glow);
+    }
+    
+    .btn-chat:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 30px rgba(255, 107, 157, 0.6);
+    }
+    
+    /* MURO DE FIRMAS */
+    .muro-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px 20px;
+    }
+    
+    .muro-input {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      padding: 14px;
+      outline: none;
+      resize: none;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .muro-input:focus {
+      border-color: var(--pink);
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .muro-meta-inputs {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .muro-meta-input {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      padding: 12px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .muro-meta-input:focus {
+      border-color: var(--pink);
+    }
+    
+    .btn-muro-submit {
+      width: 100%;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-muro-submit:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: var(--white);
+    }
+    
+    .muro-messages {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+    
+    .muro-msg {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    
+    .muro-msg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    
+    .muro-msg-author {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--orange);
+    }
+    
+    .muro-msg-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--pink);
+      background: rgba(255, 107, 157, 0.1);
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+    
+    .muro-msg-text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+    
+    /* RSVP FORM */
+    .rsvp-section {
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%);
+    }
+    
+    .rsvp-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: left;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+    
+    .form-input-text, .form-select {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      padding: 12px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input-text:focus, .form-select:focus {
+      border-color: var(--pink);
+    }
+    
+    .form-radio-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    
+    .form-radio-card {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .form-radio-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    
+    .form-radio-card-ui {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray);
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.02);
+    }
+    
+    .form-radio-card input:checked + .form-radio-card-ui {
+      border-color: var(--pink);
+      color: var(--white);
+      background: rgba(255, 107, 157, 0.08);
+      box-shadow: 0 0 10px rgba(255, 107, 157, 0.15);
+    }
+    
+    .btn-rsvp-submit {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--pink) 100%);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: all 0.3s ease;
+      box-shadow: var(--pink-glow);
+    }
+    
+    .btn-rsvp-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 107, 157, 0.5);
+    }
+    
+    /* FOOTER */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      background: var(--bg);
+    }
+    
+    .footer-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    
+    .footer-tag {
+      font-size: 11px;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- SPLASH SCREEN -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-glow-bg"></div>
+    <div class="splash-card">
+      <div class="splash-logo">🔥</div>
+      <p class="splash-eyebrow">La despedida de</p>
+      <h1 class="splash-title splash-name">Julieta</h1>
+      <button class="btn-enter" id="btnOpenInvite">Entrar a la joda</button>
+    </div>
+  </div>
+
+  <!-- MUSIC BACKGROUND PLAYER -->
+  <audio id="music" loop>
+    <source src="bad-bunny.mp3" type="audio/mpeg">
+    <source src="se-menea.mp3" type="audio/mpeg">
+  </audio>
+  
+  <div class="music-control" id="btnMusic" title="Play/Pause Música">
+    <svg viewBox="0 0 24 24" id="svgMusicPlay">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg viewBox="0 0 24 24" id="svgMusicNote" style="display:none;">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+  </div>
+
+  <!-- WRAPPER (MOBILE ONLY CONTAINER) -->
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg-overlay"></div>
+      <div class="hero-bg-img" id="heroBgImage"></div>
+      
+      <div class="hero-content">
+        <div class="hero-avatar-wrapper">
+          <div class="hero-avatar" id="heroAvatarContainer">
+            🍾
+          </div>
+        </div>
+        
+        <p class="hero-eyebrow">Despedida de Soltera</p>
+        <h1 class="hero-title splash-name">Julieta</h1>
+        
+        <!-- COUNTDOWN -->
+        <div class="countdown-section">
+          <div class="countdown-grid">
+            <div class="countdown-item">
+              <span class="countdown-num" id="cd-days">00</span>
+              <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-num" id="cd-hours">00</span>
+              <span class="countdown-label">Hs</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-num" id="cd-mins">00</span>
+              <span class="countdown-label">Min</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-num" id="cd-secs">00</span>
+              <span class="countdown-label">Seg</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="divider-vertical"></div>
+      </div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="phrase-section">
+      <div class="phrase-card">
+        <span class="quote-mark">“</span>
+        <p class="phrase-text">Lo que pasa en la despedida... no se sube a Instagram.</p>
+        <span class="quote-mark" style="text-align: right; transform: rotate(180deg);">“</span>
+      </div>
+    </section>
+
+    <!-- FONDO COMÚN -->
+    <section class="vaca-section">
+      <h2 class="section-title">Fondo Común 💸</h2>
+      <p class="section-desc">Para que la noche sea épica y nadie se preocupe por sacar la billetera, armamos un fondo común. Transfiere tu parte a este Alias.</p>
+      
+      <div class="vaca-card">
+        <p class="vaca-eyebrow">Alias / CBU</p>
+        <p class="vaca-alias" id="vacaAliasText">juli.despedida.mp</p>
+        <p class="vaca-holder">Titular: Julieta Martinez</p>
+        
+        <button class="btn-copy" id="btnCopyAlias">Copiar Alias</button>
+        <div class="copy-success-msg" id="copySuccessMsg">¡Alias copiado al portapapeles!</div>
+      </div>
+    </section>
+
+    <!-- ITINERARIO -->
+    <section>
+      <h2 class="section-title" style="color: var(--orange);">Itinerario de la Muerte 🍻</h2>
+      <p class="section-desc">Seguí el cronograma oficial para no perderte de nada.</p>
+      
+      <div class="itinerario-card">
+        <div class="timeline">
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <p class="timeline-time">22:00 HS</p>
+            <h4 class="timeline-title">Previa</h4>
+            <p class="timeline-desc">Arrancamos tranqui en el bar con unos tragos y juegos para romper el hielo.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <p class="timeline-time">00:00 HS</p>
+            <h4 class="timeline-title">Cena Bizarra</h4>
+            <p class="timeline-desc">Cena grupal con shows sorpresa y prendas picantes para Juli.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <p class="timeline-time">02:00 HS</p>
+            <h4 class="timeline-title">Boliche</h4>
+            <p class="timeline-desc">Nos mudamos a la pista principal para bailar hasta que salga el sol.</p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- COORDENADAS / LUGAR -->
+    <section class="lugar-section">
+      <h2 class="section-title">Coordenadas 📍</h2>
+      <p class="section-desc">Punto de encuentro inicial y horarios oficiales.</p>
+      
+      <div class="lugar-card">
+        <p class="lugar-time">22:00 HS</p>
+        <p class="lugar-name">Bar La Previa</p>
+        <p class="lugar-address">Av. Libertador 1234, Buenos Aires</p>
+        
+        <a href="https://maps.google.com/?q=Av.+Libertador+1234,+Buenos+Aires" target="_blank" class="btn-maps">Ver en Google Maps</a>
+        <button class="btn-calendar" id="btnAddToCalendar">Añadir al Calendario</button>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section>
+      <h2 class="section-title">Dress Code 👗👕</h2>
+      <p class="section-desc">Vestimenta requerida para la noche.</p>
+      
+      <div class="dress-card">
+        <div class="dress-icons">🖤🔥</div>
+        <span class="dress-badge">Total Black</span>
+      </div>
+    </section>
+
+    <!-- SCRAPBOOK / GALLERY -->
+    <section class="gallery-section">
+      <h2 class="section-title">Scrapbook 📸</h2>
+      <p class="section-desc">Nuestros mejores momentos juntos.</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-img">
+          <img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?auto=format&fit=crop&q=80" alt="Foto 1">
+        </div>
+        <div class="gallery-img">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80" alt="Foto 2">
+        </div>
+        <div class="gallery-img">
+          <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&q=80" alt="Foto 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTY CHAT -->
+    <section class="chat-section">
+      <h2 class="section-title" style="color: var(--pink);">Party Chat 💬</h2>
+      <p class="section-desc">Sumate al chat secreto de la despedida. Elegí tu color y empezá a mandar zumbidos.</p>
+      
+      <a href="demo-chat.html?mesa=Amigos" class="btn-chat">Entrar al Chat</a>
+    </section>
+
+    <!-- MURO DE LA VERGÜENZA -->
+    <section>
+      <h2 class="section-title">El Muro de la Vergüenza 🤐</h2>
+      <p class="section-desc">Dejá una anécdota, un consejo o una amenaza. Lo que pasa en la despedida... queda en el muro.</p>
+      
+      <div class="muro-card">
+        <form id="formMuro" onsubmit="addComment(event)">
+          <textarea class="muro-input" id="muroText" rows="3" placeholder="Escribí tu mensaje anónimo o con firma..." required></textarea>
+          <div class="muro-meta-inputs">
+            <input type="text" class="muro-meta-input" id="muroAuthor" placeholder="Firma / Apodo" required>
+            <select class="muro-meta-input" id="muroTag">
+              <option value="Joda">🍻 Joda</option>
+              <option value="Amor">❤️ Amor</option>
+              <option value="Peligro">⚠️ Peligro</option>
+              <option value="Secreto">🤫 Secreto</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-muro-submit">Publicar Mensaje</button>
+        </form>
+        
+        <div class="muro-messages" id="muroList">
+          <!-- Static Messages -->
+          <div class="muro-msg">
+            <div class="muro-msg-header">
+              <span class="muro-msg-author">Caro L.</span>
+              <span class="muro-msg-tag">🍻 Joda</span>
+            </div>
+            <p class="muro-msg-text">¡Qué manija tengo! Juli, preparate porque no vas a dormir por 48 horas. ¡Tequila para todas!</p>
+          </div>
+          <div class="muro-msg">
+            <div class="muro-msg-header">
+              <span class="muro-msg-author">Matias G.</span>
+              <span class="muro-msg-tag">🤫 Secreto</span>
+            </div>
+            <p class="muro-msg-text">El CBU de la vaquita ya está explotado de transferencias. Juli, nos encargamos de que sea inolvidable.</p>
+          </div>
+          <div class="muro-msg">
+            <div class="muro-msg-header">
+              <span class="muro-msg-author">Sofi R.</span>
+              <span class="muro-msg-tag">⚠️ Peligro</span>
+            </div>
+            <p class="muro-msg-text">¡Cuidado con las sorpresas de la cena! Hay prendas que no vas a querer que el novio vea. 😈</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section">
+      <h2 class="section-title">Confirmar Asistencia</h2>
+      <p class="section-desc">Confirmá rápido así calculamos cuánto escabio comprar.</p>
+      
+      <div class="rsvp-card">
+        <form id="rsvpForm" onsubmit="sendRsvp(event)">
+          
+          <div class="form-group">
+            <label>¿Asistís? *</label>
+            <div class="form-radio-group">
+              <label class="form-radio-card">
+                <input type="radio" name="asiste" value="Si" checked required>
+                <div class="form-radio-card-ui">Sí, obvio 🍻</div>
+              </label>
+              <label class="form-radio-card">
+                <input type="radio" name="asiste" value="No">
+                <div class="form-radio-card-ui">No puedo 😢</div>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Tu Nombre *</label>
+            <input type="text" class="form-input-text" id="rsvpName" placeholder="Ej: Santiago Perez" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Restricciones Alimenticias</label>
+            <select class="form-select" id="rsvpDiet">
+              <option value="Sin restricciones">Sin restricciones</option>
+              <option value="Vegetariano">Vegetariano</option>
+              <option value="Vegano">Vegano</option>
+              <option value="Celíaco">Celíaco</option>
+              <option value="Otros">Otros (avisar por chat)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Talle de Remera *</label>
+            <select class="form-select" id="rsvpTshirt" required>
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="btn-rsvp-submit">Confirmar por WhatsApp</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="footer-title">Despedida de Julieta</p>
+      <p class="footer-tag">Armado con 🔥 por TeInvitoApp</p>
+    </footer>
+
+  </div>
+
+  <!-- INTERACTIVE JS SCRIPTS -->
+  <script>
+    // 1. Dynamic name injection from URL query params
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const customName = params.get('customName');
+      if (customName) {
+        document.querySelectorAll('.splash-name').forEach(el => {
+          el.innerText = customName;
+        });
+        document.title = customName + " — Despedida de Soltera VIP";
+      }
+      
+      const avatarUrl = params.get('avatar');
+      if (avatarUrl) {
+        const avatarEl = document.getElementById('heroAvatarContainer');
+        if (avatarEl) {
+          avatarEl.innerHTML = `<img src="${avatarUrl}" alt="Homenajeado">`;
+        }
+      }
+      
+      const bgUrl = params.get('bg');
+      if (bgUrl) {
+        const bgEl = document.getElementById('heroBgImage');
+        if (bgEl) {
+          bgEl.style.backgroundImage = `url(${bgUrl})`;
+        }
+      }
+    })();
+
+    // 2. Splash Screen Logic
+    document.addEventListener("DOMContentLoaded", function() {
+      const btnOpen = document.getElementById('btnOpenInvite');
+      if(btnOpen) {
+        btnOpen.addEventListener('click', () => {
+          document.getElementById('splashScreen').classList.add('slide-up');
+          document.body.classList.remove('locked');
+          
+          // Autoplay music
+          const audio = document.getElementById('music');
+          if (audio) {
+            audio.volume = 0.5;
+            audio.play().then(() => {
+              const btnMusic = document.getElementById('btnMusic');
+              if (btnMusic) {
+                btnMusic.classList.add('playing');
+                document.getElementById('svgMusicPlay').style.display = 'none';
+                document.getElementById('svgMusicNote').style.display = 'block';
+              }
+            }).catch(e => console.log('Autoplay blocked by browser policy.', e));
+          }
+        });
+      }
+    });
+
+    // 3. Background Music Control
+    const btnMusic = document.getElementById('btnMusic');
+    const audio = document.getElementById('music');
+    const svgPlay = document.getElementById('svgMusicPlay');
+    const svgNote = document.getElementById('svgMusicNote');
+
+    if (btnMusic && audio) {
+      btnMusic.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().then(() => {
+            btnMusic.classList.add('playing');
+            svgPlay.style.display = 'none';
+            svgNote.style.display = 'block';
+          }).catch(e => console.error("Error playing audio:", e));
+        } else {
+          audio.pause();
+          btnMusic.classList.remove('playing');
+          svgPlay.style.display = 'block';
+          svgNote.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Countdown Timer Logic
+    // Target date: 45 days in the future from today to simulate ongoing countdown
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 45);
+    targetDate.setHours(22, 0, 0, 0);
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate.getTime() - now;
+      
+      if (diff <= 0) {
+        document.getElementById('cd-days').innerText = "00";
+        document.getElementById('cd-hours').innerText = "00";
+        document.getElementById('cd-mins').innerText = "00";
+        document.getElementById('cd-secs').innerText = "00";
+        return;
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('cd-days').innerText = days < 10 ? '0' + days : days;
+      document.getElementById('cd-hours').innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById('cd-mins').innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById('cd-secs').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 5. Copy Bank Alias Logic
+    const btnCopy = document.getElementById('btnCopyAlias');
+    const aliasText = document.getElementById('vacaAliasText').innerText;
+    const copyMsg = document.getElementById('copySuccessMsg');
+
+    if (btnCopy) {
+      btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(aliasText).then(() => {
+          copyMsg.style.opacity = '1';
+          setTimeout(() => {
+            copyMsg.style.opacity = '0';
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
+    }
+
+    // 6. Calendar Integration (Add to calendar shortcut)
+    const btnCal = document.getElementById('btnAddToCalendar');
+    if (btnCal) {
+      btnCal.addEventListener('click', () => {
+        const title = encodeURIComponent("Despedida de Soltera VIP de " + document.querySelector('.splash-name').innerText);
+        const details = encodeURIComponent("Dress Code: Total Black. Traer ganas de joda!");
+        const location = encodeURIComponent("Bar La Previa, Av. Libertador 1234, Buenos Aires");
+        
+        // Simple Google Calendar format URL
+        const startDate = new Date(targetDate);
+        const endDate = new Date(targetDate);
+        endDate.setHours(endDate.getHours() + 6);
+        
+        const formatCalDate = (d) => d.toISOString().replace(/-|:|\.\d\d\d/g,"");
+        
+        const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatCalDate(startDate)}/${formatCalDate(endDate)}&details=${details}&location=${location}`;
+        window.open(googleUrl, '_blank');
+      });
+    }
+
+    // 7. Muro de la Vergüenza - Interactive Comment Submission
+    function addComment(e) {
+      e.preventDefault();
+      
+      const author = document.getElementById('muroAuthor').value;
+      const text = document.getElementById('muroText').value;
+      const tag = document.getElementById('muroTag').value;
+      
+      const muroList = document.getElementById('muroList');
+      
+      // Create new element
+      const newMsg = document.createElement('div');
+      newMsg.className = 'muro-msg';
+      newMsg.style.opacity = '0';
+      newMsg.style.transform = 'translateY(10px)';
+      newMsg.style.transition = 'all 0.3s ease';
+      
+      let emoji = '🍻';
+      if (tag === 'Amor') emoji = '❤️';
+      if (tag === 'Peligro') emoji = '⚠️';
+      if (tag === 'Secreto') emoji = '🤫';
+      
+      newMsg.innerHTML = `
+        <div class="muro-msg-header">
+          <span class="muro-msg-author">${author}</span>
+          <span class="muro-msg-tag">${emoji} ${tag}</span>
+        </div>
+        <p class="muro-msg-text">${text}</p>
+      `;
+      
+      // Insert as first child of the messages list
+      muroList.insertBefore(newMsg, muroList.firstChild);
+      
+      // Clear inputs
+      document.getElementById('muroText').value = '';
+      document.getElementById('muroAuthor').value = '';
+      
+      // Animate transition
+      setTimeout(() => {
+        newMsg.style.opacity = '1';
+        newMsg.style.transform = 'translateY(0)';
+      }, 50);
+    }
+
+    // 8. RSVP WhatsApp Message Generator
+    function sendRsvp(e) {
+      e.preventDefault();
+      
+      const asiste = document.querySelector('input[name="asiste"]:checked').value;
+      const name = document.getElementById('rsvpName').value;
+      const diet = document.getElementById('rsvpDiet').value;
+      const tshirt = document.getElementById('rsvpTshirt').value;
+      
+      const targetName = document.querySelector('.splash-name').innerText;
+      
+      let message = "";
+      if (asiste === "Si") {
+        message = `¡Hola! Confirmo mi asistencia para la despedida de ${targetName} 🎉\n\n*Nombre:* ${name}\n*Asiste:* Sí, obvio 🍻\n*Dieta:* ${diet}\n*Talle de Remera:* ${tshirt}`;
+      } else {
+        message = `¡Hola! Lamentablemente no puedo asistir para la despedida de ${targetName} 😢\n\n*Nombre:* ${name}\n*Asiste:* No puedo`;
+      }
+      
+      const phone = "5493425299942"; // Same as in page.tsx
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    }
+  </script>
+</body>
+</html>

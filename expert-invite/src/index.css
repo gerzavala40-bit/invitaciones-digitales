@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #E8E5E1;
+  --color-primary: #1A1C20;
+  --color-accent: #C5B396;
+  --color-accent-hover: #D8C7AA;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+  
+  /* Paper Texture Overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.25;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+.glass-panel {
+  background-color: rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  border-radius: 0.75rem;
+}
+
+.glass-card {
+  background-color: rgb(255 255 255 / 0.65);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.locked { 
+  overflow: hidden; 
+  height: 100vh; 
+}
+
+.btn-primary {
+  @apply px-6 py-3 border border-accent bg-accent text-white uppercase tracking-widest text-xs rounded-full hover:bg-transparent hover:text-accent transition-colors;
+}
+
+.btn-outline {
+  @apply px-6 py-3 border border-accent text-accent uppercase tracking-widest text-xs rounded-full hover:bg-accent hover:text-white transition-colors;
+}

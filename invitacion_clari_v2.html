@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mis XV | Clari</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <!-- Configuración de Tailwind y Animaciones CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Jost', 'sans-serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                    },
+                    colors: {
+                        'sand-light': '#a3c9ea', // Celeste clarito
+                        'sand-dark': '#6ba4d8',  // Celeste más oscuro
+                        'text-dark': '#1a4a75',  // Azul oscuro (texto)
+                        'text-light': '#FFFFFF', // Blanco
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos base y utilidades para las animaciones de scroll */
+        body {
+            background-color: #333; 
+            color: #1a4a75;
+        }
+
+        #app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid currentColor;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: currentColor;
+            color: #fff;
+        }
+        
+        .bg-sand-light .btn-outline:hover {
+            color: theme('colors.sand-light');
+        }
+        
+        .bg-white .btn-outline:hover {
+            color: #fff;
+        }
+
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+        }
+        
+        .icon-circle svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 1;
+        }
+
+        .divider {
+            width: 50%;
+            height: 1px;
+            background-color: currentColor;
+            margin: 24px auto;
+            opacity: 0.3;
+        }
+        
+        input[type="text"], select, textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 8px 0;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        input[type="text"]:focus, select:focus, textarea:focus {
+            border-bottom-color: white;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+        }
+        
+        select option {
+            background-color: theme('colors.sand-light');
+            color: theme('colors.text-dark');
+        }
+
+        /* Mariposas Volando */
+        .butterflies {
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
+          pointer-events: none;
+          overflow: hidden;
+          z-index: 10;
+        }
+        .bf {
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          background-image: url('mariposas.jpg');
+          mix-blend-mode: multiply;
+          background-size: contain;
+          background-repeat: no-repeat;
+          opacity: 0;
+        }
+        .bf1 { animation: flyLR 16s linear infinite; top: 15%; left: -20%; transform: scale(0.9); }
+        .bf2 { animation: flyLR 22s linear infinite 5s; top: 45%; left: -20%; transform: scale(1.2); }
+        .bf3 { animation: flyRL 18s linear infinite 2s; top: 25%; right: -20%; transform: scale(0.8); }
+        .bf4 { animation: flyRL 24s linear infinite 8s; top: 65%; right: -20%; transform: scale(1); }
+
+        @keyframes flyLR {
+          0% { transform: translate(0, 0) rotate(15deg); opacity: 0; }
+          10% { opacity: 0.8; }
+          50% { transform: translate(60vw, -40px) rotate(-10deg); }
+          90% { opacity: 0.8; }
+          100% { transform: translate(120vw, -80px) rotate(15deg); opacity: 0; }
+        }
+        @keyframes flyRL {
+          0% { transform: translate(0, 0) scaleX(-1) rotate(15deg); opacity: 0; }
+          10% { opacity: 0.8; }
+          50% { transform: translate(-60vw, -30px) scaleX(-1) rotate(-5deg); }
+          90% { opacity: 0.8; }
+          100% { transform: translate(-120vw, -60px) scaleX(-1) rotate(15deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased font-sans font-light">
+
+<div id="app-container">
+
+    <!-- Mariposas -->
+    <div class="butterflies">
+      <div class="bf bf1"></div>
+      <div class="bf bf2"></div>
+      <div class="bf bf3"></div>
+      <div class="bf bf4"></div>
+    </div>
+
+    <!-- PORTADA: Imagen Principal -->
+        <section class="relative h-screen w-full flex items-center justify-center" style="background: #ffffff;">
+        <img src="clara.png" alt="Clari XV" class="w-full h-full object-cover object-center">
+        <!-- Botón flotante para bajar -->
+        <a href="#cuenta-regresiva" class="absolute bottom-8 right-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center border border-text-dark/30 text-text-dark hover:bg-white/80 transition shadow-lg animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </a>
+    </section>
+
+    <!-- TÍTULO Y CUENTA REGRESIVA -->
+    <section id="cuenta-regresiva" class="py-16 px-6 text-center bg-white reveal relative z-10">
+        <h2 class="text-2xl tracking-widest font-normal mb-8 text-text-dark">FALTAN</h2>
+        
+        <!-- Contador -->
+        <div class="flex justify-center items-center gap-4 text-text-dark font-light">
+            <div class="flex flex-col">
+                <span id="dias" class="text-4xl font-medium">00</span>
+                <span class="text-[10px] tracking-widest uppercase mt-1">Días</span>
+            </div>
+            <span class="text-3xl -mt-5 opacity-50">:</span>
+            <div class="flex flex-col">
+                <span id="horas" class="text-4xl font-medium">00</span>
+                <span class="text-[10px] tracking-widest uppercase mt-1">Horas</span>
+            </div>
+            <span class="text-3xl -mt-5 opacity-50">:</span>
+            <div class="flex flex-col">
+                <span id="minutos" class="text-4xl font-medium">00</span>
+                <span class="text-[10px] tracking-widest uppercase mt-1">Min</span>
+            </div>
+            <span class="text-3xl -mt-5 opacity-50">:</span>
+            <div class="flex flex-col">
+                <span id="segundos" class="text-4xl font-medium">00</span>
+                <span class="text-[10px] tracking-widest uppercase mt-1">Seg</span>
+            </div>
+        </div>
+        
+        <div class="divider text-text-dark"></div>
+    </section>
+
+    <!-- FRASE INVITACIÓN -->
+    <section class="py-16 px-8 text-center bg-sand-light text-white reveal relative z-10 shadow-inner">
+        <p class="text-lg tracking-widest uppercase leading-loose font-medium drop-shadow-md">
+            Que comience la magia...
+        </p>
+        <div class="divider text-white mt-8"></div>
+    </section>
+
+    <!-- FOTO SECUNDARIA (Galería 1) -->
+    <section class="bg-white reveal relative z-10 p-4">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-sand-light/30">
+            <img src="GALERIA DE FOTOS/WhatsApp Image 2026-08-03 at 07.41.29 (2).jpeg" alt="Clari" class="w-full h-auto object-cover">
+        </div>
+    </section>
+
+    <!-- FECHA Y LUGAR -->
+    <section class="py-16 px-6 text-center bg-white text-text-dark reveal relative z-10">
+        <div class="icon-circle border-text-dark text-text-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+        </div>
+        <h2 class="text-xl tracking-widest uppercase mb-4 font-semibold">¿Cuándo?</h2>
+        <p class="text-lg tracking-wider mb-2">Viernes 20 de Marzo 2027</p>
+        <p class="text-lg tracking-wider font-medium text-sand-dark mb-10">| 21:00 HS |</p>
+        
+        <div class="icon-circle border-text-dark text-text-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+        </div>
+        <h2 class="text-xl tracking-widest uppercase mb-4 font-semibold">¿Dónde?</h2>
+        <p class="text-lg tracking-wider mb-1 uppercase font-medium">Salón Cristal</p>
+        
+        <a href="#" target="_blank" class="btn-outline text-text-dark hover:bg-text-dark hover:text-white mt-6 font-semibold">Como Llegar</a>
+    </section>
+
+    <!-- FOTO TERCERA (Galería 2) -->
+    <section class="bg-white reveal relative z-10 p-4">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-sand-light/30 flex gap-2">
+            <img src="GALERIA DE FOTOS/WhatsApp Image 2026-08-03 at 07.41.29 (3).jpeg" alt="Clari" class="w-1/2 h-48 object-cover">
+            <img src="GALERIA DE FOTOS/WhatsApp Image 2026-08-03 at 07.41.30 (1).jpeg" alt="Clari" class="w-1/2 h-48 object-cover">
+        </div>
+    </section>
+
+    <!-- REGALOS / PRECIOS -->
+    <section class="py-16 px-8 text-center bg-sand-light text-white reveal relative z-10 shadow-inner">
+        <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+            </svg>
+        </div>
+        <h2 class="text-2xl tracking-widest uppercase mb-8 font-semibold drop-shadow-sm">Tarjetas</h2>
+        
+        <div class="text-lg tracking-wide leading-loose font-medium mb-8 space-y-3 bg-white/20 p-6 rounded-xl border border-white/30 backdrop-blur-sm">
+            <p class="flex justify-between border-b border-white/20 pb-2"><span>Mayores:</span> <strong>$61.900</strong></p>
+            <p class="flex justify-between border-b border-white/20 pb-2"><span>6 a 12 años:</span> <strong>$43.500</strong></p>
+            <p class="flex justify-between border-b border-white/20 pb-2"><span>2 a 5 años:</span> <strong>$23.600</strong></p>
+            <p class="flex justify-between border-b border-white/20 pb-2"><span>Trasnoche:</span> <strong>$33.000</strong></p>
+        </div>
+        <p class="text-sm italic opacity-80">* Precios vigentes junio y julio</p>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="py-16 px-6 text-center bg-white text-text-dark reveal relative z-10">
+        <div class="icon-circle border-text-dark text-text-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+        </div>
+        <h2 class="text-xl tracking-widest uppercase mb-4 font-semibold">Dress Code</h2>
+        <p class="text-lg tracking-wider mb-2 uppercase font-medium">Elegante</p>
+        <div class="divider text-text-dark mt-6 mb-0 w-1/4"></div>
+    </section>
+
+    <!-- RSVP FORMULARIO -->
+    <section class="py-16 px-8 bg-sand-dark text-white reveal relative z-10 shadow-inner">
+        <div class="text-center mb-10">
+            <div class="icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <h2 class="text-xl tracking-widest uppercase mb-2 font-semibold">Confirmá tu asistencia</h2>
+            <p class="text-xs tracking-wider uppercase font-medium opacity-90">Antes del 1 de Marzo 2027</p>
+        </div>
+
+        <form id="rsvp-form" class="w-full">
+            <div class="mb-6">
+                <label class="block text-xs uppercase tracking-wider mb-2 font-medium">Número de personas a confirmar</label>
+                <select id="num-personas" class="w-full bg-transparent border-b border-white text-white py-2 outline-none appearance-none rounded-none cursor-pointer font-medium text-lg" onchange="renderInvitados()">
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 personas</option>
+                </select>
+                <div class="pointer-events-none absolute right-8 mt--8">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </div>
+
+            <div id="invitados-container"></div>
+
+            <div class="mb-6">
+                <label class="block text-xs uppercase tracking-wider mb-2 font-medium">Dejanos un mensaje</label>
+                <textarea rows="2" placeholder="Mensaje para Clari..."></textarea>
+            </div>
+
+            <div class="text-center mt-10" id="form-buttons">
+                <button type="submit" class="btn-outline text-text-dark bg-white border-white hover:bg-transparent hover:text-white w-full py-4 font-bold tracking-widest rounded-full shadow-lg">ENVIAR CONFIRMACIÓN</button>
+            </div>
+            <div id="successMessage" style="display:none; text-align:center; margin-top:20px; font-weight:bold; font-size:1.2rem; color: #fff;">
+                ¡Gracias! Tus datos fueron enviados.
+            </div>
+        </form>
+    </section>
+
+    <!-- DESPEDIDA -->
+    <section class="py-24 px-6 text-center bg-white text-text-dark reveal relative z-10" style="background-image: url('GALERIA DE FOTOS/WhatsApp Image 2026-08-03 at 07.41.28.jpeg'); background-size: cover; background-position: center; position: relative;">
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-[2px]"></div>
+        <div class="relative z-20 flex flex-col items-center">
+            <h2 class="font-script text-6xl text-text-dark mb-4 drop-shadow-sm">Gracias</h2>
+            <p class="text-lg tracking-widest uppercase leading-loose font-medium">
+                por acompañarme<br>en este día.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // --- 1. CUENTA REGRESIVA ---
+    const fechaEvento = new Date(2027, 2, 20, 21, 0, 0).getTime();
+
+    function actualizarContador() {
+        const ahora = new Date().getTime();
+        const diferencia = fechaEvento - ahora;
+
+        if (diferencia > 0) {
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerText = dias.toString().padStart(2, '0');
+            document.getElementById("horas").innerText = horas.toString().padStart(2, '0');
+            document.getElementById("minutos").innerText = minutos.toString().padStart(2, '0');
+            document.getElementById("segundos").innerText = segundos.toString().padStart(2, '0');
+        } else {
+            document.getElementById("dias").innerText = "00";
+            document.getElementById("horas").innerText = "00";
+            document.getElementById("minutos").innerText = "00";
+            document.getElementById("segundos").innerText = "00";
+        }
+    }
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+
+
+    // --- 2. LÓGICA DEL FORMULARIO RSVP ---
+    function generarHTMLInvitado(index) {
+        return `
+            <div class="mb-8 pb-6 border-b border-white/30 bg-white/10 p-4 rounded-xl">
+                <p class="text-sm font-semibold tracking-widest uppercase mb-4 text-white">Invitado ${index}</p>
+                <input type="text" placeholder="Nombre y Apellido *" required class="mb-4">
+                <div class="mb-4">
+                    <label class="block text-xs uppercase tracking-wider mb-2 font-medium">¿Confirmas tu asistencia? *</label>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-center gap-2 cursor-pointer font-medium text-white">
+                            <input type="radio" name="asistencia_${index}" value="si" class="w-4 h-4 accent-text-dark" checked>
+                            ¡Confirmo!
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer font-medium text-white">
+                            <input type="radio" name="asistencia_${index}" value="no" class="w-4 h-4 accent-text-dark">
+                            No podré asistir
+                        </label>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderInvitados() {
+        const num = parseInt(document.getElementById('num-personas').value);
+        const container = document.getElementById('invitados-container');
+        container.innerHTML = '';
+        for (let i = 1; i <= num; i++) {
+            container.innerHTML += generarHTMLInvitado(i);
+        }
+    }
+    renderInvitados();
+
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('form-buttons').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+    });
+
+
+    // --- 3. ANIMACIONES AL HACER SCROLL (Reveal) ---
+    function reveal() {
+        var reveals = document.querySelectorAll('.reveal');
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 50; 
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add('active');
+            }
+        }
+    }
+    window.addEventListener('scroll', reveal);
+    reveal();
+</script>
+</body>
+</html>

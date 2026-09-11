@@ -1,0 +1,120 @@
+{
+  "eventId": "15-anos-demo",
+  "theme": {
+    "bgBase": "oklch(0.98 0.01 300)", 
+    "surface": "oklch(1 0 0)", 
+    "textMain": "oklch(0.20 0.04 290)",
+    "textMuted": "oklch(0.48 0.03 290)",
+    "accent": "oklch(0.65 0.18 310)",
+    "accentSubtle": "oklch(0.93 0.04 310)",
+    "fontFamily": "var(--font-playfair)",
+    "templateStyle": "elegant-dark"
+  },
+  "header": {
+    "title": "Mis 15 Años",
+    "subtitle": "Valeria",
+    "date": "2026-12-10T21:00:00Z",
+    "hashtag": "#Los15DeVale",
+    "heroImage": "/assets/images/15-anos-demo/b90b7ef0520f623e25f001051b2da805.jpg",
+    "backgroundMusic": "/bad-bunny.mp3",
+    "emotionalPhrase": "Hay momentos inolvidables que se atesoran en el corazón para siempre. Quiero compartir este momento mágico con vos."
+  },
+  "locations": [
+    {
+      "type": "Fiesta",
+      "name": "Salón Estrellas",
+      "address": "Av. Libertador 4500",
+      "time": "21:30",
+      "timeYoung": "23:00",
+      "mapsUrl": "https://maps.google.com/?q=..."
+    }
+  ],
+  "timeline": [
+    {
+      "time": "21:30",
+      "activity": "Recepción Adultos",
+      "icon": "glass"
+    },
+    {
+      "time": "23:00",
+      "activity": "Ingreso Jóvenes",
+      "icon": "party"
+    },
+    {
+      "time": "00:00",
+      "activity": "Vals y Brindis",
+      "icon": "heart"
+    },
+    {
+      "time": "01:00",
+      "activity": "¡Fiesta!",
+      "icon": "music"
+    }
+  ],
+  "details": {
+    "dressCode": "Gala",
+    "gifts": {
+      "message": "Mi mayor regalo es que compartas esta noche conmigo. Pero si querés hacerme un presente, acá te dejo mis datos:",
+      "bankDetails": {
+        "bank": "Banco Galicia",
+        "alias": "MIS15.VALE",
+        "cbu": "0070000000000000000000",
+        "titular": "Valeria Gómez"
+      }
+    },
+    "ticket": {
+      "adultPrice": "$35.000",
+      "kidPrice": "$20.000",
+      "message": "El valor de la tarjeta incluye cena, barra libre y fiesta. Podés abonarla por transferencia o en efectivo."
+    }
+  },
+  "music": {
+    "title": "Música",
+    "subtitle": "¡Ayudame a armar la fiesta!",
+    "playlistUrl": "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M",
+    "message": "¿Qué canción no puede faltar en la pista?"
+  },
+  "guestbook": {
+    "title": "Libro de Firmas",
+    "subtitle": "Tus deseos",
+    "messages": [
+      {
+        "name": "Tía Marta y Flia",
+        "date": "Hace 2 horas",
+        "text": "¡Hermosa Vale! Que pases una noche mágica, te queremos muchísimo."
+      },
+      {
+        "name": "Sofi y las chicas",
+        "date": "Hace 4 horas",
+        "text": "Preparate porque hoy la rompemos toda. ¡Felices 15 amiga de mi corazón! 💖"
+      },
+      {
+        "name": "Abuela Carmen",
+        "date": "Ayer",
+        "text": "Mi niña bella, parece que fue ayer cuando naciste. Disfrutá mucho tu gran noche. Un beso enorme."
+      }
+    ]
+  },
+  "social": {
+    "hashtag": "#Los15DeVale",
+    "message": "Prepará tu cámara y compartí todos los momentos de la fiesta usando mi hashtag.",
+    "instagramUrl": "https://instagram.com/"
+  },
+  "brandFooter": {
+    "enabled": true,
+    "whatsapp": "5493425299942",
+    "websiteUrl": "https://www.teinvitoapp.com.ar",
+    "message": "¡Hola! Vi la tarjeta web de Vale y quiero consultar por una invitación digital."
+  },
+  "rsvp": {
+    "deadline": "2026-11-20",
+    "allowCompanions": false,
+    "askDietaryRestrictions": true,
+    "askSongSuggestions": true
+  },
+  "gallery": [
+    "/assets/images/15-anos-demo/80be31dd84a8ca651676cddf9cd17c77.jpg",
+    "/assets/images/15-anos-demo/b90b7ef0520f623e25f001051b2da805.jpg",
+    "/assets/images/15-anos-demo/d91340682755153865637ccd481fe18a.jpg"
+  ]
+}

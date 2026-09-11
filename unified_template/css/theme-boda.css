@@ -1,0 +1,56 @@
+/* =========================================================
+   THEME: BODA ELEGANTE
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* Fonts */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-weight-display: 600;
+    --fs-hero-title: 4.5rem;
+    --fs-section-title: 2.2rem;
+
+    /* Colors */
+    --color-primary: #c2a990; /* Oro Rosa / Beige elegante */
+    --color-primary-hover: #a88d72;
+    --color-on-primary: #ffffff;
+    
+    --color-bg: #fcfaf8;
+    --color-card-bg: #ffffff;
+    
+    --color-text: #333333;
+    --color-heading: #c2a990;
+    --color-text-muted: #777777;
+    
+    --color-splash-bg: #fcfaf8;
+    
+    /* Specific element variables */
+    --card-radius: 15px;
+    --card-border: 1px solid #f0e9e1;
+    --shadow-card: 0 10px 20px rgba(0,0,0,0.03);
+    
+    --timebox-bg: #ffffff;
+    --timebox-border: 1px solid #c2a990;
+    --timebox-radius: 10px;
+    
+    --btn-radius: 30px;
+    --input-border: 1px solid #e0d5c1;
+    --input-radius: 8px;
+    --color-input-bg: #faf8f5;
+
+    /* Hero Background */
+    --bg-hero-img: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    --hero-overlay: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+}
+
+/* Pequeños retoques exclusivos de este tema (opcional) */
+.hero-title {
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.card {
+    border-top: 4px solid var(--color-primary);
+}

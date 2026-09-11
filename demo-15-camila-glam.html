@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#fbf6f6" name="theme-color"/>
+<title>Mis XV</title>
+<meta content="Invitación digital de XV" name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Dancing+Script:wght@400;600&amp;family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{--bg:#fbf6f6;--surface:#ffffff;--surface-2:#f5ecec;--text:#4a3f3f;--muted:#8c7a7a;--accent:#c99696;--accent-2:#d4af37;--line:rgba(74, 63, 63, 0.1);--shadow:0 22px 60px rgba(180, 150, 150, 0.2);--display:"Cormorant Garamond",serif;--body:"Jost",sans-serif;--script:"Dancing Script",cursive}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:300 16px/1.55 var(--body);overflow-x:hidden}body.locked{height:100dvh;overflow:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}img,video{display:block;max-width:100%}a{color:inherit}.hidden{display:none!important}
+    #particles-canvas {position:fixed;inset:0;z-index:0;pointer-events:none;}
+    #splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;padding:2rem;background:radial-gradient(circle at 50% 28%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 34%),var(--bg);transition:opacity .8s ease, visibility .8s ease, transform .8s cubic-bezier(0.2, 0, 0, 1)}.splash-card{max-width:340px}.splash-ornament,.eyebrow{color:var(--accent-2);letter-spacing:.38em;text-transform:uppercase;font-size:.68rem;font-weight:600}.splash-ornament{font-size:1.4rem;margin-bottom:1.3rem;animation:pulse 2.8s infinite}.splash-name,h1,h2,h3{font-family:var(--display);font-weight:500}.splash-name{font-size:clamp(3.5rem,16vw,5rem);line-height:1;margin:.5rem 0}.splash-date,.hero-date{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}.btn{border:1px solid transparent;border-radius:999px;padding:.95rem 1.3rem;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;font-weight:700;transition:transform .2s, background .3s, border .3s, box-shadow .3s;position:relative;overflow:hidden}.btn:active{transform:scale(.95)}.btn:after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transform:skewX(-25deg);transition:left 0.6s ease;pointer-events:none}.btn:hover:after{left:200%}.btn-primary{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;box-shadow:0 10px 30px rgba(201, 150, 150, .3)}.btn-primary:hover{box-shadow:0 15px 40px rgba(201, 150, 150, .45);transform:translateY(-2px)}.btn-ghost{background:rgba(255,255,255,0.7);color:var(--text);border-color:var(--accent);backdrop-filter:blur(12px)}.btn-ghost:hover{background:rgba(255,255,255,0.9);border-color:var(--accent-2)}.splash-btn{margin-top:2.2rem}.hide{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.05) !important}
+    #musicButton{position:fixed;right:1rem;top:max(1rem,env(safe-area-inset-top));z-index:20;width:2.8rem;height:2.8rem;padding:0;border-radius:50%;display:none}.music-active{animation:pulse 1.5s infinite}#main{opacity:0;transform:scale(0.98);transition:opacity .8s ease .2s, transform .8s cubic-bezier(0.2, 0, 0, 1) .2s;position:relative;z-index:1}#main.ready{opacity:1;transform:scale(1)}.hero{min-height:100dvh;display:grid;align-content:end;position:relative;isolation:isolate;overflow:hidden;padding:6rem 1.5rem 5rem;background:var(--bg)}.hero-media,.hero-media:after{position:absolute;inset:0;z-index:-1}.hero-media{will-change:transform}.hero-media img{width:100%;height:100%;object-fit:cover;animation:heroZoom 12s ease-out both}.hero-media:after{content:"";background:linear-gradient(180deg,rgba(251, 246, 246, 0.3) 20%,rgba(251, 246, 246, 0.7) 55%,var(--bg) 100%)}.hero-content{max-width:540px;margin:auto;width:100%;text-align:center;text-shadow:0 2px 22px rgba(255,255,255,0.8)}.hero h1{font-size:clamp(3.3rem,15vw,5.5rem);line-height:.95;margin:.55rem 0}.scroll-cue{position:absolute;bottom:1.4rem;left:50%;translate:-50%;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);animation:bob 2s infinite}
+    section{padding:5rem 1.35rem;position:relative}.wrap{max-width:560px;margin:auto;text-align:center}.section-title{font-size:clamp(2rem,8vw,2.8rem);line-height:1.1;margin:.65rem 0}.lead{max-width:390px;margin:.8rem auto 1.8rem;color:var(--muted)}.script{font:clamp(2.1rem,10vw,3rem)/1.2 var(--script);color:var(--accent)}.card{background:linear-gradient(145deg,rgba(255, 255, 255, 0.9),var(--surface));border:1px solid var(--line);border-radius:18px;padding:1.35rem;margin:.85rem 0;box-shadow:var(--shadow);transition:transform 0.1s;transform-style:preserve-3d}.card h3{font-size:1.45rem;margin:.2rem 0;transform:translateZ(20px)}.card p{margin:.2rem 0;color:var(--muted);transform:translateZ(10px)}.card strong{display:block;color:var(--text);font-weight:500}.icon{color:var(--accent-2);font-size:1.25rem;transform:translateZ(30px)}.link{display:inline-block;margin-top:.9rem;color:var(--accent);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);transition:color .2s, border-color .2s}.link:hover{color:var(--text);border-color:var(--text)}
+    .card-visual {position: relative; overflow: hidden; border: none; min-height: 240px; display: flex; flex-direction: column; justify-content: center; background: none;}
+    .card-visual .bg-img {position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform 0.8s cubic-bezier(0.2, 0, 0, 1);}
+    .card-visual .overlay {position: absolute; inset: 0; background: linear-gradient(to top, rgba(251,246,246,0.95) 0%, rgba(251,246,246,0.5) 100%); z-index: 1; transition: opacity 0.4s ease;}
+    .card-visual > *:not(.bg-img):not(.overlay) {position: relative; z-index: 2;}
+    .card-visual:hover .bg-img {transform: scale(1.12);}
+    .card-visual:hover .overlay {background: linear-gradient(to top, rgba(251,246,246,0.85) 0%, rgba(251,246,246,0.4) 100%);}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:1.6rem 0}.countdown div{padding:.8rem .2rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,0.7);backdrop-filter:blur(8px)}.countdown b{display:block;font:1.8rem/1 var(--display);color:var(--accent)}.countdown span{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.button-row{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}.button-row .btn{flex:1 1 175px}
+    .video-frame{aspect-ratio:16/9;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}.video-frame iframe,.video-frame video{width:100%;height:100%;border:0;object-fit:cover}.pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem;margin-top:.85rem;transform:translateZ(15px)}.pills span{border:1px solid var(--line);padding:.4rem .75rem;border-radius:999px;color:var(--text);font-size:.7rem;transition:border-color .3s, color .3s; background: rgba(255,255,255,0.5); backdrop-filter: blur(4px);}.pills span:hover{border-color:var(--accent);color:var(--accent)}.gift-value{font:1.35rem var(--display);color:var(--accent);overflow-wrap:anywhere;transform:translateZ(25px)}.copy{margin-top:.7rem;background:rgba(255,255,255,0.5); backdrop-filter:blur(4px); color:var(--text); border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;transform:translateZ(15px)}.copy:hover{background:var(--accent);color:#fff;border-color:var(--accent)}.copy:active{transform:translateZ(15px) scale(.95)}.rsvp{display:grid;gap:.7rem;text-align:left}.rsvp label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.rsvp input,.rsvp select,.rsvp textarea{width:100%;margin-top:.25rem;padding:.8rem;border:1px solid var(--line);border-radius:10px;background:#ffffff;color:var(--text);transition:border-color .3s, box-shadow .3s}.rsvp input:focus,.rsvp select:focus,.rsvp textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.rsvp textarea{resize:vertical;min-height:88px}.form-note{font-size:.72rem;color:var(--muted);margin:.8rem 0 0}
+    .reveal{opacity:0;transform:translateY(30px) scale(0.95);transition:opacity .9s cubic-bezier(0.2, 0, 0, 1), transform .9s cubic-bezier(0.2, 0, 0, 1)}.reveal.in{opacity:1;transform:none}.modal{position:fixed;inset:0;z-index:80;padding:1rem;display:none;place-items:center;background:rgba(251,246,246,0.85);backdrop-filter:blur(8px);opacity:0;transition:opacity .4s ease}.modal.open{display:grid;opacity:1}.modal-box{width:min(100%,500px);max-height:88dvh;overflow:auto;border-radius:18px;background:var(--surface);border:1px solid var(--line);padding:1.35rem;text-align:center;box-shadow:var(--shadow);transform:scale(0.95);transition:transform .4s cubic-bezier(0.2, 0, 0, 1)}.modal.open .modal-box{transform:scale(1)}.modal-close{float:right;background:transparent;border:0;color:var(--text);font-size:1.4rem;transition:color .2s}.modal-close:hover{color:var(--accent)}.lightbox-img{max-height:68dvh;margin:auto;border-radius:10px}.qr{width:180px;height:180px;margin:1rem auto;background:#fff;padding:.45rem;border-radius:8px}.toast{position:fixed;z-index:120;bottom:1.5rem;left:50%;translate:-50%;padding:.7rem 1rem;border-radius:999px;background:#f5ecec;color:var(--text);border:1px solid var(--line);font-size:.75rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;transform:translateY(10px)}.toast.show{opacity:1;transform:translateY(0)}footer{padding:2rem 1rem 4rem;text-align:center;border-top:1px solid var(--line);color:var(--muted);font-size:.7rem}@keyframes pulse{50%{opacity:.55;transform:scale(1.07)}}@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}@keyframes bob{50%{translate:-50% 6px;opacity:.55}}@media(min-width:640px){section{padding:6rem 2rem}.hero{padding-bottom:7rem}.gallery{gap:.8rem}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body class="locked">
+<!-- PERSONALIZACIÓN: editá únicamente CONFIG al final. Para apagar módulos, usá true/false. -->
+<audio id="music" loop="" preload="metadata"></audio>
+<canvas id="particles-canvas"></canvas>
+<div id="splash"><div class="splash-card"><div class="splash-ornament">✦ ✦ ✦</div><p class="eyebrow">Bienvenida</p><p class="splash-date">Mis XV</p><p class="splash-name" data-bind="name"></p><p class="splash-date" data-bind="dateShort"></p><button class="btn btn-primary splash-btn" id="enter">Abrir invitación</button></div></div>
+<button aria-label="Reproducir música" class="btn btn-ghost" id="musicButton">♪</button><div class="toast" id="toast" role="status"></div>
+<main id="main">
+<section class="hero" id="hero"><div class="hero-media" id="heroMedia"><img alt="Portada de la invitación" data-bind-src="heroImage"/></div><div class="hero-content"><p class="eyebrow">Mis XV</p><h1 data-bind="name"></h1><p class="hero-date" data-bind="dateLong"></p><div aria-live="polite" class="countdown" id="countdown"></div><div class="button-row"><a class="btn btn-primary" href="#momentos">Ver detalles</a><button class="btn btn-ghost" id="calendarButton">+ Calendario</button></div></div><a class="scroll-cue" href="#frase">Deslizá ↓</a></section>
+<section id="frase"><div class="wrap reveal"><p class="script" data-bind="quote"></p><p class="lead" data-bind="intro"></p></div></section>
+<section id="momentos"><div class="wrap"><p class="eyebrow reveal">La celebración</p><h2 class="section-title reveal">Momentos para encontrarnos</h2><p class="lead reveal">Guardá cada ubicación para llegar sin vueltas.</p><div id="events"></div></div></section>
+<section id="dress"><div class="wrap reveal"><p class="eyebrow">Código de vestimenta</p><h2 class="section-title">Dress code</h2><div class="card tilt-card card-visual"><img alt="" class="bg-img" data-bind-src="dressImage"/><div class="overlay"></div><div class="icon">◇</div><h3 data-bind="dressTitle"></h3><p data-bind="dressText"></p><div class="pills" id="dressPills"></div></div></div></section>
+<section id="video"><div class="wrap reveal"><p class="eyebrow">Una historia</p><h2 class="section-title">Video</h2><div class="video-frame" id="videoFrame"></div></div></section>
+<section id="gifts"><div class="wrap reveal"><p class="eyebrow">Con cariño</p><h2 class="section-title">Regalos</h2><p class="lead" data-bind="giftsText"></p><div id="giftCards"></div></div></section>
+<section id="rsvp"><div class="wrap"><p class="eyebrow reveal">Tu respuesta</p><h2 class="section-title reveal">Confirmá tu asistencia</h2><p class="lead reveal">Por favor, respondé antes del <strong data-bind="deadline"></strong>.</p><form class="card rsvp reveal tilt-card" id="rsvpForm"><label>Nombre completo<input name="guest" placeholder="Tu nombre" required=""/></label><label>¿Asistís?<select name="attendance"><option value="Sí, confirmo asistencia">Sí, confirmo</option><option value="No podré asistir">No podré asistir</option></select></label><label>Acompañantes<select name="guests"><option>0</option><option>1</option><option>2</option><option>3</option></select></label><label>Menú / comentarios<textarea name="notes" placeholder="Ej.: vegetariano, celíaco..."></textarea></label><button class="btn btn-primary" type="submit">Enviar por WhatsApp</button></form><p class="form-note reveal">Tu respuesta se abre en WhatsApp; esta invitación no guarda datos.</p></div></section>
+<section id="share"><div class="wrap reveal"><p class="eyebrow">Compartí</p><h2 class="section-title">Que no falte nadie</h2><div class="button-row"><button class="btn btn-primary" id="shareButton">Compartir</button><button class="btn btn-ghost" id="qrButton">Ver QR</button></div></div></section>
+<section><div class="wrap reveal"><p class="script">Te espero para una noche mágica</p><p class="hero-date" data-bind="dateShort"></p></div></section>
+<footer>Te <em>invito</em> · Invitación XV</footer>
+</main>
+<div aria-modal="true" class="modal" id="qrModal" role="dialog"><div class="modal-box"><button aria-label="Cerrar" class="modal-close" data-close="qrModal">×</button><p class="eyebrow">Invitación digital</p><h2 class="section-title">Escaneá y compartí</h2><img alt="Código QR de la invitación" class="qr" id="qrImage"/><p class="lead">Abrí esta invitación desde tu cámara.</p></div></div>
+<script>
+  /* ================================================================
+     CONFIGURACIÓN CENTRALIZADA — el único bloque a editar
+     Usá rutas relativas (ej. "fotos/camila-1.jpg") o URLs públicas.
+     ================================================================ */
+  const CONFIG={
+    theme:"glam", // glam | romantic | editorial
+    modules:{countdown:true,calendar:true,music:true,ceremony:false,party:true,dress:true,gallery:false,video:false,gifts:true,rsvp:true,share:true},
+    name:"Camila", dateISO:"2027-03-20T21:00:00-03:00", dateLong:"Viernes 20 de marzo de 2027 · 21:00 hs",dateShort:"20 · 03 · 2027",
+    heroImage:"https://lh3.googleusercontent.com/aida-public/AB6AXuBB1SZ8CIsvLcyt7rNqjVli3EwOFu8blK_VsWg50DneX0HrnP74F6Xz9tEg5eFsNIwQDR1w12s7MPsup4rD44P4G6sQfBkqKmyjTsrXBzeVubmbT1wYlsy2brSG8jPJmCjHKaMwBlxUTyjL8HJnco6tCshS8yAaGUqSr6-pDfoekq3MkUjp4r43Blr8PX2W7UWDZiX6jXzvmeSkJATg23p5ZXxT4NMqL7Vfvx01WVZ6ib2EYj_mZJ9DUA", quote:"Que comience la magia…",intro:"Me llenaría de felicidad compartir este día con ustedes.",
+    music:"musica.mp3", invitationUrl:"", hashtag:"#CamilaXV2027",
+    dressImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBweWDhuEsD_uoh4eN1gPfjItv-fb0hCe5t_pgaYs_H7x4Z-DsLadRnqCMNex7kolP8GXs1kwjAChA1jR2PyJjF6FjSmoy4hPjbMB8-v8nKFVtO7f1gatFFNNY93EfWJI4nd41cFbZPRJqJ1hMl0kIZOGXgMk5l3gPba7w9NxPyn4t1oV6ilV-A3aXxIZdXPPwdxBROuy7vg1B__wXcy9vhxv7F21w_4iG0-D8ffaFZ9OFRgt794_fXcg",
+    events:[{enabled:false,title:"Misa / ceremonia",time:"",venue:"",address:"",maps:"",image:""},{enabled:true,title:"Fiesta",time:"21:00 hs",venue:"Salón Cristal",address:"Av. del Libertador 4500",maps:"https://www.google.com/maps/search/?api=1&query=Av+del+Libertador+4500",image:"https://lh3.googleusercontent.com/aida-public/AB6AXuBXDVEWpLogziGfRTvQovK-cWdmUxOJJb57xHc6io4zo2jBe0t7IfFdThTYCMZnzKjr0qP8spUSiplta3mdM0_2nrTWKShvyDRyWBYfR1XV9v0pnpV9Ogo0H3fzGKDAKoP1MVqKp0vY6vljZOlJJRO6PPoX6gSZDOLcmUAumkdq0J85pRclXA6LggiigyOqdKO0ASnqOtRr-NosXRVg_N1YII64ilnD0gn0yuw42mKl9ga_p1HR92TBrw"}],
+    dress:{title:"Formal / Gala",text:"Brillos y tacones, bienvenidos.",colors:["Rosa","Dorado","Negro"]},
+    video:{type:"youtube",url:"https://www.youtube.com/embed/VIDEO_ID"},
+    gifts:{text:"El regalo más lindo es que estés presente. Si querés acompañarme con un regalo, podés usar:", image:"https://lh3.googleusercontent.com/aida-public/AB6AXuBjH-jCIo4ADToGEs2Ku6KwiTwhHHgTkBxqjb5dL08tbjI7dsmzsu2vJpTAujcTwRDbUH4F5WMd_cwYtbkK3vyKbtfqs5EcRUEahxNn3-MXoOUL9w2upTAyFdrfAdKcYzUL63aWFMa3C62HQS8gmmdxAqb3H3BOvuXr8tu5sad_jo39cjCRIwk_ZxuplT4XLaj25gnh5HnR1QVPi2eNdXbX7wbuPTs24VINWUGByrUkd0aWJZVrNeerfQ", items:[{label:"Alias",value:"camila.xv.2027",detail:"Titular: Camila Ruiz"},{label:"CBU / CVU",value:"0000003100033333333333",detail:"Transferencia o Mercado Pago"}]},
+    rsvp:{deadline:"1 de marzo de 2027",whatsapp:"5493425299942"}
+  };
+  const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+  const THEMES={glam:{},romantic:{bg:'#341c2b',surface:'#562d43','surface-2':'#6a3a52',accent:'#f4d8d4','accent-2':'#dba8a0',muted:'#ead7dd'},editorial:{bg:'#131313',surface:'#202020','surface-2':'#292929',accent:'#fff', 'accent-2':'#d9b86b',muted:'#d0d0d0'}};
+  Object.entries(THEMES[CONFIG.theme]||{}).forEach(([k,v])=>document.documentElement.style.setProperty('--'+k,v));
+  document.title=`Mis XV ${CONFIG.name}`;document.querySelector('meta[name="description"]').content=`Invitación XV de ${CONFIG.name}`;
+  $$('[data-bind]').forEach(el=>el.textContent=CONFIG[el.dataset.bind]??CONFIG.rsvp[el.dataset.bind]??CONFIG.dress[el.dataset.bind]??'');$$('[data-bind-src]').forEach(el=>el.src=CONFIG[el.dataset.bindSrc]);
+  const setModule=(id,on)=>$('#'+id)?.classList.toggle('hidden',!on);Object.entries({countdown:CONFIG.modules.countdown,calendarButton:CONFIG.modules.calendar,musicButton:CONFIG.modules.music,dress:CONFIG.modules.dress,video:CONFIG.modules.video,gifts:CONFIG.modules.gifts,rsvp:CONFIG.modules.rsvp,share:CONFIG.modules.share}).forEach(([id,on])=>setModule(id,on));
+  const events=CONFIG.events.filter(e=>e.enabled&&(e.title!=="Misa / ceremonia"||CONFIG.modules.ceremony)&&(e.title!=="Fiesta"||CONFIG.modules.party));$('#momentos').classList.toggle('hidden',!events.length);$('#events').innerHTML=events.map(e=>`<article class="card tilt-card reveal in card-visual"><img class="bg-img" src="${e.image}" alt="" loading="lazy"><div class="overlay"></div><div class="icon">${e.title.includes('Misa')?'✦':'◉'}</div><h3>${e.title}</h3><p><strong>${e.time}</strong>${e.venue}<br>${e.address}</p>${e.maps?`<a class="link" href="${e.maps}" target="_blank" rel="noopener">Cómo llegar →</a>`:''}</article>`).join('');
+  $('#dressPills').innerHTML=CONFIG.dress.colors.map(x=>`<span>${x}</span>`).join('');
+  $('#videoFrame').innerHTML=CONFIG.video.type==='file'?`<video controls playsinline src="${CONFIG.video.url}"></video>`:`<iframe src="${CONFIG.video.url}" title="Video de ${CONFIG.name}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  $('#giftCards').innerHTML=CONFIG.gifts.items.map(g=>`<article class="card tilt-card card-visual"><img class="bg-img" src="${CONFIG.gifts.image}" alt="" loading="lazy"><div class="overlay"></div><p class="eyebrow">${g.label}</p><div class="gift-value">${g.value}</div><p>${g.detail}</p><button class="copy" data-copy="${g.value}">Copiar</button></article>`).join('');
+  function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2600)}async function copy(t){try{await navigator.clipboard.writeText(t);toast('¡Copiado!')}catch{toast('No se pudo copiar')}}document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(b)copy(b.dataset.copy);const x=e.target.closest('[data-close]');if(x)$('#'+x.dataset.close).classList.remove('open')});$$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
+  const audio=$('#music'),musicBtn=$('#musicButton');audio.src=CONFIG.music;let played=false;async function toggleMusic(){try{if(audio.paused){await audio.play();played=true;musicBtn.textContent='❚❚';musicBtn.classList.add('music-active')}else{audio.pause();musicBtn.textContent='♪';musicBtn.classList.remove('music-active')}}catch{toast('No se pudo reproducir la música')}}musicBtn.onclick=toggleMusic;
+  $('#enter').onclick=async()=>{if(CONFIG.modules.music)await toggleMusic();$('#splash').classList.add('hide');document.body.classList.remove('locked');$('#main').classList.add('ready');observe();initParticles();initTilt();initParallax()};
+  const target=new Date(CONFIG.dateISO).getTime();function tick(){const d=Math.max(0,target-Date.now()),parts=[[Math.floor(d/864e5),'Días'],[Math.floor(d%864e5/36e5),'Horas'],[Math.floor(d%36e5/6e4),'Min'],[Math.floor(d%6e4/1e3),'Seg']];$('#countdown').innerHTML=parts.map(([n,l])=>`<div><b>${String(n).padStart(l==='Días'?1:2,'0')}</b><span>${l}</span></div>`).join('')}tick();setInterval(tick,1000);
+  $('#calendarButton').onclick=()=>{const start=new Date(CONFIG.dateISO),end=new Date(start.getTime()+5*36e5),fmt=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');const e=events.find(x=>x.title==='Fiesta')||events[0]||{};const url=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`XV de ${CONFIG.name}`)}&dates=${fmt(start)}/${fmt(end)}&details=${encodeURIComponent(CONFIG.intro)}&location=${encodeURIComponent(`${e.venue||''} ${e.address||''}`)}`;window.open(url,'_blank','noopener')};
+  $('#rsvpForm').onsubmit=e=>{e.preventDefault();const d=new FormData(e.currentTarget),msg=`¡Hola!%0A%0A*RSVP · XV de ${CONFIG.name}*%0ANombre: ${d.get('guest')}%0AAsistencia: ${d.get('attendance')}%0AAcompañantes: ${d.get('guests')}%0AMenú / notas: ${d.get('notes')||'-'}`;window.open(`https://wa.me/${CONFIG.rsvp.whatsapp}?text=${msg}`,'_blank','noopener')};
+  const inviteUrl=CONFIG.invitationUrl||location.href;$('#shareButton').onclick=async()=>{const data={title:`Mis XV ${CONFIG.name}`,text:`Estás invitado/a a los XV de ${CONFIG.name}`,url:inviteUrl};try{if(navigator.share)await navigator.share(data);else{await copy(inviteUrl);toast('Link copiado para compartir')}}catch(_){}};$('#qrButton').onclick=()=>{$('#qrImage').src=`https://api.qrserver.com/v1/create-qr-code/?size=360x360&data=${encodeURIComponent(inviteUrl)}`;$('#qrModal').classList.add('open')};
+  
+  function observe(){
+    const els=$$('.reveal');
+    if(!('IntersectionObserver'in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(e=>e.classList.add('in'));return
+    }
+    const io=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');io.unobserve(e.target)
+      }
+    }),{threshold:.15, rootMargin: "0px 0px -50px 0px"});
+    els.forEach(e=>io.observe(e))
+  }
+
+  function initTilt() {
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) return;
+    $$('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      });
+    });
+  }
+
+  function initParallax() {
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = $('#heroMedia');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+      }
+    }, {passive: true});
+  }
+
+  function initParticles() {
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    const particles = [];
+    const particleCount = Math.min(width / 15, 60);
+
+    // Get theme colors from computed styles
+    const styles = getComputedStyle(document.documentElement);
+    const accent2 = styles.getPropertyValue('--accent-2').trim() || '#d4af37';
+    
+    // Simple hex to rgb conversion if needed, or assume it's valid format for canvas fillStyle
+    const color = accent2.startsWith('#') ? accent2 : '#d4af37';
+
+    class Particle {
+      constructor() {
+        this.reset();
+        this.y = Math.random() * height; // initial random spread
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 20;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = -(Math.random() * 0.5 + 0.1);
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.pulse = Math.random() * 0.02 + 0.005;
+        this.pulseDir = 1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY - (window.scrollY * 0.005); // slight parallax with scroll
+        
+        this.opacity += this.pulse * this.pulseDir;
+        if(this.opacity >= 0.8) this.pulseDir = -1;
+        if(this.opacity <= 0.1) this.pulseDir = 1;
+
+        if (this.y < -10 || this.x < -10 || this.x > width + 10) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.globalAlpha = Math.max(0, Math.min(1, this.opacity));
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    animate();
+  }
+  </script>
+</body></html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía & Felipe — Nos casamos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#100D0A; --ink-2:#1A1510;
+    --gold:#C9A66B; --gold-soft:#8C7550;
+    --cream:#EDE7DD; --muted:#8C8478;
+    --line:rgba(237,231,221,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--ink); color:var(--cream); font-family:'Jost',sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:500; }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 28px; }
+  .eyebrow{ font-size:11px; text-transform:uppercase; letter-spacing:0.3em; color:var(--gold); margin-bottom:16px; }
+  section{ padding:clamp(32px, 5vw, 60px) 0; text-align:center; overflow:hidden; }
+  .divider{ width:1px; height:56px; background:linear-gradient(var(--gold),transparent); margin:0 auto; }
+
+  /* HERO */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:40px 28px;
+    background: linear-gradient(to bottom, rgba(16, 13, 10, 0.85) 0%, rgba(16, 13, 10, 0.5) 60%, var(--ink) 95%), url('/boda_elegante_bg.jpg') center/cover no-repeat;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(to bottom, rgba(16, 13, 10, 0.5) 0%, transparent 50%);
+    pointer-events:none;
+  }
+  .hero .eyebrow{
+    font-size: 15px;
+    letter-spacing: 0.35em;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .hero h1{ font-size:clamp(46px,11vw,84px); font-style:italic; line-height:1.05; margin-bottom:10px; text-shadow: 0 4px 16px rgba(0,0,0,0.95); }
+  .hero .amp{ display:block; color:var(--gold); font-size:0.5em; margin:8px 0; }
+  .hero .date{ font-size:14px; letter-spacing:0.15em; color:var(--cream); text-transform:uppercase; margin-top:20px; font-weight: 400; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+  .scroll-hint{ position:absolute; bottom:36px; font-size:11px; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+
+  /* COUNTDOWN */
+  .countdown-row{ display:flex; justify-content:center; gap:10px; margin:36px 0; flex-wrap:nowrap; }
+  .countdown-row div{ text-align:center; }
+  .countdown-row .n{
+    display:block; font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--gold);
+    width:54px; height:54px; line-height:54px; border:1px solid var(--line); border-radius:4px; margin-bottom:8px;
+    background: rgba(26, 21, 16, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  }
+  .countdown-row .l{ font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); }
+
+  /* STORY */
+  .story p{ font-size:17px; line-height:1.9; color:#C8C0B2; max-width:480px; margin:0 auto; }
+  .story p em{ color:var(--gold); font-style:italic; }
+
+  /* DETAILS — ceremony/party */
+  .details-grid{ display:grid; grid-template-columns:1fr; gap:12px; background:transparent; margin-top:20px; }
+  @media (min-width: 600px) {
+    .details-grid{ grid-template-columns:1fr 1fr; gap:8px; }
+  }
+  .detail-card{ 
+    background: rgba(26, 21, 16, 0.65); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px); 
+    padding:36px 20px; 
+    border: 1px solid rgba(201, 166, 107, 0.15);
+    margin: 4px;
+    word-wrap: break-word;
+  }
+  .detail-card h3{ font-size:22px; margin-bottom:8px; }
+  .detail-card p{ font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:18px; }
+  .map-link{ font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-soft); padding-bottom:3px; }
+
+  /* DRESS CODE */
+  .dress .swatches{ display:flex; justify-content:center; gap:10px; margin:24px 0 12px; }
+  .swatches span{ width:28px; height:28px; border-radius:50%; border:1px solid var(--line); }
+  .dress p{ font-size:14px; color:var(--muted); }
+
+  /* GALLERY */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:20px; }
+  .g-item{ aspect-ratio:3/4; background:linear-gradient(160deg, #241C15, #100D0A); border:1px solid var(--line); }
+
+  /* GIFTS */
+  .gift-box{
+    max-width:380px; margin:32px auto 0; border:1px solid rgba(201, 166, 107, 0.25); padding:30px 26px;
+    background: rgba(26, 21, 16, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    word-wrap: break-word;
+  }
+  .gift-box .alias{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(16px, 5vw, 22px); color:var(--gold); margin-bottom:6px; word-break: break-all; }
+  .gift-box .bank{ font-size:12px; color:var(--muted); margin-bottom:20px; }
+  .copy-btn{
+    background:var(--gold); color:var(--ink); border:none; padding:12px 26px; font-family:'Jost',sans-serif;
+    font-size:12px; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:opacity .2s ease;
+  }
+  .copy-btn:active{ opacity:0.7; }
+  .copy-msg{ font-size:11px; color:var(--gold); margin-top:10px; height:14px; }
+
+  /* RSVP */
+  .rsvp-form{ 
+    max-width:380px; margin:32px auto 0; text-align:left; 
+    background: rgba(26, 21, 16, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201, 166, 107, 0.15);
+    padding: 24px;
+    border-radius: 8px;
+  }
+  .rsvp-form label{ display:block; font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:8px; }
+  .rsvp-form input, .rsvp-form select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line);
+    color:var(--cream); font-family:'Jost',sans-serif; font-size:15px; padding:10px 0; margin-bottom:24px; outline:none;
+  }
+  .rsvp-form input:focus, .rsvp-form select:focus{ border-color:var(--gold); }
+  .rsvp-submit{
+    width:100%; background:var(--gold); color:var(--ink); border:none; padding:16px; font-size:13px;
+    letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; margin-top:8px;
+  }
+
+  /* MUSIC */
+  .music-bar{
+    position:fixed; bottom:20px; right:20px; display:flex; align-items:center; gap:8px;
+    background:var(--ink-2); border:1px solid var(--line); padding:10px 16px; border-radius:100px; font-size:11px;
+  }
+  .music-dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 1.6s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  footer{ padding:50px 0; text-align:center; font-size:11px; color:var(--muted); letter-spacing:0.05em; }
+</style>
+
+  
+
+  <!-- SPLASH SCREEN CSS -->
+  <style>
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+    .splash-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: #fafafa;
+      background-image: url('portada-boda-elegante.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 12vh;
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
+    }
+    @media (min-width: 768px) {
+      .splash-screen {
+        background-size: contain;
+      }
+    }
+    .splash-screen.slide-up {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .splash-content {
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn-abrir {
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      border: 1px solid #555;
+      padding: 15px 40px;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .btn-abrir:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .splash-hint {
+      color: #666;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+  </style>
+
+<style>
+  /* Global fix for mobile text overflow */
+  @media (max-width: 768px) {
+    h1, h2, h3, h4, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl, .font-display-xl, .font-headline-lg {
+      font-size: clamp(1.75rem, 8vw, 3rem) !important;
+      line-height: 1.1 !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+    body, html {
+      overflow-x: hidden !important;
+    }
+  }
+</style>
+
+</head>
+
+
+
+<body class="locked">
+  
+  <!-- SPLASH SCREEN ENVELOPE -->
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <button id="btnOpenInvite" class="btn-abrir">ABRIR INVITACIÓN</button>
+      
+    </div>
+  </div>
+
+
+<section class="hero">
+  <img src="/casamiento_icon.png" class="wedding-icon" style="width:110px; height:auto; margin-bottom:20px; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.85)) brightness(1.15); display:inline-block;" alt="Icono casamiento" />
+  <div class="eyebrow">Nos casamos</div>
+  <h1>Sofía<span class="amp">&amp;</span>Felipe</h1>
+  <div class="date">12 · DICIEMBRE · 2026</div>
+  <div class="scroll-hint">↓ Desliza</div>
+</section>
+
+<section id="countdown">
+  <div class="wrap">
+    <div class="eyebrow">Falta muy poco</div>
+    <div class="countdown-row" id="cd">
+      <div><span class="n">48</span><span class="l">Días</span></div>
+      <div><span class="n">14</span><span class="l">Horas</span></div>
+      <div><span class="n">22</span><span class="l">Min</span></div>
+      <div><span class="n">09</span><span class="l">Seg</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider" style="display: flex; align-items: center; justify-content: center; max-width: 150px; margin: 28px auto; gap: 12px;">
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to right, transparent, var(--gold)); opacity: 0.6;"></span>
+  <span style="color: var(--gold); font-size: 11px; opacity: 0.85;">✦</span>
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to left, transparent, var(--gold)); opacity: 0.6;"></span>
+</div>
+
+<section class="story">
+  <div class="wrap">
+    <div class="eyebrow">Nuestra historia</div>
+    <p>Once años después de un primer café que se hizo eterno, queremos celebrar con las personas que más queremos. <em>Gracias por ser parte de este capítulo.</em></p>
+  </div>
+</section>
+
+<section id="details">
+  <div class="wrap">
+    <div class="eyebrow">Cuándo y dónde</div>
+    <h2 style="font-size:32px; margin-bottom:8px;">Los esperamos</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h3>Ceremonia</h3>
+        <p>19:00 hs<br>Capilla Nuestra Señora<br>Villa Allende, Córdoba</p>
+        <a class="map-link" href="#">Ver en el mapa</a>
+      </div>
+      <div class="detail-card">
+        <h3>Fiesta</h3>
+        <p>21:00 hs<br>Estancia La Candelaria<br>Camino a Salsipuedes</p>
+        <a class="map-link" href="#">Ver en el mapa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dress">
+  <div class="wrap">
+    <div class="eyebrow">Dress code</div>
+    <h2 style="font-size:28px;">Elegante noche</h2>
+    <div class="swatches">
+      <span style="background:#100D0A;"></span>
+      <span style="background:#C9A66B;"></span>
+      <span style="background:#3B1F2E;"></span>
+      <span style="background:#EDE7DD;"></span>
+    </div>
+    <p>Evitar blanco y colores muy claros</p>
+  </div>
+</section>
+
+<div class="ornament-divider" style="display: flex; align-items: center; justify-content: center; max-width: 150px; margin: 28px auto; gap: 12px;">
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to right, transparent, var(--gold)); opacity: 0.6;"></span>
+  <span style="color: var(--gold); font-size: 11px; opacity: 0.85;">✦</span>
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to left, transparent, var(--gold)); opacity: 0.6;"></span>
+</div>
+
+<section id="itinerario">
+  <div class="wrap">
+    <div class="eyebrow">Itinerario</div>
+    <h2 style="font-size:28px; margin-bottom:24px;">Línea de Tiempo</h2>
+    <div class="timeline-container" style="max-width: 420px; margin: 0 auto; text-align: left; position: relative; padding-left: 28px; border-left: 1px dashed rgba(201, 166, 107, 0.3);">
+      
+      <div class="timeline-item" style="position: relative; margin-bottom: 24px;">
+        <span class="timeline-dot" style="position: absolute; left: -33px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 2px solid var(--ink);"></span>
+        <div style="font-size: 12px; color: var(--gold); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px;">19:00 HS</div>
+        <h3 style="font-size: 17px; font-family: 'Jost', sans-serif; font-weight: 400; margin: 0 0 4px; color: var(--cream);">Ceremonia</h3>
+        <p style="font-size: 13px; color: var(--muted); margin: 0;">Capilla Nuestra Señora</p>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 24px;">
+        <span class="timeline-dot" style="position: absolute; left: -33px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 2px solid var(--ink);"></span>
+        <div style="font-size: 12px; color: var(--gold); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px;">20:30 HS</div>
+        <h3 style="font-size: 17px; font-family: 'Jost', sans-serif; font-weight: 400; margin: 0 0 4px; color: var(--cream);">Recepción</h3>
+        <p style="font-size: 13px; color: var(--muted); margin: 0;">Jardines del Salón</p>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 24px;">
+        <span class="timeline-dot" style="position: absolute; left: -33px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 2px solid var(--ink);"></span>
+        <div style="font-size: 12px; color: var(--gold); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px;">21:30 HS</div>
+        <h3 style="font-size: 17px; font-family: 'Jost', sans-serif; font-weight: 400; margin: 0 0 4px; color: var(--cream);">Cena y Brindis</h3>
+        <p style="font-size: 13px; color: var(--muted); margin: 0;">Salón de Eventos</p>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 0;">
+        <span class="timeline-dot" style="position: absolute; left: -33px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 2px solid var(--ink);"></span>
+        <div style="font-size: 12px; color: var(--gold); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px;">23:30 HS</div>
+        <h3 style="font-size: 17px; font-family: 'Jost', sans-serif; font-weight: 400; margin: 0 0 4px; color: var(--cream);">Inicio de la Fiesta</h3>
+        <p style="font-size: 13px; color: var(--muted); margin: 0;">Baile y diversión hasta el amanecer</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider" style="display: flex; align-items: center; justify-content: center; max-width: 150px; margin: 28px auto; gap: 12px;">
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to right, transparent, var(--gold)); opacity: 0.6;"></span>
+  <span style="color: var(--gold); font-size: 11px; opacity: 0.85;">✦</span>
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to left, transparent, var(--gold)); opacity: 0.6;"></span>
+</div>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="eyebrow">Nosotros</div>
+    <h2 style="font-size:28px;">Un poco de nuestra historia</h2>
+    <div class="gallery-grid">
+      <div class="g-item"></div><div class="g-item"></div><div class="g-item"></div>
+      <div class="g-item"></div><div class="g-item"></div><div class="g-item"></div>
+    </div>
+</section>
+
+<div class="ornament-divider" style="display: flex; align-items: center; justify-content: center; max-width: 150px; margin: 28px auto; gap: 12px;">
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to right, transparent, var(--gold)); opacity: 0.6;"></span>
+  <span style="color: var(--gold); font-size: 11px; opacity: 0.85;">✦</span>
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to left, transparent, var(--gold)); opacity: 0.6;"></span>
+</div>
+
+<section id="tarjeta">
+  <div class="wrap" style="text-align: center;">
+    <div class="eyebrow">Tarjeta</div>
+    <h2 style="font-size:28px;">Valor de Tarjeta</h2>
+    <p style="font-size:14px; color:var(--muted); max-width:400px; margin:12px auto 24px;">Información sobre el costo de la tarjeta de la fiesta y los datos para realizar el pago de la confirmación.</p>
+    <a href="demo-boda-elegante-oscuro-costos.html" style="display:inline-block; background:var(--gold); color:var(--ink); font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; padding:14px 32px; cursor:pointer; text-decoration:none; font-weight:500; text-shadow:none;">VER COSTOS Y ALIAS</a>
+  </div>
+</section>
+
+<div class="ornament-divider" style="display: flex; align-items: center; justify-content: center; max-width: 150px; margin: 28px auto; gap: 12px;">
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to right, transparent, var(--gold)); opacity: 0.6;"></span>
+  <span style="color: var(--gold); font-size: 11px; opacity: 0.85;">✦</span>
+  <span style="height: 1px; flex-grow: 1; background: linear-gradient(to left, transparent, var(--gold)); opacity: 0.6;"></span>
+</div>
+
+<section id="gifts">
+  <div class="wrap">
+    <div class="eyebrow">Regalos</div>
+    <h2 style="font-size:28px;">Tu presencia es nuestro regalo</h2>
+    <p style="font-size:14px; color:var(--muted); max-width:400px; margin:12px auto 24px;">Si además querés hacernos un regalo, esto nos ayuda a construir nuestro hogar.</p>
+    
+    <button id="btnShowGifts" style="display:inline-block; background:transparent; border:1px solid var(--gold); color:var(--gold); font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; padding:14px 32px; cursor:pointer; transition:all 0.3s ease; text-shadow:0 1px 4px rgba(0,0,0,0.5);">VER DATOS BANCARIOS</button>
+
+    <div id="giftDetails" class="gift-box" style="display:none; margin-top:24px;">
+      <div class="alias">sofia.felipe.boda</div>
+      <div class="bank">Alias · Banco Galicia</div>
+      <button class="copy-btn" onclick="copyAlias()">Copiar alias</button>
+      <div class="copy-msg" id="copyMsg"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('btnShowGifts').addEventListener('click', function() {
+    var details = document.getElementById('giftDetails');
+    if (details.style.display === 'none' || details.style.display === '') {
+      details.style.display = 'block';
+      this.textContent = 'OCULTAR DATOS BANCARIOS';
+      this.style.background = 'rgba(212, 175, 55, 0.1)';
+    } else {
+      details.style.display = 'none';
+      this.textContent = 'VER DATOS BANCARIOS';
+      this.style.background = 'transparent';
+    }
+  });
+</script>
+
+<section id="rsvp">
+  <div class="wrap">
+    <div class="eyebrow">Confirmación</div>
+    <h2 style="font-size:28px;">¿Nos acompañás?</h2>
+    <form class="rsvp-form" onsubmit="event.preventDefault(); document.getElementById('rsvpMsg').textContent='¡Gracias por confirmar! Nos vemos pronto ♥';">
+      <label>Nombre completo</label>
+      <input type="text" placeholder="Tu nombre" required>
+      <label>¿Asistirás?</label>
+      <select><option>Sí, con muchas ganas</option><option>No podré asistir</option></select>
+      
+      <div class="companions-row" style="display: flex; gap: 20px;">
+        <div style="flex: 1;">
+          <label>Adultos</label>
+          <input type="number" placeholder="1" min="1" value="1" style="margin-bottom: 12px;">
+        </div>
+        <div style="flex: 1;">
+          <label>Niños</label>
+          <input type="number" placeholder="0" min="0" value="0" style="margin-bottom: 12px;">
+        </div>
+      </div>
+
+      <label>Restricción alimentaria</label>
+      <input type="text" placeholder="Ej: Celíaco, vegetariano, ninguno">
+      
+      <button class="rsvp-submit" type="submit">Confirmar asistencia</button>
+      <div class="copy-msg" id="rsvpMsg" style="text-align:center; margin-top:14px;"></div>
+    </form>
+  </div>
+</section>
+
+
+  
+  
+  
+
+  
+  <!-- Contacto / Demo Info (Injected) -->
+  <style>
+    .contacto-footer-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .contacto-col { flex: 1; }
+    @media (min-width: 768px) {
+      .contacto-footer-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    .contacto-footer h5 {
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: #222;
+      text-transform: uppercase;
+    }
+    .contacto-footer p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    .contacto-footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 2.2;
+    }
+    .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
+  </style>
+  <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
+    <div class="contacto-footer-wrap">
+      <div class="contacto-col">
+        <h5>¿Te gustó la invitación?</h5>
+        <p>¡Contactate y pedí la tuya!</p>
+        <ul>
+          <li><i class="fab fa-whatsapp" style="color: #61ce70; width: 30px; text-align: center;"></i> <a href="https://wa.me/5493425299942">¡Envianos un Whatsapp!</a></li>
+          <li><i class="fas fa-phone-alt" style="color: #333; width: 30px; text-align: center;"></i> +549 342 5299942</li>
+          <li><i class="fas fa-envelope" style="color: #333; width: 30px; text-align: center;"></i> teinvitoapp@gmail.com</li>
+        </ul>
+      </div>
+      <div class="contacto-col">
+        <h5>Seguinos en Instagram</h5>
+        
+        <ul>
+          <li><i class="fab fa-instagram" style="color: #555; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>Sofía &amp; Felipe · 12.12.2026</footer>
+
+<div class="music-bar"><span class="music-dot"></span> Sonando ahora</div>
+
+<script>
+  function copyAlias(){
+    navigator.clipboard.writeText('sofia.felipe.boda');
+    document.getElementById('copyMsg').textContent = 'Alias copiado ✓';
+    setTimeout(()=>{ document.getElementById('copyMsg').textContent=''; }, 2000);
+  }
+  // Countdown real hacia el 12 de diciembre 2026
+  const target = new Date('2026-12-12T19:00:00');
+  function tick(){
+    const diff = target - new Date();
+    const d = Math.max(0, Math.floor(diff/86400000));
+    const h = Math.max(0, Math.floor((diff/3600000)%24));
+    const m = Math.max(0, Math.floor((diff/60000)%60));
+    const s = Math.max(0, Math.floor((diff/1000)%60));
+    const nums = document.querySelectorAll('#cd .n');
+    nums[0].textContent = String(d).padStart(2,'0');
+    nums[1].textContent = String(h).padStart(2,'0');
+    nums[2].textContent = String(m).padStart(2,'0');
+    nums[3].textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+
+
+<!-- Dynamic Name Injection -->
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var customName = params.get('customName');
+    if (customName) {
+      document.addEventListener('DOMContentLoaded', function() {
+        var h1 = document.querySelector('h1');
+        if (h1) h1.innerText = customName;
+        var splashName = document.querySelector('.splash-name');
+        if (splashName) splashName.innerText = customName;
+      });
+    }
+  })();
+</script>
+
+  <script>
+    // Injected Splash Screen Logic
+    document.addEventListener("DOMContentLoaded", function() {
+      const btnOpen = document.getElementById('btnOpenInvite');
+      if(btnOpen) {
+        btnOpen.addEventListener('click', () => {
+          document.getElementById('splashScreen').classList.add('slide-up');
+          document.body.classList.remove('locked');
+          
+          // Trigger the template's original splash button if it exists
+          const internalBtn = document.getElementById('enterBtn') || document.getElementById('btn-open');
+          if (internalBtn) {
+             internalBtn.click();
+          } else {
+            // Fallback for demo-boda-premium
+            const audio = document.getElementById('music');
+            if (audio) {
+              audio.play().catch(e => console.log('Autoplay prevent', e));
+              const musicBtn = document.getElementById('btnMusic');
+              const musicIcon = document.getElementById('iconMusic');
+              if (musicIcon) {
+                 musicIcon.classList.remove('fa-play');
+                 musicIcon.classList.add('fa-music');
+              }
+              if (musicBtn) {
+                 musicBtn.style.animation = 'pulse-music 2s infinite';
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+
+<!-- MUSIC AUTOPLAY FIX -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var enterButton = document.getElementById('enterBtn') || document.getElementById('btn-open') || document.getElementById('btnOpenInvite') || document.querySelector('#splash button');
+    
+    if (enterButton) {
+      enterButton.addEventListener('click', function() {
+        var bgAudio = document.getElementById('bgAudio') || document.getElementById('bgMusic') || document.getElementById('music');
+        if (bgAudio) {
+          bgAudio.volume = 0.7;
+          bgAudio.play().then(function() {
+            var musicBtn = document.getElementById('musicBtn') || document.getElementById('btnMusic');
+            if (musicBtn) {
+              musicBtn.classList.add('playing');
+              var icon = document.getElementById('iconMusic') || musicBtn.querySelector('i');
+              if (icon && icon.classList.contains('fa-play')) {
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-music');
+              }
+              if (typeof window.musicPlaying !== 'undefined') {
+                window.musicPlaying = true;
+                musicBtn.style.opacity = '1';
+                musicBtn.style.transform = 'scale(1.1)';
+              }
+              if (typeof window.playing !== 'undefined') {
+                window.playing = true;
+              }
+            }
+          }).catch(function(e){ console.log("Autoplay prevent: " + e); });
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
+

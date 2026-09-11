@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      String   @default("CLIENT")
+  plan      String   @default("BASICO")
+  events    Event[]
+  preferences UserPreferences?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  
+  // Datos del evento
+  title        String
+  subtitle     String?
+  eventType    String   @default("boda")
+  eventDate    DateTime
+  eventTime    String
+  
+  // Ubicaciones
+  venueName    String
+  venueAddress String
+  venueLatLng  String?
+  ceremonyName    String?
+  ceremonyAddress String?
+  ceremonyLatLng  String?
+  ceremonyTime    String?
+  
+  // Personalizacion
+  templateId   String   @default("elegant-dark")
+  primaryColor String   @default("#d4af37")
+  musicUrl     String?
+  phrase       String?
+  dressCode    String?
+  hashtag      String?
+  
+  // Finanzas
+  bankAlias    String?
+  bankCBU      String?
+  bankHolder   String?
+  
+  // Config
+  rsvpEnabled  Boolean  @default(true)
+  rsvpDeadline String?
+  isActive     Boolean  @default(true)
+  scannerPin   String   @default("1234")
+  isTrial      Boolean  @default(true)
+  paymentStatus String  @default("pending")
+  
+  // Funciones Premium
+  guestbookEnabled Boolean  @default(false)
+  chatEnabled      Boolean  @default(false)
+  
+  // Relaciones
+  photos       Photo[]
+  rsvps        RSVP[]
+  messages     GuestMessage[]
+  timeline     TimelineItem[]
+  chatMessages ChatMessage[]
+  chatParticipants ChatParticipant[]
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model RSVP {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  guestName    String
+  guestCount   Int      @default(1)
+  dietaryNotes String?
+  songRequest  String?
+  qrCode       String?  @unique
+  confirmed    Boolean  @default(true)
+  attended     Boolean  @default(false)
+  tableNumber  String?
+  createdAt    DateTime @default(now())
+}
+
+model GuestMessage {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  guestName    String
+  message      String
+  isApproved   Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model TimelineItem {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  time         String
+  title        String
+  description  String?
+  icon         String?  @default("clock") // Nombre de icono opcional
+  order        Int      @default(0)
+}
+
+model Photo {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  url          String
+  uploaderName String?
+  isApproved   Boolean  @default(true)
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+
+
+model ChatParticipant {
+  id           String   @id @default(cuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  nickname     String
+  tableNumber  String
+  avatarColor  String   @default("#1E90FF") // Color MSN del nick
+  statusText   String?  // Estado personalizado tipo MSN
+  accessToken  String   @unique // Token para validar acceso al chat
+  isOnline     Boolean  @default(false)
+  lastSeen     DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  messages     ChatMessage[]
+
+  @@unique([eventId, nickname])
+}
+
+model ChatMessage {
+  id              String   @id @default(cuid())
+  eventId         String
+  event           Event    @relation(fields: [eventId], references: [id])
+  participantId   String
+  participant     ChatParticipant @relation(fields: [participantId], references: [id])
+  message         String
+  messageType     String   @default("text") // text, nudge, join, leave
+  channel         String   @default("general") // "general" o "mesa-5" etc
+  fontColor       String   @default("#000000")
+  createdAt       DateTime @default(now())
+
+  @@index([eventId, channel, createdAt])
+}
+
+model UserPreferences {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  receiveEmails     Boolean  @default(true)
+  defaultTemplateId String   @default("elegant-dark")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

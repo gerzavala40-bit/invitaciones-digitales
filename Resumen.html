@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te InvitoApp - Funcionalidades</title>
+    <style>
+        :root {
+            --primary: #d4af37; /* Dorado elegante */
+            --primary-dark: #b5952f;
+            --bg-color: #fcfcfc;
+            --text-main: #333;
+            --text-light: #666;
+            --card-bg: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-bottom: 5px solid var(--primary);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ddd;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border-top: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+        }
+
+        .icon-wrapper {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .feature-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .feature-card.active .feature-details {
+            max-height: 300px; /* Suficiente espacio para el contenido */
+            margin-top: 1rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .feature-details ul {
+            list-style-position: inside;
+            margin-left: 10px;
+        }
+
+        .feature-details li {
+            margin-bottom: 0.5rem;
+        }
+
+        .click-hint {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background-color: #1a1a1a;
+            color: white;
+            border-radius: 12px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #1a1a1a;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Te InvitoApp ✨</h1>
+        <p>La forma más inteligente, elegante y moderna de gestionar tu próximo gran evento.</p>
+    </header>
+
+    <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 2rem; color: #666;">
+            <p>Haz clic en cada tarjeta para descubrir todo lo que podemos hacer por tu evento.</p>
+        </div>
+
+        <div class="features-grid">
+            
+            <!-- Tarjeta 1 -->
+            <div class="feature-card" onclick="toggleCard(this)">
+                <div class="icon-wrapper">🎨</div>
+                <h3>Diseño y Personalización</h3>
+                <span class="click-hint">Ver detalles ▼</span>
+                <div class="feature-details">
+                    <ul>
+                        <li><strong>Plantillas Premium:</strong> Diseños adaptables (ej. elegant-dark).</li>
+                        <li><strong>Música Ambiental:</strong> Canción de fondo al abrir la invitación.</li>
+                        <li><strong>Itinerario Interactivo:</strong> Cronograma paso a paso con iconos.</li>
+                        <li><strong>Múltiples Ubicaciones:</strong> Mapas integrados para ceremonia y fiesta.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="feature-card" onclick="toggleCard(this)">
+                <div class="icon-wrapper">💌</div>
+                <h3>RSVP Inteligente</h3>
+                <span class="click-hint">Ver detalles ▼</span>
+                <div class="feature-details">
+                    <ul>
+                        <li><strong>Confirmación Fácil:</strong> En un solo clic.</li>
+                        <li><strong>Control de Acompañantes:</strong> Límite de invitados por grupo.</li>
+                        <li><strong>Menú Especial:</strong> Registro de restricciones alimentarias (celíaco, vegano).</li>
+                        <li><strong>Playlist Colaborativa:</strong> Los invitados sugieren canciones.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="feature-card" onclick="toggleCard(this)">
+                <div class="icon-wrapper">🎟️</div>
+                <h3>Accesos y Entradas QR</h3>
+                <span class="click-hint">Ver detalles ▼</span>
+                <div class="feature-details">
+                    <ul>
+                        <li><strong>Código QR Único:</strong> Cada invitado recibe su pase digital intransferible.</li>
+                        <li><strong>Escáner en Puerta:</strong> Aplicación web para el personal de seguridad.</li>
+                        <li><strong>Asignación de Mesas:</strong> Avisale a cada invitado en qué mesa se sienta.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="feature-card" onclick="toggleCard(this)">
+                <div class="icon-wrapper">💰</div>
+                <h3>Regalos Simplificados</h3>
+                <span class="click-hint">Ver detalles ▼</span>
+                <div class="feature-details">
+                    <p>Olvídate del buzón físico en el salón. Facilita que tus invitados te envíen regalos monetarios integrando tus <strong>Datos Bancarios (CBU / Alias)</strong> directamente en la invitación de forma discreta y elegante.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5 -->
+            <div class="feature-card" onclick="toggleCard(this)">
+                <div class="icon-wrapper">📸</div>
+                <h3>Muro de Recuerdos</h3>
+                <span class="click-hint">Ver detalles ▼</span>
+                <div class="feature-details">
+                    <ul>
+                        <li><strong>Guestbook Digital:</strong> Un muro donde los invitados dejan buenos deseos.</li>
+                        <li><strong>Galería Colaborativa:</strong> Todos pueden subir fotos del evento desde sus celulares.</li>
+                        <li><strong>Moderación:</strong> Tú decides qué contenido se hace público.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tarjeta 6 -->
+            <div class="feature-card" onclick="toggleCard(this)">
+                <div class="icon-wrapper">💬</div>
+                <h3>Chat en Vivo (Premium)</h3>
+                <span class="click-hint">Ver detalles ▼</span>
+                <div class="feature-details">
+                    <p>Lleva la diversión al siguiente nivel con una experiencia interactiva durante la fiesta.</p>
+                    <ul>
+                        <li>Salas de chat generales o por mesas.</li>
+                        <li>Experiencia retro estilo MSN: Nicks de colores, avatares, y "zumbidos".</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cta-section">
+            <h2>¿Listo para digitalizar tu evento?</h2>
+            <p>Sorprende a tus invitados desde el primer clic y ten el control total de tu fiesta.</p>
+            <a href="#" class="btn" onclick="alert('¡Contáctanos hoy mismo para empezar tu prueba gratuita!')">Quiero mi invitación</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(card) {
+            // Cierra las demás
+            document.querySelectorAll('.feature-card').forEach(c => {
+                if(c !== card) {
+                    c.classList.remove('active');
+                    c.querySelector('.click-hint').innerText = 'Ver detalles ▼';
+                }
+            });
+            
+            // Alterna la actual
+            card.classList.toggle('active');
+            
+            // Cambia el texto del hint
+            const hint = card.querySelector('.click-hint');
+            if (card.classList.contains('active')) {
+                hint.innerText = 'Ocultar ▲';
+            } else {
+                hint.innerText = 'Ver detalles ▼';
+            }
+        }
+    </script>
+</body>
+</html>

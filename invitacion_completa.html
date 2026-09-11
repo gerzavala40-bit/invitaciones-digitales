@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Invitación Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c2a990; /* Oro Rosa / Beige elegante */
+            --secondary: #f0e9e1;
+            --text-dark: #333333;
+            --text-light: #777777;
+            --bg-color: #fcfaf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #333; /* Fondo oscuro detrás de la tarjeta simulando móvil */
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            background-color: var(--bg-color);
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h3 {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .arrow-down {
+            margin-top: 50px;
+            font-size: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .time-box {
+            background-color: white;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .time-box .number {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .time-box .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        /* Details */
+        .details-box {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary);
+        }
+
+        .details-box h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .details-box p {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #a88d72;
+        }
+
+        /* Dress Code */
+        .dress-code {
+            background-color: var(--secondary);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0d5c1;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: #faf8f5;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-label {
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .loader {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .success-message {
+            display: none;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h3>Bienvenida a</h3>
+            <h1>Mis XV<br>Julia</h1>
+            <h3>Que comience la magia</h3>
+            <div class="arrow-down">↓</div>
+        </section>
+
+        <!-- Countdown -->
+        <section class="section">
+            <h2 class="section-title">Falta muy poco</h2>
+            <div class="countdown">
+                <div class="time-box">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Hs</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Min</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Seg</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detalles (Cuándo y Dónde) -->
+        <section class="section" style="background-color: #f7f3ee;">
+            <div class="details-box">
+                <h2 class="section-title">¿Cuándo?</h2>
+                <h4>VIERNES 12 DE FEBRERO</h4>
+                <p>21:00 HS</p>
+            </div>
+            
+            <div class="details-box">
+                <h2 class="section-title">¿Dónde?</h2>
+                <h4>SOLARES DEL SUR</h4>
+                <p>Es 4 de Enero 899, Ciudad</p>
+                <a href="https://maps.google.com" target="_blank" class="btn">Cómo Llegar</a>
+            </div>
+        </section>
+
+        <!-- Valor Tarjeta -->
+        <section class="section">
+            <h2 class="section-title">Valor Tarjeta</h2>
+            <p style="color: #777; margin-bottom: 20px; font-size: 14px; line-height: 1.6;">
+                Me llenaría de felicidad poder compartir este día tan especial con ustedes. A continuación les dejo los detalles para realizar el pago de su tarjeta.
+            </p>
+            
+            <div class="details-box" style="text-align: left; background-color: #faf8f5;">
+                <p><strong>Adultos:</strong> $80.000<br>
+                <strong>Jóvenes:</strong> $60.000</p>
+                <hr style="border: 0; border-top: 1px solid #e0d5c1; margin: 15px 0;">
+                <p><strong>Alias:</strong> j.del.pino<br>
+                <strong>CVU:</strong> 0000003100022314329967</p>
+            </div>
+        </section>
+
+        <!-- Dress Code -->
+        <section class="section dress-code">
+            <h2 class="section-title">Dress Code</h2>
+            <h3 style="letter-spacing: 3px; font-weight: 400;">FORMAL</h3>
+            <p style="font-size: 14px; color: #777; margin-top: 10px;">¡Ven preparado para brillar!</p>
+        </section>
+
+        <!-- RSVP Formulario -->
+        <section class="section">
+            <h2 class="section-title">Confirmar Asistencia</h2>
+            <p style="font-size: 12px; color: #777; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;">Antes del 11 de Enero</p>
+
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label>Nombre y Apellido</label>
+                    <input type="text" name="nombre" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>¿Asistirás?</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="asistencia" value="Si" required checked> Sí, voy</label>
+                        <label class="radio-label"><input type="radio" name="asistencia" value="No"> No podré</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Déjame un mensaje</label>
+                    <textarea name="mensaje" placeholder="Tus buenos deseos..."></textarea>
+                </div>
+                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">
+                    <span id="btnText">Enviar Confirmación</span>
+                    <div class="loader" id="btnLoader"></div>
+                </button>
+            </form>
+            <div class="success-message" id="successMessage">
+                ¡Gracias! Tu confirmación ha sido enviada con éxito.
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h2>Brillemos juntos...</h2>
+            <p style="margin-top: 10px; font-weight: 300; letter-spacing: 2px;">¡TE ESPERO!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- COUNTDOWN LOGIC ---
+        const countDownDate = new Date("Feb 12, 2027 21:00:00").getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+            
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown").innerHTML = "¡LLEGÓ EL DÍA!";
+            }
+        }, 1000);
+
+        // --- FORM SUBMIT LOGIC (Google Sheets) ---
+        // INSTRUCCIÓN: Reemplazar esta URL con la tuya generada en Apps Script
+        const scriptURL = 'REEMPLAZAR_POR_TU_URL_DE_APPS_SCRIPT'; 
+
+        document.getElementById('rsvpForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const form = document.getElementById('rsvpForm');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'block';
+            submitBtn.disabled = true;
+
+            // SIMULACIÓN DE ENVÍO para esta demo. 
+            // Si colocas una scriptURL real, descomenta el código 'fetch' de abajo y borra el setTimeout.
+            
+            setTimeout(() => {
+                btnLoader.style.display = 'none';
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+            }, 1500);
+
+            /* CÓDIGO REAL PARA GOOGLE SHEETS (Descomentar al usar la URL real)
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btnLoader.style.display = 'none';
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                })
+                .catch(error => {
+                    alert('Hubo un error al enviar.', error.message);
+                    btnText.style.display = 'inline-block';
+                    btnLoader.style.display = 'none';
+                    submitBtn.disabled = false;
+                });
+            */
+        });
+    </script>
+</body>
+</html>

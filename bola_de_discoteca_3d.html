@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bola de Discoteca Animada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Evita barras de desplazamiento */
+            background-color: #000; /* Fondo negro como en la imagen */
+            color: white;
+            font-family: sans-serif;
+        }
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Detrás del contenido */
+        }
+        
+        /* Estilos para simular la interfaz de tu imagen */
+        #ui-layer {
+            position: relative;
+            z-index: 10;
+            pointer-events: none; /* Permite interactuar con la bola 3D de fondo */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 2rem;
+            gap: 2rem;
+            pointer-events: auto; /* Permite clics en el header */
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-btn {
+            background-color: #ff6699; /* Color rosa del botón "Súper Poderes" */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .center-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 15rem; /* Ajustado para quedar debajo de la bola */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .title {
+            font-size: 5vw;
+            font-weight: 900;
+            margin-top: 2rem;
+            letter-spacing: -0.05em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor para el canvas 3D -->
+    <div id="canvas-container"></div>
+
+    <div id="ui-layer">
+        <header>
+            <a href="#" class="nav-link">Proceso</a>
+            <a href="#" class="nav-btn">Súper Poderes</a>
+        </header>
+        
+        <div class="center-content">
+            <!-- La bola estará aquí en el fondo -->
+            
+            <div class="badge">
+                <span>🪩</span> ESPECIAL DESPEDIDAS
+            </div>
+            
+            <h1 class="title">la mejor noche</h1>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Importando OrbitControls para interactuar con la bola -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+        const container = document.getElementById('canvas-container');
+        
+        // Escena, Cámara y Renderizador
+        const scene = new THREE.Scene();
+        // Añadimos un poco de niebla para darle profundidad
+        scene.fog = new THREE.FogExp2(0x000000, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 15; // Ajustamos la distancia de la cámara
+        camera.position.y = 2; // Movemos un poco hacia arriba
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // alpha: true permite fondo transparente si quisiéramos
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        // Habilitar sombras
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        container.appendChild(renderer.domElement);
+
+        // Controles para rotar la bola con el ratón
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false; // Desactivar zoom para mantener la composición
+        controls.enablePan = false;
+
+        // Geometría: una esfera con muchos segmentos para simular los espejos
+        const geometry = new THREE.SphereGeometry(6, 64, 64); 
+        
+        // Material: Plateado brillante (Gris metálico)
+        const material = new THREE.MeshStandardMaterial({ 
+            color: 0xcccccc, // Gris plateado claro
+            metalness: 0.9,  // Alto factor metálico para que actúe como espejo
+            roughness: 0.1,  // Muy liso para destellos nítidos
+            flatShading: true
+        });
+
+        const discoBall = new THREE.Mesh(geometry, material);
+        // La bola proyecta y recibe sombras
+        discoBall.castShadow = true;
+        discoBall.receiveShadow = true;
+        
+        // Usamos EdgesGeometry para dibujar solo los bordes de la geometría
+        const edgesGeometry = new THREE.EdgesGeometry(geometry);
+        const edgesMaterial = new THREE.LineBasicMaterial({ 
+            color: 0x888888, // Gris intermedio para resaltar los bordes de cada espejo
+            transparent: true,
+            opacity: 0.8
+        });
+        const discoLines = new THREE.LineSegments(edgesGeometry, edgesMaterial);
+        
+        // Añadimos las líneas como "hijas" de la bola, así rotarán junto con ella
+        discoBall.add(discoLines); 
+
+        scene.add(discoBall);
+
+        // --- ILUMINACIÓN MULTICOLOR ---
+        
+        // Luz hemisférica con tonos oscuros (azul y morado) para dar ambiente de club
+        const hemiLight = new THREE.HemisphereLight(0x8800ff, 0x002244, 1.5);
+        scene.add(hemiLight);
+
+        // Creamos un grupo para poner todas las luces de color y rotarlas juntas
+        const lightGroup = new THREE.Group();
+        scene.add(lightGroup);
+
+        // Función para añadir focos de colores alrededor
+        function addColorLight(color, x, y, z) {
+            const light = new THREE.DirectionalLight(color, 2.5); // Mucha intensidad
+            light.position.set(x, y, z);
+            lightGroup.add(light);
+        }
+
+        // Colocamos focos en los 6 ejes principales
+        addColorLight(0xff00ff, 20, 0, 0);   // Derecha: Rosa magenta
+        addColorLight(0x00ffff, -20, 0, 0);  // Izquierda: Cyan
+        addColorLight(0xffff00, 0, 20, 0);   // Arriba: Amarillo
+        addColorLight(0x0044ff, 0, -20, 0);  // Abajo: Azul intenso
+        addColorLight(0x00ff55, 0, 0, 20);   // Frente: Verde neón
+        addColorLight(0xff0044, 0, 0, -20);  // Atrás: Rojo
+
+        // Luz blanca adicional sutil para no perder el destello brillante metálico
+        const whiteHighlight = new THREE.DirectionalLight(0xffffff, 1.5);
+        whiteHighlight.position.set(10, 10, 15);
+        scene.add(whiteHighlight);
+
+        // Bucle de animación principal
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotar la bola lentamente
+            discoBall.rotation.y += 0.005;
+            discoBall.rotation.x += 0.001;
+            discoBall.rotation.z += 0.002;
+            
+            // Rotar el grupo de luces de colores alrededor de la bola
+            lightGroup.rotation.x += 0.006;
+            lightGroup.rotation.y -= 0.008;
+            lightGroup.rotation.z += 0.004;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // Manejar redimensionamiento de ventana
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        // Iniciar la animación al cargar
+        window.onload = function() {
+            animate();
+        };
+    </script>
+</body>
+</html>

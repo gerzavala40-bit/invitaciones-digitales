@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- ========== EDITAR META SEO ========== -->
+  <title>Sofía & Felipe — Nos casamos</title>
+  <meta name="description" content="Invitación boda Sofía y Felipe" />
+  <meta name="theme-color" content="#0C0A09" />
+  <meta property="og:title" content="Mis XV Sofía & Felipe" />
+  <meta property="og:description" content="Sábado 14 de noviembre de 2026 · Salón Dorado. Abrí la invitación." />
+  <meta property="og:type" content="website" />
+  <!-- <meta property="og:image" content="[URL_IMAGEN_PORTADA]" /> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       PALETA — editá estas variables para cambiar toda la look
+       ========================================================= */
+    :root {
+      --bg: #0E0A0C;
+      --bg-soft: #1A1218;
+      --bg-card: #211820;
+      --text: #F8F0F4;
+      --text-muted: rgba(248, 240, 244, 0.55);
+      --accent: #E8B4C8;          /* rosa glam */
+      --accent-deep: #C47A9A;
+      --gold: #D4AF37;
+      --gold-soft: #E8D5A3;
+      --line: rgba(248, 240, 244, 0.12);
+      --success: #25D366;
+      --font-display: "Playfair Display", Georgia, serif;
+      --font-script: "Great Vibes", cursive;
+      --font-body: "Montserrat", system-ui, sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    body.locked { overflow: hidden; height: 100dvh; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* ---------- SPLASH / BIENVENIDA ---------- */
+    #splash {
+      position: fixed; inset: 0; z-index: 200;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: #FAFAFA;
+      background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      transition: opacity 0.75s ease, visibility 0.75s ease;
+      overflow: hidden;
+    }
+    #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    /* Illustration corners */
+    .splash-illu {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .splash-illu-tr { top: 15px; right: 15px; width: 90px; }
+    .splash-illu-tl { top: 20px; left: 15px; width: 85px; }
+    .splash-illu-bl { bottom: 30px; left: 15px; width: 80px; }
+    .splash-illu-br { bottom: 20px; right: 15px; width: 85px; }
+
+    .splash-inner { position: relative; z-index: 1; max-width: 320px; }
+    .splash-ornament { display: none; }
+    .splash-label { display: none; }
+    .splash-kicker {
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      color: #222;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .splash-name {
+      font-family: var(--font-body);
+      font-size: clamp(2.2rem, 10vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: #111;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .splash-name .name-script {
+      display: block;
+      font-family: var(--font-script);
+      font-size: 1.6em;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: #222;
+    }
+    .splash-name .name-and {
+      display: block;
+      font-family: var(--font-script);
+      font-size: 0.8em;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #444;
+      margin: -0.1em 0;
+    }
+    .splash-divider {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .splash-divider .line {
+      width: 50px;
+      height: 1px;
+      background: #222;
+    }
+    .splash-divider .ornament {
+      font-size: 0.8rem;
+      color: #222;
+    }
+    .splash-date {
+      display: none;
+    }
+    .splash-btn {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      border: 1.5px solid #222;
+      background: transparent;
+      color: #222;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .splash-btn:hover, .splash-btn:active {
+      background: #222;
+      color: #fff;
+    }
+    .splash-hint { display: none; }
+
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 0.55; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.06); }
+    }
+
+    /* ---------- MAIN ---------- */
+    #main { opacity: 0; transition: opacity 0.55s ease 0.15s; }
+    #main.show { opacity: 1; }
+
+    .section {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section + .section { border-top: 1px solid var(--line); }
+    .wrap { width: 100%; max-width: 420px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.75rem, 13vw, 3.75rem);
+      line-height: 1.05;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.75rem, 7vw, 2.25rem);
+      margin-bottom: 0.75rem;
+    }
+    .lead {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 320px;
+      margin: 0 auto 1.75rem;
+    }
+    .script {
+      font-family: var(--font-script);
+
+      font-size: clamp(1.75rem, 6vw, 2.25rem);
+      color: var(--accent);
+      line-height: 1.3;
+    }
+
+    /* HERO */
+    .hero {
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(232, 180, 200, 0.12), transparent 50%),
+        var(--bg);
+    }
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.12);
+      background: var(--bg-soft);
+    }
+    .hero-photo.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.75rem;
+      color: var(--gold);
+    }
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .hero-date {
+      margin: 1.25rem 0 1.75rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      flex-wrap: nowrap;
+    }
+    .countdown > div {
+      min-width: 3.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      padding: 0.6rem 0.3rem 0.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .countdown .n {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+    }
+    .countdown .l {
+      font-size: 0.48rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 1.75rem;
+      border: none;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-deep), var(--accent));
+      color: var(--bg);
+      box-shadow: 0 10px 30px rgba(196, 122, 154, 0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 14px 36px rgba(196, 122, 154, 0.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-wa {
+      background: var(--success);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.3);
+    }
+    .btn-full { width: 100%; }
+    .btn-row { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    /* Cards */
+    .card {
+      background: rgba(14, 10, 12, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.35rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--gold-soft);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .card p strong {
+      color: var(--text);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .card a.link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232, 180, 200, 0.35);
+      padding-bottom: 2px;
+    }
+
+    /* Mesa de regalos */
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
+    .price-row:first-of-type { border-top: none; }
+    .price-row .amount {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Alias / copy */
+    .alias-box {
+      background: rgba(14, 10, 12, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      word-wrap: break-word;
+    }
+    .alias-box .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .alias-box .value {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 5vw, 1.4rem);
+      color: var(--accent);
+      word-break: break-all;
+      margin-bottom: 0.35rem;
+    }
+    .alias-box .sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .copy-btn.ok { border-color: var(--gold); color: var(--gold); }
+
+    /* Dress pills */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 0.85rem;
+    }
+    .pills span {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .gallery .ph {
+      aspect-ratio: 1;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      overflow: hidden;
+    }
+    .gallery .ph.wide { grid-column: span 2; aspect-ratio: 2.1 / 1; }
+    .gallery .ph img { width: 100%; height: 100%; object-fit: cover; }
+    .hashtag {
+      margin-top: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    /* Closing */
+    .close-section {
+      background:
+        radial-gradient(ellipse at 50% 55%, rgba(232, 180, 200, 0.12), transparent 50%),
+        var(--bg);
+    }
+    .close-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+      line-height: 1.35;
+      max-width: 300px;
+      margin: 0 auto 1rem;
+    }
+    .close-name {
+      margin-top: 1.75rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem 6rem;
+      border-top: 1px solid var(--line);
+    }
+    footer .brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    footer .brand em { font-style: italic; color: var(--accent); }
+    footer p {
+      font-size: 0.65rem;
+      color: rgba(248, 240, 244, 0.3);
+      margin-top: 0.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Music button */
+    .music-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 80;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(14, 10, 12, 0.8);
+      backdrop-filter: blur(10px);
+      color: var(--gold);
+      font-size: 0.95rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .music-btn.visible { display: flex; }
+    .music-btn.on {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--bg);
+      animation: pulse-soft 1.4s ease-in-out infinite;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .scroll-cue span { display: block; margin-top: 0.35rem; font-size: 0.9rem; }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.45; }
+      50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* Toast */
+    #toast {
+      display: none;
+      position: fixed;
+      left: 50%;
+      bottom: 5.5rem;
+      transform: translateX(-50%);
+      z-index: 90;
+      background: rgba(14, 10, 12, 0.95);
+      border: 1px solid rgba(232, 180, 200, 0.35);
+      color: var(--text);
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    #toast.show { display: block; }
+
+    /* Modal regalos */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      width: 100%;
+      max-width: 400px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px 20px 12px 12px;
+      padding: 1.75rem 1.35rem 1.5rem;
+      animation: slideUp 0.35s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal .close-x {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none; border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-inner { position: relative; }
+
+    @media (min-width: 480px) {
+      .modal-backdrop { align-items: center; }
+      .modal { border-radius: 20px; }
+    }
+  
+:root {
+  --bg: #0C0A09;
+  --bg-soft: #161210;
+  --bg-card: #1C1612;
+  --text: #F5EFE4;
+  --text-muted: rgba(245,239,228,.55);
+  --accent: #C9A84C;
+  --accent-deep: #A67C2A;
+  --gold: #C9A84C;
+  --gold-soft: #E8D5A3;
+  --line: rgba(245,239,228,.12);
+}
+#splash::before {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(201,168,76,.16), transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(201,168,76,.06), transparent 45%) !important;
+}
+.hero {
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(201,168,76,.16), transparent 50%),
+    var(--bg) !important;
+}
+.hero-photo { box-shadow: 0 0 0 6px rgba(201,168,76,.12) !important; }
+.btn-primary {
+  color: #0C0A09 !important;
+  box-shadow: 0 10px 30px rgba(201,168,76,.35) !important;
+}
+.card a.link { border-bottom-color: rgba(201,168,76,.35) !important; }
+footer p { color: rgba(245,239,228,.3) !important; }
+.music-btn { background: rgba(12,10,9,.8) !important; }
+.close-section {
+  background:
+  radial-gradient(ellipse at 50% 55%, rgba(201,168,76,.16), transparent 50%),
+  var(--bg) !important;
+}
+
+</style>
+
+  
+
+  <!-- SPLASH SCREEN CSS -->
+  <style>
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+    .splash-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: #fafafa;
+      background-image: url('portada-noche-dorada.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 12vh;
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.7s;
+    }
+    @media (min-width: 768px) {
+      .splash-screen {
+        background-size: contain;
+      }
+    }
+    .splash-screen.slide-up {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .splash-content {
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn-abrir {
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      border: 1px solid #555;
+      padding: 15px 40px;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .btn-abrir:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .splash-hint {
+      color: #666;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+  </style>
+
+<style>
+  /* Global fix for mobile text overflow */
+  @media (max-width: 768px) {
+    h1, h2, h3, h4, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl, .font-display-xl, .font-headline-lg {
+      font-size: clamp(1.75rem, 8vw, 3rem) !important;
+      line-height: 1.1 !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+    body, html {
+      overflow-x: hidden !important;
+    }
+  }
+</style>
+
+</head>
+
+
+<body class="locked">
+
+  <!-- ============================================================
+       CONFIGURACIÓN RÁPIDA (también buscá [PLACEHOLDERS] en el HTML)
+       ============================================================
+       NOMBRE        → Julia
+       FECHA         → 2027-02-12T21:00:00-03:00  (ISO para countdown)
+       FECHA_LARGA   → Viernes 12 de febrero de 2027
+       HORA_FIESTA   → 21:00
+       LUGAR_FIESTA  → Solares del Sur
+       DIRECCION     → Es 4 de Enero 899
+       URL_MAPS      → link de Google Maps
+       DRESS_CODE    → Formal
+       ALIAS / CBU   → datos de pago
+       WA_NUMBER     → 54911XXXXXXXX (código país + número)
+       MUSICA        → musica.mp3 en la misma carpeta
+       ============================================================ -->
+
+  <!-- Audio de fondo: poné tu archivo como musica.mp3 al lado de este HTML -->
+  <audio id="bgMusic" loop preload="auto" playsinline webkit-playsinline>
+    <source src="/bon-jovi.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ========== BIENVENIDA ========== -->
+  <div id="splash" role="dialog" aria-label="Bienvenida">
+    <!-- Illustration: Rings (top-right) -->
+    <div class="splash-illu splash-illu-tr">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="40" cy="50" rx="25" ry="28" stroke="#222" stroke-width="1.8" fill="none"/>
+        <ellipse cx="60" cy="50" rx="25" ry="28" stroke="#222" stroke-width="1.8" fill="none"/>
+        <circle cx="40" cy="30" r="5" stroke="#222" stroke-width="1.2" fill="none"/>
+        <path d="M37 25 L40 20 L43 25" stroke="#222" stroke-width="1" fill="none"/>
+        <circle cx="75" cy="25" r="2" fill="#222" opacity="0.5"/>
+        <circle cx="82" cy="32" r="1.5" fill="#222" opacity="0.4"/>
+        <path d="M78 20 L80 17 M82 22 L84 19" stroke="#222" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+    <!-- Illustration: Disco ball (top-left area shifted right) -->
+    <div class="splash-illu splash-illu-tl" style="left: auto; right: 110px; top: 10px; width: 70px;">
+      <svg viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="0" x2="40" y2="20" stroke="#222" stroke-width="1"/>
+        <circle cx="40" cy="50" r="28" stroke="#222" stroke-width="1.5" fill="none"/>
+        <ellipse cx="40" cy="50" rx="28" ry="10" stroke="#222" stroke-width="0.8" fill="none"/>
+        <ellipse cx="40" cy="50" rx="20" ry="28" stroke="#222" stroke-width="0.8" fill="none"/>
+        <line x1="40" y1="22" x2="40" y2="78" stroke="#222" stroke-width="0.6"/>
+        <line x1="12" y1="50" x2="68" y2="50" stroke="#222" stroke-width="0.6"/>
+        <circle cx="65" cy="25" r="1.5" fill="#222" opacity="0.5"/>
+        <circle cx="70" cy="30" r="1" fill="#222" opacity="0.4"/>
+        <path d="M67 22 L69 19" stroke="#222" stroke-width="0.7" opacity="0.5"/>
+      </svg>
+    </div>
+    <!-- Illustration: Champagne glasses (left side) -->
+    <div class="splash-illu splash-illu-tl" style="top: auto; bottom: 50%; left: 8px; width: 75px;">
+      <svg viewBox="0 0 90 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 80 L25 50 C25 40 15 30 15 15 L15 5 L35 5 L35 15 C35 30 25 40 25 50" stroke="#222" stroke-width="1.5" fill="none"/>
+        <path d="M55 70 L55 45 C55 35 45 28 45 15 L45 5 L65 5 L65 15 C65 28 55 35 55 45" stroke="#222" stroke-width="1.5" fill="none" transform="rotate(15 55 40)"/>
+        <line x1="18" y1="80" x2="32" y2="80" stroke="#222" stroke-width="1.5"/>
+        <path d="M60 75 L48 82" stroke="#222" stroke-width="1.5"/>
+        <!-- sparkles -->
+        <circle cx="42" cy="20" r="1.5" fill="#222" opacity="0.5"/>
+        <path d="M38 15 L40 12 M42 16 L44 13" stroke="#222" stroke-width="0.7" opacity="0.5"/>
+        <path d="M60 25 C62 22 65 24" stroke="#222" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <!-- ribbon -->
+        <path d="M20 60 C15 55 10 58 8 55 M20 60 C15 65 10 62 8 65" stroke="#222" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <!-- Illustration: Bouquet (bottom-left) -->
+    <div class="splash-illu splash-illu-bl">
+      <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 110 L45 70 M50 110 L55 70" stroke="#222" stroke-width="1.5"/>
+        <path d="M42 75 C35 80 38 85 42 82" stroke="#222" stroke-width="1" fill="none"/>
+        <circle cx="40" cy="55" r="10" stroke="#222" stroke-width="1.3" fill="none"/>
+        <circle cx="55" cy="50" r="9" stroke="#222" stroke-width="1.3" fill="none"/>
+        <circle cx="47" cy="42" r="8" stroke="#222" stroke-width="1.3" fill="none"/>
+        <circle cx="60" cy="60" r="8" stroke="#222" stroke-width="1.3" fill="none"/>
+        <circle cx="35" cy="45" r="7" stroke="#222" stroke-width="1.3" fill="none"/>
+        <circle cx="50" cy="35" r="6" stroke="#222" stroke-width="1" fill="none"/>
+        <path d="M30 65 C25 60 28 55 32 58" stroke="#222" stroke-width="0.8" fill="none"/>
+        <path d="M65 55 C70 50 68 45 64 48" stroke="#222" stroke-width="0.8" fill="none"/>
+      </svg>
+    </div>
+    <!-- Illustration: Cake (bottom-right) -->
+    <div class="splash-illu splash-illu-br">
+      <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="25" y="85" width="50" height="25" rx="3" stroke="#222" stroke-width="1.5" fill="none"/>
+        <rect x="30" y="62" width="40" height="23" rx="3" stroke="#222" stroke-width="1.5" fill="none"/>
+        <rect x="35" y="42" width="30" height="20" rx="3" stroke="#222" stroke-width="1.5" fill="none"/>
+        <!-- decorations -->
+        <path d="M28 95 C32 92 36 95 40 92 C44 89 48 92 52 89 C56 86 60 89 64 86 C68 83 72 86 72 86" stroke="#222" stroke-width="0.8" fill="none"/>
+        <path d="M33 72 C36 70 39 72 42 70 C45 68 48 70 51 68 C54 66 57 68 60 66 C63 64 66 66 67 66" stroke="#222" stroke-width="0.8" fill="none"/>
+        <!-- hearts -->
+        <path d="M38 50 C38 48 40 47 41 48 C42 47 44 48 44 50 C44 52 41 54 41 54 C41 54 38 52 38 50" stroke="#222" stroke-width="0.8" fill="none"/>
+        <path d="M52 50 C52 48 54 47 55 48 C56 47 58 48 58 50 C58 52 55 54 55 54 C55 54 52 52 52 50" stroke="#222" stroke-width="0.8" fill="none"/>
+        <!-- candle -->
+        <line x1="50" y1="42" x2="50" y2="32" stroke="#222" stroke-width="1.5"/>
+        <path d="M48 32 C48 28 50 26 50 26 C50 26 52 28 52 32" stroke="#222" stroke-width="1" fill="#222" opacity="0.3"/>
+        <!-- cork popping effect -->
+        <path d="M55 30 L58 26 M52 28 L50 24" stroke="#222" stroke-width="0.7" opacity="0.4"/>
+      </svg>
+    </div>
+    <!-- Illustration: Champagne bottle (right side) -->
+    <div class="splash-illu" style="position: absolute; right: 10px; top: 40%; width: 60px;">
+      <svg viewBox="0 0 70 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35 130 L35 60 C35 50 40 45 40 35 L40 15 C40 10 30 10 30 15 L30 35 C30 45 35 50 35 60" stroke="#222" stroke-width="1.5" fill="none"/>
+        <rect x="30" y="5" width="10" height="10" rx="2" stroke="#222" stroke-width="1.2" fill="none"/>
+        <path d="M30 5 L28 0 M40 5 L42 0" stroke="#222" stroke-width="1" opacity="0.5"/>
+        <ellipse cx="35" cy="90" rx="12" ry="3" stroke="#222" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <path d="M27 70 L43 70 M27 110 L43 110" stroke="#222" stroke-width="0.6" opacity="0.3"/>
+      </svg>
+    </div>
+
+    <div class="splash-inner">
+      <p class="splash-kicker">&iexcl;Nos casamos!</p>
+      <h1 class="splash-name"><span class="name-script">Sof&iacute;a</span><span class="name-and">y</span>FELIPE</h1>
+      <div class="splash-divider">
+        <div class="line"></div>
+        <span class="ornament">&diams;</span>
+        <div class="line"></div>
+      </div>
+      <button type="button" class="splash-btn" id="enterBtn">
+        Abrir invitaci&oacute;n
+      </button>
+    </div>
+  </div>
+
+  <!-- Botón música (aparece al entrar) -->
+  <button type="button" class="music-btn" id="musicBtn" aria-label="Música de fondo" title="Música">♪</button>
+  <div id="toast" role="status"></div>
+
+  <!-- ========== CONTENIDO ========== -->
+  <div id="main">
+
+    <!-- HERO + COUNTDOWN -->
+    <section class="section hero" id="inicio">
+      <div class="wrap">
+        <!-- Foto circular: reemplazá src o dejá el placeholder -->
+        <!-- <img class="hero-photo" src="[URL_FOTO_PRINCIPAL]" alt="Sofía & Felipe" /> -->
+        <div class="hero-photo placeholder" aria-hidden="true">S&F</div>
+
+        <p class="hero-kicker">Nos casamos</p>
+        <h1>Sofía & Felipe</h1>
+        <p class="hero-date">Sábado 14 de noviembre de 2026 · 20:00 hs</p>
+
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div><span class="n" id="cd-d">—</span><span class="l">Días</span></div>
+          <div><span class="n" id="cd-h">—</span><span class="l">Horas</span></div>
+          <div><span class="n" id="cd-m">—</span><span class="l">Min</span></div>
+          <div><span class="n" id="cd-s">—</span><span class="l">Seg</span></div>
+        </div>
+
+        <a class="btn btn-primary" href="#cuando">Ver detalles</a>
+      </div>
+      <div class="scroll-cue">Deslizá<span>↓</span></div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="section" style="min-height: auto; padding-top: 4rem; padding-bottom: 3rem;">
+      <div class="wrap reveal">
+        <p class="script">Que brille el amor esta noche…</p>
+        <p class="lead" style="margin-top: 1rem; margin-bottom: 0;">
+          Los esperamos para brindar juntos.
+        </p>
+      </div>
+    </section>
+
+    <!-- CUÁNDO / DÓNDE -->
+    <section class="section" id="cuando">
+      <div class="wrap">
+        <p class="eyebrow reveal">La celebración</p>
+        <h2 class="reveal">¿Cuándo & dónde?</h2>
+        <p class="lead reveal">Todo listo para una noche inolvidable.</p>
+
+        <div class="card reveal">
+          <div class="icon">◈</div>
+          <h3>¿Cuándo?</h3>
+          <p>
+            <strong>Sábado 14 de noviembre de 2026</strong>
+            20:00 hs
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon">◎</div>
+          <h3>¿Dónde?</h3>
+          <p>
+            <strong>Salón Dorado</strong>
+            Palermo, Buenos Aires
+          </p>
+          <!-- EDITAR URL_MAPS -->
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Palermo+Buenos+Aires" target="_blank" rel="noopener">
+            Cómo llegar →
+          </a>
+        </div>
+
+        <!-- Si hay ceremonia separada, descomentá:
+        <div class="card reveal">
+          <div class="icon">✝</div>
+          <h3>Ceremonia</h3>
+          <p>
+            <strong>[HORA_CEREMONIA] hs</strong>
+            [LUGAR_CEREMONIA]<br>
+            [DIRECCION_CEREMONIA]
+          </p>
+          <a class="link" href="[URL_MAPS_CEREMONIA]" target="_blank" rel="noopener">Cómo llegar →</a>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section" id="dress" style="min-height: auto; padding-top: 3rem; padding-bottom: 3rem;">
+      <div class="wrap reveal">
+        <p class="eyebrow">Código de vestimenta</p>
+        <h2>Dress code</h2>
+        <div class="card" style="margin-bottom: 0;">
+          <div class="icon">◇</div>
+          <h3>Formal black tie</h3>
+          <p>Noche elegante</p>
+          <div class="pills">
+            <span>Negro</span>
+            <span>Dorado</span>
+            <span>Elegante</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALOR TARJETA (típico XV Argentina) -->
+    <section class="section" id="valor">
+      <div class="wrap">
+        <p class="eyebrow reveal">Información</p>
+        <h2 class="reveal">Mesa de regalos</h2>
+        <p class="lead reveal">
+          Tu presencia es el mejor regalo. Si deseás sumar un detalle:
+        </p>
+
+        <div class="alias-box reveal">
+          <p class="label">Alias</p>
+          <p class="value" id="aliasValue">sofia.tomas.2026</p>
+          <p class="sub">CVU / CBU: 0000003100011111111111</p>
+          <p class="sub" style="margin-top: -0.5rem;">Titular: Sofía Martínez</p>
+          <button type="button" class="copy-btn" id="copyAliasBtn" data-copy="sofia.tomas.2026">
+            Copiar alias
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+      <div class="wrap">
+        <p class="eyebrow reveal">Tu respuesta</p>
+        <h2 class="reveal">Confirmá tu asistencia</h2>
+        <p class="lead reveal">
+          Por favor respondé antes del <strong style="color: var(--text);">1 de noviembre de 2026</strong>.
+        </p>
+
+        <div class="btn-row reveal">
+          <!--
+            LINK_WHATSAPP: wa.me/549XXXXXXXXX?text=...
+            El mensaje se arma abajo en CONFIG JS también.
+          -->
+          <a class="btn btn-wa btn-full" id="rsvpWa" href="https://wa.me/5493425299942?text=Hola%21%20Confirmo%20asistencia%20a%20la%20boda%20de%20Sofia%20y%20Tomas" target="_blank" rel="noopener">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Confirmar por WhatsApp
+          </a>
+          <button type="button" class="btn btn-outline btn-full" id="openGiftsBtn">
+            Ver datos de pago / regalos
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section" id="fotos">
+      <div class="wrap">
+        <p class="eyebrow reveal">Momentos</p>
+        <h2 class="reveal">Galería</h2>
+        <p class="lead reveal">Algunos instantes de esta historia.</p>
+
+        <div class="gallery reveal">
+          <!-- Reemplazá los .ph por <div class="ph"><img src="foto1.jpg" alt=""></div> -->
+          <div class="ph">Foto 1</div>
+          <div class="ph">Foto 2</div>
+          <div class="ph wide">Foto portada</div>
+          <div class="ph">Foto 3</div>
+          <div class="ph">Foto 4</div>
+        </div>
+
+        <p class="hashtag reveal">#SofiaYTomas2026</p>
+        <p class="lead reveal" style="margin-bottom: 0; margin-top: 0.5rem; font-size: 0.85rem;">
+          Usá el hashtag en tus stories y publicaciones.
+        </p>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="section close-section" id="cierre">
+      <div class="wrap reveal">
+        <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1.25rem;" aria-hidden="true">◆</div>
+        <p class="close-quote">“Que brille el amor…”</p>
+        <p class="lead" style="margin-bottom: 0;">Los esperamos con el corazón abierto.</p>
+        <p class="close-name">Sofía & Felipe</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem; letter-spacing: 0.16em; color: var(--text-muted);">
+          14 · 11 · 2026
+        </p>
+      </div>
+    </section>
+
+    
+  
+  
+  
+
+  
+  <!-- Contacto / Demo Info (Injected) -->
+  <style>
+    .contacto-footer-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .contacto-col { flex: 1; }
+    @media (min-width: 768px) {
+      .contacto-footer-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    .contacto-footer h5 {
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      color: #222;
+      text-transform: uppercase;
+    }
+    .contacto-footer p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    .contacto-footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 2.2;
+    }
+    .contacto-footer a { color: #61ce70; text-decoration: none; font-weight: 400; }
+  </style>
+  <section class="contacto-footer" style="padding: 80px 20px; background: #ffffff; color: #333; border-top: 1px solid #eaeaea; text-align: left;">
+    <div class="contacto-footer-wrap">
+      <div class="contacto-col">
+        <h5>¿Te gustó la invitación?</h5>
+        <p>¡Contactate y pedí la tuya!</p>
+        <ul>
+          <li><i class="fab fa-whatsapp" style="color: #61ce70; width: 30px; text-align: center;"></i> <a href="https://wa.me/5493425299942">¡Envianos un Whatsapp!</a></li>
+          <li><i class="fas fa-phone-alt" style="color: #333; width: 30px; text-align: center;"></i> +549 342 5299942</li>
+          <li><i class="fas fa-envelope" style="color: #333; width: 30px; text-align: center;"></i> teinvitoapp@gmail.com</li>
+        </ul>
+      </div>
+      <div class="contacto-col">
+        <h5>Seguinos en Instagram</h5>
+        
+        <ul>
+          <li><i class="fab fa-instagram" style="color: #555; width: 30px; text-align: center; font-size: 1.2rem;"></i> <a href="https://instagram.com/teinvitoapp">@teinvitoapp</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+      <div class="brand">Te <em>invito</em></div>
+      <p>Demo · Boda Noche Dorada</p>
+    </footer>
+  </div>
+
+  <!-- MODAL REGALOS / PAGO -->
+  <div class="modal-backdrop" id="giftsModal" role="dialog" aria-modal="true" aria-labelledby="giftsTitle">
+    <div class="modal">
+      <div class="modal-inner">
+        <button type="button" class="close-x" id="closeGifts" aria-label="Cerrar">&times;</button>
+        <h3 id="giftsTitle">Datos de pago</h3>
+        <p class="lead" style="margin: 0.5rem 0 1.25rem;">Transferencia · Mercado Pago</p>
+
+        <div class="alias-box" style="margin-bottom: 0.75rem;">
+          <p class="label">Alias</p>
+          <p class="value">sofia.tomas.2026</p>
+          <button type="button" class="copy-btn" data-copy="sofia.tomas.2026">Copiar alias</button>
+        </div>
+        <div class="alias-box">
+          <p class="label">CBU / CVU</p>
+          <p class="value" style="font-size: 1.1rem;">0000003100011111111111</p>
+          <p class="sub">Titular: Sofía Martínez</p>
+          <button type="button" class="copy-btn" data-copy="0000003100011111111111">Copiar CBU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       CONFIG — editá solo este bloque para personalizar
+       ============================================================ */
+    const CONFIG = {
+      // Fecha del evento (countdown). Formato ISO con zona AR -03:00
+      eventDateISO: "2026-11-14T20:00:00-03:00",
+
+      // WhatsApp del anfitrión (código país + número, sin + ni espacios)
+      waNumber: "5493425299942",
+
+      // Mensaje RSVP (se codifica solo)
+      waMessage: "¡Hola! Confirmo mi asistencia a los XV de Sofía & Felipe 💖\n\nNombre:\nCantidad de personas:\nMenú / notas:",
+
+      // Nombre para textos dinámicos del mensaje
+      nombre: "Sofía & Felipe",
+    };
+
+    /* ---------- SPLASH + AUDIO ---------- */
+    const splash = document.getElementById("splash");
+    const main = document.getElementById("main");
+    const enterBtn = document.getElementById("enterBtn");
+    const musicBtn = document.getElementById("musicBtn");
+    const audio = document.getElementById("bgMusic");
+    const toast = document.getElementById("toast");
+    const body = document.body;
+    let playing = false;
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove("show"), 3500);
+    }
+
+    function setPlaying(on) {
+      playing = !!on;
+      musicBtn.classList.toggle("on", playing);
+      musicBtn.textContent = playing ? "❚❚" : "♪";
+    }
+
+    function playMusic() {
+      try {
+        audio.volume = 0.85;
+        audio.muted = false;
+        const p = audio.play();
+        if (p && typeof p.then === "function") {
+          p.then(() => setPlaying(true)).catch(() => {
+            setPlaying(false);
+            showToast("Tocá ♪ para activar la música");
+          });
+        }
+      } catch (_) {
+        setPlaying(false);
+      }
+    }
+
+    function enter() {
+      // play() dentro del gesto del usuario
+      playMusic();
+      splash.classList.add("hide");
+      body.classList.remove("locked");
+      main.classList.add("show");
+      musicBtn.classList.add("visible");
+      // revelar elementos visibles
+      requestAnimationFrame(() => observeReveals());
+    }
+
+    enterBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      enter();
+    });
+    splash.addEventListener("click", () => {
+      if (!splash.classList.contains("hide")) enter();
+    });
+
+    musicBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (playing || !audio.paused) {
+        audio.pause();
+        setPlaying(false);
+      } else {
+        playMusic();
+      }
+    });
+
+    try { audio.load(); } catch (_) {}
+
+    /* ---------- COUNTDOWN ---------- */
+    const target = new Date(CONFIG.eventDateISO).getTime();
+
+    function tick() {
+      const diff = Math.max(0, target - Date.now());
+      document.getElementById("cd-d").textContent = Math.floor(diff / 86400000);
+      document.getElementById("cd-h").textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, "0");
+      document.getElementById("cd-m").textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
+      document.getElementById("cd-s").textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ---------- WHATSAPP RSVP ---------- */
+    (function buildWa() {
+      const msg = CONFIG.waMessage.replace(/\[NOMBRE\]/g, CONFIG.nombre);
+      const href = "https://wa.me/" + CONFIG.waNumber + "?text=" + encodeURIComponent(msg);
+      const el = document.getElementById("rsvpWa");
+      // Si el href del HTML sigue con placeholder, lo pisamos con CONFIG
+      if (el && (el.getAttribute("href") || "").includes("[")) {
+        el.href = href;
+      }
+    })();
+
+    /* ---------- COPY ---------- */
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const prev = btn.textContent;
+        btn.textContent = "¡Copiado!";
+        btn.classList.add("ok");
+        setTimeout(() => {
+          btn.textContent = prev;
+          btn.classList.remove("ok");
+        }, 2000);
+      }).catch(() => showToast("No se pudo copiar"));
+    }
+
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const text = (btn.getAttribute("data-copy") || "").trim();
+        if (text && !text.startsWith("[")) copyText(text, btn);
+        else showToast("Reemplazá el placeholder del alias/CBU");
+      });
+    });
+
+    /* ---------- MODAL REGALOS ---------- */
+    const giftsModal = document.getElementById("giftsModal");
+    document.getElementById("openGiftsBtn").addEventListener("click", () => {
+      giftsModal.classList.add("open");
+    });
+    document.getElementById("closeGifts").addEventListener("click", () => {
+      giftsModal.classList.remove("open");
+    });
+    giftsModal.addEventListener("click", (e) => {
+      if (e.target === giftsModal) giftsModal.classList.remove("open");
+    });
+
+    /* ---------- REVEAL ON SCROLL ---------- */
+    function observeReveals() {
+      const els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("in"));
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add("in");
+              io.unobserve(en.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+      els.forEach((el) => io.observe(el));
+    }
+  </script>
+
+<script>
+  if (window.location.search.includes('preview=1')) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bgMusic');
+      if (audio) {
+        audio.pause();
+        audio.remove();
+      }
+      const musicBtn = document.querySelector('.music-btn');
+      if (musicBtn) {
+        musicBtn.style.display = 'none';
+      }
+      // In preview mode, keep splash visible as the "cover" of the mockup
+      // Hide the enter button and make splash non-interactive
+      const enterBtn = document.getElementById('enterBtn');
+      if (enterBtn) { enterBtn.style.display = 'none'; }
+      const splash = document.getElementById('splash');
+      if (splash) {
+        splash.style.pointerEvents = 'none';
+        splash.classList.remove('hide');
+      }
+      // Hide main content
+      const main = document.getElementById('main');
+      if (main) { main.style.display = 'none'; }
+      // Remove body lock so it doesn't look weird
+      document.body.classList.remove('locked');
+    });
+  }
+</script>
+
+  <!-- Muro Social Floating Button -->
+  <a href="/demo-wall/upload" target="_blank" style="position: fixed; bottom: 90px; right: 20px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background-color: var(--primary, #d4af37); border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); color: #fff; text-decoration: none; transition: transform 0.3s; animation: pulseCamera 2s infinite;">
+    <svg style="width: 26px; height: 26px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+    <div style="position: absolute; right: 65px; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; white-space: nowrap; pointer-events: none; opacity: 0.9;">📸 ¡Subí tus fotos!</div>
+  </a>
+  <style>
+    @keyframes pulseCamera {
+      0% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+      50% { transform: scale(1.05); box-shadow: 0 4px 25px var(--primary, rgba(212,175,55,0.6)); }
+      100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    }
+  </style>
+\n
+<!-- Dynamic Name Injection -->
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var customName = params.get('customName');
+    if (customName) {
+      document.addEventListener('DOMContentLoaded', function() {
+        var h1 = document.querySelector('h1');
+        if (h1) h1.innerText = customName;
+        var splashName = document.querySelector('.splash-name');
+        if (splashName) splashName.innerText = customName;
+      });
+    }
+  })();
+</script>
+
+  <script>
+    // Injected Splash Screen Logic
+    document.addEventListener("DOMContentLoaded", function() {
+      const btnOpen = document.getElementById('btnOpenInvite');
+      if(btnOpen) {
+        btnOpen.addEventListener('click', () => {
+          document.getElementById('splashScreen').classList.add('slide-up');
+          document.body.classList.remove('locked');
+          
+          // Trigger the template's original splash button if it exists
+          const internalBtn = document.getElementById('enterBtn') || document.getElementById('btn-open');
+          if (internalBtn) {
+             internalBtn.click();
+          } else {
+            // Fallback for demo-boda-premium
+            const audio = document.getElementById('music');
+            if (audio) {
+              audio.play().catch(e => console.log('Autoplay prevent', e));
+              const musicBtn = document.getElementById('btnMusic');
+              const musicIcon = document.getElementById('iconMusic');
+              if (musicIcon) {
+                 musicIcon.classList.remove('fa-play');
+                 musicIcon.classList.add('fa-music');
+              }
+              if (musicBtn) {
+                 musicBtn.style.animation = 'pulse-music 2s infinite';
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+
+<!-- MUSIC AUTOPLAY FIX -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var enterButton = document.getElementById('enterBtn') || document.getElementById('btn-open') || document.getElementById('btnOpenInvite') || document.querySelector('#splash button');
+    
+    if (enterButton) {
+      enterButton.addEventListener('click', function() {
+        var bgAudio = document.getElementById('bgAudio') || document.getElementById('bgMusic') || document.getElementById('music');
+        if (bgAudio) {
+          bgAudio.volume = 0.7;
+          bgAudio.play().then(function() {
+            var musicBtn = document.getElementById('musicBtn') || document.getElementById('btnMusic');
+            if (musicBtn) {
+              musicBtn.classList.add('playing');
+              var icon = document.getElementById('iconMusic') || musicBtn.querySelector('i');
+              if (icon && icon.classList.contains('fa-play')) {
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-music');
+              }
+              if (typeof window.musicPlaying !== 'undefined') {
+                window.musicPlaying = true;
+                musicBtn.style.opacity = '1';
+                musicBtn.style.transform = 'scale(1.1)';
+              }
+              if (typeof window.playing !== 'undefined') {
+                window.playing = true;
+              }
+            }
+          }).catch(function(e){ console.log("Autoplay prevent: " + e); });
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
+

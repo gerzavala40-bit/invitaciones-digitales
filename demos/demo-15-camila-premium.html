@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camila - Mis XV Años</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              light: '#F8F4F3',
+              dark: '#5C4A4A',
+              accent: '#9A7B7B',
+              accentLight: '#D0BDBD',
+              gold: '#C5A974'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+            cursive: ['"Great Vibes"', 'cursive'],
+          },
+          boxShadow: {
+            'soft': '0 10px 40px -10px rgba(92, 74, 74, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #FAF6F5;
+      color: #5C4A4A;
+    }
+    
+    .hero-bg {
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1595965416043-a6d1dc490a02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+  <!-- HERO SECTION -->
+  <section class="relative h-screen min-h-[600px] flex flex-col items-center justify-center text-center hero-bg text-white px-5">
+    <div class="mb-6 w-16 h-16 rounded-full border-2 border-brand-gold flex items-center justify-center text-brand-gold font-serif text-xl tracking-widest backdrop-blur-sm bg-black/10">
+      XV
+    </div>
+    
+    <p class="text-xs md:text-sm font-semibold tracking-[0.3em] uppercase text-brand-gold mb-4">
+      Una noche para recordar
+    </p>
+    
+    <h2 class="font-serif text-3xl md:text-4xl mb-2 font-light">Mis XV años</h2>
+    
+    <h1 class="font-cursive text-7xl md:text-8xl lg:text-9xl mb-8 text-[#FFE8A1] drop-shadow-lg">
+      Camila
+    </h1>
+    
+    <p class="text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-12">
+      Sábado 20 de Marzo • 21:00 H
+    </p>
+    
+    <div class="absolute bottom-10 animate-bounce">
+      <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SECTION -->
+  <section class="py-20 px-5 max-w-4xl mx-auto text-center">
+    <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-gold mb-3">La celebración se acerca</p>
+    <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-4">Faltan muy pocos días</h2>
+    <p class="text-sm text-brand-accent mb-12 font-light">Contamos los momentos para brindar, bailar y vivir una noche llena de magia.</p>
+    
+    <div class="grid grid-cols-4 gap-2 md:gap-6">
+      <div class="glass-card shadow-soft rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center">
+        <span class="font-serif text-3xl md:text-5xl text-brand-dark mb-1">221</span>
+        <span class="text-[9px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-accent">Días</span>
+      </div>
+      <div class="glass-card shadow-soft rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center">
+        <span class="font-serif text-3xl md:text-5xl text-brand-dark mb-1">12</span>
+        <span class="text-[9px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-accent">Horas</span>
+      </div>
+      <div class="glass-card shadow-soft rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center">
+        <span class="font-serif text-3xl md:text-5xl text-brand-dark mb-1">21</span>
+        <span class="text-[9px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-accent">Minutos</span>
+      </div>
+      <div class="glass-card shadow-soft rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center">
+        <span class="font-serif text-3xl md:text-5xl text-brand-dark mb-1">59</span>
+        <span class="text-[9px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-accent">Segundos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & DATE SECTION -->
+  <section class="py-10 px-5 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- Details Card -->
+      <div class="glass-card shadow-soft rounded-3xl p-8 md:p-12 relative overflow-hidden">
+        <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-gold mb-3">Dónde y Cuándo</p>
+        <h3 class="font-serif text-2xl md:text-3xl text-brand-dark mb-10">Nos encontramos para celebrar</h3>
+        
+        <div class="flex items-start gap-4 mb-8">
+          <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-accent shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-brand-dark mb-1">Salón Palais Rouge</h4>
+            <p class="text-sm text-brand-accent font-light">Av. Scalabrini Ortiz, Palermo, Ciudad de Buenos Aires</p>
+          </div>
+        </div>
+        
+        <div class="flex items-start gap-4 mb-10">
+          <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-accent shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-brand-dark mb-1">Fecha y horario</h4>
+            <p class="text-sm text-brand-accent font-light">Sábado 20 de marzo - 21:00 h</p>
+          </div>
+        </div>
+        
+        <button class="w-12 h-12 rounded-full bg-[#9A7B7B] hover:bg-[#8A6B6B] transition-colors text-white flex items-center justify-center shadow-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+      
+      <!-- Map Visual -->
+      <div class="rounded-3xl overflow-hidden relative min-h-[300px] shadow-soft bg-gradient-to-br from-[#EAE0D9] to-[#D5C2C2] flex items-center justify-center">
+        <!-- Abstract curves representing map -->
+        <svg class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0,50 Q25,25 50,50 T100,50" stroke="white" stroke-width="0.5" fill="none"/>
+          <path d="M0,70 Q30,40 60,70 T100,30" stroke="white" stroke-width="0.5" fill="none"/>
+        </svg>
+        <div class="w-12 h-12 rounded-full bg-[#9A7B7B] text-white flex items-center justify-center shadow-lg z-10 animate-pulse">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- RSVP & CONFIRMATIONS -->
+  <section class="py-10 px-5 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- RSVP Form -->
+      <div class="glass-card shadow-soft rounded-3xl p-8 md:p-10 relative">
+        <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-gold mb-3">RSVP</p>
+        <h3 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">¿Nos acompañás?</h3>
+        <p class="text-sm text-brand-accent font-light mb-8">Tu presencia es el regalo más lindo. Confirmá tu asistencia para preparar cada detalle.</p>
+        
+        <form class="space-y-6">
+          <div>
+            <label class="block text-xs font-bold text-brand-dark mb-2">Tu nombre y apellido</label>
+            <input type="text" class="w-full h-12 px-4 rounded-xl border border-brand-accentLight bg-transparent focus:outline-none focus:border-[#9A7B7B] transition-colors" />
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-brand-dark mb-2">¿Vas a asistir?</label>
+              <div class="relative">
+                <select class="w-full h-12 px-4 rounded-xl border border-brand-accentLight bg-transparent appearance-none focus:outline-none focus:border-[#9A7B7B] text-sm">
+                  <option>Elegir una opción</option>
+                  <option>Sí, confirmo</option>
+                  <option>No podré asistir</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-xs font-bold text-brand-dark mb-2">Cantidad de personas</label>
+              <div class="relative">
+                <select class="w-full h-12 px-4 rounded-xl border border-brand-accentLight bg-transparent appearance-none focus:outline-none focus:border-[#9A7B7B] text-sm">
+                  <option>Seleccionar</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="w-12 h-12 rounded-full bg-[#9A7B7B] hover:bg-[#8A6B6B] transition-colors text-white flex items-center justify-center shadow-lg mt-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Confirmations List -->
+      <div class="glass-card shadow-soft rounded-3xl p-8 md:p-10 flex flex-col">
+        <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-gold mb-3">La lista crece</p>
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="font-serif text-2xl md:text-3xl text-brand-dark">Confirmaciones</h3>
+          <span class="w-8 h-8 rounded-full bg-[#F2E8E8] text-[#9A7B7B] flex items-center justify-center text-sm font-bold">0</span>
+        </div>
+        
+        <div class="flex-1 border-t border-brand-accentLight/40 flex items-center justify-center text-center">
+          <p class="text-sm font-light text-brand-accent italic">Todavía no hay confirmaciones. ¡Sé la primera persona en responder!</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- GIFTS SECTION -->
+  <section class="py-10 px-5 max-w-5xl mx-auto">
+    <div class="rounded-3xl overflow-hidden shadow-soft flex flex-col md:flex-row bg-white">
+      
+      <!-- Info block -->
+      <div class="bg-[#6D5A5A] text-white p-10 md:p-12 md:w-5/12 flex flex-col justify-center">
+        <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-[#CBAE87] mb-3">Un detalle especial</p>
+        <h3 class="font-serif text-3xl mb-4">Lluvia de sobres</h3>
+        <p class="text-sm font-light leading-relaxed text-white/80">Si querés acompañarme con un regalo, podés hacerlo mediante estos datos. Gracias por ser parte de mi noche soñada.</p>
+      </div>
+      
+      <!-- Bank details -->
+      <div class="p-10 md:p-12 md:w-7/12 flex flex-col justify-center gap-6">
+        <div class="border border-brand-accentLight rounded-2xl p-5 flex items-center justify-between relative group hover:border-[#9A7B7B] transition-colors">
+          <div>
+            <p class="text-[10px] font-bold tracking-widest text-brand-accent uppercase mb-1">Alias</p>
+            <p class="font-semibold text-brand-dark">CAMILA.XV.FIESTA</p>
+          </div>
+        </div>
+        
+        <div class="border border-brand-accentLight rounded-2xl p-5 flex items-center justify-between relative group hover:border-[#9A7B7B] transition-colors">
+          <div>
+            <p class="text-[10px] font-bold tracking-widest text-brand-accent uppercase mb-1">CBU</p>
+            <p class="font-semibold text-brand-dark">0000003100098765432101</p>
+          </div>
+        </div>
+        
+        <button class="w-12 h-12 rounded-full bg-[#CBAE87] hover:bg-[#B59972] transition-colors text-white flex items-center justify-center shadow-lg self-start">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+        </button>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="py-20 px-5 max-w-4xl mx-auto text-center">
+    <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-brand-gold mb-3">Mis recuerdos favoritos</p>
+    <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-4">Una historia para celebrar</h2>
+    <p class="text-sm text-brand-accent mb-12 font-light">Gracias por elegirnos y hacernos tan felices en una noche inolvidable.</p>
+    
+    <div class="relative rounded-3xl overflow-hidden shadow-soft group">
+      <img src="https://images.unsplash.com/photo-1549416878-b9ca95e1bb88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Camila XV" class="w-full aspect-[4/3] md:aspect-[16/9] object-cover" />
+      
+      <!-- Gradient overlay for text -->
+      <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent"></div>
+      
+      <p class="absolute bottom-6 left-8 text-white font-serif text-xl italic">Toda mágica con muchos brillos...</p>
+      
+      <!-- Navigation arrows -->
+      <button class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+      </button>
+      <button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </button>
+    </div>
+    
+    <div class="mt-6 flex justify-center items-center gap-2">
+      <div class="w-6 h-1.5 rounded-full bg-[#9A7B7B]"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-brand-accentLight"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-brand-accentLight"></div>
+      <div class="w-1.5 h-1.5 rounded-full bg-brand-accentLight"></div>
+    </div>
+    <p class="mt-3 text-[10px] font-bold tracking-widest text-brand-accent uppercase">01 / 05</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 text-center border-t border-brand-accentLight/30">
+    <p class="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-brand-accent uppercase">
+      Camila • Mis XV Años • Gracias por ser parte
+    </p>
+  </footer>
+
+  <!-- FAB Button (Music/Actions) -->
+  <button class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center shadow-xl z-50 hover:scale-110 transition-transform">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
+  </button>
+
+</body>
+</html>

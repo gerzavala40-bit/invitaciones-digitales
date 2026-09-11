@@ -1,0 +1,73 @@
+/* =========================================================
+   THEME: NEON / DESPEDIDA VIP
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Jost:wght@300;400;600&display=swap');
+
+:root {
+    /* Fonts */
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Jost', sans-serif;
+    --font-weight-display: 900;
+    --fs-hero-title: 3.5rem;
+    --fs-section-title: 2.5rem;
+
+    /* Colors */
+    --color-primary: #FF6B9D; /* Neon Pink */
+    --color-primary-hover: #ff4785;
+    --color-on-primary: #ffffff;
+    
+    --color-bg: #0f0f13; /* Dark background */
+    --color-card-bg: #1a1a24;
+    
+    --color-text: #ffffff;
+    --color-heading: #ffffff;
+    --color-text-muted: #8f8f9e;
+    
+    --color-splash-bg: #0f0f13;
+    
+    /* Glows & Neons */
+    --pink-glow: 0 0 20px rgba(255, 107, 157, 0.4);
+    --btn-border: 2px solid var(--color-primary);
+    
+    /* Specific element variables */
+    --card-radius: 20px;
+    --card-border: 1px solid rgba(255, 255, 255, 0.08);
+    --shadow-card: 0 10px 30px rgba(0,0,0,0.5);
+    
+    --timebox-bg: #1a1a24;
+    --timebox-border: 1px solid rgba(255, 255, 255, 0.08);
+    --timebox-radius: 12px;
+    
+    --btn-radius: 100px;
+    --input-border: 1px solid rgba(255, 255, 255, 0.08);
+    --input-radius: 12px;
+    --color-input-bg: #0f0f13;
+
+    /* Hero Background */
+    --bg-hero-img: linear-gradient(135deg, #1b0a1d 0%, #06041a 100%);
+    --hero-overlay: linear-gradient(to bottom, rgba(15,15,19,0.7) 0%, rgba(15,15,19,0.95) 100%);
+}
+
+/* Retoques exclusivos */
+.hero-title {
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B9D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.btn {
+    background-color: transparent;
+    box-shadow: 0 0 0 transparent;
+}
+
+.btn:hover {
+    background-color: var(--color-primary);
+    box-shadow: var(--pink-glow);
+}
+
+.splash-content {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 140, 66, 0.15) 0%, rgba(255, 107, 157, 0.15) 50%, transparent 100%);
+}

@@ -1,0 +1,332 @@
+:root {
+    --bg-dark: #121212;
+    --bg-light: #1f1f1f;
+    --text-main: #f5f5f5;
+    --text-muted: #aaaaaa;
+    --accent-gold: #d4af37;
+    --accent-gold-hover: #b5952f;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Tipografía */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Layout utilidades */
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.dark-section {
+    background-color: var(--bg-dark);
+}
+
+.light-section {
+    background-color: var(--bg-light);
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    margin: 40px auto;
+    width: 60%;
+}
+
+/* Portada Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Placeholder gradient if no image */
+    background: linear-gradient(135deg, #111, #222);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, rgba(18,18,18,1) 80%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.pre-title {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    color: var(--accent-gold);
+    margin-bottom: -10px;
+}
+
+.title {
+    font-size: 5rem;
+    font-style: italic;
+    color: var(--text-main);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* Animaciones */
+.fade-in {
+    animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Timer */
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.timer-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 15px 10px;
+    min-width: 70px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.timer-box .number {
+    display: block;
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.timer-box .label {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+/* Detalles del evento */
+.section-title {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.event-date, .event-location {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+    border: 2px solid var(--accent-gold);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent-gold);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+}
+
+.btn-outline:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* Pagos */
+.payment-text {
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+.payment-details {
+    margin-top: 30px;
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.payment-details.hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    margin-top: 0;
+}
+
+.prices {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.price-box {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex: 1;
+}
+
+.price-box h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.price-box p {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.bank-info {
+    background: rgba(212, 175, 55, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 3px solid var(--accent-gold);
+    text-align: left;
+}
+
+.bank-info p {
+    margin-bottom: 10px;
+}
+
+.bank-info strong {
+    color: var(--accent-gold);
+    font-weight: 400;
+}
+
+/* Dress Code */
+.dress-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.dress-text {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+/* RSVP */
+.rsvp-date {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.rsvp-msg {
+    color: var(--accent-gold);
+    font-style: italic;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-social {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    width: 80%;
+    max-width: 300px;
+    border: none;
+}
+
+.btn-social:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background-color: #000;
+}

@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bautismo de Benicio</title>
+  <meta name="description" content="Invitacion al Bautismo de Benicio" />
+  <meta name="theme-color" content="#7A8B6F" />
+  <meta property="og:title" content="Bautismo de Benicio" />
+  <meta property="og:description" content="Sabado 15 de agosto de 2027 - Parroquia San Jose. Abri la invitacion." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --bg-soft: #F5F2ED;
+      --bg-card: #FFFFFF;
+      --text: #4A4540;
+      --text-muted: #8B8178;
+      --olive: #7A8B6F;
+      --olive-dark: #5C6B52;
+      --olive-light: #9BAF8E;
+      --beige: #F5F2ED;
+      --gray-warm: #8B8178;
+      --gray-light: #E8E4DF;
+      --line: rgba(122, 139, 111, 0.2);
+      --success: #25D366;
+      --font-script: "Great Vibes", cursive;
+      --font-body: "Montserrat", system-ui, sans-serif;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(122, 139, 111, 0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    body.locked { overflow: hidden; height: 100dvh; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
+    /* ===== SPLASH ===== */
+    #splash {
+      position: fixed; inset: 0; z-index: 200;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg);
+      transition: opacity 0.75s ease, visibility 0.75s ease;
+      overflow: hidden;
+    }
+    #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    #splash::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .splash-inner { position: relative; z-index: 1; max-width: 340px; }
+
+    .splash-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--beige);
+      border: 3px solid var(--gray-light);
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+    .splash-photo svg {
+      width: 60px;
+      height: 60px;
+      fill: var(--olive);
+      opacity: 0.6;
+    }
+
+    .splash-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 10vw, 3.8rem);
+      color: var(--olive);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .splash-subtitle {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .splash-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .splash-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .splash-info-item svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--olive);
+    }
+    .splash-waiting {
+      font-family: var(--font-script);
+      font-size: 1.6rem;
+      color: var(--olive);
+      margin-bottom: 1.5rem;
+    }
+
+    .splash-leaf-top {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 50%;
+      max-width: 280px;
+      opacity: 0.85;
+    }
+    .splash-leaf-bottom {
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      width: 50%;
+      max-width: 280px;
+      opacity: 0.85;
+      transform: rotate(180deg);
+    }
+
+    .enter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--olive);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(122, 139, 111, 0.3);
+    }
+    .enter-btn:hover {
+      background: var(--olive-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(122, 139, 111, 0.4);
+    }
+    /* ===== MAIN CONTENT ===== */
+    #mainContent {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
+    }
+    #mainContent.visible { opacity: 1; visibility: visible; }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .section-title {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      color: var(--olive);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--olive);
+      opacity: 0.4;
+      margin: 0 auto 2rem;
+      border-radius: 2px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: var(--beige);
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-family: var(--font-script);
+      font-size: clamp(3.5rem, 14vw, 5.5rem);
+      color: var(--olive);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-date {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .countdown-item {
+      text-align: center;
+      min-width: 60px;
+    }
+    .countdown-item .num {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--olive);
+      line-height: 1;
+    }
+    .countdown-item .lbl {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ===== FRASE ===== */
+    .frase {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      margin: 0 1.5rem;
+      border: 1px solid rgba(135, 143, 115, 0.4);
+      box-shadow: 0 8px 30px rgba(135, 143, 115, 0.1);
+      word-wrap: break-word;
+    }
+    .frase blockquote {
+      font-family: var(--font-script);
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      color: var(--olive);
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+    .frase cite {
+      font-style: normal;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(135, 143, 115, 0.4);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 25px rgba(135, 143, 115, 0.1);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      fill: var(--olive);
+      margin: 0 auto 1rem;
+      display: block;
+    }
+    .card h3 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--olive);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .card .detail {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    /* ===== PADRINOS ===== */
+    .padrinos-card {
+      text-align: center;
+    }
+    .padrinos-card .names {
+      font-family: var(--font-script);
+      font-size: 1.6rem;
+      color: var(--olive);
+      margin-top: 0.5rem;
+    }
+
+    /* ===== MESA DE REGALOS ===== */
+    .regalos .copy-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(135, 143, 115, 0.4);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      word-wrap: break-word;
+    }
+    .regalos .copy-row span {
+      font-size: clamp(0.75rem, 3vw, 0.85rem);
+      font-weight: 500;
+      color: var(--text);
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: var(--olive);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .copy-btn:hover { background: var(--olive-dark); }
+
+    /* ===== RSVP ===== */
+    .rsvp { text-align: center; }
+    .rsvp-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--success);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    .whatsapp-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ===== GALERIA ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--beige);
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .gallery-item svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--olive);
+      opacity: 0.4;
+    }
+
+    /* ===== CIERRE ===== */
+    .cierre {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--beige);
+      position: relative;
+    }
+    .cierre h2 {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      color: var(--olive);
+      margin-bottom: 1rem;
+    }
+    .cierre p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .cierre-hashtag {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--olive);
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== CONTACTO FOOTER ===== */
+    .contacto {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--bg);
+      border-top: 1px solid var(--gray-light);
+    }
+    .contacto h3 {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 1rem;
+    }
+    .contacto p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .contacto a {
+      color: var(--olive);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contacto a:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--beige);
+      border-top: 1px solid var(--gray-light);
+    }
+    footer .brand {
+      font-family: var(--font-script);
+      font-size: 1.4rem;
+      color: var(--olive);
+    }
+    footer .copy {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    /* ===== MUSIC BTN ===== */
+    .music-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--olive);
+      background: var(--bg);
+      color: var(--olive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .music-btn:hover {
+      background: var(--olive);
+      color: #fff;
+    }
+
+    /* ===== PARTY CAM ===== */
+    .party-cam {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--olive);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(122, 139, 111, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+    .party-cam:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(122, 139, 111, 0.4);
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-card);
+      border: 1px solid var(--gray-light);
+      color: var(--text);
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 9999;
+    }
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    .modal h3 {
+      font-family: var(--font-script);
+      font-size: 1.6rem;
+      color: var(--olive);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .modal-close {
+      display: block;
+      margin: 1.5rem auto 0;
+      padding: 0.6rem 1.5rem;
+      background: var(--olive);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .modal-close:hover { background: var(--olive-dark); }
+
+    /* ===== MAP LINK ===== */
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--olive);
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    .map-link:hover { opacity: 0.7; }
+    .map-link svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--olive);
+    }
+
+    @media (max-width: 380px) {
+      section { padding: 3rem 1.25rem; }
+      .countdown { gap: 0.5rem; }
+      .countdown-item .num { font-size: 1.4rem; }
+    }
+  </style>
+
+<style>
+  /* Global fix for mobile text overflow */
+  @media (max-width: 768px) {
+    h1, h2, h3, h4, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl, .font-display-xl, .font-headline-lg {
+      font-size: clamp(1.75rem, 8vw, 3rem) !important;
+      line-height: 1.1 !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+    body, html {
+      overflow-x: hidden !important;
+    }
+  }
+</style>
+
+</head>
+<body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/carin-leon.mp3" type="audio/mpeg"></audio>
+  <!-- ===== SPLASH ===== -->
+  <div id="splash">
+    <!-- Olive leaves top -->
+    <svg class="splash-leaf-top" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.6">
+        <path d="M280 10 C260 30, 240 25, 220 40 C200 55, 195 50, 175 60 C155 70, 150 65, 130 72 C110 79, 105 75, 85 80" stroke="#7A8B6F" stroke-width="1.5" fill="none"/>
+        <path d="M220 40 C215 30, 225 20, 230 28 C235 36, 225 42, 220 40Z" fill="#9BAF8E" opacity="0.7"/>
+        <path d="M175 60 C170 50, 180 42, 185 50 C190 58, 180 63, 175 60Z" fill="#7A8B6F" opacity="0.6"/>
+        <path d="M130 72 C125 62, 135 55, 140 63 C145 71, 135 75, 130 72Z" fill="#9BAF8E" opacity="0.7"/>
+        <path d="M250 20 C245 10, 255 5, 260 12 C265 19, 255 23, 250 20Z" fill="#7A8B6F" opacity="0.5"/>
+        <path d="M195 50 C190 40, 200 34, 205 42 C210 50, 200 53, 195 50Z" fill="#9BAF8E" opacity="0.6"/>
+        <path d="M150 65 C145 55, 155 48, 160 56 C165 64, 155 68, 150 65Z" fill="#7A8B6F" opacity="0.5"/>
+        <path d="M105 75 C100 65, 110 58, 115 66 C120 74, 110 78, 105 75Z" fill="#9BAF8E" opacity="0.6"/>
+        <path d="M290 5 C270 20, 250 15, 235 28" stroke="#9BAF8E" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M260 15 C255 5, 265 0, 270 7 C275 14, 265 18, 260 15Z" fill="#7A8B6F" opacity="0.4"/>
+      </g>
+    </svg>
+    <!-- Olive leaves bottom -->
+    <svg class="splash-leaf-bottom" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.6">
+        <path d="M280 10 C260 30, 240 25, 220 40 C200 55, 195 50, 175 60 C155 70, 150 65, 130 72 C110 79, 105 75, 85 80" stroke="#7A8B6F" stroke-width="1.5" fill="none"/>
+        <path d="M220 40 C215 30, 225 20, 230 28 C235 36, 225 42, 220 40Z" fill="#9BAF8E" opacity="0.7"/>
+        <path d="M175 60 C170 50, 180 42, 185 50 C190 58, 180 63, 175 60Z" fill="#7A8B6F" opacity="0.6"/>
+        <path d="M130 72 C125 62, 135 55, 140 63 C145 71, 135 75, 130 72Z" fill="#9BAF8E" opacity="0.7"/>
+        <path d="M250 20 C245 10, 255 5, 260 12 C265 19, 255 23, 250 20Z" fill="#7A8B6F" opacity="0.5"/>
+        <path d="M195 50 C190 40, 200 34, 205 42 C210 50, 200 53, 195 50Z" fill="#9BAF8E" opacity="0.6"/>
+        <path d="M150 65 C145 55, 155 48, 160 56 C165 64, 155 68, 150 65Z" fill="#7A8B6F" opacity="0.5"/>
+        <path d="M105 75 C100 65, 110 58, 115 66 C120 74, 110 78, 105 75Z" fill="#9BAF8E" opacity="0.6"/>
+      </g>
+    </svg>
+
+    <div class="splash-inner">
+      <!-- Circular photo placeholder -->
+      <div class="splash-photo">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="22" r="10" fill="currentColor" opacity="0.5"/>
+          <path d="M32 34c-10 0-18 5-18 12v4h36v-4c0-7-8-12-18-12z" fill="currentColor" opacity="0.4"/>
+          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <h1 class="splash-title">Mi Bautismo</h1>
+      <p class="splash-subtitle">Estas cordialmente invitado a la celebracion de bautismo de nuestro hijo <strong>Benicio</strong></p>
+
+      <div class="splash-info">
+        <div class="splash-info-item">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Sabado 15 de agosto</span>
+        </div>
+        <div class="splash-info-item">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <span>16 hs</span>
+        </div>
+      </div>
+
+      <p class="splash-waiting">Te esperamos!</p>
+
+      <button class="enter-btn" id="enterBtn" onclick="openInvitation()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9 6 9-6"/><rect x="3" y="4" width="18" height="16" rx="2" fill="none"/></svg>
+        Abrir invitacion
+      </button>
+    </div>
+  </div>
+  <!-- ===== MAIN CONTENT ===== -->
+  <div id="mainContent">
+
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero-label reveal">Bautismo</p>
+      <h1 class="reveal splash-name">Benicio</h1>
+      <p class="hero-date reveal">Sabado 15 de agosto de 2027 &middot; 16:00 hs</p>
+      <div class="countdown reveal" id="countdown">
+        <div class="countdown-item"><span class="num" id="cd-days">--</span><span class="lbl">Dias</span></div>
+        <div class="countdown-item"><span class="num" id="cd-hours">--</span><span class="lbl">Horas</span></div>
+        <div class="countdown-item"><span class="num" id="cd-mins">--</span><span class="lbl">Min</span></div>
+        <div class="countdown-item"><span class="num" id="cd-secs">--</span><span class="lbl">Seg</span></div>
+      </div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="frase reveal">
+      <blockquote>"Dejen que los ninos vengan a mi, porque de ellos es el reino de los cielos"</blockquote>
+      <cite>Mateo 19:14</cite>
+    </section>
+
+    <!-- CUANDO Y DONDE -->
+    <section class="reveal">
+      <h2 class="section-title">Cuando y Donde</h2>
+      <div class="section-divider"></div>
+
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+        <h3>Ceremonia</h3>
+        <p>Sabado 15 de agosto de 2027</p>
+        <p>16:00 hs</p>
+      </div>
+
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <h3>Lugar</h3>
+        <p>Parroquia San Jose</p>
+        <p class="detail">Calle San Martin 456</p>
+        <a href="https://maps.google.com/?q=Parroquia+San+Jose+Calle+San+Martin+456" target="_blank" class="map-link">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          Ver en mapa
+        </a>
+      </div>
+    </section>
+
+    <!-- PADRINOS -->
+    <section class="reveal">
+      <h2 class="section-title">Padrinos</h2>
+      <div class="section-divider"></div>
+      <div class="card padrinos-card">
+        <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <h3>Nos acompanan</h3>
+        <p class="names">Maria & Juan</p>
+      </div>
+    </section>
+    <!-- MESA DE REGALOS -->
+    <section class="regalos reveal">
+      <h2 class="section-title">Mesa de Regalos</h2>
+      <div class="section-divider"></div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="10" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6v16" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="6" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6c-1-3-4-4-5-3s0 3 5 3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 6c1-3 4-4 5-3s0 3-5 3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <h3>Datos para transferencia</h3>
+        <p class="detail" style="margin-bottom:0.75rem">Si deseas hacernos un regalo, podes transferir al siguiente alias o CBU:</p>
+        <div class="copy-row">
+          <span>bautismo.benicio.2027</span>
+          <button class="copy-btn" onclick="copyText('bautismo.benicio.2027')">Copiar</button>
+        </div>
+        <div class="copy-row">
+          <span>0000003100033333333333</span>
+          <button class="copy-btn" onclick="copyText('0000003100033333333333')">Copiar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp reveal">
+      <h2 class="section-title">Confirmar Asistencia</h2>
+      <div class="section-divider"></div>
+      <p class="rsvp-text">Confirmanos tu asistencia para que podamos organizar todo con amor</p>
+      <a href="https://wa.me/5493425299942?text=Hola!%20Confirmo%20mi%20asistencia%20al%20bautismo%20de%20Benicio" target="_blank" class="whatsapp-btn">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.157-2.625.78.78-2.625-.157-.252A8 8 0 1112 20z" fill-rule="evenodd"/></svg>
+        Confirmar por WhatsApp
+      </a>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="reveal">
+      <h2 class="section-title">Galeria</h2>
+      <div class="section-divider"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" opacity="0.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
+        <div class="gallery-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" opacity="0.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
+        <div class="gallery-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" opacity="0.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
+        <div class="gallery-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" opacity="0.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
+      </div>
+    </section>
+    <!-- CIERRE -->
+    <section class="cierre reveal">
+      <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 1rem; display:block; opacity:0.6;">
+        <path d="M10 35 C20 25, 30 20, 40 20 C50 20, 60 25, 70 35" stroke="#7A8B6F" stroke-width="1" fill="none"/>
+        <path d="M25 28 C23 22, 28 18, 30 23 C32 28, 27 30, 25 28Z" fill="#9BAF8E" opacity="0.7"/>
+        <path d="M40 20 C38 14, 43 10, 45 15 C47 20, 42 22, 40 20Z" fill="#7A8B6F" opacity="0.6"/>
+        <path d="M55 28 C53 22, 58 18, 60 23 C62 28, 57 30, 55 28Z" fill="#9BAF8E" opacity="0.7"/>
+      </svg>
+      <h2>Gracias por acompanarnos</h2>
+      <p>Esperamos compartir este dia tan especial junto a vos. Tu presencia es el mejor regalo.</p>
+      <p class="cierre-hashtag">#BautismoBenicio</p>
+    </section>
+
+    <!-- CONTACTO FOOTER -->
+    <section class="contacto">
+      <h3>Contacto</h3>
+      <p>Invitacion digital creada por <a href="https://wa.me/5493425299942" target="_blank">teinvitoapp</a></p>
+      <p><a href="https://wa.me/5493425299942" target="_blank">WhatsApp: +54 9 342 529 9942</a></p>
+      <p><a href="https://instagram.com/teinvitoapp" target="_blank">@teinvitoapp</a></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="brand">Te Invito</div>
+      <div class="copy">teinvitoapp.com.ar</div>
+    </footer>
+
+  </div><!-- /mainContent -->
+
+  <!-- MUSIC BUTTON -->
+  <button class="music-btn" id="musicBtn" aria-label="Musica" style="display:none;">
+    <span id="musicIcon">&#9835;</span>
+  </button>
+
+  <!-- PARTY CAM -->
+  <a href="#" class="party-cam" id="partyCam" title="Party Cam">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+  </a>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">Copiado!</div>
+
+  <!-- MODAL REGALOS -->
+  <div class="modal-overlay" id="modalRegalos">
+    <div class="modal">
+      <h3>Mesa de Regalos</h3>
+      <div class="card" style="border:none; box-shadow:none; padding:0;">
+        <p class="detail" style="margin-bottom:0.75rem; text-align:center;">Alias y CBU para transferencias:</p>
+        <div class="copy-row" style="margin-bottom:0.5rem;">
+          <span>bautismo.benicio.2027</span>
+          <button class="copy-btn" onclick="copyText('bautismo.benicio.2027')">Copiar</button>
+        </div>
+        <div class="copy-row">
+          <span>0000003100033333333333</span>
+          <button class="copy-btn" onclick="copyText('0000003100033333333333')">Copiar</button>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+  <script>
+    // ===== OPEN INVITATION =====
+    function openInvitation() {
+      var splash = document.getElementById('splash');
+      var main = document.getElementById('mainContent');
+      splash.classList.add('hide');
+      main.classList.add('visible');
+      document.body.classList.remove('locked');
+      // Show music btn
+      var musicBtn = document.getElementById('musicBtn');
+      if (musicBtn) musicBtn.style.display = 'flex';
+    }
+
+    // ===== COUNTDOWN =====
+    (function() {
+      var eventDate = new Date('2027-08-15T16:00:00-03:00').getTime();
+      function update() {
+        var now = new Date().getTime();
+        var diff = eventDate - now;
+        if (diff <= 0) {
+          document.getElementById('cd-days').textContent = '0';
+          document.getElementById('cd-hours').textContent = '0';
+          document.getElementById('cd-mins').textContent = '0';
+          document.getElementById('cd-secs').textContent = '0';
+          return;
+        }
+        var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('cd-days').textContent = d;
+        document.getElementById('cd-hours').textContent = h;
+        document.getElementById('cd-mins').textContent = m;
+        document.getElementById('cd-secs').textContent = s;
+      }
+      update();
+      setInterval(update, 1000);
+    })();
+
+    // ===== COPY TEXT =====
+    function copyText(text) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(showToast);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast();
+      }
+    }
+
+    function showToast() {
+      var toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 2500);
+    }
+
+    // ===== MODAL =====
+    function openModal() {
+      document.getElementById('modalRegalos').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('modalRegalos').classList.remove('active');
+    }
+    document.getElementById('modalRegalos').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // ===== MUSIC BUTTON =====
+    (function() {
+      var musicPlaying = false;
+      var musicBtn = document.getElementById('musicBtn');
+      var musicIcon = document.getElementById('musicIcon');
+      var bgAudio = document.getElementById('bgAudio');
+      musicBtn.addEventListener('click', function() {
+        if (!bgAudio) return;
+        if (musicPlaying) {
+          bgAudio.pause();
+          musicPlaying = false;
+        } else {
+          bgAudio.volume = 0.7;
+          bgAudio.play().catch(function(){});
+          musicPlaying = true;
+        }
+        musicIcon.textContent = musicPlaying ? '\u23F8' : '\u266B';
+        musicBtn.style.opacity = musicPlaying ? '1' : '0.6';
+      });
+    })();
+
+    // ===== REVEAL ON SCROLL =====
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // ===== PREVIEW MODE =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('preview') === '1') {
+        var enterBtn = document.getElementById('enterBtn');
+        if (enterBtn) enterBtn.style.display = 'none';
+        var splash = document.getElementById('splash');
+        if (splash) splash.classList.remove('hide');
+        var main = document.getElementById('mainContent');
+        if (main) main.classList.remove('visible');
+        document.body.classList.add('locked');
+      }
+    })();
+
+    // ===== CUSTOM NAME =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var customName = params.get('customName');
+      if (customName) {
+        var decoded = decodeURIComponent(customName);
+        var h1 = document.querySelector('.hero h1');
+        if (h1) h1.textContent = decoded;
+        var splashNames = document.querySelectorAll('.splash-name');
+        if (splashNames.length > 0) {
+          splashNames[0].textContent = decoded;
+        }
+      }
+    })();
+  </script>
+
+
+<!-- MUSIC AUTOPLAY FIX -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var enterButton = document.getElementById('enterBtn') || document.getElementById('btn-open') || document.getElementById('btnOpenInvite') || document.querySelector('#splash button');
+    
+    if (enterButton) {
+      enterButton.addEventListener('click', function() {
+        var bgAudio = document.getElementById('bgAudio') || document.getElementById('bgMusic') || document.getElementById('music');
+        if (bgAudio) {
+          bgAudio.volume = 0.7;
+          bgAudio.play().then(function() {
+            var musicBtn = document.getElementById('musicBtn') || document.getElementById('btnMusic');
+            if (musicBtn) {
+              musicBtn.classList.add('playing');
+              var icon = document.getElementById('iconMusic') || musicBtn.querySelector('i');
+              if (icon && icon.classList.contains('fa-play')) {
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-music');
+              }
+              if (typeof window.musicPlaying !== 'undefined') {
+                window.musicPlaying = true;
+                musicBtn.style.opacity = '1';
+                musicBtn.style.transform = 'scale(1.1)';
+              }
+              if (typeof window.playing !== 'undefined') {
+                window.playing = true;
+              }
+            }
+          }).catch(function(e){ console.log("Autoplay prevent: " + e); });
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,636 @@
+/* ==========================================================================
+   Base & Design Tokens
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg-base: #E8E5E1; 
+    --color-primary: #1A1C20; /* Deep charcoal */
+    --color-accent: #C5B396; /* Elegant champagne/gold */
+    --color-accent-hover: #D8C7AA;
+    --color-text-light: #F0EFEA;
+    --color-glass: rgba(255, 255, 255, 0.12);
+    --color-glass-dark: rgba(26, 28, 32, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-text: 'Inter', sans-serif;
+    
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 15px 45px rgba(0, 0, 0, 0.15);
+    
+    --border-radius: 12px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg-base);
+    /* Overall subtle gradient background as fallback if no image */
+    background: linear-gradient(135deg, #F3F1ED 0%, #D8D4CC 100%);
+    color: var(--color-primary);
+    font-family: var(--font-text);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ==========================================================================
+   Typography & Utilities
+   ========================================================================== */
+h1, h2, h3, h4, .subtitle, .footer-title {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.section-text {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(26, 28, 32, 0.7);
+    line-height: 1.8;
+}
+
+.icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   Glassmorphism System
+   ========================================================================== */
+.glass-panel {
+    background: var(--color-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    padding: 40px 30px;
+    color: var(--color-primary);
+}
+
+/* For dark areas */
+.glass-card-dark {
+    background: var(--color-glass-dark);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+}
+
+.dynamic-hover {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.dynamic-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ==========================================================================
+   Buttons & Inputs
+   ========================================================================== */
+.btn-outline {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: transparent;
+    font-weight: 400;
+}
+
+.btn-outline:hover {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    box-shadow: 0 4px 15px rgba(197, 179, 150, 0.3);
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 30px;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    font-family: var(--font-text);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(197, 179, 150, 0.4);
+}
+
+.btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 179, 150, 0.5);
+}
+
+.flex-btn {
+    gap: 10px;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.small-btn {
+    padding: 10px 22px;
+    font-size: 0.75rem;
+    margin-top: 15px;
+}
+
+.glass-input {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    color: var(--color-primary);
+    font-family: var(--font-text);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.glass-input::placeholder {
+    color: rgba(26, 28, 32, 0.5);
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(197, 179, 150, 0.2);
+}
+
+select.glass-input {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Splash Screen
+   ========================================================================== */
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('hero-bg.jpg') center/cover no-repeat fixed;
+    color: var(--color-primary);
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
+    padding: 20px;
+}
+
+.splash::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.splash.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash-inner {
+    position: relative;
+    z-index: 10;
+    max-width: 400px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splash-title {
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    margin-bottom: 0.5rem;
+    color: var(--color-accent);
+}
+
+.splash-date {
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('hero-bg.jpg') center/cover no-repeat fixed;
+    padding: 20px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.7) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero .subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--color-accent);
+}
+
+.hero .title {
+    font-size: clamp(3.5rem, 12vw, 5.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+}
+
+.hero .date {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Countdown */
+.countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.time-box {
+    padding: 12px;
+    min-width: 75px;
+    text-align: center;
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.2rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.time-box small {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(26, 28, 32, 0.6);
+    font-weight: 500;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.scroll-indicator p {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.7;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 40px;
+    background: var(--color-primary);
+    opacity: 0.5;
+    animation: bounce 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Sections Structure
+   ========================================================================== */
+.message-section,
+.details-section,
+.info-section,
+.rsvp-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* Add a continuous feeling background over the solid color */
+.message-section::before,
+.details-section::before,
+.info-section::before,
+.rsvp-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Details Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media(min-width: 768px) {
+    .details-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+.detail-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.detail-time {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.detail-place {
+    font-size: 0.95rem;
+    color: rgba(26, 28, 32, 0.7);
+    margin-bottom: 20px;
+}
+
+.calendar-action {
+    margin-top: 50px;
+}
+
+/* Info Section */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+@media(min-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.info-block h3 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.info-block p {
+    color: rgba(26, 28, 32, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.highlight-text {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: var(--color-primary) !important;
+}
+
+.bank-info {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid rgba(26, 28, 32, 0.15);
+    border-radius: var(--border-radius);
+    background: rgba(255,255,255,0.4);
+}
+
+.bank-info p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+/* RSVP Section */
+.rsvp-card {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.rsvp-form {
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Footer */
+.footer {
+    padding: 80px 0;
+    text-align: center;
+    background: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.8);
+}
+
+.footer-title {
+    font-size: clamp(3rem, 6vw, 4rem);
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(26, 28, 32, 0.6);
+}
+
+/* ==========================================================================
+   Music Toggle
+   ========================================================================== */
+.music-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1500;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--color-primary);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-toggle.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.music-icon {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.playing {
+    animation: bounce 2s infinite ease-in-out alternate;
+    color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-up .fade-in {
+    transform: translateY(20px);
+    animation: slideUpFade 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-up-subtle {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: slideUpFade 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1.2s; }
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
+}
+
+/* Reveal on Scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}

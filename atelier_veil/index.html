@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camila & Mateo | Wedding Invitation</title>
+    <meta name="description" content="Acompáñanos a celebrar nuestra boda." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash" class="splash glass-splash">
+        <div class="splash-inner glass-card slide-up-subtle">
+            <h2 class="splash-title">C &amp; M</h2>
+            <p class="splash-date">24 . 10 . 2026</p>
+            <button id="enter-btn" class="btn-outline">Descubrir la Invitación</button>
+        </div>
+    </div>
+
+    <!-- Audio & Player Toggle -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="../Justin Timberlake - CAN'T STOP THE FEELING! (Lyrics).mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" class="music-toggle hidden" aria-label="Reproducir música">
+        <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+    </button>
+
+    <!-- Main Content Wrapper -->
+    <div id="main-content" class="locked">
+
+        <!-- Hero Section -->
+        <section class="hero slide-up">
+            <div class="hero-content glass-card">
+                <p class="subtitle fade-in delay-1">Nos casamos</p>
+                <h1 class="title fade-in delay-2">Camila &amp; Mateo</h1>
+                <p class="date fade-in delay-3">Sábado, 24 de Octubre 2026</p>
+                
+                <!-- Countdown -->
+                <div class="countdown fade-in delay-4">
+                    <div class="time-box glass-panel"><span id="days">00</span><small>Días</small></div>
+                    <div class="time-box glass-panel"><span id="hours">00</span><small>Hs</small></div>
+                    <div class="time-box glass-panel"><span id="minutes">00</span><small>Min</small></div>
+                    <div class="time-box glass-panel"><span id="seconds">00</span><small>Seg</small></div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator fade-in delay-5">
+                <p>Desliza para ver más</p>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!-- Invitation Message -->
+        <section class="message-section reveal">
+            <div class="container">
+                <div class="glass-card full-width">
+                    <h2 class="section-title">Nuestra Historia <br> Continúa</h2>
+                    <p class="section-text">
+                        Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más quieres los convierte en inolvidables. Queremos que seas parte de este gran día, celebrando el amor y la unión.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Details Section -->
+        <section class="details-section reveal">
+            <div class="container">
+                <div class="details-grid">
+                    
+                    <div class="detail-card glass-card dynamic-hover">
+                        <span class="icon">💍</span>
+                        <h3>Ceremonia</h3>
+                        <p class="detail-time">17:00 hrs</p>
+                        <p class="detail-place">Parroquia San Francisco de Asís<br>Ciudad, Centro</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn-outline small-btn">Ubicación</a>
+                    </div>
+
+                    <div class="detail-card glass-card dynamic-hover">
+                        <span class="icon">🥂</span>
+                        <h3>Recepción</h3>
+                        <p class="detail-time">19:00 hrs</p>
+                        <p class="detail-place">Estancia La Sofía<br>Ruta 2, Km 45</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn-outline small-btn">Ubicación</a>
+                    </div>
+                </div>
+
+                <div class="calendar-action reveal">
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Camila+y+Mateo&dates=20261024T200000Z/20261025T030000Z&details=¡Te+esperamos+para+celebrar+nuestra+boda!&location=Estancia+La+Sofía" target="_blank" class="btn-primary flex-btn">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        Agendar en Calendario
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dress Code & Gifts -->
+        <section class="info-section reveal">
+            <div class="container info-grid">
+                <div class="info-block glass-card dynamic-hover">
+                    <span class="icon">👗</span>
+                    <h3>Dress Code</h3>
+                    <p class="highlight-text">Formal Elegante</p>
+                    <p>Rogamos evitar el color blanco y tonos beige claros.</p>
+                </div>
+                <div class="info-block glass-card dynamic-hover">
+                    <span class="icon">🎁</span>
+                    <h3>Mesa de Regalos</h3>
+                    <p>Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, dispondremos de un buzón en el salón o puedes realizar una transferencia.</p>
+                    <div class="bank-info glass-panel">
+                        <p><strong>CBU:</strong> 0000003100022314329967</p>
+                        <p><strong>Alias:</strong> camila.y.mateo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp-section reveal">
+            <div class="container">
+                <div class="rsvp-card glass-card">
+                    <h2 class="section-title">Confirma tu Asistencia</h2>
+                    <p class="section-text">Te invitamos a confirmar tu presencia antes del 1 de Octubre para organizar los últimos detalles.</p>
+                    
+                    <form id="rsvp-form" class="rsvp-form">
+                        <div class="form-group">
+                            <input type="text" id="name" class="glass-input" placeholder="Nombre completo" required />
+                        </div>
+                        <div class="form-group">
+                            <select id="attendance" class="glass-input" required>
+                                <option value="" disabled selected>¿Asistirás?</option>
+                                <option value="Sí, allí estaré">Sí, allí estaré con mucha alegría</option>
+                                <option value="Lamentablemente no podré">Lamentablemente no podré</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" class="glass-input" placeholder="Mensaje adicional (Menú especial, deseos, etc.)" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary flex-btn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"></path><path d="M22 2L15 22L11 13L2 9L22 2Z"></path></svg>
+                            Confirmar por WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <h2 class="footer-title">C &amp; M</h2>
+                <p>Nos vemos pronto</p>
+            </div>
+        </footer>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

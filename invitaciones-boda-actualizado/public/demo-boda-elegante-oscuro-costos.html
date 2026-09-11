@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valor de Tarjeta — Sofía & Felipe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A66B;
+      --cream: #EDE7DD;
+      --ink: #100D0A;
+      --muted: #8F8576;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: url('/boda_elegante_bg.jpg') center/cover no-repeat fixed;
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(16, 13, 10, 0.85);
+      z-index: 1;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+    }
+    .back-link {
+      display: inline-block;
+      color: var(--cream);
+      text-decoration: underline;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      transition: color 0.3s;
+    }
+    .back-link:hover {
+      color: var(--gold);
+    }
+    .price-card {
+      background: rgba(26, 21, 16, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 166, 107, 0.25);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      border-radius: 16px;
+      padding: 40px 28px;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(201, 166, 107, 0.15);
+      padding: 16px 0;
+    }
+    .price-row:last-of-type {
+      border-bottom: none;
+    }
+    .price-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+    .price-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .disclaimer {
+      font-size: 11px;
+      color: var(--gold);
+      margin-top: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .alias-box {
+      background: rgba(16, 13, 10, 0.5);
+      border: 1px solid rgba(201, 166, 107, 0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 28px;
+    }
+    .alias-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .alias-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--cream);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .alias-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .copy-btn {
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+      width: 100%;
+      padding: 12px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .copy-btn:active {
+      opacity: 0.8;
+    }
+    .copy-msg {
+      font-size: 11px;
+      color: var(--gold);
+      margin-top: 8px;
+      height: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="demo-boda-elegante-oscuro.html" class="back-link">← Volver a la invitación</a>
+    
+    <div class="price-card">
+      <h2>Valor de Tarjeta</h2>
+      
+      <div class="price-row">
+        <span class="price-label">Invitados Mayores</span>
+        <span class="price-value">$75.000</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Menores (6 a 12 años)</span>
+        <span class="price-value">$50.000</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Niños (2 a 5 años)</span>
+        <span class="price-value">$30.000</span>
+      </div>
+      
+      <p class="disclaimer">* Confirmar asistencia y pago antes del 1 de Noviembre</p>
+      
+      <div class="alias-box">
+        <p class="alias-label">Datos para transferencia</p>
+        <p class="alias-value" id="aliasTxt">sofia.felipe.boda</p>
+        <p class="alias-sub">Alias · Banco Galicia</p>
+        <button class="copy-btn" onclick="copyAlias()">Copiar alias</button>
+        <div class="copy-msg" id="copyMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyAlias() {
+      var alias = document.getElementById('aliasTxt').innerText;
+      navigator.clipboard.writeText(alias).then(function() {
+        var msg = document.getElementById('copyMsg');
+        msg.innerText = '¡Copiado con éxito!';
+        setTimeout(function() {
+          msg.innerText = '';
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>

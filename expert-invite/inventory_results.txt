@@ -1,0 +1,131 @@
+=== INVENTORY OF ALL INVITATION TEMPLATES ===
+
+[FILE] bola_de_discoteca_3d.html
+   Headings: ['la mejor noche']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=False, Gallery=False, RSVP=False, CBU=True, IG=False, Playlist=False, DressCode=False, Modal=False, Map=False
+
+[FILE] Daylight ｜ A More Caring Computer (26_7_2026 07：32：36).html
+   Headings: ['Newsletter', 'Error NaN', 'The computer, de-invented', 'Newsletter', 'Smooth interactions', 'A calm experience', 'For your health', 'A distraction-free space for  learning &amp; creativity']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Neon Glow Theme & Animated Glow Effects', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=True, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=True, Playlist=False, DressCode=False, Modal=True, Map=True
+
+[FILE] demo-despedida-neon.html
+   Headings: ['Julieta', 'Julieta', 'Fondo Común 💸', 'Itinerario de la Muerte 🍻', 'Previa', 'Cena Bizarra', 'Boliche', 'Coordenadas 📍']
+   Special: ['Neon Glow Theme & Animated Glow Effects', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=False, DressCode=True, Modal=False, Map=True
+
+[FILE] index.html
+   Headings: ['Así de fácil es', 'Elegís el estilo', 'Nos pasás los datos', 'La diseñamos', 'Recibís el link', 'Elegí tu estilo', 'Elegante Oscuro', 'Floral Claro']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Neon Glow Theme & Animated Glow Effects', 'Instagram AR Filter Button']
+   Flags: Audio=False, Video=True, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=False, Map=True
+
+[FILE] invitacion_camila_final.html
+   Headings: ['Camila', 'Camila', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Formal / Gala']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] invitacion_clari_final.html
+   Headings: ['Clari', 'Clari', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Formal / Gala']
+   Special: ['Butterfly Particles System', 'Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] invitacion_clari_v2.html
+   Headings: ['FALTAN', '¿Cuándo?', '¿Dónde?', 'Tarjetas', 'Dress Code', 'Confirmá tu asistencia', 'Gracias']
+   Special: ['Butterfly Particles System', 'Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=False, Playlist=False, DressCode=True, Modal=False, Map=True
+
+[FILE] invitacion_completa.html
+   Headings: ['Bienvenida a', 'Mis XVJulia', 'Que comience la magia', 'Falta muy poco', '¿Cuándo?', 'VIERNES 12 DE FEBRERO', '¿Dónde?', 'SOLARES DEL SUR']
+   Special: ['Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=False, Playlist=False, DressCode=True, Modal=False, Map=True
+
+[FILE] invitacion_julia.html
+   Headings: ['MIS XV JULIA', '¿Cuándo?', '¿Dónde?', 'Valor Tarjeta', 'Dress Code', 'Confirmá tu asistencia']
+   Special: ['Butterfly Particles System', 'Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=False, Playlist=True, DressCode=True, Modal=False, Map=True
+
+[FILE] posteos_instagram.html
+   Headings: ['Diseños para Instagram - Te Invito', 'Tu evento, tu estilo único.', 'Copy (Texto del post)', 'Conocé la Party Cam 📸', 'Copy (Texto del post)', 'Copy (Texto del post)', '¿Estás a las corridas con tu evento?', 'Copy (Texto del post)']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=True, Playlist=False, DressCode=True, Modal=False, Map=True
+
+[FILE] posteos_neobrutalism.html
+   Headings: ['Diseños Instagram - Estilo Neo-Brutalismo (teinvitoapp.com.ar)', 'Copy sugerido:', 'Copy sugerido:', 'Copy sugerido:', '¿Estás alas corridas?', 'Copy sugerido:']
+   Special: ['Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=True, Playlist=False, DressCode=False, Modal=False, Map=True
+
+[FILE] premium_reference.html
+   Headings: ['Ceremonia', 'Fiesta', 'NOSOTROS...', 'CONFIRMACIÓN DE ASISTENCIA', '¿Te gustó nuestro demo?', 'Seguinos en Instagram']
+   Special: ['Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=False, Modal=False, Map=True
+
+[FILE] rsvp_sample.html
+   Headings: ['Confirmar Asistencia']
+   Special: ['Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=False, Gallery=False, RSVP=True, CBU=False, IG=False, Playlist=False, DressCode=False, Modal=False, Map=True
+
+[FILE] te-invito-landing (2).html
+   Headings: ['Así de fácil es', 'Elegís el estilo', 'Nos pasás los datos', 'La diseñamos', 'Recibís el link', 'Elegí tu estilo', 'Elegante Oscuro', 'Floral Claro']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Instagram AR Filter Button']
+   Flags: Audio=False, Video=False, Countdown=True, Gallery=False, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=False, Map=True
+
+[FILE] demo-15-camila-glam.html
+   Headings: ['Camila', 'Camila', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Formal / Gala']
+   Special: ['3D Discoball / Three.js / Canvas 3D', 'Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-babyshower-malena.html
+   Headings: ['Malena', 'Malena', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Lista de deseos', 'Ideas de regalo', 'Mesa de regalos']
+   Special: ['Event-Type Customizer (Bautismo/Babyshower/XV/Boda)', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-bautismo-benicio.html
+   Headings: ['Benicio', 'Benicio', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Elegante sport']
+   Special: ['Event-Type Customizer (Bautismo/Babyshower/XV/Boda)', 'Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-boda-floral-claro.html
+   Headings: ['Luciana & Gonzalo', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Elegante campestre', 'Mesa de regalos']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-boda-noche-dorada.html
+   Headings: ['Sofía & Tomás', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Formal black tie', 'Mesa de regalos']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-boda-opcion1.html
+   Headings: ['Sofía & Tomás', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Formal black tie', 'Mesa de regalos']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-boda-opcion2.html
+   Headings: ['Sofía & Tomás', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Formal black tie', 'Mesa de regalos']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=True, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-boda-opcion3.html
+   Headings: ['Sofía & Tomás', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Nuestra Historia', 'Dress code', 'Formal black tie']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=True, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-boda-premium.html
+   Headings: ['Sofía & Tomás', 'Ceremonia', 'Fiesta', 'Nosotros', 'DATOS BANCARIOS', 'Confirmación de Asistencia', '¿Te gusta nuestro demo?', 'Seguinos en Instagram']
+   Special: ['Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=False, Modal=True, Map=True
+
+[FILE] demo-canva-boho.html
+   Headings: ['Olivia Y Lucas', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Elegante campestre', 'Mesa de regalos']
+   Special: ['Boho Floral Aesthetic', 'Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-corporativo-gala.html
+   Headings: ['Gala Vertex', 'Gala Vertex', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Business formal']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True
+
+[FILE] demo-cumple-minimalista.html
+   Headings: ['Martín', 'Martín', '¿Cuándo & dónde?', '¿Cuándo?', '¿Dónde?', 'Ceremonia', 'Dress code', 'Smart casual']
+   Special: ['Spotify Playlist Suggestion Section', 'Instagram AR Filter Button']
+   Flags: Audio=True, Video=False, Countdown=True, Gallery=True, RSVP=True, CBU=True, IG=True, Playlist=True, DressCode=True, Modal=True, Map=True

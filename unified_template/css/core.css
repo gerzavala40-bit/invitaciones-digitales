@@ -1,0 +1,282 @@
+/* =========================================================
+   CORE CSS - Estructura base para TODAS las invitaciones
+   No modificar colores ni tipografías aquí. Todo se hereda
+   de las variables CSS definidas en los temas.
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body, sans-serif);
+    background-color: var(--color-bg, #ffffff);
+    color: var(--color-text, #333333);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Evitar scroll si está bloqueado por el Splash */
+body.locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display, var(--font-body, sans-serif));
+    font-weight: var(--font-weight-display, 700);
+    color: var(--color-heading, var(--color-text));
+}
+
+.mobile-container {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--color-card-bg, transparent);
+    min-height: 100vh;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+}
+
+/* ================== SPLASH SCREEN ================== */
+.splash-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--color-splash-bg, var(--color-bg));
+    background-image: var(--bg-splash-img, none);
+    background-size: cover;
+    background-position: center;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease 0.6s;
+}
+
+.splash-screen.slide-up {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-content {
+    text-align: center;
+    z-index: 10;
+}
+
+.splash-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary, #fff);
+    border: var(--btn-border, none);
+    border-radius: var(--btn-radius, 30px);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.splash-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn, 0 4px 15px rgba(0,0,0,0.2));
+}
+
+/* ================== MUSIC CONTROL ================== */
+.music-control {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary, #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.music-control.playing {
+    animation: musicPulse 2s infinite ease-in-out;
+}
+
+@keyframes musicPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.music-control svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* ================== HERO ================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background-image: var(--bg-hero-img, none);
+    background-size: cover;
+    background-position: center;
+    color: var(--color-hero-text, #fff);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--hero-overlay, rgba(0,0,0,0.3));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: var(--fs-hero-title, 4rem);
+    margin-bottom: 20px;
+}
+
+/* ================== SECTIONS ================== */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: var(--fs-section-title, 2rem);
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: var(--color-card-bg, #fff);
+    padding: 30px 20px;
+    border-radius: var(--card-radius, 15px);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-card, 0 10px 30px rgba(0,0,0,0.05));
+    border: var(--card-border, none);
+    color: var(--color-card-text, var(--color-text));
+}
+
+/* ================== COUNTDOWN ================== */
+.countdown-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.time-box {
+    background-color: var(--color-timebox-bg, var(--color-card-bg, #fff));
+    border: var(--timebox-border, 1px solid var(--color-primary));
+    border-radius: var(--timebox-radius, 10px);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: var(--shadow-timebox, none);
+}
+
+.time-box .number {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.time-box .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--color-text-muted, #777);
+}
+
+/* ================== FORMS & BUTTONS ================== */
+.btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary, #fff);
+    padding: 12px 25px;
+    border-radius: var(--btn-radius, 30px);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: var(--btn-border, none);
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-hover, var(--color-primary));
+    transform: translateY(-2px);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text);
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: var(--input-border, 1px solid #ccc);
+    border-radius: var(--input-radius, 8px);
+    font-family: inherit;
+    font-size: 14px;
+    background-color: var(--color-input-bg, #fff);
+    color: var(--color-text);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ================== UTILITIES ================== */
+.hidden {
+    display: none !important;
+}
+
+.text-muted {
+    color: var(--color-text-muted, #777);
+    font-size: 14px;
+}

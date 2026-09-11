@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>
+  if (window.location.search.includes('preview=1')) {
+    HTMLMediaElement.prototype.play = function() { return Promise.resolve(); };
+    window.Audio = function() { return { play: () => Promise.resolve(), pause: () => {} }; };
+    document.addEventListener('DOMContentLoaded', function() {
+      var audios = document.querySelectorAll('audio, video');
+      for (var i = 0; i < audios.length; i++) {
+        audios[i].remove();
+      }
+    });
+  }
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Fiesta de Fin de Ano 2027 - Gala Vertex</title>
+  <meta name="description" content="Fiesta de Fin de Ano 2027 - Gala Vertex" />
+  <meta name="theme-color" content="#FFF8F0" />
+  <meta property="og:title" content="Fiesta de Fin de Ano 2027 - Gala Vertex" />
+  <meta property="og:description" content="Sabado 20 de diciembre de 2027 - Oficinas centrales. Abri la invitacion." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --text: #111111;
+      --text-muted: rgba(17,17,17,0.6);
+      --red: #E53E3E;
+      --teal: #4ECDC4;
+      --orange: #F7B731;
+      --gold: #D4AF37;
+      --line: rgba(17,17,17,0.1);
+      --success: #25D366;
+      --font-body: "Montserrat", system-ui, sans-serif;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);font-weight:400;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+    body.locked{overflow:hidden}
+
+    /* SPLASH */
+    .splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;background:var(--bg);text-align:center;padding:2rem 1.5rem;overflow-y:auto;-webkit-overflow-scrolling:touch}
+    .splash.hidden{display:none}
+    .splash-title{font-weight:900;font-size:clamp(2.2rem,8vw,3.5rem);line-height:1;letter-spacing:-1px;text-transform:uppercase;margin-bottom:0.5rem}
+    .splash-badge{display:inline-block;background:var(--red);color:#fff;font-weight:900;font-size:1.8rem;padding:0.3rem 1.2rem;border-radius:8px;margin:0.5rem 0}
+    .splash-date-pill{display:inline-block;border:2px solid var(--text);border-radius:999px;padding:0.4rem 1.5rem;font-weight:700;font-size:0.85rem;margin:1rem 0}
+    .splash-agenda{text-align:left;margin:1.5rem auto;max-width:280px}
+    .splash-agenda-item{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;font-size:0.85rem;font-weight:700}
+    .splash-note{font-size:0.75rem;color:var(--text-muted);margin:1rem 0;max-width:260px}
+    .splash-name{font-weight:900;font-size:1.2rem}
+
+    /* STARBURST BADGE */
+    .starburst{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;position:relative}
+    .starburst--teal{background:var(--teal)}
+    .starburst--orange{background:var(--orange)}
+    .starburst--red{background:var(--red)}
+    .starburst svg{width:18px;height:18px;fill:#fff}
+
+    /* SPARKLE */
+    .sparkle{position:absolute;pointer-events:none}
+    .sparkle svg{fill:var(--gold)}
+
+    /* BUTTONS */
+    .btn{display:inline-block;padding:14px 32px;border-radius:999px;font-family:var(--font-body);font-weight:700;font-size:0.85rem;text-decoration:none;text-align:center;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-dark{background:var(--text);color:#fff}
+    .btn-red{background:var(--red);color:#fff}
+    .btn-whatsapp{background:var(--success);color:#fff}
+
+    /* MAIN */
+    .main{display:none;max-width:100%;overflow-x:hidden}
+    .main.visible{display:block}
+
+    /* SECTIONS */
+    section{padding:clamp(2.5rem, 6vw, 4.5rem) 1.5rem;text-align:center;overflow:hidden;}
+    .section-title{font-weight:900;font-size:clamp(1.3rem,5vw,1.8rem);text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:0.5rem}
+    .section-divider{width:60px;height:4px;background:var(--red);border-radius:2px;margin:0 auto 1.5rem}
+
+    /* CARDS */
+    .card{background:rgba(255,255,255,0.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(229,62,62,0.2);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;box-shadow:0 10px 25px rgba(0,0,0,0.08);text-align:center;word-wrap:break-word;overflow-wrap:break-word;transition:transform 0.3s;}
+    .card:hover{transform:translateY(-3px);}
+    .card h3{font-weight:900;font-size:1rem;margin-bottom:0.5rem}
+    .card p{font-size:0.85rem;color:var(--text-muted)}
+    .highlight{color:var(--red);font-weight:700}
+
+    /* COUNTDOWN */
+    .countdown{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0}
+    .cd-block{text-align:center}
+    .cd-num{font-weight:900;font-size:2rem;line-height:1}
+    .cd-label{font-size:0.65rem;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+
+    /* AGENDA/TIMELINE */
+    .timeline{text-align:left;max-width:320px;margin:0 auto}
+    .timeline-item{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start}
+    .timeline-time{font-weight:900;font-size:0.8rem;min-width:50px;padding-top:0.2rem}
+    .timeline-content h4{font-weight:700;font-size:0.9rem;margin-bottom:0.2rem}
+    .timeline-content p{font-size:0.8rem;color:var(--text-muted)}
+
+    /* COPY ROW */
+    .copy-row{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(229,62,62,0.2);border-radius:10px;padding:0.75rem 1rem;margin-bottom:0.75rem;gap:0.5rem;word-wrap:break-word;}
+    .copy-row span{font-size:clamp(0.75rem,3vw,0.85rem);font-weight:600;word-break:break-all;}
+    .copy-btn{background:var(--text);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:0.7rem;font-weight:700;cursor:pointer;font-family:var(--font-body)}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1rem 0}
+    .gallery-item{aspect-ratio:1;background:#f0e6da;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+    .hashtag{font-weight:900;font-size:1rem;margin-top:1rem;color:var(--red)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* PARTY CAM */
+    .party-cam{position:fixed;bottom:1.5rem;right:1.5rem;width:50px;height:50px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(229,62,62,0.4);z-index:100;text-decoration:none;transition:transform 0.2s}
+    .party-cam:hover{transform:scale(1.1)}
+
+    /* MUSIC BTN */
+    .music-btn{position:fixed;top:1rem;right:1rem;width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:100;transition:background 0.2s}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--text);color:#fff;padding:12px 24px;border-radius:999px;font-size:0.8rem;font-weight:600;z-index:10000;opacity:0;transition:all 0.3s ease}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9998;display:none;align-items:center;justify-content:center;padding:1rem}
+    .modal-overlay.active{display:flex}
+    .modal{background:#fff;border-radius:var(--radius);padding:2rem;max-width:360px;width:100%;position:relative}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text)}
+
+    /* CONTACTO FOOTER */
+    .contacto-footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--line)}
+    .contacto-footer p{font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem}
+    .contacto-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .contacto-links a{display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;color:var(--text);text-decoration:none;font-weight:600}
+
+    /* FOOTER */
+    .footer{text-align:center;padding:1.5rem;font-size:0.7rem;color:var(--text-muted)}
+    .footer a{color:var(--red);text-decoration:none;font-weight:700}
+
+    /* CIERRE */
+    .cierre{background:rgba(255,255,255,0.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(229,62,62,0.2);border-radius:var(--radius);margin:1rem;padding:3rem 2rem;word-wrap:break-word;box-shadow:0 10px 25px rgba(0,0,0,0.08);}
+    .cierre-text{font-size:0.9rem}
+    .cierre blockquote{font-weight:700;font-size:1.1rem;font-style:italic;margin-bottom:1rem}
+  </style>
+
+<style>
+  /* Global fix for mobile text overflow */
+  @media (max-width: 768px) {
+    h1, h2, h3, h4, .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl, .font-display-xl, .font-headline-lg {
+      font-size: clamp(1.75rem, 8vw, 3rem) !important;
+      line-height: 1.1 !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+    body, html {
+      overflow-x: hidden !important;
+    }
+  }
+</style>
+
+</head>
+<body class="locked">
+  <audio id="bgAudio" loop preload="auto"><source src="/bruno-mars.mp3" type="audio/mpeg"></audio>
+
+  <!-- SPLASH -->
+  <div class="splash" id="splash">
+    <!-- Sparkles -->
+    <div class="sparkle" style="top:10%;left:8%"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 0l3 9h9l-7.5 5.5L19.5 24 12 18l-7.5 6 3-9.5L0 9h9z"/></svg></div>
+    <div class="sparkle" style="top:6%;right:12%"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 0l3 9h9l-7.5 5.5L19.5 24 12 18l-7.5 6 3-9.5L0 9h9z"/></svg></div>
+    <div class="sparkle" style="bottom:15%;left:15%"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 0l3 9h9l-7.5 5.5L19.5 24 12 18l-7.5 6 3-9.5L0 9h9z"/></svg></div>
+    <div class="sparkle" style="bottom:20%;right:10%"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 0l3 9h9l-7.5 5.5L19.5 24 12 18l-7.5 6 3-9.5L0 9h9z"/></svg></div>
+
+    <div class="splash-content" style="position:relative;z-index:2">
+      <h1 class="splash-title">FIESTA DE<br>FIN DE A&#209;O</h1>
+      <div class="splash-badge">2027</div>
+      <div class="splash-date-pill">S&#193;BADO 20 DE DICIEMBRE</div>
+
+      <!-- Gift SVG illustration -->
+      <div style="margin:1rem auto;width:140px;height:140px">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="140" height="140">
+          <!-- Box body -->
+          <rect x="30" y="100" width="140" height="80" rx="8" fill="#E53E3E"/>
+          <!-- Box lid -->
+          <rect x="24" y="80" width="152" height="28" rx="6" fill="#C53030"/>
+          <!-- Vertical ribbon -->
+          <rect x="90" y="80" width="20" height="100" fill="#F7B731"/>
+          <!-- Horizontal ribbon -->
+          <rect x="24" y="88" width="152" height="12" fill="#F7B731"/>
+          <!-- Bow left -->
+          <ellipse cx="85" cy="72" rx="20" ry="14" fill="#E53E3E" stroke="#C53030" stroke-width="2"/>
+          <!-- Bow right -->
+          <ellipse cx="115" cy="72" rx="20" ry="14" fill="#E53E3E" stroke="#C53030" stroke-width="2"/>
+          <!-- Bow center -->
+          <circle cx="100" cy="75" r="8" fill="#F7B731"/>
+          <!-- Bow tails -->
+          <path d="M92 75 Q80 50 70 55 Q82 60 88 72Z" fill="#E53E3E"/>
+          <path d="M108 75 Q120 50 130 55 Q118 60 112 72Z" fill="#E53E3E"/>
+        </svg>
+      </div>
+
+      <!-- Agenda items -->
+      <div class="splash-agenda">
+        <div class="splash-agenda-item">
+          <span class="starburst starburst--teal"><svg viewBox="0 0 24 24"><path d="M20 12l-2-2V6h-4L12 4l-2 2H6v4L4 12l2 2v4h4l2 2 2-2h4v-4l2-2z"/></svg></span>
+          Entrega de regalos
+        </div>
+        <div class="splash-agenda-item">
+          <span class="starburst starburst--orange"><svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg></span>
+          Almuerzo
+        </div>
+      </div>
+
+      <p class="splash-note">Veni a cerrar el a&#241;o con todo el equipo de <strong>Gala Vertex</strong></p>
+      <p class="splash-name" style="margin-bottom:1rem"></p>
+      <button class="btn btn-dark" id="enterBtn">Abrir invitaci&#243;n</button>
+    </div>
+  </div>
+
+  <!-- MUSIC BTN -->
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Musica">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  </button>
+
+  <!-- MAIN CONTENT -->
+  <div class="main" id="mainContent">
+
+    <!-- HERO -->
+    <section class="reveal">
+      <h1 class="section-title" style="font-size:clamp(1.8rem,7vw,2.8rem)">FIESTA DE FIN DE A&#209;O 2027</h1>
+      <p style="font-weight:700;margin-bottom:0.5rem">Gala Vertex</p>
+      <div class="splash-date-pill">S&#193;BADO 20 DE DICIEMBRE &middot; 12:00 HS</div>
+      <div class="countdown">
+        <div class="cd-block"><span class="cd-num" id="cd-days">--</span><span class="cd-label">D&#237;as</span></div>
+        <div class="cd-block"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Horas</span></div>
+        <div class="cd-block"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Min</span></div>
+        <div class="cd-block"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Seg</span></div>
+      </div>
+    </section>
+
+    <!-- FRASE -->
+    <section class="reveal" style="background:#fff;margin:0 1rem;border-radius:var(--radius);padding:2.5rem 2rem">
+      <blockquote style="font-weight:700;font-size:1.05rem;font-style:italic;line-height:1.5">&ldquo;Otro a&#241;o de logros increibles. Celebremos juntos todo lo que construimos como equipo.&rdquo;</blockquote>
+    </section>
+
+    <!-- CUANDO Y DONDE -->
+    <section class="reveal">
+      <h2 class="section-title">Cu&#225;ndo y D&#243;nde</h2>
+      <div class="section-divider"></div>
+      <div class="card">
+        <div style="font-size:2rem;margin-bottom:0.5rem">&#128197;</div>
+        <h3>Fecha</h3>
+        <p><span class="highlight">S&#225;bado 20 de diciembre de 2027</span></p>
+        <p>A las 12:00 hs</p>
+      </div>
+      <div class="card">
+        <div style="font-size:2rem;margin-bottom:0.5rem">&#128205;</div>
+        <h3>Lugar</h3>
+        <p><span class="highlight">Oficinas centrales</span></p>
+        <p>Av. C&#243;rdoba 1500, CABA</p>
+        <a href="https://maps.google.com" target="_blank" class="btn btn-dark" style="margin-top:1rem;padding:10px 24px;font-size:0.7rem;">Ver mapa</a>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section class="reveal">
+      <h2 class="section-title">Programa</h2>
+      <div class="section-divider"></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="starburst starburst--teal"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+          <div class="timeline-content"><span class="timeline-time">12:00</span><h4>Recepci&#243;n y bienvenida</h4><p>Llegada y welcome drinks</p></div>
+        </div>
+        <div class="timeline-item">
+          <span class="starburst starburst--orange"><svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg></span>
+          <div class="timeline-content"><span class="timeline-time">13:00</span><h4>Almuerzo</h4><p>Comida para todo el equipo</p></div>
+        </div>
+        <div class="timeline-item">
+          <span class="starburst starburst--teal"><svg viewBox="0 0 24 24"><path d="M20 12l-2-2V6h-4L12 4l-2 2H6v4L4 12l2 2v4h4l2 2 2-2h4v-4l2-2z"/></svg></span>
+          <div class="timeline-content"><span class="timeline-time">14:30</span><h4>Entrega de regalos</h4><p>Amigo invisible y sorpresas</p></div>
+        </div>
+        <div class="timeline-item">
+          <span class="starburst starburst--red"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></span>
+          <div class="timeline-content"><span class="timeline-time">15:30</span><h4>DJ y fiesta</h4><p>Musica y baile hasta el cierre</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESA DE REGALOS -->
+    <section class="reveal" id="regalos">
+      <h2 class="section-title">Amigo Invisible</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem">Si necesitas transferir para el amigo invisible, usa estos datos:</p>
+      <div class="card">
+        <h3>Datos bancarios</h3>
+        <div class="copy-row">
+          <span id="alias-text">gala.vertex.2027</span>
+          <button class="copy-btn" onclick="copyText('alias-text','Alias copiado')">Copiar</button>
+        </div>
+        <div class="copy-row">
+          <span id="cbu-text">0000003100077777777777</span>
+          <button class="copy-btn" onclick="copyText('cbu-text','CBU copiado')">Copiar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="reveal">
+      <h2 class="section-title">Confirmar Asistencia</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem">Confirmanos tu asistencia por WhatsApp antes del 10 de diciembre.</p>
+      <a href="https://wa.me/5493425299942?text=Hola!%20Confirmo%20asistencia%20a%20la%20Fiesta%20de%20Fin%20de%20A%C3%B1o%20de%20Gala%20Vertex" target="_blank" class="btn btn-whatsapp">Confirmar por WhatsApp</a>
+      <br/>
+      <button class="btn btn-dark" style="margin-top:1rem;" onclick="openModal()">Ver datos de pago</button>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="reveal">
+      <h2 class="section-title">Galeria</h2>
+      <div class="section-divider"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item">&#128247;</div>
+        <div class="gallery-item">&#128247;</div>
+        <div class="gallery-item">&#128247;</div>
+        <div class="gallery-item">&#128247;</div>
+        <div class="gallery-item">&#128247;</div>
+        <div class="gallery-item">&#128247;</div>
+      </div>
+      <p class="hashtag">#GalaVertex2027</p>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="cierre reveal">
+      <div class="cierre-text">
+        <blockquote>&ldquo;Gracias por ser parte de este equipo increible. Nos vemos en la fiesta!&rdquo;</blockquote>
+        <p style="font-weight:900;font-size:1.2rem;margin-top:1rem">Gala Vertex</p>
+        <p style="color:var(--text-muted);font-size:0.85rem">20 . 12 . 2027</p>
+      </div>
+    </section>
+
+    <!-- CONTACTO FOOTER -->
+    <div class="contacto-footer">
+      <p>Invitacion digital creada por</p>
+      <div class="contacto-links">
+        <a href="https://wa.me/5493425299942" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.63-1.263A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.237 0-4.308-.744-5.975-1.998l-.352-.263-3.278.894.724-3.14-.287-.376A9.94 9.94 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://instagram.com/teinvitoapp" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          @teinvitoapp
+        </a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>Hecho con &#10084; por <a href="https://teinvitoapp.com.ar" target="_blank">Te Invito</a></p>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- Party Cam Button -->
+  <a class="party-cam" id="partyCam" href="#" aria-label="Party Cam">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+  </a>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal de pago -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <h3 style="font-weight:900;margin-bottom:1rem;">Datos de Pago</h3>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Podes transferir al siguiente alias o CBU:</p>
+      <div class="copy-row">
+        <span>gala.vertex.2027</span>
+        <button class="copy-btn" onclick="copyDirect('gala.vertex.2027','Alias copiado')">Copiar</button>
+      </div>
+      <div class="copy-row">
+        <span>0000003100077777777777</span>
+        <button class="copy-btn" onclick="copyDirect('0000003100077777777777','CBU copiado')">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== EVENT DATE =====
+    var EVENT_DATE = new Date('2027-12-20T12:00:00-03:00');
+
+    // ===== SPLASH / ENTER =====
+    function openInvitation() {
+      var splash = document.getElementById('splash');
+      var main = document.getElementById('mainContent');
+      splash.classList.add('hidden');
+      main.classList.add('visible');
+      document.body.classList.remove('locked');
+    }
+    // Bind to both click and touchend for mobile reliability
+    var enterBtn = document.getElementById('enterBtn');
+    if (enterBtn) {
+      enterBtn.addEventListener('click', openInvitation);
+      enterBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        openInvitation();
+      });
+    }
+
+    // ===== COUNTDOWN =====
+    function updateCountdown() {
+      var now = new Date();
+      var diff = EVENT_DATE - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-mins').textContent = '0';
+        document.getElementById('cd-secs').textContent = '0';
+        return;
+      }
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var secs = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== COPY =====
+    function copyText(elementId, msg) {
+      var text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        showToast(msg);
+      }).catch(function() {
+        showToast('Error al copiar');
+      });
+    }
+    function copyDirect(text, msg) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast(msg);
+      }).catch(function() {
+        showToast('Error al copiar');
+      });
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(function() {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // ===== MODAL =====
+    function openModal() {
+      document.getElementById('modalOverlay').classList.add('active');
+    }
+    function closeModal(e) {
+      if (e.target === document.getElementById('modalOverlay')) {
+        document.getElementById('modalOverlay').classList.remove('active');
+      }
+    }
+    function closeModalDirect() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    // ===== MUSIC =====
+    var musicPlaying = false;
+    var bgAudio = document.getElementById('bgAudio');
+    function toggleMusic() {
+      var btn = document.getElementById('musicBtn');
+      if (!bgAudio) return;
+      if (musicPlaying) {
+        bgAudio.pause();
+        musicPlaying = false;
+      } else {
+        bgAudio.volume = 0.7;
+        bgAudio.play().catch(function(){});
+        musicPlaying = true;
+      }
+      btn.style.opacity = musicPlaying ? '1' : '0.6';
+      btn.style.transform = musicPlaying ? 'scale(1.1)' : 'scale(1)';
+    }
+
+    // ===== REVEAL ON SCROLL =====
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // ===== PREVIEW MODE =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('preview') === '1') {
+        var enterBtn = document.getElementById('enterBtn');
+        if (enterBtn) enterBtn.style.display = 'none';
+        var splash = document.getElementById('splash');
+        if (splash) splash.classList.remove('hidden');
+        var main = document.getElementById('mainContent');
+        if (main) main.classList.remove('visible');
+        document.body.classList.remove('locked');
+      }
+    })();
+
+    // ===== CUSTOM NAME =====
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var customName = params.get('customName');
+      if (customName) {
+        var decoded = decodeURIComponent(customName);
+        var h1 = document.querySelector('.main .section-title');
+        if (h1) h1.textContent = decoded;
+        var splashNames = document.querySelectorAll('.splash-name');
+        splashNames.forEach(function(el) {
+          el.textContent = decoded;
+        });
+      }
+    })();
+  </script>
+
+
+<!-- MUSIC AUTOPLAY FIX -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var enterButton = document.getElementById('enterBtn') || document.getElementById('btn-open') || document.getElementById('btnOpenInvite') || document.querySelector('#splash button');
+    
+    if (enterButton) {
+      enterButton.addEventListener('click', function() {
+        var bgAudio = document.getElementById('bgAudio') || document.getElementById('bgMusic') || document.getElementById('music');
+        if (bgAudio) {
+          bgAudio.volume = 0.7;
+          bgAudio.play().then(function() {
+            var musicBtn = document.getElementById('musicBtn') || document.getElementById('btnMusic');
+            if (musicBtn) {
+              musicBtn.classList.add('playing');
+              var icon = document.getElementById('iconMusic') || musicBtn.querySelector('i');
+              if (icon && icon.classList.contains('fa-play')) {
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-music');
+              }
+              if (typeof window.musicPlaying !== 'undefined') {
+                window.musicPlaying = true;
+                musicBtn.style.opacity = '1';
+                musicBtn.style.transform = 'scale(1.1)';
+              }
+              if (typeof window.playing !== 'undefined') {
+                window.playing = true;
+              }
+            }
+          }).catch(function(e){ console.log("Autoplay prevent: " + e); });
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
+

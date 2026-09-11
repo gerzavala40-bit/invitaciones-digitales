@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despedida VIP - Demo Unificada</title>
+    
+    <!-- Core CSS (Compartido) -->
+    <link rel="stylesheet" href="css/core.css">
+    
+    <!-- Theme CSS (Específico) -->
+    <link rel="stylesheet" href="css/theme-neon.css">
+</head>
+<body class="locked">
+
+    <!-- SPLASH SCREEN -->
+    <div id="splashScreen" class="splash-screen">
+        <div class="splash-content">
+            <h5 style="letter-spacing: 5px; font-weight: 900; color:var(--color-primary); margin-bottom:10px;">TOP SECRET</h5>
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">Despedida de Juli</h1>
+            <button id="enterBtn" class="splash-btn">Desbloquear Evento</button>
+        </div>
+    </div>
+
+    <!-- AUDIO & MUSIC CONTROL -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+    <button id="musicControl" class="music-control" title="Música">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    </button>
+
+    <div class="mobile-container">
+        
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h5 style="letter-spacing: 4px; text-transform:uppercase; color:var(--color-primary);">Última noche de soltera</h5>
+                <h1 class="hero-title">Juli's VIP Party</h1>
+                <p>Lo que pasa hoy, queda entre nosotras.</p>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN -->
+        <section class="section">
+            <h2 class="section-title">El conteo final</h2>
+            <div id="countdown" class="countdown-wrapper" data-date="Nov 20, 2027 23:00:00">
+                <div class="time-box">
+                    <span id="cd-days" class="number">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="time-box">
+                    <span id="cd-hours" class="number">00</span>
+                    <span class="label">Hs</span>
+                </div>
+                <div class="time-box">
+                    <span id="cd-mins" class="number">00</span>
+                    <span class="label">Min</span>
+                </div>
+                <div class="time-box">
+                    <span id="cd-secs" class="number">00</span>
+                    <span class="label">Seg</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENT DETAILS -->
+        <section class="section">
+            <div class="card">
+                <h2 class="section-title">Misión Descontrol</h2>
+                <h4 style="margin-bottom: 10px;">VIERNES 20 DE NOVIEMBRE - 23:00 HS</h4>
+                <p class="text-muted" style="margin-bottom:20px;">Club Neón, Calle Falsa 123</p>
+                <a href="https://maps.google.com" target="_blank" class="btn">Ubicación Secreta</a>
+            </div>
+        </section>
+
+        <!-- DRESS CODE -->
+        <section class="section">
+            <div class="card" style="text-align: center;">
+                <h2 class="section-title">Código de Vestimenta</h2>
+                <h3 style="letter-spacing: 2px;">TOTAL BLACK</h3>
+                <p class="text-muted" style="margin-top: 10px;">Solo la novia va de blanco.</p>
+            </div>
+        </section>
+
+        <!-- GIFTS -->
+        <section class="section">
+            <h2 class="section-title">Fondo Común</h2>
+            <p class="text-muted" style="margin-bottom: 20px;">
+                Para la barra libre y las sorpresas:
+            </p>
+            <div class="card" style="text-align: left;">
+                <p><strong>Alias:</strong> despedida.juli</p>
+                <p><strong>Monto:</strong> $5.000 por persona</p>
+            </div>
+        </section>
+
+        <!-- RSVP FORM -->
+        <section class="section">
+            <h2 class="section-title">Confirma tu lugar</h2>
+            <p class="text-muted" style="margin-bottom:20px;">Hay lista estricta. Avisa antes del lunes.</p>
+            
+            <form id="rsvpForm" data-script-url="SIMULATED">
+                <div class="form-group">
+                    <label>Nombre y Apellido</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label>Asistencia</label>
+                    <select name="asistencia" required>
+                        <option value="si">¡Obvio que voy!</option>
+                        <option value="no">Me la pierdo :(</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Comentario jugoso</label>
+                    <textarea name="mensaje" placeholder="¿Qué vamos a hacer?"></textarea>
+                </div>
+                <button type="submit" class="btn">
+                    <span id="btnText">Enviar Confirmación</span>
+                    <span id="btnLoader" class="hidden">Procesando...</span>
+                </button>
+            </form>
+            
+            <div id="successMessage" class="hidden card" style="background-color: rgba(78, 205, 196, 0.2); color:#4ECDC4; border-color:#4ECDC4;">
+                ¡Lista actualizada! Preparate para una noche épica.
+            </div>
+        </section>
+        
+        <footer style="text-align:center; padding: 40px; background-color: var(--color-card-bg);">
+            <h2 style="font-family: var(--font-display); color: var(--color-primary);">¡Nos Vemos!</h2>
+        </footer>
+    </div>
+
+    <!-- JS Centralizado -->
+    <script src="js/app.js"></script>
+</body>
+</html>
