@@ -300,9 +300,9 @@ Quedo a la espera para coordinar la sena!`;
             </div>
           </Reveal>
 
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-8 place-items-center" stagger={0.06}>
+          <Stagger className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-10 pb-8 px-4 place-items-center [&::-webkit-scrollbar]:hidden" stagger={0.06}>
             {demos.map((demo) => (
-              <StaggerItem key={demo.title} className="w-full flex justify-center">
+              <StaggerItem key={demo.title} className="flex justify-center shrink-0 snap-center w-[85vw] max-w-[280px] md:w-auto">
                 <PhoneMockup
                   customName={customName}
                   title={demo.title}
@@ -579,7 +579,7 @@ Quedo a la espera para coordinar la sena!`;
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Basico */}
-            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#4ECDC4] shadow-[6px_6px_0px_#1a1a1a] p-8 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
+            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#4ECDC4] shadow-[6px_6px_0px_#1a1a1a] py-6 px-4 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
               <h3 className="text-xl font-bold uppercase mb-3">Basico</h3>
               <p className="text-4xl font-bold mb-1">$15.000</p>
               <p className="text-sm text-[#888] mb-6">por invitacion</p>
@@ -597,7 +597,7 @@ Quedo a la espera para coordinar la sena!`;
             </div>
 
             {/* Premium */}
-            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF6B9D] shadow-[6px_6px_0px_#1a1a1a] p-8 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col relative">
+            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF6B9D] shadow-[6px_6px_0px_#1a1a1a] py-6 px-4 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col relative">
               <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FF6B9D] text-white text-[11px] font-bold px-4 py-1.5 border-[2px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a] uppercase tracking-wider">★ Popular</div>
               <h3 className="text-xl font-bold uppercase mb-3">Premium</h3>
               <p className="text-4xl font-bold mb-1">$45.000</p>
@@ -616,7 +616,7 @@ Quedo a la espera para coordinar la sena!`;
             </div>
 
             {/* Premium Plus */}
-            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF8C42] shadow-[6px_6px_0px_#1a1a1a] p-8 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
+            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF8C42] shadow-[6px_6px_0px_#1a1a1a] py-6 px-4 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
               <h3 className="text-xl font-bold uppercase mb-3">Premium Plus</h3>
               <p className="text-4xl font-bold mb-1">$65.000</p>
               <p className="text-sm text-[#888] mb-6">por invitacion</p>
