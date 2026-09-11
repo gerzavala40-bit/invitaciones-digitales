@@ -663,14 +663,11 @@ Quedo a la espera para coordinar la sena!`;
               📲 Enviar pedido por WhatsApp
             </button>
             <p className="text-center text-xs text-[#888] mt-2">Sin compromiso. Te enviamos el diseno y el link para abonar luego.</p>
-          </form>
-        
-      
-
-      
-          </div>
+                    </form>
         </div>
-      )}
+      </div>
+    </div>
+  )}
 {/* ========== FOOTER ========== */}
       <footer className="bg-[#1a1a1a] text-white py-14 px-5 border-t-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
