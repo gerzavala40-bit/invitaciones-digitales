@@ -581,7 +581,7 @@ Quedo a la espera para coordinar la sena!`;
             {/* Basico */}
             <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#4ECDC4] shadow-[6px_6px_0px_#1a1a1a] p-8 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
               <h3 className="text-xl font-bold uppercase mb-3">Basico</h3>
-              <p className="text-4xl font-bold mb-1">$25.000</p>
+              <p className="text-4xl font-bold mb-1">$15.000</p>
               <p className="text-sm text-[#888] mb-6">por invitacion</p>
               <ul className="text-left text-sm space-y-3 mb-8 flex-1">
                 <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Cuenta regresiva + mapa</li>
@@ -637,32 +637,6 @@ Quedo a la espera para coordinar la sena!`;
         </div>
       </section>
 
-      {/* ========== TESTIMONIOS ========== */}
-      <section className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold">Testimonios 💬</h2>
-          </Reveal>
-
-          <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8 place-items-stretch" stagger={0.1}>
-            {testimonials.map((t) => (
-              <StaggerItem key={t.name} className="w-full bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] p-7 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all">
-                <div className="flex gap-1 text-[#FF8C42] text-lg mb-4">★★★★★</div>
-                <p className="text-[#444] leading-relaxed mb-6">&ldquo;{t.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 border-[3px] border-[#1a1a1a] flex items-center justify-center font-bold text-white" style={{ background: t.color }}>
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm">{t.name}</p>
-                    <p className="text-xs text-[#888]">{t.event}</p>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
 
       {/* ========== FAQ ========== */}
       <section id="faq" className="py-12 md:py-24 px-5">
@@ -773,7 +747,7 @@ Quedo a la espera para coordinar la sena!`;
                   <input type="radio" name="plan" value="Basico" required className="peer sr-only" />
                   <div className="p-3 border-[3px] border-[#1a1a1a] text-center peer-checked:bg-[#4ECDC4] peer-checked:shadow-[4px_4px_0px_#1a1a1a] transition-all hover:bg-[#f5f5f5]">
                     <p className="font-bold text-sm">Basico</p>
-                    <p className="text-xs text-[#888]">$25.000</p>
+                    <p className="text-xs text-[#888]">$15.000</p>
                   </div>
                 </label>
                 <label className="cursor-pointer">
