@@ -594,9 +594,6 @@ Quedo a la espera para coordinar la sena!`;
                 <button type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="w-full py-4 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all disabled:opacity-50">
                   {isProcessingPayment === "BASICO" ? "Procesando..." : "Lo quiero!"}
                 </button>
-                <button type="button" onClick={() => { document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-[#888] hover:text-[#1a1a1a] py-2 underline transition">
-                  Pagar por transferencia (-30%)
-                </button>
               </div>
             </div>
 
