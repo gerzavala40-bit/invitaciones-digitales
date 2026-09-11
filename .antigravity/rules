@@ -1,0 +1,6 @@
+# REGLAS DE FLUJO Y PLANIFICACIÓN OBLIGATORIA
+1. ANTES de modificar, crear o eliminar cualquier archivo, o de ejecutar comandos en la terminal, DETENTE.
+2. Presenta SIEMPRE un "Plan de Implementación" con al menos 2 alternativas técnicas o de diseño distintas (Opción A vs Opción B).
+3. Para cada opción, explica brevemente pros, contras y qué archivos se modificarían.
+4. Concluye tu mensaje esperando confirmación explícita con la pregunta: "¿Qué opción prefieres que aplique?".
+5. NUNCA toques el código ni ejecutes herramientas hasta que yo elija y autorice expresamente una opción.
