@@ -306,12 +306,12 @@ export default function ChatAdminPanel({
       </div>
 
       {/* Print styles */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @media print {
           header, .no-print { display: none !important; }
           body { background: white !important; }
         }
-      `}</style>
+      `}} />
     </div>
   );
 }

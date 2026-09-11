@@ -104,7 +104,7 @@ export default function HeaderHero({ data }: { data: HeaderData }) {
       
       {/* Audio Element */}
       {data.backgroundMusic && (
-        <audio ref={audioRef} src={data.backgroundMusic} loop />
+        <audio ref={audioRef} src={data.backgroundMusic} loop preload="none" />
       )}
 
       {/* --- SPLASH SCREEN OVERLAY --- */}
