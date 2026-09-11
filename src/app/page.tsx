@@ -299,10 +299,15 @@ Quedo a la espera para coordinar la sena!`;
               />
             </div>
           </Reveal>
+          <Reveal className="md:hidden text-center mb-6">
+            <p className="inline-flex items-center gap-2 text-[#FF6B9D] font-bold text-sm bg-white px-4 py-2 border-[2px] border-[#1a1a1a] shadow-[2px_2px_0px_#1a1a1a] rounded-full animate-bounce">
+              👈 Deslizá para ver más 👉
+            </p>
+          </Reveal>
 
-          <Stagger className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-10 pb-8 px-4 place-items-center [&::-webkit-scrollbar]:hidden" stagger={0.06}>
+          <Stagger className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-10 pb-8 px-2 place-items-center [&::-webkit-scrollbar]:hidden" stagger={0.06}>
             {demos.map((demo) => (
-              <StaggerItem key={demo.title} className="flex justify-center shrink-0 snap-center w-[85vw] max-w-[280px] md:w-auto">
+              <StaggerItem key={demo.title} className="flex justify-center shrink-0 snap-center w-[250px] md:w-auto">
                 <PhoneMockup
                   customName={customName}
                   title={demo.title}
@@ -579,55 +584,55 @@ Quedo a la espera para coordinar la sena!`;
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Basico */}
-            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#4ECDC4] shadow-[6px_6px_0px_#1a1a1a] py-6 px-4 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
-              <h3 className="text-xl font-bold uppercase mb-3">Basico</h3>
-              <p className="text-4xl font-bold mb-1">$15.000</p>
-              <p className="text-sm text-[#888] mb-6">por invitacion</p>
-              <ul className="text-left text-sm space-y-3 mb-8 flex-1">
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Cuenta regresiva + mapa</li>
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Confirmacion WhatsApp</li>
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Regalos + dress code</li>
+            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#4ECDC4] shadow-[6px_6px_0px_#1a1a1a] p-5 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
+              <h3 className="text-lg font-bold uppercase mb-2">Basico</h3>
+              <p className="text-3xl sm:text-4xl font-bold mb-1">$15.000</p>
+              <p className="text-xs text-[#888] mb-4">por invitacion</p>
+              <ul className="text-left text-sm space-y-2 mb-6 flex-1">
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Cuenta regresiva + mapa</li>
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Confirmacion WhatsApp</li>
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Regalos + dress code</li>
                 <li className="flex gap-2 items-start"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Envios ilimitados</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="w-full py-4 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all disabled:opacity-50">
+                <button type="button" onClick={() => handleMercadoPagoCheckout("BASICO")} disabled={isProcessingPayment === "BASICO"} className="w-full py-3 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all disabled:opacity-50">
                   {isProcessingPayment === "BASICO" ? "Procesando..." : "Lo quiero!"}
                 </button>
               </div>
             </div>
 
             {/* Premium */}
-            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF6B9D] shadow-[6px_6px_0px_#1a1a1a] py-6 px-4 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col relative">
+            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF6B9D] shadow-[6px_6px_0px_#1a1a1a] p-5 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col relative">
               <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FF6B9D] text-white text-[11px] font-bold px-4 py-1.5 border-[2px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a] uppercase tracking-wider">★ Popular</div>
-              <h3 className="text-xl font-bold uppercase mb-3">Premium</h3>
-              <p className="text-4xl font-bold mb-1">$45.000</p>
-              <p className="text-sm text-[#888] mb-6">por invitacion</p>
-              <ul className="text-left text-sm space-y-3 mb-8 flex-1">
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Todo lo del Basico</li>
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> RSVP propio</li>
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Musica + Galeria</li>
+              <h3 className="text-lg font-bold uppercase mb-2">Premium</h3>
+              <p className="text-3xl sm:text-4xl font-bold mb-1">$45.000</p>
+              <p className="text-xs text-[#888] mb-4">por invitacion</p>
+              <ul className="text-left text-sm space-y-2 mb-6 flex-1">
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Todo lo del Basico</li>
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> RSVP propio</li>
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Musica + Galeria</li>
                 <li className="flex gap-2 items-start font-bold"><span className="text-[#FF6B9D] font-bold">&#10003;</span> Party Cam (Gratis)</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="w-full py-4 bg-[#FF6B9D] text-white font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all disabled:opacity-50">
+                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="w-full py-3 bg-[#FF6B9D] text-white font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM" ? "Procesando..." : "Lo quiero!"}
                 </button>
               </div>
             </div>
 
             {/* Premium Plus */}
-            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF8C42] shadow-[6px_6px_0px_#1a1a1a] py-6 px-4 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
-              <h3 className="text-xl font-bold uppercase mb-3">Premium Plus</h3>
-              <p className="text-4xl font-bold mb-1">$65.000</p>
-              <p className="text-sm text-[#888] mb-6">por invitacion</p>
-              <ul className="text-left text-sm space-y-3 mb-8 flex-1">
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Todo lo del Premium</li>
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Personalizada + trivia</li>
-                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-3"><span className="text-[#FF8C42] font-bold">&#10003;</span> Tu propio dominio</li>
+            <div className="bg-white border-[3px] border-[#1a1a1a] border-t-[8px] border-t-[#FF8C42] shadow-[6px_6px_0px_#1a1a1a] p-5 text-center hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all flex flex-col">
+              <h3 className="text-lg font-bold uppercase mb-2">Premium Plus</h3>
+              <p className="text-3xl sm:text-4xl font-bold mb-1">$65.000</p>
+              <p className="text-xs text-[#888] mb-4">por invitacion</p>
+              <ul className="text-left text-sm space-y-2 mb-6 flex-1">
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Todo lo del Premium</li>
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Personalizada + trivia</li>
+                <li className="flex gap-2 items-start border-b-2 border-dashed border-[#eee] pb-2"><span className="text-[#FF8C42] font-bold">&#10003;</span> Tu propio dominio</li>
                 <li className="flex gap-2 items-start"><span className="text-[#4ECDC4] font-bold">&#10003;</span> Fotos ilimitadas + soporte</li>
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="w-full py-4 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all disabled:opacity-50">
+                <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="w-full py-3 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM_PLUS" ? "Procesando..." : "Lo quiero!"}
                 </button>
               </div>
