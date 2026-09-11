@@ -128,7 +128,6 @@ Quedo a la espera para coordinar la sena!`;
   const demos = [
     { title: "Elegante Oscuro", url: "/demo-boda-noche-dorada.html", desc: "Boda", event: "Boda" },
     { title: "Floral Claro", url: "/demo-boda-floral-claro.html", desc: "Boda", event: "Boda" },
-    { title: "Infantil Spiderman", url: "/infantil-spiderman", desc: "Cumpleanos", event: "Cumpleanos" },
     { title: "Minimalista", url: "/demo-cumple-minimalista.html", desc: "Cumpleanos", event: "Cumpleanos" },
     { title: "15 Años Valeria", url: "/15-anos-demo", desc: "15 Anos", event: "15 Anos" },
     { title: "Bautismo Tierno", url: "/demo-bautismo-benicio.html", desc: "Bautismo", event: "Bautismo" },
