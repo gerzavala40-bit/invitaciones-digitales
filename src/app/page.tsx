@@ -37,6 +37,8 @@ export default function LandingPage() {
   const [customName, setCustomName] = useState("");
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [isProcessingPayment, setIsProcessingPayment] = useState("");
+  const [activePremiumTab, setActivePremiumTab] = useState<"chat" | "cam">("chat");
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -351,224 +353,91 @@ Quedo a la espera para coordinar la sena!`;
         </div>
       </section>
 
-      {/* ========== PARTY CHAT - NUEVO FEATURE ========== */}
-      <section id="party-chat" className="py-12 md:py-24 px-5">
+      
+      {/* ========== FEATURES PREMIUM (TABS) ========== */}
+      <section id="premium-features" className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <div className="inline-block bg-[#1a1a1a] text-[#FFF9E0] text-xs font-bold px-4 py-2 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#FF6B9D] uppercase tracking-wider mb-6">
-              Nuevo
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Party{" "}
-              <span className="inline-block bg-[#4ECDC4] px-3 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a]">Chat</span>{" "}
-              en vivo
+          <Reveal className="text-center mb-10">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Funciones <span className="inline-block bg-[#FF6B9D] text-white px-3 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a]">Premium</span>
             </h2>
-            <p className="text-lg text-[#555] max-w-2xl mx-auto leading-relaxed">
-              Un chat grupal exclusivo para tu fiesta. Cada mesa tiene su QR: los invitados lo escanean, eligen un apodo y empiezan a hablar entre todos. Ideal para casamientos donde no todos se conocen.
-            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button 
+                onClick={() => setActivePremiumTab('chat')} 
+                className={`px-6 py-3 font-bold border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] transition-all ${activePremiumTab === 'chat' ? 'bg-[#4ECDC4] text-white translate-x-[-2px] translate-y-[-2px]' : 'bg-white text-[#1a1a1a]'}`}
+              >
+                💬 Party Chat
+              </button>
+              <button 
+                onClick={() => setActivePremiumTab('cam')} 
+                className={`px-6 py-3 font-bold border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] transition-all ${activePremiumTab === 'cam' ? 'bg-[#FF8C42] text-white translate-x-[-2px] translate-y-[-2px]' : 'bg-white text-[#1a1a1a]'}`}
+              >
+                📸 Party Cam
+              </button>
+            </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
-            {/* Left: mockup/visual */}
-            <Reveal className="relative">
-              <div className="bg-[#1a3a5c] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] rounded-xl overflow-hidden">
-                {/* MSN-style header */}
-                <div className="bg-gradient-to-r from-[#0058a8] to-[#3b8dd4] px-4 py-3 flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  <span className="text-white text-sm font-bold">Fiesta de Ana y Pedro - Party Messenger</span>
-                  <span className="ml-auto text-white/60 text-xs bg-white/10 px-2 py-1 rounded">12 online</span>
-                </div>
-                {/* Messages */}
-                <div className="bg-white p-4 space-y-3">
-                  <div>
-                    <span className="text-xs font-bold text-[#FF6347]">El tio Carlos</span>
-                    <span className="text-[10px] text-gray-400 ml-1">(Mesa 3) dice:</span>
-                    <p className="text-sm bg-white rounded px-2 py-1">Que grande la novia!! Felicitaciones!!</p>
+          {activePremiumTab === 'chat' && (
+            <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+              <Reveal className="relative">
+                <div className="bg-[#1a3a5c] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] rounded-xl overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#0058a8] to-[#3b8dd4] px-4 py-3 flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                    <span className="text-white text-sm font-bold">Fiesta de Ana y Pedro</span>
                   </div>
-                  <div>
-                    <span className="text-xs font-bold text-[#8A2BE2]">La prima Laura</span>
-                    <span className="text-[10px] text-gray-400 ml-1">(Mesa 7) dice:</span>
-                    <p className="text-sm bg-white rounded px-2 py-1 text-[#8A2BE2]">Alguien sabe cuando cortan la torta?</p>
-                  </div>
-                  <div className="text-center">
-                    <span className="text-xs text-[#FF8C00] font-bold bg-[#FFD700]/10 px-3 py-1 rounded-full">Pedro envio un zumbido!</span>
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-[#1E90FF]">Mama de Ana</span>
-                    <span className="text-[10px] text-gray-400 ml-1">(Mesa 1) dice:</span>
-                    <p className="text-sm bg-white rounded px-2 py-1">Estoy llorando de la emocion</p>
+                  <div className="bg-white p-4 space-y-3">
+                    <div>
+                      <span className="text-xs font-bold text-[#FF6347]">El tio Carlos</span>
+                      <p className="text-sm bg-white rounded px-2 py-1">Que grande la novia!! Felicitaciones!!</p>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-xs text-[#FF8C00] font-bold bg-[#FFD700]/10 px-3 py-1 rounded-full">Pedro envio un zumbido!</span>
+                    </div>
                   </div>
                 </div>
-                {/* Input */}
-                <div className="bg-[#eef3f7] border-t-2 border-[#7fbfff] p-3 flex gap-2">
-                  <div className="flex-1 bg-white border-2 border-[#7fbfff] rounded px-3 py-2 text-sm text-gray-400">Escribi un mensaje...</div>
-                  <div className="bg-[#4CAF50] text-white px-4 py-2 rounded text-sm font-bold">Enviar</div>
+              </Reveal>
+              <Reveal delay={0.2}>
+                <div className="space-y-4">
+                  <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] p-5 shadow-[4px_4px_0px_#4ECDC4]">
+                    <h3 className="font-bold text-lg flex items-center gap-2">🎫 QR por mesa</h3>
+                    <p className="text-sm text-[#666] mt-1">Cada mesa escanea su QR y entra al chat directo, sin instalar nada.</p>
+                  </div>
+                  <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] p-5 shadow-[4px_4px_0px_#FF6B9D]">
+                    <h3 className="font-bold text-lg flex items-center gap-2">💬 Chat general + por mesa</h3>
+                    <p className="text-sm text-[#666] mt-1">Un chat para toda la fiesta y otro privado solo para tu mesa.</p>
+                  </div>
                 </div>
-              </div>
-              {/* QR card floating */}
-              <div className="absolute -bottom-6 -right-4 bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-3 rotate-3 w-28">
-                <div className="w-full aspect-square bg-[#f0f0f0] border-2 border-gray-200 flex items-center justify-center mb-2">
-                  <svg className="w-16 h-16 text-gray-700" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm10-2h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2z"/>
-                  </svg>
-                </div>
-                <p className="text-[9px] font-bold text-center">MESA 5</p>
-              </div>
-            </Reveal>
-
-            {/* Right: features list */}
-            <Reveal delay={0.2}>
-              <div className="space-y-4">
-                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">🎫</span> QR por mesa
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">Cada mesa tiene su propio QR. Los invitados lo escanean y entran al chat sin registrarse.</p>
-                </div>
-
-                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">💬</span> Chat general + por mesa
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">Un chat para toda la fiesta y otro privado solo para tu mesa. Como MSN Messenger pero en tu evento.</p>
-                </div>
-
-                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">📳</span> Zumbidos y colores
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">Mandales un zumbido que sacude la pantalla! Cada invitado elige su color de nick. Pura nostalgia MSN.</p>
-                </div>
-
-                <div className="bg-white border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">🔒</span> Solo dura tu fiesta
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">El chat se activa cuando vos quieras y se cierra al terminar. Privado y exclusivo para tu evento.</p>
-                </div>
-              </div>
-
-              <a
-                href="/demo-chat?mesa=5"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-block px-8 py-4 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-base border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#4ECDC4] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#4ECDC4] transition-all"
-              >
-                Probar el chat demo →
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== PARTY CAM - MURO DE FOTOS ========== */}
-      <section id="party-cam" className="py-12 md:py-24 px-5 bg-white border-t-[3px] border-b-[3px] border-[#1a1a1a]">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <div className="inline-block bg-[#FF8C42] text-[#1a1a1a] text-xs font-bold px-4 py-2 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a] uppercase tracking-wider mb-6">
-              Incluido en Premium
+              </Reveal>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Party{" "}
-              <span className="inline-block bg-[#FF6B9D] px-3 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a]">Cam</span>{" "}
-            </h2>
-            <p className="text-lg text-[#555] max-w-2xl mx-auto leading-relaxed">
-              Un muro de fotos en tiempo real para tu fiesta. Los invitados sacan fotos, las suben escaneando un QR, y aparecen al instante en la pantalla gigante del salon.
-            </p>
-          </Reveal>
+          )}
 
-          <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
-            {/* Left: Visual mockup */}
-            <Reveal>
-              <div className="bg-[#0f0f0f] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] rounded-xl overflow-hidden">
-                {/* Header pantalla */}
-                <div className="bg-[#1a1a1a]/80 backdrop-blur px-6 py-4 flex items-center justify-between border-b border-white/10">
-                  <div>
-                    <p className="text-white font-bold text-lg">Boda de Juan & Ana</p>
-                    <p className="text-gray-400 text-xs uppercase tracking-widest">Party Cam</p>
+          {activePremiumTab === 'cam' && (
+            <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+              <Reveal className="relative md:order-2">
+                <div className="bg-[#0f0f0f] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] rounded-xl overflow-hidden">
+                  <div className="bg-[#1a1a1a] px-4 py-3 border-b-2 border-[#333] flex justify-between items-center">
+                    <span className="text-[#FFF9E0] font-bold tracking-widest text-sm">PARTY CAM LIVE</span>
+                    <div className="flex gap-1"><div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div><span className="text-xs text-white">REC</span></div>
                   </div>
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                    <svg viewBox="0 0 100 100" className="w-10 h-10 text-black">
-                      <path d="M10,10 h30 v30 h-30 z M15,15 h20 v20 h-20 z" fill="currentColor"/>
-                      <path d="M60,10 h30 v30 h-30 z M65,15 h20 v20 h-20 z" fill="currentColor"/>
-                      <path d="M10,60 h30 v30 h-30 z M15,65 h20 v20 h-20 z" fill="currentColor"/>
-                      <rect x="60" y="60" width="10" height="10" fill="currentColor"/>
-                      <rect x="75" y="70" width="15" height="15" fill="currentColor"/>
-                    </svg>
+                  <div className="p-4 grid grid-cols-3 gap-3">
+                    {[1,2,3,4,5,6].map(i => <div key={i} className="aspect-square bg-gray-200 rounded overflow-hidden relative"><img src={`/assets/images/15-anos-demo/galeria-${i}.jpg`} className="w-full h-full object-cover" alt="" /></div>)}
                   </div>
                 </div>
-                {/* Grid de fotos simulado */}
-                <div className="p-4 grid grid-cols-3 gap-3">
-                  <div className="bg-white p-1.5 pb-6 shadow-lg rotate-1">
-                    <div className="w-full aspect-square bg-gradient-to-br from-pink-200 to-pink-400 rounded-sm flex items-center justify-center text-3xl">🥂</div>
-                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Familia Gomez</p>
+              </Reveal>
+              <Reveal delay={0.2} className="md:order-1">
+                <div className="space-y-4">
+                  <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] p-5 shadow-[4px_4px_0px_#FF8C42]">
+                    <h3 className="font-bold text-lg flex items-center gap-2">📸 Muro en vivo</h3>
+                    <p className="text-sm text-[#666] mt-1">Tus invitados sacan fotos, las suben y aparecen al instante en la pantalla gigante.</p>
                   </div>
-                  <div className="bg-white p-1.5 pb-6 shadow-lg -rotate-1">
-                    <div className="w-full aspect-square bg-gradient-to-br from-blue-200 to-blue-400 rounded-sm flex items-center justify-center text-3xl">💃</div>
-                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Mesa 7</p>
-                  </div>
-                  <div className="bg-white p-1.5 pb-6 shadow-lg rotate-2">
-                    <div className="w-full aspect-square bg-gradient-to-br from-yellow-200 to-orange-300 rounded-sm flex items-center justify-center text-3xl">🎂</div>
-                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Los novios</p>
-                  </div>
-                  <div className="bg-white p-1.5 pb-6 shadow-lg -rotate-2">
-                    <div className="w-full aspect-square bg-gradient-to-br from-green-200 to-emerald-400 rounded-sm flex items-center justify-center text-3xl">🎉</div>
-                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Tio Carlos</p>
-                  </div>
-                  <div className="bg-white p-1.5 pb-6 shadow-lg rotate-1">
-                    <div className="w-full aspect-square bg-gradient-to-br from-purple-200 to-purple-400 rounded-sm flex items-center justify-center text-3xl">❤️</div>
-                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">Amigas novia</p>
-                  </div>
-                  <div className="bg-white p-1.5 pb-6 shadow-lg -rotate-1">
-                    <div className="w-full aspect-square bg-gradient-to-br from-rose-200 to-red-300 rounded-sm flex items-center justify-center text-3xl">📸</div>
-                    <p className="text-[9px] text-gray-600 mt-1 text-center italic">El DJ</p>
+                  <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] p-5 shadow-[4px_4px_0px_#FF6B9D]">
+                    <h3 className="font-bold text-lg flex items-center gap-2">📥 Descarga todo</h3>
+                    <p className="text-sm text-[#666] mt-1">Al otro día te descargas todas las fotos de los invitados con un clic.</p>
                   </div>
                 </div>
-              </div>
-            </Reveal>
-
-            {/* Right: features */}
-            <Reveal delay={0.2}>
-              <div className="space-y-4">
-                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">📸</span> Subida instantanea
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">El invitado saca una foto, escanea el QR y la sube en 2 toques. Sin descargar nada.</p>
-                </div>
-
-                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">📺</span> Pantalla en vivo
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">Las fotos aparecen al instante en la pantalla del salon. Se actualiza sola cada 3 segundos.</p>
-                </div>
-
-                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#4ECDC4] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#4ECDC4] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">🖼️</span> Estilo polaroid
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">Cada foto se muestra como una polaroid con el nombre del invitado. Queda hermoso en el proyector.</p>
-                </div>
-
-                <div className="bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#1a1a1a] p-5 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#1a1a1a] transition-all">
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-2xl">🎁</span> Recuerdo para los novios
-                  </h3>
-                  <p className="text-sm text-[#666] mt-1">Despues del evento recibis todas las fotos que subieron tus invitados. Momentos unicos desde su perspectiva.</p>
-                </div>
-              </div>
-
-              <a
-                href="/demo-wall/upload"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-block px-8 py-4 bg-[#FF8C42] text-[#1a1a1a] font-bold text-base border-[3px] border-[#1a1a1a] shadow-[6px_6px_0px_#1a1a1a] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[9px_9px_0px_#1a1a1a] transition-all"
-              >
-                Probar Party Cam demo →
-              </a>
-            </Reveal>
-          </div>
+              </Reveal>
+            </div>
+          )}
         </div>
       </section>
 
@@ -693,9 +562,17 @@ Quedo a la espera para coordinar la sena!`;
         </Reveal>
       </section>
 
-      {/* ========== FORMULARIO ========== */}
-      <section id="pedido" className="py-12 md:py-24 px-5">
-        <div className="max-w-2xl mx-auto">
+      
+      {/* ========== FORMULARIO (MODAL) ========== */}
+      {isOrderModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#1a1a1a]/80 backdrop-blur-sm overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-[#FFF9E0] border-[3px] border-[#1a1a1a] shadow-[8px_8px_0px_#1a1a1a] p-6 sm:p-8 mt-10 mb-10">
+            <button 
+              onClick={() => setIsOrderModalOpen(false)}
+              className="absolute -top-4 -right-4 w-10 h-10 bg-[#FF6B9D] border-[3px] border-[#1a1a1a] flex items-center justify-center font-bold text-white shadow-[3px_3px_0px_#1a1a1a] hover:translate-y-1 hover:shadow-none transition-all"
+            >X</button>
+
+      <div id="pedido" className="w-full">
           <Reveal className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-3">Contanos de tu evento 📝</h2>
             <p className="text-[#555]">Completa los datos y te contactamos por WhatsApp para confirmar.</p>
@@ -787,10 +664,14 @@ Quedo a la espera para coordinar la sena!`;
             </button>
             <p className="text-center text-xs text-[#888] mt-2">Sin compromiso. Te enviamos el diseno y el link para abonar luego.</p>
           </form>
-        </div>
-      </section>
+        
+      
 
-      {/* ========== FOOTER ========== */}
+      
+          </div>
+        </div>
+      )}
+{/* ========== FOOTER ========== */}
       <footer className="bg-[#1a1a1a] text-white py-14 px-5 border-t-[3px] border-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-10">
