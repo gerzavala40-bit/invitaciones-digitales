@@ -163,7 +163,7 @@ Quedo a la espera para coordinar la sena!`;
   ];
 
   return (
-    <div className="font-sans bg-[#FFF9E0] text-[#1a1a1a] antialiased min-h-screen">
+    <div className="font-sans bg-[#FFF9E0] text-[#1a1a1a] antialiased min-h-screen overflow-x-hidden">
       {/* ========== NAV ========== */}
       <nav
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b-[3px] border-[#1a1a1a] ${
@@ -575,7 +575,6 @@ Quedo a la espera para coordinar la sena!`;
               Elegi tu{" "}
               <span className="inline-block bg-[#FF6B9D] px-3 border-[3px] border-[#1a1a1a] shadow-[3px_3px_0px_#1a1a1a]">plan</span>
             </h2>
-            <p className="mt-4 text-[#555] text-lg">30% OFF abonando por transferencia</p>
           </Reveal>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -613,9 +612,6 @@ Quedo a la espera para coordinar la sena!`;
                 <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM")} disabled={isProcessingPayment === "PREMIUM"} className="w-full py-4 bg-[#FF6B9D] text-white font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF6B9D] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF6B9D] transition-all disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM" ? "Procesando..." : "Lo quiero!"}
                 </button>
-                <button type="button" onClick={() => { document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-[#888] hover:text-[#1a1a1a] py-2 underline transition">
-                  Pagar por transferencia (-30%)
-                </button>
               </div>
             </div>
 
@@ -634,13 +630,10 @@ Quedo a la espera para coordinar la sena!`;
                 <button type="button" onClick={() => handleMercadoPagoCheckout("PREMIUM_PLUS")} disabled={isProcessingPayment === "PREMIUM_PLUS"} className="w-full py-4 bg-[#1a1a1a] text-[#FFF9E0] font-bold text-sm uppercase border-[3px] border-[#1a1a1a] shadow-[4px_4px_0px_#FF8C42] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#FF8C42] transition-all disabled:opacity-50">
                   {isProcessingPayment === "PREMIUM_PLUS" ? "Procesando..." : "Lo quiero!"}
                 </button>
-                <button type="button" onClick={() => { document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }); }} className="text-xs text-[#888] hover:text-[#1a1a1a] py-2 underline transition">
-                  Pagar por transferencia (-30%)
-                </button>
               </div>
             </div>
           </div>
-          <p className="text-center mt-8 text-[#888] text-sm">Sena 50% para iniciar. 30% OFF abonando por transferencia.</p>
+          <p className="text-center mt-8 text-[#888] text-sm">Seña 50% para iniciar.</p>
         </div>
       </section>
 
@@ -775,7 +768,7 @@ Quedo a la espera para coordinar la sena!`;
 
             <div>
               <label className="block text-xs font-bold tracking-wide uppercase text-[#555] mb-2">Plan *</label>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <label className="cursor-pointer">
                   <input type="radio" name="plan" value="Basico" required className="peer sr-only" />
                   <div className="p-3 border-[3px] border-[#1a1a1a] text-center peer-checked:bg-[#4ECDC4] peer-checked:shadow-[4px_4px_0px_#1a1a1a] transition-all hover:bg-[#f5f5f5]">
