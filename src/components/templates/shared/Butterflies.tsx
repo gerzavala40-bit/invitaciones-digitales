@@ -29,7 +29,7 @@ export default function Butterflies() {
           opacity: 0.9,
         }}
       >
-        <source src="/mariposas.mp4" type="video/mp4" />
+        <source src="/fondo_celeste.mp4" type="video/mp4" />
       </video>
     </div>
   );
