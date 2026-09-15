@@ -86,11 +86,6 @@ export default function RecepcionEgresados() {
           backgroundImage: 'radial-gradient(circle at 50% 0%, #3a2b00 0%, #0a0a0a 70%)'
         }}></div>
 
-        {/* Partículas de brillo simuladas (CSS) */}
-        <div className="absolute top-20 left-10 w-2 h-2 rounded-full gold-gradient-bg animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-3 h-3 rounded-full gold-gradient-bg animate-pulse" style={{ animationDelay: '1s'}}></div>
-        <div className="absolute bottom-40 left-1/4 w-2 h-2 rounded-full gold-gradient-bg animate-pulse" style={{ animationDelay: '2s'}}></div>
-
         <div className="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col items-center text-center">
           
           {/* Sello Circular de la Promo */}
@@ -144,12 +139,10 @@ export default function RecepcionEgresados() {
               
               {/* Botón de Fecha */}
               <div className="relative animate-pulse-border bg-black/40 border border-[#BF953F]/40 rounded-xl px-4 py-5 backdrop-blur-md flex items-center justify-between overflow-hidden group">
-                {/* Brillo que pasa (Shimmer) */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-full h-full animate-shimmer"></div>
                 
                 <div className="flex items-center gap-3 sm:gap-4 relative z-10">
                   <div className="p-2 bg-[#BF953F]/10 rounded-full border border-[#BF953F]/30 shadow-[0_0_10px_rgba(191,149,63,0.2)]">
-                    {/* Icono de Calendario SVG */}
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#BF953F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -169,7 +162,6 @@ export default function RecepcionEgresados() {
                 
                 <div className="flex items-center gap-3 sm:gap-4 relative z-10">
                   <div className="p-2 bg-[#BF953F]/10 rounded-full border border-[#BF953F]/30 shadow-[0_0_10px_rgba(191,149,63,0.2)]">
-                    {/* Icono de Reloj SVG */}
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#BF953F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -187,7 +179,10 @@ export default function RecepcionEgresados() {
 
             {/* Ubicación */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-md mb-8">
-              <span className="block text-3xl mb-3">📍</span>
+              <svg className="w-8 h-8 text-[#BF953F] mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
               <h3 className="font-cinzel text-xl gold-gradient-text font-bold mb-1">Salón Las Palmas</h3>
               <p className="text-sm text-gray-300">Av. Costanera 1234, Ciudad</p>
             </div>
