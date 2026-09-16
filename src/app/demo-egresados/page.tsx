@@ -1,15 +1,11 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function RecepcionEgresados() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     // Fecha objetivo: 15 de diciembre de 2026 a las 22:00
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6; // Ralentizar el video al 60%
-    }
     const targetDate = new Date("2026-12-15T22:00:00").getTime();
 
     const interval = setInterval(() => {
@@ -85,9 +81,15 @@ export default function RecepcionEgresados() {
 
       <main className="min-h-[100dvh] bg-[#0a0a0a] text-white font-montserrat relative overflow-hidden flex flex-col items-center pb-12">
         
+        {/* Fondo estático de brillos */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-[#0a0a0a]">
-          <video ref={videoRef} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-70" src="/brillo.mp4"></video>
-          <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
+          <img 
+            src="/fondo_brillos_estatico.jpg" 
+            alt="Fondo Brillos" 
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+          {/* Overlay oscuro para legibilidad del texto */}
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col items-center text-center">
@@ -213,8 +215,3 @@ export default function RecepcionEgresados() {
     </>
   );
 }
-
-
-
-
-
