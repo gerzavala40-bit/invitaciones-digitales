@@ -61,21 +61,12 @@ export default function RecepcionEgresados() {
           animation: fadeIn 1s ease-out forwards;
         }
 
-        /* Nuevas animaciones para los botones de fecha/hora */
         @keyframes shimmer {
           0% { transform: translateX(-150%) skewX(-15deg); }
           100% { transform: translateX(150%) skewX(-15deg); }
         }
         .animate-shimmer {
           animation: shimmer 3s infinite linear;
-        }
-        
-        @keyframes pulseBorder {
-          0%, 100% { border-color: rgba(191,149,63,0.3); box-shadow: 0 0 0 rgba(191,149,63,0); }
-          50% { border-color: rgba(191,149,63,0.8); box-shadow: 0 0 15px rgba(191,149,63,0.3); }
-        }
-        .animate-pulse-border {
-          animation: pulseBorder 2.5s infinite;
         }
       `}} />
 
@@ -88,50 +79,51 @@ export default function RecepcionEgresados() {
             alt="Fondo Brillos" 
             className="absolute inset-0 w-full h-full object-cover opacity-60"
           />
-          {/* Overlay oscuro para legibilidad del texto */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          {/* Overlay oscuro más fuerte para crear contraste y "cortar" el dorado */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          {/* Un degradado desde abajo hacia arriba en negro puro para asentar los botones */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col items-center text-center">
           
-          {/* Sello Circular de la Promo */}
+          {/* Sello Circular de la Promo (Ahora en tonos blancos/plateados para contrastar) */}
           <div className="fade-in mb-8 relative mt-4 flex justify-center" style={{ animationDelay: '0.1s', opacity: 0 }}>
-            <div className="w-40 h-40 rounded-full border border-[#BF953F] p-1.5 shadow-[0_0_25px_rgba(191,149,63,0.3)] relative z-10 flex flex-col items-center justify-center bg-black/60 backdrop-blur-md">
-              <div className="w-full h-full rounded-full border-[1.5px] border-dashed border-[#BF953F]/70 flex flex-col items-center justify-center pt-2">
+            <div className="w-40 h-40 rounded-full border border-white/30 p-1.5 shadow-[0_0_25px_rgba(255,255,255,0.1)] relative z-10 flex flex-col items-center justify-center bg-black/50 backdrop-blur-md">
+              <div className="w-full h-full rounded-full border-[1px] border-dashed border-white/40 flex flex-col items-center justify-center pt-2">
                 <span className="font-montserrat text-[0.65rem] tracking-[0.3em] text-gray-300 uppercase mb-1">Promo</span>
-                <span className="font-cinzel text-4xl gold-gradient-text font-bold leading-none mb-1">2026</span>
-                <span className="font-cinzel text-xl gold-gradient-text font-bold tracking-widest">5°C</span>
+                <span className="font-cinzel text-4xl text-white font-bold leading-none mb-1 drop-shadow-md">2026</span>
+                <span className="font-cinzel text-xl text-white font-bold tracking-widest">5°C</span>
               </div>
             </div>
-            {/* Resplandor trasero */}
-            <div className="absolute inset-0 bg-[#BF953F] blur-2xl opacity-20 -z-10 rounded-full scale-110"></div>
           </div>
 
           <div className="fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
-            <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl gold-gradient-text font-bold leading-none whitespace-nowrap">
+            <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl text-white font-bold leading-none whitespace-nowrap tracking-wide drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
               MI RECEPCIÓN
             </h1>
           </div>
 
-          <div className="w-16 h-[1px] gold-gradient-bg my-8 fade-in" style={{ animationDelay: '0.4s', opacity: 0 }}></div>
+          {/* Línea divisoria */}
+          <div className="w-16 h-[1px] bg-white/30 my-8 fade-in" style={{ animationDelay: '0.4s', opacity: 0 }}></div>
 
-          {/* Contador en Vivo */}
+          {/* Contador en Vivo (Único elemento dorado para destacarlo) */}
           <div className="fade-in w-full mb-10" style={{ animationDelay: '0.5s', opacity: 0 }}>
             <p className="text-xs tracking-[0.2em] text-gray-400 mb-4 uppercase">Faltan</p>
             <div className="flex justify-center gap-2 sm:gap-3">
-              <div className="flex flex-col items-center justify-center bg-black/40 border border-[#BF953F]/30 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+              <div className="flex flex-col items-center justify-center bg-black/60 border border-white/10 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md">
                 <span className="font-cinzel gold-gradient-text text-2xl sm:text-3xl font-bold">{timeLeft.days}</span>
                 <span className="text-[0.55rem] sm:text-xs text-gray-400 uppercase tracking-widest">Días</span>
               </div>
-              <div className="flex flex-col items-center justify-center bg-black/40 border border-[#BF953F]/30 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+              <div className="flex flex-col items-center justify-center bg-black/60 border border-white/10 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md">
                 <span className="font-cinzel gold-gradient-text text-2xl sm:text-3xl font-bold">{timeLeft.hours}</span>
                 <span className="text-[0.55rem] sm:text-xs text-gray-400 uppercase tracking-widest">Hs</span>
               </div>
-              <div className="flex flex-col items-center justify-center bg-black/40 border border-[#BF953F]/30 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+              <div className="flex flex-col items-center justify-center bg-black/60 border border-white/10 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md">
                 <span className="font-cinzel gold-gradient-text text-2xl sm:text-3xl font-bold">{timeLeft.minutes}</span>
                 <span className="text-[0.55rem] sm:text-xs text-gray-400 uppercase tracking-widest">Min</span>
               </div>
-              <div className="flex flex-col items-center justify-center bg-black/40 border border-[#BF953F]/30 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+              <div className="flex flex-col items-center justify-center bg-black/60 border border-white/10 rounded-lg w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] backdrop-blur-md">
                 <span className="font-cinzel gold-gradient-text text-2xl sm:text-3xl font-bold">{timeLeft.seconds}</span>
                 <span className="text-[0.55rem] sm:text-xs text-gray-400 uppercase tracking-widest">Seg</span>
               </div>
@@ -140,44 +132,32 @@ export default function RecepcionEgresados() {
 
           <div className="fade-in w-full" style={{ animationDelay: '0.6s', opacity: 0 }}>
             
-            {/* Cajas de Información de Fecha y Hora (Nuevo Diseño en 1 línea) */}
+            {/* Cajas de Información de Fecha y Hora (Blancas, Simples y Centradas) */}
             <div className="flex flex-col gap-4 w-full mb-8">
               
               {/* Botón de Fecha */}
-              <div className="relative animate-pulse-border bg-black/40 border border-[#BF953F]/40 rounded-xl px-4 py-5 backdrop-blur-md flex items-center justify-between overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-full h-full animate-shimmer"></div>
-                
-                <div className="flex items-center gap-3 sm:gap-4 relative z-10">
-                  <div className="p-2 bg-[#BF953F]/10 rounded-full border border-[#BF953F]/30 shadow-[0_0_10px_rgba(191,149,63,0.2)]">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#BF953F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <p className="font-cinzel gold-gradient-text text-base sm:text-lg md:text-xl font-bold tracking-widest whitespace-nowrap">
-                    15 DICIEMBRE
+              <div className="relative bg-black/50 border border-white/20 rounded-xl px-4 py-4 backdrop-blur-md flex items-center justify-center overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent w-full h-full animate-shimmer"></div>
+                <div className="flex items-center gap-3 relative z-10 w-full justify-center">
+                  <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="font-cinzel text-white text-lg md:text-xl font-bold tracking-widest whitespace-nowrap flex items-center gap-2">
+                    15 DICIEMBRE <span className="text-white/40 text-sm font-montserrat">|</span> <span className="text-white/80 font-montserrat font-light text-sm">SÁBADO</span>
                   </p>
-                </div>
-                <div className="relative z-10 font-montserrat text-xs sm:text-sm text-gray-300 tracking-widest uppercase border-l border-[#BF953F]/30 pl-2 sm:pl-4 whitespace-nowrap">
-                  Sábado
                 </div>
               </div>
 
               {/* Botón de Hora */}
-              <div className="relative animate-pulse-border bg-black/40 border border-[#BF953F]/40 rounded-xl px-4 py-5 backdrop-blur-md flex items-center justify-between overflow-hidden group" style={{ animationDelay: '1s' }}>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-full h-full animate-shimmer" style={{ animationDelay: '1.5s' }}></div>
-                
-                <div className="flex items-center gap-3 sm:gap-4 relative z-10">
-                  <div className="p-2 bg-[#BF953F]/10 rounded-full border border-[#BF953F]/30 shadow-[0_0_10px_rgba(191,149,63,0.2)]">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#BF953F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <p className="font-cinzel gold-gradient-text text-base sm:text-lg md:text-xl font-bold tracking-widest whitespace-nowrap">
-                    22:00 HS
+              <div className="relative bg-black/50 border border-white/20 rounded-xl px-4 py-4 backdrop-blur-md flex items-center justify-center overflow-hidden group" style={{ animationDelay: '1s' }}>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent w-full h-full animate-shimmer" style={{ animationDelay: '1.5s' }}></div>
+                <div className="flex items-center gap-3 relative z-10 w-full justify-center">
+                  <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="font-cinzel text-white text-lg md:text-xl font-bold tracking-widest whitespace-nowrap flex items-center gap-2">
+                    22:00 HS <span className="text-white/40 text-sm font-montserrat">|</span> <span className="text-white/80 font-montserrat font-light text-sm">NOCHE</span>
                   </p>
-                </div>
-                <div className="relative z-10 font-montserrat text-xs sm:text-sm text-gray-300 tracking-widest uppercase border-l border-[#BF953F]/30 pl-2 sm:pl-4 whitespace-nowrap">
-                  Noche
                 </div>
               </div>
 
@@ -185,26 +165,28 @@ export default function RecepcionEgresados() {
 
             {/* Ubicación */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-md mb-8">
-              <svg className="w-8 h-8 text-[#BF953F] mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-8 h-8 text-white mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <h3 className="font-cinzel text-xl gold-gradient-text font-bold mb-1">Salón Las Palmas</h3>
+              <h3 className="font-cinzel text-xl text-white font-bold mb-1 tracking-wide">Salón Las Palmas</h3>
               <p className="text-sm text-gray-300">Av. Costanera 1234, Ciudad</p>
             </div>
 
             {/* Dress Code */}
             <div className="mb-10">
               <p className="text-xs tracking-[0.2em] text-gray-400 mb-2 uppercase">Dress Code</p>
-              <p className="font-cinzel text-xl gold-gradient-text tracking-widest">GALA / ELEGANTE</p>
+              <p className="font-cinzel text-xl text-white tracking-widest">GALA / ELEGANTE</p>
             </div>
 
             {/* Botones */}
             <div className="flex flex-col gap-4 w-full">
+              {/* Confirmar Asistencia se mantiene dorado para resaltar la acción principal */}
               <button className="w-full gold-gradient-bg text-black font-bold tracking-widest uppercase py-4 rounded-full shadow-[0_0_20px_rgba(191,149,63,0.3)] transition-transform hover:scale-105 active:scale-95">
                 Confirmar Asistencia
               </button>
-              <button className="w-full bg-transparent border border-[#BF953F] gold-gradient-text font-bold tracking-widest uppercase py-4 rounded-full transition-transform hover:scale-105 active:scale-95">
+              {/* Botón secundario en blanco */}
+              <button className="w-full bg-transparent border border-white/50 text-white font-bold tracking-widest uppercase py-4 rounded-full transition-transform hover:scale-105 active:scale-95">
                 Ver Mapa
               </button>
             </div>
