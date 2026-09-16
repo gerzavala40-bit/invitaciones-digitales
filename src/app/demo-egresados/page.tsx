@@ -81,10 +81,10 @@ export default function RecepcionEgresados() {
 
       <main className="min-h-[100dvh] bg-[#0a0a0a] text-white font-montserrat relative overflow-hidden flex flex-col items-center pb-12">
         
-        {/* Fondo elegante con destellos */}
-        <div className="absolute inset-0 z-0 opacity-50" style={{
-          backgroundImage: 'radial-gradient(circle at 50% 0%, #3a2b00 0%, #0a0a0a 70%)'
-        }}></div>
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#0a0a0a]">
+          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-70" src="/brillo.mp4"></video>
+          <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
+        </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col items-center text-center">
           
@@ -209,3 +209,4 @@ export default function RecepcionEgresados() {
     </>
   );
 }
+
