@@ -126,6 +126,8 @@ Quedo a la espera para coordinar la sena!`;
   };
 
   const demos = [
+    { title: "Egresados VIP", url: "/demo-egresados", desc: "Recepciones", event: "Egresados" },
+    { title: "Infantil Comic", url: "/infantil-spiderman", desc: "Infantil", event: "Cumpleaños" },
     { title: "Elegante Oscuro", url: "/demo-boda-noche-dorada.html", desc: "Boda", event: "Boda" },
     { title: "Floral Claro", url: "/demo-boda-floral-claro.html", desc: "Boda", event: "Boda" },
     { title: "Minimalista", url: "/demo-cumple-minimalista.html", desc: "Cumpleanos", event: "Cumpleanos" },
@@ -710,3 +712,4 @@ Quedo a la espera para coordinar la sena!`;
     </div>
   );
 }
+
