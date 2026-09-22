@@ -127,7 +127,7 @@ Quedo a la espera para coordinar la sena!`;
 
   const demos = [
     { title: "Egresados VIP", url: "/demo-egresados", desc: "Recepciones", event: "Egresados" },
-    { title: "Infantil Comic", url: "/infantil-spiderman", desc: "Infantil", event: "Cumplea�os" },
+    { title: "Infantil Comic", url: "/infantil-spiderman", desc: "Infantil", event: "Cumpleanos" },
     { title: "Elegante Oscuro", url: "/demo-boda-noche-dorada.html", desc: "Boda", event: "Boda" },
     { title: "Floral Claro", url: "/demo-boda-floral-claro.html", desc: "Boda", event: "Boda" },
     { title: "Minimalista", url: "/demo-cumple-minimalista.html", desc: "Cumpleanos", event: "Cumpleanos" },
@@ -135,7 +135,7 @@ Quedo a la espera para coordinar la sena!`;
     { title: "Bautismo Tierno", url: "/demo-bautismo-benicio.html", desc: "Bautismo", event: "Bautismo" },
     { title: "Corporativo", url: "/demo-corporativo-gala.html", desc: "Corporativo", event: "Corporativo" },
     { title: "Boda Premium", url: "/demo-boda-premium.html", desc: "Boda", event: "Boda" },
-    { title: "Cumple 30 Retro", url: "/demo-cumple-30-retro.html", desc: "Cumpleaños", event: "Cumpleaños" },
+    { title: "Cumple 30 Retro", url: "/demo-cumple-30-retro.html", desc: "Cumpleanos", event: "Cumpleanos" },
     { title: "Baby Shower", url: "/demo-babyshower-malena.html", desc: "Baby Shower", event: "Baby Shower" },
   ];
 
@@ -712,4 +712,5 @@ Quedo a la espera para coordinar la sena!`;
     </div>
   );
 }
+
 
